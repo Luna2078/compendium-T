@@ -1,0 +1,90 @@
+{
+  "_doc": "Esqueleto do gacha. Camada SEPARADA dos JSONs oficiais (CLAUDE.md: nunca inventar/alterar dados oficiais). Tudo aqui é tunável pelo mestre. Qualidade = raridade = faixa DERIVADA da mecânica (ver bloco 'qualidade'). Encantos NÃO dropam soltos: entram via composição (encantosCompat por categoria).",
+
+  "escalaRaridade": ["Comum", "Incomum", "Raro", "Épico", "Lendário"],
+
+  "categorias": {
+    "suprimentos": {
+      "rotulo": "Suprimentos",
+      "descricao": "Comida, água e itens do dia a dia. Não inclui consumíveis táticos/mágicos.",
+      "incluiCategoriaItem": ["alimentacao", "bebida", "item-aventura", "equipamento de aventura", "ferramenta", "vestuario", "instrumento musical", "aparato", "esoterico"],
+      "incluiTipoItemMagico": [],
+      "encantosCompat": []
+    },
+    "armas": {
+      "rotulo": "Armas",
+      "descricao": "Qualquer grupo de proficiência (simples, marcial, exótica, fogo).",
+      "incluiCategoriaItem": ["arma", "municao"],
+      "incluiTipoItemMagico": ["arma específica"],
+      "encantosCompat": ["encanto de arma"]
+    },
+    "armadura": {
+      "rotulo": "Armadura",
+      "descricao": "Armaduras e escudos de qualquer tipo.",
+      "incluiCategoriaItem": ["armadura", "escudo", "broquel"],
+      "incluiTipoItemMagico": ["armadura específica", "escudo específico"],
+      "encantosCompat": ["encanto de armadura"]
+    },
+    "consumiveis": {
+      "rotulo": "Consumíveis",
+      "descricao": "Alquímicos, venenos e poções — consumíveis táticos/mágicos.",
+      "incluiCategoriaItem": ["alquimico", "veneno"],
+      "incluiTipoItemMagico": ["poção"],
+      "encantosCompat": []
+    }
+  },
+
+  "coringa": {
+    "rotulo": "Coringa",
+    "descricao": "Sorteia de qualquer categoria base e SOBE a faixa-alvo em N patamares (limitado ao topo). Meta-modificador, não acervo próprio.",
+    "incrementoPatamar": 1,
+    "categoriasBase": ["suprimentos", "armas", "armadura", "consumiveis"]
+  },
+
+  "pesosDrop": {
+    "_doc": "Peso relativo de cada faixa no sorteio. O mestre calibra. Faixas inatingíveis na categoria são ignoradas e o peso redistribuído.",
+    "Comum": 60,
+    "Incomum": 25,
+    "Raro": 10,
+    "Épico": 4,
+    "Lendário": 1
+  },
+
+  "composicao": {
+    "_doc": "Composição = base + modificações (melhorias da Tabela 3-8, materiais 3-9, encantos mágicos). O nº de modificações vem do ORÇAMENTO da faixa (modsPorFaixa): faixas altas vêm carregadas. Tetos T20: até 4 melhorias e 3 encantos por item (+1 material). chanceComPronto = chance (0..1) de montar mesmo havendo item pronto na faixa. Tudo calibrável pelo mestre.",
+    "chanceComPronto": 0.45,
+    "maxMelhorias": 4,
+    "maxEncantos": 3,
+    "modsPorFaixa": {
+      "Comum": { "min": 0, "max": 0 },
+      "Incomum": { "min": 1, "max": 1 },
+      "Raro": { "min": 1, "max": 2 },
+      "Épico": { "min": 2, "max": 4 },
+      "Lendário": { "min": 4, "max": 7 }
+    }
+  },
+
+  "qualidade": {
+    "_doc": "Como cada item recebe a faixa. Ordem do mestre: dano mínimo (nº de dados) → efeitos/crítico (desempate) → poder único/encanto (overlay). Limiares calibráveis pelo mestre.",
+    "ativa": true,
+    "armas": {
+      "dadosParaFaixa": { "1": "Comum", "2": "Incomum", "3": "Raro", "4": "Épico" }
+    },
+    "armadura": {
+      "defesaParaFaixa": [
+        { "min": 0, "faixa": "Comum" },
+        { "min": 3, "faixa": "Incomum" },
+        { "min": 6, "faixa": "Raro" },
+        { "min": 9, "faixa": "Épico" }
+      ]
+    },
+    "precoFaixas": { "Incomum": 50, "Raro": 500, "Épico": 3000, "Lendário": 15000 },
+    "overlay": {
+      "_doc": "Classificação oficial como piso que eleva (max). superiorBumpFaixas eleva 'Itens Superiores' mundanos.",
+      "magico": { "menor": "Incomum", "médio": "Raro", "média": "Raro", "maior": "Épico", "artefato": "Lendário" },
+      "superiorBumpFaixas": 1
+    },
+    "categoriasArma": ["arma", "municao"],
+    "categoriasArmadura": ["armadura", "escudo", "broquel"]
+  }
+}

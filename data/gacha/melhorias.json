@@ -1,0 +1,34 @@
+{
+  "_doc": "Modificações MUNDANAS de Item Superior (Tabela 3-8) e materiais especiais (Tabela 3-9) do Livro Básico. Camada de modificação do gacha: cada modificação = +1 faixa. Encantos mágicos vêm dos dados oficiais (itens-magicos, tipoItem 'Encanto de ...'). aplicaA: arma | armadura | escudo. prereq/conflita são respeitados na composição.",
+
+  "melhorias": [
+    { "id": "certeira", "nome": "Certeira", "aplicaA": ["arma"], "efeito": "+1 nos testes de ataque" },
+    { "id": "pungente", "nome": "Pungente", "aplicaA": ["arma"], "efeito": "+2 nos testes de ataque", "prereq": "certeira" },
+    { "id": "cruel", "nome": "Cruel", "aplicaA": ["arma"], "efeito": "+1 nas rolagens de dano" },
+    { "id": "atroz", "nome": "Atroz", "aplicaA": ["arma"], "efeito": "+2 nas rolagens de dano", "prereq": "cruel" },
+    { "id": "equilibrada", "nome": "Equilibrada", "aplicaA": ["arma"], "efeito": "+2 em testes de manobras" },
+    { "id": "macica", "nome": "Maciça", "aplicaA": ["arma"], "efeito": "+1 no multiplicador de crítico", "conflita": "precisa" },
+    { "id": "precisa", "nome": "Precisa", "aplicaA": ["arma"], "efeito": "+1 na margem de ameaça", "conflita": "macica" },
+    { "id": "harmonizada-arma", "nome": "Harmonizada", "aplicaA": ["arma"], "efeito": "−1 PM em habilidades de ataque", "prereq": "certeira" },
+
+    { "id": "ajustada", "nome": "Ajustada", "aplicaA": ["armadura", "escudo"], "efeito": "−1 na penalidade de armadura" },
+    { "id": "sob-medida", "nome": "Sob Medida", "aplicaA": ["armadura", "escudo"], "efeito": "−2 na penalidade de armadura", "prereq": "ajustada" },
+    { "id": "reforcada", "nome": "Reforçada", "aplicaA": ["armadura", "escudo"], "efeito": "+1 na Defesa, +1 na penalidade", "conflita": "delicada" },
+    { "id": "delicada", "nome": "Delicada", "aplicaA": ["armadura"], "efeito": "permite aplicar +1 de Destreza na Defesa", "conflita": "reforcada" },
+    { "id": "polida", "nome": "Polida", "aplicaA": ["armadura", "escudo"], "efeito": "+5 na Defesa na primeira rodada" },
+    { "id": "selada", "nome": "Selada", "aplicaA": ["armadura"], "efeito": "+1 nos testes de resistência" },
+    { "id": "espinhoso", "nome": "Espinhoso", "aplicaA": ["escudo"], "efeito": "aumenta o dano do escudo em um passo" },
+
+    { "id": "banhado-ouro", "nome": "Banhado a Ouro", "aplicaA": ["arma", "armadura", "escudo"], "efeito": "+2 em Diplomacia" },
+    { "id": "cravejado-gemas", "nome": "Cravejado de Gemas", "aplicaA": ["arma", "armadura", "escudo"], "efeito": "+2 em Enganação" },
+    { "id": "macabro", "nome": "Macabro", "aplicaA": ["arma", "armadura", "escudo"], "efeito": "+2 em Intimidação, −2 em Diplomacia" }
+  ],
+
+  "materiais": [
+    { "id": "adamante", "nome": "Adamante", "aplicaA": ["arma", "armadura", "escudo"], "efeito": { "arma": "aumenta o dano em um passo", "armadura": "redução de dano (RD 2 leve / RD 5 pesada)", "escudo": "redução de dano (RD 2)" } },
+    { "id": "aco-rubi", "nome": "Aço-Rubi", "aplicaA": ["arma", "armadura", "escudo"], "efeito": { "arma": "ignora 10 de redução de dano e a imunidade a crítico de lefeu", "armadura": "chance de ignorar dano extra de críticos/furtivos", "escudo": "chance de ignorar dano extra de críticos/furtivos" } },
+    { "id": "gelo-eterno", "nome": "Gelo Eterno", "aplicaA": ["arma", "armadura", "escudo"], "efeito": { "arma": "+2 de dano por frio", "armadura": "redução de fogo 5 (leve) / 10 (pesada)", "escudo": "redução de fogo 5" } },
+    { "id": "materia-vermelha", "nome": "Matéria Vermelha", "aplicaA": ["arma", "armadura", "escudo"], "efeito": { "arma": "+1d6 de dano (perde 1 PV por acerto)", "armadura": "impõe chance de falha aos ataques", "escudo": "impõe 10% de chance de falha aos ataques" } },
+    { "id": "mitral", "nome": "Mitral", "aplicaA": ["arma", "armadura", "escudo"], "efeito": { "arma": "+1 na margem de ameaça; ocupa −1 espaço", "armadura": "−2 na penalidade; ocupa −1 espaço", "escudo": "ocupa −1 espaço" } }
+  ]
+}

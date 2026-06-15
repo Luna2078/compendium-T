@@ -1,0 +1,4 @@
+{
+  "_doc": "Overrides manuais de raridade por id de item, preenchidos pelo mestre aos poucos. Ex.: { \"a-espada-deus\": \"Lendário\", \"adaga\": \"Comum\" }. Item sem entrada aqui cai no resolver automático (config.json > resolverRaridade).",
+  "overrides": {}
+}
