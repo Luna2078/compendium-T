@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Wynna",
-    "descricao": "Escolha uma magia arcana ou divina de 1º círculo. Você aprende e pode lançar essa magia."
+    "descricao": "Escolha uma magia arcana ou divina de 1º círculo. Você aprende e pode lançar essa magia.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_circulo_1",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

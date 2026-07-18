@@ -19,6 +19,7 @@
       "critico": "x3",
       "tipoDano": "Corte",
       "habilidades": ["Arremesso"]
-    }
+    },
+    "efeitos": []
   }
 }

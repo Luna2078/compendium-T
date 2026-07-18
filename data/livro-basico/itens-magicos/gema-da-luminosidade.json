@@ -15,6 +15,18 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Menor",
-    "preco": "T$ 3.000"
+    "preco": "T$ 3.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "emite_luz_de_tocha",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao_ao_acertar_por_pm",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

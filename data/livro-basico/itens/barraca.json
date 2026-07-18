@@ -11,6 +11,15 @@
     "categoria": "item-aventura",
     "preco": "T$ 10",
     "espacos": "1",
-    "especial": "Esta barraca de lona conta como um saco de dormir para duas pessoas e fornece +2 em testes de Sobrevivência para acampar."
+    "especial": "Esta barraca de lona conta como um saco de dormir para duas pessoas e fornece +2 em testes de Sobrevivência para acampar.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:sobrevivencia",
+        "valor": 2,
+        "condicao": { "campo": "intencao", "igual": "acampar" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

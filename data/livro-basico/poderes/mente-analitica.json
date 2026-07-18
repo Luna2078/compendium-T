@@ -10,6 +10,11 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Tanna-Toh",
-    "descricao": "Você recebe +2 em Intuição, Investigação e Vontade."
+    "descricao": "Você recebe +2 em Intuição, Investigação e Vontade.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pericia:intuicao", "valor": 2, "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:investigacao", "valor": 2, "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:vontade", "valor": 2, "aplicacao": "automatica" }
+    ]
   }
 }

@@ -10,6 +10,9 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Lena ou Thyatis",
-    "descricao": "Você pode usar armas corpo a corpo para causar dano não letal sem sofrer a penalidade de –5 no teste de ataque."
+    "descricao": "Você pode usar armas corpo a corpo para causar dano não letal sem sofrer a penalidade de –5 no teste de ataque.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "anula_penalidade_dano_nao_letal", "aplicacao": "lembrete" }
+    ]
   }
 }

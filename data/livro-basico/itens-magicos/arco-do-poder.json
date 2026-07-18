@@ -15,6 +15,18 @@
   "mecanica": {
     "tipoItem": "Arma Específica",
     "categoria": "Maior",
-    "preco": "T$ 90.000"
+    "preco": "T$ 90.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:formidavel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "cria_flechas_energia_escolha",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

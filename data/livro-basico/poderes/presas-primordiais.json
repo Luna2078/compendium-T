@@ -10,6 +10,30 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Kallyadranoch ou Megalokk",
-    "descricao": "Você pode gastar 1 PM para transformar seus dentes em presas afiadas até o fim da cena. Você recebe uma arma natural de mordida (dano 1d6, crítico x2, perfuração). Uma vez por rodada, quando usa a ação agredir com outra arma, você pode gastar 1 PM para fazer um ataque corpo a corpo extra com a mordida. Se já possuir outro ataque natural de mordida, em vez disso, o dano desse ataque aumenta em dois passos."
+    "descricao": "Você pode gastar 1 PM para transformar seus dentes em presas afiadas até o fim da cena. Você recebe uma arma natural de mordida (dano 1d6, crítico x2, perfuração). Uma vez por rodada, quando usa a ação agredir com outra arma, você pode gastar 1 PM para fazer um ataque corpo a corpo extra com a mordida. Se já possuir outro ataque natural de mordida, em vez disso, o dano desse ataque aumenta em dois passos.",
+    "ativacao": {
+      "custo": { "pm": 1 },
+      "encerramento": "As presas duram até o fim da cena."
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_arma_natural_mordida",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ataque_extra_mordida_ao_agredir",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "passo_dano_mordida_se_ja_possui_mordida",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

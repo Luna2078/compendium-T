@@ -3,8 +3,13 @@
   "tipo": "classe",
   "nome": "Paladino",
   "resumo": "Soldado a serviço do bem e da justiça. Combatente sagrado de elite que personifica tudo que um herói deve ser, escolhido pelos deuses para defender os inocentes a todo custo.",
-  "fonte": { "livro": "livro-basico", "pagina": 81 },
-  "imagens": ["/classes/paladino.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 81
+  },
+  "imagens": [
+    "/classes/paladino.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -39,180 +44,779 @@
     "pmPorNivel": 3,
     "pericias": {
       "quantidade": 2,
-      "fixas": ["Luta (For)", "Vontade (Sab)"],
-      "lista": ["Adestramento (Car)", "Atletismo (For)", "Cavalgar (Des)", "Cura (Sab)", "Diplomacia (Car)", "Fortitude (Con)", "Guerra (Int)", "Iniciativa (Des)", "Intuição (Sab)", "Nobreza (Int)", "Percepção (Sab)", "Religião (Sab)"],
+      "fixas": [
+        "Luta (For)",
+        "Vontade (Sab)"
+      ],
+      "lista": [
+        "Adestramento (Car)",
+        "Atletismo (For)",
+        "Cavalgar (Des)",
+        "Cura (Sab)",
+        "Diplomacia (Car)",
+        "Fortitude (Con)",
+        "Guerra (Int)",
+        "Iniciativa (Des)",
+        "Intuição (Sab)",
+        "Nobreza (Int)",
+        "Percepção (Sab)",
+        "Religião (Sab)"
+      ],
       "texto": "Luta (For) e Vontade (Sab) mais 2 a sua escolha entre Adestramento (Car), Atletismo (For), Cavalgar (Des), Cura (Sab), Diplomacia (Car), Fortitude (Con), Guerra (Int), Iniciativa (Des), Intuição (Sab), Nobreza (Int), Percepção (Sab) e Religião (Sab)."
     },
-    "proficiencias": ["armas marciais", "armaduras pesadas", "escudos"],
+    "proficiencias": [
+      "armas marciais",
+      "armaduras pesadas",
+      "escudos"
+    ],
     "progressao": [
-      { "nivel": 1, "habilidades": ["Abençoado", "Código do herói", "Golpe divino (+1d8)"] },
-      { "nivel": 2, "habilidades": ["Cura pelas mãos (1d8+1 PV)", "Poder de paladino"] },
-      { "nivel": 3, "habilidades": ["Aura sagrada", "Poder de paladino"] },
-      { "nivel": 4, "habilidades": ["Poder de paladino"] },
-      { "nivel": 5, "habilidades": ["Bênção da justiça", "Golpe divino (+2d8)", "Poder de paladino"] },
-      { "nivel": 6, "habilidades": ["Cura pelas mãos (2d8+2 PV)", "Poder de paladino"] },
-      { "nivel": 7, "habilidades": ["Poder de paladino"] },
-      { "nivel": 8, "habilidades": ["Poder de paladino"] },
-      { "nivel": 9, "habilidades": ["Golpe divino (+3d8)", "Poder de paladino"] },
-      { "nivel": 10, "habilidades": ["Cura pelas mãos (3d8+3 PV)", "Poder de paladino"] },
-      { "nivel": 11, "habilidades": ["Poder de paladino"] },
-      { "nivel": 12, "habilidades": ["Poder de paladino"] },
-      { "nivel": 13, "habilidades": ["Golpe divino (+4d8)", "Poder de paladino"] },
-      { "nivel": 14, "habilidades": ["Cura pelas mãos (4d8+4 PV)", "Poder de paladino"] },
-      { "nivel": 15, "habilidades": ["Poder de paladino"] },
-      { "nivel": 16, "habilidades": ["Poder de paladino"] },
-      { "nivel": 17, "habilidades": ["Golpe divino (+5d8)", "Poder de paladino"] },
-      { "nivel": 18, "habilidades": ["Cura pelas mãos (5d8+5 PV)", "Poder de paladino"] },
-      { "nivel": 19, "habilidades": ["Poder de paladino"] },
-      { "nivel": 20, "habilidades": ["Poder de paladino", "Vingador sagrado"] }
+      {
+        "nivel": 1,
+        "habilidades": [
+          "Abençoado",
+          "Código do herói",
+          "Golpe divino (+1d8)"
+        ]
+      },
+      {
+        "nivel": 2,
+        "habilidades": [
+          "Cura pelas mãos (1d8+1 PV)",
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          "Aura sagrada",
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 4,
+        "habilidades": [
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 5,
+        "habilidades": [
+          "Bênção da justiça",
+          "Golpe divino (+2d8)",
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 6,
+        "habilidades": [
+          "Cura pelas mãos (2d8+2 PV)",
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 7,
+        "habilidades": [
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 8,
+        "habilidades": [
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 9,
+        "habilidades": [
+          "Golpe divino (+3d8)",
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 10,
+        "habilidades": [
+          "Cura pelas mãos (3d8+3 PV)",
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 11,
+        "habilidades": [
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 12,
+        "habilidades": [
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 13,
+        "habilidades": [
+          "Golpe divino (+4d8)",
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 14,
+        "habilidades": [
+          "Cura pelas mãos (4d8+4 PV)",
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 15,
+        "habilidades": [
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 16,
+        "habilidades": [
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 17,
+        "habilidades": [
+          "Golpe divino (+5d8)",
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 18,
+        "habilidades": [
+          "Cura pelas mãos (5d8+5 PV)",
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 19,
+        "habilidades": [
+          "Poder de paladino"
+        ]
+      },
+      {
+        "nivel": 20,
+        "habilidades": [
+          "Poder de paladino",
+          "Vingador sagrado"
+        ]
+      }
     ],
     "habilidades": [
       {
         "nome": "Abençoado",
         "nivel": 1,
-        "descricao": "Você soma seu Carisma no seu total de pontos de mana no 1º nível. Além disso, torna-se devoto de um deus disponível para paladinos (Azgher, Khalmyr, Lena, Lin-Wu, Marah, Tanna-Toh, Thyatis, Valkaria). Veja as regras de devotos na página 96. Ao contrário de devotos normais, você recebe dois poderes concedidos por se tornar devoto, em vez de apenas um.\n\nComo alternativa, você pode ser um paladino do bem, lutando em prol da bondade e da justiça como um todo. Não recebe nenhum Poder Concedido, mas não precisa seguir nenhuma Obrigação & Restrição (além do Código do Herói, abaixo). Cultuar o bem conta como sua devoção."
+        "descricao": "Você soma seu Carisma no seu total de pontos de mana no 1º nível. Além disso, torna-se devoto de um deus disponível para paladinos (Azgher, Khalmyr, Lena, Lin-Wu, Marah, Tanna-Toh, Thyatis, Valkaria). Veja as regras de devotos na página 96. Ao contrário de devotos normais, você recebe dois poderes concedidos por se tornar devoto, em vez de apenas um.\n\nComo alternativa, você pode ser um paladino do bem, lutando em prol da bondade e da justiça como um todo. Não recebe nenhum Poder Concedido, mas não precisa seguir nenhuma Obrigação & Restrição (além do Código do Herói, abaixo). Cultuar o bem conta como sua devoção.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pm.max",
+            "valor": {
+              "expr": "atr.car"
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "torna_se_devoto_deus_paladino",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "recebe_dois_poderes_concedidos_ao_tornar_devoto",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Código do Herói",
         "nivel": 1,
-        "descricao": "Você deve sempre manter sua palavra e nunca pode recusar um pedido de ajuda de alguém inocente. Além disso, nunca pode mentir, trapacear ou roubar. Se violar o código, você perde todos os seus PM e só pode recuperá-los a partir do próximo dia."
+        "descricao": "Você deve sempre manter sua palavra e nunca pode recusar um pedido de ajuda de alguém inocente. Além disso, nunca pode mentir, trapacear ou roubar. Se violar o código, você perde todos os seus PM e só pode recuperá-los a partir do próximo dia.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "viola_codigo_perde_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Golpe Divino",
         "nivel": 1,
         "descricao": "Quando faz um ataque corpo a corpo, você pode gastar 2 PM para desferir um golpe destruidor. Você soma seu Carisma no teste de ataque e +1d8 na rolagem de dano. A cada quatro níveis, pode gastar +1 PM para aumentar o dano em +1d8.",
-        "custo": "2 PM (+1 PM a cada quatro níveis)"
+        "custo": "2 PM (+1 PM a cada quatro níveis)",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "ataque.corpo_a_corpo",
+            "valor": {
+              "expr": "atr.car"
+            },
+            "opcionalPorAtaque": {
+              "custo": {
+                "pm": 2
+              }
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "dano.corpo_a_corpo",
+            "valor": {
+              "dados": {
+                "n": {
+                  "expr": "ceil(nivel / 4)"
+                },
+                "faces": 8
+              }
+            },
+            "opcionalPorAtaque": {
+              "custo": {
+                "pm": 2
+              }
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Cura pelas Mãos",
         "nivel": 2,
         "descricao": "A partir do 2º nível, você pode gastar uma ação de movimento e 1 PM para curar 1d8+1 pontos de vida de um alvo em alcance corpo a corpo (incluindo você). A cada quatro níveis, você pode gastar +1 PM para aumentar os PV curados em +1d8+1. Esta habilidade pode causar dano de luz a mortos-vivos, exigindo um ataque desarmado.\n\nA partir do 6º nível, você pode gastar +1 PM quando usa Cura pelas Mãos para anular uma condição afetando o alvo, entre abalado, apavorado, atordoado, cego, doente, exausto, fatigado ou surdo.",
-        "custo": "1 PM (+1 PM a cada quatro níveis; +1 PM para anular condição, a partir do 6º nível)"
+        "custo": "1 PM (+1 PM a cada quatro níveis; +1 PM para anular condição, a partir do 6º nível)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "cura_por_maos",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "cura_maos_anula_condicao_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aura Sagrada",
         "nivel": 3,
         "descricao": "No 3º nível, você pode gastar 1 PM para gerar uma aura com 9m de raio a partir de você e duração sustentada. A aura emite uma luz dourada e agradável. Além disso, você e os aliados dentro da aura somam seu Carisma nos testes de resistência.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "ativacao": {
+          "custo": {
+            "pm": 1
+          },
+          "encerramento": "Sustentada; se você não gastar ação de manutenção, a aura se dissipa."
+        },
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:vontade",
+            "valor": {
+              "expr": "atr.car"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:fortitude",
+            "valor": {
+              "expr": "atr.car"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:reflexos",
+            "valor": {
+              "expr": "atr.car"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "aura_buff_aliados",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Bênção da Justiça",
         "nivel": 5,
-        "descricao": "No 5º nível, escolha entre égide sagrada e montaria sagrada. Uma vez feita, esta escolha não pode ser mudada.\n\n• Égide Sagrada. Você pode gastar uma ação de movimento e 2 PM para recobrir de energia seu escudo ou símbolo sagrado. Até o fim da cena, você e todos os aliados adjacentes recebem um bônus na Defesa igual ao seu Carisma. A partir do 11º nível, você pode gastar 5 PM para rolar novamente um teste de resistência contra uma magia recém lançada contra você. Se você passar no teste de resistência e a magia tiver você como único alvo, ela é revertida de volta ao conjurador (que se torna o novo alvo da magia; todas as demais características da magia, incluindo CD do teste de resistência, se mantêm).\n\n• Montaria Sagrada. Você pode gastar uma ação de movimento e 2 PM para invocar uma montaria sagrada. Veja o quadro para mais detalhes."
+        "descricao": "No 5º nível, escolha entre égide sagrada e montaria sagrada. Uma vez feita, esta escolha não pode ser mudada.\n\n• Égide Sagrada. Você pode gastar uma ação de movimento e 2 PM para recobrir de energia seu escudo ou símbolo sagrado. Até o fim da cena, você e todos os aliados adjacentes recebem um bônus na Defesa igual ao seu Carisma. A partir do 11º nível, você pode gastar 5 PM para rolar novamente um teste de resistência contra uma magia recém lançada contra você. Se você passar no teste de resistência e a magia tiver você como único alvo, ela é revertida de volta ao conjurador (que se torna o novo alvo da magia; todas as demais características da magia, incluindo CD do teste de resistência, se mantêm).\n\n• Montaria Sagrada. Você pode gastar uma ação de movimento e 2 PM para invocar uma montaria sagrada. Veja o quadro para mais detalhes.",
+        "escolhas": [
+          {
+            "id": "bencao_da_justica_escolha",
+            "rotulo": "Escolha entre Égide Sagrada e Montaria Sagrada",
+            "opcoes": [
+              {
+                "tipo": "ramo",
+                "rotulo": "Égide Sagrada",
+                "efeitos": [
+                  {
+                    "tipo": "bonus",
+                    "alvo": "defesa",
+                    "valor": {
+                      "expr": "atr.car"
+                    },
+                    "condicao": {
+                      "quando": "ativo"
+                    },
+                    "aplicacao": "contextual"
+                  },
+                  {
+                    "tipo": "capacidade",
+                    "chave": "aura_buff_aliados",
+                    "condicao": {
+                      "quando": "ativo"
+                    },
+                    "aplicacao": "lembrete"
+                  },
+                  {
+                    "tipo": "capacidade",
+                    "chave": "egide_reverte_magia_ao_conjurador",
+                    "aplicacao": "lembrete"
+                  }
+                ]
+              },
+              {
+                "tipo": "ramo",
+                "rotulo": "Montaria Sagrada",
+                "efeitos": [
+                  {
+                    "tipo": "capacidade",
+                    "chave": "possui_parceiro",
+                    "aplicacao": "lembrete"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "efeitos": []
       },
       {
         "nome": "Vingador Sagrado",
         "nivel": 20,
         "descricao": "No 20º nível, você pode gastar uma ação completa e 10 PM para se cobrir de energia divina, assumindo a forma de um vingador sagrado até o fim da cena. Nesta forma, você recebe deslocamento de voo 18m e redução de dano 20. Além disso, seu Golpe Divino tem seu custo reduzido à metade e causa mais dois dados de dano.",
-        "custo": "10 PM"
+        "custo": "10 PM",
+        "ativacao": {
+          "custo": {
+            "pm": 10,
+            "acao": "completa"
+          },
+          "encerramento": "Dura até o fim da cena."
+        },
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "deslocamento_voo",
+            "valor": 18,
+            "unidade": "m",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "reducao_dano",
+            "valor": 20,
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "modifica_poder",
+            "alvo": "golpe-divino",
+            "adicionaEfeito": [
+              {
+                "tipo": "bonus",
+                "alvo": "dano.corpo_a_corpo",
+                "valor": {
+                  "dados": {
+                    "n": 2,
+                    "comoArma": true
+                  }
+                },
+                "condicao": {
+                  "quando": "ativo"
+                },
+                "aplicacao": "contextual"
+              }
+            ]
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "vingador_sagrado_reduz_custo_golpe_divino_metade",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ],
     "poderes": [
       {
         "nome": "Arma Sagrada",
         "descricao": "Quando usa Golpe Divino para atacar com a arma preferida de sua divindade, o dado de dano que você rola por Golpe Divino aumenta para d12.",
-        "prerequisito": "devoto de uma divindade (exceto Lena e Marah)"
+        "prerequisito": "devoto de uma divindade (exceto Lena e Marah)",
+        "precisaRevisao": true,
+        "efeitos": [],
+        "_revisao": "A condição arma preferida da divindade não existe em CAMPOS_CONDICAO. O dado sobe de d8 para d12 (2 passos), não modelável limpo via passo_de_dado sem o campo condicional. Chute: modifica_poder golpe-divino adicionaEfeito passo_de_dado +2 com condicao arma.id==arma_preferida_divindade."
       },
       {
         "nome": "Aumento de Atributo",
-        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo."
+        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo.",
+        "empilhavel": true,
+        "escolhas": [
+          {
+            "id": "aumento_atributo",
+            "rotulo": "+1 em um atributo à escolha",
+            "alvoTipo": "atributo",
+            "efeito": {
+              "tipo": "bonus",
+              "valor": 1,
+              "aplicacao": "automatica"
+            },
+            "restricao": "uma_por_patamar_por_alvo"
+          }
+        ],
+        "efeitos": []
       },
       {
         "nome": "Aura Antimagia",
         "descricao": "Enquanto sua aura estiver ativa, você e os aliados dentro da aura podem rolar novamente qualquer teste de resistência contra magia recém realizado.",
-        "prerequisito": "14º nível de paladino"
+        "prerequisito": "14º nível de paladino",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aura_buff_aliados",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aura Ardente",
         "descricao": "Enquanto sua aura estiver ativa, no início de cada um de seus turnos, espíritos e mortos-vivos a sua escolha dentro dela sofrem dano de luz igual a 5 + seu Carisma.",
-        "prerequisito": "10º nível de paladino"
+        "prerequisito": "10º nível de paladino",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aura_condicao_em_inimigos",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aura de Cura",
         "descricao": "Enquanto sua aura estiver ativa, no início de seus turnos, você e os aliados a sua escolha dentro dela curam um número de PV igual a 5 + seu Carisma.",
-        "prerequisito": "6º nível de paladino"
+        "prerequisito": "6º nível de paladino",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aura_buff_aliados",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aura de Invencibilidade",
         "descricao": "Enquanto sua aura estiver ativa, você ignora o primeiro dano que sofrer na cena. O mesmo se aplica a seus aliados dentro da aura.",
-        "prerequisito": "18º nível de paladino"
+        "prerequisito": "18º nível de paladino",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aura_buff_aliados",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aura Poderosa",
         "descricao": "O raio da sua aura aumenta para 30m.",
-        "prerequisito": "6º nível de paladino"
+        "prerequisito": "6º nível de paladino",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "aura-sagrada",
+            "patch": {
+              "valor": 30,
+              "unidade": "m"
+            }
+          }
+        ]
       },
       {
         "nome": "Fulgor Divino",
-        "descricao": "Quando usa Golpe Divino, todos os inimigos em alcance curto ficam ofuscados até o início do seu próximo turno."
+        "descricao": "Quando usa Golpe Divino, todos os inimigos em alcance curto ficam ofuscados até o início do seu próximo turno.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ofusca_inimigos_alcance_curto_ao_golpe_divino",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Julgamento Divino: Arrependimento",
         "descricao": "Você pode gastar 2 PM para marcar um inimigo em alcance curto. Na próxima vez que esse inimigo acertar um ataque em você ou em um de seus aliados, deve fazer um teste de Vontade (CD Car). Se falhar, fica atordoado no próximo turno dele (apenas uma vez por cena).",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "marca_alvo_para_bonus",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "impoe_teste_resistencia_ou_perde_acao",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Julgamento Divino: Autoridade",
-        "descricao": "Você pode gastar 1 PM para comandar uma criatura em alcance curto. Faça um teste de Diplomacia oposto pelo teste de Vontade do alvo. Se você vencer, ele obedece a um comando simples, como “pare” ou “largue a arma” (apenas uma vez por cena). Mental.",
-        "custo": "1 PM"
+        "descricao": "Você pode gastar 1 PM para comandar uma criatura em alcance curto. Faça um teste de Diplomacia oposto pelo teste de Vontade do alvo. Se você vencer, ele obedece a um comando simples (apenas uma vez por cena). Mental.",
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "impoe_teste_resistencia_ou_perde_acao",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Julgamento Divino: Coragem",
         "descricao": "Você pode gastar 2 PM para inspirar coragem em uma criatura em alcance curto, incluindo você mesmo. A criatura fica imune a efeitos de medo e recebe +2 em testes de ataque contra o inimigo com maior ND na cena.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "imune_efeitos_medo",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_ataque_vs_maior_nd_cena",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Julgamento Divino: Iluminação",
-        "descricao": "Você pode marcar um inimigo em alcance curto. Quando acerta um ataque corpo a corpo nesse inimigo, você recebe 2 PM temporários. Você só pode proferir este julgamento uma vez por cena."
+        "descricao": "Você pode marcar um inimigo em alcance curto. Quando acerta um ataque corpo a corpo nesse inimigo, você recebe 2 PM temporários. Você só pode proferir este julgamento uma vez por cena.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "marca_alvo_para_bonus",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "ganha_pm_temporario_ao_acertar",
+            "valor": 2,
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Julgamento Divino: Justiça",
         "descricao": "Você pode gastar 2 PM para marcar um inimigo em alcance curto. A próxima vez que esse inimigo causar dano em você ou em um de seus aliados, deve fazer um teste de Vontade (CD Car). Se falhar, sofre dano de luz igual à metade do dano que causou.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "marca_alvo_para_bonus",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "impoe_dano_reflexo_ao_atacar_aliado",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Julgamento Divino: Libertação",
         "descricao": "Você pode gastar 5 PM para cancelar uma condição negativa qualquer (como abalado, paralisado etc.) que esteja afetando uma criatura em alcance curto.",
-        "custo": "5 PM"
+        "custo": "5 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "cura_maos_anula_condicao_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Julgamento Divino: Salvação",
         "descricao": "Você pode gastar 2 PM para marcar um inimigo em alcance curto. Até o fim da cena, quando você acerta um ataque corpo a corpo nesse inimigo, recupera 5 pontos de vida.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "marca_alvo_para_bonus",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "recupera_pv_ao_acertar",
+            "valor": 5,
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Julgamento Divino: Vindicação",
-        "descricao": "Você pode gastar 2 PM para marcar um inimigo que tenha causado dano a você ou a seus aliados na cena. Você recebe +1 em testes de ataque e +1d8 em rolagens de dano contra o inimigo escolhido, mas sofre –5 em testes de ataque contra quaisquer outros alvos. No 5º nível, e a cada cinco níveis seguintes, você pode pagar +1 PM para aumentar o bônus de ataque em +1 e o bônus de dano em +1d8. O efeito termina caso o alvo fique inconsciente.",
-        "custo": "2 PM (+1 PM no 5º nível e a cada cinco níveis seguintes)"
+        "descricao": "Você pode gastar 2 PM para marcar um inimigo que tenha causado dano a você ou a seus aliados na cena. Você recebe +1 em testes de ataque e +1d8 em rolagens de dano contra o inimigo escolhido, mas sofre -5 em testes de ataque contra quaisquer outros alvos. No 5º nível, e a cada cinco níveis seguintes, você pode pagar +1 PM para aumentar o bônus de ataque em +1 e o bônus de dano em +1d8. O efeito termina caso o alvo fique inconsciente.",
+        "custo": "2 PM (+1 PM no 5º nível e a cada cinco níveis seguintes)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "marca_alvo_para_bonus",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "vindicacao_bonus_ataque_dano_vs_marcado_penalidade_outros",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Julgamento Divino: Zelo",
         "descricao": "Você pode gastar 1 PM para marcar um alvo em alcance longo. Pelo restante da cena, sempre que se mover na direção desse alvo, você se move com o dobro de seu deslocamento.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "marca_alvo_para_bonus",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "dobra_deslocamento_em_direcao_ao_alvo_marcado",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Orar",
-        "descricao": "Você aprende e pode lançar uma magia divina de 1º círculo a sua escolha. Seu atributo-chave para esta magia é Sabedoria. Você pode escolher este poder quantas vezes quiser."
+        "descricao": "Você aprende e pode lançar uma magia divina de 1º círculo a sua escolha. Seu atributo-chave para esta magia é Sabedoria. Você pode escolher este poder quantas vezes quiser.",
+        "empilhavel": true,
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_magia_circulo_1",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Virtude Paladinesca: Caridade",
-        "descricao": "O custo de suas habilidades de paladino que tenham um aliado como alvo é reduzido em –1 PM."
+        "descricao": "O custo de suas habilidades de paladino que tenham um aliado como alvo é reduzido em -1 PM.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "reduz_1pm_habilidades_paladino_com_alvo_aliado",
+            "aplicacao": "lembrete"
+          }
+        ],
+        "_revisao": "Bônus de PM progressivo por número de Virtudes (+1/+3/+6/+10/+15) requer expr com contar({grupo:virtude_paladinesca}) e ternários — não representável em JSON sem aspas simples em string. Aguarda resolução do motor ou campo dedicado."
       },
       {
         "nome": "Virtude Paladinesca: Castidade",
-        "descricao": "Você se torna imune a efeitos de encantamento e recebe +5 em testes de Intuição para perceber blefes."
+        "descricao": "Você se torna imune a efeitos de encantamento e recebe +5 em testes de Intuição para perceber blefes.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "imune_encantamento",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_intuicao_contra_blefe",
+            "valor": 5,
+            "aplicacao": "lembrete"
+          }
+        ],
+        "_revisao": "Bônus progressivo de PM por Virtudes: idem Caridade. A expr de contar({grupo}) com ternários não é representável em JSON sem aspas simples. Aguarda resolução do motor."
       },
       {
         "nome": "Virtude Paladinesca: Compaixão",
-        "descricao": "Você pode usar Cura pelas Mãos em alcance curto e, para cada PM que gastar, cura 2d6+1 (em vez de 1d8+1)."
+        "descricao": "Você pode usar Cura pelas Mãos em alcance curto e, para cada PM que gastar, cura 2d6+1 (em vez de 1d8+1).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "compaixao_aprimora_cura_pelas_maos",
+            "aplicacao": "lembrete"
+          }
+        ],
+        "_revisao": "Bônus progressivo de PM por Virtudes: idem Caridade. Modifica Cura pelas Mãos: alcance curto + dado 2d6+1. O modifica_poder sem patch concreto de dado requer motor saber qual dado substituir."
       },
       {
         "nome": "Virtude Paladinesca: Humildade",
-        "descricao": "Na primeira rodada de um combate, você pode gastar uma ação completa para rezar e pedir orientação. Você recebe uma quantidade de PM temporários igual ao seu Carisma (duram até o fim da cena)."
+        "descricao": "Na primeira rodada de um combate, você pode gastar uma ação completa para rezar e pedir orientação. Você recebe uma quantidade de PM temporários igual ao seu Carisma (duram até o fim da cena).",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pm.temporario",
+            "valor": {
+              "expr": "atr.car"
+            },
+            "aplicacao": "automatica"
+          }
+        ],
+        "_revisao": "Bônus progressivo de PM por Virtudes: idem Caridade. O bônus pm.temporario é contextual (ação completa, apenas 1ª rodada do combate): a condição primeira rodada não existe em CAMPOS_CONDICAO.",
+        "ativacao": {
+          "custo": {
+            "acao": "completa"
+          },
+          "encerramento": "Só na 1ª rodada do combate; os PM temporários duram até o fim da cena."
+        }
       },
       {
         "nome": "Virtude Paladinesca: Temperança",
-        "descricao": "Quando ingere um alimento, item alquímico ou poção, você consome apenas metade do item. Na prática, cada item desses rende duas “doses” para você."
+        "descricao": "Quando ingere um alimento, item alquímico ou poção, você consome apenas metade do item. Na prática, cada item desses rende duas doses para você.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "item_ingerivel_rende_duas_doses",
+            "aplicacao": "lembrete"
+          }
+        ],
+        "_revisao": "Bônus progressivo de PM por Virtudes: idem Caridade."
       }
     ]
   }

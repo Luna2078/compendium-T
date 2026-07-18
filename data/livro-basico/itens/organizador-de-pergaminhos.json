@@ -11,6 +11,9 @@
     "categoria": "item-aventura",
     "preco": "T$ 25",
     "espacos": "1",
-    "especial": "Se você estiver vestindo um organizador de pergaminhos, pode sacar pergaminhos como uma ação livre."
+    "especial": "Se você estiver vestindo um organizador de pergaminhos, pode sacar pergaminhos como uma ação livre.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "saca_categoria_itens_como_acao_livre", "aplicacao": "lembrete" }
+    ]
   }
 }

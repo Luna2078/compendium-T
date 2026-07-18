@@ -15,6 +15,37 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Médio",
-    "preco": "T$ 25.500"
+    "preco": "T$ 25.500",
+    "ativacao": {
+      "custo": { "acao": "padrao" },
+      "encerramento": "Só pode se transformar à noite ou em ambientes escuros. Funciona como Forma Selvagem do druida."
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:furtividade",
+        "valor": 5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "permite_pendurar_de_ponta_cabeca",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento_voo",
+        "valor": 12,
+        "unidade": "m",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_arma_natural_mordida",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

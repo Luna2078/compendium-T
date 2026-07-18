@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Dilacerante",
   "resumo": "Causa +10 pontos de dano em acertos críticos.",
-  "fonte": { "livro": "livro-basico", "pagina": 335 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 335
+  },
   "imagens": [],
   "secoes": [
     {
@@ -13,6 +16,20 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 10,
+        "condicao": {
+          "campo": "ataque.critico",
+          "em": [
+            "sim"
+          ]
+        },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

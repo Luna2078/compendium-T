@@ -11,6 +11,9 @@
     "categoria": "alquimico",
     "preco": "T$ 100",
     "espacos": "0,5",
-    "especial": "Um humanoide que beba este líquido adocicado fica apaixonado pela primeira criatura que enxergar (condição enfeitiçado; Vontade CD Car anula). O efeito dura 1d3 dias."
+    "especial": "Um humanoide que beba este líquido adocicado fica apaixonado pela primeira criatura que enxergar (condição enfeitiçado; Vontade CD Car anula). O efeito dura 1d3 dias.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "concede_paixao_temporaria", "aplicacao": "lembrete" }
+    ]
   }
 }

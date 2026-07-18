@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Busca Interior",
-        "descricao": "Quando você e seus companheiros estão diante de um mistério, incapazes de prosseguir, você pode gastar 1 PM para meditar sozinho durante algum tempo e receber uma dica do mestre."
+        "descricao": "Quando você e seus companheiros estão diante de um mistério, incapazes de prosseguir, você pode gastar 1 PM para meditar sozinho durante algum tempo e receber uma dica do mestre.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "medita_por_pm_recebe_dica_do_mestre",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

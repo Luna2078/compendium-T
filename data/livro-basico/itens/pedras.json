@@ -11,6 +11,10 @@
     "categoria": "municao",
     "preco": "T$ 0,5",
     "espacos": "1",
-    "especial": "Pacote com 20 pedras polidas. Usadas pela funda. Recarregar uma funda com uma pedra de qualquer tipo é uma ação de movimento. Na falta de munição adequada, pedras comuns podem ser usadas, mas o dano é reduzido em um passo."
+    "especial": "Pacote com 20 pedras polidas. Usadas pela funda. Recarregar uma funda com uma pedra de qualquer tipo é uma ação de movimento. Na falta de munição adequada, pedras comuns podem ser usadas, mas o dano é reduzido em um passo.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "municao_consumida_por_arma", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "recarga_arma_acao", "aplicacao": "lembrete" }
+    ]
   }
 }

@@ -14,6 +14,15 @@
     "categoria": "vestuario",
     "preco": "T$ 8",
     "espacos": "1",
-    "especial": "Fornecem +1 em Acrobacia."
+    "especial": "Fornecem +1 em Acrobacia.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:acrobacia",
+        "valor": 1,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

@@ -10,6 +10,18 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Allihanna",
-    "descricao": "Você aprende e pode lançar Controlar Plantas. Caso aprenda novamente essa magia, seu custo diminui em –1 PM."
+    "descricao": "Você aprende e pode lançar Controlar Plantas. Caso aprenda novamente essa magia, seu custo diminui em –1 PM.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_controlar_plantas",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "modifica_poder",
+        "alvo": "controlar-plantas",
+        "patchCusto": { "pm": -1 }
+      }
+    ]
   }
 }

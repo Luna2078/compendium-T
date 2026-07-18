@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Con 1",
-    "descricao": "Você recebe +1 PV por nível de personagem e +2 em Fortitude."
+    "descricao": "Você recebe +1 PV por nível de personagem e +2 em Fortitude.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pv.max",
+        "valor": { "expr": "nivel" },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:fortitude",
+        "valor": 2,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

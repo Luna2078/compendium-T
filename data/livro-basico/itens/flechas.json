@@ -11,6 +11,18 @@
     "categoria": "municao",
     "preco": "T$ 1",
     "espacos": "1",
-    "especial": "Pacote com 20 flechas. Usadas por arco curto e arco longo. Recarregar um arco com uma flecha é uma ação livre."
+    "especial": "Pacote com 20 flechas. Usadas por arco curto e arco longo. Recarregar um arco com uma flecha é uma ação livre.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "municao_consumida_por_arma",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "recarga_arma_acao",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

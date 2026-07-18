@@ -20,6 +20,13 @@
       "tipoDano": "—",
       "habilidades": []
     },
-    "especial": "Não causa dano. Ao acertar um ataque, a vítima fica enredada: deslocamento reduzido à metade, não pode correr nem fazer investidas, sofre –2 na Defesa e em testes de ataque. Enquanto o atacante segura a corda, pode fazer um teste de Força oposto como reação sempre que a vítima se mover — se vencer, a vítima só pode se mover até o alcance curto da corda. A vítima pode se soltar com uma ação completa e teste de Força ou Acrobacia (CD 20). A rede tem 5 pontos de vida; se rasgada, qualquer criatura enredada se solta automaticamente. Só pode ser usada contra criaturas no máximo uma categoria de tamanho maior que o usuário."
+    "especial": "Não causa dano. Ao acertar um ataque, a vítima fica enredada: deslocamento reduzido à metade, não pode correr nem fazer investidas, sofre –2 na Defesa e em testes de ataque. Enquanto o atacante segura a corda, pode fazer um teste de Força oposto como reação sempre que a vítima se mover — se vencer, a vítima só pode se mover até o alcance curto da corda. A vítima pode se soltar com uma ação completa e teste de Força ou Acrobacia (CD 20). A rede tem 5 pontos de vida; se rasgada, qualquer criatura enredada se solta automaticamente. Só pode ser usada contra criaturas no máximo uma categoria de tamanho maior que o usuário.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "prende_ou_imobiliza_alvo",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -15,6 +15,25 @@
   "mecanica": {
     "tipoItem": "Arma Específica",
     "categoria": "Maior",
-    "preco": "T$ 30.000"
+    "preco": "T$ 30.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 1,
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 1,
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_condicional_a_traco_do_personagem",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

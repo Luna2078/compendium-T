@@ -10,6 +10,14 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "Car 1",
-    "descricao": "Você recebe +2 em testes de perícia e Defesa quando tem a torcida a seu favor. Entenda-se por \"torcida\" qualquer número de criaturas inteligentes em alcance médio que não esteja realizando nenhuma ação além de torcer por você."
+    "descricao": "Você recebe +2 em testes de perícia e Defesa quando tem a torcida a seu favor. Entenda-se por \"torcida\" qualquer número de criaturas inteligentes em alcance médio que não esteja realizando nenhuma ação além de torcer por você.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_pericias_e_defesa_com_torcida",
+        "valor": 2,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

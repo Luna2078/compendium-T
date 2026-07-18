@@ -15,6 +15,35 @@
   "mecanica": {
     "tipoItem": "Arma Específica",
     "categoria": "Maior",
-    "preco": "T$ 100.000"
+    "preco": "T$ 100.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto",
+        "valor": "assassina",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto",
+        "valor": "formidavel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto",
+        "valor": "venenosa",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "transforma_em_objeto_inofensivo_indetectavel",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "ativacao": {
+      "custo": { "pm": 2, "acao": "padrao" },
+      "encerramento": "Transformar de volta em arma é uma ação livre. A transformação não pode ser detectada por magia."
+    }
   }
 }

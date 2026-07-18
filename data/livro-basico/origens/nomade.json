@@ -21,7 +21,15 @@
     "poderesUnicos": [
       {
         "nome": "Mochileiro",
-        "descricao": "Seu limite de carga aumenta em 5 espaços."
+        "descricao": "Seu limite de carga aumenta em 5 espaços.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "carga.limite",
+            "valor": 5,
+            "aplicacao": "automatica"
+          }
+        ]
       }
     ]
   }

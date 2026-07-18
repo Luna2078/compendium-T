@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Gororoba",
-        "descricao": "Você não sofre a penalidade de –5 para fabricar um prato especial adicional."
+        "descricao": "Você não sofre a penalidade de –5 para fabricar um prato especial adicional.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_penalidade_fabricar_pratos",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

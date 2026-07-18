@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Abençoado",
   "resumo": "Encanto de armadura ou escudo que concede redução de trevas e resistência contra necromancia.",
-  "fonte": { "livro": "livro-basico", "pagina": 338 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 338
+  },
   "imagens": [],
   "secoes": [
     {
@@ -13,6 +16,26 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 10,
+        "condicao": {
+          "campo": "dano.tipo",
+          "em": [
+            "trevas"
+          ]
+        },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "resistencia_efeitos_necromancia",
+        "valor": 5,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

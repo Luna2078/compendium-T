@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Des 1, Estilo de Disparo",
-    "descricao": "Se estiver empunhando uma arma de disparo que possa recarregar como ação livre e gastar uma ação completa para agredir, pode fazer um ataque adicional com ela. Se fizer isso, sofre –2 em todos os testes de ataque até o seu próximo turno."
+    "descricao": "Se estiver empunhando uma arma de disparo que possa recarregar como ação livre e gastar uma ação completa para agredir, pode fazer um ataque adicional com ela. Se fizer isso, sofre –2 em todos os testes de ataque até o seu próximo turno.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "ataque_adicional_disparo_com_penalidade",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

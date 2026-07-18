@@ -11,6 +11,15 @@
     "categoria": "esoterico",
     "preco": "T$ 750",
     "espacos": "1",
-    "especial": "O limite de PM que você pode gastar em magias arcanas aumenta em +1."
+    "especial": "O limite de PM que você pode gastar em magias arcanas aumenta em +1.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "limite_pm_por_magia",
+        "valor": 1,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

@@ -10,6 +10,22 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Int 1",
-    "descricao": "Quando usa a ação agredir, você pode usar este poder. Se fizer isso, até seu próximo turno, sofre –2 em todos os testes de ataque, mas recebe +5 na Defesa."
+    "descricao": "Quando usa a ação agredir, você pode usar este poder. Se fizer isso, até seu próximo turno, sofre –2 em todos os testes de ataque, mas recebe +5 na Defesa.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": -2,
+        "opcionalPorAtaque": true,
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": 5,
+        "opcionalPorAtaque": true,
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

@@ -10,6 +10,18 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Estilo de Arma Longa",
-    "descricao": "Uma vez por rodada, se estiver empunhando uma arma alongada e um inimigo entrar voluntariamente em seu alcance corpo a corpo, você pode gastar 1 PM para fazer um ataque corpo a corpo contra este oponente com esta arma. Se o oponente tiver se aproximado fazendo uma investida, seu ataque causa dois dados de dano extra do mesmo tipo."
+    "descricao": "Uma vez por rodada, se estiver empunhando uma arma alongada e um inimigo entrar voluntariamente em seu alcance corpo a corpo, você pode gastar 1 PM para fazer um ataque corpo a corpo contra este oponente com esta arma. Se o oponente tiver se aproximado fazendo uma investida, seu ataque causa dois dados de dano extra do mesmo tipo.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "ataque_reacao_ao_entrar_alcance_arma_longa",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "dano_extra_dois_dados_se_oponente_investiu",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

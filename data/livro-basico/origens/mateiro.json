@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Vendedor de Carcaças",
-        "descricao": "Você pode extrair recursos de criaturas em um minuto, em vez de uma hora, e recebe +5 no teste."
+        "descricao": "Você pode extrair recursos de criaturas em um minuto, em vez de uma hora, e recebe +5 no teste.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "extrai_recursos_criatura_mais_rapido_com_bonus",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

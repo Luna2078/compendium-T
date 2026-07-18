@@ -11,6 +11,27 @@
     "categoria": "esoterico",
     "preco": "T$ 1.000",
     "espacos": "2",
-    "especial": "O limite de PM que você pode gastar em magias arcanas e a CD para resistir a elas aumentam em +1. Para fornecer seus benefícios, um cajado precisa ser empunhado com as duas mãos. Ele pode ser usado como arma, com as estatísticas de um bordão."
+    "especial": "O limite de PM que você pode gastar em magias arcanas e a CD para resistir a elas aumentam em +1. Para fornecer seus benefícios, um cajado precisa ser empunhado com as duas mãos. Ele pode ser usado como arma, com as estatísticas de um bordão.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "limite_pm_por_magia",
+        "valor": 1,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aumenta_cd_resistir_magias_proprias",
+        "valor": 1,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "usavel_como_arma_improvisada",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

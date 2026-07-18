@@ -11,6 +11,15 @@
     "categoria": "esoterico",
     "preco": "T$ 1.500",
     "espacos": "1",
-    "especial": "A CD para resistir a suas magias arcanas de uma escola de magia específica aumenta em +2."
+    "especial": "A CD para resistir a suas magias arcanas de uma escola de magia específica aumenta em +2.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aumenta_cd_resistir_magias_proprias",
+        "valor": 2,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

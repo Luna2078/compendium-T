@@ -201,6 +201,8 @@ export type ProtecaoStats = z.infer<typeof ProtecaoStatsSchema>;
 
 export const ItemMecanicaSchema = z.object({
   categoria: z.string(),
+  magico: z.boolean().optional(),     // item mágico? Lido pela ação de equipar p/ disparar o
+                                      // quebraPor "usar_item_magico" (gate de Ao Sabor do Destino).
   preco: z.string().optional(),
   espacos: z.string().optional(),
   arma: ArmaStatsSchema.optional(),
@@ -212,6 +214,8 @@ export type ItemMecanica = z.infer<typeof ItemMecanicaSchema>;
 // Item mágico (Cap. 8 — Recompensas). Descrição rica vai em `secoes`; aqui só os metadados.
 export const ItemMagicoMecanicaSchema = z.object({
   tipoItem: z.string(),               // "Encanto de Arma"|"Arma Específica"|"Encanto de Armadura"|"Armadura Específica"|"Escudo Específico"|"Poção"|"Pergaminho"|"Acessório"|"Artefato"
+  magico: z.boolean().optional(),     // item mágico (normalmente true aqui). Lido pela ação de equipar
+                                      // p/ disparar o quebraPor "usar_item_magico". Poção é exceção do gate.
   categoria: z.string().optional(),   // "Menor"|"Médio"|"Maior"|"Artefato" (raridade)
   preco: z.string().optional(),       // "T$ 30.000" (encantos: preço vem da Tabela 8-7)
   espacos: z.string().optional(),

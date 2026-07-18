@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Wynna, habilidade de classe Magias",
-    "descricao": "Até uma magia de cada círculo que você aprender poderá ser escolhida entre magias divinas (se você for um conjurador arcano) ou entre magias arcanas (se for um conjurador divino)."
+    "descricao": "Até uma magia de cada círculo que você aprender poderá ser escolhida entre magias divinas (se você for um conjurador arcano) ou entre magias arcanas (se for um conjurador divino).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_tipo_oposto_por_circulo",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

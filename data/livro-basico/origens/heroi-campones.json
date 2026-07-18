@@ -3,7 +3,10 @@
   "tipo": "origem",
   "nome": "Herói Camponês",
   "resumo": "Você era o campeão local de seu povoado, amado pelo povo e destinado a feitos maiores antes de partir para a vida de aventuras.",
-  "fonte": { "livro": "livro-basico", "pagina": 91 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 91
+  },
   "imagens": [],
   "secoes": [
     {
@@ -13,15 +16,36 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "itens": ["Instrumentos de ofício ou uma arma simples", "Traje de plebeu"],
+    "itens": [
+      "Instrumentos de ofício ou uma arma simples",
+      "Traje de plebeu"
+    ],
     "beneficios": {
-      "pericias": ["Adestramento", "Ofício"],
-      "poderes": ["Coração Heroico", "Sortudo", "Surto Heroico", "Torcida"]
+      "pericias": [
+        "Adestramento",
+        "Ofício"
+      ],
+      "poderes": [
+        "Coração Heroico",
+        "Sortudo",
+        "Surto Heroico",
+        "Torcida"
+      ]
     },
     "poderesUnicos": [
       {
         "nome": "Coração Heroico",
-        "descricao": "Você recebe +3 pontos de mana. Quando atinge um novo patamar (no 5º, 11º e 17º níveis), recebe +3 PM."
+        "descricao": "Você recebe +3 pontos de mana. Quando atinge um novo patamar (no 5º, 11º e 17º níveis), recebe +3 PM.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pm.max",
+            "valor": {
+              "expr": "3 * patamar"
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       }
     ]
   }

@@ -10,6 +10,32 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Lena",
-    "descricao": "Você sempre pode escolher 10 em testes de Cura. Além disso, não sofre penalidade por usar essa perícia sem uma maleta de medicamentos. Se possuir o item, recebe +2 no teste de Cura (ou +5, se ele for aprimorado)."
+    "descricao": "Você sempre pode escolher 10 em testes de Cura. Além disso, não sofre penalidade por usar essa perícia sem uma maleta de medicamentos. Se possuir o item, recebe +2 no teste de Cura (ou +5, se ele for aprimorado).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "escolhe_10_em_cura",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_penalidade_cura_sem_maleta",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:cura",
+        "valor": 2,
+        "condicao": { "campo": "item.equipado", "igual": "maleta-de-medicamentos" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:cura",
+        "valor": 5,
+        "condicao": { "campo": "item.equipado", "igual": "maleta-de-medicamentos-aprimorada" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

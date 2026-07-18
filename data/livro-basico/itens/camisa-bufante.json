@@ -14,6 +14,15 @@
     "categoria": "vestuario",
     "preco": "T$ 25",
     "espacos": "1",
-    "especial": "Fornece +1 em Atuação."
+    "especial": "Fornece +1 em Atuação.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:atuacao",
+        "valor": 1,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

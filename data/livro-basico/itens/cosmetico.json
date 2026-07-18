@@ -3,7 +3,10 @@
   "tipo": "item",
   "nome": "Cosmético",
   "resumo": "Perfume ou maquiagem alquímica que melhora a presença do usuário.",
-  "fonte": { "livro": "livro-basico", "pagina": 159 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 159
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -11,6 +14,23 @@
     "categoria": "alquimico",
     "preco": "T$ 30",
     "espacos": "0,5",
-    "especial": "Usá-lo é uma ação completa e fornece +2 em testes de perícias baseadas em Carisma até o fim da cena."
+    "especial": "Usá-lo é uma ação completa e fornece +2 em testes de perícias baseadas em Carisma até o fim da cena.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:car",
+        "valor": 2,
+        "condicao": {
+          "quando": "ativo"
+        },
+        "aplicacao": "contextual"
+      }
+    ],
+    "ativacao": {
+      "custo": {
+        "acao": "completa"
+      },
+      "encerramento": "O bônus dura até o fim da cena."
+    }
   }
 }

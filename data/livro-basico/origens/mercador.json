@@ -21,7 +21,16 @@
     "poderesUnicos": [
       {
         "nome": "Negociação",
-        "descricao": "Você pode vender itens 10% mais caro (não cumulativo com barganha)."
+        "descricao": "Você pode vender itens 10% mais caro (não cumulativo com barganha).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "vende_itens_com_acrescimo_percentual",
+            "valor": 10,
+            "unidade": "%",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

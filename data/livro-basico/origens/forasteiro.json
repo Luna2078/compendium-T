@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Cultura Exótica",
-        "descricao": "Por sua diferente visão de mundo, você encontra soluções inesperadas. Você pode gastar 1 PM para fazer um teste de perícia somente treinada, mesmo sem ser treinado na perícia."
+        "descricao": "Por sua diferente visão de mundo, você encontra soluções inesperadas. Você pode gastar 1 PM para fazer um teste de perícia somente treinada, mesmo sem ser treinado na perícia.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "usa_pericia_treinada_sem_treino_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

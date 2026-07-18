@@ -22,7 +22,14 @@
     "poderesUnicos": [
       {
         "nome": "Influência Militar",
-        "descricao": "Você fez amigos nas forças armadas. Onde houver acampamentos ou bases militares, você pode conseguir hospedagem e informações para você e seus aliados."
+        "descricao": "Você fez amigos nas forças armadas. Onde houver acampamentos ou bases militares, você pode conseguir hospedagem e informações para você e seus aliados.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "consegue_hospedagem_informacao_em_local",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

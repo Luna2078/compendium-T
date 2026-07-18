@@ -10,6 +10,13 @@
   "mecanica": {
     "categoria": "veiculo",
     "preco": "T$ 200",
-    "especial": "Tamanho Enorme. Deslocamento: voo 12m. Defesa: 5 (+ Des do baloeiro). PV: 100. Capacidade: até 8 criaturas Médias ou 160 espaços. Quedas raramente são fatais: quando o balão perde mais da metade de seus PV, começa a perder ar e flutua lentamente na direção do solo — cada ocupante sofre 4d6 pontos de dano de impacto (Ref CD 15 reduz à metade). Um balão só cai de forma perigosa se perder todos os PV; neste caso os ocupantes sofrem dano normal pela queda de acordo com a altura. Remendar o balão em pleno voo exige uma ação completa e um teste de Ofício (artesão) contra CD 15; se passar, recupera 1d8 PV do balão."
+    "especial": "Tamanho Enorme. Deslocamento: voo 12m. Defesa: 5 (+ Des do baloeiro). PV: 100. Capacidade: até 8 criaturas Médias ou 160 espaços. Quedas raramente são fatais: quando o balão perde mais da metade de seus PV, começa a perder ar e flutua lentamente na direção do solo — cada ocupante sofre 4d6 pontos de dano de impacto (Ref CD 15 reduz à metade). Um balão só cai de forma perigosa se perder todos os PV; neste caso os ocupantes sofrem dano normal pela queda de acordo com a altura. Remendar o balão em pleno voo exige uma ação completa e um teste de Ofício (artesão) contra CD 15; se passar, recupera 1d8 PV do balão.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "veiculo_stats",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

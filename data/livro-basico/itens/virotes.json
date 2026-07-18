@@ -11,6 +11,18 @@
     "categoria": "municao",
     "preco": "T$ 2",
     "espacos": "1",
-    "especial": "Pacote com 20 virotes. Usados por besta leve e besta pesada. Recarregar uma besta leve é uma ação de movimento; recarregar uma besta pesada é uma ação padrão."
+    "especial": "Pacote com 20 virotes. Usados por besta leve e besta pesada. Recarregar uma besta leve é uma ação de movimento; recarregar uma besta pesada é uma ação padrão.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "municao_consumida_por_arma",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "recarga_arma_acao",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

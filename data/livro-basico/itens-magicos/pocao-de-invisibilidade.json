@@ -18,6 +18,15 @@
   "mecanica": {
     "tipoItem": "Poção",
     "categoria": "Maior",
-    "preco": "T$ 1.080"
+    "preco": "T$ 1.080",
+    "ativacao": { "custo": { "acao": "padrao" } },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_efeito_magia_sem_custo",
+        "valor": "invisibilidade",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

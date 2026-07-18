@@ -13,6 +13,22 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 5,
+        "condicao": { "campo": "armadura.equipada", "em": ["sim"] },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 2,
+        "condicao": { "campo": "escudo.equipado", "em": ["sim"] },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

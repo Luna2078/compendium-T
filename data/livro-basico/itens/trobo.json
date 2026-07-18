@@ -10,6 +10,13 @@
   "mecanica": {
     "categoria": "animal",
     "preco": "T$ 60",
-    "especial": "Parceiro iniciante. Estas enormes aves, também chamadas de pássaros-touros, são parecidas com avestruzes com chifres, couro e cascos. Não têm asas. Possuem poucas penas, que servem apenas como ornamento. Muito dóceis, trobos são usados em áreas rurais como animais de carga e tração, mas também podem ser usados como montaria (veja a página 262)."
+    "especial": "Parceiro iniciante. Estas enormes aves, também chamadas de pássaros-touros, são parecidas com avestruzes com chifres, couro e cascos. Não têm asas. Possuem poucas penas, que servem apenas como ornamento. Muito dóceis, trobos são usados em áreas rurais como animais de carga e tração, mas também podem ser usados como montaria (veja a página 262).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_parceiro",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

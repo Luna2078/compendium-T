@@ -3,8 +3,13 @@
   "tipo": "raca",
   "nome": "Osteon",
   "resumo": "Esqueletos que, ao contrário dos mortos-vivos profanos, demonstram a inteligência e a consciência das raças vivas, sendo capazes de adotar quaisquer de suas profissões e devoções. Alguns atribuem seu surgimento à queda de Ragnar, antigo Deus da Morte; outros, à ascensão de Ferren Asloth como um poderoso lich, que transformou Aslothia em um reino necromante.",
-  "fonte": { "livro": "livro-basico", "pagina": 29 },
-  "imagens": ["/racas/osteon.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 29
+  },
+  "imagens": [
+    "/racas/osteon.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -27,8 +32,16 @@
   ],
   "mecanica": {
     "modificadores": [
-      { "valor": 1, "escolha": true, "quantidade": 3, "observacao": "em três atributos diferentes (exceto Constituição)" },
-      { "atributo": "Constituição", "valor": -1 }
+      {
+        "valor": 1,
+        "escolha": true,
+        "quantidade": 3,
+        "observacao": "em três atributos diferentes (exceto Constituição)"
+      },
+      {
+        "atributo": "Constituição",
+        "valor": -1
+      }
     ],
     "tamanho": "Médio",
     "deslocamento": 9,
@@ -38,22 +51,98 @@
       {
         "nome": "Armadura Óssea",
         "descricao": "Você recebe redução de corte, frio e perfuração 5.",
-        "efeito": "Redução de corte, frio e perfuração 5"
+        "efeito": "Redução de corte, frio e perfuração 5",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "reducao_dano",
+            "valor": 5,
+            "condicao": {
+              "campo": "dano.tipo",
+              "em": [
+                "corte",
+                "frio",
+                "perfuracao"
+              ]
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Memória Póstuma",
         "descricao": "Você se torna treinado em uma perícia (não precisa ser da sua classe) ou recebe um poder geral a sua escolha. Como alternativa, você pode ser um osteon de outra raça humanoide que não humano. Neste caso, você ganha uma habilidade dessa raça a sua escolha. Se a raça era de tamanho diferente de Médio, você também possui sua categoria de tamanho.",
-        "efeito": "Treinado em uma perícia OU um poder geral; alternativamente, ser osteon de outra raça humanoide não humana — ganha uma habilidade dela e, se a raça tinha tamanho diferente de Médio, herda esse tamanho"
+        "efeito": "Treinado em uma perícia OU um poder geral; alternativamente, ser osteon de outra raça humanoide não humana — ganha uma habilidade dela e, se a raça tinha tamanho diferente de Médio, herda esse tamanho",
+        "efeitos": [],
+        "escolhas": [
+          {
+            "id": "memoria_postuma",
+            "rotulo": "Memória Póstuma — a origem do osteon decide o benefício",
+            "opcoes": [
+              {
+                "tipo": "ramo",
+                "rotulo": "Osteon de humano",
+                "escolhas": [
+                  {
+                    "id": "mp_humano",
+                    "rotulo": "Treinado numa perícia à escolha OU um poder geral à escolha",
+                    "opcoes": [
+                      {
+                        "tipo": "treinar_pericia"
+                      },
+                      {
+                        "tipo": "poder",
+                        "grupo": "geral"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "tipo": "herda_de_raca",
+                "rotulo": "Osteon de outra raça humanoide (não-humana)",
+                "concede": [
+                  "habilidade",
+                  "tamanho"
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
         "nome": "Natureza Esquelética",
         "descricao": "Você é uma criatura do tipo morto-vivo. Recebe visão no escuro e imunidade a efeitos de cansaço, metabólicos, de trevas e de veneno. Além disso, não precisa respirar, alimentar-se ou dormir. Por fim, efeitos mágicos de cura de luz causam dano a você e você não se beneficia de itens da categoria alimentação, mas dano de trevas recupera seus PV.",
-        "efeito": "Tipo morto-vivo; visão no escuro; imune a efeitos de cansaço, metabólicos, de trevas e de veneno; não respira, alimenta-se ou dorme; cura mágica de luz causa dano; não se beneficia de itens de alimentação; dano de trevas recupera PV"
+        "efeito": "Tipo morto-vivo; visão no escuro; imune a efeitos de cansaço, metabólicos, de trevas e de veneno; não respira, alimenta-se ou dorme; cura mágica de luz causa dano; não se beneficia de itens de alimentação; dano de trevas recupera PV",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "tipo_criatura:morto_vivo",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "visao_no_escuro",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "imunidades:morto_vivo",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Preço da Não Vida",
         "descricao": "Você precisa passar oito horas sob a luz de estrelas ou no subterrâneo. Se fizer isso, recupera PV e PM por descanso em condições normais (osteon não são afetados por condições boas ou ruins de descanso). Caso contrário, sofre os efeitos de fome.",
-        "efeito": "Precisa de 8h sob luz de estrelas ou no subterrâneo para recuperar PV e PM por descanso (sem efeito de condições de descanso); caso contrário, sofre efeitos de fome"
+        "efeito": "Precisa de 8h sob luz de estrelas ou no subterrâneo para recuperar PV e PM por descanso (sem efeito de condições de descanso); caso contrário, sofre efeitos de fome",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "descanso_requer_estrelas_ou_subterraneo",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

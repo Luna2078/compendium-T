@@ -10,6 +10,19 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "treinado em Ofício (alquimista)",
-    "descricao": "Quando usa um veneno, você não corre risco de se envenenar acidentalmente. Além disso, a CD para resistir aos seus venenos aumenta em +2."
+    "descricao": "Quando usa um veneno, você não corre risco de se envenenar acidentalmente. Além disso, a CD para resistir aos seus venenos aumenta em +2.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_risco_auto_envenenamento",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_cd_venenos",
+        "valor": 2,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

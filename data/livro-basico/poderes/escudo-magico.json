@@ -10,6 +10,15 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Wynna",
-    "descricao": "Quando lança uma magia, você recebe um bônus na Defesa igual ao círculo da magia lançada até o início do seu próximo turno."
+    "descricao": "Quando lança uma magia, você recebe um bônus na Defesa igual ao círculo da magia lançada até o início do seu próximo turno.",
+    "efeitos": [
+      {
+        "tipo": "pos_conjuracao",
+        "alvo": "defesa",
+        "valor": { "expr": "magia_circulo" },
+        "duracaoCombate": "ate_inicio_proximo_turno",
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

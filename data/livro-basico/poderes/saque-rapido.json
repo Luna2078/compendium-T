@@ -10,6 +10,24 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Treinado em Iniciativa",
-    "descricao": "Você recebe +2 em Iniciativa e pode sacar ou guardar itens como uma ação livre (em vez de ação de movimento). Além disso, a ação que você gasta para recarregar armas de disparo diminui em uma categoria (ação completa para padrão, padrão para movimento, movimento para livre)."
+    "descricao": "Você recebe +2 em Iniciativa e pode sacar ou guardar itens como uma ação livre (em vez de ação de movimento). Além disso, a ação que você gasta para recarregar armas de disparo diminui em uma categoria (ação completa para padrão, padrão para movimento, movimento para livre).",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "iniciativa",
+        "valor": 2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "saca_guarda_itens_acao_livre",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "recarga_disparo_categoria_menor",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

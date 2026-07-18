@@ -10,6 +10,17 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Marah",
-    "descricao": "Você pode gastar 2 PM para gerar uma aura de paz com alcance curto e duração de uma cena. Qualquer inimigo dentro da aura que tente fazer uma ação hostil contra você deve fazer um teste de Vontade (CD Car). Se falhar, perderá sua ação. Se passar, fica imune a esta habilidade por um dia."
+    "descricao": "Você pode gastar 2 PM para gerar uma aura de paz com alcance curto e duração de uma cena. Qualquer inimigo dentro da aura que tente fazer uma ação hostil contra você deve fazer um teste de Vontade (CD Car). Se falhar, perderá sua ação. Se passar, fica imune a esta habilidade por um dia.",
+    "ativacao": {
+      "custo": { "pm": 2, "acao": "padrao" },
+      "encerramento": "A aura dura até o fim da cena."
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aura_paz_inimigos_hostis",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

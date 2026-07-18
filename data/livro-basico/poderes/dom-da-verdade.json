@@ -10,6 +10,24 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Khalmyr",
-    "descricao": "Você pode pagar 2 PM para receber +5 em testes de Intuição, e em testes de Percepção contra Enganação e Furtividade, até o fim da cena."
+    "descricao": "Você pode pagar 2 PM para receber +5 em testes de Intuição, e em testes de Percepção contra Enganação e Furtividade, até o fim da cena.",
+    "ativacao": {
+      "custo": { "pm": 2 }
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:intuicao",
+        "valor": 5,
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_percepcao_contra_enganacao_furtividade",
+        "valor": 5,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

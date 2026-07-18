@@ -13,6 +13,20 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto",
+        "valor": "defensor",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": 4,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

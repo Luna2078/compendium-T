@@ -10,6 +10,29 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Encouraçado, 6º nível de personagem",
-    "descricao": "Se estiver usando uma armadura pesada, você recebe +2 em todos os testes de resistência."
+    "descricao": "Se estiver usando uma armadura pesada, você recebe +2 em todos os testes de resistência.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:fortitude",
+        "valor": 2,
+        "condicao": { "campo": "armadura.subcategoria", "em": ["pesada"] },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:reflexos",
+        "valor": 2,
+        "condicao": { "campo": "armadura.subcategoria", "em": ["pesada"] },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:vontade",
+        "valor": 2,
+        "condicao": { "campo": "armadura.subcategoria", "em": ["pesada"] },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

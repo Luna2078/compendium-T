@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "For 1, treinado em Luta",
-    "descricao": "Você recebe +2 em testes de ataque com armas alongadas e pode atacar alvos adjacentes com essas armas."
+    "descricao": "Você recebe +2 em testes de ataque com armas alongadas e pode atacar alvos adjacentes com essas armas.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 2,
+        "condicao": { "campo": "arma.familia", "em": ["alongada"] },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ataca_alvos_adjacentes_com_arma_longa",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -14,6 +14,15 @@
     "categoria": "ferramenta",
     "preco": "T$ 100",
     "espacos": "1",
-    "especial": "Fornece +5 em testes de Percepção para observar coisas em alcance longo ou além."
+    "especial": "Fornece +5 em testes de Percepção para observar coisas em alcance longo ou além.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:percepcao",
+        "valor": 5,
+        "condicao": { "campo": "arma.alcance", "em": ["longo"] },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

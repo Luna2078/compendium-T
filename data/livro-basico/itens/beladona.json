@@ -11,6 +11,19 @@
     "categoria": "alquimico",
     "preco": "T$ 1.500",
     "espacos": "0,5",
-    "especial": "Inoculação: Ingestão. CD de Fortitude: 25 (aumenta em +5). Ao falhar: vítima fica paralisada por 3 rodadas. Ao passar: vítima fica lenta por 3 rodadas."
+    "especial": "Inoculação: Ingestão. CD de Fortitude: 25 (aumenta em +5). Ao falhar: vítima fica paralisada por 3 rodadas. Ao passar: vítima fica lenta por 3 rodadas.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_veneno",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aumenta_cd_venenos_proprios",
+        "valor": 5,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

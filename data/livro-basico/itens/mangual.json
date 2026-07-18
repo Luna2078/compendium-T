@@ -19,6 +19,13 @@
       "tipoDano": "Impacto",
       "habilidades": ["Versátil"],
       "especial": "Versátil: +2 em testes para desarmar."
-    }
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_testes_desarmar_arma_versátil",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Lin-Wu",
-    "descricao": "Você considera a katana uma arma simples e, se for proficiente em armas marciais, recebe +1 na margem de ameaça com ela."
+    "descricao": "Você considera a katana uma arma simples e, se for proficiente em armas marciais, recebe +1 na margem de ameaça com ela.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "katana_conta_como_simples",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "critico.margem",
+        "valor": 1,
+        "condicao": { "campo": "arma.id", "igual": "katana" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

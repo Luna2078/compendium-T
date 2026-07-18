@@ -13,6 +13,13 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "armazena_magia_descarrega_no_acerto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

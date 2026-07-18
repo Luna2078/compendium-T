@@ -20,6 +20,15 @@
       "tipoDano": "Perfuração",
       "habilidades": ["Ágil", "Arremesso"]
     },
-    "especial": "+5 em testes de Ladinagem para ocultá-la; quando ataca com uma adaga, você pode usar sua Destreza em vez de Força nos testes de ataque; pode ser arremessada."
+    "especial": "+5 em testes de Ladinagem para ocultá-la; quando ataca com uma adaga, você pode usar sua Destreza em vez de Força nos testes de ataque; pode ser arremessada.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:ladinagem",
+        "valor": 5,
+        "condicao": { "campo": "intencao", "igual": "ocultar" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

@@ -11,6 +11,23 @@
     "grupo": "magia",
     "prerequisito": "lançar magias",
     "custo": "+2 PM",
-    "descricao": "Aprimoramento. Você lança a magia sem gesticular e falar, usando apenas concentração. Isso permite lançar magias com as mãos presas, amordaçado etc. Também permite lançar magias arcanas usando armadura sem teste de Misticismo. Outros personagens só percebem que você lançou uma magia se passarem num teste de Misticismo (CD 20)."
+    "descricao": "Aprimoramento. Você lança a magia sem gesticular e falar, usando apenas concentração. Isso permite lançar magias com as mãos presas, amordaçado etc. Também permite lançar magias arcanas usando armadura sem teste de Misticismo. Outros personagens só percebem que você lançou uma magia se passarem num teste de Misticismo (CD 20).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aprimoramento_lanca_sem_gestos_nem_palavras",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_teste_misticismo_armadura_arcana",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "percepcao_lancamento_exige_misticismo_cd20",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

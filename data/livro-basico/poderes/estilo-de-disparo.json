@@ -10,6 +10,15 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "treinado em Pontaria",
-    "descricao": "Se estiver usando uma arma de disparo, você soma sua Destreza nas rolagens de dano."
+    "descricao": "Se estiver usando uma arma de disparo, você soma sua Destreza nas rolagens de dano.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "expr": "atr.des" },
+        "condicao": { "campo": "arma.alcance", "em": ["medio", "longo"] },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

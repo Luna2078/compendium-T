@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Lancinante",
   "resumo": "Em acerto crítico, causa +10 de dano ou multiplica também os bônus numéricos; substitui dilacerante.",
-  "fonte": { "livro": "livro-basico", "pagina": 336 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 336
+  },
   "imagens": [],
   "secoes": [
     {
@@ -13,6 +16,36 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 10,
+        "condicao": {
+          "campo": "ataque.critico",
+          "em": [
+            "sim"
+          ]
+        },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "critico_pode_multiplicar_bonus_em_vez_do_dano_fixo",
+        "condicao": {
+          "campo": "ataque.critico",
+          "em": [
+            "sim"
+          ]
+        },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "substitui_encanto_dilacerante",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

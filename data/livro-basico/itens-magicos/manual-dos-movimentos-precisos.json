@@ -15,6 +15,24 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Maior",
-    "preco": "T$ 30.000"
+    "preco": "T$ 30.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "atr.des",
+        "valor": 1,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "requer_leitura_de_uma_semana_para_ativar",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "item_vira_mundano_apos_uso",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

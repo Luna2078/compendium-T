@@ -10,6 +10,17 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Valkaria",
-    "descricao": "Você pode gastar 2 PM para receber imunidade a efeitos de movimento por uma rodada."
+    "descricao": "Você pode gastar 2 PM para receber imunidade a efeitos de movimento por uma rodada.",
+    "ativacao": {
+      "custo": { "pm": 2 }
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "imune_efeitos_movimento",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

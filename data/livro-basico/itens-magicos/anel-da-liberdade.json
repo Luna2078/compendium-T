@@ -15,6 +15,14 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Maior",
-    "preco": "T$ 60.000"
+    "preco": "T$ 60.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "permanece_sob_efeito_de_magia",
+        "valor": 1,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

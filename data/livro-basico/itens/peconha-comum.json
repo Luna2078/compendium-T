@@ -11,6 +11,14 @@
     "categoria": "alquimico",
     "preco": "T$ 15",
     "espacos": "0,5",
-    "especial": "Inoculação: Contato. CD de Fortitude: 20. Ao falhar: perde 1d12 PV."
+    "especial": "Inoculação: Contato. CD de Fortitude: 20. Ao falhar: perde 1d12 PV.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_veneno",
+        "valor": { "dados": { "n": 1, "faces": 12 } },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

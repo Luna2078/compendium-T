@@ -13,6 +13,19 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "dados": { "n": 1, "faces": 8 } },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "modo_tumular_ampliado_custa_pv",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

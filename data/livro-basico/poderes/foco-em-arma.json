@@ -10,6 +10,19 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Proficiência com a arma",
-    "descricao": "Escolha uma arma. Você recebe +2 em testes de ataque com essa arma. Você pode escolher este poder outras vezes para armas diferentes."
+    "empilhavel": true,
+    "parametros": [
+      { "id": "arma", "rotulo": "Arma", "tipo": "escolha", "fonte": "armas_proficientes" }
+    ],
+    "descricao": "Escolha uma arma. Você recebe +2 em testes de ataque com essa arma. Você pode escolher este poder outras vezes para armas diferentes.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 2,
+        "condicao": { "campo": "arma.id", "igual": "@arma" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

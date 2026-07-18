@@ -15,6 +15,14 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Médio",
-    "preco": "T$ 25.500"
+    "preco": "T$ 25.500",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "atr.des",
+        "valor": 2,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

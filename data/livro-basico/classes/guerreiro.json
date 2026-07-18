@@ -61,85 +61,241 @@
         "nome": "Ataque Especial",
         "nivel": 1,
         "descricao": "Quando faz um ataque, você pode gastar 1 PM para receber +4 no teste de ataque ou na rolagem de dano. A cada quatro níveis, pode gastar +1 PM para aumentar o bônus em +4. Você pode dividir os bônus igualmente. Por exemplo, no 17º nível, pode gastar 5 PM para receber +20 no ataque, +20 no dano ou +10 no ataque e +10 no dano.",
-        "custo": "1 PM (+1 PM a cada quatro níveis)"
+        "custo": "1 PM (+1 PM a cada quatro níveis)",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "ataque",
+            "valor": { "expr": "4 * floor((nivel + 3) / 4)" },
+            "opcionalPorAtaque": { "custo": { "pm": { "expr": "floor((nivel + 3) / 4)" } } },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": { "expr": "4 * floor((nivel + 3) / 4)" },
+            "opcionalPorAtaque": { "custo": { "pm": { "expr": "floor((nivel + 3) / 4)" } } },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Poder de Guerreiro",
         "nivel": 2,
-        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes de guerreiro (veja a lista de poderes)."
+        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes de guerreiro (veja a lista de poderes).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "escolhe_poder_de_guerreiro_por_nivel",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Durão",
         "nivel": 3,
         "descricao": "A partir do 3º nível, sua rijeza muscular permite que você absorva ferimentos. Sempre que sofre dano, você pode gastar 3 PM para reduzir esse dano à metade.",
-        "custo": "3 PM"
+        "custo": "3 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "reduz_dano_sofrido_por_pm",
+            "valor": 3,
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Ataque Extra",
         "nivel": 6,
         "descricao": "A partir do 6º nível, quando usa a ação agredir, você pode gastar 2 PM para realizar um ataque adicional uma vez por rodada.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "realiza_ataque_extra_ao_agredir",
+            "valor": 2,
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Campeão",
         "nivel": 20,
-        "descricao": "No 20º nível, o dano de todos os seus ataques aumenta em um passo. Além disso, sempre que você faz um Ataque Especial ou um Golpe Pessoal e acerta o ataque, recupera metade dos PM gastos nele. Por exemplo, se fizer um Ataque Especial gastando 5 PM para ganhar +20 nas rolagens de dano e acertar o ataque, recupera 2 PM."
+        "descricao": "No 20º nível, o dano de todos os seus ataques aumenta em um passo. Além disso, sempre que você faz um Ataque Especial ou um Golpe Pessoal e acerta o ataque, recupera metade dos PM gastos nele. Por exemplo, se fizer um Ataque Especial gastando 5 PM para ganhar +20 nas rolagens de dano e acertar o ataque, recupera 2 PM.",
+        "efeitos": [
+          {
+            "tipo": "passo_de_dado",
+            "alvo": "dano",
+            "passos": 1,
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "recupera_pm_ao_acertar_ataque_especial_ou_golpe_pessoal",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ],
     "poderes": [
       {
         "nome": "Ambidestria",
         "descricao": "Se estiver empunhando duas armas (e pelo menos uma delas for leve) e fizer a ação agredir, você pode fazer dois ataques, um com cada arma. Se fizer isso, sofre –2 em todos os testes de ataque até o seu próximo turno.",
-        "prerequisito": "Des 2"
+        "prerequisito": "Des 2",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ataque_duplo_duas_armas",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Arqueiro",
         "descricao": "Se estiver usando uma arma de ataque à distância, você soma sua Sabedoria em rolagens de dano (limitado pelo seu nível).",
-        "prerequisito": "Sab 1"
+        "prerequisito": "Sab 1",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": { "expr": "min(atr.sab, nivel)" },
+            "condicao": { "campo": "arma.tipo_ataque", "em": ["disparo", "arremesso"] },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Ataque Reflexo",
         "descricao": "Se um alvo em alcance de seus ataques corpo a corpo ficar desprevenido ou se mover voluntariamente para fora do seu alcance, você pode gastar 1 PM para fazer um ataque corpo a corpo contra esse alvo (apenas uma vez por alvo a cada rodada).",
         "prerequisito": "Des 1",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ataque_de_oportunidade_condicional",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aumento de Atributo",
-        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo."
+        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo.",
+        "empilhavel": true,
+        "escolhas": [
+          {
+            "id": "aumento_atributo",
+            "rotulo": "+1 em um atributo à escolha",
+            "alvoTipo": "atributo",
+            "efeito": { "tipo": "bonus", "valor": 1, "aplicacao": "automatica" },
+            "restricao": "uma_por_patamar_por_alvo"
+          }
+        ],
+        "efeitos": []
       },
       {
         "nome": "Bater e Correr",
         "descricao": "Quando faz uma investida, você pode continuar se movendo após o ataque, até o limite de seu deslocamento. Se gastar 2 PM, pode fazer uma investida sobre terreno difícil e sem sofrer a penalidade de Defesa.",
-        "custo": "2 PM (opcional)"
+        "custo": "2 PM (opcional)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "move_apos_ataque_em_investida",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_terreno_dificil",
+            "condicao": { "campo": "acao", "em": ["investida"] },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Destruidor",
         "descricao": "Quando causa dano com uma arma corpo a corpo de duas mãos, você pode rolar novamente qualquer resultado 1 ou 2 da rolagem de dano da arma.",
-        "prerequisito": "For 1"
+        "prerequisito": "For 1",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "rerola_resultado_1_ou_2_dano_duas_maos",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Esgrimista",
         "descricao": "Quando usa uma arma corpo a corpo leve ou ágil, você soma sua Inteligência em rolagens de dano (limitado pelo seu nível).",
-        "prerequisito": "Int 1"
+        "prerequisito": "Int 1",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano.corpo_a_corpo",
+            "valor": { "expr": "min(atr.int, nivel)" },
+            "condicao": { "campo": "arma.empunhadura", "em": ["leve"] },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "dano.corpo_a_corpo",
+            "valor": { "expr": "min(atr.int, nivel)" },
+            "condicao": { "campo": "arma.propriedades", "em": ["agil"] },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Especialização em Arma",
-        "descricao": "Escolha uma arma. Você recebe +2 em rolagens de dano com essa arma. Você pode escolher este poder outras vezes para armas diferentes."
+        "descricao": "Escolha uma arma. Você recebe +2 em rolagens de dano com essa arma. Você pode escolher este poder outras vezes para armas diferentes.",
+        "empilhavel": true,
+        "parametros": [{ "id": "arma", "rotulo": "Arma", "tipo": "escolha", "fonte": "armas_proficientes" }],
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": 2,
+            "condicao": { "campo": "arma.id", "igual": "@arma" },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Especialização em Armadura",
         "descricao": "Você recebe redução de dano 5 se estiver usando uma armadura pesada.",
-        "prerequisito": "12º nível de guerreiro"
+        "prerequisito": "12º nível de guerreiro",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "reducao_dano",
+            "valor": 5,
+            "condicao": { "campo": "armadura.subcategoria", "em": ["pesada"] },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Golpe de Raspão",
         "descricao": "Uma vez por rodada, quando erra um ataque, você pode gastar 2 PM. Se fizer isso, causa metade do dano que causaria (ignorando efeitos que se aplicariam caso o ataque acertasse).",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "causa_metade_dano_ao_errar_ataque",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Golpe Demolidor",
         "descricao": "Quando usa a manobra quebrar ou ataca um objeto, você pode gastar 2 PM para ignorar a redução de dano dele.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_rd_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Golpe Pessoal",
@@ -169,38 +325,134 @@
       {
         "nome": "Ímpeto",
         "descricao": "Você pode gastar 1 PM para aumentar seu deslocamento em +6m por uma rodada.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "ativacao": {
+          "custo": { "pm": 1 },
+          "encerramento": "Dura uma rodada. O bônus expira no início do seu próximo turno."
+        },
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "deslocamento",
+            "valor": 6,
+            "unidade": "m",
+            "condicao": { "quando": "ativo" },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Mestre em Arma",
         "descricao": "Escolha uma arma. Com esta arma, seu dano aumenta em um passo e você pode gastar 2 PM para rolar novamente um teste de ataque recém realizado.",
         "prerequisito": "Especialização em Arma com a arma escolhida, 12º nível de guerreiro",
-        "custo": "2 PM (opcional)"
+        "custo": "2 PM (opcional)",
+        "empilhavel": true,
+        "parametros": [{ "id": "arma", "rotulo": "Arma", "tipo": "escolha", "fonte": "armas_proficientes" }],
+        "efeitos": [
+          {
+            "tipo": "passo_de_dado",
+            "alvo": "dano",
+            "passos": 1,
+            "condicao": { "campo": "arma.id", "igual": "@arma" },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "rerola_teste_ataque_por_pm",
+            "condicao": { "campo": "arma.id", "igual": "@arma" },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Planejamento Marcial",
         "descricao": "Uma vez por dia, você pode gastar uma hora e 3 PM para escolher um poder de guerreiro ou de combate cujos pré-requisitos cumpra. Você recebe os benefícios desse poder até o próximo dia.",
         "prerequisito": "treinado em Guerra, 10º nível de guerreiro",
-        "custo": "3 PM (uma vez por dia)"
+        "custo": "3 PM (uma vez por dia)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "concede_poder_guerreiro_ou_combate_temporario",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Romper Resistências",
         "descricao": "Quando faz um Ataque Especial, você pode gastar 1 PM adicional para ignorar 10 pontos de redução de dano.",
-        "custo": "+1 PM"
+        "custo": "+1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_rd_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Solidez",
-        "descricao": "Se estiver usando um escudo, você aplica o bônus na Defesa recebido pelo escudo em testes de resistência."
+        "descricao": "Se estiver usando um escudo, você aplica o bônus na Defesa recebido pelo escudo em testes de resistência.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:fortitude",
+            "valor": { "expr": "escudo.bonus_defesa" },
+            "condicao": { "campo": "escudo.equipado", "em": ["sim"] },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:reflexos",
+            "valor": { "expr": "escudo.bonus_defesa" },
+            "condicao": { "campo": "escudo.equipado", "em": ["sim"] },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:vontade",
+            "valor": { "expr": "escudo.bonus_defesa" },
+            "condicao": { "campo": "escudo.equipado", "em": ["sim"] },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Tornado de Dor",
         "descricao": "Você pode gastar uma ação padrão e 2 PM para desferir uma série de golpes giratórios. Faça um ataque corpo a corpo e compare-o com a Defesa de cada inimigo em seu alcance natural. Então faça uma rolagem de dano com um bônus cumulativo de +2 para cada acerto e aplique-a em cada inimigo atingido.",
         "prerequisito": "6º nível de guerreiro",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ataca_todos_inimigos_no_alcance_natural",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Valentão",
-        "descricao": "Você recebe +2 em testes de ataque e rolagens de dano contra oponentes caídos, desprevenidos, flanqueados ou indefesos."
+        "descricao": "Você recebe +2 em testes de ataque e rolagens de dano contra oponentes caídos, desprevenidos, flanqueados ou indefesos.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "dano_extra_contra_alvo_vulneravel",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "ataque",
+            "valor": 2,
+            "condicao": { "campo": "personagem.estado", "em": ["caido", "desprevenido", "flanqueado"] },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": 2,
+            "condicao": { "campo": "personagem.estado", "em": ["caido", "desprevenido", "flanqueado"] },
+            "aplicacao": "contextual"
+          }
+        ]
       }
     ]
   }

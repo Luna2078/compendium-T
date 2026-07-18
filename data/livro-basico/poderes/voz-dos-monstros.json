@@ -10,6 +10,18 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Megalokk",
-    "descricao": "Você conhece os idiomas de todos os monstros inteligentes e pode se comunicar livremente com monstros não inteligentes (Int –4 ou menor), como se estivesse sob efeito da magia Voz Divina."
+    "descricao": "Você conhece os idiomas de todos os monstros inteligentes e pode se comunicar livremente com monstros não inteligentes (Int –4 ou menor), como se estivesse sob efeito da magia Voz Divina.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "conhece_idiomas_monstros_inteligentes",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "comunica_com_monstros_nao_inteligentes",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Ataque Poderoso",
-    "descricao": "Você recebe +2 em testes de ataque para quebrar. Quando reduz os PV de uma arma para 0 ou menos, você pode gastar 1 PM para realizar um ataque extra contra o usuário dela. O ataque adicional usa os mesmos valores de ataque e dano, mas os dados devem ser rolados novamente."
+    "descricao": "Você recebe +2 em testes de ataque para quebrar. Quando reduz os PV de uma arma para 0 ou menos, você pode gastar 1 PM para realizar um ataque extra contra o usuário dela. O ataque adicional usa os mesmos valores de ataque e dano, mas os dados devem ser rolados novamente.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 2,
+        "condicao": { "campo": "intencao", "igual": "quebrar" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ataque_extra_ao_quebrar_arma",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

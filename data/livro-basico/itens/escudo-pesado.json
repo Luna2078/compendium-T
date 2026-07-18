@@ -17,6 +17,9 @@
       "penalidadeArmadura": -2,
       "danoAtaque": "1d6 impacto"
     },
-    "especial": "Pode ser usado para atacar (requer proficiência em armas marciais), causando 1d6 de dano de impacto (crítico x2), mas o bônus na Defesa é perdido até o próximo turno."
+    "especial": "Pode ser usado para atacar (requer proficiência em armas marciais), causando 1d6 de dano de impacto (crítico x2), mas o bônus na Defesa é perdido até o próximo turno.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "usavel_como_arma_improvisada", "aplicacao": "lembrete" }
+    ]
   }
 }

@@ -11,6 +11,7 @@
     "categoria": "alimentacao",
     "preco": "T$ 0,3",
     "espacos": "0,5",
-    "especial": "Refeição corriqueira, sem bônus mecânico. Não é um prato especial."
+    "especial": "Refeição corriqueira, sem bônus mecânico. Não é um prato especial.",
+    "efeitos": []
   }
 }

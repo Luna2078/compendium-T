@@ -21,7 +21,19 @@
     "poderesUnicos": [
       {
         "nome": "À Prova de Tudo",
-        "descricao": "Você não sofre penalidade em deslocamento e Sobrevivência por clima ruim e por terreno difícil natural."
+        "descricao": "Você não sofre penalidade em deslocamento e Sobrevivência por clima ruim e por terreno difícil natural.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_terreno_dificil",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_penalidade_sobrevivencia_clima_terreno",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

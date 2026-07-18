@@ -11,6 +11,7 @@
     "categoria": "alimentacao",
     "preco": "T$ 0,5",
     "espacos": "0,5",
-    "especial": "Alimenta uma pessoa por um dia. Se mantida seca dura bastante, mas quando molhada se estraga em 24 horas. Não é um prato especial (não concede bônus de alimentação)."
+    "especial": "Alimenta uma pessoa por um dia. Se mantida seca dura bastante, mas quando molhada se estraga em 24 horas. Não é um prato especial (não concede bônus de alimentação).",
+    "efeitos": []
   }
 }

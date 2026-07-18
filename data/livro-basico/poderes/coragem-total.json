@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Arsenal, Khalmyr, Lin-Wu ou Valkaria",
-    "descricao": "Você é imune a efeitos de medo, mágicos ou não. Este poder não elimina fobias raciais (como o medo de altura dos minotauros)."
+    "descricao": "Você é imune a efeitos de medo, mágicos ou não. Este poder não elimina fobias raciais (como o medo de altura dos minotauros).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "imune_efeitos_medo",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

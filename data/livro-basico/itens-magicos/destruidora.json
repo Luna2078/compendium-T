@@ -13,6 +13,22 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 2,
+        "condicao": { "campo": "alvo.tipo_de_criatura", "em": ["construto"] },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "dados": { "n": 2, "faces": 8 } },
+        "condicao": { "campo": "alvo.tipo_de_criatura", "em": ["construto"] },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

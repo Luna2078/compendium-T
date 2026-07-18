@@ -3,12 +3,17 @@
   "tipo": "classe",
   "nome": "Bárbaro",
   "resumo": "Um herói primitivo que ignora ou descarta as frivolidades da civilização. Combatente terrível, luta por instinto e puro frenesi de batalha, sendo tomado por uma fúria guerreira que lhe imbui força e resistência animalescas.",
-  "fonte": { "livro": "livro-basico", "pagina": 40 },
-  "imagens": ["/classes/barbaro.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 40
+  },
+  "imagens": [
+    "/classes/barbaro.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
-      "texto": "Arton não é civilizado. Mesmo com reinos, grandes cidades e política intrincada, este mundo possui vastas extensões de terra não mapeadas, onde nenhum nobre, soldado ou autoridade jamais pisou. Em grandes florestas escuras, em vastas cordilheiras aterrorizantes, em pradarias indomadas e ilhas remotas, Arton é governado pela força, pela selvageria, pela coragem e pela honra. É o território dos bárbaros.\n\nO bárbaro é um herói primitivo que ignora ou descarta as frivolidades da civilização. Um combatente terrível, o bárbaro luta por instinto, confiando menos em técnica e mais em puro frenesi de batalha. Em momentos de grande perigo, ou apenas frente a algo que desperte seu ódio, o bárbaro é tomado por uma fúria guerreira, ficando cego para tudo que não seja o combate e sendo imbuído de força e resistência animalescas.\n\nBárbaros não se sentem confortáveis com todas as restrições da civilização. As paredes altas de um castelo parecem prisões, as ruas lotadas das cidades parecem labirintos fedorentos. Seu conhecimento é adquirido em forma de histórias e lições passadas oralmente por seus ancestrais, ou aprendido com observação do mundo natural.\n\nPodem ser apenas brutamontes monossilábicos, sem talento para nada além da violência. Contudo, também podem ser expoentes de culturas tão ricas e sábias quanto a “civilização”, bravos que rejeitam fingimentos e mentiras em favor da honestidade e simplicidade dos ermos. E mesmo aqueles que mal sabem falar muitas vezes são dotados de uma ingenuidade e bondade tocantes, tendo crescido num mundo em que família e amigos valem mais que ouro.\n\nAs Montanhas Uivantes produzem bárbaros do gelo, acostumados a condições adversas, que bebem leite de mamute e seguem um código de honra estrito. Os Ermos Púrpuras produzem bárbaros das florestas, um povo ancestral e independente que se viu cada vez mais acuado enquanto suas terras foram roubadas por forasteiros. As Montanhas Sanguinárias produzem bárbaros que enfrentam monstros desde a infância e muitas vezes criam vínculos com essas criaturas. Também há bárbaros em todas as regiões ermas e remotas, além de habitantes das cidades que rejeitam a civilização e se entregam à selvageria, tornando-se bárbaros por escolha própria.\n\nBárbaros não costumam usar armaduras pesadas e empunham armas rústicas e brutais, como tacapes e machados. Contudo, o que os define não é seu equipamento, mas seu anseio pela liberdade. Sua sede de sangue é enorme, mas sua lealdade é maior ainda. Livre de amarras, feroz, digno, honesto e forte, o bárbaro simboliza o passado selvagem e inspirador de Arton."
+      "texto": "Arton não é civilizado. Mesmo com reinos, grandes cidades e política intrincada, este mundo possui vastas extensões de terra não mapeadas, onde nenhum nobre, soldado ou autoridade jamais pisou. Em grandes florestas escuras, em vastas cordilheiras aterrorizantes, em pradarias indomadas e ilhas remotas, Arton é governado pela força, pela selvageria, pela coragem e pela honra. É o território dos bárbaros.\n\nO bárbaro é um herói primitivo que ignora ou descarta as frivolidades da civilização. Um combatente terrível, o bárbaro luta por instinto, confiando menos em técnica e mais em puro frenesi de batalha. Em momentos de grande perigo, ou apenas frente a algo que desperte seu ódio, o bárbaro é tomado por uma fúria guerreira, ficando cego para tudo que não seja o combate e sendo imbuído de força e resistência animalescas.\n\nBárbaros não se sentem confortáveis com todas as restrições da civilização. As paredes altas de um castelo parecem prisões, as ruas lotadas das cidades parecem labirintos fedorentos. Seu conhecimento é adquirido em forma de histórias e lições passadas oralmente por seus ancestrais, ou aprendido com observação do mundo natural.\n\nPodem ser apenas brutamontes monossilábicos, sem talento para nada além da violência. Contudo, também podem ser expoentes de culturas tão ricas e sábias quanto a \"civilização\", bravos que rejeitam fingimentos e mentiras em favor da honestidade e simplicidade dos ermos. E mesmo aqueles que mal sabem falar muitas vezes são dotados de uma ingenuidade e bondade tocantes, tendo crescido num mundo em que família e amigos valem mais que ouro.\n\nAs Montanhas Uivantes produzem bárbaros do gelo, acostumados a condições adversas, que bebem leite de mamute e seguem um código de honra estrito. Os Ermos Púrpuras produzem bárbaros das florestas, um povo ancestral e independente que se viu cada vez mais acuado enquanto suas terras foram roubadas por forasteiros. As Montanhas Sanguinárias produzem bárbaros que enfrentam monstros desde a infância e muitas vezes criam vínculos com essas criaturas. Também há bárbaros em todas as regiões ermas e remotas, além de habitantes das cidades que rejeitam a civilização e se entregam à selvageria, tornando-se bárbaros por escolha própria.\n\nBárbaros não costumam usar armaduras pesadas e empunham armas rústicas e brutais, como tacapes e machados. Contudo, o que os define não é seu equipamento, mas seu anseio pela liberdade. Sua sede de sangue é enorme, mas sua lealdade é maior ainda. Livre de amarras, feroz, digno, honesto e forte, o bárbaro simboliza o passado selvagem e inspirador de Arton."
     },
     {
       "titulo": "Bárbaros Famosos",
@@ -31,153 +36,611 @@
     "pmPorNivel": 3,
     "pericias": {
       "quantidade": 4,
-      "fixas": ["Fortitude (Con)", "Luta (For)"],
-      "lista": ["Adestramento (Car)", "Atletismo (For)", "Cavalgar (Des)", "Iniciativa (Des)", "Intimidação (Car)", "Ofício (Int)", "Percepção (Sab)", "Pontaria (Des)", "Sobrevivência (Sab)", "Vontade (Sab)"],
+      "fixas": [
+        "Fortitude (Con)",
+        "Luta (For)"
+      ],
+      "lista": [
+        "Adestramento (Car)",
+        "Atletismo (For)",
+        "Cavalgar (Des)",
+        "Iniciativa (Des)",
+        "Intimidação (Car)",
+        "Ofício (Int)",
+        "Percepção (Sab)",
+        "Pontaria (Des)",
+        "Sobrevivência (Sab)",
+        "Vontade (Sab)"
+      ],
       "texto": "Fortitude (Con) e Luta (For), mais 4 a sua escolha entre Adestramento (Car), Atletismo (For), Cavalgar (Des), Iniciativa (Des), Intimidação (Car), Ofício (Int), Percepção (Sab), Pontaria (Des), Sobrevivência (Sab) e Vontade (Sab)."
     },
-    "proficiencias": ["armas marciais", "escudos"],
+    "proficiencias": [
+      "armas marciais",
+      "escudos"
+    ],
     "progressao": [
-      { "nivel": 1, "habilidades": ["Fúria +2"] },
-      { "nivel": 2, "habilidades": ["Poder de bárbaro"] },
-      { "nivel": 3, "habilidades": ["Instinto selvagem +1", "Poder de bárbaro"] },
-      { "nivel": 4, "habilidades": ["Poder de bárbaro"] },
-      { "nivel": 5, "habilidades": ["Poder de bárbaro", "Redução de dano 2"] },
-      { "nivel": 6, "habilidades": ["Fúria +3", "Poder de bárbaro"] },
-      { "nivel": 7, "habilidades": ["Poder de bárbaro"] },
-      { "nivel": 8, "habilidades": ["Poder de bárbaro", "Redução de dano 4"] },
-      { "nivel": 9, "habilidades": ["Instinto selvagem +2", "Poder de bárbaro"] },
-      { "nivel": 10, "habilidades": ["Poder de bárbaro"] },
-      { "nivel": 11, "habilidades": ["Fúria +4", "Poder de bárbaro", "Redução de dano 6"] },
-      { "nivel": 12, "habilidades": ["Poder de bárbaro"] },
-      { "nivel": 13, "habilidades": ["Poder de bárbaro"] },
-      { "nivel": 14, "habilidades": ["Poder de bárbaro", "Redução de dano 8"] },
-      { "nivel": 15, "habilidades": ["Instinto selvagem +3", "Poder de bárbaro"] },
-      { "nivel": 16, "habilidades": ["Fúria +5", "Poder de bárbaro"] },
-      { "nivel": 17, "habilidades": ["Poder de bárbaro", "Redução de dano 10"] },
-      { "nivel": 18, "habilidades": ["Poder de bárbaro"] },
-      { "nivel": 19, "habilidades": ["Poder de bárbaro"] },
-      { "nivel": 20, "habilidades": ["Fúria titânica", "Poder de bárbaro"] }
+      {
+        "nivel": 1,
+        "habilidades": [
+          "Fúria +2"
+        ]
+      },
+      {
+        "nivel": 2,
+        "habilidades": [
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          "Instinto selvagem +1",
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 4,
+        "habilidades": [
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 5,
+        "habilidades": [
+          "Poder de bárbaro",
+          "Redução de dano 2"
+        ]
+      },
+      {
+        "nivel": 6,
+        "habilidades": [
+          "Fúria +3",
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 7,
+        "habilidades": [
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 8,
+        "habilidades": [
+          "Poder de bárbaro",
+          "Redução de dano 4"
+        ]
+      },
+      {
+        "nivel": 9,
+        "habilidades": [
+          "Instinto selvagem +2",
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 10,
+        "habilidades": [
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 11,
+        "habilidades": [
+          "Fúria +4",
+          "Poder de bárbaro",
+          "Redução de dano 6"
+        ]
+      },
+      {
+        "nivel": 12,
+        "habilidades": [
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 13,
+        "habilidades": [
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 14,
+        "habilidades": [
+          "Poder de bárbaro",
+          "Redução de dano 8"
+        ]
+      },
+      {
+        "nivel": 15,
+        "habilidades": [
+          "Instinto selvagem +3",
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 16,
+        "habilidades": [
+          "Fúria +5",
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 17,
+        "habilidades": [
+          "Poder de bárbaro",
+          "Redução de dano 10"
+        ]
+      },
+      {
+        "nivel": 18,
+        "habilidades": [
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 19,
+        "habilidades": [
+          "Poder de bárbaro"
+        ]
+      },
+      {
+        "nivel": 20,
+        "habilidades": [
+          "Fúria titânica",
+          "Poder de bárbaro"
+        ]
+      }
     ],
     "habilidades": [
       {
         "nome": "Fúria",
         "nivel": 1,
         "descricao": "Você pode gastar 2 PM para invocar uma fúria selvagem. Você recebe +2 em testes de ataque e rolagens de dano corpo a corpo, mas não pode fazer nenhuma ação que exija calma e concentração (como usar a perícia Furtividade ou lançar magias). A cada cinco níveis, pode gastar +1 PM para aumentar os bônus em +1. A Fúria termina se, ao fim da rodada, você não tiver atacado nem sido alvo de um efeito (ataque, habilidade, magia...) hostil.",
-        "custo": "2 PM (+1 PM a cada cinco níveis)"
+        "custo": "2 PM (+1 PM a cada cinco níveis)",
+        "ativacao": {
+          "custo": {
+            "pm": {
+              "expr": "2 + floor(nivel / 5)"
+            },
+            "acao": "livre"
+          },
+          "encerramento": "Termina se, ao fim da rodada, você não tiver atacado nem sido alvo de um efeito (ataque, habilidade, magia...) hostil. Enquanto em fúria, não pode fazer ações que exijam calma e concentração (Furtividade, lançar magias)."
+        },
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "ataque",
+            "valor": {
+              "expr": "2 + floor(nivel / 5)"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "dano.corpo_a_corpo",
+            "valor": {
+              "expr": "2 + floor(nivel / 5)"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Poder de Bárbaro",
         "nivel": 2,
-        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes de bárbaro (veja a lista de poderes)."
+        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes de bárbaro (veja a lista de poderes).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "escolhe_poder_de_barbaro",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Instinto Selvagem",
         "nivel": 3,
-        "descricao": "No 3º nível, você recebe +1 em rolagens de dano, Percepção e Reflexos. A cada seis níveis, esse bônus aumenta em +1."
+        "descricao": "No 3º nível, você recebe +1 em rolagens de dano, Percepção e Reflexos. A cada seis níveis, esse bônus aumenta em +1.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": {
+              "expr": "1 + floor((nivel - 3) / 6)"
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:percepcao",
+            "valor": {
+              "expr": "1 + floor((nivel - 3) / 6)"
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:reflexos",
+            "valor": {
+              "expr": "1 + floor((nivel - 3) / 6)"
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Redução de Dano",
         "nivel": 5,
-        "descricao": "A partir do 5º nível, graças a seu vigor e força de vontade, você ignora parte de seus ferimentos. Você recebe redução de dano 2 (todo dano que sofre é reduzido em 2). A cada três níveis, sua RD aumenta em 2, até um máximo de RD 10 no 17º nível."
+        "descricao": "A partir do 5º nível, graças a seu vigor e força de vontade, você ignora parte de seus ferimentos. Você recebe redução de dano 2 (todo dano que sofre é reduzido em 2). A cada três níveis, sua RD aumenta em 2, até um máximo de RD 10 no 17º nível.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "reducao_dano",
+            "valor": {
+              "expr": "2 * floor(nivel / 3)"
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Fúria Titânica",
         "nivel": 20,
-        "descricao": "No 20º nível, o bônus que você recebe nos testes de ataque e rolagens de dano quando usa Fúria é dobrado. Por exemplo, se gastar 5 PM, em vez de um bônus de +5, recebe um bônus de +10."
+        "descricao": "No 20º nível, o bônus que você recebe nos testes de ataque e rolagens de dano quando usa Fúria é dobrado. Por exemplo, se gastar 5 PM, em vez de um bônus de +5, recebe um bônus de +10.",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "furia",
+            "patch": {
+              "valor": {
+                "expr": "2 * (2 + floor(nivel / 5))"
+              }
+            }
+          }
+        ]
       }
     ],
     "poderes": [
       {
         "nome": "Alma de Bronze",
-        "descricao": "Quando entra em fúria, você recebe uma quantidade de pontos de vida temporários igual a seu nível + sua Força."
+        "descricao": "Quando entra em fúria, você recebe uma quantidade de pontos de vida temporários igual a seu nível + sua Força.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pv.temporario",
+            "valor": {
+              "expr": "nivel + atr.for"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Aumento de Atributo",
-        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo."
+        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo.",
+        "efeitos": [],
+        "empilhavel": true,
+        "escolhas": [
+          {
+            "id": "aumento_atributo",
+            "rotulo": "+1 em um atributo à escolha",
+            "alvoTipo": "atributo",
+            "efeito": {
+              "tipo": "bonus",
+              "valor": 1,
+              "aplicacao": "automatica"
+            },
+            "restricao": "uma_por_patamar_por_alvo"
+          }
+        ]
       },
       {
         "nome": "Brado Assustador",
         "descricao": "Você pode gastar uma ação de movimento e 1 PM para soltar um berro feroz. Todos os inimigos em alcance curto ficam vulneráveis até o fim da cena. Medo.",
         "prerequisito": "treinado em Intimidação",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aura_condicao_em_inimigos",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Crítico Brutal",
         "descricao": "Seu multiplicador de crítico com armas corpo a corpo e de arremesso aumenta em +1. Por exemplo, seu multiplicador com um machado de batalha (normalmente x3) será x4.",
-        "prerequisito": "6º nível de bárbaro"
+        "prerequisito": "6º nível de bárbaro",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "critico.multiplicador",
+            "valor": 1,
+            "condicao": {
+              "campo": "arma.tipo_ataque",
+              "em": [
+                "corpo_a_corpo",
+                "arremesso"
+              ]
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Destruidor",
         "descricao": "Quando causa dano com uma arma corpo a corpo de duas mãos, você pode rolar novamente qualquer resultado 1 ou 2 das rolagens de dano da arma.",
-        "prerequisito": "For 1"
+        "prerequisito": "For 1",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "rerola_dano_minimo_arma_duas_maos",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Espírito Inquebrável",
         "descricao": "Enquanto está em fúria, você não fica inconsciente por estar com 0 PV ou menos (você ainda morre se chegar em um valor negativo igual à metade de seus pontos de vida máximos).",
-        "prerequisito": "Alma de Bronze"
+        "prerequisito": "Alma de Bronze",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_inconsciencia_em_zero_pv",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Esquiva Sobrenatural",
-        "descricao": "Seus instintos são tão apurados que você consegue reagir ao perigo antes que seus sentidos o percebam. Você nunca fica surpreendido."
+        "descricao": "Seus instintos são tão apurados que você consegue reagir ao perigo antes que seus sentidos o percebam. Você nunca fica surpreendido.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "nunca_fica_surpreendido",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Força Indomável",
         "descricao": "Você pode gastar 1 PM para somar seu nível em um teste de Força ou Atletismo. Você pode usar esta habilidade depois de rolar o dado, mas deve usá-la antes de o mestre dizer se você passou ou não.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "soma_nivel_em_teste_forca_ou_atletismo_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Frenesi",
         "descricao": "Uma vez por rodada, se estiver em fúria e usar a ação agredir para fazer um ataque corpo a corpo ou com uma arma de arremesso, você pode gastar 2 PM para fazer um ataque adicional.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "realiza_ataque_extra_ao_agredir",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Fúria da Savana",
-        "descricao": "Seu deslocamento aumenta em +3m. Quando usa Fúria, você aplica o bônus em ataque e dano também a armas de arremesso."
+        "descricao": "Seu deslocamento aumenta em +3m. Quando usa Fúria, você aplica o bônus em ataque e dano também a armas de arremesso.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "deslocamento",
+            "valor": 3,
+            "unidade": "m",
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "modifica_poder",
+            "alvo": "furia",
+            "adicionaEfeito": [
+              {
+                "tipo": "bonus",
+                "alvo": "dano.arremesso",
+                "valor": {
+                  "expr": "2 + floor(nivel / 5)"
+                },
+                "condicao": {
+                  "quando": "ativo"
+                },
+                "aplicacao": "contextual"
+              }
+            ]
+          }
+        ]
       },
       {
         "nome": "Fúria Raivosa",
         "descricao": "Se sua Fúria for terminar por você não ter atacado nem sido alvo de um efeito hostil, você pode pagar 1 PM para continuar em fúria nesta rodada. Se você atacar ou for atacado na rodada seguinte, sua fúria continua normalmente.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "prolonga_furia_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Golpe Poderoso",
         "descricao": "Ao acertar um ataque corpo a corpo ou com uma arma de arremesso, você pode gastar 1 PM para causar um dado extra de dano do mesmo tipo (por exemplo, com um montante, causa +1d6, para um dano total de 3d6; com um machado de guerra, causa +1d12, para um dano total de 2d12).",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": {
+              "dados": {
+                "n": 1,
+                "comoArma": true
+              }
+            },
+            "opcionalPorAtaque": {
+              "custo": {
+                "pm": 1
+              }
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Ímpeto",
         "descricao": "Você pode gastar 1 PM para aumentar seu deslocamento em +6m por uma rodada.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_deslocamento_temporario_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Investida Imprudente",
-        "descricao": "Quando faz uma investida, você pode aumentar sua penalidade na Defesa pela investida para –5 para receber um bônus de +1d12 na rolagem de dano deste ataque."
+        "descricao": "Quando faz uma investida, você pode aumentar sua penalidade na Defesa pela investida para –5 para receber um bônus de +1d12 na rolagem de dano deste ataque.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": {
+              "dados": {
+                "n": 1,
+                "faces": 12
+              }
+            },
+            "opcionalPorAtaque": true,
+            "condicao": {
+              "campo": "acao",
+              "igual": "investida"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "aumenta_penalidade_defesa_investida_para_-5",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Pele de Aço",
         "descricao": "O bônus de Pele de Ferro aumenta para +8.",
-        "prerequisito": "Pele de Ferro, 8º nível de bárbaro"
+        "prerequisito": "Pele de Ferro, 8º nível de bárbaro",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "pele-de-ferro",
+            "patch": {
+              "valor": 8
+            }
+          }
+        ]
       },
       {
         "nome": "Pele de Ferro",
-        "descricao": "Você recebe +4 na Defesa, mas apenas se não estiver usando armadura pesada."
+        "descricao": "Você recebe +4 na Defesa, mas apenas se não estiver usando armadura pesada.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "defesa",
+            "valor": 4,
+            "condicao": {
+              "campo": "armadura.subcategoria",
+              "em": [
+                "nenhuma",
+                "leve",
+                "media"
+              ]
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Sangue dos Inimigos",
-        "descricao": "Enquanto está em fúria, quando faz um acerto crítico ou reduz um inimigo a 0 PV, você recebe um bônus cumulativo de +1 em testes de ataque e rolagens de dano, limitado pelo seu nível, até o fim da cena."
+        "descricao": "Enquanto está em fúria, quando faz um acerto crítico ou reduz um inimigo a 0 PV, você recebe um bônus cumulativo de +1 em testes de ataque e rolagens de dano, limitado pelo seu nível, até o fim da cena.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_cumulativo_ataque_dano_por_abate",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Superstição",
-        "descricao": "Você odeia magia, o que faz com que seja mais resistente a ela. Você recebe resistência a magia +5."
+        "descricao": "Você odeia magia, o que faz com que seja mais resistente a ela. Você recebe resistência a magia +5.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "resistencia_magia",
+            "valor": 5,
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Totem Espiritual",
         "descricao": "Você soma sua Sabedoria no seu total de pontos de mana. Escolha um animal totêmico (veja o quadro Animais Totêmicos). Você aprende e pode lançar uma magia definida pelo animal escolhido (atributo-chave Sabedoria) e pode lançá-la mesmo em fúria.",
-        "prerequisito": "Sab 1, 4º nível de bárbaro"
+        "prerequisito": "Sab 1, 4º nível de bárbaro",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pm.max",
+            "valor": {
+              "expr": "atr.sab"
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_magia_totem_animal",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "lanca_magia_totem_em_furia",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Vigor Primal",
-        "descricao": "Você pode gastar uma ação de movimento e uma quantidade de PM limitada por sua Constituição. Para cada PM que gastar, você recupera 1d12 pontos de vida."
+        "descricao": "Você pode gastar uma ação de movimento e uma quantidade de PM limitada por sua Constituição. Para cada PM que gastar, você recupera 1d12 pontos de vida.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "recupera_pv_por_pm_gasto",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

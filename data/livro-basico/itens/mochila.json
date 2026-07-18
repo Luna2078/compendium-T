@@ -11,6 +11,9 @@
     "categoria": "item-aventura",
     "preco": "T$ 2",
     "espacos": "—",
-    "especial": "Não conta como item vestido."
+    "especial": "Não conta como item vestido.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "nao_conta_como_item_vestido", "aplicacao": "lembrete" }
+    ]
   }
 }

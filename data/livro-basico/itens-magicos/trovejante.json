@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Trovejante",
   "resumo": "Em acerto crítico, atordoa a vítima por uma rodada (uma vez por cena).",
-  "fonte": { "livro": "livro-basico", "pagina": 336 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 336
+  },
   "imagens": [],
   "secoes": [
     {
@@ -13,6 +16,19 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "atordoa_no_critico_uma_vez_por_cena",
+        "condicao": {
+          "campo": "ataque.critico",
+          "em": [
+            "sim"
+          ]
+        },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

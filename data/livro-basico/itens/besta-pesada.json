@@ -20,6 +20,13 @@
       "tipoDano": "Perfuração",
       "habilidades": [],
       "especial": "Recarregar é uma ação padrão."
-    }
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "recarga_arma_acao",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

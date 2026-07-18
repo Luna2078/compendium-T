@@ -11,6 +11,14 @@
     "categoria": "ferramenta",
     "preco": "T$ 75",
     "espacos": "1",
-    "especial": "Fornece +1 em Conhecimento, Guerra, Misticismo, Nobreza ou Religião (definido quando o item é comprado ou fabricado)."
+    "especial": "Fornece +1 em Conhecimento, Guerra, Misticismo, Nobreza ou Religião (definido quando o item é comprado ou fabricado).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_pericia_definido_na_compra",
+        "valor": 1,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

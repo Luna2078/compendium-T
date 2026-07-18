@@ -15,6 +15,20 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Menor",
-    "preco": "T$ 6.000"
+    "preco": "T$ 6.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_efeito_magia_sem_custo",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:enganacao",
+        "valor": 20,
+        "condicao": { "campo": "intencao", "igual": "disfarce" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

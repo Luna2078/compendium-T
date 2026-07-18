@@ -9,6 +9,26 @@
   "relacoes": [],
   "mecanica": {
     "grupo": "tormenta",
-    "descricao": "Você recebe +1 em Acrobacia, Furtividade e Reflexos. Este bônus aumenta em +1 para cada dois outros poderes da Tormenta que você possui."
+    "descricao": "Você recebe +1 em Acrobacia, Furtividade e Reflexos. Este bônus aumenta em +1 para cada dois outros poderes da Tormenta que você possui.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:acrobacia",
+        "valor": { "expr": "1 + floor(contagem.poderes.tormenta / 2)" },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:furtividade",
+        "valor": { "expr": "1 + floor(contagem.poderes.tormenta / 2)" },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:reflexos",
+        "valor": { "expr": "1 + floor(contagem.poderes.tormenta / 2)" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

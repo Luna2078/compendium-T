@@ -13,6 +13,26 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto",
+        "valor": "formidavel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 4,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 4,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

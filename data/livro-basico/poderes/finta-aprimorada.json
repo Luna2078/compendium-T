@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Treinado em Enganação",
-    "descricao": "Você recebe +2 em testes de Enganação para fintar e pode fintar como uma ação de movimento."
+    "descricao": "Você recebe +2 em testes de Enganação para fintar e pode fintar como uma ação de movimento.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:enganacao",
+        "valor": 2,
+        "condicao": { "campo": "intencao", "igual": "fintar" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "finta_como_acao_de_movimento",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

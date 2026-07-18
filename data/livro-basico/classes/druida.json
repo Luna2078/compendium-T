@@ -3,8 +3,13 @@
   "tipo": "classe",
   "nome": "Druida",
   "resumo": "Guardião da natureza selvagem, ligado a uma forma primordial de culto divino. Conjurador divino que domina magias de três escolas escolhidas, pode se transformar em criaturas e manter companheiros animais fiéis.",
-  "fonte": { "livro": "livro-basico", "pagina": 60 },
-  "imagens": ["/classes/druida.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 60
+  },
+  "imagens": [
+    "/classes/druida.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -35,32 +40,158 @@
     "pmPorNivel": 4,
     "pericias": {
       "quantidade": 4,
-      "fixas": ["Sobrevivência (Sab)", "Vontade (Sab)"],
-      "lista": ["Adestramento (Car)", "Atletismo (For)", "Cavalgar (Des)", "Conhecimento (Int)", "Cura (Sab)", "Fortitude (Con)", "Iniciativa (Des)", "Intuição (Sab)", "Luta (For)", "Misticismo (Int)", "Ofício (Int)", "Percepção (Sab)", "Religião (Sab)"],
+      "fixas": [
+        "Sobrevivência (Sab)",
+        "Vontade (Sab)"
+      ],
+      "lista": [
+        "Adestramento (Car)",
+        "Atletismo (For)",
+        "Cavalgar (Des)",
+        "Conhecimento (Int)",
+        "Cura (Sab)",
+        "Fortitude (Con)",
+        "Iniciativa (Des)",
+        "Intuição (Sab)",
+        "Luta (For)",
+        "Misticismo (Int)",
+        "Ofício (Int)",
+        "Percepção (Sab)",
+        "Religião (Sab)"
+      ],
       "texto": "Sobrevivência (Sab) e Vontade (Sab), mais 4 a sua escolha entre Adestramento (Car), Atletismo (For), Cavalgar (Des), Conhecimento (Int), Cura (Sab), Fortitude (Con), Iniciativa (Des), Intuição (Sab), Luta (For), Misticismo (Int), Ofício (Int), Percepção (Sab) e Religião (Sab)."
     },
-    "proficiencias": ["escudos"],
+    "proficiencias": [
+      "escudos"
+    ],
     "progressao": [
-      { "nivel": 1, "habilidades": ["Devoto fiel", "Empatia selvagem", "Magias (1º círculo)"] },
-      { "nivel": 2, "habilidades": ["Caminho dos ermos", "Poder de druida"] },
-      { "nivel": 3, "habilidades": ["Poder de druida"] },
-      { "nivel": 4, "habilidades": ["Poder de druida"] },
-      { "nivel": 5, "habilidades": ["Poder de druida"] },
-      { "nivel": 6, "habilidades": ["Magias (2º círculo)", "Poder de druida"] },
-      { "nivel": 7, "habilidades": ["Poder de druida"] },
-      { "nivel": 8, "habilidades": ["Poder de druida"] },
-      { "nivel": 9, "habilidades": ["Poder de druida"] },
-      { "nivel": 10, "habilidades": ["Magias (3º círculo)", "Poder de druida"] },
-      { "nivel": 11, "habilidades": ["Poder de druida"] },
-      { "nivel": 12, "habilidades": ["Poder de druida"] },
-      { "nivel": 13, "habilidades": ["Poder de druida"] },
-      { "nivel": 14, "habilidades": ["Magias (4º círculo)", "Poder de druida"] },
-      { "nivel": 15, "habilidades": ["Poder de druida"] },
-      { "nivel": 16, "habilidades": ["Poder de druida"] },
-      { "nivel": 17, "habilidades": ["Poder de druida"] },
-      { "nivel": 18, "habilidades": ["Poder de druida"] },
-      { "nivel": 19, "habilidades": ["Poder de druida"] },
-      { "nivel": 20, "habilidades": ["Força da natureza", "Poder de druida"] }
+      {
+        "nivel": 1,
+        "habilidades": [
+          "Devoto fiel",
+          "Empatia selvagem",
+          "Magias (1º círculo)"
+        ]
+      },
+      {
+        "nivel": 2,
+        "habilidades": [
+          "Caminho dos ermos",
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 4,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 5,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 6,
+        "habilidades": [
+          "Magias (2º círculo)",
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 7,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 8,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 9,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 10,
+        "habilidades": [
+          "Magias (3º círculo)",
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 11,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 12,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 13,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 14,
+        "habilidades": [
+          "Magias (4º círculo)",
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 15,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 16,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 17,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 18,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 19,
+        "habilidades": [
+          "Poder de druida"
+        ]
+      },
+      {
+        "nivel": 20,
+        "habilidades": [
+          "Força da natureza",
+          "Poder de druida"
+        ]
+      }
     ],
     "conjuracao": {
       "tipo": "Divina",
@@ -72,138 +203,476 @@
       {
         "nome": "Devoto Fiel",
         "nivel": 1,
-        "descricao": "Você se torna devoto de um deus disponível para druidas (Allihanna, Megalokk ou Oceano). Veja as regras de devotos na página 96. Ao contrário de devotos normais, você recebe dois poderes concedidos por se tornar devoto, em vez de apenas um."
+        "descricao": "Você se torna devoto de um deus disponível para druidas (Allihanna, Megalokk ou Oceano). Veja as regras de devotos na página 96. Ao contrário de devotos normais, você recebe dois poderes concedidos por se tornar devoto, em vez de apenas um.",
+        "precisaRevisao": true,
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "torna_se_devoto_druida",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "recebe_dois_poderes_concedidos_devoto",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Empatia Selvagem",
         "nivel": 1,
-        "descricao": "Você pode se comunicar com animais por meio de linguagem corporal e vocalizações. Você pode usar Adestramento com animais para mudar atitude e persuasão (veja a página 118)."
+        "descricao": "Você pode se comunicar com animais por meio de linguagem corporal e vocalizações. Você pode usar Adestramento com animais para mudar atitude e persuasão (veja a página 118).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "comunica_com_animais",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Magias",
         "nivel": 1,
-        "descricao": "Escolha três escolas de magia. Uma vez feita, essa escolha não pode ser mudada. Você pode lançar magias divinas de 1º círculo que pertençam a essas escolas. À medida que sobe de nível, pode lançar magias de círculos maiores (2º círculo no 6º nível, 3º círculo no 10º nível e 4º círculo no 14º nível).\n\nVocê começa com duas magias de 1º círculo. A cada nível par (2º, 4º etc.), aprende uma magia de qualquer círculo e escola que possa lançar.\n\nSeu atributo-chave para lançar magias é Sabedoria e você soma sua Sabedoria no seu total de PM. Veja o Capítulo 4 para as regras de magia."
+        "descricao": "Escolha três escolas de magia. Uma vez feita, essa escolha não pode ser mudada. Você pode lançar magias divinas de 1º círculo que pertençam a essas escolas. À medida que sobe de nível, pode lançar magias de círculos maiores (2º círculo no 6º nível, 3º círculo no 10º nível e 4º círculo no 14º nível).\n\nVocê começa com duas magias de 1º círculo. A cada nível par (2º, 4º etc.), aprende uma magia de qualquer círculo e escola que possa lançar.\n\nSeu atributo-chave para lançar magias é Sabedoria e você soma sua Sabedoria no seu total de PM. Veja o Capítulo 4 para as regras de magia.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "lanca_magias_divinas_da_classe",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Caminho dos Ermos",
         "nivel": 2,
-        "descricao": "No 2º nível, você pode atravessar terrenos difíceis sem sofrer redução em seu deslocamento e a CD para rastreá-lo aumenta em +10. Esta habilidade só funciona em terrenos naturais."
+        "descricao": "No 2º nível, você pode atravessar terrenos difíceis sem sofrer redução em seu deslocamento e a CD para rastreá-lo aumenta em +10. Esta habilidade só funciona em terrenos naturais.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_terreno_dificil",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_rastreamento_e_anti_rastreio",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Força da Natureza",
         "nivel": 20,
-        "descricao": "No 20º nível, você diminui o custo de todas as suas magias em –2 PM e aumenta a CD delas em +2. Os bônus dobram (–4 PM e +4 na CD) se você estiver em terrenos naturais."
+        "descricao": "No 20º nível, você diminui o custo de todas as suas magias em –2 PM e aumenta a CD delas em +2. Os bônus dobram (–4 PM e +4 na CD) se você estiver em terrenos naturais.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "reduz_custo_pm_magia",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "aumenta_cd_resistir_magia",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ],
     "poderes": [
       {
         "nome": "Aspecto do Inverno",
-        "descricao": "Você aprende e pode lançar uma magia de convocação ou evocação, arcana ou divina, de qualquer círculo que possa lançar. Além disso, recebe redução de frio 5 e suas magias que causam dano de frio causam +1 ponto de dano por dado."
+        "descricao": "Você aprende e pode lançar uma magia de convocação ou evocação, arcana ou divina, de qualquer círculo que possa lançar. Além disso, recebe redução de frio 5 e suas magias que causam dano de frio causam +1 ponto de dano por dado.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_magia_escolhida_convocacao_evocacao",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "reducao_dano_frio_5",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_dano_magias_frio_por_dado",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aspecto do Outono",
         "descricao": "Você aprende e pode lançar uma magia de necromancia, arcana ou divina, de qualquer círculo que possa lançar. Além disso, pode gastar 1 PM para impor uma penalidade de –2 nos testes de resistência de todos os inimigos em alcance curto até o início do seu próximo turno.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_magia_escolhida_necromancia",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "penalidade_testes_resistencia_inimigos_area",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aspecto da Primavera",
-        "descricao": "Você aprende e pode lançar uma magia de encantamento ou ilusão, arcana ou divina, de qualquer círculo que possa lançar. Além disso, escolha uma quantidade de magias igual ao seu Carisma (mínimo 1). O custo dessas magias é reduzido em −1 PM."
+        "descricao": "Você aprende e pode lançar uma magia de encantamento ou ilusão, arcana ou divina, de qualquer círculo que possa lançar. Além disso, escolha uma quantidade de magias igual ao seu Carisma (mínimo 1). O custo dessas magias é reduzido em −1 PM.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_magia_escolhida_encantamento_ilusao",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "reduz_custo_pm_magia",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aspecto do Verão",
         "descricao": "Você aprende e pode lançar uma magia de transmutação, arcana ou divina, de qualquer círculo que possa lançar. Além disso, pode gastar 1 PM para cobrir uma de suas armas com chamas até o fim da cena. A arma causa +1d6 pontos de dano de fogo. Sempre que você acertar um ataque com ela, recebe 1 PM temporário. Você pode ganhar um máximo de PM temporários por cena igual ao seu nível e eles desaparecem no final da cena.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "ativacao": {
+          "custo": {
+            "pm": 1,
+            "acao": "livre"
+          },
+          "encerramento": "Dura até o fim da cena ou até você desequipar/trocar a arma."
+        },
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_magia_escolhida_transmutacao",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "cobre_arma_com_dano_elemental",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "ganha_pm_temporario_ao_acertar",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aumento de Atributo",
-        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo."
+        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo.",
+        "empilhavel": true,
+        "escolhas": [
+          {
+            "id": "aumento_atributo",
+            "rotulo": "+1 em um atributo à escolha",
+            "alvoTipo": "atributo",
+            "efeito": {
+              "tipo": "bonus",
+              "valor": 1,
+              "aplicacao": "automatica"
+            },
+            "restricao": "uma_por_patamar_por_alvo"
+          }
+        ],
+        "efeitos": []
       },
       {
         "nome": "Companheiro Animal",
         "descricao": "Você recebe um companheiro animal. Veja o quadro para detalhes. Você pode escolher este poder quantas vezes quiser, mas deve escolher companheiros diferentes e ainda está sujeito ao limite de parceiros que pode ter (veja a página 260).",
-        "prerequisito": "Car 1, treinado em Adestramento"
+        "prerequisito": "Car 1, treinado em Adestramento",
+        "empilhavel": true,
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "possui_parceiro",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Companheiro Animal Aprimorado",
         "descricao": "Escolha um de seus companheiros animais. Ele recebe um segundo tipo, ganhando os bônus de seu nível. Por exemplo, se você tiver um companheiro guardião veterano, pode adicionar o tipo fortão a ele, tornando-o um guardião fortão veterano que concede +3 na Defesa e +1d12 em uma rolagem de dano corpo a corpo.",
-        "prerequisito": "Companheiro Animal, 6º nível de druida"
+        "prerequisito": "Companheiro Animal, 6º nível de druida",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "companheiro_animal_recebe_segundo_tipo",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Companheiro Animal Lendário",
         "descricao": "Escolha um de seus companheiros animais. Esse animal passa a dobrar os bônus concedidos de seu tipo original.",
-        "prerequisito": "Companheiro Animal, 18º nível de druida"
+        "prerequisito": "Companheiro Animal, 18º nível de druida",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "companheiro_animal_dobra_bonus_tipo_original",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Companheiro Animal Mágico",
         "descricao": "Escolha um de seus companheiros animais. Ele recebe um segundo tipo diferente, entre adepto, destruidor, magivocador ou médico, ganhando os bônus de seu nível.",
-        "prerequisito": "Companheiro Animal, 8º nível de druida"
+        "prerequisito": "Companheiro Animal, 8º nível de druida",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "companheiro_animal_recebe_tipo_magico",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Coração da Selva",
-        "descricao": "A CD para resistir a seus efeitos de veneno aumenta em +2 e estes efeitos causam +1 de perda de vida por dado."
+        "descricao": "A CD para resistir a seus efeitos de veneno aumenta em +2 e estes efeitos causam +1 de perda de vida por dado.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aumenta_cd_venenos",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_dano_veneno_por_dado",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Espírito dos Equinócios",
         "descricao": "Você pode gastar 4 PM para ficar em equilíbrio com o mundo. Até o final da cena, quando rola um dado, pode rolar novamente qualquer resultado 1.",
         "prerequisito": "Aspecto da Primavera, Aspecto do Outono, 10º nível de druida",
-        "custo": "4 PM"
+        "custo": "4 PM",
+        "ativacao": {
+          "custo": {
+            "pm": 4,
+            "acao": "livre"
+          },
+          "encerramento": "Dura até o final da cena."
+        },
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "rerola_resultado_1_em_qualquer_dado",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Espírito dos Solstícios",
         "descricao": "Você transita entre os extremos do mundo natural. Quando lança uma magia, pode gastar +4 PM para maximizar os efeitos numéricos variáveis dela. Por exemplo, uma magia Curar Ferimentos aprimorada para curar 5d8+5 PV irá curar automaticamente 45 PV, sem a necessidade de rolar dados. Uma magia sem efeitos variáveis não pode ser afetada por este poder.",
         "prerequisito": "Aspecto do Inverno, Aspecto do Verão, 10º nível de druida",
-        "custo": "+4 PM"
+        "custo": "+4 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "maximiza_efeitos_variaveis_magia_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Força dos Penhascos",
         "descricao": "Você recebe +2 em Fortitude. Quando sofre dano enquanto em contato com o solo ou uma superfície de pedra, pode gastar uma quantidade de PM limitada por sua Sabedoria. Para cada PM gasto, reduz esse dano em 10.",
         "prerequisito": "4º nível de druida",
-        "custo": "até Sab PM"
+        "custo": "até Sab PM",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:fortitude",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "reduz_dano_recebido_por_pm_em_solo",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Forma Primal",
         "descricao": "Quando usa Forma Selvagem, você pode se transformar em uma fera primal. Você recebe os benefícios de dois tipos de animais (bônus iguais não se acumulam; use o que você quiser de cada tipo).",
-        "prerequisito": "18º nível de druida"
+        "prerequisito": "18º nível de druida",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "forma-selvagem",
+            "adicionaEfeito": [
+              {
+                "tipo": "capacidade",
+                "chave": "forma_selvagem_aplica_dois_tipos_simultaneos",
+                "aplicacao": "lembrete"
+              }
+            ]
+          }
+        ]
       },
       {
         "nome": "Forma Selvagem",
         "descricao": "Você pode se transformar em animais. Veja o quadro Forma Selvagem para detalhes completos das formas disponíveis (Ágil, Feroz, Resistente, Sorrateira e Veloz) e suas versões aprimorada e superior.",
-        "custo": "3 PM (ação completa)"
+        "custo": "3 PM (ação completa)",
+        "ativacao": {
+          "custo": {
+            "pm": 3,
+            "acao": "completa"
+          },
+          "encerramento": "Você reverte à forma normal se ficar inconsciente ou morrer, ou quando quiser."
+        },
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "transforma_em_forma_selvagem",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "equipamento_some_na_transformacao",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Forma Selvagem Aprimorada",
         "descricao": "Quando usa Forma Selvagem, você pode gastar 6 PM ao todo para assumir uma forma aprimorada.",
         "prerequisito": "Forma Selvagem, 6º nível de druida",
-        "custo": "6 PM"
+        "custo": "6 PM",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "forma-selvagem",
+            "adicionaEfeito": [
+              {
+                "tipo": "capacidade",
+                "chave": "forma_selvagem_versao_aprimorada_disponivel",
+                "aplicacao": "lembrete"
+              }
+            ]
+          }
+        ]
       },
       {
         "nome": "Forma Selvagem Superior",
         "descricao": "Quando usa Forma Selvagem, você pode gastar 10 PM ao todo para assumir uma forma superior.",
         "prerequisito": "Forma Selvagem Aprimorada, 12º nível de druida",
-        "custo": "10 PM"
+        "custo": "10 PM",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "forma-selvagem",
+            "adicionaEfeito": [
+              {
+                "tipo": "capacidade",
+                "chave": "forma_selvagem_versao_superior_disponivel",
+                "aplicacao": "lembrete"
+              }
+            ]
+          }
+        ]
       },
       {
         "nome": "Liberdade da Pradaria",
         "descricao": "Você recebe +2 em Reflexos. Se estiver ao ar livre, sempre que lança uma magia, pode gastar 1 PM para aumentar o alcance dela em um passo (de toque para curto, de curto para médio ou de médio para longo).",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:reflexos",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "aprimoramento_aumenta_alcance_um_passo",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Magia Natural",
         "descricao": "Em forma selvagem, você pode lançar magias e empunhar catalisadores e esotéricos.",
-        "prerequisito": "Forma Selvagem"
+        "prerequisito": "Forma Selvagem",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "forma-selvagem",
+            "adicionaEfeito": [
+              {
+                "tipo": "capacidade",
+                "chave": "lanca_magias_em_forma_selvagem",
+                "aplicacao": "lembrete"
+              }
+            ]
+          }
+        ]
       },
       {
         "nome": "Presas Afiadas",
-        "descricao": "A margem de ameaça de suas armas naturais aumenta em +2."
+        "descricao": "A margem de ameaça de suas armas naturais aumenta em +2.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "critico.margem",
+            "valor": 2,
+            "condicao": {
+              "campo": "arma.propriedades",
+              "igual": "natural"
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Segredos da Natureza",
-        "descricao": "Você aprende duas magias de qualquer círculo que possa lançar. Elas devem pertencer às escolas que você sabe usar, mas podem ser arcanas ou divinas. Você pode escolher este poder quantas vezes quiser."
+        "descricao": "Você aprende duas magias de qualquer círculo que possa lançar. Elas devem pertencer às escolas que você sabe usar, mas podem ser arcanas ou divinas. Você pode escolher este poder quantas vezes quiser.",
+        "empilhavel": true,
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_duas_magias_escolas_da_classe",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Tranquilidade dos Lagos",
         "descricao": "Você recebe +2 em Vontade. Se estiver portando um recipiente com água (não precisa estar empunhando), uma vez por rodada, quando faz um teste de resistência, pode pagar 1 PM para refazer a rolagem.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:vontade",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "rerola_teste_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

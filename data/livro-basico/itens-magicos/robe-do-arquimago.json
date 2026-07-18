@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Robe do Arquimago",
   "resumo": "Traje que gera um campo protetor para conjuradores arcanos, com bônus na Defesa e em resistências baseados no círculo de magia mais alto.",
-  "fonte": { "livro": "livro-basico", "pagina": 345 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 345
+  },
   "imagens": [],
   "secoes": [
     {
@@ -15,6 +18,40 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Maior",
-    "preco": "T$ 90.000"
+    "preco": "T$ 90.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": {
+          "expr": "5 + circulo_maximo"
+        },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:fortitude",
+        "valor": {
+          "expr": "floor((5 + circulo_maximo) / 2)"
+        },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:reflexos",
+        "valor": {
+          "expr": "floor((5 + circulo_maximo) / 2)"
+        },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:vontade",
+        "valor": {
+          "expr": "floor((5 + circulo_maximo) / 2)"
+        },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

@@ -19,6 +19,7 @@
       "tipoDano": "Corte",
       "habilidades": ["Ágil", "Dupla", "Versátil"]
     },
-    "especial": "Alcance 4,5m (pode atacar inimigos a até 4,5m e se enroscar em mãos, pernas ou armas dos adversários). Ágil (pode usar Acuidade com Arma). Dupla (pode ser usada com Estilo de Duas Armas). Versátil (+2 em testes para derrubar ou desarmar). Dano 2d4/2d4: ambos os valores são iguais (a barra indica que cada 'ponta' conta como arma separada para efeitos de Dupla)."
+    "especial": "Alcance 4,5m (pode atacar inimigos a até 4,5m e se enroscar em mãos, pernas ou armas dos adversários). Ágil (pode usar Acuidade com Arma). Dupla (pode ser usada com Estilo de Duas Armas). Versátil (+2 em testes para derrubar ou desarmar). Dano 2d4/2d4: ambos os valores são iguais (a barra indica que cada 'ponta' conta como arma separada para efeitos de Dupla).",
+    "efeitos": []
   }
 }

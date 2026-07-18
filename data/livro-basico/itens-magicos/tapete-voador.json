@@ -15,6 +15,25 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Maior",
-    "preco": "T$ 60.000"
+    "preco": "T$ 60.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento_voo",
+        "valor": 12,
+        "unidade": "m",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "veiculo_transporta_ate_6_criaturas_medias",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "ativacao": {
+      "custo": { "acao": "livre" },
+      "encerramento": "Pode ser comandado à distância (alcance longo). Capacidade: 6 criaturas Médias ou 120 espaços."
+    }
   }
 }

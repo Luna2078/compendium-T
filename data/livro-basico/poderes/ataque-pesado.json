@@ -10,6 +10,9 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Estilo de Duas Mãos",
-    "descricao": "Quando faz um ataque corpo a corpo com uma arma de duas mãos, você pode pagar 1 PM. Se fizer isso e acertar o ataque, além do dano você faz uma manobra derrubar ou empurrar contra o alvo como uma ação livre (use o resultado do ataque como o teste de manobra)."
+    "descricao": "Quando faz um ataque corpo a corpo com uma arma de duas mãos, você pode pagar 1 PM. Se fizer isso e acertar o ataque, além do dano você faz uma manobra derrubar ou empurrar contra o alvo como uma ação livre (use o resultado do ataque como o teste de manobra).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "executa_manobra_ao_acertar", "aplicacao": "lembrete" }
+    ]
   }
 }

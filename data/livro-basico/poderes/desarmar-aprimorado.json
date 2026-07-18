@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Combate Defensivo",
-    "descricao": "Você recebe +2 em testes de ataque para desarmar. Quando desarma uma criatura, pode gastar 1 PM para arremessar a arma dela para longe. Para definir onde a arma cai, role 1d8 para a direção (sendo \"1\" diretamente à sua frente, \"2\" à frente e à direita e assim por diante) e 1d6 para a distância (medida em quadrados de 1,5m a partir da criatura desarmada)."
+    "descricao": "Você recebe +2 em testes de ataque para desarmar. Quando desarma uma criatura, pode gastar 1 PM para arremessar a arma dela para longe. Para definir onde a arma cai, role 1d8 para a direção (sendo \"1\" diretamente à sua frente, \"2\" à frente e à direita e assim por diante) e 1d6 para a distância (medida em quadrados de 1,5m a partir da criatura desarmada).",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 2,
+        "condicao": { "campo": "intencao", "igual": "desarmar" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "arremessa_arma_desarmada",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -18,6 +18,7 @@
       "critico": "x2",
       "tipoDano": "Perfuração",
       "habilidades": ["Alongada"]
-    }
+    },
+    "efeitos": []
   }
 }

@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Escudo do Eclipse",
   "resumo": "Escudo pesado negro que absorve a luz, fornece redução de trevas, adiciona dano de trevas e lança Escuridão.",
-  "fonte": { "livro": "livro-basico", "pagina": 340 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 340
+  },
   "imagens": [],
   "secoes": [
     {
@@ -15,6 +18,47 @@
   "mecanica": {
     "tipoItem": "Escudo Específico",
     "categoria": "Maior",
-    "preco": "T$ 70.000"
+    "preco": "T$ 70.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:defensor",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 10,
+        "condicao": {
+          "campo": "dano.tipo",
+          "em": [
+            "trevas"
+          ]
+        },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": {
+          "dados": {
+            "n": 1,
+            "faces": 8
+          }
+        },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_escuridao",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "ativacao": {
+      "custo": {
+        "pm": 2,
+        "acao": "movimento"
+      }
+    }
   }
 }

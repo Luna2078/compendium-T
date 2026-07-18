@@ -11,6 +11,9 @@
     "categoria": "alquimico",
     "preco": "T$ 45",
     "espacos": "0,5",
-    "especial": "Usado como catalisador, aumenta o dano de magias em um dado do mesmo tipo."
+    "especial": "Usado como catalisador, aumenta o dano de magias em um dado do mesmo tipo.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "catalisador_modifica_magia", "aplicacao": "lembrete" }
+    ]
   }
 }

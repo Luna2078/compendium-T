@@ -11,6 +11,13 @@
     "categoria": "item-aventura",
     "preco": "T$ 7",
     "espacos": "1",
-    "especial": "Acender um lampião é uma ação padrão e sua luz ilumina um raio com 15m. Carregar um lampião com óleo é uma ação padrão e ele dura uma cena."
+    "especial": "Acender um lampião é uma ação padrão e sua luz ilumina um raio com 15m. Carregar um lampião com óleo é uma ação padrão e ele dura uma cena.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_luz",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

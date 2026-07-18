@@ -18,6 +18,15 @@
   "mecanica": {
     "tipoItem": "Poção",
     "categoria": "Médio",
-    "preco": "T$ 270"
+    "preco": "T$ 270",
+    "ativacao": { "custo": { "acao": "padrao" } },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_efeito_magia_sem_custo",
+        "valor": "camuflagem-ilusoria",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

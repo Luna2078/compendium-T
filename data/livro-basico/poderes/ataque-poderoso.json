@@ -10,6 +10,10 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "For 1",
-    "descricao": "Sempre que faz um ataque corpo a corpo, você pode sofrer –2 no teste de ataque para receber +5 na rolagem de dano."
+    "descricao": "Sempre que faz um ataque corpo a corpo, você pode sofrer –2 no teste de ataque para receber +5 na rolagem de dano.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "ataque.corpo_a_corpo", "valor": -2, "opcionalPorAtaque": true, "aplicacao": "contextual" },
+      { "tipo": "bonus", "alvo": "dano.corpo_a_corpo", "valor": 5, "opcionalPorAtaque": true, "aplicacao": "contextual" }
+    ]
   }
 }

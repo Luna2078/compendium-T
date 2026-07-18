@@ -21,7 +21,16 @@
     "poderesUnicos": [
       {
         "nome": "Alpinista Social",
-        "descricao": "Você pode substituir testes de Diplomacia por testes de Enganação."
+        "descricao": "Você pode substituir testes de Diplomacia por testes de Enganação.",
+        "efeitos": [
+          {
+            "tipo": "substituicao",
+            "em": ["pericia:diplomacia"],
+            "de": "pericia:diplomacia",
+            "por": "pericia:enganacao",
+            "aplicacao": "contextual"
+          }
+        ]
       }
     ]
   }

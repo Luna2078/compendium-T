@@ -11,6 +11,15 @@
     "categoria": "vestuario",
     "preco": "T$ 25",
     "espacos": "1",
-    "especial": "Fornece +1 em Enganação."
+    "especial": "Fornece +1 em Enganação.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:enganacao",
+        "valor": 1,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

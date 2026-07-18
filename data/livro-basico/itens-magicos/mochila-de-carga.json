@@ -15,6 +15,24 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Menor",
-    "preco": "T$ 3.000"
+    "preco": "T$ 3.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "carga.limite",
+        "valor": 10,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "nao_conta_como_item_vestido",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "espaco_interdimensional_aviso_rasgar",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Cáustica",
   "resumo": "Encanto de armadura ou escudo que concede redução de ácido e permite que o item goteje ácido, somando dano aos ataques.",
-  "fonte": { "livro": "livro-basico", "pagina": 338 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 338
+  },
   "imagens": [],
   "secoes": [
     {
@@ -13,6 +16,41 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "ativacao": {
+      "custo": {
+        "pm": 2,
+        "acao": "movimento"
+      },
+      "encerramento": "O ácido que goteja dura até o fim da cena."
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 10,
+        "condicao": {
+          "campo": "dano.tipo",
+          "em": [
+            "acido"
+          ]
+        },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": {
+          "dados": {
+            "n": 1,
+            "faces": 4
+          }
+        },
+        "condicao": {
+          "quando": "ativo"
+        },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

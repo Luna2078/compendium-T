@@ -22,7 +22,14 @@
     "poderesUnicos": [
       {
         "nome": "Pão e Circo",
-        "descricao": "Por seu treino em combates de exibição, você sabe \"bater sem machucar\". Pode escolher causar dano não letal sem sofrer a penalidade de –5."
+        "descricao": "Por seu treino em combates de exibição, você sabe \"bater sem machucar\". Pode escolher causar dano não letal sem sofrer a penalidade de –5.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "anula_penalidade_dano_nao_letal",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

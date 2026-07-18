@@ -10,6 +10,62 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "6º nível de personagem",
-    "descricao": "Confiando em suas próprias habilidades (ou em sua própria sorte), você abre mão de usar itens mágicos. Sua autoconfiança fornece diversos benefícios, de acordo com seu nível de personagem e a tabela abaixo.\n\nNível  | Benefício\n6º     | +2 em uma perícia\n7º     | +1 na Defesa\n8º     | +1 nas rolagens de dano\n9º     | +1 em um atributo\n11º    | +2 em uma perícia\n12º    | +2 na Defesa\n13º    | +2 nas rolagens de dano\n14º    | +1 em um atributo\n16º    | +2 em uma perícia\n17º    | +3 na Defesa\n18º    | +3 nas rolagens de dano\n19º    | +1 em um atributo\n\nOs bônus não são cumulativos (os bônus em atributos e perícias devem ser aplicados num atributo ou perícia diferente a cada vez). Se você utilizar voluntariamente qualquer item mágico (exceto poções), perde o benefício deste poder até o fim da aventura. Você ainda pode lançar magias, receber magias benéficas ou beneficiar-se de itens usados por outros — por exemplo, pode \"ir de carona\" em um tapete voador, mas não pode você mesmo conduzi-lo."
+    "descricao": "Confiando em suas próprias habilidades (ou em sua própria sorte), você abre mão de usar itens mágicos. Sua autoconfiança fornece diversos benefícios, de acordo com seu nível de personagem e a tabela abaixo.\n\nNível  | Benefício\n6º     | +2 em uma perícia\n7º     | +1 na Defesa\n8º     | +1 nas rolagens de dano\n9º     | +1 em um atributo\n11º    | +2 em uma perícia\n12º    | +2 na Defesa\n13º    | +2 nas rolagens de dano\n14º    | +1 em um atributo\n16º    | +2 em uma perícia\n17º    | +3 na Defesa\n18º    | +3 nas rolagens de dano\n19º    | +1 em um atributo\n\nOs bônus não são cumulativos (os bônus em atributos e perícias devem ser aplicados num atributo ou perícia diferente a cada vez). Se você utilizar voluntariamente qualquer item mágico (exceto poções), perde o benefício deste poder até o fim da aventura. Você ainda pode lançar magias, receber magias benéficas ou beneficiar-se de itens usados por outros — por exemplo, pode \"ir de carona\" em um tapete voador, mas não pode você mesmo conduzi-lo.",
+    "gate": {
+      "flag": "abriu_mao_itens_magicos",
+      "quebraPor": "usar_item_magico",
+      "excecao": ["pocao"],
+      "restauraEm": "aventura"
+    },
+    "progressao": [
+      {
+        "nivelMin": 6,
+        "escolhas": [
+          { "id": "pericia_6", "rotulo": "+2 em uma perícia", "alvoTipo": "pericia",
+            "efeito": { "tipo": "bonus", "valor": 2, "aplicacao": "automatica" }, "restricao": "distinta" }
+        ]
+      },
+      { "nivelMin": 7, "efeitos": [ { "tipo": "bonus", "alvo": "defesa", "valor": 1, "aplicacao": "automatica" } ] },
+      { "nivelMin": 8, "efeitos": [ { "tipo": "bonus", "alvo": "dano", "valor": 1, "aplicacao": "automatica" } ] },
+      {
+        "nivelMin": 9,
+        "escolhas": [
+          { "id": "atributo_9", "rotulo": "+1 em um atributo", "alvoTipo": "atributo",
+            "efeito": { "tipo": "bonus", "valor": 1, "aplicacao": "automatica" }, "restricao": "distinta" }
+        ]
+      },
+      {
+        "nivelMin": 11,
+        "escolhas": [
+          { "id": "pericia_11", "rotulo": "+2 em uma perícia", "alvoTipo": "pericia",
+            "efeito": { "tipo": "bonus", "valor": 2, "aplicacao": "automatica" }, "restricao": "distinta" }
+        ]
+      },
+      { "nivelMin": 12, "efeitos": [ { "tipo": "bonus", "alvo": "defesa", "valor": 1, "aplicacao": "automatica" } ] },
+      { "nivelMin": 13, "efeitos": [ { "tipo": "bonus", "alvo": "dano", "valor": 1, "aplicacao": "automatica" } ] },
+      {
+        "nivelMin": 14,
+        "escolhas": [
+          { "id": "atributo_14", "rotulo": "+1 em um atributo", "alvoTipo": "atributo",
+            "efeito": { "tipo": "bonus", "valor": 1, "aplicacao": "automatica" }, "restricao": "distinta" }
+        ]
+      },
+      {
+        "nivelMin": 16,
+        "escolhas": [
+          { "id": "pericia_16", "rotulo": "+2 em uma perícia", "alvoTipo": "pericia",
+            "efeito": { "tipo": "bonus", "valor": 2, "aplicacao": "automatica" }, "restricao": "distinta" }
+        ]
+      },
+      { "nivelMin": 17, "efeitos": [ { "tipo": "bonus", "alvo": "defesa", "valor": 1, "aplicacao": "automatica" } ] },
+      { "nivelMin": 18, "efeitos": [ { "tipo": "bonus", "alvo": "dano", "valor": 1, "aplicacao": "automatica" } ] },
+      {
+        "nivelMin": 19,
+        "escolhas": [
+          { "id": "atributo_19", "rotulo": "+1 em um atributo", "alvoTipo": "atributo",
+            "efeito": { "tipo": "bonus", "valor": 1, "aplicacao": "automatica" }, "restricao": "distinta" }
+        ]
+      }
+    ]
   }
 }

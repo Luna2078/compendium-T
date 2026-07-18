@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Sangue Azul",
-        "descricao": "Você tem alguma influência política, suficiente para ser tratado com mais leniência pela guarda, conseguir uma audiência com o nobre local etc."
+        "descricao": "Você tem alguma influência política, suficiente para ser tratado com mais leniência pela guarda, conseguir uma audiência com o nobre local etc.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "possui_influencia_politica",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

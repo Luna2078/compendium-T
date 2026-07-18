@@ -10,6 +10,9 @@
   "mecanica": {
     "categoria": "servico",
     "preco": "T$ 0,5 / T$ 0,1 / T$ 10 por km",
-    "especial": "Preço por km. Inclui viagens terrestres (em carroças), marítimas (em navios) ou aéreas (balões goblins). Tiers: Terrestre (T$ 0,5 por km). Marítima (T$ 0,1 por km). Aérea (T$ 10 por km) — viajar em balões goblins é arriscado: a cada 100 km há 1 chance em 20 de queda (não fatal)."
+    "especial": "Preço por km. Inclui viagens terrestres (em carroças), marítimas (em navios) ou aéreas (balões goblins). Tiers: Terrestre (T$ 0,5 por km). Marítima (T$ 0,1 por km). Aérea (T$ 10 por km) — viajar em balões goblins é arriscado: a cada 100 km há 1 chance em 20 de queda (não fatal).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "servico_preco_por_tier", "aplicacao": "lembrete" }
+    ]
   }
 }

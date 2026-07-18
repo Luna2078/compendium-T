@@ -18,6 +18,15 @@
   "mecanica": {
     "tipoItem": "Poção",
     "categoria": "Menor",
-    "preco": "T$ 30"
+    "preco": "T$ 30",
+    "ativacao": { "custo": { "acao": "padrao" } },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_efeito_magia_sem_custo",
+        "valor": "resistencia-a-energia",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

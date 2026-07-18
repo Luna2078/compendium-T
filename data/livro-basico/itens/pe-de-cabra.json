@@ -11,6 +11,16 @@
     "categoria": "item-aventura",
     "preco": "T$ 2",
     "espacos": "1",
-    "especial": "Esta barra de ferro fornece +5 em testes de Força para abrir portas, janelas e baús fechados. Um pé de cabra pode ser usado como arma, com as estatísticas de uma clava."
+    "especial": "Esta barra de ferro fornece +5 em testes de Força para abrir portas, janelas e baús fechados. Um pé de cabra pode ser usado como arma, com as estatísticas de uma clava.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:atletismo",
+        "valor": 5,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "contextual"
+      },
+      { "tipo": "capacidade", "chave": "usavel_como_arma_improvisada", "aplicacao": "lembrete" }
+    ]
   }
 }

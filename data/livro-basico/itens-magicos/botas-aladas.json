@@ -15,6 +15,20 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Médio",
-    "preco": "T$ 15.000"
+    "preco": "T$ 15.000",
+    "ativacao": {
+      "custo": { "pm": 2, "acao": "livre" },
+      "encerramento": "Gaste 1 PM no início de cada turno para manter o voo. Se não gastar, o efeito termina e a arma cai."
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento_voo",
+        "valor": 12,
+        "unidade": "m",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Braçadeiras do Arqueiro",
   "resumo": "Braçadeiras que concedem +2 em rolagens de dano com armas de ataque à distância.",
-  "fonte": { "livro": "livro-basico", "pagina": 342 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 342
+  },
   "imagens": [],
   "secoes": [
     {
@@ -15,6 +18,21 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Médio",
-    "preco": "T$ 21.000"
+    "preco": "T$ 21.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 2,
+        "aplicacao": "automatica",
+        "condicao": {
+          "campo": "arma.tipo_ataque",
+          "em": [
+            "disparo",
+            "arremesso"
+          ]
+        }
+      }
+    ]
   }
 }

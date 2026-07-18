@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "magia",
     "prerequisito": "habilidade de classe Magias, treinado em Ofício (alquimista)",
-    "descricao": "Você pode usar a perícia Ofício (alquimista) para fabricar poções com magias que conheça de 1º e 2º círculos. Veja a página 121 para a regra de fabricar itens e as páginas 333 e 341 para as regras de poções."
+    "descricao": "Você pode usar a perícia Ofício (alquimista) para fabricar poções com magias que conheça de 1º e 2º círculos. Veja a página 121 para a regra de fabricar itens e as páginas 333 e 341 para as regras de poções.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "fabrica_pocoes_oficio_alquimista",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

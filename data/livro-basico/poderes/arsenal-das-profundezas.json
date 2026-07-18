@@ -10,6 +10,22 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto do Oceano",
-    "descricao": "Você recebe +2 nas rolagens de dano com azagaias, lanças e tridentes e seu multiplicador de crítico com essas armas aumenta em +1."
+    "descricao": "Você recebe +2 nas rolagens de dano com azagaias, lanças e tridentes e seu multiplicador de crítico com essas armas aumenta em +1.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 2,
+        "condicao": { "campo": "arma.familia", "em": ["azagaia", "lanca", "tridente"] },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "critico.multiplicador",
+        "valor": 1,
+        "condicao": { "campo": "arma.familia", "em": ["azagaia", "lanca", "tridente"] },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

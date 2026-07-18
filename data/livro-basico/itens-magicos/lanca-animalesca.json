@@ -15,6 +15,19 @@
   "mecanica": {
     "tipoItem": "Arma Específica",
     "categoria": "Maior",
-    "preco": "T$ 45.000"
+    "preco": "T$ 45.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto",
+        "valor": "formidavel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "transfere_bonus_arma_para_forma_selvagem",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

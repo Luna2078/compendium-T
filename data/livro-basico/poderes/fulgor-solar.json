@@ -10,6 +10,18 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Azgher",
-    "descricao": "Você recebe redução de frio e trevas 5. Além disso, quando é alvo de um ataque você pode gastar 1 PM para emitir um clarão solar que deixa o atacante ofuscado por uma rodada."
+    "descricao": "Você recebe redução de frio e trevas 5. Além disso, quando é alvo de um ataque você pode gastar 1 PM para emitir um clarão solar que deixa o atacante ofuscado por uma rodada.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "reducao_dano_frio_trevas_5",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "emite_clarao_ofusca_atacante",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

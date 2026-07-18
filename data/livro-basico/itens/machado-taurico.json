@@ -19,6 +19,15 @@
       "tipoDano": "Corte",
       "habilidades": ["Desbalanceada"]
     },
-    "especial": "Desbalanceada: impõe –2 em testes de ataque."
+    "especial": "Desbalanceada: impõe –2 em testes de ataque.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": -2,
+        "condicao": { "campo": "arma.id", "igual": "machado-taurico" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

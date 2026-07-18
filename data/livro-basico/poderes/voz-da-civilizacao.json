@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Tanna-Toh",
-    "descricao": "Você está sempre sob efeito de Compreensão."
+    "descricao": "Você está sempre sob efeito de Compreensão.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "efeito_permanente_compreensao",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -10,6 +10,18 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Hyninn",
-    "descricao": "Você aprende e pode lançar Criar Ilusão. Caso aprenda novamente essa magia, seu custo diminui em –1 PM."
+    "descricao": "Você aprende e pode lançar Criar Ilusão. Caso aprenda novamente essa magia, seu custo diminui em –1 PM.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_criar_ilusao",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "modifica_poder",
+        "alvo": "criar-ilusao",
+        "patchCusto": { "pm": -1 }
+      }
+    ]
   }
 }

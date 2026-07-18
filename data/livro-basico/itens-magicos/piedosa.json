@@ -13,6 +13,25 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "ativacao": {
+      "custo": { "pm": 1, "acao": "livre" },
+      "encerramento": "Gaste 1 PM novamente como ação livre para desativar o encanto."
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "dados": { "n": 1, "faces": 8 } },
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "todo_dano_causado_e_nao_letal",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -13,6 +13,15 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "dados": { "n": 2, "faces": 8 } },
+        "condicao": { "campo": "alvo.tipo_de_criatura", "em": ["devoto-energia-negativa", "maligno"] },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

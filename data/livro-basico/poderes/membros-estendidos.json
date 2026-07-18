@@ -9,6 +9,15 @@
   "relacoes": [],
   "mecanica": {
     "grupo": "tormenta",
-    "descricao": "Seus braços e armas naturais são grotescamente mais longos que o normal, o que aumenta seu alcance natural para ataques corpo a corpo em +1,5m. Para cada quatro outros poderes da Tormenta que você possui, esse alcance aumenta em +1,5m."
+    "descricao": "Seus braços e armas naturais são grotescamente mais longos que o normal, o que aumenta seu alcance natural para ataques corpo a corpo em +1,5m. Para cada quatro outros poderes da Tormenta que você possui, esse alcance aumenta em +1,5m.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "alcance_corpo_a_corpo_aumentado",
+        "valor": { "expr": "1.5 + 1.5 * floor(contagem.poderes.tormenta / 4)" },
+        "unidade": "m",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

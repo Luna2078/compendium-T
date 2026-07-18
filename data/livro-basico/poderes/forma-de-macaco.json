@@ -10,6 +10,37 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Hyninn",
-    "descricao": "Você pode gastar uma ação completa e 2 PM para se transformar em um macaco. Você adquire tamanho Minúsculo (o que fornece +5 em Furtividade e –5 em testes de manobra) e recebe deslocamento de escalar 9m. Seu equipamento desaparece (e você perde seus benefícios) até você voltar ao normal, mas suas outras estatísticas não são alteradas. A transformação dura indefinidamente, mas termina caso você faça um ataque, lance uma magia ou sofra dano."
+    "descricao": "Você pode gastar uma ação completa e 2 PM para se transformar em um macaco. Você adquire tamanho Minúsculo (o que fornece +5 em Furtividade e –5 em testes de manobra) e recebe deslocamento de escalar 9m. Seu equipamento desaparece (e você perde seus benefícios) até você voltar ao normal, mas suas outras estatísticas não são alteradas. A transformação dura indefinidamente, mas termina caso você faça um ataque, lance uma magia ou sofra dano.",
+    "ativacao": {
+      "custo": { "pm": 2, "acao": "padrao" },
+      "encerramento": "Termina se você fizer um ataque, lançar uma magia ou sofrer dano."
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:furtividade",
+        "valor": 5,
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "penalidade_manobras_tamanho_minusculo",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "deslocamento_escalar_9m",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "equipamento_some_na_transformacao",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

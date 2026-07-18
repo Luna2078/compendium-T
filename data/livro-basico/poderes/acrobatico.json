@@ -10,6 +10,21 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "Des 2",
-    "descricao": "Você pode usar sua Destreza em vez de Força em testes de Atletismo. Além disso, terreno difícil não reduz seu deslocamento nem o impede de realizar investidas."
+    "descricao": "Você pode usar sua Destreza em vez de Força em testes de Atletismo. Além disso, terreno difícil não reduz seu deslocamento nem o impede de realizar investidas.",
+    "efeitos": [
+      {
+        "tipo": "substituicao",
+        "em": ["pericia:atletismo"],
+        "de": "atr.for",
+        "por": "atr.des",
+        "condicao": { "quando": "sempre" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_terreno_dificil",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

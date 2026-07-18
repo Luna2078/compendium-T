@@ -11,6 +11,13 @@
     "categoria": "alquimico",
     "preco": "T$ 45",
     "espacos": "0,5",
-    "especial": "Usado como catalisador, potencializa magias de cura, aumentando sua cura em +1 PV por dado."
+    "especial": "Usado como catalisador, potencializa magias de cura, aumentando sua cura em +1 PV por dado.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "catalisador_modifica_magia",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

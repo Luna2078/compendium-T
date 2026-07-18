@@ -10,6 +10,24 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Sab 1, Disparo Preciso",
-    "descricao": "Quando usa a ação mirar, você recebe +2 em testes de ataque e na margem de ameaça com ataques à distância até o fim do turno."
+    "descricao": "Quando usa a ação mirar, você recebe +2 em testes de ataque e na margem de ameaça com ataques à distância até o fim do turno.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 2,
+        "opcionalPorAtaque": true,
+        "condicao": { "campo": "arma.tipo_ataque", "em": ["disparo"] },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "critico.margem",
+        "valor": 2,
+        "opcionalPorAtaque": true,
+        "condicao": { "campo": "arma.tipo_ataque", "em": ["disparo"] },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

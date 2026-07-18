@@ -10,6 +10,9 @@
   "mecanica": {
     "categoria": "animal",
     "preco": "T$ 75",
-    "especial": "Parceiro iniciante. Pode ser usado como parceiro montaria (veja a página 262). Cavalos sem treinamento se assustam facilmente, sendo necessário um teste de Cavalgar (CD 20) por rodada para permanecer montado durante um combate."
+    "especial": "Parceiro iniciante. Pode ser usado como parceiro montaria (veja a página 262). Cavalos sem treinamento se assustam facilmente, sendo necessário um teste de Cavalgar (CD 20) por rodada para permanecer montado durante um combate.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "possui_parceiro", "aplicacao": "lembrete" }
+    ]
   }
 }

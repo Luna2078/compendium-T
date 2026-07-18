@@ -13,6 +13,13 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "reflete_magia_recebida_ao_conjurador",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

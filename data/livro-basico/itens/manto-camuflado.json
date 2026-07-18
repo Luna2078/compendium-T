@@ -14,6 +14,15 @@
     "categoria": "vestuario",
     "preco": "T$ 12",
     "espacos": "1",
-    "especial": "Feito para um tipo de terreno específico (veja a habilidade Explorador, na página 51). Por exemplo, um manto camuflado para floresta pode ser verde e marrom e coberto de folhas, enquanto um manto urbano pode ser cinza ou negro. Usar um manto camuflado no terreno correto fornece +2 em Furtividade."
+    "especial": "Feito para um tipo de terreno específico (veja a habilidade Explorador, na página 51). Por exemplo, um manto camuflado para floresta pode ser verde e marrom e coberto de folhas, enquanto um manto urbano pode ser cinza ou negro. Usar um manto camuflado no terreno correto fornece +2 em Furtividade.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:furtividade",
+        "valor": 2,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

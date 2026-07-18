@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Des 1",
-    "descricao": "Você ganha uma ação de movimento extra no seu primeiro turno de cada combate."
+    "descricao": "Você ganha uma ação de movimento extra no seu primeiro turno de cada combate.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "acao_movimento_extra_primeiro_turno",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

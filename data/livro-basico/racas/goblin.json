@@ -36,22 +36,67 @@
       {
         "nome": "Engenhoso",
         "descricao": "Você não sofre penalidades em testes de perícia por não usar ferramentas. Se usar a ferramenta necessária, recebe +2 no teste de perícia.",
-        "efeito": "Sem penalidade por falta de ferramentas; +2 no teste de perícia quando usa a ferramenta necessária"
+        "efeito": "Sem penalidade por falta de ferramentas; +2 no teste de perícia quando usa a ferramenta necessária",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_penalidade_pericia_sem_ferramenta",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_pericia_com_ferramenta",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Espelunqueiro",
         "descricao": "Você recebe visão no escuro e deslocamento de escalada igual ao seu deslocamento terrestre.",
-        "efeito": "Visão no escuro; deslocamento de escalada igual ao terrestre"
+        "efeito": "Visão no escuro; deslocamento de escalada igual ao terrestre",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "visao_no_escuro",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "deslocamento_escalar",
+            "valor": { "expr": "deslocamento" },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Peste Esguia",
         "descricao": "Seu tamanho é Pequeno (veja a página 106), mas seu deslocamento se mantém 9m. Apesar de pequenos, goblins são rápidos.",
-        "efeito": "Tamanho Pequeno; deslocamento 9m"
+        "efeito": "Tamanho Pequeno; deslocamento 9m",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "tamanho_pequeno",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Rato das Ruas",
         "descricao": "Você recebe +2 em Fortitude e sua recuperação de PV e PM nunca é inferior ao seu nível.",
-        "efeito": "+2 em Fortitude; recuperação de PV e PM nunca inferior ao seu nível"
+        "efeito": "+2 em Fortitude; recuperação de PV e PM nunca inferior ao seu nível",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:fortitude",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "recuperacao_pv_pm_minima_nivel",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

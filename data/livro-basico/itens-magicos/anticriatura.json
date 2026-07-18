@@ -13,6 +13,16 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "dados": { "n": 4, "faces": 8 } },
+        "opcionalPorAtaque": { "custo": { "pm": 2 } },
+        "condicao": { "campo": "alvo.tipo_de_criatura", "em": ["animal", "construto", "espirito", "monstro", "morto-vivo", "humanoide"] },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Água no Feijão",
-        "descricao": "Você não sofre a penalidade de –5 e não gasta matéria prima adicional para fabricar pratos para cinco pessoas."
+        "descricao": "Você não sofre a penalidade de –5 e não gasta matéria prima adicional para fabricar pratos para cinco pessoas.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_penalidade_fabricar_pratos",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

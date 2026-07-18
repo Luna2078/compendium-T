@@ -15,6 +15,26 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Menor",
-    "preco": "T$ 4.500"
+    "preco": "T$ 4.500",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:fortitude",
+        "valor": 2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:reflexos",
+        "valor": 2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:vontade",
+        "valor": 2,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

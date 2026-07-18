@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "magia",
     "prerequisito": "habilidade de classe Magias, treinado em Ofício (escriba)",
-    "descricao": "Você pode usar a perícia Ofício (escriba) para fabricar pergaminhos com magias que conheça. Veja a página 121 para a regra de fabricar itens e as páginas 333 e 341 para as regras de pergaminhos. De acordo com o mestre, você pode usar objetos similares, como runas, tabuletas de argila etc."
+    "descricao": "Você pode usar a perícia Ofício (escriba) para fabricar pergaminhos com magias que conheça. Veja a página 121 para a regra de fabricar itens e as páginas 333 e 341 para as regras de pergaminhos. De acordo com o mestre, você pode usar objetos similares, como runas, tabuletas de argila etc.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "fabrica_pergaminhos",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

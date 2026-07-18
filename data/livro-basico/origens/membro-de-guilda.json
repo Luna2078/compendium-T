@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Rede de Contatos",
-        "descricao": "Graças à influência de sua guilda, você pode usar Diplomacia para interrogar sem custo e em uma hora (veja Investigação)."
+        "descricao": "Graças à influência de sua guilda, você pode usar Diplomacia para interrogar sem custo e em uma hora (veja Investigação).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "interroga_com_pericia_sem_custo_em_uma_hora",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

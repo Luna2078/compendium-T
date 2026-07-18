@@ -15,6 +15,7 @@
       "subcategoria": "pesada",
       "bonusDefesa": 6,
       "penalidadeArmadura": -2
-    }
+    },
+    "efeitos": []
   }
 }

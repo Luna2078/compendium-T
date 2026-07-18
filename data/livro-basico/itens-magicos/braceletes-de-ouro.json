@@ -15,6 +15,14 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Maior",
-    "preco": "T$ 64.500"
+    "preco": "T$ 64.500",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": 8,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

@@ -10,6 +10,19 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Sszzaas",
-    "descricao": "Você pode gastar uma ação de movimento e 1 PM para envenenar uma arma corpo a corpo que esteja empunhando. Em caso de acerto, a arma causa perda de 1d12 pontos de vida. A arma permanece envenenada até atingir uma criatura ou até o fim da cena, o que acontecer primeiro."
+    "descricao": "Você pode gastar uma ação de movimento e 1 PM para envenenar uma arma corpo a corpo que esteja empunhando. Em caso de acerto, a arma causa perda de 1d12 pontos de vida. A arma permanece envenenada até atingir uma criatura ou até o fim da cena, o que acontecer primeiro.",
+    "ativacao": {
+      "custo": { "pm": 1, "acao": "movimento" },
+      "encerramento": "O veneno dura até a arma acertar uma criatura ou até o fim da cena, o que ocorrer primeiro."
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano.corpo_a_corpo",
+        "valor": { "dados": { "n": 1, "faces": 12 } },
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

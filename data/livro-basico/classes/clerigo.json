@@ -3,8 +3,13 @@
   "tipo": "classe",
   "nome": "Clérigo",
   "resumo": "Sacerdote cuja devoção é tão poderosa que o torna capaz de realizar milagres. Arauto e servo dos deuses nas tramas celestiais, pode curar, ferir e erguer os mortos com o poder divino.",
-  "fonte": { "livro": "livro-basico", "pagina": 56 },
-  "imagens": ["/classes/clerigo.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 56
+  },
+  "imagens": [
+    "/classes/clerigo.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -31,134 +36,489 @@
     "pmPorNivel": 5,
     "pericias": {
       "quantidade": 2,
-      "fixas": ["Religião (Sab)", "Vontade (Sab)"],
-      "lista": ["Conhecimento (Int)", "Cura (Sab)", "Diplomacia (Car)", "Fortitude (Con)", "Iniciativa (Des)", "Intuição (Sab)", "Luta (For)", "Misticismo (Int)", "Nobreza (Int)", "Ofício (Int)", "Percepção (Sab)"],
+      "fixas": [
+        "Religião (Sab)",
+        "Vontade (Sab)"
+      ],
+      "lista": [
+        "Conhecimento (Int)",
+        "Cura (Sab)",
+        "Diplomacia (Car)",
+        "Fortitude (Con)",
+        "Iniciativa (Des)",
+        "Intuição (Sab)",
+        "Luta (For)",
+        "Misticismo (Int)",
+        "Nobreza (Int)",
+        "Ofício (Int)",
+        "Percepção (Sab)"
+      ],
       "texto": "Religião (Sab) e Vontade (Sab), mais 2 a sua escolha entre Conhecimento (Int), Cura (Sab), Diplomacia (Car), Fortitude (Con), Iniciativa (Des), Intuição (Sab), Luta (For), Misticismo (Int), Nobreza (Int), Ofício (Int) e Percepção (Sab)."
     },
-    "proficiencias": ["armaduras pesadas", "escudos"],
+    "proficiencias": [
+      "armaduras pesadas",
+      "escudos"
+    ],
     "progressao": [
-      { "nivel": 1,  "habilidades": ["Devoto fiel", "Magias (1º círculo)"] },
-      { "nivel": 2,  "habilidades": ["Poder de clérigo"] },
-      { "nivel": 3,  "habilidades": ["Poder de clérigo"] },
-      { "nivel": 4,  "habilidades": ["Poder de clérigo"] },
-      { "nivel": 5,  "habilidades": ["Magias (2º círculo)", "Poder de clérigo"] },
-      { "nivel": 6,  "habilidades": ["Poder de clérigo"] },
-      { "nivel": 7,  "habilidades": ["Poder de clérigo"] },
-      { "nivel": 8,  "habilidades": ["Poder de clérigo"] },
-      { "nivel": 9,  "habilidades": ["Magias (3º círculo)", "Poder de clérigo"] },
-      { "nivel": 10, "habilidades": ["Poder de clérigo"] },
-      { "nivel": 11, "habilidades": ["Poder de clérigo"] },
-      { "nivel": 12, "habilidades": ["Poder de clérigo"] },
-      { "nivel": 13, "habilidades": ["Magias (4º círculo)", "Poder de clérigo"] },
-      { "nivel": 14, "habilidades": ["Poder de clérigo"] },
-      { "nivel": 15, "habilidades": ["Poder de clérigo"] },
-      { "nivel": 16, "habilidades": ["Poder de clérigo"] },
-      { "nivel": 17, "habilidades": ["Magias (5º círculo)", "Poder de clérigo"] },
-      { "nivel": 18, "habilidades": ["Poder de clérigo"] },
-      { "nivel": 19, "habilidades": ["Poder de clérigo"] },
-      { "nivel": 20, "habilidades": ["Mão da divindade", "Poder de clérigo"] }
+      {
+        "nivel": 1,
+        "habilidades": [
+          "Devoto fiel",
+          "Magias (1º círculo)"
+        ]
+      },
+      {
+        "nivel": 2,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 4,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 5,
+        "habilidades": [
+          "Magias (2º círculo)",
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 6,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 7,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 8,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 9,
+        "habilidades": [
+          "Magias (3º círculo)",
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 10,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 11,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 12,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 13,
+        "habilidades": [
+          "Magias (4º círculo)",
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 14,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 15,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 16,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 17,
+        "habilidades": [
+          "Magias (5º círculo)",
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 18,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 19,
+        "habilidades": [
+          "Poder de clérigo"
+        ]
+      },
+      {
+        "nivel": 20,
+        "habilidades": [
+          "Mão da divindade",
+          "Poder de clérigo"
+        ]
+      }
     ],
     "habilidades": [
       {
         "nome": "Devoto Fiel",
         "nivel": 1,
-        "descricao": "Você se torna devoto de um deus maior. Veja as regras de devotos na página 96. Ao contrário de devotos normais, você recebe dois poderes concedidos por se tornar devoto, em vez de apenas um.\n\nComo alternativa, você pode cultuar o Panteão como um todo. Não recebe nenhum Poder Concedido, mas sua única obrigação e restrição é não usar armas cortantes ou perfurantes (porque derramam sangue, algo que clérigos do Panteão consideram proibido). Sua arma preferida é a maça e você pode canalizar energia positiva ou negativa a sua escolha (uma vez feita, essa escolha não pode ser mudada). Cultuar o Panteão conta como sua devoção."
+        "descricao": "Você se torna devoto de um deus maior. Veja as regras de devotos na página 96. Ao contrário de devotos normais, você recebe dois poderes concedidos por se tornar devoto, em vez de apenas um.\n\nComo alternativa, você pode cultuar o Panteão como um todo. Não recebe nenhum Poder Concedido, mas sua única obrigação e restrição é não usar armas cortantes ou perfurantes (porque derramam sangue, algo que clérigos do Panteão consideram proibido). Sua arma preferida é a maça e você pode canalizar energia positiva ou negativa a sua escolha (uma vez feita, essa escolha não pode ser mudada). Cultuar o Panteão conta como sua devoção.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "devoto_de_deus_maior_dois_poderes_concedidos",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Magias",
         "nivel": 1,
-        "descricao": "Você pode lançar magias divinas de 1º círculo. A cada quatro níveis, pode lançar magias de um círculo maior (2º círculo no 5º nível, 3º círculo no 9º nível e assim por diante).\n\nVocê começa com três magias de 1º círculo. A cada nível, aprende uma magia de qualquer círculo que possa lançar.\n\nSeu atributo-chave para lançar magias é Sabedoria e você soma sua Sabedoria no seu total de PM. Veja o Capítulo 4 para as regras de magia."
+        "descricao": "Você pode lançar magias divinas de 1º círculo. A cada quatro níveis, pode lançar magias de um círculo maior (2º círculo no 5º nível, 3º círculo no 9º nível e assim por diante).\n\nVocê começa com três magias de 1º círculo. A cada nível, aprende uma magia de qualquer círculo que possa lançar.\n\nSeu atributo-chave para lançar magias é Sabedoria e você soma sua Sabedoria no seu total de PM. Veja o Capítulo 4 para as regras de magia.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "lanca_magias_divinas_da_classe",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pm.max",
+            "valor": {
+              "expr": "atr.sab"
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Mão da Divindade",
         "nivel": 20,
         "descricao": "No 20º nível, você pode gastar uma ação completa e 15 PM para canalizar energia divina. Ao fazer isso, você lança três magias divinas quaisquer (de qualquer círculo, incluindo magias que você não conhece), como uma ação livre e sem gastar PM (mas ainda precisa pagar outros custos). Você pode aplicar aprimoramentos, mas precisa pagar por eles. Após usar esta habilidade, você fica atordoado por 1d4 rodadas (mesmo se for imune a esta condição). Corpos mortais não foram feitos para lidar com tanto poder.",
-        "custo": "15 PM"
+        "custo": "15 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "lanca_tres_magias_divinas_quaisquer_acao_completa",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ],
     "poderes": [
       {
         "nome": "Abençoar Arma",
         "descricao": "Você se torna proficiente na arma preferida de sua divindade. Se estiver empunhando essa arma, pode gastar uma ação de movimento e 3 PM para infundi-la com poder divino. Até o final da cena, a arma é considerada mágica e emite luz dourada ou púrpura (como uma tocha). Além disso, o dano da arma aumenta em um passo e você pode usar sua Sabedoria em testes de ataque e rolagens de dano com ela, em vez do atributo padrão (não cumulativo com efeitos que somam este atributo).",
-        "custo": "3 PM"
+        "custo": "3 PM",
+        "ativacao": {
+          "custo": {
+            "pm": 3,
+            "acao": "movimento"
+          },
+          "encerramento": "Dura até o fim da cena. Não acumula com outros efeitos que somam Sabedoria ao ataque/dano."
+        },
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "proficiente_arma_preferida_divindade",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "arma_considerada_magica_emite_luz",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "passo_de_dado",
+            "alvo": "dano",
+            "passos": 1,
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "substituicao",
+            "em": [
+              "ataque",
+              "dano"
+            ],
+            "de": "atr.for",
+            "por": "atr.sab",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Aumento de Atributo",
-        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo."
+        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo.",
+        "efeitos": [],
+        "empilhavel": true,
+        "escolhas": [
+          {
+            "id": "aumento_atributo",
+            "rotulo": "+1 em um atributo à escolha",
+            "alvoTipo": "atributo",
+            "efeito": {
+              "tipo": "bonus",
+              "valor": 1,
+              "aplicacao": "automatica"
+            },
+            "restricao": "uma_por_patamar_por_alvo"
+          }
+        ]
       },
       {
         "nome": "Autoridade Eclesiástica",
         "descricao": "Você possui uma posição formal em uma igreja reconhecida pelos outros membros de sua fé. Os efeitos deste poder variam de acordo com a igreja e o deus — clérigos de Khalmyr, por exemplo, possuem autoridade como juízes no Reinado — e ficam a cargo do mestre. Como regra geral, você recebe +5 em testes de Diplomacia ou Intimidação ao lidar com devotos de sua divindade e paga metade do preço de itens alquímicos, poções e serviços em templos de sua divindade.",
-        "prerequisito": "5º nível de clérigo, devoto de um deus maior"
+        "prerequisito": "5º nível de clérigo, devoto de um deus maior",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "possui_autoridade_eclesiastica",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "desconto_compra_venda_itens",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Canalizar Energia Positiva/Negativa",
-        "descricao": "Você pode gastar uma ação padrão e PM para liberar uma onda de luz (se sua divindade canaliza energia positiva) ou trevas (se canaliza energia negativa) que afeta criaturas a sua escolha em alcance curto. Para cada PM que gastar, luz cura 1d6 PV em criaturas vivas e causa 1d6 pontos de dano de luz em mortos-vivos (Vontade CD Sab reduz o dano à metade). Trevas tem o efeito inverso — causa dano de trevas a criaturas vivas e cura mortos-vivos."
+        "descricao": "Você pode gastar uma ação padrão e PM para liberar uma onda de luz (se sua divindade canaliza energia positiva) ou trevas (se canaliza energia negativa) que afeta criaturas a sua escolha em alcance curto. Para cada PM que gastar, luz cura 1d6 PV em criaturas vivas e causa 1d6 pontos de dano de luz em mortos-vivos (Vontade CD Sab reduz o dano à metade). Trevas tem o efeito inverso — causa dano de trevas a criaturas vivas e cura mortos-vivos.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "canaliza_energia_cura_ou_dano",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Canalizar Amplo",
         "descricao": "Quando você usa a habilidade Canalizar Energia, pode gastar +2 PM para aumentar o alcance dela para médio.",
         "prerequisito": "Canalizar Energia Positiva ou Negativa",
-        "custo": "+2 PM"
+        "custo": "+2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "canalizar_amplo_alcance_medio",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Comunhão Vital",
         "descricao": "Quando lança uma magia que cure uma criatura, você pode pagar +2 PM para que outra criatura em alcance curto (incluindo você mesmo) recupere uma quantidade de pontos de vida igual à metade dos PV da cura original.",
-        "custo": "+2 PM"
+        "custo": "+2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "comunhao_vital_cura_aliado_adicional",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Conhecimento Mágico",
-        "descricao": "Você aprende duas magias divinas de qualquer círculo que possa lançar. Você pode escolher este poder quantas vezes quiser."
+        "descricao": "Você aprende duas magias divinas de qualquer círculo que possa lançar. Você pode escolher este poder quantas vezes quiser.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_duas_magias_divinas_escolha",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Expulsar/Comandar Mortos-Vivos",
         "descricao": "Você pode gastar uma ação padrão e 3 PM para expulsar (se sua divindade canaliza energia positiva) ou comandar (se canaliza energia negativa) todos os mortos-vivos em alcance curto. Mortos-vivos expulsos ficam apavorados por 1d6 rodadas. Mortos-vivos comandados não inteligentes (Int –4 ou menor) ficam sob suas ordens por um dia (até um limite de ND somados igual a seu nível +3; dar uma ordem a todos eles é uma ação de movimento) e mortos-vivos comandados inteligentes ficam fascinados por uma rodada. Mortos-vivos têm direito a um teste de Vontade (CD Sab) para evitar qualquer destes efeitos.",
         "prerequisito": "Canalizar Energia Positiva ou Negativa",
-        "custo": "3 PM"
+        "custo": "3 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "expulsa_ou_comanda_mortos_vivos",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Liturgia Mágica",
-        "descricao": "Você pode gastar uma ação de movimento para executar uma breve liturgia de sua fé. Se fizer isso, a CD para resistir à sua próxima habilidade de clérigo (desde que usada até o final de seu próximo turno) aumenta em +2."
+        "descricao": "Você pode gastar uma ação de movimento para executar uma breve liturgia de sua fé. Se fizer isso, a CD para resistir à sua próxima habilidade de clérigo (desde que usada até o final de seu próximo turno) aumenta em +2.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aumenta_cd_resistir_magia",
+            "valor": 2,
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Magia Sagrada/Profana",
         "descricao": "Quando lança uma magia divina que causa dano, você pode gastar +1 PM. Se fizer isso, muda o tipo de dano da magia para luz (se sua divindade canaliza energia positiva) ou trevas (se canaliza energia negativa).",
-        "custo": "+1 PM"
+        "custo": "+1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "muda_tipo_dano_magia_para_luz_ou_trevas",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Mestre Celebrante",
         "descricao": "O número de pessoas que você afeta com uma missa aumenta em dez vezes e os benefícios que elas recebem dobram.",
-        "prerequisito": "qualquer poder de Missa, 12º nível de clérigo"
+        "prerequisito": "qualquer poder de Missa, 12º nível de clérigo",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "missa_afeta_dez_vezes_mais_beneficios_dobrados",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Missa: Bênção da Vida",
-        "descricao": "Os participantes recebem pontos de vida temporários em um valor igual ao seu nível + sua Sabedoria."
+        "descricao": "Os participantes recebem pontos de vida temporários em um valor igual ao seu nível + sua Sabedoria.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "missa_concede_pv_temporario_aliados",
+            "valor": {
+              "expr": "nivel + atr.sab"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Missa: Chamado às Armas",
-        "descricao": "Os participantes recebem +1 em testes de ataque e rolagens de dano."
+        "descricao": "Os participantes recebem +1 em testes de ataque e rolagens de dano.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "concede_bonus_pericias_aliados",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Missa: Elevação do Espírito",
-        "descricao": "Os participantes recebem pontos de mana temporários em um valor igual a sua Sabedoria."
+        "descricao": "Os participantes recebem pontos de mana temporários em um valor igual a sua Sabedoria.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "concede_pm_temporario_aliados",
+            "valor": {
+              "expr": "atr.sab"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Missa: Escudo Divino",
-        "descricao": "Os participantes recebem +1 na Defesa e testes de resistência."
+        "descricao": "Os participantes recebem +1 na Defesa e testes de resistência.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "missa_bonus_defesa_e_resistencia_aliados",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Missa: Superar as Limitações",
-        "descricao": "Cada participante recebe +1d6 num único teste a sua escolha e pode usá-lo mesmo após rolar o dado."
+        "descricao": "Cada participante recebe +1d6 num único teste a sua escolha e pode usá-lo mesmo após rolar o dado.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "missa_bonus_dado_teste_depois_de_rolar",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Prece de Combate",
         "descricao": "Quando lança uma magia divina com tempo de conjuração de uma ação padrão em si mesmo, você pode gastar +2 PM para lançá-la como uma ação de movimento.",
-        "custo": "+2 PM"
+        "custo": "+2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "lanca_magia_padrao_em_si_como_acao_movimento",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Símbolo Sagrado Energizado",
         "descricao": "Você pode gastar uma ação de movimento e 1 PM para fazer uma prece e energizar seu símbolo sagrado até o fim da cena. Um símbolo sagrado energizado emite uma luz dourada ou prateada (se sua divindade canaliza energia positiva) ou púrpura ou avermelhada (se canaliza energia negativa) que ilumina como uma tocha. Enquanto você estiver empunhando um símbolo sagrado energizado, o custo em PM para lançar suas magias divinas diminui em 1.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "ativacao": {
+          "custo": {
+            "pm": 1,
+            "acao": "movimento"
+          },
+          "encerramento": "Dura até o fim da cena. O efeito de redução de custo exige que você esteja empunhando o símbolo sagrado energizado."
+        },
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "simbolo_sagrado_emite_luz_como_tocha",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "reduz_custo_pm_magia",
+            "valor": 1,
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ],
     "conjuracao": {

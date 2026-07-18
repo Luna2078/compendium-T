@@ -3,8 +3,13 @@
   "tipo": "classe",
   "nome": "Cavaleiro",
   "resumo": "Herdeiro da nobre tradição da cavalaria — combatente leal e honrado, atado a um código de conduta, que protege os indefesos com armadura pesada, escudo e a espada de seu senhor ou de sua ordem.",
-  "fonte": { "livro": "livro-basico", "pagina": 52 },
-  "imagens": ["/classes/cavaleiro.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 52
+  },
+  "imagens": [
+    "/classes/cavaleiro.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -28,7 +33,12 @@
     }
   ],
   "relacoes": [
-    { "tipo": "exemplo", "alvoId": "orion-drake", "alvoTipo": "npc", "rotulo": "Orion Drake (o cavaleiro da Luz)" }
+    {
+      "tipo": "exemplo",
+      "alvoId": "orion-drake",
+      "alvoTipo": "npc",
+      "rotulo": "Orion Drake (o cavaleiro da Luz)"
+    }
   ],
   "mecanica": {
     "atributoChave": "Força (Carisma secundário em vários poderes)",
@@ -37,170 +47,881 @@
     "pmPorNivel": 3,
     "pericias": {
       "quantidade": 2,
-      "fixas": ["Fortitude (Con)", "Luta (For)"],
-      "lista": ["Adestramento (Car)", "Atletismo (For)", "Cavalgar (Des)", "Diplomacia (Car)", "Guerra (Int)", "Iniciativa (Des)", "Intimidação (Car)", "Nobreza (Int)", "Percepção (Sab)", "Vontade (Sab)"],
+      "fixas": [
+        "Fortitude (Con)",
+        "Luta (For)"
+      ],
+      "lista": [
+        "Adestramento (Car)",
+        "Atletismo (For)",
+        "Cavalgar (Des)",
+        "Diplomacia (Car)",
+        "Guerra (Int)",
+        "Iniciativa (Des)",
+        "Intimidação (Car)",
+        "Nobreza (Int)",
+        "Percepção (Sab)",
+        "Vontade (Sab)"
+      ],
       "texto": "Fortitude (Con) e Luta (For), mais 2 a sua escolha entre Adestramento (Car), Atletismo (For), Cavalgar (Des), Diplomacia (Car), Guerra (Int), Iniciativa (Des), Intimidação (Car), Nobreza (Int), Percepção (Sab) e Vontade (Sab)."
     },
-    "proficiencias": ["armas marciais", "armaduras pesadas", "escudos"],
+    "proficiencias": [
+      "armas marciais",
+      "armaduras pesadas",
+      "escudos"
+    ],
     "progressao": [
-      { "nivel": 1, "habilidades": ["Baluarte +2", "Código de honra"] },
-      { "nivel": 2, "habilidades": ["Duelo +2", "Poder de cavaleiro"] },
-      { "nivel": 3, "habilidades": ["Poder de cavaleiro"] },
-      { "nivel": 4, "habilidades": ["Poder de cavaleiro"] },
-      { "nivel": 5, "habilidades": ["Caminho do cavaleiro", "Baluarte +4", "Poder de cavaleiro"] },
-      { "nivel": 6, "habilidades": ["Poder de cavaleiro"] },
-      { "nivel": 7, "habilidades": ["Baluarte (aliados adjacentes)", "Duelo +3", "Poder de cavaleiro"] },
-      { "nivel": 8, "habilidades": ["Poder de cavaleiro"] },
-      { "nivel": 9, "habilidades": ["Baluarte +6", "Poder de cavaleiro"] },
-      { "nivel": 10, "habilidades": ["Poder de cavaleiro"] },
-      { "nivel": 11, "habilidades": ["Poder de cavaleiro", "Resoluto"] },
-      { "nivel": 12, "habilidades": ["Duelo +4", "Poder de cavaleiro"] },
-      { "nivel": 13, "habilidades": ["Baluarte +8", "Poder de cavaleiro"] },
-      { "nivel": 14, "habilidades": ["Poder de cavaleiro"] },
-      { "nivel": 15, "habilidades": ["Baluarte (aliados em alcance curto)", "Poder de cavaleiro"] },
-      { "nivel": 16, "habilidades": ["Poder de cavaleiro"] },
-      { "nivel": 17, "habilidades": ["Baluarte +10", "Duelo +5", "Poder de cavaleiro"] },
-      { "nivel": 18, "habilidades": ["Poder de cavaleiro"] },
-      { "nivel": 19, "habilidades": ["Poder de cavaleiro"] },
-      { "nivel": 20, "habilidades": ["Bravura final", "Poder de cavaleiro"] }
+      {
+        "nivel": 1,
+        "habilidades": [
+          "Baluarte +2",
+          "Código de honra"
+        ]
+      },
+      {
+        "nivel": 2,
+        "habilidades": [
+          "Duelo +2",
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 4,
+        "habilidades": [
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 5,
+        "habilidades": [
+          "Caminho do cavaleiro",
+          "Baluarte +4",
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 6,
+        "habilidades": [
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 7,
+        "habilidades": [
+          "Baluarte (aliados adjacentes)",
+          "Duelo +3",
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 8,
+        "habilidades": [
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 9,
+        "habilidades": [
+          "Baluarte +6",
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 10,
+        "habilidades": [
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 11,
+        "habilidades": [
+          "Poder de cavaleiro",
+          "Resoluto"
+        ]
+      },
+      {
+        "nivel": 12,
+        "habilidades": [
+          "Duelo +4",
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 13,
+        "habilidades": [
+          "Baluarte +8",
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 14,
+        "habilidades": [
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 15,
+        "habilidades": [
+          "Baluarte (aliados em alcance curto)",
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 16,
+        "habilidades": [
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 17,
+        "habilidades": [
+          "Baluarte +10",
+          "Duelo +5",
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 18,
+        "habilidades": [
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 19,
+        "habilidades": [
+          "Poder de cavaleiro"
+        ]
+      },
+      {
+        "nivel": 20,
+        "habilidades": [
+          "Bravura final",
+          "Poder de cavaleiro"
+        ]
+      }
     ],
     "habilidades": [
       {
         "nome": "Código de Honra",
         "nivel": 1,
-        "descricao": "Cavaleiros distinguem-se de meros combatentes por seguir um código de conduta. Fazem isto para mostrar que estão acima dos mercenários e bandoleiros que infestam os campos de batalha. Você não pode atacar um oponente pelas costas (em termos de jogo, não pode se beneficiar do bônus de flanquear), caído, desprevenido ou incapaz de lutar. Se violar o código, você perde todos os seus PM e só pode recuperá-los a partir do próximo dia. Rebaixar-se ao nível dos covardes e desesperados abala a autoconfiança que eleva o cavaleiro."
+        "descricao": "Cavaleiros distinguem-se de meros combatentes por seguir um código de conduta. Fazem isto para mostrar que estão acima dos mercenários e bandoleiros que infestam os campos de batalha. Você não pode atacar um oponente pelas costas (em termos de jogo, não pode se beneficiar do bônus de flanquear), caído, desprevenido ou incapaz de lutar. Se violar o código, você perde todos os seus PM e só pode recuperá-los a partir do próximo dia. Rebaixar-se ao nível dos covardes e desesperados abala a autoconfiança que eleva o cavaleiro.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "viola_codigo_perde_pm",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "nao_pode_flanquear_ou_atacar_indefeso",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Baluarte",
         "nivel": 1,
         "descricao": "Quando sofre um ataque ou faz um teste de resistência, você pode gastar 1 PM para receber +2 na Defesa e nos testes de resistência até o início do seu próximo turno. A cada quatro níveis, pode gastar +1 PM para aumentar o bônus em +2. A partir do 7º nível, quando usa esta habilidade, você pode gastar 2 PM adicionais para fornecer o mesmo bônus a todos os aliados adjacentes. Por exemplo, pode gastar 4 PM ao todo para receber +4 na Defesa e nos testes de resistência e fornecer este mesmo bônus aos outros. A partir do 15º nível, você pode gastar 5 PM adicionais para fornecer o mesmo bônus a todos os aliados em alcance curto.",
-        "custo": "1 PM (+1 PM a cada quatro níveis; +2 PM aliados adjacentes no 7º; +5 PM aliados em alcance curto no 15º)"
+        "custo": "1 PM (+1 PM a cada quatro níveis; +2 PM aliados adjacentes no 7º; +5 PM aliados em alcance curto no 15º)",
+        "ativacao": {
+          "custo": {
+            "pm": {
+              "expr": "1 + floor(nivel / 4)"
+            },
+            "acao": "reacao"
+          },
+          "encerramento": "O bônus dura até o início do seu próximo turno. Pode gastar PM adicionais (+2 PM no 7º nível para aliados adjacentes; +5 PM no 15º nível para aliados em alcance curto)."
+        },
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "defesa",
+            "valor": {
+              "expr": "2 * (1 + floor(nivel / 4))"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:fortitude",
+            "valor": {
+              "expr": "2 * (1 + floor(nivel / 4))"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:reflexos",
+            "valor": {
+              "expr": "2 * (1 + floor(nivel / 4))"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:vontade",
+            "valor": {
+              "expr": "2 * (1 + floor(nivel / 4))"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "aura_buff_aliados",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Duelo",
         "nivel": 2,
         "descricao": "A partir do 2º nível, você pode gastar 2 PM para escolher um oponente em alcance curto e receber +2 em testes de ataque e rolagens de dano contra ele até o fim da cena. Se atacar outro oponente, o bônus termina. A cada cinco níveis, você pode gastar +1 PM para aumentar o bônus em +1.",
-        "custo": "2 PM (+1 PM a cada cinco níveis)"
+        "custo": "2 PM (+1 PM a cada cinco níveis)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "marca_alvo_para_bonus",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "ataque",
+            "valor": {
+              "expr": "2 + floor(nivel / 5)"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": {
+              "expr": "2 + floor(nivel / 5)"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          }
+        ],
+        "ativacao": {
+          "custo": {
+            "pm": {
+              "expr": "2 + floor(nivel / 5)"
+            }
+          },
+          "encerramento": "Termina se você atacar outro oponente; dura até o fim da cena."
+        }
       },
       {
         "nome": "Poder de Cavaleiro",
         "nivel": 2,
-        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes de cavaleiro (veja a lista de poderes)."
+        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes de cavaleiro (veja a lista de poderes).",
+        "efeitos": []
       },
       {
         "nome": "Caminho do Cavaleiro",
         "nivel": 5,
-        "descricao": "No 5º nível, escolha entre Bastião ou Montaria.\n\n• Bastião. Se estiver usando armadura pesada, você recebe redução de dano 5 (cumulativa com a RD fornecida por Especialização em Armadura).\n\n• Montaria. Você recebe um cavalo de guerra com o qual possui +5 em testes de Adestramento e Cavalgar. Ele fornece os benefícios de um parceiro veterano de seu tipo. No 11º nível, passa a fornecer os benefícios de um parceiro mestre. De acordo com o mestre, você pode receber outro tipo de montaria. Veja a lista de montarias na página 261. Caso a montaria morra, você pode comprar outra pelo preço normal e treiná-la para receber os benefícios desta habilidade com uma semana de trabalho."
+        "descricao": "No 5º nível, escolha entre Bastião ou Montaria.\n\n• Bastião. Se estiver usando armadura pesada, você recebe redução de dano 5 (cumulativa com a RD fornecida por Especialização em Armadura).\n\n• Montaria. Você recebe um cavalo de guerra com o qual possui +5 em testes de Adestramento e Cavalgar. Ele fornece os benefícios de um parceiro veterano de seu tipo. No 11º nível, passa a fornecer os benefícios de um parceiro mestre. De acordo com o mestre, você pode receber outro tipo de montaria. Veja a lista de montarias na página 261. Caso a montaria morra, você pode comprar outra pelo preço normal e treiná-la para receber os benefícios desta habilidade com uma semana de trabalho.",
+        "efeitos": [],
+        "escolhas": [
+          {
+            "id": "caminho_cavaleiro",
+            "rotulo": "Caminho do Cavaleiro (5º nível)",
+            "opcoes": [
+              {
+                "tipo": "ramo",
+                "rotulo": "Bastião",
+                "efeitos": [
+                  {
+                    "tipo": "bonus",
+                    "alvo": "reducao_dano",
+                    "valor": 5,
+                    "condicao": {
+                      "campo": "armadura.subcategoria",
+                      "em": [
+                        "pesada"
+                      ]
+                    },
+                    "aplicacao": "automatica"
+                  }
+                ]
+              },
+              {
+                "tipo": "ramo",
+                "rotulo": "Montaria",
+                "efeitos": [
+                  {
+                    "tipo": "capacidade",
+                    "chave": "possui_parceiro",
+                    "aplicacao": "lembrete"
+                  },
+                  {
+                    "tipo": "bonus",
+                    "alvo": "pericia:adestramento",
+                    "valor": 5,
+                    "aplicacao": "automatica"
+                  },
+                  {
+                    "tipo": "bonus",
+                    "alvo": "pericia:cavalgar",
+                    "valor": 5,
+                    "aplicacao": "automatica"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
         "nome": "Resoluto",
         "nivel": 11,
         "descricao": "A partir do 11º nível, você pode gastar 1 PM para refazer um teste de resistência contra uma condição (como abalado, paralisado etc.) que esteja o afetando. O segundo teste recebe um bônus de +5 e, se você passar, cancela o efeito. Você só pode usar esta habilidade uma vez por efeito.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "refaz_teste_resistencia_contra_condicao",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Bravura Final",
         "nivel": 20,
         "descricao": "No 20º nível, sua virtude vence a morte. Se for reduzido a 0 ou menos PV, pode gastar 3 PM para continuar consciente e de pé. Esta habilidade tem duração sustentada. Quando se encerra, você sofre os efeitos de seus PV atuais, podendo cair inconsciente ou mesmo morrer.",
-        "custo": "3 PM"
+        "custo": "3 PM",
+        "ativacao": {
+          "custo": {
+            "pm": 3,
+            "acao": "reacao"
+          },
+          "encerramento": "Duração sustentada; quando se encerra, você sofre os efeitos de seus PV atuais (pode cair inconsciente ou morrer)."
+        },
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "continua_consciente_com_zero_pv",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ],
     "poderes": [
       {
         "nome": "Armadura da Honra",
-        "descricao": "No início de cada cena, você recebe uma quantidade de pontos de vida temporários igual a seu nível + seu Carisma. Os PV temporários duram até o final da cena."
+        "descricao": "No início de cada cena, você recebe uma quantidade de pontos de vida temporários igual a seu nível + seu Carisma. Os PV temporários duram até o final da cena.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pv.temporario",
+            "valor": {
+              "expr": "nivel + atr.car"
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Aumento de Atributo",
-        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo."
+        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo.",
+        "efeitos": [],
+        "empilhavel": true,
+        "escolhas": [
+          {
+            "id": "aumento_atributo",
+            "rotulo": "+1 em um atributo à escolha",
+            "alvoTipo": "atributo",
+            "efeito": {
+              "tipo": "bonus",
+              "valor": 1,
+              "aplicacao": "automatica"
+            },
+            "restricao": "uma_por_patamar_por_alvo"
+          }
+        ]
       },
       {
         "nome": "Autoridade Feudal",
         "descricao": "Você pode gastar uma hora e 2 PM para conclamar o povo a ajudá-lo (qualquer pessoa sem um título de nobreza ou uma posição numa igreja reconhecida pelo seu reino). Em termos de jogo, essas pessoas contam como um parceiro iniciante de um tipo a sua escolha (aprovado pelo mestre) que lhe acompanha até o fim da aventura. Esta habilidade só pode ser usada em locais onde sua posição carregue alguma influência (a critério do mestre).",
         "prerequisito": "6º nível de cavaleiro",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "convoca_aliado_temporario",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Desprezar os Covardes",
-        "descricao": "Você recebe redução de dano 5 se estiver caído, desprevenido ou flanqueado."
+        "descricao": "Você recebe redução de dano 5 se estiver caído, desprevenido ou flanqueado.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "reducao_dano",
+            "valor": 5,
+            "condicao": {
+              "campo": "personagem.estado",
+              "em": [
+                "caido",
+                "desprevenido",
+                "flanqueado"
+              ]
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Escudeiro",
         "descricao": "Você recebe os serviços de um escudeiro, um parceiro especial que cuida de seu equipamento. Suas armas fornecem +1 em rolagens de dano e sua armadura concede +1 na Defesa. Além disso, você pode pagar 1 PM para receber ajuda do escudeiro em combate. Você recebe uma ação de movimento que pode usar para se levantar, sacar um item ou trazer sua montaria. O escudeiro não conta em seu limite de parceiros. Caso ele morra, você pode treinar outro com um mês de trabalho.",
-        "custo": "1 PM (opcional)"
+        "custo": "1 PM (opcional)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "possui_parceiro",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "parceiro_nao_conta_limite_aliados",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": 1,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "defesa",
+            "valor": 1,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "acao_movimento_extra_escudeiro",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Especialização em Armadura",
         "descricao": "Se estiver usando armadura pesada, você recebe redução de dano 5 (cumulativa com a RD fornecida por Bastião).",
-        "prerequisito": "12º nível de cavaleiro"
+        "prerequisito": "12º nível de cavaleiro",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "reducao_dano",
+            "valor": 5,
+            "condicao": {
+              "campo": "armadura.subcategoria",
+              "em": [
+                "pesada"
+              ]
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Estandarte",
         "descricao": "Sua flâmula torna-se um símbolo de inspiração. No início de cada cena, você e todos os aliados que possam ver seu estandarte recebem um número de PM temporários igual ao seu Carisma (mínimo 1). Esses pontos temporários desaparecem no final da cena.",
-        "prerequisito": "Título, 14º nível de cavaleiro"
+        "prerequisito": "Título, 14º nível de cavaleiro",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pm.temporario",
+            "valor": {
+              "expr": "max(1, atr.car)"
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "concede_pm_temporario_aliados",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Etiqueta",
         "descricao": "Você recebe +2 em Diplomacia ou Nobreza e pode gastar 1 PM para rolar novamente um teste recém realizado de uma dessas perícias.",
-        "custo": "1 PM (opcional)"
+        "custo": "1 PM (opcional)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "escolhe_bonus_diplomacia_ou_nobreza",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "rerola_teste_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Investida Destruidora",
         "descricao": "Quando faz a ação investida, você pode gastar 2 PM. Se fizer isso, causa +2d8 pontos de dano. Você deve usar esta habilidade antes de rolar o ataque.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": {
+              "dados": {
+                "n": 2,
+                "faces": 8
+              }
+            },
+            "opcionalPorAtaque": {
+              "custo": {
+                "pm": 2
+              }
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Montaria Corajosa",
         "descricao": "Sua montaria concede +1d6 em rolagens de dano corpo a corpo (cumulativo com qualquer bônus que ela já forneça como parceiro).",
-        "prerequisito": "Montaria"
+        "prerequisito": "Montaria",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano.corpo_a_corpo",
+            "valor": {
+              "dados": {
+                "n": 1,
+                "faces": 6
+              }
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Pajem",
-        "descricao": "Você recebe os serviços de um pajem, um parceiro que o auxilia em pequenos afazeres. Você recebe +2 em Diplomacia, por estar sempre aprumado, e sua condição de descanso é uma categoria acima do padrão pela situação (veja a página 106). O pajem pode executar pequenas tarefas, como entregar mensagens e comprar itens, e não conta em seu limite de parceiros. Caso ele morra, você pode treinar outro com uma semana de trabalho."
+        "descricao": "Você recebe os serviços de um pajem, um parceiro que o auxilia em pequenos afazeres. Você recebe +2 em Diplomacia, por estar sempre aprumado, e sua condição de descanso é uma categoria acima do padrão pela situação (veja a página 106). O pajem pode executar pequenas tarefas, como entregar mensagens e comprar itens, e não conta em seu limite de parceiros. Caso ele morra, você pode treinar outro com uma semana de trabalho.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "possui_parceiro",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "parceiro_nao_conta_limite_aliados",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:diplomacia",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "melhora_categoria_descanso",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Postura de Combate: Aríete Implacável",
         "descricao": "Ao assumir esta postura, você aumenta o bônus de ataque em investidas em +2. Para cada 2 PM adicionais que gastar quando assumir a postura, aumenta o bônus de ataque em +1. Além disso, se fizer uma investida contra um construto ou objeto, causa +2d8 de dano. Você precisa se deslocar todos os turnos para manter esta postura ativa.",
-        "custo": "2 PM (postura; +2 PM por +1 de ataque)"
+        "custo": "2 PM (postura; +2 PM por +1 de ataque)",
+        "ativacao": {
+          "custo": {
+            "pm": 2,
+            "acao": "movimento"
+          },
+          "encerramento": "Dura até o final da cena. Você precisa se deslocar todos os turnos para manter a postura. Você só pode manter uma postura por vez. Pode gastar +2 PM extras ao assumir para aumentar o bônus de ataque em +1 por cada 2 PM."
+        },
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "ataque",
+            "valor": 2,
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": {
+              "dados": {
+                "n": 2,
+                "faces": 8
+              }
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Postura de Combate: Castigo de Ferro",
         "descricao": "Sempre que um aliado adjacente sofrer um ataque corpo a corpo, você pode gastar 1 PM para fazer um ataque na criatura que o atacou.",
-        "custo": "2 PM (postura); 1 PM por ataque"
+        "custo": "2 PM (postura); 1 PM por ataque",
+        "ativacao": {
+          "custo": {
+            "pm": 2,
+            "acao": "movimento"
+          },
+          "encerramento": "Dura até o final da cena. Você só pode manter uma postura por vez."
+        },
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ataque_de_oportunidade_condicional",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Postura de Combate: Foco de Batalha",
         "descricao": "Sempre que um inimigo atacá-lo, você recebe 1 PM temporário (cumulativos). Você pode ganhar um máximo de PM temporários por cena igual ao seu nível. Esses pontos temporários desaparecem no final da cena.",
-        "custo": "2 PM (postura)"
+        "custo": "2 PM (postura)",
+        "ativacao": {
+          "custo": {
+            "pm": 2,
+            "acao": "movimento"
+          },
+          "encerramento": "Dura até o final da cena. Você só pode manter uma postura por vez."
+        },
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ganha_pm_temporario_ao_acertar",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Postura de Combate: Muralha Intransponível",
         "descricao": "Para assumir esta postura você precisa estar empunhando um escudo. Você recebe +1 na Defesa e em Reflexos. Além disso, quando sofre um efeito que permite um teste de Reflexos para reduzir o dano à metade, não sofre nenhum dano se passar. Para cada 2 PM adicionais que gastar quando assumir a postura, aumente esse bônus em +1. Por fim, enquanto mantiver esta postura, seu deslocamento é reduzido para 3m.",
-        "custo": "2 PM (postura; +2 PM por +1 de bônus)"
+        "custo": "2 PM (postura; +2 PM por +1 de bônus)",
+        "ativacao": {
+          "custo": {
+            "pm": 2,
+            "acao": "movimento"
+          },
+          "encerramento": "Dura até o final da cena. Você só pode manter uma postura por vez. Requer escudo equipado ao assumir. Pode gastar +2 PM extras para aumentar o bônus em +1."
+        },
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "defesa",
+            "valor": 1,
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:reflexos",
+            "valor": 1,
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "evasao_reflexos",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "deslocamento",
+            "valor": 3,
+            "operacao": "definir",
+            "unidade": "m",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Postura de Combate: Provocação Petulante",
         "descricao": "Enquanto esta postura estiver ativa, todos os inimigos que iniciarem seus turnos em alcance curto devem fazer um teste de Vontade (CD Car). Se falharem, qualquer ação hostil que realizarem deve ter você como alvo (mas suas outras ações não têm esta restrição). Ações hostis incluem ataques e outras ações que causem dano e/ou condições negativas. Mental.",
-        "custo": "2 PM (postura)"
+        "custo": "2 PM (postura)",
+        "ativacao": {
+          "custo": {
+            "pm": 2,
+            "acao": "movimento"
+          },
+          "encerramento": "Dura até o final da cena. Você só pode manter uma postura por vez."
+        },
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "impoe_teste_resistencia_ou_perde_acao",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Postura de Combate: Torre Inabalável",
         "descricao": "Você assume uma postura defensiva que o torna imune a qualquer tentativa de tirá-lo do lugar, de forma mundana ou mágica. Enquanto mantiver a postura, você não pode se deslocar, mas soma sua Constituição na Defesa e pode substituir testes de Reflexos e Vontade por testes de Fortitude.",
-        "custo": "2 PM (postura)"
+        "custo": "2 PM (postura)",
+        "ativacao": {
+          "custo": {
+            "pm": 2,
+            "acao": "movimento"
+          },
+          "encerramento": "Dura até o final da cena. Você não pode se deslocar enquanto mantém a postura. Você só pode manter uma postura por vez."
+        },
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "imune_efeitos_movimento",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "defesa",
+            "valor": {
+              "expr": "atr.con"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "substitui_reflexos_vontade_por_fortitude",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Solidez",
-        "descricao": "Se estiver usando um escudo, você soma o bônus na Defesa recebido pelo escudo em testes de resistência."
+        "descricao": "Se estiver usando um escudo, você soma o bônus na Defesa recebido pelo escudo em testes de resistência.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:fortitude",
+            "valor": {
+              "expr": "escudo.bonus_defesa"
+            },
+            "condicao": {
+              "campo": "escudo.equipado",
+              "em": [
+                "sim"
+              ]
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:reflexos",
+            "valor": {
+              "expr": "escudo.bonus_defesa"
+            },
+            "condicao": {
+              "campo": "escudo.equipado",
+              "em": [
+                "sim"
+              ]
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:vontade",
+            "valor": {
+              "expr": "escudo.bonus_defesa"
+            },
+            "condicao": {
+              "campo": "escudo.equipado",
+              "em": [
+                "sim"
+              ]
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Título",
         "descricao": "Você adquire um título de nobreza. Converse com o mestre para definir os benefícios exatos de seu título. Como regra geral, no início de cada aventura você recebe 20 TO por nível de cavaleiro (rendimentos dos impostos) ou a ajuda de um parceiro veterano (um membro de sua corte).",
-        "prerequisito": "Autoridade Feudal, 10º nível de cavaleiro, ter conquistado terras ou realizado um serviço para um nobre que possa se tornar seu suserano"
+        "prerequisito": "Autoridade Feudal, 10º nível de cavaleiro, ter conquistado terras ou realizado um serviço para um nobre que possa se tornar seu suserano",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "recebe_renda_por_aventura",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Torre Armada",
         "descricao": "Quando um inimigo erra um ataque contra você, você pode gastar 1 PM. Se fizer isso, recebe +5 em rolagens de dano contra esse inimigo até o fim de seu próximo turno.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_dano_apos_inimigo_errar_ataque",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

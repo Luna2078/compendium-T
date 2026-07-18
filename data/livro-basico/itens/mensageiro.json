@@ -10,6 +10,9 @@
   "mecanica": {
     "categoria": "servico",
     "preco": "T$ 0,5 por km",
-    "especial": "Inclui mensagens entregues a pé, por cavaleiros ou navios. Preço cobrado por quilômetro."
+    "especial": "Inclui mensagens entregues a pé, por cavaleiros ou navios. Preço cobrado por quilômetro.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "servico_preco_por_tier", "aplicacao": "lembrete" }
+    ]
   }
 }

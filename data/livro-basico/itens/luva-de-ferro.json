@@ -11,6 +11,14 @@
     "categoria": "esoterico",
     "preco": "T$ 150",
     "espacos": "1",
-    "especial": "Suas magias arcanas pessoais que concedem bônus na Defesa ou em testes de resistências têm esse bônus aumentado em +1."
+    "especial": "Suas magias arcanas pessoais que concedem bônus na Defesa ou em testes de resistências têm esse bônus aumentado em +1.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aumenta_bonus_magias_defensivas_proprias",
+        "valor": 1,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

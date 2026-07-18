@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Allihanna",
-    "descricao": "Para você, dormir ao relento conta como condição de descanso confortável."
+    "descricao": "Para você, dormir ao relento conta como condição de descanso confortável.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "dorme_ao_relento_conta_como_confortavel",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

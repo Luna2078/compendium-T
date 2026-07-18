@@ -21,7 +21,27 @@
     "poderesUnicos": [
       {
         "nome": "Escavador",
-        "descricao": "Você se torna proficiente em picaretas, causa +1 de dano com elas e não é afetado por terreno difícil em masmorras e subterrâneos."
+        "descricao": "Você se torna proficiente em picaretas, causa +1 de dano com elas e não é afetado por terreno difícil em masmorras e subterrâneos.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "proficiente:picaretas",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": 1,
+            "condicao": { "campo": "arma.familia", "em": ["picareta"] },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_terreno_dificil",
+            "condicao": { "campo": "ambiente", "em": ["subterraneo"] },
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

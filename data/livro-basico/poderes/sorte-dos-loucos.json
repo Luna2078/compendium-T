@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Nimb",
-    "descricao": "Você pode pagar 1 PM para rolar novamente um teste recém realizado. Se ainda assim falhar no teste, você perde 1d6 PM."
+    "descricao": "Você pode pagar 1 PM para rolar novamente um teste recém realizado. Se ainda assim falhar no teste, você perde 1d6 PM.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "rerola_teste_com_risco_pm",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

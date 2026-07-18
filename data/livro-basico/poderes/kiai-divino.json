@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Lin-Wu",
-    "descricao": "Uma vez por rodada, quando faz um ataque corpo a corpo, você pode pagar 3 PM. Se acertar o ataque, causa dano máximo, sem necessidade de rolar dados."
+    "descricao": "Uma vez por rodada, quando faz um ataque corpo a corpo, você pode pagar 3 PM. Se acertar o ataque, causa dano máximo, sem necessidade de rolar dados.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "dano_maximo_no_acerto_corpo_a_corpo",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

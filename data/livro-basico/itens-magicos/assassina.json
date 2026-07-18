@@ -13,6 +13,18 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aumenta_dado_ataque_furtivo_para_d8",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "rerola_resultados_1_ataque_furtivo_por_pm",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

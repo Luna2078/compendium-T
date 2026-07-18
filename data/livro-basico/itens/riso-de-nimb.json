@@ -11,6 +11,13 @@
     "categoria": "alquimico",
     "preco": "T$ 150",
     "espacos": "0,5",
-    "especial": "Inoculação: Inalação. CD de Fortitude: 20. Ao falhar: vítima fica confusa. Ao passar: vítima fica lenta por 1 rodada."
+    "especial": "Inoculação: Inalação. CD de Fortitude: 20. Ao falhar: vítima fica confusa. Ao passar: vítima fica lenta por 1 rodada.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_veneno",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

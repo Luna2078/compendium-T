@@ -10,6 +10,9 @@
   "mecanica": {
     "categoria": "servico",
     "preco": "T$ 5",
-    "especial": "O preço para receber cuidados prolongados ou tratamento contra uma doença ou veneno (veja a página 117). Considera que o paciente vai até a casa do curandeiro ou onde quer que ele receba seus pacientes. Curandeiros não aceitam acompanhar aventureiros em suas jornadas."
+    "especial": "O preço para receber cuidados prolongados ou tratamento contra uma doença ou veneno (veja a página 117). Considera que o paciente vai até a casa do curandeiro ou onde quer que ele receba seus pacientes. Curandeiros não aceitam acompanhar aventureiros em suas jornadas.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "servico_preco_por_tier", "aplicacao": "lembrete" }
+    ]
   }
 }

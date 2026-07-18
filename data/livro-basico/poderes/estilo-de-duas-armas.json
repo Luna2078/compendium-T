@@ -10,6 +10,21 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Des 2, treinado em Luta",
-    "descricao": "Se estiver empunhando duas armas (e pelo menos uma delas for leve) e fizer a ação agredir, você pode fazer dois ataques, um com cada arma. Se fizer isso, sofre –2 em todos os testes de ataque até o seu próximo turno. Se possuir Ambidestria, em vez disso não sofre penalidade para usá-lo."
+    "descricao": "Se estiver empunhando duas armas (e pelo menos uma delas for leve) e fizer a ação agredir, você pode fazer dois ataques, um com cada arma. Se fizer isso, sofre –2 em todos os testes de ataque até o seu próximo turno. Se possuir Ambidestria, em vez disso não sofre penalidade para usá-lo.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "ataque_duplo_duas_armas",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": -2,
+        "opcionalPorAtaque": true,
+        "condicao": { "campo": "arma.empunhadura", "em": ["leve", "uma_mao"] },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

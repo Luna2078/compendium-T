@@ -10,6 +10,15 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "treinado em Luta, proficiência com escudos",
-    "descricao": "Se você estiver usando um escudo, o bônus na Defesa que ele fornece aumenta em +2."
+    "descricao": "Se você estiver usando um escudo, o bônus na Defesa que ele fornece aumenta em +2.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": 2,
+        "condicao": { "campo": "escudo.equipado", "em": ["sim"] },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

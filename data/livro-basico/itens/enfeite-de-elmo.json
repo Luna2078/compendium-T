@@ -14,6 +14,15 @@
     "categoria": "vestuario",
     "preco": "T$ 15",
     "espacos": "1",
-    "especial": "Fornece resistência a medo +2."
+    "especial": "Fornece resistência a medo +2.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "resistencia_efeitos_medo",
+        "valor": 2,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

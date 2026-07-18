@@ -10,6 +10,17 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "Treinado na perícia escolhida",
-    "descricao": "Escolha uma perícia. Quando faz um teste dessa perícia, você pode gastar 1 PM para rolar dois dados e usar o melhor resultado. Você pode escolher este poder outras vezes para perícias diferentes. Este poder não pode ser aplicado em Luta e Pontaria (mas veja Foco em Arma)."
+    "descricao": "Escolha uma perícia. Quando faz um teste dessa perícia, você pode gastar 1 PM para rolar dois dados e usar o melhor resultado. Você pode escolher este poder outras vezes para perícias diferentes. Este poder não pode ser aplicado em Luta e Pontaria (mas veja Foco em Arma).",
+    "empilhavel": true,
+    "parametros": [
+      { "id": "pericia", "rotulo": "Perícia", "tipo": "escolha", "fonte": "pericias_treinadas_exceto_luta_pontaria" }
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "rola_vantagem_pericia",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

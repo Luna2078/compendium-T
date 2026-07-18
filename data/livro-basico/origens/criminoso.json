@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Punguista",
-        "descricao": "Você pode fazer testes de Ladinagem para sustento (como a perícia Ofício), mas em apenas um dia. Se passar, recebe o dobro do dinheiro, mas, se falhar, pode ter problemas com a lei (a critério do mestre)."
+        "descricao": "Você pode fazer testes de Ladinagem para sustento (como a perícia Ofício), mas em apenas um dia. Se passar, recebe o dobro do dinheiro, mas, se falhar, pode ter problemas com a lei (a critério do mestre).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "usa_pericia_para_sustento",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

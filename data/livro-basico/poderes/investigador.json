@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "Int 1",
-    "descricao": "Você recebe +2 em Investigação e soma sua Inteligência em Intuição."
+    "descricao": "Você recebe +2 em Investigação e soma sua Inteligência em Intuição.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:investigacao",
+        "valor": 2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:intuicao",
+        "valor": { "expr": "atr.int" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

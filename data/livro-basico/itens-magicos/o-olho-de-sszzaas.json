@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "O Olho de Sszzaas",
   "resumo": "Gema esverdeada num cajado fossilizado que permite lançar qualquer magia sem PM — mas suas falhas escondem a manipulação do Grande Corruptor.",
-  "fonte": { "livro": "livro-basico", "pagina": 348 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 348
+  },
   "imagens": [],
   "secoes": [
     {
@@ -14,6 +17,23 @@
   "relacoes": [],
   "mecanica": {
     "tipoItem": "Artefato",
-    "categoria": "Artefato"
+    "categoria": "Artefato",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "lanca_qualquer_magia_conhecida_sem_pm",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aprimoramentos_de_magia_custam_pm_normalmente",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "falha_em_misticismo_cd_causa_efeito_imprevisivel_ou_controle_sszzaas",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

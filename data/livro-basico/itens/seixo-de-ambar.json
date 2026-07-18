@@ -3,7 +3,10 @@
   "tipo": "item",
   "nome": "Seixo de Âmbar",
   "resumo": "Gema feita de seiva de árvore fossilizada que reduz o custo de magias de transmutação.",
-  "fonte": { "livro": "livro-basico", "pagina": 160 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 160
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -11,6 +14,18 @@
     "categoria": "alquimico",
     "preco": "T$ 30",
     "espacos": "0,5",
-    "especial": "Usado como catalisador, diminui o custo de magias de transmutação em –1 PM."
+    "especial": "Usado como catalisador, diminui o custo de magias de transmutação em –1 PM.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "custo_magia",
+        "valor": -1,
+        "condicao": {
+          "campo": "magia.escola",
+          "igual": "transmutacao"
+        },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

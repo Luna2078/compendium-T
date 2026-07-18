@@ -22,7 +22,14 @@
     "poderesUnicos": [
       {
         "nome": "Confissão",
-        "descricao": "Você pode usar Intimidação para interrogar sem custo e em uma hora (veja Investigação)."
+        "descricao": "Você pode usar Intimidação para interrogar sem custo e em uma hora (veja Investigação).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "interroga_com_pericia_sem_custo_em_uma_hora",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

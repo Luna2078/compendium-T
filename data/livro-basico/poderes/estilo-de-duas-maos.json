@@ -10,6 +10,15 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "For 2, treinado em Luta",
-    "descricao": "Se estiver usando uma arma corpo a corpo com as duas mãos, você recebe +5 nas rolagens de dano. Este poder não pode ser usado com armas leves."
+    "descricao": "Se estiver usando uma arma corpo a corpo com as duas mãos, você recebe +5 nas rolagens de dano. Este poder não pode ser usado com armas leves.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano.corpo_a_corpo",
+        "valor": 5,
+        "condicao": { "campo": "arma.empunhadura", "em": ["duas_maos"] },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

@@ -19,6 +19,7 @@
       "tipoDano": "Corte",
       "habilidades": ["Adaptável"]
     },
-    "especial": "Dano duplo: 1d10 (uma mão, proficiência exótica) / 1d12 (duas mãos, contando como marcial). Adaptável: pode ser usada como arma marcial de duas mãos para aumentar o dano em um passo."
+    "especial": "Dano duplo: 1d10 (uma mão, proficiência exótica) / 1d12 (duas mãos, contando como marcial). Adaptável: pode ser usada como arma marcial de duas mãos para aumentar o dano em um passo.",
+    "efeitos": []
   }
 }

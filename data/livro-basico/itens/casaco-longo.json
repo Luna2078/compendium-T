@@ -14,6 +14,20 @@
     "categoria": "vestuario",
     "preco": "T$ 20",
     "espacos": "1",
-    "especial": "Fornece +5 em testes de Fortitude para resistir a efeitos de frio, mas impõe penalidade de armadura de –2."
+    "especial": "Fornece +5 em testes de Fortitude para resistir a efeitos de frio, mas impõe penalidade de armadura de –2.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:fortitude",
+        "valor": 5,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "penalidade_armadura_2_enquanto_vestido",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -15,6 +15,24 @@
   "mecanica": {
     "tipoItem": "Armadura Específica",
     "categoria": "Maior",
-    "preco": "T$ 45.000"
+    "preco": "T$ 45.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto",
+        "valor": "defensor",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_penalidade_furtividade_por_movimento",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "penalidade_furtividade_atacar_reduzida_para_menos10",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

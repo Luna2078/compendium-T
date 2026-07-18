@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Avalanche",
   "resumo": "Machado de guerra de gelo eterno congelante formidável que fornece redução de fogo 10 e invoca uma tempestade de gelo.",
-  "fonte": { "livro": "livro-basico", "pagina": 336 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 336
+  },
   "imagens": [],
   "secoes": [
     {
@@ -15,6 +18,50 @@
   "mecanica": {
     "tipoItem": "Arma Específica",
     "categoria": "Maior",
-    "preco": "T$ 140.000"
+    "preco": "T$ 140.000",
+    "ativacao": {
+      "custo": {
+        "pm": 6,
+        "acao": "padrao"
+      },
+      "encerramento": "Sustentada gastando 1 PM no início de cada turno."
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:gelo_eterno",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:congelante",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:formidavel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 10,
+        "condicao": {
+          "campo": "dano.tipo",
+          "em": [
+            "fogo"
+          ]
+        },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "arma_dispara_magia_por_pm",
+        "condicao": {
+          "quando": "ativo"
+        },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -20,6 +20,10 @@
       "tipoDano": "Perfuração",
       "habilidades": []
     },
-    "especial": "Crítico 19/x3: margem de ameaça 19-20 e multiplicador x3. Recarregar = ação padrão. Usa munição: Balas (20) por T$ 20."
+    "especial": "Crítico 19/x3: margem de ameaça 19-20 e multiplicador x3. Recarregar = ação padrão. Usa munição: Balas (20) por T$ 20.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "recarga_arma_acao", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "municao_consumida_por_arma", "aplicacao": "lembrete" }
+    ]
   }
 }

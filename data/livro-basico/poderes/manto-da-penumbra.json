@@ -10,6 +10,18 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Tenebra",
-    "descricao": "Você aprende e pode lançar Escuridão. Caso aprenda novamente essa magia, seu custo diminui em –1 PM."
+    "descricao": "Você aprende e pode lançar Escuridão. Caso aprenda novamente essa magia, seu custo diminui em –1 PM.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_escuridao",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "modifica_poder",
+        "alvo": "escuridao",
+        "patchCusto": { "pm": -1 }
+      }
+    ]
   }
 }

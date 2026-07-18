@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Excruciante",
   "resumo": "Inflige dor terrível, deixando a criatura viva fraca ou debilitada.",
-  "fonte": { "livro": "livro-basico", "pagina": 335 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 335
+  },
   "imagens": [],
   "secoes": [
     {
@@ -13,6 +16,13 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "inflige_fraca_ou_debilitada_vs_criatura_viva",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

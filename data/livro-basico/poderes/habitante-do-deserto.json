@@ -10,6 +10,18 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Azgher",
-    "descricao": "Você recebe redução de fogo 10 e pode pagar 1 PM para criar água pura e potável suficiente para um odre (ou outro recipiente pequeno)."
+    "descricao": "Você recebe redução de fogo 10 e pode pagar 1 PM para criar água pura e potável suficiente para um odre (ou outro recipiente pequeno).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "reducao_dano_fogo_10",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "cria_agua_por_pm",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

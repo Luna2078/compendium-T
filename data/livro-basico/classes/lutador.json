@@ -3,8 +3,13 @@
   "tipo": "classe",
   "nome": "Lutador",
   "resumo": "Especialista em todas as formas de combate desarmado — de simples socos e chutes até complexas chaves e técnicas de chão. Perigo verdadeiro é encarar a morte com as mãos nuas.",
-  "fonte": { "livro": "livro-basico", "pagina": 75 },
-  "imagens": ["/classes/lutador.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 75
+  },
+  "imagens": [
+    "/classes/lutador.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -27,182 +32,664 @@
     "pmPorNivel": 3,
     "pericias": {
       "quantidade": 4,
-      "fixas": ["Fortitude (Con)", "Luta (For)"],
-      "lista": ["Acrobacia (Des)", "Adestramento (Car)", "Atletismo (For)", "Enganação (Car)", "Furtividade (Des)", "Iniciativa (Des)", "Intimidação (Car)", "Ofício (Int)", "Percepção (Sab)", "Pontaria (Des)", "Reflexos (Des)"],
+      "fixas": [
+        "Fortitude (Con)",
+        "Luta (For)"
+      ],
+      "lista": [
+        "Acrobacia (Des)",
+        "Adestramento (Car)",
+        "Atletismo (For)",
+        "Enganação (Car)",
+        "Furtividade (Des)",
+        "Iniciativa (Des)",
+        "Intimidação (Car)",
+        "Ofício (Int)",
+        "Percepção (Sab)",
+        "Pontaria (Des)",
+        "Reflexos (Des)"
+      ],
       "texto": "Fortitude (Con) e Luta (For), mais 4 a sua escolha entre Acrobacia (Des), Adestramento (Car), Atletismo (For), Enganação (Car), Furtividade (Des), Iniciativa (Des), Intimidação (Car), Ofício (Int), Percepção (Sab), Pontaria (Des) e Reflexos (Des)."
     },
     "proficiencias": [],
     "progressao": [
-      { "nivel": 1, "habilidades": ["Briga (1d6)", "Golpe relâmpago"] },
-      { "nivel": 2, "habilidades": ["Poder de lutador"] },
-      { "nivel": 3, "habilidades": ["Casca grossa (Con)", "Poder de lutador"] },
-      { "nivel": 4, "habilidades": ["Poder de lutador"] },
-      { "nivel": 5, "habilidades": ["Briga (1d8)", "Golpe cruel", "Poder de lutador"] },
-      { "nivel": 6, "habilidades": ["Poder de lutador"] },
-      { "nivel": 7, "habilidades": ["Casca grossa (Con+1)", "Poder de lutador"] },
-      { "nivel": 8, "habilidades": ["Poder de lutador"] },
-      { "nivel": 9, "habilidades": ["Briga (1d10)", "Golpe violento", "Poder de lutador"] },
-      { "nivel": 10, "habilidades": ["Poder de lutador"] },
-      { "nivel": 11, "habilidades": ["Casca grossa (Con+2)", "Poder de lutador"] },
-      { "nivel": 12, "habilidades": ["Poder de lutador"] },
-      { "nivel": 13, "habilidades": ["Briga (2d6)", "Poder de lutador"] },
-      { "nivel": 14, "habilidades": ["Poder de lutador"] },
-      { "nivel": 15, "habilidades": ["Casca grossa (Con+3)", "Poder de lutador"] },
-      { "nivel": 16, "habilidades": ["Poder de lutador"] },
-      { "nivel": 17, "habilidades": ["Briga (2d8)", "Poder de lutador"] },
-      { "nivel": 18, "habilidades": ["Poder de lutador"] },
-      { "nivel": 19, "habilidades": ["Casca grossa (Con+4)", "Poder de lutador"] },
-      { "nivel": 20, "habilidades": ["Dono da rua (2d10)", "Poder de lutador"] }
+      {
+        "nivel": 1,
+        "habilidades": [
+          "Briga (1d6)",
+          "Golpe relâmpago"
+        ]
+      },
+      {
+        "nivel": 2,
+        "habilidades": [
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          "Casca grossa (Con)",
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 4,
+        "habilidades": [
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 5,
+        "habilidades": [
+          "Briga (1d8)",
+          "Golpe cruel",
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 6,
+        "habilidades": [
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 7,
+        "habilidades": [
+          "Casca grossa (Con+1)",
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 8,
+        "habilidades": [
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 9,
+        "habilidades": [
+          "Briga (1d10)",
+          "Golpe violento",
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 10,
+        "habilidades": [
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 11,
+        "habilidades": [
+          "Casca grossa (Con+2)",
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 12,
+        "habilidades": [
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 13,
+        "habilidades": [
+          "Briga (2d6)",
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 14,
+        "habilidades": [
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 15,
+        "habilidades": [
+          "Casca grossa (Con+3)",
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 16,
+        "habilidades": [
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 17,
+        "habilidades": [
+          "Briga (2d8)",
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 18,
+        "habilidades": [
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 19,
+        "habilidades": [
+          "Casca grossa (Con+4)",
+          "Poder de lutador"
+        ]
+      },
+      {
+        "nivel": 20,
+        "habilidades": [
+          "Dono da rua (2d10)",
+          "Poder de lutador"
+        ]
+      }
     ],
     "habilidades": [
       {
         "nome": "Briga",
         "nivel": 1,
-        "descricao": "Seus ataques desarmados causam 1d6 pontos de dano e podem causar dano letal ou não letal (sem penalidades). A cada quatro níveis, seu dano desarmado aumenta, conforme a tabela. O dano na tabela é para criaturas Pequenas e Médias. Criaturas Minúsculas diminuem esse dano em um passo, Grandes e Enormes aumentam em um passo e Colossais aumentam em dois passos."
+        "descricao": "Seus ataques desarmados causam 1d6 pontos de dano e podem causar dano letal ou não letal (sem penalidades). A cada quatro níveis, seu dano desarmado aumenta, conforme a tabela. O dano na tabela é para criaturas Pequenas e Médias. Criaturas Minúsculas diminuem esse dano em um passo, Grandes e Enormes aumentam em um passo e Colossais aumentam em dois passos.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "passo_de_dado_desarmado",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "anula_penalidade_dano_nao_letal",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Golpe Relâmpago",
         "nivel": 1,
         "descricao": "Quando usa a ação agredir para fazer um ataque desarmado, você pode gastar 1 PM para realizar um ataque desarmado adicional.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "realiza_ataque_extra_ao_agredir",
+            "condicao": {
+              "campo": "arma.id",
+              "igual": "desarmado"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Poder de Lutador",
         "nivel": 2,
-        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes a seguir (veja a lista de poderes)."
+        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes a seguir (veja a lista de poderes).",
+        "efeitos": []
       },
       {
         "nome": "Casca Grossa",
         "nivel": 3,
-        "descricao": "No 3º nível, você soma sua Constituição na Defesa, limitado pelo seu nível e apenas se não estiver usando armadura pesada. Além disso, no 7º nível, e a cada quatro níveis, você recebe +1 na Defesa."
+        "descricao": "No 3º nível, você soma sua Constituição na Defesa, limitado pelo seu nível e apenas se não estiver usando armadura pesada. Além disso, no 7º nível, e a cada quatro níveis, você recebe +1 na Defesa.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "defesa",
+            "valor": {
+              "expr": "min(atr.con, nivel)"
+            },
+            "condicao": {
+              "campo": "armadura.subcategoria",
+              "em": [
+                "nenhuma",
+                "leve",
+                "media"
+              ]
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "defesa",
+            "valor": {
+              "expr": "floor(max(0, nivel - 3) / 4)"
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Golpe Cruel",
         "nivel": 5,
-        "descricao": "No 5º nível, você acerta onde dói. Sua margem de ameaça com ataques desarmados aumenta em +1."
+        "descricao": "No 5º nível, você acerta onde dói. Sua margem de ameaça com ataques desarmados aumenta em +1.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "critico.margem",
+            "valor": 1,
+            "condicao": {
+              "campo": "arma.id",
+              "igual": "desarmado"
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Golpe Violento",
         "nivel": 9,
-        "descricao": "No 9º nível, você bate com muita força. Seu multiplicador de crítico com ataques desarmados aumenta em +1."
+        "descricao": "No 9º nível, você bate com muita força. Seu multiplicador de crítico com ataques desarmados aumenta em +1.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "critico.multiplicador",
+            "valor": 1,
+            "condicao": {
+              "campo": "arma.id",
+              "igual": "desarmado"
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Dono da Rua",
         "nivel": 20,
-        "descricao": "No 20º nível, seu dano desarmado aumenta para 2d10 (para criaturas Médias). Além disso, quando usa a ação agredir para fazer um ataque desarmado, você pode fazer dois ataques, em vez de um (podendo usar Golpe Relâmpago para fazer um terceiro)."
+        "descricao": "No 20º nível, seu dano desarmado aumenta para 2d10 (para criaturas Médias). Além disso, quando usa a ação agredir para fazer um ataque desarmado, você pode fazer dois ataques, em vez de um (podendo usar Golpe Relâmpago para fazer um terceiro).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "passo_de_dado_desarmado",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "realiza_ataque_extra_ao_agredir",
+            "condicao": {
+              "campo": "arma.id",
+              "igual": "desarmado"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ],
     "poderes": [
       {
         "nome": "Arma Improvisada",
-        "descricao": "Para você, atacar com armas improvisadas conta como fazer um ataque desarmado, mas seu dano aumenta em um passo. Você pode gastar uma ação de movimento para procurar uma pedra, cadeira, garrafa ou qualquer coisa que possa usar como arma. Faça um teste de Percepção (CD 20). Se você passar, encontra uma arma improvisada. Armas improvisadas são frágeis; se você errar um ataque e o resultado do d20 for um número ímpar, a arma quebra."
+        "descricao": "Para você, atacar com armas improvisadas conta como fazer um ataque desarmado, mas seu dano aumenta em um passo. Você pode gastar uma ação de movimento para procurar uma pedra, cadeira, garrafa ou qualquer coisa que possa usar como arma. Faça um teste de Percepção (CD 20). Se você passar, encontra uma arma improvisada. Armas improvisadas são frágeis; se você errar um ataque e o resultado do d20 for um número ímpar, a arma quebra.",
+        "efeitos": [
+          {
+            "tipo": "passo_de_dado",
+            "alvo": "dano",
+            "passos": 1,
+            "condicao": {
+              "campo": "arma.id",
+              "igual": "improvisada"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "arma_improvisada_conta_como_desarmado",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "busca_arma_improvisada_percepcao_cd20",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Até Acertar",
-        "descricao": "Se você errar um ataque desarmado, recebe um bônus cumulativo de +2 em testes de ataque e rolagens de dano desarmado contra o mesmo oponente. Os bônus terminam quando você acertar um ataque ou no fim da cena, o que acontecer primeiro."
+        "descricao": "Se você errar um ataque desarmado, recebe um bônus cumulativo de +2 em testes de ataque e rolagens de dano desarmado contra o mesmo oponente. Os bônus terminam quando você acertar um ataque ou no fim da cena, o que acontecer primeiro.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_cumulativo_ao_errar_desarmado",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aumento de Atributo",
-        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo."
+        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo.",
+        "empilhavel": true,
+        "escolhas": [
+          {
+            "id": "aumento_atributo",
+            "rotulo": "+1 em um atributo à escolha",
+            "alvoTipo": "atributo",
+            "efeito": {
+              "tipo": "bonus",
+              "valor": 1,
+              "aplicacao": "automatica"
+            },
+            "restricao": "uma_por_patamar_por_alvo"
+          }
+        ],
+        "efeitos": []
       },
       {
         "nome": "Braços Calejados",
-        "descricao": "Se você não estiver usando armadura, soma sua Força na Defesa, limitado pelo seu nível."
+        "descricao": "Se você não estiver usando armadura, soma sua Força na Defesa, limitado pelo seu nível.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "defesa",
+            "valor": {
+              "expr": "min(atr.for, nivel)"
+            },
+            "condicao": {
+              "campo": "armadura.subcategoria",
+              "em": [
+                "nenhuma"
+              ]
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Cabeçada",
         "descricao": "Quando faz um ataque desarmado, você pode gastar 2 PM. Se fizer isso, o oponente fica desprevenido contra este ataque. Você só pode usar este poder uma vez por cena contra um mesmo alvo.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "torna_alvo_desprevenido_no_ataque",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Chave",
         "descricao": "Se estiver agarrando uma criatura e fizer um teste de manobra contra ela para causar dano, o dano desarmado aumenta em um passo.",
-        "prerequisito": "Int 1, Lutador de Chão, 4º nível de lutador"
+        "prerequisito": "Int 1, Lutador de Chão, 4º nível de lutador",
+        "efeitos": [
+          {
+            "tipo": "passo_de_dado",
+            "alvo": "dano",
+            "passos": 1,
+            "condicao": {
+              "campo": "personagem.estado",
+              "igual": "agarrando"
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Confiança dos Ringues",
         "descricao": "Quando um inimigo erra um ataque corpo a corpo contra você, você recebe 2 PM temporários (cumulativos). Você pode ganhar um máximo de PM temporários por cena igual ao seu nível. Esses pontos temporários desaparecem no final da cena.",
-        "prerequisito": "8º nível de lutador"
+        "prerequisito": "8º nível de lutador",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ganha_pm_temporario_ao_acertar",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Convencido",
-        "descricao": "Acostumado a contar apenas com seus músculos, você adquiriu certo desdém por artes mais sofisticadas. Você recebe resistência a medo e mental +5."
+        "descricao": "Acostumado a contar apenas com seus músculos, você adquiriu certo desdém por artes mais sofisticadas. Você recebe resistência a medo e mental +5.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "resistencia_magia",
+            "valor": 5,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "resistencia_medo_5",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Golpe Baixo",
         "descricao": "Quando faz um ataque desarmado, você pode gastar 2 PM. Se fizer isso e acertar o ataque, o oponente deve fazer um teste de Fortitude (CD For). Se ele falhar, fica atordoado por uma rodada (apenas uma vez por cena).",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "impoe_fortitude_ou_atordoado_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Golpe Imprudente",
-        "descricao": "Quando usa Golpe Relâmpago, você pode atacar de forma impulsiva. Se fizer isso, seus ataques desarmados recebem um dado de dano extra do mesmo tipo (por exemplo, se o seu dano é 2d6, você causa 3d6), mas você sofre –5 na Defesa até o início de seu próximo turno."
+        "descricao": "Quando usa Golpe Relâmpago, você pode atacar de forma impulsiva. Se fizer isso, seus ataques desarmados recebem um dado de dano extra do mesmo tipo (por exemplo, se o seu dano é 2d6, você causa 3d6), mas você sofre –5 na Defesa até o início de seu próximo turno.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "dado_dano_extra_desarmado_com_penalidade_defesa",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Imobilização",
         "descricao": "Se estiver agarrando uma criatura, você pode gastar uma ação completa para imobilizá-la. Faça um teste de manobra contra ela. Se você passar, imobiliza a criatura — ela fica indefesa e não pode realizar nenhuma ação, exceto tentar se soltar (o que exige um teste de manobra). Se a criatura se soltar da imobilização, ainda fica agarrada. Enquanto estiver imobilizando uma criatura, você sofre as penalidades de agarrar.",
-        "prerequisito": "Chave, 8º nível de lutador"
+        "prerequisito": "Chave, 8º nível de lutador",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "imobiliza_criatura_agarrada",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Língua dos Becos",
         "descricao": "Você pode pagar 1 PM para usar sua Força no lugar de Carisma em um teste de perícia baseada em Carisma.",
         "prerequisito": "For 1, treinado em Intimidação",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "soma_atributo_em_pericia_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Lutador de Chão",
         "descricao": "Você recebe +2 em testes de ataque para agarrar e derrubar. Quando agarra uma criatura, pode gastar 1 PM para fazer uma manobra derrubar contra ela como uma ação livre.",
-        "custo": "1 PM (opcional)"
+        "custo": "1 PM (opcional)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_testes_manobra_agarrar_derrubar",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "derrubar_como_acao_livre_ao_agarrar",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Nome na Arena",
         "descricao": "Você construiu uma reputação no circuito de lutas de Arton. Uma vez por cena, pode gastar uma ação completa para fazer um teste de Luta (CD 10) e impressionar os presentes. Se passar, você recebe +2 em todos os seus testes de perícias originalmente baseadas em Carisma até o fim da cena e a atitude de qualquer pessoa que seja fã de lutas aumenta em uma categoria em relação a você (veja a página 259). Esse bônus aumenta em +2 para cada 10 pontos pelos quais o resultado do teste exceder a CD (+4 para um resultado 20, +6 para 30 e assim por diante).",
-        "prerequisito": "11º nível de lutador"
+        "prerequisito": "11º nível de lutador",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_pericias_carisma_ao_impressionar_na_arena",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Punhos de Adamante",
         "descricao": "Seus ataques desarmados ignoram 10 pontos de redução de dano do alvo, se houver.",
-        "prerequisito": "8º nível de lutador"
+        "prerequisito": "8º nível de lutador",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_rd_desarmado_10",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Rasteira",
         "descricao": "Quando faz um ataque desarmado contra uma criatura até uma categoria de tamanho maior que a sua, você pode gastar 2 PM. Se fizer isso e acertar o ataque, a criatura fica caída.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "derruba_alvo_ao_acertar_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Sarado",
         "descricao": "Você soma sua Força no seu total de pontos de vida e em Fortitude. Você pode usar Força em vez de Carisma em testes de Diplomacia com pessoas que se atraiam por físicos bem definidos.",
-        "prerequisito": "For 3"
+        "prerequisito": "For 3",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pv.max",
+            "valor": {
+              "expr": "atr.for"
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:fortitude",
+            "valor": {
+              "expr": "atr.for"
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "sarado_usa_for_em_diplomacia",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Sequência Destruidora",
         "descricao": "No início do seu turno, você pode gastar 2 PM para dizer um número (no mínimo 2). Se fizer e acertar uma quantidade de ataques igual ao número dito, o último recebe um bônus cumulativo de +4 na rolagem de dano por ataque feito. Por exemplo, se você falar “três” e fizer e acertar três ataques, o último ataque (o terceiro) receberá +12 na rolagem de dano.",
         "prerequisito": "Trocação, 12º nível de lutador",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_dano_cumulativo_ultimo_ataque_da_sequencia",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Trincado",
         "descricao": "Esculpido à exaustão, seu corpo se tornou uma máquina. Você soma sua Constituição nas rolagens de dano desarmado.",
-        "prerequisito": "Con 3, Sarado, 10º nível de lutador"
+        "prerequisito": "Con 3, Sarado, 10º nível de lutador",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano.corpo_a_corpo",
+            "valor": {
+              "expr": "atr.con"
+            },
+            "condicao": {
+              "campo": "arma.id",
+              "igual": "desarmado"
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Trocação",
         "descricao": "Quando você começa a bater, não para mais. Ao acertar um ataque desarmado, pode fazer outro ataque desarmado contra o mesmo alvo, pagando uma quantidade de PM igual à quantidade de ataques já realizados no turno. Ou seja, pode fazer o primeiro ataque extra gastando 1 PM, um segundo ataque extra gastando mais 2 PM e assim por diante, até errar um ataque ou não ter mais pontos de mana.",
-        "prerequisito": "6º nível de lutador"
+        "prerequisito": "6º nível de lutador",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "realiza_ataque_extra_ao_agredir",
+            "condicao": {
+              "campo": "arma.id",
+              "igual": "desarmado"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Trocação Tumultuosa",
         "descricao": "Quando usa a ação agredir para fazer um ataque desarmado, você pode gastar 2 PM para atingir todas as criaturas adjacentes — incluindo aliados! Você deve usar este poder antes de rolar o ataque e compara o resultado de seu teste contra a Defesa de cada criatura.",
         "prerequisito": "Trocação, 8º nível de lutador",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ataque_atinge_todos_adjacentes_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Valentão",
-        "descricao": "Você recebe +2 em testes de ataque e rolagens de dano contra oponentes caídos, desprevenidos, flanqueados ou indefesos."
+        "descricao": "Você recebe +2 em testes de ataque e rolagens de dano contra oponentes caídos, desprevenidos, flanqueados ou indefesos.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "ataque",
+            "valor": 2,
+            "condicao": {
+              "campo": "personagem.estado",
+              "em": [
+                "caido",
+                "desprevenido",
+                "flanqueado"
+              ]
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": 2,
+            "condicao": {
+              "campo": "personagem.estado",
+              "em": [
+                "caido",
+                "desprevenido",
+                "flanqueado"
+              ]
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "dano_extra_contra_alvo_vulneravel",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Voadora",
         "descricao": "Quando faz uma investida desarmada, você pode gastar 2 PM. Se fizer isso, recebe +1d6 no dano para cada 3m que se deslocar até chegar ao oponente, limitado pelo seu nível.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_dano_por_distancia_na_investida",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

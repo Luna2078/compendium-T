@@ -15,6 +15,18 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Médio",
-    "preco": "T$ 21.000"
+    "preco": "T$ 21.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "permanece_sob_efeito_de_magia",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "efeito_termina_ao_atacar_ou_conjurar_ofensivo",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

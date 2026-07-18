@@ -13,6 +13,26 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "dados": { "n": 1, "faces": 6 } },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "dados": { "n": 3, "faces": 8 } },
+        "opcionalPorAtaque": { "custo": { "pm": 2 } },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "arma_dispara_magia_por_pm",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

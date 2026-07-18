@@ -36,17 +36,45 @@
       {
         "nome": "Graça de Glórienn",
         "descricao": "Seu deslocamento é 12m (em vez de 9m).",
-        "efeito": "Deslocamento 12m"
+        "efeito": "Deslocamento 12m",
+        "efeitos": []
       },
       {
         "nome": "Sangue Mágico",
         "descricao": "Você recebe +1 ponto de mana por nível.",
-        "efeito": "+1 PM por nível"
+        "efeito": "+1 PM por nível",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pm.max",
+            "valor": { "expr": "nivel" },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Sentidos Élficos",
         "descricao": "Você recebe visão na penumbra e +2 em Misticismo e Percepção.",
-        "efeito": "Visão na penumbra; +2 em Misticismo e Percepção"
+        "efeito": "Visão na penumbra; +2 em Misticismo e Percepção",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "visao_na_penumbra",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:misticismo",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:percepcao",
+            "valor": 2,
+            "aplicacao": "automatica"
+          }
+        ]
       }
     ]
   }

@@ -14,6 +14,13 @@
     "categoria": "ferramenta",
     "preco": "T$ 5",
     "espacos": "1",
-    "especial": "Um personagem sem este item sofre –5 em testes de Ladinagem para abrir fechaduras."
+    "especial": "Um personagem sem este item sofre –5 em testes de Ladinagem para abrir fechaduras.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "penalidade_pericia_sem_ferramenta",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

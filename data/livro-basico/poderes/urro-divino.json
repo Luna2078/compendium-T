@@ -10,6 +10,18 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Megalokk",
-    "descricao": "Quando faz um ataque ou lança uma magia, você pode pagar 1 PM para somar sua Constituição (mínimo +1) à rolagem de dano desse ataque ou magia."
+    "descricao": "Quando faz um ataque ou lança uma magia, você pode pagar 1 PM para somar sua Constituição (mínimo +1) à rolagem de dano desse ataque ou magia.",
+    "ativacao": {
+      "custo": { "pm": 1 }
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "expr": "max(atr.con, 1)" },
+        "opcionalPorAtaque": true,
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

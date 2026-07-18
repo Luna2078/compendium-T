@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "O Baralho do Caos",
   "resumo": "Baralho aparentemente comum que, ao apostar tudo, revela 22 cartas de efeitos instantâneos — para o bem ou para o mal.",
-  "fonte": { "livro": "livro-basico", "pagina": 347 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 347
+  },
   "imagens": [],
   "secoes": [
     {
@@ -23,29 +26,157 @@
   "mecanica": {
     "tipoItem": "Artefato",
     "categoria": "Artefato",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:jogatina",
+        "valor": 10,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_jogatina_vira_penalidade_ao_abusar",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ativa_baralho_do_caos_ao_dizer_aposto_tudo",
+        "aplicacao": "lembrete"
+      }
+    ],
     "cartas": [
-      { "carta": "Abismo", "d100": "01-05", "resumo": "Receba redução de dano", "efeito": "As profundezas do mar o protegem. Você recebe resistência 10 a um tipo de dano definido aleatoriamente." },
-      { "carta": "Amigo", "d100": "06-09", "resumo": "Um de seus parceiros o trai", "efeito": "Um de seus parceiros racionais irá traí-lo no pior momento possível (fornecendo seu benefício para um inimigo ou fazendo outra coisa, a critério do mestre). A traição ocorre em no máximo um ano." },
-      { "carta": "Anel", "d100": "10-14", "resumo": "+5 pontos de mana", "efeito": "Um aro de energia colorida surge ao seu redor e então desaparece. Você recebe +5 pontos de mana permanentemente." },
-      { "carta": "Árvore", "d100": "15-19", "resumo": "+10 pontos de vida", "efeito": "A árvore da vida fortalece seu corpo. Você recebe +10 PV permanentemente." },
-      { "carta": "Coração", "d100": "20-24", "resumo": "+1 em um atributo a sua escolha", "efeito": "Você recebe +1 em um atributo a sua escolha permanentemente." },
-      { "carta": "Crânio", "d100": "25-28", "resumo": "Enfrente cópia sombria", "efeito": "Uma versão feita de sombras de você surge e o ataca. A sombra tem as mesmas estatísticas que você e é imune a qualquer ataque que não seja desferido por você. Seus amigos podem ajudá-lo fornecendo bônus." },
-      { "carta": "Donzela", "d100": "29-33", "resumo": "Derrote um monstro e suba de nível", "efeito": "Uma bela mulher (ou homem) de sua raça surge e o chama. Se você for na direção da mulher, ela se transforma em um monstro com nível de desafio igual ao seu nível –1. Se você vencer o monstro sozinho, sobe de nível imediatamente. Se o monstro vencê-lo, deixa-o inconsciente e desaparece." },
-      { "carta": "Fogo", "d100": "34-38", "resumo": "Ressuscite quando morrer", "efeito": "Uma chama queima dentro de seu peito. Ela não machuca — em vez disso, se você morrer, voltará à vida com todos os seus PV e PM restaurados. A chama então se apaga." },
-      { "carta": "Gema", "d100": "39-43", "resumo": "Receba tesouro mundano", "efeito": "Role 10 vezes na coluna “Maior” da Tabela 8-2: Riquezas." },
-      { "carta": "Lua", "d100": "44-48", "resumo": "Receba 1d4 Desejos", "efeito": "A carta aparece como uma lua cheia (quatro Desejos), nova (três), crescente (dois) ou minguante (um Desejo). Os Desejos devem ser usados até o fim da cena." },
-      { "carta": "Martelo", "d100": "49-52", "resumo": "Perca todos os itens mágicos", "efeito": "Um martelo de energia surge na sua frente e bate contra o chão. A onda de choque destrói todos os itens mágicos que estiverem com você." },
-      { "carta": "Noite", "d100": "53-56", "resumo": "–1 em todos os testes de resistência", "efeito": "Você sofre –1 em todos os testes de resistência permanentemente. Se for um devoto de Tenebra ou um morto-vivo, em vez disso role uma arma mágica maior. Se não gostar do resultado, você pode rolar uma segunda vez." },
-      { "carta": "Presas", "d100": "57-60", "resumo": "Perca dinheiro e itens mundanos", "efeito": "Todo o dinheiro e itens mundanos que você possui — não apenas aqueles que estão com você — viram pó." },
-      { "carta": "Servo", "d100": "61-65", "resumo": "Receba os serviços de um espírito", "efeito": "O servo é alguém que morreu com uma dívida de honra. Ele vai se redimir servindo-o até seus serviços não serem mais requisitados. O servo é um parceiro veterano de um tipo a sua escolha." },
-      { "carta": "Sol", "d100": "66-70", "resumo": "Receba uma arma mágica maior", "efeito": "Role uma arma mágica maior. Se não gostar do resultado, você pode rolar uma segunda vez. Se você for um devoto de Tenebra ou um morto-vivo, em vez disso sofre –1 em todos os testes de resistência permanentemente." },
-      { "carta": "Tentáculo", "d100": "71-75", "resumo": "–1 em um atributo aleatório", "efeito": "A visão enlouquecedora dos tentáculos impõe –1 em um atributo permanentemente. Para definir o atributo, role 1d6, sendo “1” Força, “2” Destreza e assim por diante." },
-      { "carta": "Tolo", "d100": "76-80", "resumo": "Perca 10.000 XP e saque outra carta", "efeito": "Você perde 10.000 XP e saca outra carta. Esse efeito pode fazer com que você perca um nível, mas não pode reduzi-lo a menos de 0 XP." },
-      { "carta": "Trono", "d100": "81-85", "resumo": "+2 em Diplomacia e um feudo", "efeito": "Você recebe +2 em Diplomacia permanentemente e se torna o senhor por direito de um pequeno feudo. O mestre decide onde o feudo fica. Em termos de jogo, você recebe os benefícios do poder Título, do cavaleiro." },
-      { "carta": "Vizir", "d100": "86-90", "resumo": "Receba a resposta para uma pergunta", "efeito": "Você recebe a resposta para uma pergunta qualquer. A resposta pode ser tão precisa ou vaga quanto o mestre decidir, mas nunca será mentirosa. Este benefício deve ser usado em até um ano." },
-      { "carta": "Nada", "d100": "91-94", "resumo": "Escape de um perigo qualquer", "efeito": "Uma das forças primordiais da Criação surge para protegê-lo de qualquer ameaça. Em termos de jogo, quando você usa este benefício, qualquer ataque ou efeito contra você é anulado e você recebe imunidade a tudo por uma rodada. Este benefício deve ser usado em no máximo um ano." },
-      { "carta": "Vazio", "d100": "95-98", "resumo": "Sua alma deixa seu corpo", "efeito": "Sua alma é transportada para o vazio entre os Planos. Seu corpo continua funcionando, mas em coma. Cabe aos outros personagens descobrir como salvá-lo! Converse com o mestre para construir um novo personagem ou jogar com um NPC amigo do grupo enquanto seu personagem original estiver preso." },
-      { "carta": "Curinga", "d100": "99-100", "resumo": "Ganhe 10.000 XP ou saque mais duas cartas", "efeito": "Você escolhe entre ganhar poder pessoal (em termos de jogo, 10.000 XP) ou sacar mais duas cartas. A escolha é óbvia. Ou não?" }
+      {
+        "carta": "Abismo",
+        "d100": "01-05",
+        "resumo": "Receba redução de dano",
+        "efeito": "As profundezas do mar o protegem. Você recebe resistência 10 a um tipo de dano definido aleatoriamente."
+      },
+      {
+        "carta": "Amigo",
+        "d100": "06-09",
+        "resumo": "Um de seus parceiros o trai",
+        "efeito": "Um de seus parceiros racionais irá traí-lo no pior momento possível (fornecendo seu benefício para um inimigo ou fazendo outra coisa, a critério do mestre). A traição ocorre em no máximo um ano."
+      },
+      {
+        "carta": "Anel",
+        "d100": "10-14",
+        "resumo": "+5 pontos de mana",
+        "efeito": "Um aro de energia colorida surge ao seu redor e então desaparece. Você recebe +5 pontos de mana permanentemente."
+      },
+      {
+        "carta": "Árvore",
+        "d100": "15-19",
+        "resumo": "+10 pontos de vida",
+        "efeito": "A árvore da vida fortalece seu corpo. Você recebe +10 PV permanentemente."
+      },
+      {
+        "carta": "Coração",
+        "d100": "20-24",
+        "resumo": "+1 em um atributo a sua escolha",
+        "efeito": "Você recebe +1 em um atributo a sua escolha permanentemente."
+      },
+      {
+        "carta": "Crânio",
+        "d100": "25-28",
+        "resumo": "Enfrente cópia sombria",
+        "efeito": "Uma versão feita de sombras de você surge e o ataca. A sombra tem as mesmas estatísticas que você e é imune a qualquer ataque que não seja desferido por você. Seus amigos podem ajudá-lo fornecendo bônus."
+      },
+      {
+        "carta": "Donzela",
+        "d100": "29-33",
+        "resumo": "Derrote um monstro e suba de nível",
+        "efeito": "Uma bela mulher (ou homem) de sua raça surge e o chama. Se você for na direção da mulher, ela se transforma em um monstro com nível de desafio igual ao seu nível –1. Se você vencer o monstro sozinho, sobe de nível imediatamente. Se o monstro vencê-lo, deixa-o inconsciente e desaparece."
+      },
+      {
+        "carta": "Fogo",
+        "d100": "34-38",
+        "resumo": "Ressuscite quando morrer",
+        "efeito": "Uma chama queima dentro de seu peito. Ela não machuca — em vez disso, se você morrer, voltará à vida com todos os seus PV e PM restaurados. A chama então se apaga."
+      },
+      {
+        "carta": "Gema",
+        "d100": "39-43",
+        "resumo": "Receba tesouro mundano",
+        "efeito": "Role 10 vezes na coluna “Maior” da Tabela 8-2: Riquezas."
+      },
+      {
+        "carta": "Lua",
+        "d100": "44-48",
+        "resumo": "Receba 1d4 Desejos",
+        "efeito": "A carta aparece como uma lua cheia (quatro Desejos), nova (três), crescente (dois) ou minguante (um Desejo). Os Desejos devem ser usados até o fim da cena."
+      },
+      {
+        "carta": "Martelo",
+        "d100": "49-52",
+        "resumo": "Perca todos os itens mágicos",
+        "efeito": "Um martelo de energia surge na sua frente e bate contra o chão. A onda de choque destrói todos os itens mágicos que estiverem com você."
+      },
+      {
+        "carta": "Noite",
+        "d100": "53-56",
+        "resumo": "–1 em todos os testes de resistência",
+        "efeito": "Você sofre –1 em todos os testes de resistência permanentemente. Se for um devoto de Tenebra ou um morto-vivo, em vez disso role uma arma mágica maior. Se não gostar do resultado, você pode rolar uma segunda vez."
+      },
+      {
+        "carta": "Presas",
+        "d100": "57-60",
+        "resumo": "Perca dinheiro e itens mundanos",
+        "efeito": "Todo o dinheiro e itens mundanos que você possui — não apenas aqueles que estão com você — viram pó."
+      },
+      {
+        "carta": "Servo",
+        "d100": "61-65",
+        "resumo": "Receba os serviços de um espírito",
+        "efeito": "O servo é alguém que morreu com uma dívida de honra. Ele vai se redimir servindo-o até seus serviços não serem mais requisitados. O servo é um parceiro veterano de um tipo a sua escolha."
+      },
+      {
+        "carta": "Sol",
+        "d100": "66-70",
+        "resumo": "Receba uma arma mágica maior",
+        "efeito": "Role uma arma mágica maior. Se não gostar do resultado, você pode rolar uma segunda vez. Se você for um devoto de Tenebra ou um morto-vivo, em vez disso sofre –1 em todos os testes de resistência permanentemente."
+      },
+      {
+        "carta": "Tentáculo",
+        "d100": "71-75",
+        "resumo": "–1 em um atributo aleatório",
+        "efeito": "A visão enlouquecedora dos tentáculos impõe –1 em um atributo permanentemente. Para definir o atributo, role 1d6, sendo “1” Força, “2” Destreza e assim por diante."
+      },
+      {
+        "carta": "Tolo",
+        "d100": "76-80",
+        "resumo": "Perca 10.000 XP e saque outra carta",
+        "efeito": "Você perde 10.000 XP e saca outra carta. Esse efeito pode fazer com que você perca um nível, mas não pode reduzi-lo a menos de 0 XP."
+      },
+      {
+        "carta": "Trono",
+        "d100": "81-85",
+        "resumo": "+2 em Diplomacia e um feudo",
+        "efeito": "Você recebe +2 em Diplomacia permanentemente e se torna o senhor por direito de um pequeno feudo. O mestre decide onde o feudo fica. Em termos de jogo, você recebe os benefícios do poder Título, do cavaleiro."
+      },
+      {
+        "carta": "Vizir",
+        "d100": "86-90",
+        "resumo": "Receba a resposta para uma pergunta",
+        "efeito": "Você recebe a resposta para uma pergunta qualquer. A resposta pode ser tão precisa ou vaga quanto o mestre decidir, mas nunca será mentirosa. Este benefício deve ser usado em até um ano."
+      },
+      {
+        "carta": "Nada",
+        "d100": "91-94",
+        "resumo": "Escape de um perigo qualquer",
+        "efeito": "Uma das forças primordiais da Criação surge para protegê-lo de qualquer ameaça. Em termos de jogo, quando você usa este benefício, qualquer ataque ou efeito contra você é anulado e você recebe imunidade a tudo por uma rodada. Este benefício deve ser usado em no máximo um ano."
+      },
+      {
+        "carta": "Vazio",
+        "d100": "95-98",
+        "resumo": "Sua alma deixa seu corpo",
+        "efeito": "Sua alma é transportada para o vazio entre os Planos. Seu corpo continua funcionando, mas em coma. Cabe aos outros personagens descobrir como salvá-lo! Converse com o mestre para construir um novo personagem ou jogar com um NPC amigo do grupo enquanto seu personagem original estiver preso."
+      },
+      {
+        "carta": "Curinga",
+        "d100": "99-100",
+        "resumo": "Ganhe 10.000 XP ou saque mais duas cartas",
+        "efeito": "Você escolhe entre ganhar poder pessoal (em termos de jogo, 10.000 XP) ou sacar mais duas cartas. A escolha é óbvia. Ou não?"
+      }
     ]
   }
 }

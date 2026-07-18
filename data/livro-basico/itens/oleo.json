@@ -11,6 +11,15 @@
     "categoria": "item-aventura",
     "preco": "T$ 0,1",
     "espacos": "0,5",
-    "especial": "Você pode atirar o frasco em uma criatura em alcance curto com uma ação padrão. Se ela sofrer dano de fogo até o fim do seu próximo turno, sofre 1d6 pontos de dano extra e fica em chamas."
+    "especial": "Você pode atirar o frasco em uma criatura em alcance curto com uma ação padrão. Se ela sofrer dano de fogo até o fim do seu próximo turno, sofre 1d6 pontos de dano extra e fica em chamas.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "consumivel_causa_dano_em_alvo", "aplicacao": "lembrete" },
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao_em_chamas",
+        "valor": { "dados": { "n": 1, "faces": 6 } },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

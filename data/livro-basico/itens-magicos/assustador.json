@@ -13,6 +13,13 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "emite_aura_condicao_inimigos_por_pm",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

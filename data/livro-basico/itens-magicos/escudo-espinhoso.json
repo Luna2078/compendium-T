@@ -15,6 +15,22 @@
   "mecanica": {
     "tipoItem": "Escudo Específico",
     "categoria": "Maior",
-    "preco": "T$ 50.000"
+    "preco": "T$ 50.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:defensor",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "arma_dispara_magia_por_pm",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "ativacao": {
+      "custo": { "pm": 2, "acao": "movimento" },
+      "encerramento": "O espinho acerta automaticamente e causa 1d10+2 de dano de perfuração em alcance curto."
+    }
   }
 }

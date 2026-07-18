@@ -10,6 +10,19 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Aharadak",
-    "descricao": "Você recebe +10 em testes de resistência contra efeitos da Tormenta, de suas criaturas e de devotos de Aharadak. Além disso, seu primeiro poder da Tormenta não conta para perda de Carisma."
+    "descricao": "Você recebe +10 em testes de resistência contra efeitos da Tormenta, de suas criaturas e de devotos de Aharadak. Além disso, seu primeiro poder da Tormenta não conta para perda de Carisma.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "resistencia_efeitos_tormenta",
+        "valor": 10,
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "primeiro_poder_tormenta_sem_perda_carisma",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

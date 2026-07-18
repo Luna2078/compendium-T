@@ -20,6 +20,13 @@
       "tipoDano": "Perfuração",
       "habilidades": []
     },
-    "especial": "Recarregar uma besta leve é uma ação de movimento."
+    "especial": "Recarregar uma besta leve é uma ação de movimento.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "recarga_arma_acao",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

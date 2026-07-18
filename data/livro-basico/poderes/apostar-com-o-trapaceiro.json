@@ -10,6 +10,10 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Hyninn",
-    "descricao": "Quando faz um teste de perícia, você pode gastar 1 PM para apostar com Hyninn. Você e o mestre rolam 1d20, mas o mestre mantém o resultado dele em segredo. Você então escolhe entre usar seu próprio resultado ou o resultado oculto do mestre (neste caso, ele revela o resultado)."
+    "descricao": "Quando faz um teste de perícia, você pode gastar 1 PM para apostar com Hyninn. Você e o mestre rolam 1d20, mas o mestre mantém o resultado dele em segredo. Você então escolhe entre usar seu próprio resultado ou o resultado oculto do mestre (neste caso, ele revela o resultado).",
+    "ativacao": { "custo": { "pm": 1 } },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aposta_resultado_oculto_do_mestre", "aplicacao": "lembrete" }
+    ]
   }
 }

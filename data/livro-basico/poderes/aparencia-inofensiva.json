@@ -10,6 +10,9 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "Car 1",
-    "descricao": "A primeira criatura inteligente (Int –3 ou maior) que atacar você em uma cena deve fazer um teste de Vontade (CD Car). Se falhar, perderá sua ação. Este poder só funciona uma vez por cena; independentemente de a criatura falhar ou não no teste, poderá atacá-lo nas rodadas seguintes."
+    "descricao": "A primeira criatura inteligente (Int –3 ou maior) que atacar você em uma cena deve fazer um teste de Vontade (CD Car). Se falhar, perderá sua ação. Este poder só funciona uma vez por cena; independentemente de a criatura falhar ou não no teste, poderá atacá-lo nas rodadas seguintes.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "impoe_teste_vontade_no_primeiro_atacante", "aplicacao": "lembrete" }
+    ]
   }
 }

@@ -15,6 +15,28 @@
   "mecanica": {
     "tipoItem": "Armadura Específica",
     "categoria": "Maior",
-    "preco": "T$ 150.000"
+    "preco": "T$ 150.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:reforcada",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:guardia",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:zelosa",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "reducao_dano_igual_carisma_se_codigo_conduta",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

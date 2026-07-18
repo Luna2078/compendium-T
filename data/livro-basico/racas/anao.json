@@ -40,22 +40,72 @@
       {
         "nome": "Conhecimento das Rochas",
         "descricao": "Você recebe visão no escuro e +2 em testes de Percepção e Sobrevivência realizados no subterrâneo.",
-        "efeito": "Visão no escuro; +2 em Percepção e Sobrevivência no subterrâneo"
+        "efeito": "Visão no escuro; +2 em Percepção e Sobrevivência no subterrâneo",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "visao_no_escuro",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:percepcao",
+            "valor": 2,
+            "condicao": { "campo": "ambiente", "em": ["subterraneo"] },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:sobrevivencia",
+            "valor": 2,
+            "condicao": { "campo": "ambiente", "em": ["subterraneo"] },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Devagar e Sempre",
         "descricao": "Seu deslocamento é 6m (em vez de 9m). Porém, seu deslocamento não é reduzido por uso de armadura ou excesso de carga.",
-        "efeito": "Deslocamento 6m; não reduzido por armadura ou excesso de carga"
+        "efeito": "Deslocamento 6m; não reduzido por armadura ou excesso de carga",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_penalidade_deslocamento_armadura_carga",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Duro como Pedra",
         "descricao": "Você recebe +3 pontos de vida no 1º nível e +1 por nível seguinte.",
-        "efeito": "+3 PV no 1º nível e +1 PV por nível seguinte"
+        "efeito": "+3 PV no 1º nível e +1 PV por nível seguinte",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pv.max",
+            "valor": { "expr": "2 + nivel" },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Tradição de Heredrimm",
         "descricao": "Você é perito nas armas tradicionais anãs, seja por ter treinado com elas, seja por usá-las como ferramentas de ofício. Para você, todos os machados, martelos, marretas e picaretas são armas simples. Você recebe +2 em ataques com essas armas.",
-        "efeito": "Machados, martelos, marretas e picaretas são armas simples para você; +2 em ataques com essas armas"
+        "efeito": "Machados, martelos, marretas e picaretas são armas simples para você; +2 em ataques com essas armas",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "armas_familia_anoa_sao_simples",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "ataque",
+            "valor": 2,
+            "condicao": { "campo": "arma.familia", "em": ["machado", "martelo", "marreta", "picareta"] },
+            "aplicacao": "contextual"
+          }
+        ]
       }
     ]
   }

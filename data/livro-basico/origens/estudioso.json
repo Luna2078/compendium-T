@@ -3,7 +3,10 @@
   "tipo": "origem",
   "nome": "Estudioso",
   "resumo": "Longos anos dedicados a livros e pergaminhos tornaram você um especialista capaz de substituir o conhecimento pela intuição.",
-  "fonte": { "livro": "livro-basico", "pagina": 90 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 90
+  },
   "imagens": [],
   "secoes": [
     {
@@ -15,13 +18,27 @@
   "mecanica": {
     "itensTexto": "Coleção de livros (+1 em Conhecimento, Guerra, Misticismo ou Nobreza, a sua escolha).",
     "beneficios": {
-      "pericias": ["Conhecimento", "Guerra", "Misticismo"],
-      "poderes": ["Aparência Inofensiva", "Palpite Fundamentado"]
+      "pericias": [
+        "Conhecimento",
+        "Guerra",
+        "Misticismo"
+      ],
+      "poderes": [
+        "Aparência Inofensiva",
+        "Palpite Fundamentado"
+      ]
     },
     "poderesUnicos": [
       {
         "nome": "Palpite Fundamentado",
-        "descricao": "Você pode gastar 2 PM para substituir um teste de qualquer perícia originalmente baseada em Inteligência ou Sabedoria por um teste de Conhecimento."
+        "descricao": "Você pode gastar 2 PM para substituir um teste de qualquer perícia originalmente baseada em Inteligência ou Sabedoria por um teste de Conhecimento.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "usa_conhecimento_no_lugar_de_pericia_int_sab",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

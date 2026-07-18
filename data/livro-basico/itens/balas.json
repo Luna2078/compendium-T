@@ -11,6 +11,18 @@
     "categoria": "municao",
     "preco": "T$ 20",
     "espacos": "1",
-    "especial": "Pacote com 20 balas. Usadas por pistola e mosquete. Recarregar pistola ou mosquete é uma ação padrão."
+    "especial": "Pacote com 20 balas. Usadas por pistola e mosquete. Recarregar pistola ou mosquete é uma ação padrão.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "municao_consumida_por_arma",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "recarga_arma_acao",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

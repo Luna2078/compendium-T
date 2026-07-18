@@ -24,17 +24,62 @@
       {
         "nome": "Canção dos Mares",
         "descricao": "Você pode lançar duas das magias a seguir: Amedrontar, Comando, Despedaçar, Enfeitiçar, Hipnotismo ou Sono (atributo-chave Carisma). Caso aprenda novamente uma dessas magias, seu custo diminui em –1 PM.",
-        "efeito": "Lança duas entre Amedrontar, Comando, Despedaçar, Enfeitiçar, Hipnotismo ou Sono (atributo-chave Carisma); ao reaprender uma dessas magias, custo −1 PM"
+        "efeito": "Lança duas entre Amedrontar, Comando, Despedaçar, Enfeitiçar, Hipnotismo ou Sono (atributo-chave Carisma); ao reaprender uma dessas magias, custo −1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_duas_magias_cancao_dos_mares",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "magia_reaprendida_custa_menos_1pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Mestre do Tridente",
         "descricao": "Para você, o tridente é uma arma simples. Além disso, você recebe +2 em rolagens de dano com azagaias, lanças e tridentes.",
-        "efeito": "Tridente é arma simples para você; +2 em rolagens de dano com azagaias, lanças e tridentes"
+        "efeito": "Tridente é arma simples para você; +2 em rolagens de dano com azagaias, lanças e tridentes",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "tridente_conta_como_simples",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": 2,
+            "condicao": { "campo": "arma.familia", "em": ["lanca"] },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Transformação Anfíbia",
         "descricao": "Você pode respirar debaixo d’água e possui uma cauda que fornece deslocamento de natação 12m. Quando fora d’água, sua cauda desaparece e dá lugar a pernas (deslocamento 9m). Se permanecer mais de um dia sem contato com água, você não recupera PM com descanso até voltar para a água (ou, pelo menos, tomar um bom banho!).",
-        "efeito": "Respira debaixo d'água; cauda com deslocamento de natação 12m; fora d'água a cauda vira pernas (deslocamento 9m); mais de 1 dia sem contato com água impede recuperar PM com descanso até voltar à água"
+        "efeito": "Respira debaixo d’água; cauda com deslocamento de natação 12m; fora d’água a cauda vira pernas (deslocamento 9m); mais de 1 dia sem contato com água impede recuperar PM com descanso até voltar à água",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "respira_submerso",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "deslocamento_natacao",
+            "valor": 12,
+            "unidade": "m",
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "sem_agua_por_1_dia_impede_recuperar_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

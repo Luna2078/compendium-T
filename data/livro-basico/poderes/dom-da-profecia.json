@@ -10,6 +10,23 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Thyatis",
-    "descricao": "Você pode lançar Augúrio. Caso aprenda novamente essa magia, seu custo diminui em –1 PM. Você também pode gastar 2 PM para receber +2 em um teste."
+    "descricao": "Você pode lançar Augúrio. Caso aprenda novamente essa magia, seu custo diminui em –1 PM. Você também pode gastar 2 PM para receber +2 em um teste.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "pode_lancar_augurio",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "modifica_poder",
+        "alvo": "augurio",
+        "patchCusto": { "pm": -1 }
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "gasta_pm_bonus_teste_livre",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

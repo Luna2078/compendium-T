@@ -3,7 +3,10 @@
   "tipo": "item",
   "nome": "Medalhão de Prata",
   "resumo": "Gravado com uma runa pessoal do conjurador, este medalhão de prata diminui o custo de magias de alcance pessoal.",
-  "fonte": { "livro": "livro-basico", "pagina": 159 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 159
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -11,6 +14,18 @@
     "categoria": "esoterico",
     "preco": "T$ 750",
     "espacos": "1",
-    "especial": "Diminui em –1 PM o custo de magias de alcance pessoal."
+    "especial": "Diminui em –1 PM o custo de magias de alcance pessoal.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "custo_magia",
+        "valor": -1,
+        "condicao": {
+          "campo": "magia.alcance",
+          "igual": "pessoal"
+        },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

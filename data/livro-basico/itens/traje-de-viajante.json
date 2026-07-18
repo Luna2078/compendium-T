@@ -13,6 +13,7 @@
   "mecanica": {
     "categoria": "vestuario",
     "preco": "T$ 10",
-    "espacos": "—"
+    "espacos": "—",
+    "efeitos": []
   }
 }

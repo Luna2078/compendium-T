@@ -10,6 +10,24 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "Sab 1, treinado em Percepção",
-    "descricao": "Você recebe +2 em Percepção, não fica desprevenido contra inimigos que não possa ver e, sempre que erra um ataque devido a camuflagem, pode rolar mais uma vez o dado da chance de falha."
+    "descricao": "Você recebe +2 em Percepção, não fica desprevenido contra inimigos que não possa ver e, sempre que erra um ataque devido a camuflagem, pode rolar mais uma vez o dado da chance de falha.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:percepcao",
+        "valor": 2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_desprevenido_sem_visao",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "rerola_chance_falha_camuflagem",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

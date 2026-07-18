@@ -10,6 +10,15 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Tanna-Toh",
-    "descricao": "Você se torna treinado em duas perícias baseadas em Inteligência a sua escolha."
+    "descricao": "Você se torna treinado em duas perícias baseadas em Inteligência a sua escolha.",
+    "progressao": [
+      {
+        "nivelMin": 1,
+        "escolhas": [
+          { "id": "pericia_int_1", "rotulo": "Perícia baseada em Int à escolha", "alvoTipo": "pericia", "concedeCapacidade": "treinado", "restricao": "distinta" },
+          { "id": "pericia_int_2", "rotulo": "Perícia baseada em Int à escolha", "alvoTipo": "pericia", "concedeCapacidade": "treinado", "restricao": "distinta" }
+        ]
+      }
+    ]
   }
 }

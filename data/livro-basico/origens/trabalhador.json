@@ -21,7 +21,15 @@
     "poderesUnicos": [
       {
         "nome": "Esforçado",
-        "descricao": "Você está acostumado a trabalho duro, nem prazos apertados. Você recebe um bônus de +2 em todos os testes de perícias estendidos (incluindo perigos complexos)."
+        "descricao": "Você está acostumado a trabalho duro, nem prazos apertados. Você recebe um bônus de +2 em todos os testes de perícias estendidos (incluindo perigos complexos).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_testes_estendidos",
+            "valor": 2,
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

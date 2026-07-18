@@ -18,6 +18,7 @@
       "critico": "x3",
       "tipoDano": "Corte/Perfuração",
       "habilidades": ["Alongada"]
-    }
+    },
+    "efeitos": []
   }
 }

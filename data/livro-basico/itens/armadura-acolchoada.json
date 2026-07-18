@@ -16,6 +16,15 @@
       "bonusDefesa": 1,
       "penalidadeArmadura": 0
     },
-    "especial": "+2 em Fortitude."
+    "especial": "+2 em Fortitude.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:fortitude",
+        "valor": 2,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

@@ -14,6 +14,18 @@
     "categoria": "item-aventura",
     "preco": "T$ 0,1",
     "espacos": "1",
-    "especial": "Acender uma tocha é uma ação padrão. Ela ilumina um raio de 9m e dura uma cena. Pode ser usada como uma arma simples leve (dano 1d4 de impacto mais 1 de fogo, crítico x2)."
+    "especial": "Acender uma tocha é uma ação padrão. Ela ilumina um raio de 9m e dura uma cena. Pode ser usada como uma arma simples leve (dano 1d4 de impacto mais 1 de fogo, crítico x2).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_luz",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "usavel_como_arma_improvisada",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

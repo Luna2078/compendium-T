@@ -18,6 +18,14 @@
   "mecanica": {
     "tipoItem": "Poção",
     "categoria": "Menor",
-    "preco": "T$ 30"
+    "preco": "T$ 30",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "replica_magia",
+        "valor": "nevoa",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

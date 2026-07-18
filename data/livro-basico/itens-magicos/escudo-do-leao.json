@@ -15,6 +15,22 @@
   "mecanica": {
     "tipoItem": "Escudo Específico",
     "categoria": "Maior",
-    "preco": "T$ 50.000"
+    "preco": "T$ 50.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:defensor",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "realiza_mordida_automatica_por_pm",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "ativacao": {
+      "custo": { "pm": 2, "acao": "livre" },
+      "encerramento": "1 vez por rodada. A mordida acerta automaticamente e causa 2d6+2 de dano de perfuração."
+    }
   }
 }

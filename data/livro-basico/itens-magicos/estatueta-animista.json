@@ -15,6 +15,13 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Maior",
-    "preco": "T$ 51.000"
+    "preco": "T$ 51.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_parceiro_temporario",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

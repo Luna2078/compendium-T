@@ -9,6 +9,20 @@
   "relacoes": [],
   "mecanica": {
     "grupo": "tormenta",
-    "descricao": "Você recebe resistência a efeitos mentais +1. Além disso, sempre que precisa fazer um teste de Vontade para resistir a uma habilidade, a criatura que usou essa habilidade sofre 1d6 pontos de dano psíquico. Para cada dois outros poderes da Tormenta que você possui o bônus em testes de resistência aumenta em +1 e o dano aumenta em +1d6."
+    "descricao": "Você recebe resistência a efeitos mentais +1. Além disso, sempre que precisa fazer um teste de Vontade para resistir a uma habilidade, a criatura que usou essa habilidade sofre 1d6 pontos de dano psíquico. Para cada dois outros poderes da Tormenta que você possui o bônus em testes de resistência aumenta em +1 e o dano aumenta em +1d6.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "resiste_efeitos_mentais",
+        "valor": { "expr": "1 + floor(contagem.poderes.tormenta / 2)" },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "pos_dano_recebido",
+        "alvo": "atacante.pv.atual",
+        "valor": { "dados": { "n": { "expr": "1 + floor(contagem.poderes.tormenta / 2)" }, "faces": 6 } },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

@@ -11,6 +11,19 @@
     "categoria": "alimentacao",
     "preco": "T$ 1",
     "espacos": "0,5",
-    "especial": "Prato especial. Bônus dura 1 dia (apenas 1 bônus de alimentação por dia). Em sua próxima noite de sono, você aumenta a sua recuperação de pontos de vida em +1 por nível."
+    "especial": "Prato especial. Bônus dura 1 dia (apenas 1 bônus de alimentação por dia). Em sua próxima noite de sono, você aumenta a sua recuperação de pontos de vida em +1 por nível.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_prato_especial",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pv.atual",
+        "valor": { "expr": "nivel" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

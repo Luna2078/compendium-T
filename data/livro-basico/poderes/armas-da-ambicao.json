@@ -10,6 +10,22 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Valkaria",
-    "descricao": "Você recebe +1 em testes de ataque e na margem de ameaça com armas nas quais é proficiente."
+    "descricao": "Você recebe +1 em testes de ataque e na margem de ameaça com armas nas quais é proficiente.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 1,
+        "condicao": { "campo": "arma.proficiente", "igual": "sim" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "critico.margem",
+        "valor": 1,
+        "condicao": { "campo": "arma.proficiente", "igual": "sim" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

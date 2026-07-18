@@ -10,6 +10,9 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Estilo de Duas Armas",
-    "descricao": "Você pode empunhar duas armas de uma mão com o poder Estilo de Duas Armas."
+    "descricao": "Você pode empunhar duas armas de uma mão com o poder Estilo de Duas Armas.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "permite_arma_secundaria_uma_mao", "aplicacao": "lembrete" }
+    ]
   }
 }

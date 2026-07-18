@@ -13,6 +13,17 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "ativacao": {
+      "custo": { "pm": 1, "acao": "movimento" }
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "transforma_item_em_roupa_comum",
+        "aplicacao": "lembrete",
+        "condicao": { "quando": "ativo" }
+      }
+    ]
   }
 }

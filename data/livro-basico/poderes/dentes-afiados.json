@@ -9,6 +9,18 @@
   "relacoes": [],
   "mecanica": {
     "grupo": "tormenta",
-    "descricao": "Você recebe uma arma natural de mordida (dano 1d4, crítico x2, corte). Uma vez por rodada, quando usa a ação agredir para atacar com outra arma, pode gastar 1 PM para fazer um ataque corpo a corpo extra com a mordida."
+    "descricao": "Você recebe uma arma natural de mordida (dano 1d4, crítico x2, corte). Uma vez por rodada, quando usa a ação agredir para atacar com outra arma, pode gastar 1 PM para fazer um ataque corpo a corpo extra com a mordida.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_arma_natural_mordida",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ataque_extra_mordida_ao_agredir",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

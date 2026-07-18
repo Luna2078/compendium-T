@@ -15,6 +15,30 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Maior",
-    "preco": "T$ 97.500"
+    "preco": "T$ 97.500",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_controlar-o-clima",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_furia-do-panteao",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "reduz_custo_pm_magia_conhecida",
+        "valor": -1,
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "permanece_sob_efeito_de_magia",
+        "valor": "suporte-ambiental",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

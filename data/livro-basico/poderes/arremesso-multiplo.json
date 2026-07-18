@@ -10,6 +10,9 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Des 1, Estilo de Arremesso",
-    "descricao": "Uma vez por rodada, quando faz um ataque com uma arma de arremesso, você pode gastar 1 PM para fazer um ataque adicional contra o mesmo alvo, arremessando outra arma de arremesso."
+    "descricao": "Uma vez por rodada, quando faz um ataque com uma arma de arremesso, você pode gastar 1 PM para fazer um ataque adicional contra o mesmo alvo, arremessando outra arma de arremesso.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "realiza_arremesso_extra", "aplicacao": "lembrete" }
+    ]
   }
 }

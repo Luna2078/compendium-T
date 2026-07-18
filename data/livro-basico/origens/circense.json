@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Truque de Mágica",
-        "descricao": "Você pode lançar Explosão de Chamas, Hipnotismo e Queda Suave, mas apenas com o aprimoramento Truque. Esta não é uma habilidade mágica — os efeitos provêm de prestidigitação."
+        "descricao": "Você pode lançar Explosão de Chamas, Hipnotismo e Queda Suave, mas apenas com o aprimoramento Truque. Esta não é uma habilidade mágica — os efeitos provêm de prestidigitação.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "lanca_magias_como_truque_de_prestidigitacao",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

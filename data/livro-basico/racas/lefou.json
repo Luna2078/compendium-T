@@ -3,8 +3,13 @@
   "tipo": "raca",
   "nome": "Lefou",
   "resumo": "Tocados pela Tormenta, os lefou são meios-demônios de aparência grotesca, nascidos em famílias de outras raças. Cada um carrega uma mácula da tempestade rubra — uma deformidade que, apesar de desagradável, traz poder. Ser meio-demônio da Tormenta não significa ser maligno.",
-  "fonte": { "livro": "livro-basico", "pagina": 24 },
-  "imagens": ["/racas/lefou.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 24
+  },
+  "imagens": [
+    "/racas/lefou.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -24,13 +29,31 @@
     }
   ],
   "relacoes": [
-    { "tipo": "associadaA", "alvoId": "tormenta", "alvoTipo": "termo", "rotulo": "tocados pela Tormenta" },
-    { "tipo": "citaA", "alvoId": "aharadak", "alvoTipo": "divindade", "rotulo": "ascensão de Aharadak" }
+    {
+      "tipo": "associadaA",
+      "alvoId": "tormenta",
+      "alvoTipo": "termo",
+      "rotulo": "tocados pela Tormenta"
+    },
+    {
+      "tipo": "citaA",
+      "alvoId": "aharadak",
+      "alvoTipo": "divindade",
+      "rotulo": "ascensão de Aharadak"
+    }
   ],
   "mecanica": {
     "modificadores": [
-      { "valor": 1, "escolha": true, "quantidade": 3, "observacao": "em três atributos diferentes (exceto Carisma)" },
-      { "atributo": "Carisma", "valor": -1 }
+      {
+        "valor": 1,
+        "escolha": true,
+        "quantidade": 3,
+        "observacao": "em três atributos diferentes (exceto Carisma)"
+      },
+      {
+        "atributo": "Carisma",
+        "valor": -1
+      }
     ],
     "tamanho": "Médio",
     "deslocamento": 9,
@@ -40,12 +63,58 @@
       {
         "nome": "Cria da Tormenta",
         "descricao": "Você é uma criatura do tipo monstro e recebe +5 em testes de resistência contra efeitos causados por lefeu e pela Tormenta.",
-        "efeito": "Tipo monstro; +5 em testes de resistência contra efeitos de lefeu e da Tormenta"
+        "efeito": "Tipo monstro; +5 em testes de resistência contra efeitos de lefeu e da Tormenta",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "tipo_criatura:monstro",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "resistencia_5_contra_lefeu_e_tormenta",
+            "valor": 5,
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Deformidade",
         "descricao": "Todo lefou possui defeitos físicos que, embora desagradáveis, conferem certas vantagens. Você recebe +2 em duas perícias a sua escolha. Cada um desses bônus conta como um poder da Tormenta (exceto para perda de Carisma). Você pode trocar um desses bônus por um poder da Tormenta a sua escolha (ele também não conta para perda de Carisma).",
-        "efeito": "+2 em duas perícias à escolha; cada bônus conta como poder da Tormenta (exceto para perda de Carisma); pode trocar um por um poder da Tormenta à escolha"
+        "efeito": "+2 em duas perícias à escolha; cada bônus conta como poder da Tormenta (exceto para perda de Carisma); pode trocar um por um poder da Tormenta à escolha",
+        "efeitos": [],
+        "escolhas": [
+          {
+            "id": "deformidade_slot_1",
+            "rotulo": "+2 numa perícia à escolha",
+            "opcoes": [
+              {
+                "tipo": "bonus_pericia",
+                "valor": 2
+              }
+            ],
+            "restricao": "distinta"
+          },
+          {
+            "id": "deformidade_slot_2",
+            "rotulo": "+2 numa perícia (ou troca por um poder da Tormenta)",
+            "opcoes": [
+              {
+                "tipo": "bonus_pericia",
+                "valor": 2
+              },
+              {
+                "tipo": "poder",
+                "grupo": "tormenta"
+              }
+            ],
+            "restricao": "distinta"
+          }
+        ],
+        "contaComoPoderTormenta": {
+          "escalagem": true,
+          "carisma": false
+        }
       }
     ]
   }

@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Frutos do Trabalho",
-        "descricao": "No início de cada aventura, você recebe até 5 itens gerais que possa fabricar num valor total de até T$ 50. Esse valor aumenta para T$ 100 no patamar veterano, T$ 300 no heroico e T$ 500 no lenda."
+        "descricao": "No início de cada aventura, você recebe até 5 itens gerais que possa fabricar num valor total de até T$ 50. Esse valor aumenta para T$ 100 no patamar veterano, T$ 300 no heroico e T$ 500 no lenda.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "recebe_itens_fabricados_por_aventura",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

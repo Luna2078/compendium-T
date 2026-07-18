@@ -10,6 +10,17 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "For 1, Estilo de Arremesso",
-    "descricao": "Quando usa uma arma de arremesso, você pode usar sua Força em vez de Destreza nos testes de ataque. Se você possuir o poder Ataque Poderoso, poderá usá-lo com armas de arremesso."
+    "descricao": "Quando usa uma arma de arremesso, você pode usar sua Força em vez de Destreza nos testes de ataque. Se você possuir o poder Ataque Poderoso, poderá usá-lo com armas de arremesso.",
+    "efeitos": [
+      {
+        "tipo": "substituicao",
+        "em": ["ataque"],
+        "de": "atr.des",
+        "por": "atr.for",
+        "condicao": { "campo": "arma.propriedades", "igual": "arremesso" },
+        "aplicacao": "contextual"
+      },
+      { "tipo": "capacidade", "chave": "permite_ataque_poderoso_com_arremesso", "aplicacao": "lembrete" }
+    ]
   }
 }

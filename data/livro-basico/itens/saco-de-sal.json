@@ -11,6 +11,13 @@
     "categoria": "alquimico",
     "preco": "T$ 45",
     "espacos": "0,5",
-    "especial": "Usado como catalisador, fornece +2 na CD de magias de abjuração."
+    "especial": "Usado como catalisador, fornece +2 na CD de magias de abjuração.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "catalisador_modifica_magia",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

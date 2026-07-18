@@ -10,6 +10,9 @@
   "mecanica": {
     "categoria": "animal",
     "preco": "T$ 150",
-    "especial": "Parceiro iniciante. Pode ser usado como parceiro perseguidor por personagens treinados em Adestramento, ou como montaria por personagens Pequenos e Minúsculos (veja a página 260)."
+    "especial": "Parceiro iniciante. Pode ser usado como parceiro perseguidor por personagens treinados em Adestramento, ou como montaria por personagens Pequenos e Minúsculos (veja a página 260).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "possui_parceiro", "aplicacao": "lembrete" }
+    ]
   }
 }

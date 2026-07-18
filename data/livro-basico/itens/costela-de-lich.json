@@ -11,6 +11,21 @@
     "categoria": "esoterico",
     "preco": "T$ 300",
     "espacos": "1",
-    "especial": "Suas magias causam +1d6 pontos de dano de trevas. Se estiver empunhando esta varinha você não recupera PV por efeitos mágicos de cura."
+    "especial": "Suas magias causam +1d6 pontos de dano de trevas. Se estiver empunhando esta varinha você não recupera PV por efeitos mágicos de cura.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "magias_causam_dano_extra_fixo",
+        "valor": { "dados": { "n": 1, "faces": 6 } },
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bloqueia_cura_magica",
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

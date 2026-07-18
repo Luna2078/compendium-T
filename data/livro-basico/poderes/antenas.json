@@ -9,6 +9,11 @@
   "relacoes": [],
   "mecanica": {
     "grupo": "tormenta",
-    "descricao": "Você recebe +1 em Iniciativa, Percepção e Vontade. Este bônus aumenta em +1 para cada dois outros poderes da Tormenta que você possui."
+    "descricao": "Você recebe +1 em Iniciativa, Percepção e Vontade. Este bônus aumenta em +1 para cada dois outros poderes da Tormenta que você possui.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "iniciativa", "valor": { "expr": "1 + floor(contagem.poderes.tormenta / 2)" }, "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:percepcao", "valor": { "expr": "1 + floor(contagem.poderes.tormenta / 2)" }, "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:vontade", "valor": { "expr": "1 + floor(contagem.poderes.tormenta / 2)" }, "aplicacao": "automatica" }
+    ]
   }
 }

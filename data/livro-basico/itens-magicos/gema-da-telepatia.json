@@ -15,6 +15,23 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Maior",
-    "preco": "T$ 30.000"
+    "preco": "T$ 30.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_efeito_magia_sem_custo",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_compreensao",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_enfeiticar",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

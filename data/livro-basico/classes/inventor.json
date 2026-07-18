@@ -3,8 +3,13 @@
   "tipo": "classe",
   "nome": "Inventor",
   "resumo": "O mais raro dos aventureiros: um gênio da alquimia, mecânica e engenharia que confia em si mesmo e olha para o futuro, fabricando itens superiores, poções, engenhocas e até itens mágicos para modificar o mundo.",
-  "fonte": { "livro": "livro-basico", "pagina": 67 },
-  "imagens": ["/classes/inventor.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 67
+  },
+  "imagens": [
+    "/classes/inventor.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -28,7 +33,12 @@
     }
   ],
   "relacoes": [
-    { "tipo": "exemplo", "alvoId": "marlin", "alvoTipo": "npc", "rotulo": "Marlin (inventora)" }
+    {
+      "tipo": "exemplo",
+      "alvoId": "marlin",
+      "alvoTipo": "npc",
+      "rotulo": "Marlin (inventora)"
+    }
   ],
   "mecanica": {
     "atributoChave": "Inteligência",
@@ -37,237 +47,817 @@
     "pmPorNivel": 4,
     "pericias": {
       "quantidade": 4,
-      "fixas": ["Ofício (Int)", "Vontade (Sab)"],
-      "lista": ["Conhecimento (Int)", "Cura (Sab)", "Diplomacia (Car)", "Fortitude (Con)", "Iniciativa (Des)", "Investigação (Int)", "Luta (For)", "Misticismo (Int)", "Ofício (Int)", "Pilotagem (Des)", "Percepção (Sab)", "Pontaria (Des)"],
+      "fixas": [
+        "Ofício (Int)",
+        "Vontade (Sab)"
+      ],
+      "lista": [
+        "Conhecimento (Int)",
+        "Cura (Sab)",
+        "Diplomacia (Car)",
+        "Fortitude (Con)",
+        "Iniciativa (Des)",
+        "Investigação (Int)",
+        "Luta (For)",
+        "Misticismo (Int)",
+        "Ofício (Int)",
+        "Pilotagem (Des)",
+        "Percepção (Sab)",
+        "Pontaria (Des)"
+      ],
       "texto": "Ofício (Int) e Vontade (Sab), mais 4 a sua escolha entre Conhecimento (Int), Cura (Sab), Diplomacia (Car), Fortitude (Con), Iniciativa (Des), Investigação (Int), Luta (For), Misticismo (Int), Ofício (Int), Pilotagem (Des), Percepção (Sab) e Pontaria (Des)."
     },
     "proficiencias": [],
     "progressao": [
-      { "nivel": 1, "habilidades": ["Engenhosidade", "Protótipo"] },
-      { "nivel": 2, "habilidades": ["Fabricar item superior (1 melhoria)", "Poder de inventor"] },
-      { "nivel": 3, "habilidades": ["Comerciante", "Poder de inventor"] },
-      { "nivel": 4, "habilidades": ["Poder de inventor"] },
-      { "nivel": 5, "habilidades": ["Fabricar item superior (2 melhorias)", "Poder de inventor"] },
-      { "nivel": 6, "habilidades": ["Poder de inventor"] },
-      { "nivel": 7, "habilidades": ["Encontrar fraqueza", "Poder de inventor"] },
-      { "nivel": 8, "habilidades": ["Fabricar item superior (3 melhorias)", "Poder de inventor"] },
-      { "nivel": 9, "habilidades": ["Fabricar item mágico (menor)", "Poder de inventor"] },
-      { "nivel": 10, "habilidades": ["Olho do dragão", "Poder de inventor"] },
-      { "nivel": 11, "habilidades": ["Fabricar item superior (4 melhorias)", "Poder de inventor"] },
-      { "nivel": 12, "habilidades": ["Poder de inventor"] },
-      { "nivel": 13, "habilidades": ["Fabricar item mágico (médio)", "Poder de inventor"] },
-      { "nivel": 14, "habilidades": ["Poder de inventor"] },
-      { "nivel": 15, "habilidades": ["Poder de inventor"] },
-      { "nivel": 16, "habilidades": ["Poder de inventor"] },
-      { "nivel": 17, "habilidades": ["Fabricar item mágico (maior)", "Poder de inventor"] },
-      { "nivel": 18, "habilidades": ["Poder de inventor"] },
-      { "nivel": 19, "habilidades": ["Poder de inventor"] },
-      { "nivel": 20, "habilidades": ["Obra-prima", "Poder de inventor"] }
+      {
+        "nivel": 1,
+        "habilidades": [
+          "Engenhosidade",
+          "Protótipo"
+        ]
+      },
+      {
+        "nivel": 2,
+        "habilidades": [
+          "Fabricar item superior (1 melhoria)",
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          "Comerciante",
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 4,
+        "habilidades": [
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 5,
+        "habilidades": [
+          "Fabricar item superior (2 melhorias)",
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 6,
+        "habilidades": [
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 7,
+        "habilidades": [
+          "Encontrar fraqueza",
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 8,
+        "habilidades": [
+          "Fabricar item superior (3 melhorias)",
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 9,
+        "habilidades": [
+          "Fabricar item mágico (menor)",
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 10,
+        "habilidades": [
+          "Olho do dragão",
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 11,
+        "habilidades": [
+          "Fabricar item superior (4 melhorias)",
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 12,
+        "habilidades": [
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 13,
+        "habilidades": [
+          "Fabricar item mágico (médio)",
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 14,
+        "habilidades": [
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 15,
+        "habilidades": [
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 16,
+        "habilidades": [
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 17,
+        "habilidades": [
+          "Fabricar item mágico (maior)",
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 18,
+        "habilidades": [
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 19,
+        "habilidades": [
+          "Poder de inventor"
+        ]
+      },
+      {
+        "nivel": 20,
+        "habilidades": [
+          "Obra-prima",
+          "Poder de inventor"
+        ]
+      }
     ],
     "habilidades": [
       {
         "nome": "Engenhosidade",
         "nivel": 1,
         "descricao": "Quando faz um teste de perícia, você pode gastar 2 PM para somar a sua Inteligência no teste. Você não pode usar esta habilidade em testes de ataque.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "soma_atributo_em_pericia_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Protótipo",
         "nivel": 1,
-        "descricao": "Você começa o jogo com um item superior, ou com 10 itens alquímicos, com preço total de até T$ 500. Veja o Capítulo 3: Equipamento para a lista de itens."
+        "descricao": "Você começa o jogo com um item superior, ou com 10 itens alquímicos, com preço total de até T$ 500. Veja o Capítulo 3: Equipamento para a lista de itens.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "recebe_item_inicial_por_valor",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Fabricar Item Superior",
         "nivel": 2,
-        "descricao": "No 2º nível, você recebe um item superior com preço de até T$ 2.000 e passa a poder fabricar itens superiores com uma melhoria. Veja o Capítulo 3: Equipamento para a lista de melhorias. Nos níveis 5, 8 e 11, você pode substituir esse item por um item superior com duas, três e quatro melhorias, respectivamente, e passa a poder fabricar itens superiores com essa quantidade de melhorias. Considera-se que você estava trabalhando nos itens e você não gasta dinheiro ou tempo neles (mas gasta em itens que fabricar futuramente)."
+        "descricao": "No 2º nível, você recebe um item superior com preço de até T$ 2.000 e passa a poder fabricar itens superiores com uma melhoria. Veja o Capítulo 3: Equipamento para a lista de melhorias. Nos níveis 5, 8 e 11, você pode substituir esse item por um item superior com duas, três e quatro melhorias, respectivamente, e passa a poder fabricar itens superiores com essa quantidade de melhorias. Considera-se que você estava trabalhando nos itens e você não gasta dinheiro ou tempo neles (mas gasta em itens que fabricar futuramente).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "fabrica_item_alquimico_oficio",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Poder de Inventor",
         "nivel": 2,
-        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes de inventor (veja a lista de poderes)."
+        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes de inventor (veja a lista de poderes).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "escolhe_poder_de_classe_por_nivel",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Comerciante",
         "nivel": 3,
-        "descricao": "No 3º nível, você pode vender itens 10% mais caro (não cumulativo com barganha)."
+        "descricao": "No 3º nível, você pode vender itens 10% mais caro (não cumulativo com barganha).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "desconto_compra_venda_itens",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Encontrar Fraqueza",
         "nivel": 7,
         "descricao": "A partir do 7º nível, você pode gastar uma ação de movimento e 2 PM para analisar um objeto em alcance curto. Se fizer isso, ignora a redução de dano dele. Você também pode usar esta habilidade para encontrar uma fraqueza em um inimigo. Se ele estiver de armadura ou for um construto, você recebe +2 em seus testes de ataque contra ele. Os benefícios desta habilidade duram até o fim da cena.",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_rd_por_pm",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_ataque_contra_alvo_analisado",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Fabricar Item Mágico",
         "nivel": 9,
-        "descricao": "No 9º nível, você recebe um item mágico menor e passa a poder fabricar itens mágicos menores. Veja o Capítulo 8: Recompensas para as regras de itens mágicos. Nos níveis 13 e 17, você pode substituir esse item por um item mágico médio e maior, respectivamente, e passa a poder fabricar itens mágicos dessas categorias. Considera-se que você estava trabalhando nos itens que recebe e você não gasta dinheiro, tempo ou pontos de mana neles (mas gasta em itens que fabricar futuramente)."
+        "descricao": "No 9º nível, você recebe um item mágico menor e passa a poder fabricar itens mágicos menores. Veja o Capítulo 8: Recompensas para as regras de itens mágicos. Nos níveis 13 e 17, você pode substituir esse item por um item mágico médio e maior, respectivamente, e passa a poder fabricar itens mágicos dessas categorias. Considera-se que você estava trabalhando nos itens que recebe e você não gasta dinheiro, tempo ou pontos de mana neles (mas gasta em itens que fabricar futuramente).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "fabrica_item_alquimico_oficio",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Olho do Dragão",
         "nivel": 10,
-        "descricao": "A partir do 10º nível, você pode gastar uma ação completa para analisar um item. Você automaticamente descobre se o item é mágico, suas propriedades e como utilizá-las."
+        "descricao": "A partir do 10º nível, você pode gastar uma ação completa para analisar um item. Você automaticamente descobre se o item é mágico, suas propriedades e como utilizá-las.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "identifica_item_magico_automaticamente",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Obra-Prima",
         "nivel": 20,
-        "descricao": "No 20º nível, você fabrica sua obra-prima, aquela pela qual seu nome será lembrado em eras futuras. Você é livre para criar as regras do item, mas ele deve ser aprovado pelo mestre. Como linha geral, ele pode ter benefícios equivalentes a de um item com cinco melhorias e quatro encantos. Considera-se que você estava trabalhando no item e você não gasta dinheiro, tempo ou PM nele."
+        "descricao": "No 20º nível, você fabrica sua obra-prima, aquela pela qual seu nome será lembrado em eras futuras. Você é livre para criar as regras do item, mas ele deve ser aprovado pelo mestre. Como linha geral, ele pode ter benefícios equivalentes a de um item com cinco melhorias e quatro encantos. Considera-se que você estava trabalhando no item e você não gasta dinheiro, tempo ou PM nele.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "fabrica_obra_prima_unica",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ],
     "poderes": [
       {
         "nome": "Agite Antes de Usar",
         "descricao": "Quando usa um preparado alquímico que cause dano, você pode gastar uma quantidade de PM a sua escolha (limitado por sua Inteligência). Para cada PM que gastar, o item causa um dado extra de dano do mesmo tipo.",
-        "prerequisito": "treinado em Ofício (alquimista)"
+        "prerequisito": "treinado em Ofício (alquimista)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "adiciona_dados_dano_item_alquimico_por_pm",
+            "valor": {
+              "expr": "pm_gasto"
+            },
+            "aplicacao": "lembrete"
+          }
+        ],
+        "ativacao": {
+          "custoVariavel": {
+            "pm": {
+              "max": {
+                "expr": "atr.int"
+              }
+            }
+          }
+        }
       },
       {
         "nome": "Ajuste de Mira",
         "descricao": "Você pode gastar uma ação padrão e uma quantidade de PM a sua escolha (limitado pela sua Inteligência) para aprimorar uma arma de ataque à distância. Para cada PM que gastar, você recebe +1 em rolagens de dano com a arma até o final da cena.",
-        "prerequisito": "Balística"
+        "prerequisito": "Balística",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": {
+              "expr": "pm_gasto"
+            },
+            "condicao": {
+              "campo": "arma.tipo_ataque",
+              "em": [
+                "disparo",
+                "arremesso"
+              ]
+            },
+            "aplicacao": "contextual"
+          }
+        ],
+        "ativacao": {
+          "custo": {
+            "acao": "padrao"
+          },
+          "custoVariavel": {
+            "pm": {
+              "max": {
+                "expr": "atr.int"
+              }
+            }
+          },
+          "encerramento": "Dura até o fim da cena."
+        }
       },
       {
         "nome": "Alquimista de Batalha",
         "descricao": "Quando usa um preparado alquímico ou poção que cause dano, você soma sua Inteligência na rolagem de dano.",
-        "prerequisito": "Alquimista Iniciado"
+        "prerequisito": "Alquimista Iniciado",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "soma_int_dano_preparado_alquimico",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Alquimista Iniciado",
         "descricao": "Você recebe um livro de fórmulas e pode fabricar poções com fórmulas que conheça de 1º e 2º círculos. Veja as páginas 333 e 341 para as regras de poções.",
-        "prerequisito": "Int 1, Sab 1, treinado em Ofício (alquimista)"
+        "prerequisito": "Int 1, Sab 1, treinado em Ofício (alquimista)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "fabrica_item_alquimico_oficio",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Armeiro",
         "descricao": "Você recebe proficiência com armas marciais corpo a corpo. Quando empunha uma arma corpo a corpo, pode usar sua Inteligência em vez de Força nos testes de ataque e rolagens de dano.",
-        "prerequisito": "treinado em Luta e Ofício (armeiro)"
+        "prerequisito": "treinado em Luta e Ofício (armeiro)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "proficiente:marciais_corpo_a_corpo",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "substituicao",
+            "em": [
+              "ataque",
+              "dano.corpo_a_corpo"
+            ],
+            "de": "atr.for",
+            "por": "atr.int",
+            "condicao": {
+              "campo": "arma.alcance",
+              "em": [
+                "corpo_a_corpo"
+              ]
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Ativação Rápida",
         "descricao": "Ao ativar uma engenhoca com ação padrão, você pode pagar 2 PM para ativá-la com uma ação de movimento, em vez disto.",
         "prerequisito": "Engenhoqueiro, 7º nível de inventor",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "reduz_execucao_engenhoca_para_acao_movimento",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aumento de Atributo",
-        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo."
+        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo.",
+        "empilhavel": true,
+        "efeitos": [],
+        "escolhas": [
+          {
+            "id": "aumento_atributo",
+            "rotulo": "+1 em um atributo à escolha",
+            "alvoTipo": "atributo",
+            "efeito": {
+              "tipo": "bonus",
+              "valor": 1,
+              "aplicacao": "automatica"
+            },
+            "restricao": "uma_por_patamar_por_alvo"
+          }
+        ]
       },
       {
         "nome": "Autômato",
         "descricao": "Você fabrica um autômato, um construto que obedece a seus comandos. Ele é um parceiro iniciante de um tipo a sua escolha entre ajudante, assassino, atirador, combatente, guardião, montaria ou vigilante. No 7º nível, ele muda para veterano e, no 15º nível, para mestre. Se o autômato for destruído, você pode fabricar um novo com uma semana de trabalho e T$ 100.",
-        "prerequisito": "Engenhoqueiro"
+        "prerequisito": "Engenhoqueiro",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "possui_parceiro",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Autômato Prototipado",
         "descricao": "Você pode gastar uma ação padrão e 2 PM para ativar uma melhoria experimental em seu autômato. Role 1d6. Em um resultado 2 a 6, você aumenta o nível de parceiro do autômato em um passo (até mestre), ou concede a ele a habilidade iniciante de outro de seus tipos, até o fim da cena. Em um resultado 1, o autômato enguiça como uma engenhoca.",
         "prerequisito": "Autômato",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ativa_melhoria_experimental_automato",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Balística",
         "descricao": "Você recebe proficiência com armas marciais de ataque à distância ou com armas de fogo. Quando usa uma arma de ataque à distância, pode usar sua Inteligência em vez de Destreza nos testes de ataque (e, caso possua o poder Estilo de Disparo, nas rolagens de dano).",
-        "prerequisito": "treinado em Pontaria e Ofício (armeiro)"
+        "prerequisito": "treinado em Pontaria e Ofício (armeiro)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "proficiente:marciais_distancia",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "substituicao",
+            "em": [
+              "ataque"
+            ],
+            "de": "atr.des",
+            "por": "atr.int",
+            "condicao": {
+              "campo": "arma.tipo_ataque",
+              "em": [
+                "disparo",
+                "arremesso"
+              ]
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Blindagem",
         "descricao": "Você pode usar sua Inteligência na Defesa quando usa armadura pesada. Se fizer isso, não pode somar sua Destreza, mesmo que outras habilidades ou efeitos permitam isso.",
-        "prerequisito": "Couraceiro, 8º nível de inventor"
+        "prerequisito": "Couraceiro, 8º nível de inventor",
+        "efeitos": [
+          {
+            "tipo": "substituicao",
+            "em": [
+              "defesa"
+            ],
+            "de": "atr.des",
+            "por": "atr.int",
+            "condicao": {
+              "campo": "armadura.subcategoria",
+              "em": [
+                "pesada"
+              ]
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Cano Raiado",
         "descricao": "Quando usa uma arma de disparo feita por você mesmo, ela recebe +1 na margem de ameaça.",
-        "prerequisito": "Balística, 5º nível de inventor"
+        "prerequisito": "Balística, 5º nível de inventor",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "critico.margem",
+            "valor": 1,
+            "condicao": {
+              "campo": "arma.tipo_ataque",
+              "em": [
+                "disparo"
+              ]
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "requer_arma_fabricada_pelo_proprio",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Catalisador Instável",
         "descricao": "Você pode gastar uma ação completa e 3 PM para fabricar um preparado alquímico ou poção cuja fórmula conheça instantaneamente. O custo do item é reduzido à metade e você não precisa fazer o teste de Ofício (alquimista), mas ele só dura até o fim da cena.",
         "prerequisito": "Alquimista Iniciado",
-        "custo": "3 PM"
+        "custo": "3 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "fabrica_preparado_instante_custo_metade",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Chutes e Palavrões",
         "descricao": "Uma vez por rodada, você pode pagar 1 PM para repetir um teste de Ofício (engenhoqueiro) recém realizado para ativar uma engenhoca.",
         "prerequisito": "Engenhoqueiro",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "rerola_teste_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Conhecimento de Fórmulas",
         "descricao": "Você aprende três fórmulas de quaisquer círculos que possa aprender. Você pode escolher este poder quantas vezes quiser.",
-        "prerequisito": "Alquimista Iniciado"
+        "prerequisito": "Alquimista Iniciado",
+        "empilhavel": true,
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "fabrica_item_alquimico_oficio",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Couraceiro",
         "descricao": "Você recebe proficiência com armaduras pesadas e escudos. Quando usa armadura, pode usar sua Inteligência em vez de Destreza na Defesa (mas continua não podendo somar um atributo na Defesa quando usa armadura pesada).",
-        "prerequisito": "treinado em Ofício (armeiro)"
+        "prerequisito": "treinado em Ofício (armeiro)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "proficiente:armaduras_pesadas",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "proficiente:escudos",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "substituicao",
+            "em": [
+              "defesa"
+            ],
+            "de": "atr.des",
+            "por": "atr.int",
+            "condicao": {
+              "campo": "armadura.subcategoria",
+              "em": [
+                "leve",
+                "media"
+              ]
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Engenhoqueiro",
         "descricao": "Você pode fabricar engenhocas. Veja as regras para isso na página 70.",
-        "prerequisito": "Int 3, treinado em Ofício (engenhoqueiro)"
+        "prerequisito": "Int 3, treinado em Ofício (engenhoqueiro)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ativa_engenhoca_simula_magia",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Farmacêutico",
         "descricao": "Quando usa um item alquímico que cure pontos de vida, você pode gastar uma quantidade de PM a sua escolha (limitado por sua Inteligência). Para cada PM que gastar, o item cura um dado extra do mesmo tipo.",
-        "prerequisito": "Sab 1, treinado em Ofício (alquimista)"
+        "prerequisito": "Sab 1, treinado em Ofício (alquimista)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "adiciona_dados_cura_item_alquimico_por_pm",
+            "valor": {
+              "expr": "pm_gasto"
+            },
+            "aplicacao": "lembrete"
+          }
+        ],
+        "ativacao": {
+          "custoVariavel": {
+            "pm": {
+              "max": {
+                "expr": "atr.int"
+              }
+            }
+          }
+        }
       },
       {
         "nome": "Ferreiro",
         "descricao": "Quando usa uma arma corpo a corpo feita por você mesmo, o dano dela aumenta em um passo.",
-        "prerequisito": "Armeiro, 5º nível de inventor"
+        "prerequisito": "Armeiro, 5º nível de inventor",
+        "efeitos": [
+          {
+            "tipo": "passo_de_dado",
+            "alvo": "dano",
+            "passos": 1,
+            "condicao": {
+              "campo": "arma.alcance",
+              "em": [
+                "corpo_a_corpo"
+              ]
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "requer_arma_fabricada_pelo_proprio",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Granadeiro",
         "descricao": "Você pode arremessar itens alquímicos e poções em alcance médio. Você pode usar sua Inteligência em vez de Destreza para calcular a CD do teste de resistência desses itens.",
-        "prerequisito": "Alquimista de Batalha"
+        "prerequisito": "Alquimista de Batalha",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "alcance_arremesso_preparado_alcance_medio",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "usa_int_em_cd_preparado_alquimico",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Homúnculo",
         "descricao": "Você possui um homúnculo, uma criatura Minúscula feita de alquimia. Vocês podem se comunicar telepaticamente em alcance longo e ele obedece a suas ordens, mas ainda está limitado ao que uma criatura de seu tamanho pode fazer. Um homúnculo é um parceiro ajudante iniciante. Você pode perder 1d6 pontos de vida para seu homúnculo assumir uma forma capaz de protegê-lo e se tornar também um parceiro guardião iniciante até o fim da cena.",
-        "prerequisito": "Alquimista Iniciado"
+        "prerequisito": "Alquimista Iniciado",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "possui_parceiro",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "perde_pv_por_forma_guardiao_homunculo",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Invenção Potente",
         "descricao": "Quando usa um item ou engenhoca fabricado por você mesmo, você pode pagar 1 PM para aumentar em +2 a CD para resistir a ele.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aumenta_cd_resistir_item_fabricado",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Maestria em Perícia",
         "descricao": "Escolha um número de perícias treinadas igual a sua Inteligência, exceto bônus temporários. Com essas perícias, você pode gastar 1 PM para escolher 10 em qualquer situação, exceto testes de ataque.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "escolhe_10_em_pericia_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Manutenção Eficiente",
         "descricao": "A quantidade de engenhocas que você pode manter aumenta em +3. Além disso, cada engenhoca passa a ocupar meio espaço.",
-        "prerequisito": "Engenhoqueiro, 5º nível de inventor"
+        "prerequisito": "Engenhoqueiro, 5º nível de inventor",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aumenta_limite_engenhocas",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "engenhoca_ocupa_meio_espaco",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Mestre Alquimista",
         "descricao": "Você pode fabricar poções com fórmulas que conheça de qualquer círculo.",
-        "prerequisito": "Int 3, Sab 3, Alquimista Iniciado, 10º nível de inventor"
+        "prerequisito": "Int 3, Sab 3, Alquimista Iniciado, 10º nível de inventor",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "fabrica_item_alquimico_oficio",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Mestre Cuca",
         "descricao": "Todas as comidas que você cozinha têm seu bônus numérico aumentado em +1.",
-        "prerequisito": "treinado em Ofício (cozinheiro)"
+        "prerequisito": "treinado em Ofício (cozinheiro)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_comidas_cozinhadas",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Mistura Fervilhante",
         "descricao": "Quando usa um item alquímico ou poção, você pode gastar 2 PM para dobrar a área de efeito dele.",
         "prerequisito": "Alquimista Iniciado, 5º nível de inventor",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "dobra_area_preparado_alquimico",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Oficina de Campo",
         "descricao": "Você pode gastar uma hora e 2 PM para fazer a manutenção do equipamento de seu grupo. Cada membro do grupo escolhe uma arma, armadura ou escudo para manutenção. Armas recebem +1 em testes de ataque, armaduras e escudos aumentam seu bônus na Defesa em +1. Os benefícios duram um dia.",
         "prerequisito": "treinado em Ofício (armeiro)",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "manutencao_equipamento_grupo",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Pedra de Amolar",
         "descricao": "Você pode gastar uma ação de movimento e uma quantidade de PM a sua escolha (limitado por sua Inteligência) para aprimorar uma arma corpo a corpo que esteja empunhando. Para cada PM que gastar, você recebe +1 em rolagens de dano com a arma até o final da cena.",
-        "prerequisito": "Armeiro"
+        "prerequisito": "Armeiro",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano.corpo_a_corpo",
+            "valor": {
+              "expr": "pm_gasto"
+            },
+            "aplicacao": "contextual"
+          }
+        ],
+        "ativacao": {
+          "custo": {
+            "acao": "movimento"
+          },
+          "custoVariavel": {
+            "pm": {
+              "max": {
+                "expr": "atr.int"
+              }
+            }
+          },
+          "encerramento": "Dura até o fim da cena."
+        }
       },
       {
         "nome": "Síntese Rápida",
         "descricao": "Quando fabrica um item alquímico ou poção, você pode fabricar o dobro de doses no mesmo tempo (pagando o custo de matéria-prima de cada uma).",
-        "prerequisito": "Alquimista Iniciado"
+        "prerequisito": "Alquimista Iniciado",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "dobra_doses_fabricacao",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

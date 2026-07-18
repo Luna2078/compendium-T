@@ -14,6 +14,58 @@
   "relacoes": [],
   "mecanica": {
     "tipoItem": "Artefato",
-    "categoria": "Artefato"
+    "categoria": "Artefato",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:atroz",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:precisa",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:pungente",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:ameacadora",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:magnifica",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:veloz",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_reducao_dano",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "critico_afeta_imunes_a_critico",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "item_indestrutivel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "requisito_uso_nivel_minimo_15_luta",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

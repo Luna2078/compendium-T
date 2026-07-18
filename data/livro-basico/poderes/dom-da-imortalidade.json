@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Thyatis, somente paladino",
-    "descricao": "Você é imortal. Sempre que morre, não importando o motivo, volta à vida após 3d6 dias. Apenas paladinos podem escolher este poder. Um personagem pode ter Dom da Imortalidade ou Dom da Ressurreição, mas não ambos."
+    "descricao": "Você é imortal. Sempre que morre, não importando o motivo, volta à vida após 3d6 dias. Apenas paladinos podem escolher este poder. Um personagem pode ter Dom da Imortalidade ou Dom da Ressurreição, mas não ambos.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "ressuscita_apos_morte",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

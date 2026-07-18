@@ -10,6 +10,18 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Marah",
-    "descricao": "Você aprende e pode lançar Enfeitiçar. Caso aprenda novamente essa magia, seu custo diminui em –1 PM."
+    "descricao": "Você aprende e pode lançar Enfeitiçar. Caso aprenda novamente essa magia, seu custo diminui em –1 PM.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_enfeiticar",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "modifica_poder",
+        "alvo": "enfeiticar",
+        "patchCusto": { "pm": -1 }
+      }
+    ]
   }
 }

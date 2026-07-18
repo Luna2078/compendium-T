@@ -11,6 +11,13 @@
     "categoria": "item-aventura",
     "preco": "T$ 1",
     "espacos": "1",
-    "especial": "Dormir ao relento sem um acampamento e um saco de dormir diminui sua recuperação de PV e PM (veja a página 106)."
+    "especial": "Dormir ao relento sem um acampamento e um saco de dormir diminui sua recuperação de PV e PM (veja a página 106).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "necessario_para_recuperacao_ao_relento",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -10,6 +10,15 @@
   "mecanica": {
     "grupo": "tormenta",
     "prerequisito": "Um poder da Tormenta",
-    "descricao": "Crostas vermelhas em várias partes de seu corpo tornam seus ataques mais perigosos. Seu dano desarmado aumenta em um passo, mais um passo para cada quatro outros poderes da Tormenta que você possui."
+    "descricao": "Crostas vermelhas em várias partes de seu corpo tornam seus ataques mais perigosos. Seu dano desarmado aumenta em um passo, mais um passo para cada quatro outros poderes da Tormenta que você possui.",
+    "efeitos": [
+      {
+        "tipo": "passo_de_dado",
+        "alvo": "dano",
+        "passos": { "expr": "1 + floor(contagem.poderes.tormenta / 4)" },
+        "condicao": { "campo": "arma.id", "igual": "desarmado" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

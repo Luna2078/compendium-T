@@ -13,6 +13,18 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "pode_ser_arremessada",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "retorna_apos_arremesso",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

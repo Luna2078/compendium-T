@@ -10,6 +10,9 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Thwor ou Valkaria",
-    "descricao": "Quando faz um teste de perícia, um resultado de 19 ou mais no dado sempre é um sucesso, não importando o valor a ser alcançado."
+    "descricao": "Quando faz um teste de perícia, um resultado de 19 ou mais no dado sempre é um sucesso, não importando o valor a ser alcançado.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "garante_sucesso_pericia_em_19", "aplicacao": "lembrete" }
+    ]
   }
 }

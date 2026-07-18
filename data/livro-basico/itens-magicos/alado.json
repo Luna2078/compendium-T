@@ -13,6 +13,19 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "ativacao": {
+      "custo": { "pm": 2, "acao": "movimento" }
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento_voo",
+        "valor": 12,
+        "unidade": "m",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

@@ -13,6 +13,13 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_sangrando_cumulativo_ao_acertar",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

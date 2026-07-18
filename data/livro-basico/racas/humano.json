@@ -3,8 +3,13 @@
   "tipo": "raca",
   "nome": "Humano",
   "resumo": "O povo mais numeroso e versátil de Arton. Filhos de Valkaria, capazes de se destacar em qualquer caminho que escolherem.",
-  "fonte": { "livro": "livro-basico", "pagina": 19 },
-  "imagens": ["/racas/humano.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 19
+  },
+  "imagens": [
+    "/racas/humano.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -12,11 +17,21 @@
     }
   ],
   "relacoes": [
-    { "tipo": "devotoDe", "alvoId": "valkaria", "alvoTipo": "divindade", "rotulo": "filhos de Valkaria" }
+    {
+      "tipo": "devotoDe",
+      "alvoId": "valkaria",
+      "alvoTipo": "divindade",
+      "rotulo": "filhos de Valkaria"
+    }
   ],
   "mecanica": {
     "modificadores": [
-      { "valor": 1, "escolha": true, "quantidade": 3, "observacao": "+1 em três atributos diferentes" }
+      {
+        "valor": 1,
+        "escolha": true,
+        "quantidade": 3,
+        "observacao": "+1 em três atributos diferentes"
+      }
     ],
     "tamanho": "Médio",
     "deslocamento": 9,
@@ -26,12 +41,40 @@
       {
         "nome": "+1 em Três Atributos Diferentes",
         "descricao": "Filhos de Valkaria, a Deusa da Ambição, humanos podem se destacar em qualquer caminho que escolherem.",
-        "efeito": "+1 em três atributos diferentes à escolha"
+        "efeito": "+1 em três atributos diferentes à escolha",
+        "efeitos": []
       },
       {
         "nome": "Versátil",
         "descricao": "Você se torna treinado em duas perícias a sua escolha (não precisam ser da sua classe). Você pode trocar uma dessas perícias por um poder geral a sua escolha.",
-        "efeito": "Treinado em 2 perícias à escolha; pode trocar 1 perícia por um poder geral"
+        "efeito": "Treinado em 2 perícias à escolha; pode trocar 1 perícia por um poder geral",
+        "efeitos": [],
+        "escolhas": [
+          {
+            "id": "versatil_slot_1",
+            "rotulo": "Treinado numa perícia à escolha",
+            "opcoes": [
+              {
+                "tipo": "treinar_pericia"
+              }
+            ],
+            "restricao": "distinta"
+          },
+          {
+            "id": "versatil_slot_2",
+            "rotulo": "Treinado numa perícia (ou troca por um poder geral)",
+            "opcoes": [
+              {
+                "tipo": "treinar_pericia"
+              },
+              {
+                "tipo": "poder",
+                "grupo": "geral"
+              }
+            ],
+            "restricao": "distinta"
+          }
+        ]
       }
     ]
   }

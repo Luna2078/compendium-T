@@ -10,6 +10,26 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Tenebra",
-    "descricao": "Você pode gastar 1 PM e uma ação padrão para cobrir sua mão com energia negativa e tocar uma criatura em alcance corpo a corpo. A criatura sofre 2d6 pontos de dano de trevas (Fortitude CD Sab reduz à metade) e você recupera PV iguais à metade do dano causado. Você pode aprender Toque Vampírico como uma magia divina. Se fizer isso, o custo dela diminui em –1 PM."
+    "descricao": "Você pode gastar 1 PM e uma ação padrão para cobrir sua mão com energia negativa e tocar uma criatura em alcance corpo a corpo. A criatura sofre 2d6 pontos de dano de trevas (Fortitude CD Sab reduz à metade) e você recupera PV iguais à metade do dano causado. Você pode aprender Toque Vampírico como uma magia divina. Se fizer isso, o custo dela diminui em –1 PM.",
+    "ativacao": { "custo": { "pm": 1, "acao": "padrao" } },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "causa_dano_trevas_no_toque",
+        "valor": { "dados": { "n": 2, "faces": 6 } },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "pos_dano",
+        "alvo": "pv.atual",
+        "valor": { "expr": "floor(dano_causado / 2)" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "modifica_poder",
+        "alvo": "toque-vampirico",
+        "patchCusto": { "pm": -1 }
+      }
+    ]
   }
 }

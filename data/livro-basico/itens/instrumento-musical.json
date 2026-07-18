@@ -14,6 +14,18 @@
     "categoria": "ferramenta",
     "preco": "T$ 35",
     "espacos": "1",
-    "especial": "Deve ser empunhado com as duas mãos para receber seus benefícios. Bardos podem usá-lo como esotérico (lançam magias com a mão que empunha). Pode receber melhorias de ferramentas (ligadas a Atuação) e de esotéricos (afetam apenas magias lançadas por bardos)."
+    "especial": "Deve ser empunhado com as duas mãos para receber seus benefícios. Bardos podem usá-lo como esotérico (lançam magias com a mão que empunha). Pode receber melhorias de ferramentas (ligadas a Atuação) e de esotéricos (afetam apenas magias lançadas por bardos).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "conta_como_instrumento_musical",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "usavel_como_esoterico_por_bardo",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

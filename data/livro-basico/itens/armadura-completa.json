@@ -16,6 +16,13 @@
       "bonusDefesa": 10,
       "penalidadeArmadura": -5
     },
-    "especial": "Precisa ser feita sob medida para cada usuário; um ferreiro cobra T$ 200 para adaptar a armadura a um novo usuário."
+    "especial": "Precisa ser feita sob medida para cada usuário; um ferreiro cobra T$ 200 para adaptar a armadura a um novo usuário.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "requer_adaptacao_por_usuario",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Flauta Fantasma",
   "resumo": "Flauta que permite a quem é treinado em Atuação lançar Esculpir Sons sem custo em PM.",
-  "fonte": { "livro": "livro-basico", "pagina": 344 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 344
+  },
   "imagens": [],
   "secoes": [
     {
@@ -15,6 +18,13 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Menor",
-    "preco": "T$ 6.000"
+    "preco": "T$ 6.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "lanca_esculpir_sons_sem_custo_se_treinado_atuacao",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

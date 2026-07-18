@@ -9,6 +9,19 @@
   "relacoes": [],
   "mecanica": {
     "grupo": "tormenta",
-    "descricao": "Você recebe visão no escuro e +1 em Intimidação. Este bônus aumenta em +1 para cada dois outros poderes da Tormenta que você possui."
+    "descricao": "Você recebe visão no escuro e +1 em Intimidação. Este bônus aumenta em +1 para cada dois outros poderes da Tormenta que você possui.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "visao_no_escuro",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:intimidacao",
+        "valor": { "expr": "1 + floor(contagem.poderes.tormenta / 2)" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

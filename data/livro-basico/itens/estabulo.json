@@ -10,6 +10,13 @@
   "mecanica": {
     "categoria": "animal",
     "preco": "T$ 0,1",
-    "especial": "Preço por dia. Inclui alimentação para o animal."
+    "especial": "Preço por dia. Inclui alimentação para o animal.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "servico_preco_por_tier",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -20,6 +20,13 @@
       "tipoDano": "Perfuração",
       "habilidades": []
     },
-    "especial": "Pode ser usado montado."
+    "especial": "Pode ser usado montado.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "arma_usavel_montado",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

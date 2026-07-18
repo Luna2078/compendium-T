@@ -13,6 +13,13 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_dano_extra_critico_furtivo",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -9,6 +9,17 @@
   "relacoes": [],
   "mecanica": {
     "grupo": "destino",
-    "descricao": "Você se torna treinado em uma perícia a sua escolha. Você pode escolher este poder outras vezes para perícias diferentes."
+    "empilhavel": true,
+    "parametros": [
+      { "id": "pericia", "rotulo": "Perícia", "tipo": "escolha", "fonte": "pericias_nao_treinadas" }
+    ],
+    "descricao": "Você se torna treinado em uma perícia a sua escolha. Você pode escolher este poder outras vezes para perícias diferentes.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "treinado:@pericia",
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

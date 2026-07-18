@@ -3,8 +3,13 @@
   "tipo": "raca",
   "nome": "Sílfide",
   "resumo": "As mais numerosas fadas de Arton, criaturinhas esvoaçantes de delicadas asas de inseto e grandes olhos escuros. Curiosas e brincalhonas, parecem sempre à procura de diversão, levando todos a subestimá-las quando o assunto exige seriedade. Gostam de usar magias e ilusões para pregar peças.",
-  "fonte": { "livro": "livro-basico", "pagina": 30 },
-  "imagens": ["/racas/silfide.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 30
+  },
+  "imagens": [
+    "/racas/silfide.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -12,13 +17,27 @@
     }
   ],
   "relacoes": [
-    { "tipo": "ehDoTipo", "alvoId": "fada", "alvoTipo": "termo", "rotulo": "as mais numerosas fadas de Arton" }
+    {
+      "tipo": "ehDoTipo",
+      "alvoId": "fada",
+      "alvoTipo": "termo",
+      "rotulo": "as mais numerosas fadas de Arton"
+    }
   ],
   "mecanica": {
     "modificadores": [
-      { "atributo": "Carisma", "valor": 2 },
-      { "atributo": "Destreza", "valor": 1 },
-      { "atributo": "Força", "valor": -2 }
+      {
+        "atributo": "Carisma",
+        "valor": 2
+      },
+      {
+        "atributo": "Destreza",
+        "valor": 1
+      },
+      {
+        "atributo": "Força",
+        "valor": -2
+      }
     ],
     "tamanho": "Minúsculo",
     "deslocamento": 9,
@@ -28,17 +47,65 @@
       {
         "nome": "Asas de Borboleta",
         "descricao": "Seu tamanho é Minúsculo. Você pode pairar a 1,5m do chão com deslocamento 9m. Isso permite que você ignore terreno difícil e o torna imune a dano por queda (a menos que esteja inconsciente). Você pode gastar 1 PM por rodada para voar com deslocamento de 12m.",
-        "efeito": "Tamanho Minúsculo; paira a 1,5m do chão com deslocamento 9m; ignora terreno difícil; imune a dano por queda (exceto se inconsciente); gasta 1 PM por rodada para voar com deslocamento 12m"
+        "efeito": "Tamanho Minúsculo; paira a 1,5m do chão com deslocamento 9m; ignora terreno difícil; imune a dano por queda (exceto se inconsciente); gasta 1 PM por rodada para voar com deslocamento 12m",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_terreno_dificil",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "imune_dano_queda",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "deslocamento_voo",
+            "valor": 12,
+            "unidade": "m",
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Espírito da Natureza",
         "descricao": "Você é uma criatura do tipo espírito, recebe visão na penumbra e pode falar com animais livremente.",
-        "efeito": "Tipo espírito; visão na penumbra; fala com animais livremente"
+        "efeito": "Tipo espírito; visão na penumbra; fala com animais livremente",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "tipo_criatura:espirito",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "visao_na_penumbra",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "fala_com_animais",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Magia das Fadas",
         "descricao": "Você pode lançar duas das magias a seguir (atributo-chave Carisma): Criar Ilusão, Enfeitiçar, Luz (como uma magia arcana) e Sono. Caso aprenda novamente uma dessas magias, seu custo diminui em –1 PM.",
-        "efeito": "Lança duas dentre Criar Ilusão, Enfeitiçar, Luz (arcana) e Sono (atributo-chave Carisma); se reaprendida, a magia custa –1 PM"
+        "efeito": "Lança duas dentre Criar Ilusão, Enfeitiçar, Luz (arcana) e Sono (atributo-chave Carisma); se reaprendida, a magia custa –1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_duas_magias_magia_das_fadas",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "magia_reaprendida_custa_menos_1pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

@@ -15,6 +15,26 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Médio",
-    "preco": "T$ 21.000"
+    "preco": "T$ 21.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 2,
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 2,
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_ataque_dano_desarmado",
+        "valor": 2,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -10,6 +10,19 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Azgher",
-    "descricao": "Você pode gastar 1 PM para fazer uma arma corpo a corpo de corte que esteja empunhando causar +1d6 de dano por fogo até o fim da cena."
+    "descricao": "Você pode gastar 1 PM para fazer uma arma corpo a corpo de corte que esteja empunhando causar +1d6 de dano por fogo até o fim da cena.",
+    "ativacao": {
+      "custo": { "pm": 1 },
+      "encerramento": "O dano de fogo extra dura até o fim da cena."
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "dados": { "n": 1, "faces": 6 } },
+        "condicao": { "campo": "arma.tipoDano", "em": ["corte"] },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

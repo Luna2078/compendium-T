@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "For 3",
-    "descricao": "Ao usar uma arma feita para uma categoria de tamanho maior que a sua, a penalidade que você sofre nos testes de ataque diminui para –2 (normalmente, usar uma arma de uma categoria de tamanho maior impõe –5 nos testes de ataque)."
+    "descricao": "Ao usar uma arma feita para uma categoria de tamanho maior que a sua, a penalidade que você sofre nos testes de ataque diminui para –2 (normalmente, usar uma arma de uma categoria de tamanho maior impõe –5 nos testes de ataque).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "reduz_penalidade_arma_maior",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

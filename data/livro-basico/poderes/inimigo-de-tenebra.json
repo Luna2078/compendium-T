@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Azgher",
-    "descricao": "Seus ataques e habilidades causam +1d6 pontos de dano contra mortos-vivos. Quando você usa um efeito que gera luz, o alcance da iluminação dobra."
+    "descricao": "Seus ataques e habilidades causam +1d6 pontos de dano contra mortos-vivos. Quando você usa um efeito que gera luz, o alcance da iluminação dobra.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "dados": { "n": 1, "faces": 6 } },
+        "condicao": { "campo": "alvo.tipo_de_criatura", "em": ["morto-vivo"] },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "dobra_alcance_iluminacao",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

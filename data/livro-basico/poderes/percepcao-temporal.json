@@ -10,6 +10,38 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Aharadak",
-    "descricao": "Você pode gastar 3 PM para somar sua Sabedoria (limitado por seu nível e não cumulativo com efeitos que somam este atributo) a seus ataques, Defesa e testes de Reflexos até o fim da cena."
+    "descricao": "Você pode gastar 3 PM para somar sua Sabedoria (limitado por seu nível e não cumulativo com efeitos que somam este atributo) a seus ataques, Defesa e testes de Reflexos até o fim da cena.",
+    "ativacao": {
+      "custo": { "pm": 3, "acao": "livre" },
+      "encerramento": "O efeito dura até o fim da cena."
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": { "expr": "atr.sab" },
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": { "expr": "atr.sab" },
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:reflexos",
+        "valor": { "expr": "atr.sab" },
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "nao_cumulativo_bonus_atributo_ativado",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

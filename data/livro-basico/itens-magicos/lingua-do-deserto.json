@@ -15,6 +15,36 @@
   "mecanica": {
     "tipoItem": "Arma Específica",
     "categoria": "Maior",
-    "preco": "T$ 90.000"
+    "preco": "T$ 90.000",
+    "ativacao": {
+      "custo": { "pm": 1, "acao": "movimento" },
+      "encerramento": "Dura até o fim da cena."
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto",
+        "valor": "formidavel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "passo_de_dado",
+        "alvo": "dano",
+        "passos": 1,
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "muda_tipo_dano_para_fogo",
+        "aplicacao": "lembrete",
+        "condicao": { "quando": "ativo" }
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "emite_aura_condicao_inimigos_por_pm",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

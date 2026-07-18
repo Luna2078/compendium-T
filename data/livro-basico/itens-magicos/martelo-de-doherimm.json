@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Martelo de Doherimm",
   "resumo": "Martelo de guerra formidável de pedra e aço que, empunhado por um anão, ganha o encanto arremesso e dano extra.",
-  "fonte": { "livro": "livro-basico", "pagina": 338 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 338
+  },
   "imagens": [],
   "secoes": [
     {
@@ -15,6 +18,53 @@
   "mecanica": {
     "tipoItem": "Arma Específica",
     "categoria": "Maior",
-    "preco": "T$ 70.000"
+    "preco": "T$ 70.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto",
+        "valor": "formidavel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": {
+          "dados": {
+            "n": 1,
+            "faces": 8
+          }
+        },
+        "condicao": {
+          "campo": "personagem.raca",
+          "em": [
+            "anao"
+          ]
+        },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ganha_encanto_arremesso_se_anao",
+        "condicao": {
+          "campo": "personagem.raca",
+          "em": [
+            "anao"
+          ]
+        },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "dano_2d8_vs_grande_ou_maior_se_anao",
+        "condicao": {
+          "campo": "personagem.raca",
+          "em": [
+            "anao"
+          ]
+        },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

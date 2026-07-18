@@ -15,6 +15,27 @@
   "mecanica": {
     "tipoItem": "Escudo Específico",
     "categoria": "Maior",
-    "preco": "T$ 140.000"
+    "preco": "T$ 140.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:guardiao",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "arma_dispara_magia_por_pm",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_visao-da-verdade",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "ativacao": {
+      "custo": { "pm": 10, "acao": "padrao" },
+      "encerramento": "Gasta 1 PM no início de cada turno para manter a luz ativa."
+    }
   }
 }

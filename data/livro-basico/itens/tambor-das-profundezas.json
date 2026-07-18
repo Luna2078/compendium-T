@@ -14,6 +14,20 @@
     "categoria": "ferramenta",
     "preco": "T$ 80",
     "espacos": "1",
-    "especial": "Enquanto empunha este item, o alcance da habilidade Inspiração e de qualquer Música de Bardo é dobrado. Conta como um instrumento musical."
+    "especial": "Enquanto empunha este item, o alcance da habilidade Inspiração e de qualquer Música de Bardo é dobrado. Conta como um instrumento musical.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "dobra_alcance_inspiracao_e_musica",
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "conta_como_instrumento_musical",
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

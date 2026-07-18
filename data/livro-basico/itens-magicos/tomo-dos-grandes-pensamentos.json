@@ -15,6 +15,14 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Maior",
-    "preco": "T$ 30.000"
+    "preco": "T$ 30.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "atr.int",
+        "valor": 1,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

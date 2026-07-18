@@ -13,6 +13,17 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "emite_clarao_cega_inimigos_alcance_curto",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "ativacao": {
+      "custo": { "pm": 2, "acao": "movimento" },
+      "encerramento": "Inimigos em alcance curto: Reflexos CD Car ou ficam cegos por 1 rodada."
+    }
   }
 }

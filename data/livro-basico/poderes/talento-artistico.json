@@ -10,6 +10,26 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Marah",
-    "descricao": "Você recebe +2 em Acrobacia, Atuação e Diplomacia."
+    "descricao": "Você recebe +2 em Acrobacia, Atuação e Diplomacia.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:acrobacia",
+        "valor": 2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:atuacao",
+        "valor": 2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:diplomacia",
+        "valor": 2,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

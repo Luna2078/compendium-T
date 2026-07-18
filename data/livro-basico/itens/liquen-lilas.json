@@ -11,6 +11,14 @@
     "categoria": "alquimico",
     "preco": "T$ 30",
     "espacos": "0,5",
-    "especial": "Usado como catalisador, adiciona +1d6 de dano de frio a magias."
+    "especial": "Usado como catalisador, adiciona +1d6 de dano de frio a magias.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "catalisador_modifica_magia",
+        "valor": { "dados": { "n": 1, "faces": 6 } },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

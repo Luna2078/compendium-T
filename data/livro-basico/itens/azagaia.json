@@ -20,6 +20,15 @@
       "tipoDano": "Perfuração",
       "habilidades": ["Arremesso"]
     },
-    "especial": "Pode ser usada como arma corpo a corpo, mas sofre penalidade de –5 no teste de ataque."
+    "especial": "Pode ser usada como arma corpo a corpo, mas sofre penalidade de –5 no teste de ataque.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": -5,
+        "condicao": { "campo": "arma.tipo_ataque", "igual": "corpo_a_corpo" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

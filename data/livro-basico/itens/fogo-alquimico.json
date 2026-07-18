@@ -11,6 +11,14 @@
     "categoria": "alquimico",
     "preco": "T$ 10",
     "espacos": "0,5",
-    "especial": "Para usar o fogo alquímico, você gasta uma ação padrão e escolhe uma criatura em alcance curto. Essa criatura sofre 1d6 pontos de dano de fogo e fica em chamas. Um teste de Reflexos (CD Des) reduz o dano à metade e evita as chamas."
+    "especial": "Para usar o fogo alquímico, você gasta uma ação padrão e escolhe uma criatura em alcance curto. Essa criatura sofre 1d6 pontos de dano de fogo e fica em chamas. Um teste de Reflexos (CD Des) reduz o dano à metade e evita as chamas.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "consumivel_causa_dano_em_alvo",
+        "valor": { "dados": { "n": 1, "faces": 6 } },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

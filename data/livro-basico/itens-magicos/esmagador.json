@@ -13,6 +13,26 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 2,
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 2,
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "passo_de_dado",
+        "alvo": "dano",
+        "passos": 1,
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

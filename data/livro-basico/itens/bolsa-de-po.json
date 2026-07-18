@@ -11,6 +11,14 @@
     "categoria": "esoterico",
     "preco": "T$ 300",
     "espacos": "1",
-    "especial": "Quando lança uma magia de encantamento ou ilusão, você recebe +2 PM para gastar em aprimoramentos."
+    "especial": "Quando lança uma magia de encantamento ou ilusão, você recebe +2 PM para gastar em aprimoramentos.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_pm_para_aprimoramentos",
+        "valor": 2,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

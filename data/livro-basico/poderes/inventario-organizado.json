@@ -10,6 +10,19 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "Int 1",
-    "descricao": "Você soma sua Inteligência no limite de espaços que pode carregar. Para você, itens muito leves ou pequenos, que normalmente ocupam meio espaço, em vez disso ocupam 1/4 de espaço."
+    "descricao": "Você soma sua Inteligência no limite de espaços que pode carregar. Para você, itens muito leves ou pequenos, que normalmente ocupam meio espaço, em vez disso ocupam 1/4 de espaço.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "soma_inteligencia_limite_carga",
+        "valor": { "expr": "atr.int" },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "itens_pequenos_ocupam_quarto_espaco",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

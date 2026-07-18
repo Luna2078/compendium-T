@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Estilo de Disparo ou Estilo de Arremesso",
-    "descricao": "Você pode fazer ataques à distância contra oponentes envolvidos em combate corpo a corpo sem sofrer a penalidade de –5 no teste de ataque."
+    "descricao": "Você pode fazer ataques à distância contra oponentes envolvidos em combate corpo a corpo sem sofrer a penalidade de –5 no teste de ataque.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_penalidade_disparo_em_combate",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

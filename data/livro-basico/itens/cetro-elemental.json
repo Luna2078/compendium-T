@@ -11,6 +11,9 @@
     "categoria": "esoterico",
     "preco": "T$ 750",
     "espacos": "1",
-    "especial": "Possui quatro variantes — esmeralda (ácido), topázio (eletricidade), rubi (fogo) ou safira (frio). Quando lança uma magia que causa dano do tipo da pedra, o dano aumenta em um dado do mesmo tipo."
+    "especial": "Possui quatro variantes — esmeralda (ácido), topázio (eletricidade), rubi (fogo) ou safira (frio). Quando lança uma magia que causa dano do tipo da pedra, o dano aumenta em um dado do mesmo tipo.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "magias_causam_dano_extra_fixo", "aplicacao": "lembrete" }
+    ]
   }
 }

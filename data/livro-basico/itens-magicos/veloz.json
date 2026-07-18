@@ -13,6 +13,19 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "realiza_ataque_extra_ao_agredir",
+        "condicao": { "campo": "arma.id", "igual": "@self" },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "reduz_custo_ataque_extra_1pm_se_ja_possui",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

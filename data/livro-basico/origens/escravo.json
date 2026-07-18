@@ -21,7 +21,15 @@
     "poderesUnicos": [
       {
         "nome": "Desejo de Liberdade",
-        "descricao": "Ninguém voltará a torná-lo um escravo! Você recebe +5 em testes contra a manobra agarrar e efeitos de movimento."
+        "descricao": "Ninguém voltará a torná-lo um escravo! Você recebe +5 em testes contra a manobra agarrar e efeitos de movimento.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_testes_agarrar_e_movimento",
+            "valor": 5,
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

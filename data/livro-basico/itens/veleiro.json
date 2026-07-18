@@ -10,6 +10,13 @@
   "mecanica": {
     "categoria": "veiculo",
     "preco": "T$ 10.000",
-    "especial": "Com três mastros, é o típico navio de viagem, muito popular entre mercadores."
+    "especial": "Com três mastros, é o típico navio de viagem, muito popular entre mercadores.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "veiculo_stats",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

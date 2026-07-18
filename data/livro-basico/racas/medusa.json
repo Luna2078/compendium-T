@@ -3,8 +3,13 @@
   "tipo": "raca",
   "nome": "Medusa",
   "resumo": "Criaturas reclusas famosas por transformar suas vítimas em pedra com o olhar — embora apenas as mais antigas e poderosas o façam. Jovens medusas por vezes rejeitam a solidão e a crueldade racial, aventurando-se no Reinado e até integrando equipes de heróis, fazendo-se passar por mulheres humanas quando escondem o cabelo feito de serpentes.",
-  "fonte": { "livro": "livro-basico", "pagina": 28 },
-  "imagens": ["/racas/medusa.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 28
+  },
+  "imagens": [
+    "/racas/medusa.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -21,8 +26,14 @@
   ],
   "mecanica": {
     "modificadores": [
-      { "atributo": "Destreza", "valor": 2 },
-      { "atributo": "Carisma", "valor": 1 }
+      {
+        "atributo": "Destreza",
+        "valor": 2
+      },
+      {
+        "atributo": "Carisma",
+        "valor": 1
+      }
     ],
     "tamanho": "Médio",
     "deslocamento": 9,
@@ -32,17 +43,48 @@
       {
         "nome": "Cria de Megalokk",
         "descricao": "Você é uma criatura do tipo monstro e recebe visão no escuro.",
-        "efeito": "Tipo monstro; visão no escuro"
+        "efeito": "Tipo monstro; visão no escuro",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "tipo_criatura:monstro",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "visao_no_escuro",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Natureza Venenosa",
         "descricao": "Você recebe resistência a veneno +5 e pode gastar uma ação de movimento e 1 PM para envenenar uma arma que esteja usando. A arma causa perda de 1d12 pontos de vida. O veneno dura até você acertar um ataque ou até o fim da cena (o que acontecer primeiro). Veneno.",
-        "efeito": "Resistência a veneno +5; ação de movimento + 1 PM para envenenar uma arma (perda de 1d12 PV; dura até acertar um ataque ou o fim da cena). Veneno."
+        "efeito": "Resistência a veneno +5; ação de movimento + 1 PM para envenenar uma arma (perda de 1d12 PV; dura até acertar um ataque ou o fim da cena). Veneno.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "resistencia_veneno_5",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "envenena_arma_propria",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Olhar Atordoante",
         "descricao": "Você pode gastar uma ação de movimento e 1 PM para forçar uma criatura em alcance curto a fazer um teste de Fortitude (CD Car). Se a criatura falhar, fica atordoada por uma rodada (apenas uma vez por cena).",
-        "efeito": "Ação de movimento + 1 PM: criatura em alcance curto faz Fortitude (CD Car) ou fica atordoada por 1 rodada (1×/cena)"
+        "efeito": "Ação de movimento + 1 PM: criatura em alcance curto faz Fortitude (CD Car) ou fica atordoada por 1 rodada (1×/cena)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "olhar_atordoante_fortitude",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

@@ -3,8 +3,13 @@
   "tipo": "raca",
   "nome": "Hynne",
   "resumo": "Também conhecidos como halflings ou “pequeninos”, os hynne são apreciadores de boa comida e casas aconchegantes, raras vezes saindo em aventuras perigosas. Quando o fazem, recorrem à agilidade e ao encanto naturais para ludibriar os inimigos.",
-  "fonte": { "livro": "livro-basico", "pagina": 27 },
-  "imagens": ["/racas/hynne.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 27
+  },
+  "imagens": [
+    "/racas/hynne.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -12,13 +17,27 @@
     }
   ],
   "relacoes": [
-    { "tipo": "habitaEm", "alvoId": "republicas-livres-de-samburdia", "alvoTipo": "regiao", "rotulo": "Repúblicas Livres de Sambúrdia" }
+    {
+      "tipo": "habitaEm",
+      "alvoId": "republicas-livres-de-samburdia",
+      "alvoTipo": "regiao",
+      "rotulo": "Repúblicas Livres de Sambúrdia"
+    }
   ],
   "mecanica": {
     "modificadores": [
-      { "atributo": "Destreza", "valor": 2 },
-      { "atributo": "Carisma", "valor": 1 },
-      { "atributo": "Força", "valor": -1 }
+      {
+        "atributo": "Destreza",
+        "valor": 2
+      },
+      {
+        "atributo": "Carisma",
+        "valor": 1
+      },
+      {
+        "atributo": "Força",
+        "valor": -1
+      }
     ],
     "tamanho": "Pequeno",
     "deslocamento": 6,
@@ -28,17 +47,68 @@
       {
         "nome": "Arremessador",
         "descricao": "Quando faz um ataque à distância com uma funda ou uma arma de arremesso, seu dano aumenta em um passo.",
-        "efeito": "Ataque à distância com funda ou arma de arremesso: dano aumenta em um passo"
+        "efeito": "Ataque à distância com funda ou arma de arremesso: dano aumenta em um passo",
+        "efeitos": [
+          {
+            "tipo": "passo_de_dado",
+            "alvo": "dano",
+            "passos": 1,
+            "condicao": {
+              "campo": "arma.tipo_ataque",
+              "em": [
+                "arremesso"
+              ]
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "passo_de_dado",
+            "alvo": "dano",
+            "passos": 1,
+            "condicao": {
+              "campo": "arma.id",
+              "igual": "funda"
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Pequeno e Rechonchudo",
         "descricao": "Seu tamanho é Pequeno (veja a página 106) e seu deslocamento é 6m. Você recebe +2 em Enganação e pode usar Destreza como atributo-chave de Atletismo (em vez de Força).",
-        "efeito": "Tamanho Pequeno; deslocamento 6m; +2 em Enganação; usa Destreza como atributo-chave de Atletismo (em vez de Força)"
+        "efeito": "Tamanho Pequeno; deslocamento 6m; +2 em Enganação; usa Destreza como atributo-chave de Atletismo (em vez de Força)",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:enganacao",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "substituicao",
+            "em": [
+              "pericia:atletismo"
+            ],
+            "de": "atr.for",
+            "por": "atr.des",
+            "condicao": {
+              "quando": "sempre"
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Sorte Salvadora",
         "descricao": "Quando faz um teste de resistência, você pode gastar 1 PM para rolar este teste novamente.",
-        "efeito": "Gaste 1 PM para rolar novamente um teste de resistência"
+        "efeito": "Gaste 1 PM para rolar novamente um teste de resistência",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "rerola_teste_resistencia_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

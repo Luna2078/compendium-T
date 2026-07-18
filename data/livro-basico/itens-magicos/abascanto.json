@@ -13,6 +13,14 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "resistencia_magia",
+        "valor": 5,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

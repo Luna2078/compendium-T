@@ -15,6 +15,13 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Menor",
-    "preco": "T$ 3.000"
+    "preco": "T$ 3.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_efeito_magia_sem_custo",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

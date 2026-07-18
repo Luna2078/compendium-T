@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Opaco",
   "resumo": "Encanto de armadura ou escudo que concede redução de ácido, eletricidade, fogo e frio.",
-  "fonte": { "livro": "livro-basico", "pagina": 339 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 339
+  },
   "imagens": [],
   "secoes": [
     {
@@ -13,6 +16,23 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 10,
+        "condicao": {
+          "campo": "dano.tipo",
+          "em": [
+            "acido",
+            "eletricidade",
+            "fogo",
+            "frio"
+          ]
+        },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

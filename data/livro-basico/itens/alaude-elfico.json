@@ -11,6 +11,19 @@
     "categoria": "ferramenta",
     "preco": "T$ 300",
     "espacos": "1",
-    "especial": "Enquanto empunha este item, você pode usar a habilidade Inspiração como uma ação de movimento. Conta como um instrumento musical."
+    "especial": "Enquanto empunha este item, você pode usar a habilidade Inspiração como uma ação de movimento. Conta como um instrumento musical.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "usa_inspiracao_como_acao_movimento",
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "conta_como_instrumento_musical",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

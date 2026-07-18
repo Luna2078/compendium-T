@@ -21,7 +21,24 @@
     "poderesUnicos": [
       {
         "nome": "Vida Rústica",
-        "descricao": "Você come coisas que fariam um avestruz vomitar (sendo imune a efeitos prejudiciais de itens ingeríveis) e também consegue descansar nos lugares mais desconfortáveis. Mesmo dormindo ao relento, sua recuperação de PV e PM nunca é inferior a seu próprio nível."
+        "descricao": "Você come coisas que fariam um avestruz vomitar (sendo imune a efeitos prejudiciais de itens ingeríveis) e também consegue descansar nos lugares mais desconfortáveis. Mesmo dormindo ao relento, sua recuperação de PV e PM nunca é inferior a seu próprio nível.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "imune_efeitos_prejudiciais_ingeriveis",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "dorme_ao_relento_conta_como_confortavel",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "recuperacao_descanso_minima_nivel",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

@@ -10,6 +10,14 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Lena",
-    "descricao": "Efeitos de cura usados por você e seus aliados em alcance curto recuperam +1 PV por dado."
+    "descricao": "Efeitos de cura usados por você e seus aliados em alcance curto recuperam +1 PV por dado.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_cura_por_dado",
+        "valor": 1,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

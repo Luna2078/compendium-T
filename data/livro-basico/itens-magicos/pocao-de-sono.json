@@ -18,6 +18,17 @@
   "mecanica": {
     "tipoItem": "Poção",
     "categoria": "Menor",
-    "preco": "T$ 30"
+    "preco": "T$ 30",
+    "ativacao": {
+      "custo": { "acao": "padrao" }
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "replica_magia",
+        "valor": "sono",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -3,8 +3,13 @@
   "tipo": "raca",
   "nome": "Suraggel",
   "resumo": "Descendentes de extraplanares divinos, com traços angelicais ou demoníacos — ou ambos. Ligados às forças opostas da luz e das trevas, têm traços diferentes conforme orientados para seu lado celestial (aggelus) ou abissal (sulfure). Podem ser surpreendentes e contraditórios.",
-  "fonte": { "livro": "livro-basico", "pagina": 30 },
-  "imagens": ["/racas/suraggel.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 30
+  },
+  "imagens": [
+    "/racas/suraggel.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -12,7 +17,12 @@
     }
   ],
   "relacoes": [
-    { "tipo": "associadaA", "alvoId": "mundos-dos-deuses", "alvoTipo": "regiao", "rotulo": "lembram habitantes dos Mundos dos Deuses" }
+    {
+      "tipo": "associadaA",
+      "alvoId": "mundos-dos-deuses",
+      "alvoTipo": "regiao",
+      "rotulo": "lembram habitantes dos Mundos dos Deuses"
+    }
   ],
   "mecanica": {
     "modificadores": [],
@@ -24,17 +34,77 @@
       {
         "nome": "Herança Divina",
         "descricao": "Você é uma criatura do tipo espírito e recebe visão no escuro.",
-        "efeito": "Habilidade comum a todo suraggel: tipo espírito; visão no escuro"
+        "efeito": "Habilidade comum a todo suraggel: tipo espírito; visão no escuro",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "tipo_criatura:espirito",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "visao_no_escuro",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Luz Sagrada (Aggelus)",
         "descricao": "Você recebe +2 em Diplomacia e Intuição. Além disso, pode lançar Luz (como uma magia divina; atributo-chave Carisma). Caso aprenda novamente essa magia, seu custo diminui em –1 PM.",
-        "efeito": "Traço da herança aggelus: +2 em Diplomacia e Intuição; lança Luz (magia divina, atributo-chave Carisma); se reaprendida, custa –1 PM"
+        "efeito": "Traço da herança aggelus: +2 em Diplomacia e Intuição; lança Luz (magia divina, atributo-chave Carisma); se reaprendida, custa –1 PM",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:diplomacia",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:intuicao",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_magia_luz_divina",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "magia_reaprendida_custa_menos_1pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Sombras Profanas (Sulfure)",
         "descricao": "Você recebe +2 em Enganação e Furtividade. Além disso, pode lançar Escuridão (como uma magia divina; atributo-chave Inteligência). Caso aprenda novamente essa magia, seu custo diminui em –1 PM.",
-        "efeito": "Traço da herança sulfure: +2 em Enganação e Furtividade; lança Escuridão (magia divina, atributo-chave Inteligência); se reaprendida, custa –1 PM"
+        "efeito": "Traço da herança sulfure: +2 em Enganação e Furtividade; lança Escuridão (magia divina, atributo-chave Inteligência); se reaprendida, custa –1 PM",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:enganacao",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:furtividade",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_magia_escuridao_divina",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "magia_reaprendida_custa_menos_1pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Ginete",
-    "descricao": "Quando faz uma investida montada, você causa +2d8 pontos de dano. Além disso, pode continuar se movendo depois do ataque. Você deve se mover em linha reta e seu movimento máximo ainda é o dobro do seu deslocamento."
+    "descricao": "Quando faz uma investida montada, você causa +2d8 pontos de dano. Além disso, pode continuar se movendo depois do ataque. Você deve se mover em linha reta e seu movimento máximo ainda é o dobro do seu deslocamento.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano.corpo_a_corpo",
+        "valor": { "dados": { "n": 2, "faces": 8 } },
+        "condicao": { "campo": "investida_montada", "igual": "sim" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "move_apos_ataque_investida_montada",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

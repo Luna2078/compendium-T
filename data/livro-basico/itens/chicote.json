@@ -19,6 +19,7 @@
       "tipoDano": "Corte",
       "habilidades": ["Ágil", "Versátil"]
     },
-    "especial": "Alcance 4,5m (pode atacar inimigos a até 4,5m e se enroscar em mãos, pernas ou armas dos adversários). Ágil (pode usar Acuidade com Arma). Versátil (+2 em testes para derrubar ou desarmar)."
+    "especial": "Alcance 4,5m (pode atacar inimigos a até 4,5m e se enroscar em mãos, pernas ou armas dos adversários). Ágil (pode usar Acuidade com Arma). Versátil (+2 em testes para derrubar ou desarmar).",
+    "efeitos": []
   }
 }

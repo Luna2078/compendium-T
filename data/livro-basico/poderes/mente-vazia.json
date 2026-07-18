@@ -10,6 +10,11 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Lin-Wu",
-    "descricao": "Você recebe +2 em Iniciativa, Percepção e Vontade."
+    "descricao": "Você recebe +2 em Iniciativa, Percepção e Vontade.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "iniciativa", "valor": 2, "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:percepcao", "valor": 2, "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:vontade", "valor": 2, "aplicacao": "automatica" }
+    ]
   }
 }

@@ -13,6 +13,25 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 10,
+        "condicao": { "campo": "dano.tipo", "em": ["eletricidade"] },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "causa_dano_eletricidade_a_atacantes_corpo_a_corpo",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      }
+    ],
+    "ativacao": {
+      "custo": { "pm": 2, "acao": "movimento" },
+      "encerramento": "Dura até o fim da cena. Qualquer criatura que atacar em corpo a corpo sofre 2d6 de eletricidade."
+    }
   }
 }

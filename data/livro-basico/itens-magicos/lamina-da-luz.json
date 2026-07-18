@@ -15,6 +15,24 @@
   "mecanica": {
     "tipoItem": "Arma Específica",
     "categoria": "Maior",
-    "preco": "T$ 45.000"
+    "preco": "T$ 45.000",
+    "ativacao": {
+      "custo": { "pm": 2, "acao": "movimento" },
+      "encerramento": "Dura até o fim da cena."
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto",
+        "valor": "formidavel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "emite_aura_condicao_inimigos_por_pm",
+        "aplicacao": "lembrete",
+        "condicao": { "quando": "ativo" }
+      }
+    ]
   }
 }

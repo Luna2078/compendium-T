@@ -19,6 +19,20 @@
       "tipoDano": "Perfuração",
       "habilidades": ["Alongada"],
       "especial": "Alongada. Se estiver montado, pode ser usada com uma só mão. Em uma investida montada, causa +2d8 pontos de dano (dados extras não são multiplicados em acerto crítico)."
-    }
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "arma_usavel_montado",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": { "dados": { "n": 2, "faces": 8 } },
+        "condicao": { "campo": "investida_montada", "igual": "sim" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

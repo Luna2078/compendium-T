@@ -15,6 +15,7 @@
       "subcategoria": "leve",
       "bonusDefesa": 3,
       "penalidadeArmadura": -1
-    }
+    },
+    "efeitos": []
   }
 }

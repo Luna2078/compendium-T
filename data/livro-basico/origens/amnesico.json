@@ -22,7 +22,14 @@
     "poderesUnicos": [
       {
         "nome": "Lembranças Graduais",
-        "descricao": "Durante suas aventuras, em determinados momentos a critério do mestre, você pode fazer um teste de Sabedoria (CD 10) para reconhecer pessoas, criaturas ou lugares que tenha encontrado antes de perder a memória."
+        "descricao": "Durante suas aventuras, em determinados momentos a critério do mestre, você pode fazer um teste de Sabedoria (CD 10) para reconhecer pessoas, criaturas ou lugares que tenha encontrado antes de perder a memória.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "teste_sabedoria_reconhece_passado_pre_amnesia",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

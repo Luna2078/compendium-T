@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Quebra-Galho",
-        "descricao": "Em cidades ou metrópoles, você pode comprar qualquer item mundano não superior por metade do preço normal. Esses itens não podem ser matérias-primas e não podem ser revendidos (são velhos, sujos, furtados...)."
+        "descricao": "Em cidades ou metrópoles, você pode comprar qualquer item mundano não superior por metade do preço normal. Esses itens não podem ser matérias-primas e não podem ser revendidos (são velhos, sujos, furtados...).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "compra_itens_mundanos_com_desconto",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

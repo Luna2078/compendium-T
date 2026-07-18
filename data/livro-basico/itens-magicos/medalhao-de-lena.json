@@ -15,6 +15,19 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Maior",
-    "preco": "T$ 30.000"
+    "preco": "T$ 30.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "cura_ao_cair_a_zero_pv",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pv.atual",
+        "valor": 100,
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

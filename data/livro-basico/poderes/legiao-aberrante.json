@@ -10,6 +10,24 @@
   "mecanica": {
     "grupo": "tormenta",
     "prerequisito": "Anatomia Insana, três outros poderes da Tormenta",
-    "descricao": "Seu corpo se transforma em uma massa de insetos rubros. Você pode atravessar qualquer espaço por onde seja possível passar uma moeda (mas considera esses espaços como terreno difícil) e recebe +1 em testes contra manobras de combate e de resistência contra efeitos que tenham você como alvo (mas não efeitos de área). Este bônus aumenta em +1 para cada dois outros poderes da Tormenta que você possui."
+    "descricao": "Seu corpo se transforma em uma massa de insetos rubros. Você pode atravessar qualquer espaço por onde seja possível passar uma moeda (mas considera esses espaços como terreno difícil) e recebe +1 em testes contra manobras de combate e de resistência contra efeitos que tenham você como alvo (mas não efeitos de área). Este bônus aumenta em +1 para cada dois outros poderes da Tormenta que você possui.",
+    "ativacao": {
+      "custo": { "acao": "padrao" }
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "atravessa_espacos_estreitos_como_moeda",
+        "aplicacao": "lembrete",
+        "condicao": { "quando": "ativo" }
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_testes_manobra_e_resistencia_direcionados",
+        "valor": { "expr": "1 + floor(contar({grupo:\"tormenta\"}) / 2)" },
+        "aplicacao": "lembrete",
+        "condicao": { "quando": "ativo" }
+      }
+    ]
   }
 }

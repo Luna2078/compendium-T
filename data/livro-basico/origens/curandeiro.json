@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Médico de Campo",
-        "descricao": "Você soma sua Sabedoria aos PV restaurados por suas habilidades e itens mundanos de cura."
+        "descricao": "Você soma sua Sabedoria aos PV restaurados por suas habilidades e itens mundanos de cura.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "soma_sabedoria_a_cura_mundana",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

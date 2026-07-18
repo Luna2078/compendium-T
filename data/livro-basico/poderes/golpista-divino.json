@@ -10,6 +10,11 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Hyninn",
-    "descricao": "Você recebe +2 em Enganação, Jogatina e Ladinagem."
+    "descricao": "Você recebe +2 em Enganação, Jogatina e Ladinagem.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pericia:enganacao", "valor": 2, "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:jogatina",  "valor": 2, "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:ladinagem", "valor": 2, "aplicacao": "automatica" }
+    ]
   }
 }

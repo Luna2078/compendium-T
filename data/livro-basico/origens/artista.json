@@ -21,7 +21,20 @@
     "poderesUnicos": [
       {
         "nome": "Dom Artístico",
-        "descricao": "Você recebe +2 em testes de Atuação, e recebe o dobro de tibares em apresentações."
+        "descricao": "Você recebe +2 em testes de Atuação, e recebe o dobro de tibares em apresentações.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:atuacao",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "dobra_ganho_em_apresentacoes",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

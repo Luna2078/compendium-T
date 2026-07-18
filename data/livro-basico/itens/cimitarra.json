@@ -18,6 +18,7 @@
       "critico": "18",
       "tipoDano": "Corte",
       "habilidades": ["Ágil"]
-    }
+    },
+    "efeitos": []
   }
 }

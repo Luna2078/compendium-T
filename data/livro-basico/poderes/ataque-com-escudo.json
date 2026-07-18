@@ -10,6 +10,9 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Estilo de Arma e Escudo",
-    "descricao": "Uma vez por rodada, se estiver empunhando um escudo e fizer a ação agredir, você pode gastar 1 PM para fazer um ataque corpo a corpo extra com o escudo. Este ataque não faz você perder o bônus do escudo na Defesa."
+    "descricao": "Uma vez por rodada, se estiver empunhando um escudo e fizer a ação agredir, você pode gastar 1 PM para fazer um ataque corpo a corpo extra com o escudo. Este ataque não faz você perder o bônus do escudo na Defesa.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "realiza_ataque_extra_escudo", "aplicacao": "lembrete" }
+    ]
   }
 }

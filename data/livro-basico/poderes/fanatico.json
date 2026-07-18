@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "12º nível de personagem, Encouraçado",
-    "descricao": "Seu deslocamento não é reduzido por usar armaduras pesadas."
+    "descricao": "Seu deslocamento não é reduzido por usar armaduras pesadas.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_penalidade_deslocamento_armadura_pesada",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

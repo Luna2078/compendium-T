@@ -10,6 +10,18 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Treinado em Cavalgar",
-    "descricao": "Você passa automaticamente em testes de Cavalgar para não cair da montaria quando sofre dano. Além disso, não sofre penalidades para atacar à distância ou lançar magias quando montado."
+    "descricao": "Você passa automaticamente em testes de Cavalgar para não cair da montaria quando sofre dano. Além disso, não sofre penalidades para atacar à distância ou lançar magias quando montado.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "passa_automaticamente_cavalgar_sem_queda",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_penalidade_atacar_montado",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

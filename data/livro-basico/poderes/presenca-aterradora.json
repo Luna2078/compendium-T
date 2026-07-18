@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Treinado em Intimidação",
-    "descricao": "Você pode gastar uma ação padrão e 1 PM para assustar todas as criaturas a sua escolha em alcance curto. Veja a perícia Intimidação para as regras de assustar."
+    "descricao": "Você pode gastar uma ação padrão e 1 PM para assustar todas as criaturas a sua escolha em alcance curto. Veja a perícia Intimidação para as regras de assustar.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "assusta_criaturas_alcance_curto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

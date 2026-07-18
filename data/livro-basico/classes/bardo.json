@@ -3,8 +3,13 @@
   "tipo": "classe",
   "nome": "Bardo",
   "resumo": "Artista versátil que lança magias através da arte, inspira aliados, domina habilidades sociais e combina conhecimento amplo com encanto irresistível.",
-  "fonte": { "livro": "livro-basico", "pagina": 43 },
-  "imagens": ["/classes/bardo.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 43
+  },
+  "imagens": [
+    "/classes/bardo.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -31,7 +36,10 @@
     "pmPorNivel": 4,
     "pericias": {
       "quantidade": 6,
-      "fixas": ["Atuação (Car)", "Reflexos (Des)"],
+      "fixas": [
+        "Atuação (Car)",
+        "Reflexos (Des)"
+      ],
       "lista": [
         "Acrobacia (Des)",
         "Cavalgar (Des)",
@@ -53,28 +61,140 @@
       ],
       "texto": "Atuação (Car) e Reflexos (Des) mais 6 a sua escolha entre Acrobacia (Des), Cavalgar (Des), Conhecimento (Int), Diplomacia (Car), Enganação (Car), Furtividade (Des), Iniciativa (Des), Intuição (Sab), Investigação (Int), Jogatina (Car), Ladinagem (Des), Luta (For), Misticismo (Int), Nobreza (Int), Percepção (Sab), Pontaria (Des) e Vontade (Sab)."
     },
-    "proficiencias": ["armas marciais"],
+    "proficiencias": [
+      "armas marciais"
+    ],
     "progressao": [
-      { "nivel": 1,  "habilidades": ["Inspiração +1", "Magias (1º círculo)"] },
-      { "nivel": 2,  "habilidades": ["Poder de bardo", "Eclético"] },
-      { "nivel": 3,  "habilidades": ["Poder de bardo"] },
-      { "nivel": 4,  "habilidades": ["Poder de bardo"] },
-      { "nivel": 5,  "habilidades": ["Inspiração +2", "Poder de bardo"] },
-      { "nivel": 6,  "habilidades": ["Magias (2º círculo)", "Poder de bardo"] },
-      { "nivel": 7,  "habilidades": ["Poder de bardo"] },
-      { "nivel": 8,  "habilidades": ["Poder de bardo"] },
-      { "nivel": 9,  "habilidades": ["Inspiração +3", "Poder de bardo"] },
-      { "nivel": 10, "habilidades": ["Magias (3º círculo)", "Poder de bardo"] },
-      { "nivel": 11, "habilidades": ["Poder de bardo"] },
-      { "nivel": 12, "habilidades": ["Poder de bardo"] },
-      { "nivel": 13, "habilidades": ["Inspiração +4", "Poder de bardo"] },
-      { "nivel": 14, "habilidades": ["Magias (4º círculo)", "Poder de bardo"] },
-      { "nivel": 15, "habilidades": ["Poder de bardo"] },
-      { "nivel": 16, "habilidades": ["Poder de bardo"] },
-      { "nivel": 17, "habilidades": ["Inspiração +5", "Poder de bardo"] },
-      { "nivel": 18, "habilidades": ["Poder de bardo"] },
-      { "nivel": 19, "habilidades": ["Poder de bardo"] },
-      { "nivel": 20, "habilidades": ["Artista completo", "Poder de bardo"] }
+      {
+        "nivel": 1,
+        "habilidades": [
+          "Inspiração +1",
+          "Magias (1º círculo)"
+        ]
+      },
+      {
+        "nivel": 2,
+        "habilidades": [
+          "Poder de bardo",
+          "Eclético"
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 4,
+        "habilidades": [
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 5,
+        "habilidades": [
+          "Inspiração +2",
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 6,
+        "habilidades": [
+          "Magias (2º círculo)",
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 7,
+        "habilidades": [
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 8,
+        "habilidades": [
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 9,
+        "habilidades": [
+          "Inspiração +3",
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 10,
+        "habilidades": [
+          "Magias (3º círculo)",
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 11,
+        "habilidades": [
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 12,
+        "habilidades": [
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 13,
+        "habilidades": [
+          "Inspiração +4",
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 14,
+        "habilidades": [
+          "Magias (4º círculo)",
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 15,
+        "habilidades": [
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 16,
+        "habilidades": [
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 17,
+        "habilidades": [
+          "Inspiração +5",
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 18,
+        "habilidades": [
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 19,
+        "habilidades": [
+          "Poder de bardo"
+        ]
+      },
+      {
+        "nivel": 20,
+        "habilidades": [
+          "Artista completo",
+          "Poder de bardo"
+        ]
+      }
     ],
     "conjuracao": {
       "tipo": "Arcana",
@@ -86,128 +206,405 @@
       {
         "nome": "Magias",
         "nivel": 1,
-        "descricao": "Escolha três escolas de magia. Uma vez feita, essa escolha não pode ser mudada. Você pode lançar magias arcanas de 1º círculo que pertençam a essas escolas. À medida que sobe de nível, pode lançar magias de círculos maiores (2º círculo no 6º nível, 3º círculo no 10º nível e 4º círculo no 14º nível).\n\nVocê começa com duas magias de 1º círculo. A cada nível par (2º, 4º etc.), aprende uma magia de qualquer círculo e escola que possa lançar. Você pode lançar essas magias vestindo armaduras leves sem precisar de testes de Misticismo.\n\nSeu atributo-chave para lançar magias é Carisma e você soma seu Carisma no seu total de PM. Veja o Capítulo 4 para as regras de magia."
+        "descricao": "Escolha três escolas de magia. Uma vez feita, essa escolha não pode ser mudada. Você pode lançar magias arcanas de 1º círculo que pertençam a essas escolas. À medida que sobe de nível, pode lançar magias de círculos maiores (2º círculo no 6º nível, 3º círculo no 10º nível e 4º círculo no 14º nível).\n\nVocê começa com duas magias de 1º círculo. A cada nível par (2º, 4º etc.), aprende uma magia de qualquer círculo e escola que possa lançar. Você pode lançar essas magias vestindo armaduras leves sem precisar de testes de Misticismo.\n\nSeu atributo-chave para lançar magias é Carisma e você soma seu Carisma no seu total de PM. Veja o Capítulo 4 para as regras de magia.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "lanca_magias_arcanas_da_classe",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pm.max",
+            "valor": {
+              "expr": "atr.car"
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_teste_misticismo_armadura_leve",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Inspiração",
         "nivel": 1,
         "descricao": "Você pode gastar uma ação padrão e 2 PM para inspirar as pessoas com sua arte. Você e todos os seus aliados em alcance curto ganham +1 em testes de perícia até o fim da cena. A cada quatro níveis, pode gastar +2 PM para aumentar o bônus em +1.",
-        "custo": "2 PM (+2 PM a cada quatro níveis para +1 no bônus)"
+        "custo": "2 PM (+2 PM a cada quatro níveis para +1 no bônus)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "concede_bonus_pericias_aliados",
+            "valor": {
+              "expr": "1 + floor(nivel / 4)"
+            },
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ],
+        "ativacao": {
+          "custo": {
+            "pm": {
+              "expr": "2 + 2 * floor(nivel / 4)"
+            },
+            "acao": "padrao"
+          },
+          "encerramento": "Dura até o fim da cena."
+        }
       },
       {
         "nome": "Eclético",
         "nivel": 2,
         "descricao": "A partir do 2º nível, você pode gastar 1 PM para receber todos os benefícios de ser treinado em uma perícia por um teste.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "trata_pericia_como_treinada_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Artista Completo",
         "nivel": 20,
-        "descricao": "No 20º nível, você pode usar Inspiração como uma ação livre. Enquanto estiver sob efeito de sua Inspiração, suas habilidades de bardo (incluindo magias) têm seu custo em PM reduzido pela metade (após aplicar aprimoramentos e quaisquer outros efeitos que reduzam custo)."
+        "descricao": "No 20º nível, você pode usar Inspiração como uma ação livre. Enquanto estiver sob efeito de sua Inspiração, suas habilidades de bardo (incluindo magias) têm seu custo em PM reduzido pela metade (após aplicar aprimoramentos e quaisquer outros efeitos que reduzam custo).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "inspiracao_como_acao_livre",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "reduz_custo_pm_magia",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ],
     "poderes": [
       {
         "nome": "Arte Mágica",
-        "descricao": "Enquanto você estiver sob efeito de sua Inspiração, a CD para resistir a suas habilidades de bardo aumenta em +2."
+        "descricao": "Enquanto você estiver sob efeito de sua Inspiração, a CD para resistir a suas habilidades de bardo aumenta em +2.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aumenta_cd_resistir_magia",
+            "valor": 2,
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aumentar Repertório",
-        "descricao": "Você aprende duas magias de qualquer círculo que possa lançar. Elas devem pertencer às escolas que você sabe usar, mas podem ser arcanas ou divinas. Você pode escolher este poder quantas vezes quiser."
+        "descricao": "Você aprende duas magias de qualquer círculo que possa lançar. Elas devem pertencer às escolas que você sabe usar, mas podem ser arcanas ou divinas. Você pode escolher este poder quantas vezes quiser.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_duas_magias_repertorio",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aumento de Atributo",
-        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo."
+        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo.",
+        "efeitos": [],
+        "empilhavel": true,
+        "escolhas": [
+          {
+            "id": "aumento_atributo",
+            "rotulo": "+1 em um atributo à escolha",
+            "alvoTipo": "atributo",
+            "efeito": {
+              "tipo": "bonus",
+              "valor": 1,
+              "aplicacao": "automatica"
+            },
+            "restricao": "uma_por_patamar_por_alvo"
+          }
+        ]
       },
       {
         "nome": "Dança das Lâminas",
         "descricao": "Quando você lança uma magia com execução de uma ação padrão, pode gastar 1 PM para fazer um ataque corpo a corpo como uma ação livre.",
         "custo": "1 PM",
-        "prerequisito": "Esgrima Mágica, 10º nível de bardo"
+        "prerequisito": "Esgrima Mágica, 10º nível de bardo",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "realiza_ataque_extra_ao_agredir",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Esgrima Mágica",
-        "descricao": "Sua arte mescla esgrima e magia, transformando dança em golpes. Se estiver sob efeito de Inspiração, você pode substituir testes de Luta por testes de Atuação, mas apenas para ataques com armas corpo a corpo leves ou de uma mão."
+        "descricao": "Sua arte mescla esgrima e magia, transformando dança em golpes. Se estiver sob efeito de Inspiração, você pode substituir testes de Luta por testes de Atuação, mas apenas para ataques com armas corpo a corpo leves ou de uma mão.",
+        "efeitos": [
+          {
+            "tipo": "substituicao",
+            "em": [
+              "ataque"
+            ],
+            "de": "pericia:luta",
+            "por": "pericia:atuacao",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Estrelato",
         "descricao": "Suas apresentações o tornaram famoso, fazendo com que você seja reconhecido e bem tratado por aqueles que apreciam a arte. Por outro lado, pode ser difícil passar despercebido, especialmente em grandes cidades. Quando usa Atuação para impressionar uma plateia, o bônus recebido em perícias baseadas em Carisma aumenta para +5.",
-        "prerequisito": "6º nível de bardo"
+        "prerequisito": "6º nível de bardo",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "reconhecido_apreciadores_de_arte",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_pericias_carisma_ao_impressionar_plateia",
+            "valor": 5,
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Fascinar em Massa",
         "descricao": "Quando usa Música: Balada Fascinante, você pode gastar +2 PM. Se fizer isso, afeta todas as criaturas a sua escolha no alcance da música (você faz um único teste de Atuação, oposto pelo teste de Vontade de cada criatura).",
         "custo": "+2 PM",
-        "prerequisito": "Música: Balada Fascinante"
+        "prerequisito": "Música: Balada Fascinante",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "musica-balada-fascinante",
+            "patchCusto": {
+              "pm": 2
+            }
+          }
+        ]
       },
       {
         "nome": "Golpe Elemental",
         "descricao": "Enquanto estiver sob efeito de Inspiração, sempre que você acertar um ataque corpo a corpo, pode gastar 1 PM para causar 1d6 de dano extra de ácido, eletricidade, fogo ou frio, a sua escolha. Para cada quatro níveis que possuir, pode gastar +1 PM para aumentar o dano em +1d6.",
         "custo": "1 PM (+1 PM a cada quatro níveis para +1d6)",
-        "prerequisito": "Golpe Mágico"
+        "prerequisito": "Golpe Mágico",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "cobre_arma_com_dano_elemental",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Golpe Mágico",
         "descricao": "Enquanto estiver sob efeito de Inspiração, sempre que você acertar um ataque corpo a corpo em um inimigo, recebe 2 PM temporários cumulativos. Você pode ganhar um máximo de PM temporários por cena igual ao seu nível. Esses pontos temporários desaparecem no final da cena.",
-        "prerequisito": "Esgrima Mágica"
+        "prerequisito": "Esgrima Mágica",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ganha_pm_temporario_ao_acertar",
+            "valor": 2,
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Inspiração Marcial",
-        "descricao": "Quando você usa Inspiração, você e seus aliados aplicam o bônus recebido em rolagens de dano (além de testes de perícia)."
+        "descricao": "Quando você usa Inspiração, você e seus aliados aplicam o bônus recebido em rolagens de dano (além de testes de perícia).",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "inspiracao",
+            "adicionaEfeito": [
+              {
+                "tipo": "capacidade",
+                "chave": "inspiracao_tambem_aplica_em_dano",
+                "aplicacao": "lembrete"
+              }
+            ]
+          }
+        ]
       },
       {
         "nome": "Lendas e Histórias",
         "descricao": "Você é um arquivo vivo de relatos, canções e folclore. Além de outros benefícios a critério do mestre, pode gastar 1 PM para rolar novamente um teste recém realizado de Conhecimento, Misticismo, Nobreza ou Religião para informação, identificar criaturas ou identificar itens mágicos.",
         "custo": "1 PM",
-        "prerequisito": "Int 1"
+        "prerequisito": "Int 1",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "rerola_teste_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Manipular",
         "descricao": "Você pode gastar 1 PM para fazer uma criatura fascinada por você ficar enfeitiçada até o fim da cena (Von CD Car anula). Se a criatura passar, fica imune a este efeito por um dia. Usar esta habilidade não conta como ameaça à criatura fascinada.",
         "custo": "1 PM",
-        "prerequisito": "Música: Balada Fascinante"
+        "prerequisito": "Música: Balada Fascinante",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "impoe_teste_resistencia_ou_perde_acao",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Manipular em Massa",
         "descricao": "Quando usa Manipular, você pode gastar +2 PM. Se fizer isso, afeta todas as criaturas a sua escolha em alcance curto.",
         "custo": "+2 PM",
-        "prerequisito": "Fascinar em Massa, Manipular, 10º nível de bardo"
+        "prerequisito": "Fascinar em Massa, Manipular, 10º nível de bardo",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "manipular",
+            "patchCusto": {
+              "pm": 2
+            }
+          }
+        ]
       },
       {
         "nome": "Melodia Restauradora",
         "descricao": "Quando você usa Música: Melodia Curativa, pode gastar +2 PM. Se fizer isso, escolha uma das condições a seguir: abalado, alquebrado, apavorado, atordoado, cego, confuso, enfeitiçado, esmorecido, exausto, fatigado, frustrado, pasmo ou surdo. Você remove a condição escolhida das criaturas afetadas pela música.",
         "custo": "+2 PM",
-        "prerequisito": "Música: Melodia Curativa"
+        "prerequisito": "Música: Melodia Curativa",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "musica-melodia-curativa",
+            "patchCusto": {
+              "pm": 2
+            }
+          }
+        ]
       },
       {
         "nome": "Mestre dos Sussurros",
         "descricao": "Você é dissimulado, atento para rumores e ótimo em espalhar fofocas. Quando faz um teste de Investigação para interrogar ou um teste de Enganação para intriga, você rola dois dados e usa o melhor resultado. Além disso, pode fazer esses testes em ambientes sociais (taverna, festival, corte...) sem custo e em apenas uma hora (em vez de um dia).",
-        "prerequisito": "Car 1, treinado em Enganação e Investigação"
+        "prerequisito": "Car 1, treinado em Enganação e Investigação",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "rola_vantagem_investigacao_enganacao_social",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "interroga_com_pericia_sem_custo_em_uma_hora",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Música: Balada Fascinante",
         "descricao": "Faça um teste de Atuação oposto pelo teste de Vontade de uma criatura no alcance. Se você passar, ela fica fascinada enquanto você se concentrar (uma ação padrão por rodada). Um alvo hostil ou envolvido em combate recebe +5 no teste de resistência e tem direito a um novo teste sempre que você se concentrar. Se a criatura passar, fica imune a este efeito por um dia.",
-        "custo": "1 PM (regra de Música)"
+        "custo": "1 PM (regra de Música)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "impoe_teste_resistencia_ou_perde_acao",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ],
+        "ativacao": {
+          "custo": {
+            "pm": 1,
+            "acao": "padrao"
+          },
+          "encerramento": "Requer concentração (ação padrão por rodada). Encerra se não se concentrar."
+        }
       },
       {
         "nome": "Música: Canção Assustadora",
         "descricao": "Faça um teste de Atuação oposto pelo teste de Vontade de cada criatura a sua escolha dentro do alcance (você faz um único teste). Alvos que falhem ficam abalados até o fim da cena. Alvos que passem ficam imunes a este efeito por um dia.",
-        "custo": "1 PM (regra de Música)"
+        "custo": "1 PM (regra de Música)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aura_condicao_em_inimigos",
+            "aplicacao": "lembrete"
+          }
+        ],
+        "ativacao": {
+          "custo": {
+            "pm": 1,
+            "acao": "padrao"
+          },
+          "encerramento": "O efeito (abalado) dura até o fim da cena nos alvos que falharam."
+        }
       },
       {
         "nome": "Música: Melodia Curativa",
         "descricao": "Criaturas a sua escolha no alcance recuperam 1d6 PV. Quando usa esta habilidade, você pode gastar mais pontos de mana. Para cada PM extra, aumente a cura em +1d6 PV.",
-        "custo": "1 PM (regra de Música; +1 PM por +1d6 PV)"
+        "custo": "1 PM (regra de Música; +1 PM por +1d6 PV)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "concede_cura_pv_aliados_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ],
+        "ativacao": {
+          "custo": {
+            "pm": 1,
+            "acao": "padrao"
+          },
+          "encerramento": "Efeito instantâneo (não é estado contínuo). PM adicionais aumentam a cura."
+        }
       },
       {
         "nome": "Paródia",
         "descricao": "Uma vez por rodada, quando vê outra criatura lançando uma magia em alcance médio, você pode pagar 1 PM e fazer um teste de Atuação (CD 15 + custo em PM da magia). Se passar, até o final de seu próximo turno você pode lançar essa magia.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "conjura_via_arte_em_combate",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Prestidigitação",
         "descricao": "Quando faz uma ação padrão, você pode aproveitar seus gestos para lançar uma magia com execução de ação completa ou menor. Faça um teste de Atuação (CD 15 + custo em PM da magia). Se passar, você lança a magia como uma ação livre. Se falhar, a magia não funciona, mas você gasta os PM mesmo assim. Outros personagens só percebem que você lançou uma magia com um teste de Misticismo (CD 20).",
-        "prerequisito": "6º nível de bardo"
+        "prerequisito": "6º nível de bardo",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "conjura_via_arte_em_combate",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

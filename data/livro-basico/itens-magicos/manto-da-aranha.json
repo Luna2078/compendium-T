@@ -15,6 +15,37 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Médio",
-    "preco": "T$ 21.000"
+    "preco": "T$ 21.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento_escalar",
+        "valor": { "expr": "deslocamento" },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:fortitude",
+        "valor": 5,
+        "condicao": { "campo": "dano.tipo", "em": ["veneno"] },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "concede_imunidade_efeito",
+        "valor": "teias",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_magia_teia",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "reduz_custo_pm_magia_conhecida",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

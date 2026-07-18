@@ -11,6 +11,14 @@
     "categoria": "esoterico",
     "preco": "T$ 200",
     "espacos": "1",
-    "especial": "Sempre que gastar pelo menos 1 PM para lançar uma magia, role 1d4. Com um resultado 4, você recupera 1 PM."
+    "especial": "Sempre que gastar pelo menos 1 PM para lançar uma magia, role 1d4. Com um resultado 4, você recupera 1 PM.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "recupera_pm_chance_ao_conjurar",
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

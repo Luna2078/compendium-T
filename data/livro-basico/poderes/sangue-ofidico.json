@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Sszzaas",
-    "descricao": "Você recebe resistência a veneno +5 e a CD para resistir aos seus venenos aumenta em +2."
+    "descricao": "Você recebe resistência a veneno +5 e a CD para resistir aos seus venenos aumenta em +2.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "resistencia_veneno_5",
+        "valor": 5,
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aumenta_cd_venenos_proprios",
+        "valor": 2,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -11,6 +11,14 @@
     "categoria": "item-aventura",
     "preco": "T$ 20",
     "espacos": "1",
-    "especial": "Se você estiver vestindo uma bandoleira, pode sacar itens alquímicos e poções como uma ação livre."
+    "especial": "Se você estiver vestindo uma bandoleira, pode sacar itens alquímicos e poções como uma ação livre.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "saca_categoria_itens_como_acao_livre",
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

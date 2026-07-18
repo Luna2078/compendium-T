@@ -10,6 +10,13 @@
   "mecanica": {
     "categoria": "servico",
     "preco": "T$ 0,5 / T$ 4 / T$ 20",
-    "especial": "Preço por noite. Inclui uma refeição comum. A recuperação de PV e PM é por nível (veja mais na página 106). Tiers: Comum (T$ 0,5 por noite) — espaço no salão comunal; refeição de pão, sopa e água; recupera 1 PV e 1 PM por nível. Confortável (T$ 4 por noite) — quarto pequeno privativo com cama de palha e baú; refeição de pão, queijo, cozido de galinha com legumes e cerveja ou vinho; recupera 2 PV e 2 PM por nível. Luxuosa (T$ 20 por noite) — quarto grande com colchão de algodão ou penas, cortinas, bacia de água quente e outros luxos; refeição com carne, frutas, doces e vinho de boa safra; disponível apenas nas melhores estalagens em cidades e metrópoles; recupera 3 PV e 3 PM por nível."
+    "especial": "Preço por noite. Inclui uma refeição comum. A recuperação de PV e PM é por nível (veja mais na página 106). Tiers: Comum (T$ 0,5 por noite) — espaço no salão comunal; refeição de pão, sopa e água; recupera 1 PV e 1 PM por nível. Confortável (T$ 4 por noite) — quarto pequeno privativo com cama de palha e baú; refeição de pão, queijo, cozido de galinha com legumes e cerveja ou vinho; recupera 2 PV e 2 PM por nível. Luxuosa (T$ 20 por noite) — quarto grande com colchão de algodão ou penas, cortinas, bacia de água quente e outros luxos; refeição com carne, frutas, doces e vinho de boa safra; disponível apenas nas melhores estalagens em cidades e metrópoles; recupera 3 PV e 3 PM por nível.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "servico_preco_por_tier",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

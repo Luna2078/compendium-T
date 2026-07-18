@@ -3,8 +3,13 @@
   "tipo": "classe",
   "nome": "Ladino",
   "resumo": "O mais esperto, discreto, silencioso e malandro dos heróis: especialista em arrombar portas, esgueirar-se pelas sombras, desarmar armadilhas e roubar — e em atingir os pontos vitais de inimigos distraídos com seu Ataque Furtivo.",
-  "fonte": { "livro": "livro-basico", "pagina": 72 },
-  "imagens": ["/classes/ladino.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 72
+  },
+  "imagens": [
+    "/classes/ladino.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -20,7 +25,12 @@
     }
   ],
   "relacoes": [
-    { "tipo": "exemplo", "alvoId": "leon-galtran", "alvoTipo": "npc", "rotulo": "Leon Galtran (ladrão)" }
+    {
+      "tipo": "exemplo",
+      "alvoId": "leon-galtran",
+      "alvoTipo": "npc",
+      "rotulo": "Leon Galtran (ladrão)"
+    }
   ],
   "mecanica": {
     "atributoChave": "Destreza",
@@ -29,75 +39,283 @@
     "pmPorNivel": 4,
     "pericias": {
       "quantidade": 8,
-      "fixas": ["Ladinagem (Des)", "Reflexos (Des)"],
-      "lista": ["Acrobacia (Des)", "Atletismo (For)", "Atuação (Car)", "Cavalgar (Des)", "Conhecimento (Int)", "Diplomacia (Car)", "Enganação (Car)", "Furtividade (Des)", "Iniciativa (Des)", "Intimidação (Car)", "Intuição (Sab)", "Investigação (Int)", "Jogatina (Car)", "Luta (For)", "Ofício (Int)", "Percepção (Sab)", "Pilotagem (Des)", "Pontaria (Des)"],
+      "fixas": [
+        "Ladinagem (Des)",
+        "Reflexos (Des)"
+      ],
+      "lista": [
+        "Acrobacia (Des)",
+        "Atletismo (For)",
+        "Atuação (Car)",
+        "Cavalgar (Des)",
+        "Conhecimento (Int)",
+        "Diplomacia (Car)",
+        "Enganação (Car)",
+        "Furtividade (Des)",
+        "Iniciativa (Des)",
+        "Intimidação (Car)",
+        "Intuição (Sab)",
+        "Investigação (Int)",
+        "Jogatina (Car)",
+        "Luta (For)",
+        "Ofício (Int)",
+        "Percepção (Sab)",
+        "Pilotagem (Des)",
+        "Pontaria (Des)"
+      ],
       "texto": "Ladinagem (Des) e Reflexos (Des), mais 8 a sua escolha entre Acrobacia (Des), Atletismo (For), Atuação (Car), Cavalgar (Des), Conhecimento (Int), Diplomacia (Car), Enganação (Car), Furtividade (Des), Iniciativa (Des), Intimidação (Car), Intuição (Sab), Investigação (Int), Jogatina (Car), Luta (For), Ofício (Int), Percepção (Sab), Pilotagem (Des) e Pontaria (Des)."
     },
     "proficiencias": [],
     "progressao": [
-      { "nivel": 1, "habilidades": ["Ataque furtivo +1d6", "Especialista"] },
-      { "nivel": 2, "habilidades": ["Evasão", "Poder de ladino"] },
-      { "nivel": 3, "habilidades": ["Ataque furtivo +2d6", "Poder de ladino"] },
-      { "nivel": 4, "habilidades": ["Esquiva sobrenatural", "Poder de ladino"] },
-      { "nivel": 5, "habilidades": ["Ataque furtivo +3d6", "Poder de ladino"] },
-      { "nivel": 6, "habilidades": ["Poder de ladino"] },
-      { "nivel": 7, "habilidades": ["Ataque furtivo +4d6", "Poder de ladino"] },
-      { "nivel": 8, "habilidades": ["Olhos nas costas", "Poder de ladino"] },
-      { "nivel": 9, "habilidades": ["Ataque furtivo +5d6", "Poder de ladino"] },
-      { "nivel": 10, "habilidades": ["Evasão aprimorada", "Poder de ladino"] },
-      { "nivel": 11, "habilidades": ["Ataque furtivo +6d6", "Poder de ladino"] },
-      { "nivel": 12, "habilidades": ["Poder de ladino"] },
-      { "nivel": 13, "habilidades": ["Ataque furtivo +7d6", "Poder de ladino"] },
-      { "nivel": 14, "habilidades": ["Poder de ladino"] },
-      { "nivel": 15, "habilidades": ["Ataque furtivo +8d6", "Poder de ladino"] },
-      { "nivel": 16, "habilidades": ["Poder de ladino"] },
-      { "nivel": 17, "habilidades": ["Ataque furtivo +9d6", "Poder de ladino"] },
-      { "nivel": 18, "habilidades": ["Poder de ladino"] },
-      { "nivel": 19, "habilidades": ["Ataque furtivo +10d6", "Poder de ladino"] },
-      { "nivel": 20, "habilidades": ["A pessoa certa para o trabalho", "Poder de ladino"] }
+      {
+        "nivel": 1,
+        "habilidades": [
+          "Ataque furtivo +1d6",
+          "Especialista"
+        ]
+      },
+      {
+        "nivel": 2,
+        "habilidades": [
+          "Evasão",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          "Ataque furtivo +2d6",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 4,
+        "habilidades": [
+          "Esquiva sobrenatural",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 5,
+        "habilidades": [
+          "Ataque furtivo +3d6",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 6,
+        "habilidades": [
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 7,
+        "habilidades": [
+          "Ataque furtivo +4d6",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 8,
+        "habilidades": [
+          "Olhos nas costas",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 9,
+        "habilidades": [
+          "Ataque furtivo +5d6",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 10,
+        "habilidades": [
+          "Evasão aprimorada",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 11,
+        "habilidades": [
+          "Ataque furtivo +6d6",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 12,
+        "habilidades": [
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 13,
+        "habilidades": [
+          "Ataque furtivo +7d6",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 14,
+        "habilidades": [
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 15,
+        "habilidades": [
+          "Ataque furtivo +8d6",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 16,
+        "habilidades": [
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 17,
+        "habilidades": [
+          "Ataque furtivo +9d6",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 18,
+        "habilidades": [
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 19,
+        "habilidades": [
+          "Ataque furtivo +10d6",
+          "Poder de ladino"
+        ]
+      },
+      {
+        "nivel": 20,
+        "habilidades": [
+          "A pessoa certa para o trabalho",
+          "Poder de ladino"
+        ]
+      }
     ],
     "habilidades": [
       {
         "nome": "Ataque Furtivo",
         "nivel": 1,
-        "descricao": "Você sabe atingir os pontos vitais de inimigos distraídos. Uma vez por rodada, quando atinge uma criatura desprevenida com um ataque corpo a corpo ou em alcance curto, ou uma criatura que esteja flanqueando, você causa 1d6 pontos de dano extra. A cada dois níveis, esse dano extra aumenta em +1d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos."
+        "descricao": "Você sabe atingir os pontos vitais de inimigos distraídos. Uma vez por rodada, quando atinge uma criatura desprevenida com um ataque corpo a corpo ou em alcance curto, ou uma criatura que esteja flanqueando, você causa 1d6 pontos de dano extra. A cada dois níveis, esse dano extra aumenta em +1d6. Uma criatura imune a acertos críticos também é imune a ataques furtivos.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": {
+              "dados": {
+                "n": {
+                  "expr": "ceil(nivel / 2)"
+                },
+                "faces": 6
+              }
+            },
+            "condicao": {
+              "campo": "personagem.estado",
+              "em": [
+                "desprevenido",
+                "flanqueado"
+              ]
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Especialista",
         "nivel": 1,
         "descricao": "Escolha um número de perícias treinadas igual a sua Inteligência, exceto bônus temporários (mínimo 1). Ao fazer um teste de uma dessas perícias, você pode gastar 1 PM para dobrar seu bônus de treinamento. Você não pode usar esta habilidade em testes de ataque.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "dobra_bonus_treinamento_pericia_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Evasão",
         "nivel": 2,
-        "descricao": "A partir do 2º nível, quando sofre um efeito que permite um teste de Reflexos para reduzir o dano à metade, você não sofre dano algum se passar. Você ainda sofre dano normal se falhar no teste de Reflexos. Esta habilidade exige liberdade de movimentos; você não pode usá-la se estiver de armadura pesada ou na condição imóvel."
+        "descricao": "A partir do 2º nível, quando sofre um efeito que permite um teste de Reflexos para reduzir o dano à metade, você não sofre dano algum se passar. Você ainda sofre dano normal se falhar no teste de Reflexos. Esta habilidade exige liberdade de movimentos; você não pode usá-la se estiver de armadura pesada ou na condição imóvel.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "evasao_reflexos",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Poder de Ladino",
         "nivel": 2,
-        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes de ladino (veja a lista de poderes)."
+        "descricao": "No 2º nível, e a cada nível seguinte, você escolhe um dos poderes de ladino (veja a lista de poderes).",
+        "efeitos": []
       },
       {
         "nome": "Esquiva Sobrenatural",
         "nivel": 4,
-        "descricao": "No 4º nível, seus instintos são tão apurados que você consegue reagir ao perigo antes que seus sentidos percebam. Você nunca fica surpreendido."
+        "descricao": "No 4º nível, seus instintos são tão apurados que você consegue reagir ao perigo antes que seus sentidos percebam. Você nunca fica surpreendido.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "nunca_fica_surpreendido",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Olhos nas Costas",
         "nivel": 8,
-        "descricao": "A partir do 8º nível, você consegue lutar contra diversos inimigos como se fossem apenas um. Você não pode ser flanqueado."
+        "descricao": "A partir do 8º nível, você consegue lutar contra diversos inimigos como se fossem apenas um. Você não pode ser flanqueado.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "nao_pode_ser_flanqueado",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Evasão Aprimorada",
         "nivel": 10,
-        "descricao": "No 10º nível, quando sofre um efeito que permite um teste de Reflexos para reduzir o dano à metade, você não sofre dano algum se passar e sofre apenas metade do dano se falhar. Esta habilidade exige liberdade de movimentos; você não pode usá-la se estiver de armadura pesada ou na condição imóvel."
+        "descricao": "No 10º nível, quando sofre um efeito que permite um teste de Reflexos para reduzir o dano à metade, você não sofre dano algum se passar e sofre apenas metade do dano se falhar. Esta habilidade exige liberdade de movimentos; você não pode usá-la se estiver de armadura pesada ou na condição imóvel.",
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "evasao",
+            "adicionaEfeito": [
+              {
+                "tipo": "capacidade",
+                "chave": "evasao_reflexos_aprimorada",
+                "aplicacao": "lembrete"
+              }
+            ]
+          }
+        ]
       },
       {
         "nome": "A Pessoa Certa para o Trabalho",
         "nivel": 20,
         "descricao": "No 20º nível, você se torna um mestre da ladinagem. Ao fazer um ataque furtivo ou usar uma perícia da lista de ladino, você pode gastar 5 PM para receber +10 no teste.",
-        "custo": "5 PM"
+        "custo": "5 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_10_ataque_furtivo_ou_pericia_por_5pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ],
     "poderes": [
@@ -105,105 +323,388 @@
         "nome": "Assassinar",
         "descricao": "Você pode gastar uma ação de movimento e 3 PM para analisar uma criatura em alcance curto. Até o fim de seu próximo turno, seu primeiro Ataque Furtivo que causar dano a ela tem seus dados de dano extras dessa habilidade dobrados.",
         "prerequisito": "5º nível de ladino",
-        "custo": "3 PM"
+        "custo": "3 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "marca_alvo_para_bonus",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "dobra_dados_ataque_furtivo_contra_alvo_marcado",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Aumento de Atributo",
-        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo."
+        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo.",
+        "empilhavel": true,
+        "efeitos": [],
+        "escolhas": [
+          {
+            "id": "aumento_atributo",
+            "rotulo": "+1 em um atributo à escolha",
+            "alvoTipo": "atributo",
+            "efeito": {
+              "tipo": "bonus",
+              "valor": 1,
+              "aplicacao": "automatica"
+            },
+            "restricao": "uma_por_patamar_por_alvo"
+          }
+        ]
       },
       {
         "nome": "Contatos no Submundo",
         "descricao": "Quando chega em uma comunidade equivalente a uma vila ou maior, você pode gastar 2 PM para fazer um teste de Carisma (CD 10). Se passar, enquanto estiver nessa comunidade, recebe +5 em testes de Investigação para interrogar, pode comprar itens mundanos, poções e pergaminhos com 20% de desconto (não cumulativo com barganha e outros descontos) e, de acordo com o mestre, tem acesso a itens e serviços proibidos (como armas de pólvora e venenos).",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:investigacao",
+            "valor": 5,
+            "condicao": {
+              "campo": "intencao",
+              "igual": "interrogar"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "desconto_compra_venda_itens",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "acesso_itens_servicos_proibidos",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Emboscar",
         "descricao": "Na primeira rodada de cada combate, você pode gastar 2 PM para executar uma ação padrão adicional em seu turno.",
         "prerequisito": "treinado em Furtividade",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "acao_extra_padrao_ou_movimento",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Escapista",
-        "descricao": "Você recebe +5 em testes de Acrobacia para escapar, passar por espaço apertado e passar por inimigo e em testes para resistir a efeitos de movimento."
+        "descricao": "Você recebe +5 em testes de Acrobacia para escapar, passar por espaço apertado e passar por inimigo e em testes para resistir a efeitos de movimento.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:acrobacia",
+            "valor": 5,
+            "condicao": {
+              "campo": "intencao",
+              "em": [
+                "escapar",
+                "passar_espaco_apertado",
+                "passar_por_inimigo"
+              ]
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_resistir_efeitos_movimento",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Fuga Formidável",
         "descricao": "Você pode gastar uma ação completa e 1 PM para analisar o lugar no qual está (um castelo, um porto, a praça de uma cidade...). Até o fim da cena, recebe +3m em seu deslocamento, +5 em Acrobacia e Atletismo e ignora penalidades em movimento por terreno difícil. Você perde esses benefícios se fizer uma ação que não seja diretamente relacionada a fugir. Por exemplo, você só pode atacar um inimigo se ele estiver bloqueando seu caminho, agarrando-o etc. Você pode fazer ações para ajudar seus aliados, mas apenas se eles estiverem tentando escapar.",
         "prerequisito": "Int 1",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "ativacao": {
+          "custo": {
+            "pm": 1,
+            "acao": "completa"
+          },
+          "encerramento": "Perde os benefícios se fizer qualquer ação que não seja diretamente relacionada a fugir (exceto ajudar aliados que também estejam escapando)."
+        },
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "deslocamento",
+            "valor": 3,
+            "unidade": "m",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:acrobacia",
+            "valor": 5,
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:atletismo",
+            "valor": 5,
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_terreno_dificil",
+            "condicao": {
+              "quando": "ativo"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Gatuno",
-        "descricao": "Você recebe +2 em Atletismo. Quando escala, não fica desprevenido e avança seu deslocamento normal, em vez de metade dele."
+        "descricao": "Você recebe +2 em Atletismo. Quando escala, não fica desprevenido e avança seu deslocamento normal, em vez de metade dele.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:atletismo",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "escalar_sem_ficar_desprevenido",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "escalar_em_deslocamento_normal",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Ladrão Arcano",
         "descricao": "Quando causa dano com um ataque furtivo em uma criatura capaz de lançar magias, você pode \"roubar\" uma magia que já a tenha visto lançar. Você precisa pagar 1 PM por círculo da magia e pode roubar magias de até 4º círculo. Até o fim da cena, você pode lançar a magia roubada (atributo-chave Inteligência).",
         "prerequisito": "Roubo de Mana, 13º nível de ladino",
-        "custo": "1 PM por círculo da magia"
+        "custo": "1 PM por círculo da magia",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "rouba_magia_de_conjurador",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Mão na Boca",
         "descricao": "Você recebe +2 em testes de agarrar. Quando acerta um ataque furtivo contra uma criatura desprevenida, você pode fazer um teste de agarrar como uma ação livre. Se agarrar a criatura, ela não poderá falar enquanto estiver agarrada.",
-        "prerequisito": "treinado em Luta"
+        "prerequisito": "treinado em Luta",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_testes_agarrar",
+            "valor": 2,
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "agarrar_acao_livre_apos_ataque_furtivo",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "silencia_alvo_agarrado",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Mãos Rápidas",
         "descricao": "Uma vez por rodada, ao fazer um teste de Ladinagem para abrir fechaduras, ocultar item, punga ou sabotar, você pode pagar 1 PM para fazê-lo como uma ação livre.",
         "prerequisito": "Des 2, treinado em Ladinagem",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ladinagem_como_acao_livre_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Mente Criminosa",
         "descricao": "Você soma sua Inteligência em Ladinagem e Furtividade.",
-        "prerequisito": "Int 1"
+        "prerequisito": "Int 1",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:ladinagem",
+            "valor": {
+              "expr": "atr.int"
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:furtividade",
+            "valor": {
+              "expr": "atr.int"
+            },
+            "aplicacao": "automatica"
+          }
+        ]
       },
       {
         "nome": "Oportunismo",
         "descricao": "Uma vez por rodada, quando um inimigo adjacente sofre dano de um de seus aliados, você pode gastar 2 PM para fazer um ataque corpo a corpo contra este inimigo.",
         "prerequisito": "6º nível de ladino",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ataque_de_oportunidade_condicional",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Rolamento Defensivo",
         "descricao": "Sempre que sofre dano, você pode gastar 2 PM para reduzir esse dano à metade. Após usar este poder, você fica caído.",
         "prerequisito": "treinado em Reflexos",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "reduz_dano_sofrido_por_pm",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Roubo de Mana",
         "descricao": "Quando você causa dano com um ataque furtivo, para cada 1d6 de dano de seu ataque furtivo, você recebe 1 PM temporário e a criatura perde 1 ponto de mana (se tiver). Você só pode usar este poder uma vez por cena contra uma mesma criatura.",
-        "prerequisito": "Truque Mágico, 7º nível de ladino"
+        "prerequisito": "Truque Mágico, 7º nível de ladino",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ganha_pm_temporario_e_drena_pm_por_dado_furtivo",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Saqueador de Tumbas",
-        "descricao": "Você recebe +5 em testes de Investigação para encontrar armadilhas e em testes de resistência contra elas. Além disso, gasta uma ação padrão para desabilitar mecanismos, em vez de 1d4 rodadas (veja a perícia Ladinagem)."
+        "descricao": "Você recebe +5 em testes de Investigação para encontrar armadilhas e em testes de resistência contra elas. Além disso, gasta uma ação padrão para desabilitar mecanismos, em vez de 1d4 rodadas (veja a perícia Ladinagem).",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:investigacao",
+            "valor": 5,
+            "condicao": {
+              "campo": "intencao",
+              "igual": "encontrar_armadilhas"
+            },
+            "aplicacao": "contextual"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_resistencia_armadilhas",
+            "valor": 5,
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "desabilita_mecanismos_acao_padrao",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Sombra",
         "descricao": "Você recebe +2 em Furtividade, não sofre penalidade em testes de Furtividade por se mover no seu deslocamento normal e reduz a penalidade por atacar e fazer outras ações chamativas para –10.",
-        "prerequisito": "treinado em Furtividade"
+        "prerequisito": "treinado em Furtividade",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:furtividade",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "sem_penalidade_furtividade_ao_mover",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "reduz_penalidade_acoes_chamativas_furtividade",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Truque Mágico",
         "descricao": "Você aprende e pode lançar uma magia arcana de 1º círculo a sua escolha, pagando seu custo normal em PM. Seu atributo-chave para esta magia é Inteligência. Você pode escolher este poder quantas vezes quiser.",
-        "prerequisito": "Int 1"
+        "prerequisito": "Int 1",
+        "empilhavel": true,
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_magia_circulo_1",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Velocidade Ladina",
         "descricao": "Uma vez por rodada, você pode gastar 2 PM para realizar uma ação de movimento adicional em seu turno.",
         "prerequisito": "Des 2, treinado em Iniciativa",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "acao_extra_padrao_ou_movimento",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Veneno Persistente",
         "descricao": "Quando aplica uma dose de veneno a uma arma, este veneno dura por três ataques (em vez de apenas um).",
-        "prerequisito": "Veneno Potente, 8º nível de ladino"
+        "prerequisito": "Veneno Potente, 8º nível de ladino",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "veneno_dura_mais_ataques",
+            "valor": 3,
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Veneno Potente",
         "descricao": "A CD para resistir aos venenos que você usa aumenta em +5.",
-        "prerequisito": "treinado em Ofício (alquimista)"
+        "prerequisito": "treinado em Ofício (alquimista)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aumenta_cd_venenos",
+            "valor": 5,
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

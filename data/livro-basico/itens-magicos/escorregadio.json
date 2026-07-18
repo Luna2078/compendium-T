@@ -13,6 +13,21 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:acrobacia",
+        "valor": 10,
+        "condicao": { "campo": "intencao", "igual": "escapar" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_testes_manobra_contra_agarrar",
+        "valor": 10,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

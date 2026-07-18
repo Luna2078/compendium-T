@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Membro da Igreja",
-        "descricao": "Você consegue hospedagem confortável e informação em qualquer templo de sua divindade, para você e seus aliados."
+        "descricao": "Você consegue hospedagem confortável e informação em qualquer templo de sua divindade, para você e seus aliados.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "consegue_hospedagem_informacao_em_local",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

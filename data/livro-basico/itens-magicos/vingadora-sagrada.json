@@ -15,6 +15,38 @@
   "mecanica": {
     "tipoItem": "Arma Específica",
     "categoria": "Maior",
-    "preco": "T$ 200.000"
+    "preco": "T$ 200.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 5,
+        "condicao": { "campo": "arma.id", "igual": "@self" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 5,
+        "condicao": { "campo": "arma.id", "igual": "@self" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "modifica_poder",
+        "alvo": "golpe-divino",
+        "patchCusto": { "pm": -1 }
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "resistencia_magia",
+        "valor": 5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "concede_resistencia_magia_5_a_aliados_alcance_curto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

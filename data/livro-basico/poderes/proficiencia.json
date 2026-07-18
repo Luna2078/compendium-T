@@ -9,6 +9,22 @@
   "relacoes": [],
   "mecanica": {
     "grupo": "combate",
-    "descricao": "Escolha uma proficiência: armas marciais, armas de fogo, armaduras pesadas ou escudos (se for proficiente em armas marciais, você também pode escolher armas exóticas). Você recebe essa proficiência. Você pode escolher este poder outras vezes para proficiências diferentes."
+    "descricao": "Escolha uma proficiência: armas marciais, armas de fogo, armaduras pesadas ou escudos (se for proficiente em armas marciais, você também pode escolher armas exóticas). Você recebe essa proficiência. Você pode escolher este poder outras vezes para proficiências diferentes.",
+    "empilhavel": true,
+    "parametros": [
+      {
+        "id": "categoria",
+        "rotulo": "Proficiência",
+        "tipo": "escolha",
+        "fonte": "categorias_proficiencia"
+      }
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "proficiente:@categoria",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

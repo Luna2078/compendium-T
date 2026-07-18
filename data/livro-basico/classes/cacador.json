@@ -3,8 +3,13 @@
   "tipo": "classe",
   "nome": "Caçador",
   "resumo": "Mais que um mateiro ou rastreador, é um especialista em sobrevivência nos terrenos mais selvagens e inóspitos, que estuda, persegue e mata sua presa com paciência e astúcia. Uma verdadeira enciclopédia de conhecimentos sobre os ermos.",
-  "fonte": { "livro": "livro-basico", "pagina": 49 },
-  "imagens": ["/classes/cacador.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 49
+  },
+  "imagens": [
+    "/classes/cacador.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -31,174 +36,586 @@
     "pmPorNivel": 4,
     "pericias": {
       "quantidade": 6,
-      "fixas": ["Luta (For) ou Pontaria (Des)", "Sobrevivência (Sab)"],
-      "lista": ["Adestramento (Car)", "Atletismo (For)", "Cavalgar (Des)", "Cura (Sab)", "Fortitude (Con)", "Furtividade (Des)", "Iniciativa (Des)", "Investigação (Int)", "Luta (For)", "Ofício (Int)", "Percepção (Sab)", "Pontaria (Des)", "Reflexos (Des)"],
+      "fixas": [
+        "Luta (For) ou Pontaria (Des)",
+        "Sobrevivência (Sab)"
+      ],
+      "lista": [
+        "Adestramento (Car)",
+        "Atletismo (For)",
+        "Cavalgar (Des)",
+        "Cura (Sab)",
+        "Fortitude (Con)",
+        "Furtividade (Des)",
+        "Iniciativa (Des)",
+        "Investigação (Int)",
+        "Luta (For)",
+        "Ofício (Int)",
+        "Percepção (Sab)",
+        "Pontaria (Des)",
+        "Reflexos (Des)"
+      ],
       "texto": "Luta (For) ou Pontaria (Des), Sobrevivência (Sab), mais 6 a sua escolha entre Adestramento (Car), Atletismo (For), Cavalgar (Des), Cura (Sab), Fortitude (Con), Furtividade (Des), Iniciativa (Des), Investigação (Int), Luta (For), Ofício (Int), Percepção (Sab), Pontaria (Des) e Reflexos (Des)."
     },
-    "proficiencias": ["armas marciais", "escudos"],
+    "proficiencias": [
+      "armas marciais",
+      "escudos"
+    ],
     "progressao": [
-      { "nivel": 1, "habilidades": ["Marca da presa +1d4", "Rastreador"] },
-      { "nivel": 2, "habilidades": ["Poder de caçador"] },
-      { "nivel": 3, "habilidades": ["Explorador", "Poder de caçador"] },
-      { "nivel": 4, "habilidades": ["Poder de caçador"] },
-      { "nivel": 5, "habilidades": ["Caminho do explorador", "Marca da presa +1d8", "Poder de caçador"] },
-      { "nivel": 6, "habilidades": ["Poder de caçador"] },
-      { "nivel": 7, "habilidades": ["Explorador", "Poder de caçador"] },
-      { "nivel": 8, "habilidades": ["Poder de caçador"] },
-      { "nivel": 9, "habilidades": ["Marca da presa +1d12", "Poder de caçador"] },
-      { "nivel": 10, "habilidades": ["Poder de caçador"] },
-      { "nivel": 11, "habilidades": ["Explorador", "Poder de caçador"] },
-      { "nivel": 12, "habilidades": ["Poder de caçador"] },
-      { "nivel": 13, "habilidades": ["Marca da presa +2d8", "Poder de caçador"] },
-      { "nivel": 14, "habilidades": ["Poder de caçador"] },
-      { "nivel": 15, "habilidades": ["Explorador", "Poder de caçador"] },
-      { "nivel": 16, "habilidades": ["Poder de caçador"] },
-      { "nivel": 17, "habilidades": ["Marca da presa +2d10", "Poder de caçador"] },
-      { "nivel": 18, "habilidades": ["Poder de caçador"] },
-      { "nivel": 19, "habilidades": ["Explorador", "Poder de caçador"] },
-      { "nivel": 20, "habilidades": ["Mestre caçador", "Poder de caçador"] }
+      {
+        "nivel": 1,
+        "habilidades": [
+          "Marca da presa +1d4",
+          "Rastreador"
+        ]
+      },
+      {
+        "nivel": 2,
+        "habilidades": [
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 3,
+        "habilidades": [
+          "Explorador",
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 4,
+        "habilidades": [
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 5,
+        "habilidades": [
+          "Caminho do explorador",
+          "Marca da presa +1d8",
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 6,
+        "habilidades": [
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 7,
+        "habilidades": [
+          "Explorador",
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 8,
+        "habilidades": [
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 9,
+        "habilidades": [
+          "Marca da presa +1d12",
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 10,
+        "habilidades": [
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 11,
+        "habilidades": [
+          "Explorador",
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 12,
+        "habilidades": [
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 13,
+        "habilidades": [
+          "Marca da presa +2d8",
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 14,
+        "habilidades": [
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 15,
+        "habilidades": [
+          "Explorador",
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 16,
+        "habilidades": [
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 17,
+        "habilidades": [
+          "Marca da presa +2d10",
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 18,
+        "habilidades": [
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 19,
+        "habilidades": [
+          "Explorador",
+          "Poder de caçador"
+        ]
+      },
+      {
+        "nivel": 20,
+        "habilidades": [
+          "Mestre caçador",
+          "Poder de caçador"
+        ]
+      }
     ],
     "habilidades": [
       {
         "nome": "Marca da Presa",
         "nivel": 1,
         "descricao": "Você pode gastar uma ação de movimento e 1 PM para analisar uma criatura em alcance curto. Até o fim da cena, você recebe +1d4 nas rolagens de dano contra essa criatura. A cada quatro níveis, você pode gastar +1 PM para aumentar o bônus de dano (veja a tabela da classe: +1d4 no 1º nível, +1d8 no 5º, +1d12 no 9º, +2d8 no 13º e +2d10 no 17º nível).",
-        "custo": "1 PM (+1 PM a cada quatro níveis)"
+        "custo": "1 PM (+1 PM a cada quatro níveis)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "marca_alvo_para_bonus",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Ação de movimento + 1 PM: marca uma criatura em alcance curto até o fim da cena. Você recebe bônus de dano contra ela conforme o nível — +1d4 (nível 1), +1d8 (nível 5), +1d12 (nível 9), +2d8 (nível 13), +2d10 (nível 17). Cada +1 PM gasto aumenta o dado para o próximo patamar da tabela."
+          }
+        ]
       },
       {
         "nome": "Rastreador",
         "nivel": 1,
-        "descricao": "Você recebe +2 em Sobrevivência. Além disso, pode se mover com seu deslocamento normal enquanto rastreia sem sofrer penalidades no teste de Sobrevivência."
+        "descricao": "Você recebe +2 em Sobrevivência. Além disso, pode se mover com seu deslocamento normal enquanto rastreia sem sofrer penalidades no teste de Sobrevivência.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:sobrevivencia",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_rastreamento_e_anti_rastreio",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Pode se mover com deslocamento normal enquanto rastreia sem sofrer penalidade no teste de Sobrevivência."
+          }
+        ]
       },
       {
         "nome": "Poder de Caçador",
         "nivel": 2,
-        "descricao": "No 2º nível, e a cada nível seguinte, você recebe uma habilidade da lista de poderes de caçador."
+        "descricao": "No 2º nível, e a cada nível seguinte, você recebe uma habilidade da lista de poderes de caçador.",
+        "efeitos": []
       },
       {
         "nome": "Explorador",
         "nivel": 3,
-        "descricao": "No 3º nível, escolha um tipo de terreno entre aquático, ártico, colina, deserto, floresta, montanha, pântano, planície, subterrâneo ou urbano. A partir do 11º nível, você também pode escolher área de Tormenta. Quando estiver no tipo de terreno escolhido, você soma sua Sabedoria (mínimo +1) na Defesa e nos testes de Acrobacia, Atletismo, Furtividade, Percepção e Sobrevivência. A cada quatro níveis, escolha outro tipo de terreno para receber o bônus ou aumente o bônus em um tipo de terreno já escolhido em +2."
+        "descricao": "No 3º nível, escolha um tipo de terreno entre aquático, ártico, colina, deserto, floresta, montanha, pântano, planície, subterrâneo ou urbano. A partir do 11º nível, você também pode escolher área de Tormenta. Quando estiver no tipo de terreno escolhido, você soma sua Sabedoria (mínimo +1) na Defesa e nos testes de Acrobacia, Atletismo, Furtividade, Percepção e Sobrevivência. A cada quatro níveis, escolha outro tipo de terreno para receber o bônus ou aumente o bônus em um tipo de terreno já escolhido em +2.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_no_terreno_explorador",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Quando estiver no terreno escolhido, soma Sabedoria (mínimo +1) na Defesa e nos testes de Acrobacia, Atletismo, Furtividade, Percepção e Sobrevivência. A cada 4 níveis, escolhe outro terreno ou +2 em terreno já escolhido. O motor não rastreia o terreno atual — aplicar manualmente."
+          }
+        ]
       },
       {
         "nome": "Caminho do Explorador",
         "nivel": 5,
-        "descricao": "No 5º nível, você pode atravessar terrenos difíceis sem sofrer redução em seu deslocamento e a CD para rastrear você aumenta em +10. Esta habilidade só funciona em terrenos nos quais você tenha a habilidade Explorador."
+        "descricao": "No 5º nível, você pode atravessar terrenos difíceis sem sofrer redução em seu deslocamento e a CD para rastrear você aumenta em +10. Esta habilidade só funciona em terrenos nos quais você tenha a habilidade Explorador.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ignora_terreno_dificil",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Nos terrenos onde possui Explorador: terreno difícil não reduz deslocamento e CD para rastrear você aumenta em +10."
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_rastreamento_e_anti_rastreio",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "A CD para rastrear você aumenta em +10 (apenas nos terrenos onde possui Explorador)."
+          }
+        ]
       },
       {
         "nome": "Mestre Caçador",
         "nivel": 20,
-        "descricao": "No 20º nível, você pode usar a habilidade Marca da Presa como uma ação livre. Além disso, quando usa a habilidade, pode pagar 5 PM para aumentar sua margem de ameaça contra a criatura em +2. Se você reduz uma criatura contra a qual usou Marca da Presa a 0 pontos de vida, recupera 5 PM."
+        "descricao": "No 20º nível, você pode usar a habilidade Marca da Presa como uma ação livre. Além disso, quando usa a habilidade, pode pagar 5 PM para aumentar sua margem de ameaça contra a criatura em +2. Se você reduz uma criatura contra a qual usou Marca da Presa a 0 pontos de vida, recupera 5 PM.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "marca_da_presa_vira_acao_livre",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Marca da Presa passa a ser ação livre em vez de ação de movimento."
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "paga_pm_bonus_critico_contra_marcada",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Ao usar Marca da Presa, pode pagar 5 PM adicionais para receber +2 na margem de ameaça contra a criatura marcada até o fim da cena."
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "recupera_pm_ao_reduzir_inimigo",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Ao reduzir a 0 PV uma criatura contra a qual usou Marca da Presa, recupera 5 PM."
+          }
+        ]
       }
     ],
     "poderes": [
       {
         "nome": "Ambidestria",
         "descricao": "Se estiver empunhando duas armas (e pelo menos uma delas for leve) e fizer a ação agredir, você pode fazer dois ataques, um com cada arma. Se fizer isso, sofre –2 em todos os testes de ataque até o seu próximo turno.",
-        "prerequisito": "Des 2"
+        "prerequisito": "Des 2",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ataque_duplo_duas_armas",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Empunhando duas armas (ao menos uma leve), na ação agredir: realiza dois ataques (um com cada arma), mas sofre –2 em todos os testes de ataque até o próximo turno."
+          }
+        ]
       },
       {
         "nome": "Armadilha: Arataca",
-        "descricao": "A vítima sofre 2d6 pontos de dano de perfuração e fica agarrada. Uma criatura agarrada pode escapar com uma ação padrão e um teste de Força ou Acrobacia (CD Sab)."
+        "descricao": "A vítima sofre 2d6 pontos de dano de perfuração e fica agarrada. Uma criatura agarrada pode escapar com uma ação padrão e um teste de Força ou Acrobacia (CD Sab).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "armadilha_arataca_dano_e_agarra",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Armadilha (ação completa, 3 PM, área 3m adjacente). Vítima sofre 2d6 perfuração e fica agarrada. Escape: ação padrão + Força ou Acrobacia (CD Sab do caçador)."
+          }
+        ]
       },
       {
         "nome": "Armadilha: Espinhos",
-        "descricao": "A vítima sofre 6d6 pontos de dano de perfuração. Um teste de Reflexos (CD Sab) reduz o dano à metade."
+        "descricao": "A vítima sofre 6d6 pontos de dano de perfuração. Um teste de Reflexos (CD Sab) reduz o dano à metade.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "armadilha_espinhos_dano_reflexos",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Armadilha (ação completa, 3 PM, área 3m adjacente). Vítima sofre 6d6 perfuração. Reflexos (CD Sab do caçador) reduz à metade."
+          }
+        ]
       },
       {
         "nome": "Armadilha: Laço",
-        "descricao": "A vítima deve fazer um teste de Reflexos (CD Sab). Se passar, fica caída. Se falhar, fica agarrada. Uma criatura agarrada pode se soltar com uma ação padrão e um teste de Força ou Acrobacia (CD Sab)."
+        "descricao": "A vítima deve fazer um teste de Reflexos (CD Sab). Se passar, fica caída. Se falhar, fica agarrada. Uma criatura agarrada pode se soltar com uma ação padrão e um teste de Força ou Acrobacia (CD Sab).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "armadilha_laco_agarra_ou_caida",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Armadilha (ação completa, 3 PM, área 3m adjacente). Reflexos (CD Sab): passou → caída; falhou → agarrada. Escape da agarrada: ação padrão + Força ou Acrobacia (CD Sab)."
+          }
+        ]
       },
       {
         "nome": "Armadilha: Rede",
-        "descricao": "Todas as criaturas na área ficam enredadas e não podem sair da área. Uma vítima pode se libertar com uma ação padrão e um teste de Força ou Acrobacia (CD 25). Além disso, a área ocupada pela rede é considerada terreno difícil. Nesta armadilha você escolhe quantas criaturas precisam estar na área para ativá-la."
+        "descricao": "Todas as criaturas na área ficam enredadas e não podem sair da área. Uma vítima pode se libertar com uma ação padrão e um teste de Força ou Acrobacia (CD 25). Além disso, a área ocupada pela rede é considerada terreno difícil. Nesta armadilha você escolhe quantas criaturas precisam estar na área para ativá-la.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "armadilha_rede_enreda_area",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Armadilha (ação completa, 3 PM, área 3m adjacente). Criaturas na área ficam enredadas e não podem sair. Escape: ação padrão + Força ou Acrobacia (CD 25). A área vira terreno difícil. O caçador escolhe quantas criaturas ativam a armadilha."
+          }
+        ]
       },
       {
         "nome": "Armadilheiro",
         "descricao": "Você soma sua Sabedoria no dano e na CD de suas armadilhas (cumulativo).",
-        "prerequisito": "um poder de armadilha, 5º nível de caçador"
+        "prerequisito": "um poder de armadilha, 5º nível de caçador",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "armadilheiro_sab_dano_e_cd",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Soma Sabedoria no dano e na CD das armadilhas (cumulativo). Efeito não rastreável pelo motor — aplicar manualmente em cada armadilha."
+          }
+        ]
       },
       {
         "nome": "Arqueiro",
         "descricao": "Se estiver usando uma arma de ataque à distância, você soma sua Sabedoria nas rolagens de dano (limitado pelo seu nível).",
-        "prerequisito": "Sab 1"
+        "prerequisito": "Sab 1",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "dano",
+            "valor": {
+              "expr": "min(atr.sab, nivel)"
+            },
+            "aplicacao": "contextual",
+            "condicao": {
+              "campo": "arma.tipo_ataque",
+              "igual": "disparo"
+            }
+          }
+        ]
       },
       {
         "nome": "Aumento de Atributo",
-        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo."
+        "descricao": "Você recebe +1 em um atributo. Você pode escolher este poder várias vezes, mas apenas uma vez por patamar para um mesmo atributo.",
+        "efeitos": [],
+        "empilhavel": true,
+        "escolhas": [
+          {
+            "id": "aumento_atributo",
+            "rotulo": "+1 em um atributo à escolha",
+            "alvoTipo": "atributo",
+            "efeito": {
+              "tipo": "bonus",
+              "valor": 1,
+              "aplicacao": "automatica"
+            },
+            "restricao": "uma_por_patamar_por_alvo"
+          }
+        ]
       },
       {
         "nome": "Bote",
         "descricao": "Se estiver empunhando duas armas e fizer uma investida, você pode pagar 1 PM para fazer um ataque adicional com sua arma secundária.",
         "prerequisito": "Ambidestria, 6º nível de caçador",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "realiza_ataque_extra_ao_agredir",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Na investida empunhando duas armas: paga 1 PM para realizar ataque adicional com a arma secundária."
+          }
+        ]
       },
       {
         "nome": "Camuflagem",
         "descricao": "Você pode gastar 2 PM para se esconder mesmo sem camuflagem ou cobertura disponível.",
         "prerequisito": "6º nível de caçador",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "esconde_sem_cobertura",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Gasta 2 PM para usar a ação Esconder mesmo sem camuflagem ou cobertura disponível."
+          }
+        ]
       },
       {
         "nome": "Chuva de Lâminas",
         "descricao": "Uma vez por rodada, quando usa Ambidestria, você pode pagar 2 PM para fazer um ataque adicional com sua arma primária.",
         "prerequisito": "Des 4, Ambidestria, 12º nível de caçador",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "realiza_ataque_extra_ao_agredir",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "1×/rodada ao usar Ambidestria: paga 2 PM para realizar ataque adicional com a arma primária."
+          }
+        ]
       },
       {
         "nome": "Companheiro Animal",
         "descricao": "Você recebe um companheiro animal. Veja o quadro na página 62.",
-        "prerequisito": "Car 1, treinado em Adestramento"
+        "prerequisito": "Car 1, treinado em Adestramento",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "possui_parceiro",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "O caçador recebe um companheiro animal conforme as regras da página 62."
+          }
+        ]
       },
       {
         "nome": "Elo com a Natureza",
         "descricao": "Você soma sua Sabedoria em seu total de pontos de mana e aprende e pode lançar Caminhos da Natureza (atributo-chave Sabedoria).",
-        "prerequisito": "Sab 1, 3º nível de caçador"
+        "prerequisito": "Sab 1, 3º nível de caçador",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pm.max",
+            "valor": {
+              "expr": "atr.sab"
+            },
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_magia_caminhos_da_natureza",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Aprende e pode lançar a magia Caminhos da Natureza usando Sabedoria como atributo-chave."
+          }
+        ]
       },
       {
         "nome": "Emboscar",
         "descricao": "Você pode gastar 2 PM para realizar uma ação padrão adicional em seu turno. Você só pode usar este poder na primeira rodada de um combate.",
         "prerequisito": "treinado em Furtividade",
-        "custo": "2 PM"
+        "custo": "2 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "acao_extra_padrao_ou_movimento",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Apenas na primeira rodada de combate: gasta 2 PM para realizar uma ação padrão adicional no turno."
+          }
+        ]
       },
       {
         "nome": "Empatia Selvagem",
-        "descricao": "Você pode se comunicar com animais por meio de linguagem corporal e vocalizações. Você pode usar Adestramento com animais para mudar atitude e persuasão (veja Diplomacia, na página 118)."
+        "descricao": "Você pode se comunicar com animais por meio de linguagem corporal e vocalizações. Você pode usar Adestramento com animais para mudar atitude e persuasão (veja Diplomacia, na página 118).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "comunica_com_animais",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Comunica-se com animais via linguagem corporal e vocalizações. Pode usar Adestramento para mudar atitude de animais (como Diplomacia)."
+          }
+        ]
       },
       {
         "nome": "Escaramuça",
         "descricao": "Quando se move 6m ou mais, você recebe +2 na Defesa e Reflexos e +1d8 nas rolagens de dano de ataques corpo a corpo e à distância em alcance curto até o início de seu próximo turno. Você não pode usar esta habilidade se estiver vestindo armadura pesada.",
-        "prerequisito": "Des 2, 6º nível de caçador"
+        "prerequisito": "Des 2, 6º nível de caçador",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "escaramuca_bonus_pos_movimento",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Ao se mover 6m ou mais no turno: até o início do próximo turno, recebe +2 na Defesa e em Reflexos e +1d8 nas rolagens de dano (corpo a corpo e à distância em alcance curto). Não funciona com armadura pesada. O motor não detecta o deslocamento do turno — aplicar manualmente."
+          }
+        ]
       },
       {
         "nome": "Escaramuça Superior",
         "descricao": "Quando usa Escaramuça, seus bônus aumentam para +5 na Defesa e Reflexos e +1d12 em rolagens de dano.",
-        "prerequisito": "Escaramuça, 12º nível de caçador"
+        "prerequisito": "Escaramuça, 12º nível de caçador",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "escaramuca_superior_aumenta_bonus",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Substitui os bônus de Escaramuça: +5 na Defesa e Reflexos (era +2) e +1d12 em rolagens de dano (era +1d8)."
+          }
+        ]
       },
       {
         "nome": "Espreitar",
-        "descricao": "Quando usa a habilidade Marca da Presa, você recebe um bônus de +1 em testes de perícia contra a criatura marcada. Esse bônus aumenta em +1 para cada PM adicional gasto na habilidade e também dobra com a habilidade Inimigo."
+        "descricao": "Quando usa a habilidade Marca da Presa, você recebe um bônus de +1 em testes de perícia contra a criatura marcada. Esse bônus aumenta em +1 para cada PM adicional gasto na habilidade e também dobra com a habilidade Inimigo.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "espreitar_bonus_pericia_contra_marcada",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Ao usar Marca da Presa: +1 em todos os testes de perícia contra a criatura marcada. +1 adicional por PM extra gasto na Marca. Dobra com Inimigo de (Criatura). Condição não rastreável pelo motor — aplicar manualmente."
+          }
+        ]
       },
       {
         "nome": "Ervas Curativas",
-        "descricao": "Você pode gastar uma ação completa e uma quantidade de PM a sua escolha (limitado por sua Sabedoria) para aplicar ervas que curam ou desintoxicam em você ou num aliado adjacente. Para cada PM que gastar, cura 2d6 PV ou remove uma condição envenenado afetando o alvo."
+        "descricao": "Você pode gastar uma ação completa e uma quantidade de PM a sua escolha (limitado por sua Sabedoria) para aplicar ervas que curam ou desintoxicam em você ou num aliado adjacente. Para cada PM que gastar, cura 2d6 PV ou remove uma condição envenenado afetando o alvo.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ervas_curativas_cura_ou_desintoxica",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Ação completa + X PM (máx Sab): cura 2d6 PV por PM OU remove uma condição envenenado por PM em você ou aliado adjacente. Quantidade de PM e efeito são escolhas do jogador — motor não pode automatizar."
+          }
+        ]
       },
       {
         "nome": "Ímpeto",
         "descricao": "Você pode gastar 1 PM para aumentar seu deslocamento em +6m por uma rodada.",
-        "custo": "1 PM"
+        "custo": "1 PM",
+        "ativacao": {
+          "custo": {
+            "pm": 1
+          },
+          "encerramento": "Dura por uma rodada."
+        },
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "deslocamento",
+            "valor": 6,
+            "unidade": "m",
+            "aplicacao": "contextual",
+            "condicao": {
+              "quando": "ativo"
+            }
+          }
+        ]
       },
       {
         "nome": "Inimigo de (Criatura)",
-        "descricao": "Escolha um tipo de criatura entre animal, construto, espírito, monstro ou morto-vivo, ou duas raças humanoides (por exemplo, orcs e gnolls, ou elfos e qareen). Quando você usa a habilidade Marca da Presa contra uma criatura do tipo ou da raça escolhida, dobra os dados de bônus no dano. O nome desta habilidade varia de acordo com o tipo de criatura escolhida (Inimigo de Monstros, Inimigo de Mortos-Vivos etc.). Você pode escolher este poder outras vezes para inimigos diferentes."
+        "descricao": "Escolha um tipo de criatura entre animal, construto, espírito, monstro ou morto-vivo, ou duas raças humanoides (por exemplo, orcs e gnolls, ou elfos e qareen). Quando você usa a habilidade Marca da Presa contra uma criatura do tipo ou da raça escolhida, dobra os dados de bônus no dano. O nome desta habilidade varia de acordo com o tipo de criatura escolhida (Inimigo de Monstros, Inimigo de Mortos-Vivos etc.). Você pode escolher este poder outras vezes para inimigos diferentes.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "inimigo_dobra_dados_marca",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Ao usar Marca da Presa contra o tipo de criatura escolhido, dobra os dados de bônus de dano da marca. Pode ser selecionado várias vezes para tipos diferentes. Condição não rastreável pelo motor — aplicar manualmente."
+          }
+        ]
       },
       {
         "nome": "Olho do Falcão",
-        "descricao": "Você pode usar a habilidade Marca da Presa em criaturas em alcance longo."
+        "descricao": "Você pode usar a habilidade Marca da Presa em criaturas em alcance longo.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "olho_do_falcao_marca_alcance_longo",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Permite usar Marca da Presa em criaturas em alcance longo (em vez de apenas alcance curto)."
+          }
+        ]
       },
       {
         "nome": "Ponto Fraco",
-        "descricao": "Quando usa a habilidade Marca da Presa, seus ataques contra a criatura marcada recebem +2 na margem de ameaça. Esse bônus dobra com a habilidade Inimigo."
+        "descricao": "Quando usa a habilidade Marca da Presa, seus ataques contra a criatura marcada recebem +2 na margem de ameaça. Esse bônus dobra com a habilidade Inimigo.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "ponto_fraco_critico_contra_marcada",
+            "aplicacao": "lembrete",
+            "descricaoMotor": "Ao usar Marca da Presa: +2 na margem de ameaça contra a criatura marcada. Dobra com Inimigo de (Criatura). Condição não rastreável pelo motor — aplicar manualmente."
+          }
+        ]
       }
     ]
   }

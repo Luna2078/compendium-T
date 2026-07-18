@@ -15,6 +15,25 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Médio",
-    "preco": "T$ 21.000"
+    "preco": "T$ 21.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento_voo",
+        "valor": 12,
+        "unidade": "m",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "veiculo_transporta_ate_2_criaturas_medias",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "ativacao": {
+      "custo": { "acao": "livre" },
+      "encerramento": "Capacidade: 2 criaturas Médias ou 40 espaços."
+    }
   }
 }

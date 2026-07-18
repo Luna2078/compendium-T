@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Des 1",
-    "descricao": "Você recebe +2 na Defesa e Reflexos."
+    "descricao": "Você recebe +2 na Defesa e Reflexos.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": 2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:reflexos",
+        "valor": 2,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

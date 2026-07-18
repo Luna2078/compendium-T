@@ -13,6 +13,17 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_veneno_ao_acertar_1d12_pv_3_rodadas",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "ativacao": {
+      "custo": { "pm": 2 },
+      "encerramento": "Ativado por ataque (1×/rodada). Acerto envenena: 1d12 PV/rodada por 3 rodadas."
+    }
   }
 }

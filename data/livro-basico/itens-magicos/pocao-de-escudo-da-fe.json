@@ -18,6 +18,15 @@
   "mecanica": {
     "tipoItem": "Poção",
     "categoria": "Médio",
-    "preco": "T$ 120"
+    "preco": "T$ 120",
+    "ativacao": { "custo": { "acao": "padrao" } },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_efeito_magia_sem_custo",
+        "valor": "escudo-da-fe",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

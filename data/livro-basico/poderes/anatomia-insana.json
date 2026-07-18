@@ -9,6 +9,15 @@
   "relacoes": [],
   "mecanica": {
     "grupo": "tormenta",
-    "descricao": "Você tem 25% de chance (resultado \"1\" em 1d4) de ignorar o dano adicional de um acerto crítico ou ataque furtivo. A chance aumenta em +25% para cada dois outros poderes da Tormenta que você possui."
+    "descricao": "Você tem 25% de chance (resultado \"1\" em 1d4) de ignorar o dano adicional de um acerto crítico ou ataque furtivo. A chance aumenta em +25% para cada dois outros poderes da Tormenta que você possui.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_dano_critico_furtivo",
+        "valor": { "expr": "25 * (1 + floor(contagem.poderes.tormenta / 2))" },
+        "unidade": "%",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

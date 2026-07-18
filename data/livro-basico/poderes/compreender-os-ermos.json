@@ -10,6 +10,22 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Allihanna",
-    "descricao": "Você recebe +2 em Sobrevivência e pode usar Sabedoria para Adestramento (em vez de Carisma)."
+    "descricao": "Você recebe +2 em Sobrevivência e pode usar Sabedoria para Adestramento (em vez de Carisma).",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:sobrevivencia",
+        "valor": 2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "substituicao",
+        "em": ["pericia:adestramento"],
+        "de": "atr.car",
+        "por": "atr.sab",
+        "condicao": { "quando": "sempre" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

@@ -10,6 +10,15 @@
   "mecanica": {
     "categoria": "animal",
     "preco": "T$ 30",
-    "especial": "Sacos de couro feitos para serem presos em uma sela. Permitem que um parceiro montaria carregue até 10 espaços de item para você. +10 espaços de carga."
+    "especial": "Sacos de couro feitos para serem presos em uma sela. Permitem que um parceiro montaria carregue até 10 espaços de item para você. +10 espaços de carga.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "carga.limite",
+        "valor": 10,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

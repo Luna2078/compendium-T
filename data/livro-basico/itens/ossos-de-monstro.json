@@ -11,6 +11,9 @@
     "categoria": "alquimico",
     "preco": "T$ 45",
     "espacos": "0,5",
-    "especial": "Usado como catalisador, fornece +2 na CD de magias de necromancia."
+    "especial": "Usado como catalisador, fornece +2 na CD de magias de necromancia.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "catalisador_modifica_magia", "aplicacao": "lembrete" }
+    ]
   }
 }

@@ -11,6 +11,15 @@
     "categoria": "item-aventura",
     "preco": "T$ 10",
     "espacos": "0,5",
-    "especial": "Para usar a água benta, você gasta uma ação padrão e escolhe um morto-vivo, demônio ou diabo em alcance curto (a água benta é inofensiva contra outras criaturas). O alvo sofre 2d10 pontos de dano de luz (Reflexos CD Sab reduz à metade)."
+    "especial": "Para usar a água benta, você gasta uma ação padrão e escolhe um morto-vivo, demônio ou diabo em alcance curto (a água benta é inofensiva contra outras criaturas). O alvo sofre 2d10 pontos de dano de luz (Reflexos CD Sab reduz à metade).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "consumivel_causa_dano_em_alvo",
+        "valor": { "dados": { "n": 2, "faces": 10 } },
+        "condicao": { "campo": "alvo.tipo_de_criatura", "em": ["morto-vivo", "demonio", "diabo"] },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

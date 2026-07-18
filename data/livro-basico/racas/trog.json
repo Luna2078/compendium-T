@@ -3,8 +3,13 @@
   "tipo": "raca",
   "nome": "Trog",
   "resumo": "Trogloditas (ou “trogs”) são homens-lagarto primitivos e subterrâneos que odeiam todos os outros seres — especialmente os que sabem forjar aço, aquilo que mais cobiçam. Suas tribos tramam incursões contra povoados, mas uns poucos divergem da crueldade inerente à raça e acabam aceitos por aventureiros.",
-  "fonte": { "livro": "livro-basico", "pagina": 31 },
-  "imagens": ["/racas/trog.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 31
+  },
+  "imagens": [
+    "/racas/trog.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -14,9 +19,18 @@
   "relacoes": [],
   "mecanica": {
     "modificadores": [
-      { "atributo": "Constituição", "valor": 2 },
-      { "atributo": "Força", "valor": 1 },
-      { "atributo": "Inteligência", "valor": -1 }
+      {
+        "atributo": "Constituição",
+        "valor": 2
+      },
+      {
+        "atributo": "Força",
+        "valor": 1
+      },
+      {
+        "atributo": "Inteligência",
+        "valor": -1
+      }
     ],
     "tamanho": "Médio",
     "deslocamento": 9,
@@ -26,22 +40,78 @@
       {
         "nome": "Mau Cheiro",
         "descricao": "Você pode gastar uma ação padrão e 2 PM para expelir um gás fétido. Todas as criaturas (exceto trogs) em alcance curto devem passar em um teste de Fortitude contra veneno (CD Con) ou ficarão enjoadas durante 1d6 rodadas. Uma criatura que passe no teste de resistência fica imune a esta habilidade por um dia.",
-        "efeito": "Ação padrão + 2 PM: gás fétido em alcance curto; criaturas (exceto trogs) fazem Fortitude contra veneno (CD Con) ou ficam enjoadas 1d6 rodadas; quem passa fica imune por um dia"
+        "efeito": "Ação padrão + 2 PM: gás fétido em alcance curto; criaturas (exceto trogs) fazem Fortitude contra veneno (CD Con) ou ficam enjoadas 1d6 rodadas; quem passa fica imune por um dia",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "expele_gas_fetido_enjoa_criaturas",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Mordida",
         "descricao": "Você possui uma arma natural de mordida (dano 1d6, crítico x2, perfuração). Uma vez por rodada, quando usa a ação agredir para atacar com outra arma, pode gastar 1 PM para fazer um ataque corpo a corpo extra com a mordida.",
-        "efeito": "Arma natural de mordida (1d6, crítico x2, perfuração); 1 vez por rodada, ao agredir com outra arma, gasta 1 PM para um ataque corpo a corpo extra com a mordida"
+        "efeito": "Arma natural de mordida (1d6, crítico x2, perfuração); 1 vez por rodada, ao agredir com outra arma, gasta 1 PM para um ataque corpo a corpo extra com a mordida",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "possui_arma_natural_mordida_1d6",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "ataque_extra_mordida_ao_agredir",
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Reptiliano",
         "descricao": "Você é uma criatura do tipo monstro e recebe visão no escuro, +1 na Defesa e, se estiver sem armadura ou roupas pesadas, +5 em Furtividade.",
-        "efeito": "Tipo monstro; visão no escuro; +1 na Defesa; +5 em Furtividade sem armadura ou roupas pesadas"
+        "efeito": "Tipo monstro; visão no escuro; +1 na Defesa; +5 em Furtividade sem armadura ou roupas pesadas",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "tipo_criatura:monstro",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "visao_no_escuro",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "defesa",
+            "valor": 1,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:furtividade",
+            "valor": 5,
+            "condicao": {
+              "campo": "armadura.subcategoria",
+              "em": [
+                "nenhuma"
+              ]
+            },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Sangue Frio",
         "descricao": "Você sofre 1 ponto de dano adicional por dado de dano de frio.",
-        "efeito": "Sofre +1 ponto de dano por dado de dano de frio"
+        "efeito": "Sofre +1 ponto de dano por dado de dano de frio",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "vulnerabilidade_dano_frio_por_dado",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

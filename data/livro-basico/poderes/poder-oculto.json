@@ -10,6 +10,14 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Nimb",
-    "descricao": "Você pode gastar uma ação de movimento e 2 PM para invocar a força, a rapidez ou o vigor dos loucos. Role 1d6 para receber +2 em Força (1 ou 2), Destreza (3 ou 4) ou Constituição (5 ou 6) até o fim da cena. Você pode usar este poder várias vezes, mas bônus no mesmo atributo não são cumulativos."
+    "descricao": "Você pode gastar uma ação de movimento e 2 PM para invocar a força, a rapidez ou o vigor dos loucos. Role 1d6 para receber +2 em Força (1 ou 2), Destreza (3 ou 4) ou Constituição (5 ou 6) até o fim da cena. Você pode usar este poder várias vezes, mas bônus no mesmo atributo não são cumulativos.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_atributo_aleatorio_por_dado",
+        "valor": 2,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -14,6 +14,14 @@
     "categoria": "vestuario",
     "preco": "T$ 50",
     "espacos": "1",
-    "especial": "Fornece +1 ponto de mana, mas apenas se você possuir a habilidade de classe Caminho do Arcanista."
+    "especial": "Fornece +1 ponto de mana, mas apenas se você possuir a habilidade de classe Caminho do Arcanista.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "pm_extra_condicional_a_classe",
+        "valor": 1,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -3,7 +3,10 @@
   "tipo": "item",
   "nome": "Sopa de Peixe",
   "resumo": "Cozido de peixe com verduras. Prato humilde que garante um descanso relaxante e melhora a recuperação de PM na próxima noite de sono.",
-  "fonte": { "livro": "livro-basico", "pagina": 162 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 162
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -11,6 +14,21 @@
     "categoria": "alimentacao",
     "preco": "T$ 1",
     "espacos": "0,5",
-    "especial": "Prato especial. Bônus dura 1 dia (apenas 1 bônus de alimentação por dia). Em sua próxima noite de sono, você aumenta a sua recuperação de pontos de mana em +1 por nível."
+    "especial": "Prato especial. Bônus dura 1 dia (apenas 1 bônus de alimentação por dia). Em sua próxima noite de sono, você aumenta a sua recuperação de pontos de mana em +1 por nível.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_prato_especial",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "recupera_pm_no_descanso_por_nivel",
+        "valor": {
+          "expr": "nivel"
+        },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

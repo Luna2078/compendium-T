@@ -20,6 +20,7 @@
       "tipoDano": "Perfuração",
       "habilidades": ["Versátil", "Arremesso"],
       "especial": "Versátil: +2 em testes para derrubar. Pode ser arremessado."
-    }
+    },
+    "efeitos": []
   }
 }

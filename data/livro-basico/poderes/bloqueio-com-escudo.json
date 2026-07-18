@@ -10,6 +10,16 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Estilo de Arma e Escudo",
-    "descricao": "Quando sofre dano, você pode gastar 1 PM para receber redução de dano igual ao bônus na Defesa que seu escudo fornece contra este dano. Você só pode usar este poder se estiver usando um escudo."
+    "descricao": "Quando sofre dano, você pode gastar 1 PM para receber redução de dano igual ao bônus na Defesa que seu escudo fornece contra este dano. Você só pode usar este poder se estiver usando um escudo.",
+    "ativacao": { "custo": { "pm": 1, "acao": "reacao" } },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": { "expr": "escudo.bonus_defesa" },
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Ataque Poderoso",
-    "descricao": "Quando você faz um ataque corpo a corpo e reduz os pontos de vida do alvo para 0 ou menos, pode gastar 1 PM para fazer um ataque adicional contra outra criatura dentro do seu alcance."
+    "descricao": "Quando você faz um ataque corpo a corpo e reduz os pontos de vida do alvo para 0 ou menos, pode gastar 1 PM para fazer um ataque adicional contra outra criatura dentro do seu alcance.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "ataque_extra_ao_reduzir_alvo_a_zero",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

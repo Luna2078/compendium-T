@@ -15,6 +15,24 @@
   "mecanica": {
     "tipoItem": "Arma Específica",
     "categoria": "Maior",
-    "preco": "T$ 180.000"
+    "preco": "T$ 180.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:cajado_arcano",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "reduz_custo_pm_magia_conhecida",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "cd_magia",
+        "valor": 2,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

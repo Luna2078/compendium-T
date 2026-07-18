@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "Sab 1",
-    "descricao": "Você recebe +1 PM para cada dois níveis de personagem e +2 em Vontade."
+    "descricao": "Você recebe +1 PM para cada dois níveis de personagem e +2 em Vontade.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pm.max",
+        "valor": { "expr": "floor(nivel / 2)" },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:vontade",
+        "valor": 2,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

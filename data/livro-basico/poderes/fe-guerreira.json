@@ -10,6 +10,21 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Arsenal",
-    "descricao": "Você pode usar Sabedoria para Guerra (em vez de Inteligência). Além disso, em combate, pode gastar 2 PM para substituir um teste de perícia (exceto testes de ataque) por um teste de Guerra."
+    "descricao": "Você pode usar Sabedoria para Guerra (em vez de Inteligência). Além disso, em combate, pode gastar 2 PM para substituir um teste de perícia (exceto testes de ataque) por um teste de Guerra.",
+    "efeitos": [
+      {
+        "tipo": "substituicao",
+        "em": ["pericia:guerra"],
+        "de": "atr.int",
+        "por": "atr.sab",
+        "condicao": { "quando": "sempre" },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "substitui_pericia_por_guerra_em_combate",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

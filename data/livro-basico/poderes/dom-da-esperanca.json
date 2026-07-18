@@ -10,6 +10,21 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Marah",
-    "descricao": "Você soma sua Sabedoria em seus PV em vez de Constituição, e se torna imune às condições alquebrado, esmorecido e frustrado."
+    "descricao": "Você soma sua Sabedoria em seus PV em vez de Constituição, e se torna imune às condições alquebrado, esmorecido e frustrado.",
+    "efeitos": [
+      {
+        "tipo": "substituicao",
+        "em": ["pv.max"],
+        "de": "atr.con",
+        "por": "atr.sab",
+        "condicao": { "quando": "sempre" },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "imune_alquebrado_esmorecido_frustrado",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

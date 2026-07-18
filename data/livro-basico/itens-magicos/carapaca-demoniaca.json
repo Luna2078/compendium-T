@@ -15,6 +15,19 @@
   "mecanica": {
     "tipoItem": "Armadura Específica",
     "categoria": "Maior",
-    "preco": "T$ 63.000"
+    "preco": "T$ 63.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:armadura_completa",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano.corpo_a_corpo",
+        "valor": { "dados": { "n": 1, "faces": 8 } },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

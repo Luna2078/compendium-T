@@ -10,6 +10,19 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "Con 1, For 1",
-    "descricao": "Seu limite de carga aumenta em 5 espaços e você pode se beneficiar de um item vestido adicional."
+    "descricao": "Seu limite de carga aumenta em 5 espaços e você pode se beneficiar de um item vestido adicional.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aumenta_limite_carga",
+        "valor": 5,
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "slot_item_vestido_extra",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

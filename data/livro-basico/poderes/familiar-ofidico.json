@@ -10,6 +10,18 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Sszzaas",
-    "descricao": "Você recebe um familiar cobra (veja a página 38) que não conta em seu limite de parceiros."
+    "descricao": "Você recebe um familiar cobra (veja a página 38) que não conta em seu limite de parceiros.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_familiar_cobra",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "familiar_nao_conta_limite_parceiros",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

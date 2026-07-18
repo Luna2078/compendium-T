@@ -10,6 +10,14 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Aharadak ou Nimb",
-    "descricao": "Toda vez que uma ou mais criaturas falham em um teste de Vontade contra uma de suas habilidades mágicas, você recebe 1 PM temporário cumulativo. Você pode ganhar um máximo de PM temporários por cena desta forma igual a sua Sabedoria."
+    "descricao": "Toda vez que uma ou mais criaturas falham em um teste de Vontade contra uma de suas habilidades mágicas, você recebe 1 PM temporário cumulativo. Você pode ganhar um máximo de PM temporários por cena desta forma igual a sua Sabedoria.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "absorve_pm_temporario_inimigo_falha_vontade",
+        "valor": { "expr": "atr.sab" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

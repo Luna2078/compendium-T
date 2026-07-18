@@ -10,6 +10,26 @@
   "mecanica": {
     "grupo": "magia",
     "prerequisito": "habilidade de classe Magias, treinado em Misticismo ou Religião, 8º nível de personagem",
-    "descricao": "Você pode lançar magias como rituais. Isso dobra seu limite de PM, mas muda a execução para 1 hora (ou o dobro, o que for maior) e exige um gasto de T$ 10 por PM gasto (em incensos, oferendas…). Assim, um arcanista de 8º nível pode lançar uma magia de 16 PM gastando T$ 160. Magias lançadas como rituais não podem ser armazenadas em itens."
+    "descricao": "Você pode lançar magias como rituais. Isso dobra seu limite de PM, mas muda a execução para 1 hora (ou o dobro, o que for maior) e exige um gasto de T$ 10 por PM gasto (em incensos, oferendas…). Assim, um arcanista de 8º nível pode lançar uma magia de 16 PM gastando T$ 160. Magias lançadas como rituais não podem ser armazenadas em itens.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "limite_pm_por_magia",
+        "valor": 2,
+        "operacao": "multiplicar",
+        "condicao": { "campo": "modo_conjuracao", "igual": "ritual" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "custo_ritual_tempo_e_dinheiro",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ritual_nao_armazenavel_em_item",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -15,6 +15,19 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Médio",
-    "preco": "T$ 10.500"
+    "preco": "T$ 10.500",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_efeito_magia_sem_custo",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "concede_bonus_pericias_aliados",
+        "valor": 2,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

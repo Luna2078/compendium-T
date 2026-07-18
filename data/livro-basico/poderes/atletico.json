@@ -10,6 +10,10 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "For 2",
-    "descricao": "Você recebe +2 em Atletismo e +3m em seu deslocamento."
+    "descricao": "Você recebe +2 em Atletismo e +3m em seu deslocamento.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pericia:atletismo", "valor": 2, "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "deslocamento", "valor": 3, "unidade": "m", "aplicacao": "automatica" }
+    ]
   }
 }

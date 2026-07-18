@@ -10,6 +10,13 @@
   "mecanica": {
     "categoria": "veiculo",
     "preco": "T$ 70",
-    "especial": "Tamanho Grande. Deslocamento: natação 9m. Defesa: 8 (+ Des do condutor). PV: 50. Capacidade: até 4 criaturas Médias ou 80 espaços (mesmas estatísticas de uma carroça, mas com deslocamento de natação)."
+    "especial": "Tamanho Grande. Deslocamento: natação 9m. Defesa: 8 (+ Des do condutor). PV: 50. Capacidade: até 4 criaturas Médias ou 80 espaços (mesmas estatísticas de uma carroça, mas com deslocamento de natação).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "veiculo_stats",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

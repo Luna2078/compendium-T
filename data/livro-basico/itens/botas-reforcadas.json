@@ -14,6 +14,16 @@
     "categoria": "vestuario",
     "preco": "T$ 20",
     "espacos": "1",
-    "especial": "Aumentam seu deslocamento em +1,5m se ele for reduzido por terreno difícil (após a redução)."
+    "especial": "Aumentam seu deslocamento em +1,5m se ele for reduzido por terreno difícil (após a redução).",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento",
+        "valor": 1.5,
+        "unidade": "m",
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

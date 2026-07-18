@@ -10,6 +10,25 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Arsenal",
-    "descricao": "Você pode pagar 3 PM para receber +2 em rolagens de dano e redução de dano 5 até o fim da cena."
+    "descricao": "Você pode pagar 3 PM para receber +2 em rolagens de dano e redução de dano 5 até o fim da cena.",
+    "ativacao": {
+      "custo": { "pm": 3 }
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 2,
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 5,
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

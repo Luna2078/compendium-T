@@ -21,7 +21,14 @@
     "poderesUnicos": [
       {
         "nome": "Passagem de Navio",
-        "descricao": "Você consegue transporte marítimo para você e seus aliados, sem custos, desde que todos paguem com trabalho (passar em pelo menos um teste de perícia adequado durante a viagem)."
+        "descricao": "Você consegue transporte marítimo para você e seus aliados, sem custos, desde que todos paguem com trabalho (passar em pelo menos um teste de perícia adequado durante a viagem).",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "consegue_transporte_para_grupo",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

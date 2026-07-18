@@ -9,6 +9,13 @@
   "relacoes": [],
   "mecanica": {
     "grupo": "destino",
-    "descricao": "Você pode gastar 3 PM para rolar novamente um teste recém realizado (apenas uma vez por teste)."
+    "descricao": "Você pode gastar 3 PM para rolar novamente um teste recém realizado (apenas uma vez por teste).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "rerola_teste_uma_vez",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

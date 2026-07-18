@@ -10,6 +10,11 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Sszzaas",
-    "descricao": "Você recebe +2 em Enganação, Furtividade e Intuição."
+    "descricao": "Você recebe +2 em Enganação, Furtividade e Intuição.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pericia:enganacao", "valor": 2, "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:furtividade", "valor": 2, "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:intuicao", "valor": 2, "aplicacao": "automatica" }
+    ]
   }
 }

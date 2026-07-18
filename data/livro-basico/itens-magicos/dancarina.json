@@ -13,6 +13,18 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "ativacao": {
+      "custo": { "pm": 1, "acao": "movimento" },
+      "encerramento": "Se não sustentar o efeito, a arma cai no chão."
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "arma_flutua_e_ataca_sozinha_por_pm",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

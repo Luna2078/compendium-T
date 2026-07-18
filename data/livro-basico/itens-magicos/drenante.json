@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Drenante",
   "resumo": "Em acerto crítico contra criatura viva, deixa-a fraca e concede PV temporários.",
-  "fonte": { "livro": "livro-basico", "pagina": 335 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 335
+  },
   "imagens": [],
   "secoes": [
     {
@@ -13,6 +16,36 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pv.temporario",
+        "valor": {
+          "dados": {
+            "n": 2,
+            "faces": 10
+          }
+        },
+        "condicao": {
+          "campo": "ataque.critico",
+          "em": [
+            "sim"
+          ]
+        },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "inflige_fraca_no_critico_vs_criatura_viva",
+        "condicao": {
+          "campo": "ataque.critico",
+          "em": [
+            "sim"
+          ]
+        },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

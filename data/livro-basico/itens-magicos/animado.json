@@ -13,6 +13,18 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "ativacao": {
+      "custo": { "pm": 1, "acao": "movimento" },
+      "encerramento": "Dura até o fim da cena."
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "escudo_flutuante_mantem_bonus_maos_livres",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

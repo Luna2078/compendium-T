@@ -10,6 +10,20 @@
   "mecanica": {
     "grupo": "tormenta",
     "prerequisito": "Quatro outros poderes da Tormenta",
-    "descricao": "Você pode gastar 1 PM para receber deslocamento de voo 9m até o fim do seu turno. O deslocamento aumenta em +1,5m para cada outro poder da Tormenta que você possui."
+    "descricao": "Você pode gastar 1 PM para receber deslocamento de voo 9m até o fim do seu turno. O deslocamento aumenta em +1,5m para cada outro poder da Tormenta que você possui.",
+    "ativacao": {
+      "custo": { "pm": 1, "acao": "padrao" },
+      "encerramento": "O deslocamento de voo dura até o fim do seu turno."
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento_voo",
+        "valor": { "expr": "9 + 1.5 * contagem.poderes.tormenta" },
+        "unidade": "m",
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

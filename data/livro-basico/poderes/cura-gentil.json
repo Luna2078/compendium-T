@@ -10,6 +10,14 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Lena",
-    "descricao": "Você soma seu Carisma aos PV restaurados por seus efeitos mágicos de cura."
+    "descricao": "Você soma seu Carisma aos PV restaurados por seus efeitos mágicos de cura.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "soma_carisma_a_cura_magica",
+        "valor": { "expr": "atr.car" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

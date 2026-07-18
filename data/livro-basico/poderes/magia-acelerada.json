@@ -11,6 +11,18 @@
     "grupo": "magia",
     "prerequisito": "lançar magias de 2º círculo",
     "custo": "+4 PM",
-    "descricao": "Aprimoramento. Muda a execução da magia para ação livre. Você só pode aplicar este aprimoramento em magias com execução de movimento, padrão ou completa e só pode lançar uma magia como ação livre por rodada."
+    "descricao": "Aprimoramento. Muda a execução da magia para ação livre. Você só pode aplicar este aprimoramento em magias com execução de movimento, padrão ou completa e só pode lançar uma magia como ação livre por rodada.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aprimoramento_muda_execucao_para_acao_livre",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "limite_uma_magia_acao_livre_por_rodada",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

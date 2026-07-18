@@ -10,6 +10,25 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "treinado em Pontaria",
-    "descricao": "Você pode sacar armas de arremesso como uma ação livre e recebe +2 nas rolagens de dano com elas. Se também possuir o poder Saque Rápido, também recebe +2 nos testes de ataque com essas armas."
+    "descricao": "Você pode sacar armas de arremesso como uma ação livre e recebe +2 nas rolagens de dano com elas. Se também possuir o poder Saque Rápido, também recebe +2 nos testes de ataque com essas armas.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "saca_arma_arremesso_acao_livre",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano.arremesso",
+        "valor": 2,
+        "condicao": { "campo": "arma.propriedades", "em": ["arremesso"] },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_ataque_arremesso_com_saque_rapido",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

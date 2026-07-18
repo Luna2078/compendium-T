@@ -15,6 +15,20 @@
   "mecanica": {
     "tipoItem": "Acessório",
     "categoria": "Menor",
-    "preco": "T$ 3.000"
+    "preco": "T$ 3.000",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento",
+        "valor": 3,
+        "unidade": "m",
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_deslocamento_montaria",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

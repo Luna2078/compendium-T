@@ -14,6 +14,15 @@
     "categoria": "vestuario",
     "preco": "T$ 15",
     "espacos": "1",
-    "especial": "Fornece +1 em Fortitude."
+    "especial": "Fornece +1 em Fortitude.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:fortitude",
+        "valor": 1,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

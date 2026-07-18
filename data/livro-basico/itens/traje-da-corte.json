@@ -14,6 +14,13 @@
     "categoria": "vestuario",
     "preco": "T$ 100",
     "espacos": "1",
-    "especial": "Em certos ambientes (um baile, um salão de palácio), um personagem que não esteja vestindo este item sofre –5 em perícias baseadas em Carisma."
+    "especial": "Em certos ambientes (um baile, um salão de palácio), um personagem que não esteja vestindo este item sofre –5 em perícias baseadas em Carisma.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "penalidade_pericia_sem_ferramenta",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

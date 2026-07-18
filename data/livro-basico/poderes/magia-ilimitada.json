@@ -10,6 +10,14 @@
   "mecanica": {
     "grupo": "magia",
     "prerequisito": "lançar magias",
-    "descricao": "Você soma seu atributo-chave no limite de PM que pode gastar numa magia. Por exemplo, um arcanista de 5º nível com Int 4 e este poder pode gastar até 9 PM em cada magia."
+    "descricao": "Você soma seu atributo-chave no limite de PM que pode gastar numa magia. Por exemplo, um arcanista de 5º nível com Int 4 e este poder pode gastar até 9 PM em cada magia.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "limite_pm_por_magia",
+        "valor": { "expr": "atributoChave" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

@@ -15,6 +15,19 @@
   "mecanica": {
     "tipoItem": "Armadura Específica",
     "categoria": "Maior",
-    "preco": "T$ 45.000"
+    "preco": "T$ 45.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto",
+        "valor": "defensor",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "dano_fogo_extra_corpo_a_corpo_ao_liderar",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

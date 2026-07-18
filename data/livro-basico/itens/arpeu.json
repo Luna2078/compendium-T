@@ -11,6 +11,15 @@
     "categoria": "item-aventura",
     "preco": "T$ 5",
     "espacos": "1",
-    "especial": "Prender um arpéu exige um teste de Pontaria (CD 15). Subir um muro com a ajuda de uma corda fornece +5 no teste de Atletismo."
+    "especial": "Prender um arpéu exige um teste de Pontaria (CD 15). Subir um muro com a ajuda de uma corda fornece +5 no teste de Atletismo.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:atletismo",
+        "valor": 5,
+        "condicao": { "campo": "intencao", "igual": "escalar_com_corda" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

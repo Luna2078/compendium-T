@@ -19,6 +19,13 @@
       "tipoDano": "Corte",
       "habilidades": []
     },
-    "especial": "Pode ser usado como arma marcial de duas mãos (sem necessidade de proficiência exótica nesse caso)."
+    "especial": "Pode ser usado como arma marcial de duas mãos (sem necessidade de proficiência exótica nesse caso).",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "usavel_como_marcial_duas_maos",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

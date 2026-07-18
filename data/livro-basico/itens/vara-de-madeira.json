@@ -13,6 +13,7 @@
   "mecanica": {
     "categoria": "item-aventura",
     "preco": "T$ 0,2",
-    "espacos": "1"
+    "espacos": "1",
+    "efeitos": []
   }
 }

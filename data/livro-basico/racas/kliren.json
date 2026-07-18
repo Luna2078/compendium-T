@@ -3,8 +3,13 @@
   "tipo": "raca",
   "nome": "Kliren",
   "resumo": "Meios-gnomos visitantes de outro mundo, os kliren combinam a alta inteligência gnômica e a curiosidade humana, resultando em seres de extrema engenhosidade, criatividade e talento com aparatos mecânicos — embora a impulsividade e a imprudência por vezes abreviem suas vidas.",
-  "fonte": { "livro": "livro-basico", "pagina": 28 },
-  "imagens": ["/racas/kliren.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 28
+  },
+  "imagens": [
+    "/racas/kliren.png"
+  ],
   "secoes": [
     {
       "titulo": "Descrição",
@@ -12,13 +17,27 @@
     }
   ],
   "relacoes": [
-    { "tipo": "citaA", "alvoId": "tilliann", "alvoTipo": "divindade", "rotulo": "seu deus Tilliann" }
+    {
+      "tipo": "citaA",
+      "alvoId": "tilliann",
+      "alvoTipo": "divindade",
+      "rotulo": "seu deus Tilliann"
+    }
   ],
   "mecanica": {
     "modificadores": [
-      { "atributo": "Inteligência", "valor": 2 },
-      { "atributo": "Carisma", "valor": 1 },
-      { "atributo": "Força", "valor": -1 }
+      {
+        "atributo": "Inteligência",
+        "valor": 2
+      },
+      {
+        "atributo": "Carisma",
+        "valor": 1
+      },
+      {
+        "atributo": "Força",
+        "valor": -1
+      }
     ],
     "tamanho": "Médio",
     "deslocamento": 9,
@@ -28,22 +47,66 @@
       {
         "nome": "Híbrido",
         "descricao": "Sua natureza multifacetada fez com que você aprendesse conhecimentos variados. Você se torna treinado em uma perícia a sua escolha (não precisa ser da sua classe).",
-        "efeito": "Treinado em 1 perícia à escolha (não precisa ser da sua classe)"
+        "efeito": "Treinado em 1 perícia à escolha (não precisa ser da sua classe)",
+        "efeitos": [],
+        "escolhas": [
+          {
+            "id": "hibrido_slot_1",
+            "rotulo": "Treinado numa perícia à escolha",
+            "opcoes": [
+              {
+                "tipo": "treinar_pericia"
+              }
+            ],
+            "restricao": "distinta"
+          }
+        ]
       },
       {
         "nome": "Engenhosidade",
         "descricao": "Quando faz um teste de perícia, você pode gastar 2 PM para somar sua Inteligência no teste. Você não pode usar esta habilidade em testes de ataque. Caso receba esta habilidade novamente, seu custo é reduzido em –1 PM.",
-        "efeito": "Gaste 2 PM para somar Inteligência a um teste de perícia (não vale para ataques); se receber novamente, custo reduzido em –1 PM"
+        "efeito": "Gaste 2 PM para somar Inteligência a um teste de perícia (não vale para ataques); se receber novamente, custo reduzido em –1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "soma_inteligencia_a_teste_pericia_por_pm",
+            "valor": {
+              "expr": "atr.int"
+            },
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Ossos Frágeis",
         "descricao": "Você sofre 1 ponto de dano adicional por dado de dano de impacto. Por exemplo, se for atingido por uma clava (dano 1d6), sofre 1d6+1 pontos de dano. Se cair de 3m de altura (dano 2d6), sofre 2d6+2 pontos de dano.",
-        "efeito": "+1 ponto de dano por dado de dano de impacto sofrido"
+        "efeito": "+1 ponto de dano por dado de dano de impacto sofrido",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "dano_extra_por_dado_de_impacto",
+            "valor": 1,
+            "aplicacao": "lembrete"
+          }
+        ]
       },
       {
         "nome": "Vanguardista",
         "descricao": "Você recebe proficiência em armas de fogo e +2 em Ofício (um qualquer, a sua escolha).",
-        "efeito": "Proficiência em armas de fogo; +2 em Ofício (um à escolha)"
+        "efeito": "Proficiência em armas de fogo; +2 em Ofício (um à escolha)",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "proficiente:armas_de_fogo",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "bonus_2_oficio_a_escolha",
+            "valor": 2,
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

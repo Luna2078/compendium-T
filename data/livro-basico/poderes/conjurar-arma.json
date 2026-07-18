@@ -10,6 +10,31 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Arsenal",
-    "descricao": "Você pode gastar 1 PM para invocar uma arma corpo a corpo ou de arremesso com a qual seja proficiente. A arma surge em sua mão, fornece +1 em testes de ataque e rolagens de dano, é considerada mágica e dura pela cena. Você não pode criar armas de disparo, mas pode criar 20 munições."
+    "descricao": "Você pode gastar 1 PM para invocar uma arma corpo a corpo ou de arremesso com a qual seja proficiente. A arma surge em sua mão, fornece +1 em testes de ataque e rolagens de dano, é considerada mágica e dura pela cena. Você não pode criar armas de disparo, mas pode criar 20 munições.",
+    "ativacao": {
+      "custo": { "pm": 1, "acao": "padrao" },
+      "encerramento": "A arma dura pela cena; desaparece ao fim da cena ou se você a soltar."
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "conjura_arma_magica_temporaria",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": 1,
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 1,
+        "condicao": { "quando": "ativo" },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

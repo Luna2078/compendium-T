@@ -10,6 +10,21 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "treinado em Luta",
-    "descricao": "Seus ataques desarmados causam 1d6 pontos de dano e podem causar dano letal ou não letal (sem penalidades)."
+    "descricao": "Seus ataques desarmados causam 1d6 pontos de dano e podem causar dano letal ou não letal (sem penalidades).",
+    "efeitos": [
+      {
+        "tipo": "passo_de_dado",
+        "alvo": "dano",
+        "passos": 1,
+        "condicao": { "campo": "arma.id", "igual": "desarmado" },
+        "aplicacao": "contextual"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "anula_penalidade_dano_nao_letal",
+        "condicao": { "campo": "arma.id", "igual": "desarmado" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

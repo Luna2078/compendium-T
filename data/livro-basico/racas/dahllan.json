@@ -37,17 +37,54 @@
       {
         "nome": "Amiga das Plantas",
         "descricao": "Você pode lançar a magia Controlar Plantas (atributo-chave Sabedoria). Caso aprenda novamente essa magia, seu custo diminui em –1 PM.",
-        "efeito": "Lança Controlar Plantas (atributo-chave Sabedoria); aprender de novo reduz custo em 1 PM"
+        "efeito": "Lança Controlar Plantas (atributo-chave Sabedoria); aprender de novo reduz custo em 1 PM",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "aprende_magia_controlar_plantas",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "modifica_poder",
+            "alvo": "controlar-plantas",
+            "patchCusto": { "pm": -1 }
+          }
+        ]
       },
       {
         "nome": "Armadura de Allihanna",
         "descricao": "Você pode gastar uma ação de movimento e 1 PM para transformar sua pele em casca de árvore, recebendo +2 na Defesa até o fim da cena.",
-        "efeito": "Ação de movimento + 1 PM: +2 na Defesa até o fim da cena"
+        "efeito": "Ação de movimento + 1 PM: +2 na Defesa até o fim da cena",
+        "ativacao": {
+          "custo": { "pm": 1, "acao": "movimento" },
+          "encerramento": "O bônus dura até o fim da cena."
+        },
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "defesa",
+            "valor": 2,
+            "condicao": { "quando": "ativo" },
+            "aplicacao": "contextual"
+          }
+        ]
       },
       {
         "nome": "Empatia Selvagem",
         "descricao": "Você pode se comunicar com animais por meio de linguagem corporal e vocalizações. Você pode usar Adestramento para mudar atitude e persuasão com animais (veja Diplomacia, na página 118). Caso receba esta habilidade novamente, recebe +2 em Adestramento.",
-        "efeito": "Comunica-se com animais; usa Adestramento para mudar atitude/persuasão com animais; receber de novo dá +2 em Adestramento"
+        "efeito": "Comunica-se com animais; usa Adestramento para mudar atitude/persuasão com animais; receber de novo dá +2 em Adestramento",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "fala_com_animais",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "usa_adestramento_como_diplomacia_com_animais",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

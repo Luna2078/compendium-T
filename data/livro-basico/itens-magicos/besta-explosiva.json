@@ -15,6 +15,18 @@
   "mecanica": {
     "tipoItem": "Arma Específica",
     "categoria": "Maior",
-    "preco": "T$ 100.000"
+    "preco": "T$ 100.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:formidavel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "arma_dispara_magia_por_pm",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

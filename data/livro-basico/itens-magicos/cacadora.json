@@ -13,6 +13,19 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Arma"
+    "tipoItem": "Encanto de Arma",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "anula_penalidade_camuflagem_e_cobertura_leve",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aumenta_alcance_distancia_uma_categoria",
+        "condicao": { "campo": "arma.tipo_ataque", "em": ["disparo", "arremesso"] },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Aharadak",
-    "descricao": "Você recebe resistência a magia divina +5."
+    "descricao": "Você recebe resistência a magia divina +5.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "resistencia_magia_divina_5",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

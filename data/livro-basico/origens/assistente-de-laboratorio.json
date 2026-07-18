@@ -22,7 +22,20 @@
     "poderesUnicos": [
       {
         "nome": "Esse Cheiro...",
-        "descricao": "Você recebe +2 em Fortitude e detecta automaticamente a presença (mas não a localização ou natureza) de itens alquímicos em alcance curto."
+        "descricao": "Você recebe +2 em Fortitude e detecta automaticamente a presença (mas não a localização ou natureza) de itens alquímicos em alcance curto.",
+        "efeitos": [
+          {
+            "tipo": "bonus",
+            "alvo": "pericia:fortitude",
+            "valor": 2,
+            "aplicacao": "automatica"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "detecta_itens_alquimicos_alcance_curto",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

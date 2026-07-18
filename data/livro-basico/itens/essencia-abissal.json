@@ -11,6 +11,9 @@
     "categoria": "alquimico",
     "preco": "T$ 150",
     "espacos": "0,5",
-    "especial": "Usado como catalisador, aumenta os dados de dano de magias de fogo em uma categoria — d4 para d6, d6 para d8, d8 para d10 e d10 para d12 (o máximo)."
+    "especial": "Usado como catalisador, aumenta os dados de dano de magias de fogo em uma categoria — d4 para d6, d6 para d8, d8 para d10 e d10 para d12 (o máximo).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "catalisador_modifica_magia", "aplicacao": "lembrete" }
+    ]
   }
 }

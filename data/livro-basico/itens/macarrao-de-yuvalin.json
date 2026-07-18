@@ -11,6 +11,19 @@
     "categoria": "alimentacao",
     "preco": "T$ 6",
     "espacos": "0,5",
-    "especial": "Prato especial. Bônus dura 1 dia (apenas 1 bônus de alimentação por dia). Você recebe +5 PV temporários."
+    "especial": "Prato especial. Bônus dura 1 dia (apenas 1 bônus de alimentação por dia). Você recebe +5 PV temporários.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_prato_especial",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pv.temporario",
+        "valor": 5,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

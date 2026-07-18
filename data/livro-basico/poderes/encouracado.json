@@ -10,6 +10,15 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "proficiência com armaduras pesadas",
-    "descricao": "Se estiver usando uma armadura pesada, você recebe +2 na Defesa. Esse bônus aumenta em +2 para cada outro poder que você possua que tenha Encouraçado como pré-requisito."
+    "descricao": "Se estiver usando uma armadura pesada, você recebe +2 na Defesa. Esse bônus aumenta em +2 para cada outro poder que você possua que tenha Encouraçado como pré-requisito.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": { "expr": "2 + 2 * contar({prerequisito: 'encouracado'})" },
+        "condicao": { "campo": "armadura.subcategoria", "em": ["pesada"] },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

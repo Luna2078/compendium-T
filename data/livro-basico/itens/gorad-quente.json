@@ -11,6 +11,19 @@
     "categoria": "alimentacao",
     "preco": "T$ 18",
     "espacos": "0,5",
-    "especial": "Prato especial. Bônus dura 1 dia (apenas 1 bônus de alimentação por dia). Fornece +2 PM temporários."
+    "especial": "Prato especial. Bônus dura 1 dia (apenas 1 bônus de alimentação por dia). Fornece +2 PM temporários.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_prato_especial",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pm.temporario",
+        "valor": 2,
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

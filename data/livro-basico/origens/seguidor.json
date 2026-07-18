@@ -21,7 +21,19 @@
     "poderesUnicos": [
       {
         "nome": "Antigo Mestre",
-        "descricao": "Você ainda mantém contato com o herói que costumava servir. Uma vez por aventura, ele surge para ajudá-lo por uma cena. Ele é um parceiro mestre de um tipo a sua escolha (definido ao obter este poder) que não conta em seu limite de aliados."
+        "descricao": "Você ainda mantém contato com o herói que costumava servir. Uma vez por aventura, ele surge para ajudá-lo por uma cena. Ele é um parceiro mestre de um tipo a sua escolha (definido ao obter este poder) que não conta em seu limite de aliados.",
+        "efeitos": [
+          {
+            "tipo": "capacidade",
+            "chave": "possui_parceiro",
+            "aplicacao": "lembrete"
+          },
+          {
+            "tipo": "capacidade",
+            "chave": "parceiro_nao_conta_limite_aliados",
+            "aplicacao": "lembrete"
+          }
+        ]
       }
     ]
   }

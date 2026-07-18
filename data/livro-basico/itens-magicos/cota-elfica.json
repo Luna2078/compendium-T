@@ -15,6 +15,18 @@
   "mecanica": {
     "tipoItem": "Armadura Específica",
     "categoria": "Maior",
-    "preco": "T$ 30.000"
+    "preco": "T$ 30.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:defensora",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "trata_armadura_como_leve_para_destreza",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

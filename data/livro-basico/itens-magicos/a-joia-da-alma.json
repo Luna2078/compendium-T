@@ -14,6 +14,29 @@
   "relacoes": [],
   "mecanica": {
     "tipoItem": "Artefato",
-    "categoria": "Artefato"
+    "categoria": "Artefato",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "atr.int",
+        "valor": 3,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "custo_magias_arcanas_zero_pm_mago",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "exige_teste_vontade_cd25_ao_empunhar",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "cd_cresce_por_dia_risco_perda_sanidade",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

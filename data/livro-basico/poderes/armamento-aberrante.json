@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "tormenta",
     "prerequisito": "Um poder da Tormenta",
-    "descricao": "Você pode gastar uma ação de movimento e 1 PM para produzir uma versão orgânica de qualquer arma corpo a corpo ou de arremesso com a qual seja proficiente — ela brota do seu braço, ombro ou costas como uma planta grotesca e então se desprende. O dano da arma aumenta em um passo para cada dois outros poderes da Tormenta que você possui. A arma dura pela cena, então se desfaz numa poça de gosma."
+    "descricao": "Você pode gastar uma ação de movimento e 1 PM para produzir uma versão orgânica de qualquer arma corpo a corpo ou de arremesso com a qual seja proficiente — ela brota do seu braço, ombro ou costas como uma planta grotesca e então se desprende. O dano da arma aumenta em um passo para cada dois outros poderes da Tormenta que você possui. A arma dura pela cena, então se desfaz numa poça de gosma.",
+    "ativacao": { "custo": { "pm": 1, "acao": "movimento" } },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "produz_arma_organica_temporaria", "aplicacao": "lembrete" },
+      { "tipo": "passo_de_dado", "alvo": "dano",
+        "passos": { "expr": "floor(contagem.poderes.tormenta / 2)" },
+        "aplicacao": "contextual" }
+    ]
   }
 }

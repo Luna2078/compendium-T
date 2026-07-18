@@ -10,6 +10,14 @@
   "mecanica": {
     "grupo": "destino",
     "prerequisito": "Car 1",
-    "descricao": "Você recebe +2 em testes de perícias baseadas em Carisma contra criaturas que possam se sentir fisicamente atraídas por você."
+    "descricao": "Você recebe +2 em testes de perícias baseadas em Carisma contra criaturas que possam se sentir fisicamente atraídas por você.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_pericias_carisma_contra_atraidos",
+        "valor": 2,
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

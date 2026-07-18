@@ -11,6 +11,14 @@
     "categoria": "alquimico",
     "preco": "T$ 100",
     "espacos": "0,5",
-    "especial": "Uma criatura ou objeto coberto por este pó torna-se invisível (como em Invisibilidade) por 2d6 rodadas. O usuário não sabe quando a invisibilidade vai terminar."
+    "especial": "Uma criatura ou objeto coberto por este pó torna-se invisível (como em Invisibilidade) por 2d6 rodadas. O usuário não sabe quando a invisibilidade vai terminar.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_invisibilidade_temporaria",
+        "valor": { "dados": { "n": 2, "faces": 6 } },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

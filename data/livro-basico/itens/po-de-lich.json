@@ -11,6 +11,15 @@
     "categoria": "alquimico",
     "preco": "T$ 3.000",
     "espacos": "0,5",
-    "especial": "Inoculação: Ingestão. CD de Fortitude: 25 (aumenta em +5). Ao falhar: perde 4d12 PV por rodada durante 5 rodadas. Ao passar: perde 4d12 PV."
+    "especial": "Inoculação: Ingestão. CD de Fortitude: 25 (aumenta em +5). Ao falhar: perde 4d12 PV por rodada durante 5 rodadas. Ao passar: perde 4d12 PV.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_veneno",
+        "valor": { "dados": { "n": 4, "faces": 12 } },
+        "aplicacao": "lembrete"
+      },
+      { "tipo": "capacidade", "chave": "aumenta_cd_venenos_proprios", "aplicacao": "lembrete" }
+    ]
   }
 }

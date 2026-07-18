@@ -10,6 +10,17 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Kallyadranoch",
-    "descricao": "Você pode gastar 2 PM para gerar uma aura de medo de 9m de raio e duração até o fim da cena. Todos os inimigos que entrem na aura devem fazer um teste de Vontade (CD Car) ou ficam abalados até o fim da cena. Uma criatura que passe no teste de Vontade fica imune a esta habilidade por um dia."
+    "descricao": "Você pode gastar 2 PM para gerar uma aura de medo de 9m de raio e duração até o fim da cena. Todos os inimigos que entrem na aura devem fazer um teste de Vontade (CD Car) ou ficam abalados até o fim da cena. Uma criatura que passe no teste de Vontade fica imune a esta habilidade por um dia.",
+    "ativacao": {
+      "custo": { "pm": 2, "acao": "padrao" },
+      "encerramento": "A aura dura até o fim da cena."
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aura_medo_inimigos",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

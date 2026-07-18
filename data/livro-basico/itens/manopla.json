@@ -14,6 +14,10 @@
     "categoria": "vestuario",
     "preco": "T$ 10",
     "espacos": "1",
-    "especial": "O dano de seus ataques desarmados torna-se letal. Uma manopla conta como uma arma para receber melhorias e encantos para usá-los em seus ataques desarmados."
+    "especial": "O dano de seus ataques desarmados torna-se letal. Uma manopla conta como uma arma para receber melhorias e encantos para usá-los em seus ataques desarmados.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "dano_desarmado_vira_letal", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "conta_como_arma_para_encantos_desarmado", "aplicacao": "lembrete" }
+    ]
   }
 }

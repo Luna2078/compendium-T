@@ -10,6 +10,23 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Allihanna",
-    "descricao": "Você pode falar com animais (como o efeito da magia Voz Divina) e aprende e pode lançar Acalmar Animal, mas só contra animais. Caso aprenda novamente essa magia, seu custo diminui em –1 PM."
+    "descricao": "Você pode falar com animais (como o efeito da magia Voz Divina) e aprende e pode lançar Acalmar Animal, mas só contra animais. Caso aprenda novamente essa magia, seu custo diminui em –1 PM.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "fala_com_animais",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aprende_acalmar_animal_so_animais",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "modifica_poder",
+        "alvo": "acalmar-animal",
+        "patchCusto": { "pm": -1 }
+      }
+    ]
   }
 }

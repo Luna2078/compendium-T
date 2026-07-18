@@ -11,6 +11,14 @@
     "categoria": "alquimico",
     "preco": "T$ 30",
     "espacos": "0,5",
-    "especial": "Inoculação: Inalação. CD de Fortitude: 20. Ao falhar: perde 1d12 PV por rodada durante 3 rodadas. Ao passar: perde 1d12 PV."
+    "especial": "Inoculação: Inalação. CD de Fortitude: 20. Ao falhar: perde 1d12 PV por rodada durante 3 rodadas. Ao passar: perde 1d12 PV.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_veneno",
+        "valor": { "dados": { "n": 1, "faces": 12 } },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -11,6 +11,15 @@
     "categoria": "esoterico",
     "preco": "T$ 100",
     "espacos": "1",
-    "especial": "A CD para resistir a suas magias arcanas aumenta em +1."
+    "especial": "A CD para resistir a suas magias arcanas aumenta em +1.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aumenta_cd_resistir_magias_proprias",
+        "valor": 1,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

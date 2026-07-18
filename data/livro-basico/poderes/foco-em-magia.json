@@ -10,6 +10,17 @@
   "mecanica": {
     "grupo": "magia",
     "prerequisito": "lançar magias",
-    "descricao": "Escolha uma magia que possa lançar. Seu custo diminui em –1 PM (cumulativo com outras reduções de custo). Você pode escolher este poder outras vezes para magias diferentes."
+    "empilhavel": true,
+    "parametros": [
+      { "id": "magia", "rotulo": "Magia", "tipo": "escolha", "fonte": "magias_conhecidas" }
+    ],
+    "descricao": "Escolha uma magia que possa lançar. Seu custo diminui em –1 PM (cumulativo com outras reduções de custo). Você pode escolher este poder outras vezes para magias diferentes.",
+    "efeitos": [
+      {
+        "tipo": "modifica_poder",
+        "alvo": "@magia",
+        "patchCusto": { "pm": -1 }
+      }
+    ]
   }
 }

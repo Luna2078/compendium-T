@@ -10,6 +10,14 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Wynna",
-    "descricao": "Você recebe +1 PM a cada nível ímpar."
+    "descricao": "Você recebe +1 PM a cada nível ímpar.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pm.max",
+        "valor": { "expr": "ceil(nivel / 2)" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

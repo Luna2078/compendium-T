@@ -14,6 +14,15 @@
     "categoria": "vestuario",
     "preco": "T$ 5",
     "espacos": "1",
-    "especial": "Fornece +1 em Intimidação."
+    "especial": "Fornece +1 em Intimidação.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:intimidacao",
+        "valor": 1,
+        "condicao": { "campo": "item.equipado", "igual": "@self" },
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

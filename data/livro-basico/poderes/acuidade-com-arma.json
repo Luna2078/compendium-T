@@ -10,6 +10,16 @@
   "mecanica": {
     "grupo": "combate",
     "prerequisito": "Des 1",
-    "descricao": "Quando usa uma arma corpo a corpo leve ou uma arma de arremesso, você pode usar sua Destreza em vez de Força nos testes de ataque e rolagens de dano."
+    "descricao": "Quando usa uma arma corpo a corpo leve ou uma arma de arremesso, você pode usar sua Destreza em vez de Força nos testes de ataque e rolagens de dano.",
+    "efeitos": [
+      {
+        "tipo": "substituicao",
+        "em": ["ataque", "dano"],
+        "de": "atr.for",
+        "por": "atr.des",
+        "condicao": { "campo": "arma.empunhadura", "em": ["leve", "arremesso"] },
+        "aplicacao": "contextual"
+      }
+    ]
   }
 }

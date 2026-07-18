@@ -10,6 +10,16 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto do Oceano",
-    "descricao": "Você pode respirar embaixo d'água e adquire deslocamento de natação igual a seu deslocamento terrestre."
+    "descricao": "Você pode respirar embaixo d'água e adquire deslocamento de natação igual a seu deslocamento terrestre.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "respira_submerso", "aplicacao": "lembrete" },
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento_natacao",
+        "valor": { "expr": "deslocamento" },
+        "unidade": "m",
+        "aplicacao": "automatica"
+      }
+    ]
   }
 }

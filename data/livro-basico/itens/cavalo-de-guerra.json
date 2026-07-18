@@ -10,6 +10,10 @@
   "mecanica": {
     "categoria": "animal",
     "preco": "T$ 400",
-    "especial": "Parceiro iniciante. Pode ser usado como parceiro montaria (veja a página 262). Cavalos de guerra dispensam o teste de Cavalgar (CD 20) para permanecer montado durante um combate."
+    "especial": "Parceiro iniciante. Pode ser usado como parceiro montaria (veja a página 262). Cavalos de guerra dispensam o teste de Cavalgar (CD 20) para permanecer montado durante um combate.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "possui_parceiro", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "dispensa_teste_cavalgar_em_combate", "aplicacao": "lembrete" }
+    ]
   }
 }

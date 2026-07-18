@@ -13,6 +13,17 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "redireciona_ataque_de_aliado_para_si_mesmo",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "ativacao": {
+      "custo": { "pm": 1, "acao": "reacao" },
+      "encerramento": "1×/rodada. Um aliado adjacente é alvo de ataque → você vira o alvo."
+    }
   }
 }

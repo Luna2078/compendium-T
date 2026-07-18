@@ -11,6 +11,13 @@
     "categoria": "alquimico",
     "preco": "T$ 100",
     "espacos": "0,5",
-    "especial": "Inoculação: Contato. CD de Fortitude: 20. Ao falhar: vítima fica debilitada. Ao passar: vítima fica fraca."
+    "especial": "Inoculação: Contato. CD de Fortitude: 20. Ao falhar: vítima fica debilitada. Ao passar: vítima fica fraca.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_veneno",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

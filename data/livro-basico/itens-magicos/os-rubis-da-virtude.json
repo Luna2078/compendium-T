@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Os Rubis da Virtude",
   "resumo": "Gemas indetectáveis que carregam a essência dos vinte deuses; incrustadas no corpo concedem um nível de classe, redução de dano e proteção contra adivinhação.",
-  "fonte": { "livro": "livro-basico", "pagina": 349 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 349
+  },
   "imagens": [],
   "secoes": [
     {
@@ -14,6 +17,29 @@
   "relacoes": [],
   "mecanica": {
     "tipoItem": "Artefato",
-    "categoria": "Artefato"
+    "categoria": "Artefato",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "concede_nivel_em_classe_existente_ao_incrustar",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_resistencias_cumulativo_por_rubi",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "indetectavel_por_magia_magias_adivinhacao_precisam_misticismo_cd30",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

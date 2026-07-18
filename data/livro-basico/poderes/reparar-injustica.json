@@ -10,6 +10,13 @@
   "mecanica": {
     "grupo": "concedido",
     "prerequisito": "Devoto de Khalmyr",
-    "descricao": "Uma vez por rodada, quando um oponente em alcance curto acerta um ataque em você ou em um de seus aliados, você pode gastar 2 PM para fazer este oponente repetir o ataque, escolhendo o pior entre os dois resultados."
+    "descricao": "Uma vez por rodada, quando um oponente em alcance curto acerta um ataque em você ou em um de seus aliados, você pode gastar 2 PM para fazer este oponente repetir o ataque, escolhendo o pior entre os dois resultados.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "forca_repeticao_ataque_oponente",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

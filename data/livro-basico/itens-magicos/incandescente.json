@@ -3,7 +3,10 @@
   "tipo": "item-magico",
   "nome": "Incandescente",
   "resumo": "Encanto de armadura ou escudo que concede redução de fogo e permite emitir labaredas que ferem criaturas adjacentes.",
-  "fonte": { "livro": "livro-basico", "pagina": 339 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 339
+  },
   "imagens": [],
   "secoes": [
     {
@@ -13,6 +16,35 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "ativacao": {
+      "custo": {
+        "pm": 2,
+        "acao": "movimento"
+      },
+      "encerramento": "Dura até o fim da cena."
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 10,
+        "condicao": {
+          "campo": "dano.tipo",
+          "em": [
+            "fogo"
+          ]
+        },
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "causa_dano_fogo_adjacentes_por_turno",
+        "aplicacao": "lembrete",
+        "condicao": {
+          "quando": "ativo"
+        }
+      }
+    ]
   }
 }

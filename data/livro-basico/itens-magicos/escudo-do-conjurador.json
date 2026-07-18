@@ -15,6 +15,18 @@
   "mecanica": {
     "tipoItem": "Escudo Específico",
     "categoria": "Maior",
-    "preco": "T$ 45.000"
+    "preco": "T$ 45.000",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "possui_encanto:defensor",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "armazena_magia_descarrega_no_acerto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -10,6 +10,9 @@
   "mecanica": {
     "categoria": "veiculo",
     "preco": "T$ 150",
-    "especial": "Tamanho Grande. Deslocamento: 9m. Defesa: 8 (+ Des do condutor). PV: 50. Capacidade: até 4 criaturas Médias ou 80 espaços. Puxada por dois cavalos ou um trobo. Inclui os arreios necessários para controlar os animais."
+    "especial": "Tamanho Grande. Deslocamento: 9m. Defesa: 8 (+ Des do condutor). PV: 50. Capacidade: até 4 criaturas Médias ou 80 espaços. Puxada por dois cavalos ou um trobo. Inclui os arreios necessários para controlar os animais.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "veiculo_stats", "aplicacao": "lembrete" }
+    ]
   }
 }

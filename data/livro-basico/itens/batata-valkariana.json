@@ -11,6 +11,14 @@
     "categoria": "alimentacao",
     "preco": "T$ 2",
     "espacos": "0,5",
-    "especial": "Prato especial. Bônus dura 1 dia (apenas 1 bônus de alimentação por dia). Você recebe +1d6 em um teste a sua escolha realizado até o fim do dia. Para não esquecer, deixe 1d6 em cima da sua ficha."
+    "especial": "Prato especial. Bônus dura 1 dia (apenas 1 bônus de alimentação por dia). Você recebe +1d6 em um teste a sua escolha realizado até o fim do dia. Para não esquecer, deixe 1d6 em cima da sua ficha.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_prato_especial",
+        "valor": { "dados": { "n": 1, "faces": 6 } },
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

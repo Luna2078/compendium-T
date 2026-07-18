@@ -14,6 +14,19 @@
     "categoria": "ferramenta",
     "preco": "T$ 150",
     "espacos": "1",
-    "especial": "Um bardo que empunhe este item aumenta a CD para resistir às magias lançadas por ele em +1. Conta como um instrumento musical."
+    "especial": "Um bardo que empunhe este item aumenta a CD para resistir às magias lançadas por ele em +1. Conta como um instrumento musical.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aumenta_cd_resistir_magias_proprias",
+        "valor": 1,
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "conta_como_instrumento_musical",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

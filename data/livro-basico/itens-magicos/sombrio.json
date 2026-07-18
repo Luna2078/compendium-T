@@ -13,6 +13,19 @@
   ],
   "relacoes": [],
   "mecanica": {
-    "tipoItem": "Encanto de Armadura"
+    "tipoItem": "Encanto de Armadura",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:furtividade",
+        "valor": 5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ignora_penalidade_armadura_em_furtividade",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

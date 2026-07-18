@@ -18,6 +18,14 @@
   "mecanica": {
     "tipoItem": "Poção",
     "categoria": "Médio",
-    "preco": "T$ 270 a T$ 1.470"
+    "preco": "T$ 270 a T$ 1.470",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "replica_magia",
+        "valor": "bola-de-fogo",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

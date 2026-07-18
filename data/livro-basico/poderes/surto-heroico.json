@@ -9,6 +9,13 @@
   "relacoes": [],
   "mecanica": {
     "grupo": "destino",
-    "descricao": "Uma vez por rodada, você pode gastar 5 PM para realizar uma ação padrão ou de movimento adicional."
+    "descricao": "Uma vez por rodada, você pode gastar 5 PM para realizar uma ação padrão ou de movimento adicional.",
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "acao_extra_padrao_ou_movimento",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }
