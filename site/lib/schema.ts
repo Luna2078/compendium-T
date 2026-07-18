@@ -270,6 +270,7 @@ export const MagiaMecanicaSchema = z.object({
   dano: z.union([DanoMagiaSchema, z.array(DanoMagiaSchema)]).optional(), // payload de dano (mira alvo)
   cura: CuraMagiaSchema.optional(),                                       // payload de cura (mira alvo)
   efeitos: z.array(z.any()).optional(),                                   // buffs que aterrissam na ficha
+  escolhas: z.array(z.any()).optional(),                                  // escolha no uso (momento:"lancamento")
 });
 export type MagiaMecanica = z.infer<typeof MagiaMecanicaSchema>;
 

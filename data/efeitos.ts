@@ -267,8 +267,15 @@ export interface DegrauProgressao {
 export interface EscolhaJogador {
   id: string;                        // referenciado pela escolha salva na ficha
   rotulo: string;                    // "+1 em um atributo"
+  // QUANDO a escolha é feita/resolvida (o MESMO molde, momento diferente):
+  //   "criacao"    = permanente, feita na criação/aprendizado, SALVA no personagem (EscolhaSalva). DEFAULT (ausente).
+  //                  Ex.: Aumento de Atributo, Deformidade do Lefou, variante de magia fixada AO APRENDER (manto-do-cruzado).
+  //   "lancamento" = EFÊMERA, feita a CADA conjuração, resolvida no resolverConjuracao, NÃO salva na ficha.
+  //                  Ex.: Físico Divino (+2 no atributo à escolha DESTE lançamento), Resistência a Energia (tipo),
+  //                  magias de MODO (controlar-*), abencoar-alimentos (PV OU PM temp).
+  momento?: "criacao" | "lancamento";
   // --- forma SIMPLES (saída única) ---
-  alvoTipo?: "atributo" | "pericia"; // o domínio da escolha
+  alvoTipo?: "atributo" | "pericia" | "tipo_dano"; // domínio da escolha ("tipo_dano" = fogo/frio/... p/ RD por tipo)
   efeito?: Omit<EfeitoBonus, "alvo">; // bônus aplicado ao alvo escolhido (quando a escolha dá número)
   concedeCapacidade?: string;        // gera a capacidade "<isto>:<alvoEscolhido>" — ex.: "treinado"
   // --- forma CONVERSÍVEL (o jogador escolhe UMA opção) ---
@@ -302,7 +309,10 @@ export type OpcaoSlot =
   | { tipo: "poder"; grupo: string }            // conversão: escolhe um poder do grupo (ex.: "geral", "tormenta")
   // RAMIFICAÇÃO: a opção escolhida CONCEDE efeitos e/ou abre escolhas aninhadas. Ex.: Memória Póstuma
   // (ramo humano abre escolha); Caminho do Cavaleiro (ramo Bastião concede `bonus reducao_dano`).
-  | { tipo: "ramo"; rotulo: string; efeitos?: Efeito[]; escolhas?: EscolhaJogador[] }
+  // Numa MAGIA de modo (controlar-*, manto-do-cruzado), o ramo também carrega PAYLOAD do modo escolhido
+  // (dano/cura que mira o alvo, ou condição imposta) — mesmos campos da mecânica da magia.
+  | { tipo: "ramo"; rotulo: string; efeitos?: Efeito[]; escolhas?: EscolhaJogador[];
+      dano?: DanoMagia | DanoMagia[]; cura?: CuraMagia; aplicaCondicao?: string }
   // HERDA traços de uma RAÇA escolhida pelo jogador. A habilidade herdada JÁ tem efeitos[] prontos
   // (raças enriquecidas) — o ramo só APONTA pra ela, não reescreve. concede:
   //   "habilidade" = escolhe 1 habilidade da raça;  "tamanho" = herda o tamanho dela (só se ≠ Médio).

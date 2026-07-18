@@ -21,8 +21,13 @@
     "resistencia": "veja texto",
     "custoPM": 15,
     "descricao": "Você cria uma nuvem de tempestade violenta. Os ventos tornam ataques à distância impossíveis e fazem a área contar como condição terrível para lançar magia. Além disso, inimigos na área têm a visibilidade reduzida (como a magia Névoa). Uma vez por turno, você pode gastar uma ação de movimento para gerar um dos efeitos a seguir.\n\nNevasca. Inimigos na área sofrem 10d6 pontos de dano de frio (Fortitude reduz à metade). A área fica coberta de neve, virando terreno difícil até o fim da cena ou até você usar siroco.\n\nRaios. Até 6 inimigos a sua escolha na área sofrem 10d8 pontos de dano de eletricidade (Reflexos reduz à metade).\n\nSiroco. Transforma a chuva em uma tempestade de areia escaldante. Inimigos na área sofrem 10d6 pontos de dano (metade corte, metade fogo) e ficam sangrando (Fortitude reduz o dano à metade e evita a condição).\n\nTrovões. Inimigos sofrem 10d6 pontos de dano de impacto e ficam desprevenidos por uma rodada (Fortitude reduz o dano à metade e evita a condição).",
-    "efeitos": [],
-    "precisaRevisao": true,
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "menu_ataques_alternativos_por_turno_nevasca_raios_siroco_troveos",
+        "aplicacao": "lembrete"
+      }
+    ],
     "aprimoramentos": []
   }
 }

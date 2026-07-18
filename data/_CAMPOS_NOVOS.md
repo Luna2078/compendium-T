@@ -130,18 +130,17 @@ no dano psíquico de `mente-aberrante`, no clarão de `fulgor-solar`. Hoje todos
 `alvo: "dano"`, `passos: Valor`). Sem gambiarra de `n:0`. `Dados` segue exigindo `n` e `faces`.
 `armamento-aberrante` usa `passo_de_dado` com `passos: { expr: "floor(contagem.poderes.tormenta / 2)" }`.
 
-## ⏳ PENDENTES — Magias (gaps transversais do fan-out; 8 quarentenas + partials os apontam)
-Ranqueados por frequência/impacto. Nenhum bloqueia; todos hoje em quarentena ou lembrete honesto.
-| gap | superfície proposta | de onde (ids) | recomendação |
-|-----|--------------------|---------------|--------------|
-| **Escolha/parâmetro/modo no lançamento** (o maior) | dar a `Magia` um mecanismo de `escolhas`/`parametros`/`modos` análogo a `PoderSelecionavel` (o efeito "sabe" o que foi escolhido) | fisico-divino, mente-divina (atributo à escolha); resistencia-a-energia (tipo de dano); controlar-a-gravidade/agua/fogo/madeira/o-tempo (modo); manto-do-cruzado (variante fixa ao aprender); abencoar-alimentos, alterar-destino (OR) | criar `modos`/`escolhas` em Magia — resolve ~10+ magias de uma vez |
-| **Menu de ataques repetíveis por turno** | tipo de payload "menu de N ataques alternativos" (cada um dado/tipo/área próprios) numa magia sustentada | relampago-flamejante-de-reynard, furia-do-panteao | provavelmente `mecanica.dano: []` + flag "menuAlternativo" OU lembrete-rico. Baixa freq (2) |
-| **Pool de recurso consumível** | payload de pool (N pontos gastos à vontade, conversão PV/condição) | guardiao-divino (100 pts luz); comunhao-com-a-natureza, contato-extraplanar (dados de auxílio) | lembrete-rico por ora (raro); não construir motor de pool por 3 magias |
-| **Efeito escalonado por NÍVEL/ND do alvo** | CAMPO `alvo.nivel_nd` (faixas) + escada de condições por faixa | explosao-caleidoscopica (3 faixas × passa/falha) | `alvo.nivel_nd` (família `alvo.*`) SE recorrer; hoje lembrete |
-| **Bônus a TODOS os testes de perícia** | ALVO genérico `pericia:*` (ou `todas_pericias`) — o motor expande p/ todas as perícias | oracao, tranquilidade (parcial) | criar `pericia:*` (expandido em runtime, como pericia_categoria) — barato, recorre |
-| **Vantagem (rolar 2, pegar o maior)** | tipo/flag de efeito "vantagem/desvantagem" num teste | orientacao | decidir tipo dedicado OU lembrete. Baixa freq |
-| **Dano/condição espelhado a um TERCEIRO** | mecanismo de "reflete no alvo B o que acontece ao alvo A" | ligacao-sombria | lembrete (raríssimo) |
-| **`personagem.divindade`** (CAMPO, família `personagem.*`) | condição "é devoto da mesma divindade" | aura-divina | criar quando vier o LOTE DE DIVINDADES (junto de arma.preferida_divindade, Devoto Fiel, Arma Sagrada) |
+## ✅ DECIDIDAS — Magias (gaps transversais do fan-out; decisões aplicadas)
+| gap | decisão | estado |
+|-----|---------|--------|
+| **Escolha/parâmetro/modo no lançamento** (o maior) | **CRIAR** — molde `EscolhaJogador`/`OpcaoSlot` com `momento:"lancamento"` (efêmera, resolvida no resolverConjuracao) vs `"criacao"` (permanente, salva). `ramo` ganhou `dano?`/`cura?`/`aplicaCondicao?`. NÃO é peça nova — é o molde do lefou/osteon num momento diferente. | **APLICADO** — fisico-divino, mente-divina (dequarentena), resistencia-a-energia, abencoar-alimentos, manto-do-cruzado (criacao); controlar-* (8) em upgrade. Reaparece em perícias (Ofício). |
+| **Bônus a TODOS os testes de perícia** | **CRIAR** ALVO `pericia:*` — irmão de `pericia_categoria:<atr>` sem filtro de atributo; MESMA expansão em runtime (lê a lista, não materializa N bônus). | **APLICADO** — oracao. `namespace.ts` atualizado. |
+| **`personagem.divindade`** (CAMPO, família `personagem.*`) | **CRIAR no LOTE DE DIVINDADES** (junto de `arma.preferida_divindade`, Devoto Fiel, Arma Sagrada). Pendente-de-divindades, NÃO lembrete permanente. | ⏳ aguarda lote de divindades |
+| **Menu de ataques repetíveis por turno** | **LEMBRETE-RICO** (2 casos: relampago-flamejante, furia-do-panteao). | APLICADO |
+| **Pool de recurso consumível** | **LEMBRETE-RICO** — MAS é a PRIMITIVA de recurso-consumível (mesma da "carga" de item, que se esperava e não tinha aparecido). Raro agora; se as expansões trouxerem volume, vira MOTOR de recurso. Consciente, não enterrado. | APLICADO (guardiao-divino, comunhao, contato-extraplanar) |
+| **Efeito escalonado por NÍVEL/ND do alvo** | **LEMBRETE** (depende do ND do alvo — dado do outro lado). 1 caso. SE recorrer → CAMPO `alvo.nivel_nd` (contexto de combate). | APLICADO (explosao-caleidoscopica) |
+| **Vantagem (rolar 2, pegar o maior)** | **LEMBRETE com FLAG DE PROMOÇÃO** — "vantagem" é modificação do MODO DE ROLAGEM, não bonus/substituicao. 1 caso. SE aparecer 2º caso → promover à primitiva `modo_rolagem` (não tipo ad-hoc, não lembrete permanente). Vocabulário que provavelmente recorre. | APLICADO (orientacao) |
+| **Dano/condição espelhado a um TERCEIRO** | **LEMBRETE** (raríssimo). | APLICADO (ligacao-sombria) |
 
 ## 📋 IDS DE CONDIÇÃO colhidos das magias (input p/ o LOTE DE CONDIÇÕES — arquitetura de 3 camadas, regra 21)
 Via `aplica_condicao`. Confirmar/criar cada `<id>.json` com efeitos[] DE VERDADE (o "−2" vive na condição, não na magia):

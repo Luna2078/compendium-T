@@ -21,7 +21,6 @@
     "custoPM": 3,
     "descricao": "Você fortalece o corpo do alvo. Ele recebe +2 em Força, Destreza ou Constituição, a sua escolha. Esse aumento não oferece PV ou PM adicionais.",
     "efeitos": [],
-    "precisaRevisao": true,
     "aprimoramentos": [
       {
         "custo": "+3 PM",
@@ -41,6 +40,54 @@
         "custo": "+12 PM",
         "efeito": "Em vez do normal, o alvo recebe +4 nos três atributos físicos. Requer 5º círculo.",
         "requisitoCirculo": 5
+      }
+    ],
+    "escolhas": [
+      {
+        "id": "fisico-divino-atributo",
+        "rotulo": "+2 em Força, Destreza ou Constituição (à escolha, neste lançamento)",
+        "momento": "lancamento",
+        "opcoes": [
+          {
+            "tipo": "ramo",
+            "rotulo": "Força",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "atr.for",
+                "valor": 2,
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Destreza",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "atr.des",
+                "valor": 2,
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Constituição",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "atr.con",
+                "valor": 2,
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

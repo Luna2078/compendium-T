@@ -91,7 +91,10 @@ export type Atributo = (typeof ATRIBUTOS)[number];
 // desatualizados se a lista mudar) — é UM efeito que o motor EXPANDE em runtime lendo o mapa
 // PERICIA_ATRIBUTO da calcularFicha. Mesmo princípio do conjunto nomeado `imunidades:morto_vivo`.
 // Ex.: cosmético (+2 em perícias de Carisma).
-export type Alvo = (typeof ALVOS)[number] | `pericia:${Pericia}` | `pericia_categoria:${Atributo}`;
+// `pericia:*` = TODAS as perícias, sem filtro de atributo (irmão de `pericia_categoria:<atr>`). MESMA
+// expansão em runtime (lê a lista de PERICIAS; NÃO materializa N bônus). Ex.: Oração (+2 em todos os testes
+// de perícia), Tranquilidade. Um "+X em todas as perícias" é UM efeito, não 29.
+export type Alvo = (typeof ALVOS)[number] | `pericia:${Pericia}` | `pericia_categoria:${Atributo}` | "pericia:*";
 
 // Lista canônica de perícias T20. ids em ascii minúsculo, sem acento.
 export const PERICIAS = [

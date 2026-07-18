@@ -3,7 +3,10 @@
   "tipo": "magia",
   "nome": "Explosão Caleidoscópica",
   "resumo": "Explosão de luzes e sons desabilita os alvos.",
-  "fonte": { "livro": "livro-basico", "pagina": 193 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 193
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -18,8 +21,13 @@
     "resistencia": "Fortitude parcial",
     "custoPM": 10,
     "descricao": "Esta magia cria uma forte explosão de luzes estroboscópicas e sons cacofônicos que desorientam as criaturas atingidas. O efeito que cada criatura sofre depende do nível ou ND dela.\n\nNível ou ND 4 ou menor: se falhar no teste de resistência, fica inconsciente. Se passar, fica atordoada por 1d4 rodadas e enjoada pelo resto da cena.\n\nNível ou ND entre 5 e 9: se falhar no teste de resistência, fica atordoada por 1d4 rodadas e enjoada pelo resto da cena. Se passar, fica atordoada por 1 rodada e enjoada por 1d4 rodadas.\n\nNível ou ND 10 ou maior: se falhar no teste de resistência, fica atordoada por 1 rodada e enjoada por 1d4 rodadas. Se passar, fica desprevenida e enjoada por 1 rodada.\n\nUma criatura só pode ser atordoada por esta magia uma vez por cena.",
-    "efeitos": [],
-    "precisaRevisao": true,
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "efeito_escalona_por_nivel_ou_nd_do_alvo_3_faixas_x_passa_falha",
+        "aplicacao": "lembrete"
+      }
+    ],
     "aprimoramentos": []
   }
 }

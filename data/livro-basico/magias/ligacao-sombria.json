@@ -3,7 +3,10 @@
   "tipo": "magia",
   "nome": "Ligação Sombria",
   "resumo": "Alvo sofre todo dano e efeitos negativos que você sofrer.",
-  "fonte": { "livro": "livro-basico", "pagina": 196 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 196
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -18,8 +21,13 @@
     "resistencia": "Fortitude anula",
     "custoPM": 10,
     "descricao": "Cria uma conexão entre seu corpo e o da criatura alvo, deixando uma marca idêntica na pele de ambos. Enquanto a magia durar, sempre que você sofrer qualquer dano ou condição, o alvo desta magia deve fazer um teste de Fortitude; se falhar, sofre o mesmo dano que você ou adquire a mesma condição. A magia termina se o alvo chegar a 0 pontos de vida.",
-    "efeitos": [],
-    "precisaRevisao": true,
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "espelha_dano_e_condicoes_a_um_terceiro_vinculado",
+        "aplicacao": "lembrete"
+      }
+    ],
     "aprimoramentos": [
       {
         "custo": "+5 PM",

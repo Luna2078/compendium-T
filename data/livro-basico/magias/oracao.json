@@ -26,18 +26,24 @@
         "tipo": "bonus",
         "alvo": "dano",
         "valor": 2,
-        "duracao": "cena",
+        "duracao": "sustentada",
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:*",
+        "valor": 2,
+        "duracao": "sustentada",
         "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
-        "chave": "bonus_2_todos_testes_pericia_aliados",
-        "valor": 2,
+        "chave": "aliados_no_alcance_tambem_recebem_2_dano_e_todas_pericias",
         "aplicacao": "lembrete"
       },
       {
         "tipo": "capacidade",
-        "chave": "penalidade_2_dano_e_todos_testes_pericia_inimigos_no_alcance",
+        "chave": "inimigos_no_alcance_sofrem_2_dano_e_todas_pericias",
         "valor": -2,
         "aplicacao": "lembrete"
       }

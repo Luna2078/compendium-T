@@ -96,6 +96,19 @@ Propositor, não autoridade final — tudo é revisado por humano antes de virar
     magia dirigido ao alvo) NÃO entra no array → vira campo estruturado da mecânica (`mecanica.dano`/`cura`,
     reusando `Dados`). Condição imposta ao inimigo → `aplica_condicao` (link); a MECÂNICA da condição vive na
     entidade da condição (3 camadas — ver bloco magias). Nunca meta efeito-que-mira-outra-ficha no `efeitos[]`.
+22. **ESCOLHA: `momento` distingue QUANDO se resolve.** Mesmo molde `EscolhaJogador`/`OpcaoSlot`, dois momentos:
+    `momento:"criacao"` (DEFAULT/ausente) = permanente, feita na criação/aprendizado, SALVA no personagem
+    (Aumento de Atributo, Deformidade do lefou, variante de magia fixada ao aprender = manto-do-cruzado);
+    `momento:"lancamento"` = EFÊMERA, feita a cada conjuração, resolvida no resolverConjuracao, NÃO salva
+    (Físico/Mente Divina, Resistência a Energia, magias de MODO controlar-*, abencoar-alimentos). O `ramo`
+    agora carrega `dano?`/`cura?`/`aplicaCondicao?` (payload do modo). Não é peça nova — é o molde num momento
+    diferente. Reaparece em perícias (Ofício = escolha no uso). ALVO `pericia:*` = todas as perícias (runtime).
+23. **PRIMITIVAS "conscientes, não enterradas" (registrar quando aparecem em baixa freq, promover se recorrerem):**
+    (a) **recurso-consumível** (pool de N pontos gastos à vontade — guardiao-divino; = "carga" de item): hoje
+    lembrete-rico; vira MOTOR de recurso se as expansões trouxerem volume. (b) **`modo_rolagem`** (vantagem/
+    desvantagem = rolar 2 e pegar o maior/menor — orientacao): NÃO é bonus/substituicao. 1 caso = lembrete;
+    2º caso → promover à primitiva. (c) **`alvo.nivel_nd`** (efeito escala por ND do alvo — explosao-caleidoscopica):
+    lembrete até recorrer, aí CAMPO família `alvo.*`. Não inventar agora; não enterrar.
 
 ## Ordem de ataque (fatia vertical: Livro Básico primeiro)
 Dentro do Básico, do mais fácil/direto (mapeia 1:1 nos exemplos-ouro) ao mais delicado:
@@ -399,9 +412,11 @@ Aprimoramentos ficam em prosa (`custo`+`efeito`), como a interface `Aprimorament
   escolha/parâmetro em magia (fisico-divino, mente-divina); menu de ataques por turno (relampago-flamejante, furia-do-panteao);
   pool consumível (guardiao-divino); escada por nível/ND do alvo (explosao-caleidoscopica); espelho a terceiro
   (ligacao-sombria); vantagem/2d20 (orientacao). **Nenhuma bloqueia** — decisões de contrato para o usuário.
-- Gaps transversais para DECISÃO em `_CAMPOS_NOVOS.md` (secão "PENDENTES — Magias"): o maior é dar a `Magia` um
-  mecanismo de `escolhas`/`modos` (destrava ~10+). Outros: `pericia:*` (todas perícias), `alvo.nivel_nd`, vantagem,
-  `personagem.divindade` (com lote de divindades).
+- Gaps transversais DECIDIDOS pelo usuário e APLICADOS (`_CAMPOS_NOVOS.md` seção "DECIDIDAS — Magias"):
+  criado o molde "escolha no uso" (`momento:"lancamento"`, regra 22) → dequarentenou fisico-divino/mente-divina e
+  remodelou resistencia-a-energia/abencoar-alimentos/manto-do-cruzado + controlar-* (8, upgrade); criado ALVO
+  `pericia:*` (oracao); pool/menu = lembrete-rico; vantagem/ND = lembrete c/ flag de promoção (regra 23);
+  personagem.divindade = pendente-de-divindades. **Quarentenas de magias: 8 → 0.** Contrato: `tsc` exit 0.
 
 ### 🎯 LIVRO BÁSICO — pastas de `efeitos[]` FECHADAS: poderes, racas, origens, classes, itens, itens-magicos, magias.
 Falta `pericias/` (29) — última do enriquecimento no Básico. Depois: pasta `condicoes/` (usa os 28 ids colhidos +

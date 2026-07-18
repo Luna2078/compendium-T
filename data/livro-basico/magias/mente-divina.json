@@ -3,7 +3,10 @@
   "tipo": "magia",
   "nome": "Mente Divina",
   "resumo": "Fornece bônus em um ou mais atributos mentais.",
-  "fonte": { "livro": "livro-basico", "pagina": 198 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 198
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -18,7 +21,6 @@
     "custoPM": 3,
     "descricao": "Você fortalece a mente do alvo. Ele recebe +2 em Inteligência, Sabedoria ou Carisma, a sua escolha. Esse aumento não oferece PV, PM ou perícias adicionais.",
     "efeitos": [],
-    "precisaRevisao": true,
     "aprimoramentos": [
       {
         "custo": "+3 PM",
@@ -38,6 +40,54 @@
         "custo": "+12 PM",
         "efeito": "Em vez do normal, o alvo recebe +4 nos três atributos mentais.",
         "requisitoCirculo": 5
+      }
+    ],
+    "escolhas": [
+      {
+        "id": "mente-divina-atributo",
+        "rotulo": "+2 em Inteligência, Sabedoria ou Carisma (à escolha, neste lançamento)",
+        "momento": "lancamento",
+        "opcoes": [
+          {
+            "tipo": "ramo",
+            "rotulo": "Inteligência",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "atr.int",
+                "valor": 2,
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Sabedoria",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "atr.sab",
+                "valor": 2,
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Carisma",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "atr.car",
+                "valor": 2,
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

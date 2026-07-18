@@ -3,7 +3,10 @@
   "tipo": "magia",
   "nome": "Orientação",
   "resumo": "Alvo recebe bônus nos testes de perícia.",
-  "fonte": { "livro": "livro-basico", "pagina": 200 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 200
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -17,8 +20,13 @@
     "duracao": "1 rodada",
     "custoPM": 1,
     "descricao": "Em seu próximo teste de perícia, o alvo pode rolar dois dados e ficar com o melhor resultado.",
-    "efeitos": [],
-    "precisaRevisao": true,
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_vantagem_rolar_2d20_e_pegar_o_maior_em_um_teste",
+        "aplicacao": "lembrete"
+      }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

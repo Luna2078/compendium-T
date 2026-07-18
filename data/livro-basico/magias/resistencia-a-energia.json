@@ -3,7 +3,10 @@
   "tipo": "magia",
   "nome": "Resistência a Energia",
   "resumo": "Fornece resistência contra um tipo de dano a sua escolha.",
-  "fonte": { "livro": "livro-basico", "pagina": 204 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 204
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -17,9 +20,7 @@
     "duracao": "cena",
     "custoPM": 1,
     "descricao": "Ao lançar esta magia, escolha entre ácido, eletricidade, fogo, frio, luz ou trevas. O alvo recebe redução de dano 10 contra o tipo de dano escolhido.",
-    "efeitos": [
-      { "tipo": "bonus", "alvo": "reducao_dano", "valor": 10, "duracao": "cena", "condicao": { "campo": "dano.tipo", "igual": "@tipo_escolhido" }, "aplicacao": "automatica" }
-    ],
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+2 PM",
@@ -44,6 +45,129 @@
         "custo": "+9 PM",
         "efeito": "Muda o efeito para imunidade a um tipo listado na magia.",
         "requisitoCirculo": 4
+      }
+    ],
+    "escolhas": [
+      {
+        "id": "resistencia-a-energia-tipo",
+        "rotulo": "tipo de dano protegido (ácido, eletricidade, fogo, frio, luz ou trevas)",
+        "momento": "lancamento",
+        "opcoes": [
+          {
+            "tipo": "ramo",
+            "rotulo": "acido",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "reducao_dano",
+                "valor": 10,
+                "condicao": {
+                  "campo": "dano.tipo",
+                  "em": [
+                    "acido"
+                  ]
+                },
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "eletricidade",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "reducao_dano",
+                "valor": 10,
+                "condicao": {
+                  "campo": "dano.tipo",
+                  "em": [
+                    "eletricidade"
+                  ]
+                },
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "fogo",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "reducao_dano",
+                "valor": 10,
+                "condicao": {
+                  "campo": "dano.tipo",
+                  "em": [
+                    "fogo"
+                  ]
+                },
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "frio",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "reducao_dano",
+                "valor": 10,
+                "condicao": {
+                  "campo": "dano.tipo",
+                  "em": [
+                    "frio"
+                  ]
+                },
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "luz",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "reducao_dano",
+                "valor": 10,
+                "condicao": {
+                  "campo": "dano.tipo",
+                  "em": [
+                    "luz"
+                  ]
+                },
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "trevas",
+            "efeitos": [
+              {
+                "tipo": "bonus",
+                "alvo": "reducao_dano",
+                "valor": 10,
+                "condicao": {
+                  "campo": "dano.tipo",
+                  "em": [
+                    "trevas"
+                  ]
+                },
+                "duracao": "cena",
+                "aplicacao": "automatica"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

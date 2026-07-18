@@ -37,7 +37,27 @@
   basta. Quarentena limpa (não voltam ao motor). Ver PROGRESSO regra "artefato = lembrete-rico".
 
 ## ⏳ EM ABERTO
-_(itens-mágicos: nada em aberto — todas as quarentenas foram resolvidas acima.)_
+_(NADA em aberto — magias e itens-mágicos com todas as quarentenas resolvidas. Entradas detalhadas abaixo viram histórico.)_
+
+## ✅ RESOLVIDO — magias (8 quarentenas → decisões do usuário; entradas detalhadas preservadas abaixo como histórico)
+Mecanismo NOVO criado: **"escolha no uso"** = molde `EscolhaJogador`/`OpcaoSlot` com `momento:"lancamento"`
+(efêmera, por lançamento, resolvida no resolverConjuracao) vs `momento:"criacao"` (permanente, salva). `ramo`
+agora carrega `dano?`/`cura?`/`aplicaCondicao?`. + ALVO `pericia:*` (todas as perícias, expandido em runtime).
+- **fisico-divino, mente-divina** → DEQUARENTENADAS: `escolhas` momento lancamento (3 ramos de atributo, `bonus +2`).
+- **resistencia-a-energia** → `escolhas` (6 ramos de tipo de dano → `bonus reducao_dano 10` cond. `dano.tipo`).
+- **manto-do-cruzado** → `escolhas` momento **criacao** (variante Luz/Trevas fixada ao aprender; ramos com dano/pos_dano/lembrete).
+- **abencoar-alimentos** → `escolhas` (5 PV temp OU 1 PM temp). **oracao** → `bonus pericia:*` (+2 todas perícias).
+- **furia-do-panteao, relampago-flamejante-de-reynard** → LEMBRETE-RICO (menu de ataques por turno; 2 casos, decidido).
+- **guardiao-divino** → LEMBRETE-RICO (pool consumível de 100 pontos — é a PRIMITIVA de recurso-consumível, irmã da
+  "carga" de item; consciente, não enterrada — ver PROGRESSO. Vira motor se as expansões trouxerem volume).
+- **explosao-caleidoscopica** → LEMBRETE (escada por nível/ND do alvo — dado do outro lado da mesa; se recorrer, `alvo.nivel_nd`).
+- **ligacao-sombria** → LEMBRETE (espelho a terceiro; raríssimo).
+- **orientacao** → LEMBRETE **com flag de promoção**: "vantagem" (2d20 maior) não é bonus/substituicao — é modo de
+  rolagem. 1 caso = lembrete; SE aparecer um 2º caso, promover à primitiva `modo_rolagem` (não tipo ad-hoc, não lembrete permanente).
+- `controlar-*` (8, multi-modo) → em upgrade para `escolhas`/modo (não eram quarentena; partial→completo).
+
+---
+### (histórico das entradas de quarentena de magias — já resolvidas acima)
 
 ## ligacao-sombria — Ligação Sombria
 - arquivo: livro-basico/magias/ligacao-sombria.json
