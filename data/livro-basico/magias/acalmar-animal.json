@@ -18,6 +18,9 @@
     "resistencia": "Vontade anula",
     "custoPM": 1,
     "descricao": "O animal fica prestativo em relação a você. Ele não fica sob seu controle, mas percebe suas palavras e ações da maneira mais favorável possível. Você recebe +10 nos testes de Adestramento e Diplomacia que fizer contra o animal.\n\nUm alvo hostil ou que esteja envolvido em um combate recebe +5 em seu teste de resistência. Se você ou seus aliados tomarem qualquer ação hostil contra o alvo, a magia é dissipada e ele retorna à atitude que tinha antes (ou piorada, de acordo com o mestre). Se tratar bem o alvo, a atitude pode permanecer mesmo após o término da magia.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "bonus_teste_contra_alvo_encantado", "valor": 10, "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

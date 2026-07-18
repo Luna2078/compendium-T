@@ -17,6 +17,10 @@
     "duracao": "cena",
     "custoPM": 3,
     "descricao": "Você muda sua aparência e forma — incluindo seu equipamento — para qualquer outra criatura, existente ou imaginada. Independentemente da forma escolhida, você recebe +20 em testes de Enganação para disfarce. Características não mencionadas não mudam.\n\nSe mudar para uma forma humanoide, pode mudar o tipo de dano (entre corte, impacto e perfuração) de suas armas (se usa uma maça e transformá-la em espada longa, ela pode causar dano de corte, por exemplo). Se quiser, pode assumir uma forma humanoide com uma categoria de tamanho acima ou abaixo da sua; nesse caso aplique os modificadores em Furtividade e testes de manobra.\n\nSe mudar para outras formas, você pode escolher uma Forma Selvagem do druida (veja no Capítulo 1). Nesse caso você não pode atacar com suas armas, falar ou lançar magias até voltar ao normal, mas recebe uma ou mais armas naturais e os bônus da forma selvagem escolhida.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pericia:enganacao", "valor": 20, "condicao": { "campo": "intencao", "igual": "disfarce" }, "aplicacao": "contextual" },
+      { "tipo": "capacidade", "chave": "assume_forma_selvagem_do_druida", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

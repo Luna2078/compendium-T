@@ -18,6 +18,8 @@
     "custoPM": 1,
     "descricao": "Você canaliza luz que recupera 2d8+2 pontos de vida na criatura tocada.",
     "truque": "Muda o alvo para 1 morto-vivo. Em vez do normal, causa 1d8 pontos de dano de luz (Vontade reduz à metade).",
+    "cura": { "dados": { "n": 2, "faces": 8 }, "fixo": 2 },
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

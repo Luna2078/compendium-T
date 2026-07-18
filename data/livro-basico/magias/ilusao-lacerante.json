@@ -18,6 +18,8 @@
     "resistencia": "Vontade anula",
     "custoPM": 6,
     "descricao": "Você cria uma ilusão de algum perigo mortal. Quando a magia é lançada, criaturas na área devem fazer um teste de Vontade; uma falha significa que a criatura acredita que a ilusão é real e sofre 3d6 pontos de dano psíquico não letal. Sempre que uma criatura iniciar seu turno dentro da área, deve repetir o teste de Vontade. Se falhar, sofre o dano novamente. Somente criaturas que falham veem a ilusão, e racionalizam o efeito sempre que falham no teste (por exemplo, acredita que o mesmo teto pode cair sobre ela várias vezes).",
+    "dano": { "dados": { "n": 3, "faces": 6 }, "tipo": "psiquico", "resistencia": "Vontade anula (dano não letal)" },
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+3 PM",

@@ -18,6 +18,13 @@
     "resistencia": "Reflexos parcial",
     "custoPM": 6,
     "descricao": "Esta magia foi desenvolvida pelo mago imortal Aleph Olhos Vermelhos, um entusiasta dos estudos vulcânicos. Ela dispara um projétil de magma contra o alvo, que sofre 4d6 pontos de dano de fogo e 4d6 pontos de dano de perfuração e fica em chamas. As chamas causam 2d6 pontos de dano por rodada, em vez do dano normal. Se passar no teste de resistência, o alvo sofre metade do dano e não fica em chamas. Respingos de rocha incandescente se espalham com a explosão, atingindo todas as criaturas adjacentes ao alvo, que devem fazer um teste de Reflexos. Se falharem, ficam em chamas, como descrito acima.",
+    "dano": [
+      { "dados": { "n": 4, "faces": 6 }, "tipo": "fogo", "resistencia": "Reflexos reduz à metade e evita ficar em chamas" },
+      { "dados": { "n": 4, "faces": 6 }, "tipo": "perfuracao", "resistencia": "Reflexos reduz à metade e evita ficar em chamas" }
+    ],
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "em-chamas", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

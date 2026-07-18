@@ -20,6 +20,10 @@
     "duracao": "cena",
     "custoPM": 15,
     "descricao": "Esta magia cria uma barreira mágica impenetrável que protege você contra efeitos nocivos mentais ou físicos, a sua escolha.\n\nProteção mental: você fica imune às condições abalado, alquebrado, apavorado, atordoado, confuso, esmorecido, fascinado, frustrado e pasmo, além de efeitos de encantamento e ilusão.\n\nProteção física: você fica imune às condições atordoado, cego, debilitado, enjoado, envenenado, exausto, fatigado, fraco, lento, ofuscado e paralisado, além de acertos críticos, ataques furtivos e doenças.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "imune_efeitos_mentais", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "imune_efeitos_fisicos", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+5 PM",

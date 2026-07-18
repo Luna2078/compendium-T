@@ -17,6 +17,8 @@
     "duracao": "1 rodada",
     "custoPM": 1,
     "descricao": "Em seu próximo teste de perícia, o alvo pode rolar dois dados e ficar com o melhor resultado.",
+    "efeitos": [],
+    "precisaRevisao": true,
     "aprimoramentos": [
       {
         "custo": "+2 PM",

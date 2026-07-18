@@ -17,6 +17,7 @@
     "duracao": "cena, até ser descarregada",
     "custoPM": 1,
     "descricao": "Você recebe uma intuição aguçada sobre perigos ao seu redor. Quando uma criatura hostil ou armadilha entra na área do efeito, você faz um teste de Percepção (CD determinada pelo mestre de acordo com a situação). Se passar, sabe a origem (criatura ou armadilha), direção e distância do perigo. Se falhar, sabe apenas que o perigo existe.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

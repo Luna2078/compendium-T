@@ -17,6 +17,9 @@
     "duracao": "1 dia",
     "custoPM": 6,
     "descricao": "Sua mente viaja até outro plano de existência, onde entra em contato com seres como gênios e demônios. Você firma um contrato com uma dessas entidades para que o auxilie, em troca de se alimentar de seu mana. Quando a magia é lançada, você recebe 6d6 dados de auxílio. Enquanto a magia durar, sempre que for realizar um teste de perícia, você pode gastar 1d6 (mais 1d6 para cada círculo de magias acima do 3º que puder lançar) e adicionar o resultado como bônus no teste. No entanto, sempre que rolar um \"6\" num desses dados, a entidade \"suga\" 1 PM de você. A magia termina se você gastar todos os dados, ficar sem PM ou no fim do dia (o que acontecer primeiro).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "concede_dados_auxilio_pericia_com_risco_pm", "valor": { "dados": { "n": 6, "faces": 6 } }, "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

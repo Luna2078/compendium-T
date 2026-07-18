@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 3,
     "descricao": "Pela duração da magia, você sabe a posição e status (PV atuais, se estão com uma condição ou sob efeito de magia...) dos alvos. Depois de lançada, a distância dos alvos não importa — a magia só deixa de detectar um alvo se ele morrer ou for para outro plano.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "monitora_status_criaturas_tocadas", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

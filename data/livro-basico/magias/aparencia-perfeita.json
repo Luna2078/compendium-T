@@ -17,6 +17,12 @@
     "duracao": "cena",
     "custoPM": 3,
     "descricao": "Esta magia lhe concede um rosto idealizado, porte físico garboso, voz melodiosa e olhar sedutor. Caso seu Carisma seja 5 ou mais, você recebe +2 neste atributo. Do contrário, ele se torna 5 (isso conta como um bônus). Além disso, você recebe +5 em Diplomacia e Enganação. Quando a magia acaba, quaisquer observadores percebem a mudança e tendem a suspeitar de você. Da mesma maneira, pessoas que o viram sob o efeito da magia sentirão que \"algo está errado\" ao vê-lo em condições normais. Quando a cena acabar, você pode gastar os PM da magia novamente como uma ação livre para mantê-la ativa. Este efeito não fornece PV ou PM adicionais.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "atr.car", "valor": 2, "duracao": "cena", "aplicacao": "automatica" },
+      { "tipo": "capacidade", "chave": "carisma_minimo_5_se_menor", "aplicacao": "lembrete" },
+      { "tipo": "bonus", "alvo": "pericia:diplomacia", "valor": 5, "duracao": "cena", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:enganacao", "valor": 5, "duracao": "cena", "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

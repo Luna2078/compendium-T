@@ -19,6 +19,9 @@
     "custoPM": 1,
     "descricao": "Suas palavras e movimentos ritmados deixam o alvo fascinado. Esta magia só afeta criaturas que possam perceber você. Se usar esta magia em combate, o alvo recebe +5 em seu teste de resistência. Se a criatura passar, fica imune a este efeito por um dia.",
     "truque": "Muda a duração para 1 rodada. Em vez de fascinado, o alvo fica pasmo (apenas uma vez por cena).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "fascinado", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

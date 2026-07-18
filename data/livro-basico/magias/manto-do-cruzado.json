@@ -17,6 +17,13 @@
     "duracao": "sustentada",
     "custoPM": 10,
     "descricao": "Você invoca o poder de sua divindade na forma de um manto de energia que reveste seu corpo. Esta magia tem duas versões. Você escolhe qual versão pode lançar quando aprende esta magia. Ela não pode ser mudada.\n\nManto de Luz: um manto dourado e luminoso. No início de cada um de seus turnos, você e todos os seus aliados em alcance curto recuperam 2d8 PV. Você recebe imunidade a dano de trevas e seus ataques corpo a corpo causam +2d8 pontos de dano de luz.\n\nManto de Trevas: um manto negro como a noite. No início de cada um de seus turnos, todos os inimigos em alcance curto sofrem 4d8 pontos de dano de trevas. Você cura metade de todo o dano causado pela magia.",
+    "cura": { "dados": { "n": 2, "faces": 8 } },
+    "dano": { "dados": { "n": 4, "faces": 8 }, "tipo": "trevas" },
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "dano.corpo_a_corpo", "valor": { "dados": { "n": 2, "faces": 8 } }, "aplicacao": "contextual" },
+      { "tipo": "capacidade", "chave": "imune_dano_trevas", "aplicacao": "lembrete" },
+      { "tipo": "pos_dano", "alvo": "pv.atual", "valor": { "expr": "floor(dano_causado / 2)" }, "aplicacao": "contextual" }
+    ],
     "aprimoramentos": []
   }
 }

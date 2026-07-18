@@ -19,6 +19,7 @@
     "custoEspecial": "chave de bronze no valor de T$ 25",
     "descricao": "Esta magia tranca uma porta ou outro item que possa ser aberto ou fechado (como um baú, caixa etc.), aumentando a CD de testes de Força ou Ladinagem para abri-lo em +10. Você pode abrir livremente sua própria tranca sem problemas.",
     "truque": "Muda o alcance para curto. Em vez do normal, pode abrir ou fechar um objeto de tamanho Grande ou menor, como uma porta ou baú. Não afeta objetos trancados.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

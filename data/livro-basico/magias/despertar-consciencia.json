@@ -17,6 +17,10 @@
     "duracao": "1 dia",
     "custoPM": 6,
     "descricao": "Você desperta a consciência de um animal ou planta. O alvo se torna um parceiro veterano de um tipo a sua escolha entre ajudante, combatente, fortão, guardião, médico, perseguidor ou vigilante. Se usar esta magia em outro parceiro que já possua, o nível de poder de um de seus tipos aumenta em um passo (apenas uma vez por parceiro). Se já for um parceiro mestre, recebe o bônus de outro tipo de parceiro iniciante (entre as escolhas acima). O alvo se torna uma criatura racional, com Inteligência –1, e pode falar.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "atr.int", "valor": -1, "duracao": "permanente", "aplicacao": "automatica" },
+      { "tipo": "capacidade", "chave": "torna_se_parceiro_veterano_racional_que_fala", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+4 PM",

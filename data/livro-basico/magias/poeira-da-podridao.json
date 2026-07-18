@@ -18,6 +18,8 @@
     "resistencia": "Fortitude (veja texto)",
     "custoPM": 6,
     "descricao": "Você manifesta uma nuvem de poeira carregada de energia negativa, que apodrece lentamente as criaturas na área. Ao lançar a magia, e no início de seus turnos, criaturas na área sofrem 2d8+8 pontos de dano de trevas (Fortitude reduz à metade). Alvos que falharem no teste não podem recuperar PV por uma rodada.",
+    "efeitos": [],
+    "dano": { "dados": { "n": 2, "faces": 8 }, "fixo": 8, "tipo": "trevas", "resistencia": "Fortitude reduz à metade" },
     "aprimoramentos": [
       {
         "custo": "+2 PM",

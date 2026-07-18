@@ -18,6 +18,7 @@
     "custoPM": 10,
     "custoEspecial": "bastão de metal precioso em forma de forquilha (no valor de T$ 1.000); o tipo de metal determina para qual plano de existência você será enviado",
     "descricao": "Você viaja instantaneamente para outro plano da Criação. Lá, você chega de 10 a 1.000km do destino pretendido (role 1d100 e multiplique por 10km). Os metais que levam a dimensões específicas podem ser difíceis de encontrar, de acordo com o mestre.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

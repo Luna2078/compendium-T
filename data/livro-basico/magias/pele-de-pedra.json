@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 6,
     "descricao": "Sua pele ganha aspecto e dureza de rocha. Você recebe redução de dano 5.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "reducao_dano", "valor": 5, "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

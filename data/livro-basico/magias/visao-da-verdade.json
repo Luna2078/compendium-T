@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 10,
     "descricao": "Você enxerga a forma real das coisas. Você pode ver através de camuflagem e escuridão (normais e mágicas), assim como efeitos de ilusão e transmutação (enxergando a verdade como formas translúcidas ou sobrepostas).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "enxerga_atraves_camuflagem_ilusao_transmutacao", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

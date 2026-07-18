@@ -17,6 +17,7 @@
     "duracao": "1 dia",
     "custoPM": 3,
     "descricao": "Esta magia aumenta ou diminui o tamanho de um item mundano em até três categorias (um objeto Enorme vira Pequeno, por exemplo). Você também pode mudar a consistência do item, deixando-o rígido como pedra ou flexível como seda (isso não altera sua RD ou PV, apenas suas propriedades físicas). Se lançar a magia num objeto de uma criatura involuntária, ela pode fazer um teste de Vontade para anulá-la.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

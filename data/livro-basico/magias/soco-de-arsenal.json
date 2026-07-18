@@ -18,6 +18,8 @@
     "resistencia": "Fortitude parcial",
     "custoPM": 3,
     "descricao": "Ninguém sabe se Mestre Arsenal foi realmente o criador desta magia — mas ele foi o primeiro a utilizá-la. Você fecha o punho e gesticula como se estivesse golpeando o alvo, causando dano de impacto igual a 4d6 + sua Força. A vítima é empurrada 3m na direção oposta à sua. Passar no teste de resistência reduz o dano à metade e evita o empurrão.",
+    "efeitos": [],
+    "dano": { "dados": { "n": 4, "faces": 6 }, "tipo": "impacto", "resistencia": "Fortitude reduz à metade e evita o empurrão" },
     "aprimoramentos": [
       {
         "custo": "+1 PM",

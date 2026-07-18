@@ -18,6 +18,9 @@
     "resistencia": "Vontade anula",
     "custoPM": 10,
     "descricao": "Uma cúpula de energia invisível o cerca, impedindo a aproximação de certas criaturas. Escolha um tipo de criatura (animais, espíritos, monstros...) ou uma raça de humanoides (elfos, goblins, minotauros...). Criaturas do grupo escolhido que tentem se aproximar a menos de 3m de você (ou seja, que tentem ficar adjacentes a você) devem fazer um teste de Vontade. Se falharem, não conseguem, gastam a ação e só podem tentar novamente na rodada seguinte. Isso impede ataques corpo a corpo, mas não ataques ou outros efeitos à distância. Se você tentar se aproximar além do limite de 3m, rompe a cúpula e a magia é dissipada.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "impede_aproximacao_de_tipo_de_criatura_escolhido", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

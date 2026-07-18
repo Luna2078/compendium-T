@@ -18,6 +18,9 @@
     "resistencia": "Vontade anula",
     "custoPM": 3,
     "descricao": "Você murmura palavras desconexas que afetam a mente do alvo. O alvo fica confuso.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "confuso", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

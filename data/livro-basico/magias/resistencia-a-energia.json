@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 1,
     "descricao": "Ao lançar esta magia, escolha entre ácido, eletricidade, fogo, frio, luz ou trevas. O alvo recebe redução de dano 10 contra o tipo de dano escolhido.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "reducao_dano", "valor": 10, "duracao": "cena", "condicao": { "campo": "dano.tipo", "igual": "@tipo_escolhido" }, "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

@@ -18,6 +18,13 @@
     "resistencia": "Reflexos parcial",
     "custoPM": 6,
     "descricao": "Estacas de gelo irrompem do chão. Criaturas na área sofrem 4d6 de dano de corte, 4d6 de dano de frio e ficam caídas. Passar no teste de Reflexos evita o dano de corte e a queda. As estacas duram pela cena, o que torna a área afetada terreno difícil, e concedem cobertura leve para criaturas dentro da área ou atrás dela. As estacas são destruídas caso sofram qualquer quantidade de dano por fogo mágico.",
+    "dano": [
+      { "dados": { "n": 4, "faces": 6 }, "tipo": "corte", "resistencia": "Reflexos evita este dano e a queda" },
+      { "dados": { "n": 4, "faces": 6 }, "tipo": "frio" }
+    ],
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "caido", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+3 PM",

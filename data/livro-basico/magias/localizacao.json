@@ -18,6 +18,7 @@
     "custoPM": 3,
     "truque": "Muda a área para alvo você. Em vez do normal, você sabe onde fica o norte e recebe +5 em testes de Sobrevivência para se orientar.",
     "descricao": "Esta magia pode encontrar uma criatura ou objeto a sua escolha. Você pode pensar em termos gerais (\"um elfo\", \"algo de metal\") ou específicos (\"Gwen, a elfa\", \"uma espada longa\"). A magia indica a direção e distância da criatura ou objeto mais próximo desse tipo, caso esteja ao alcance. Você pode movimentar-se para continuar procurando. Procurar algo muito específico (\"a espada longa encantada do Barão Rulyn\") exige que você tenha em mente uma imagem precisa do objeto; caso a imagem não seja muito próxima da verdade, a magia falha, mas você gasta os PM mesmo assim. Esta magia pode ser bloqueada por uma fina camada de chumbo.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+5 PM",

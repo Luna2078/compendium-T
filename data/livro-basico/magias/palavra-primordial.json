@@ -18,6 +18,14 @@
     "resistencia": "Vontade parcial",
     "custoPM": 15,
     "descricao": "Você pronuncia uma palavra do idioma primordial da Criação, que causa um dos efeitos abaixo, a sua escolha.\n\nAtordoar: a criatura fica atordoada por 1d4+1 rodadas (apenas uma vez por cena). Se passar no teste de resistência, ou se já foi atordoada por esta magia, fica desprevenida por 1d4 rodadas.\n\nCegar: a criatura fica cega. Se passar no teste de resistência, fica ofuscada por 1d4 rodadas.\n\nMatar: a criatura morre. Além do teste de Vontade, a criatura tem direito a um teste de Fortitude se tiver mais da metade de seus PV. Se passar em qualquer um deles, em vez de morrer perde 10d8 pontos de vida e fica sangrando.",
+    "dano": { "dados": { "n": 10, "faces": 8 }, "resistencia": "Fortitude parcial: evita a morte, mas sofre este dano e fica sangrando" },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "atordoado", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "desprevenido", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "cego", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "ofuscado", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "sangrando", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": []
   }
 }

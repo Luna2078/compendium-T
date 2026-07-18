@@ -18,6 +18,15 @@
     "resistencia": "Reflexos parcial",
     "custoPM": 15,
     "descricao": "Meteoros caem dos céus, devastando a área afetada. Criaturas na área sofrem 15d6 pontos de dano de impacto, 15d6 pontos de dano de fogo e ficam caídas e presas sob os escombros (agarradas). Uma criatura que passe no teste de resistência sofre metade do dano total e não fica caída e agarrada. Uma criatura agarrada pode escapar gastando uma ação padrão e passando em um teste de Atletismo. Toda a área afetada fica coberta de escombros, sendo considerada terreno difícil, e imersa numa nuvem de poeira (camuflagem leve). Esta magia só pode ser utilizada a céu aberto.",
+    "dano": [
+      { "dados": { "n": 15, "faces": 6 }, "tipo": "impacto" },
+      { "dados": { "n": 15, "faces": 6 }, "tipo": "fogo" }
+    ],
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "caido", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "agarrado", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "cria_terreno_dificil_e_camuflagem_leve_na_area", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

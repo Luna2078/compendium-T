@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 3,
     "descricao": "Esta magia cria uma película protetora sobre você. Você recebe 30 pontos de vida temporários.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pv.temporario", "valor": 30, "duracao": "cena", "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

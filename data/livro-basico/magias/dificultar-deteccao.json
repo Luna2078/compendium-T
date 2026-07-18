@@ -17,6 +17,9 @@
     "duracao": "1 dia",
     "custoPM": 6,
     "descricao": "Esta magia oculta a presença do alvo contra qualquer meio mágico de detecção, inclusive detectar magia. Um conjurador que lance uma magia de adivinhação para detectar a presença ou localização do alvo deve fazer um teste de Vontade. Se falhar, a magia não funciona, mas os PM são gastos mesmo assim. Se for lançada sobre uma criatura, Dificultar Detecção protege tanto a criatura quanto seu equipamento.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "protegido_contra_deteccao_e_videncia_magica", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+4 PM",

@@ -20,6 +20,9 @@
     "duracao": "cena",
     "custoPM": 10,
     "descricao": "O alvo fica imune a efeitos de movimento e ignora qualquer efeito que impeça ou restrinja seu deslocamento. Por fim, pode usar habilidades que exigem liberdade de movimentos mesmo se estiver usando armadura ou escudo.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "imune_efeitos_movimento", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

@@ -17,6 +17,8 @@
     "duracao": "cena",
     "custoPM": 3,
     "descricao": "Você fortalece a mente do alvo. Ele recebe +2 em Inteligência, Sabedoria ou Carisma, a sua escolha. Esse aumento não oferece PV, PM ou perícias adicionais.",
+    "efeitos": [],
+    "precisaRevisao": true,
     "aprimoramentos": [
       {
         "custo": "+3 PM",

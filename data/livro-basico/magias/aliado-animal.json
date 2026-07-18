@@ -17,6 +17,7 @@
     "duracao": "1 dia",
     "custoPM": 3,
     "descricao": "Você cria um vínculo mental com um animal prestativo em relação a você. O Aliado Animal obedece a você no melhor de suas capacidades, mesmo que isso arrisque a vida dele. Ele funciona como um parceiro veterano, de um tipo a sua escolha entre ajudante, combatente, fortão, guardião, montaria ou perseguidor.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

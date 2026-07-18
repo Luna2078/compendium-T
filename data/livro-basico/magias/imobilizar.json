@@ -18,6 +18,10 @@
     "resistencia": "Vontade parcial",
     "custoPM": 6,
     "descricao": "O alvo fica paralisado; se passar na resistência, em vez disso fica lento. A cada rodada, pode gastar uma ação completa para fazer um novo teste de Vontade. Se passar, se liberta do efeito.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "paralisado", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "lento", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

@@ -18,6 +18,8 @@
     "resistencia": "Reflexos reduz à metade",
     "custoPM": 3,
     "descricao": "Esta famosa magia de ataque cria uma poderosa explosão, causando 6d6 pontos de dano de fogo em todas as criaturas e objetos livres na área.",
+    "dano": { "dados": { "n": 6, "faces": 6 }, "tipo": "fogo", "resistencia": "Reflexos reduz à metade" },
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

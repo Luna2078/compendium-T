@@ -19,6 +19,11 @@
     "custoPM": 15,
     "custoEspecial": "Sacrifício de 1 PM. O objeto escolhido deve custar T$ 1.000 por nível ou ND da criatura e não possuir uma alma presa.",
     "descricao": "Você rouba a alma da vítima, armazenando-a em um objeto. Se o alvo passar no teste de resistência, sente o impacto de sua alma ser puxada para fora do corpo e fica abalado por 1 rodada. Se falhar, seu corpo fica caído, inconsciente e inerte, enquanto sua alma é transportada para dentro do objeto. O corpo não envelhece nem se decompõe, permanecendo em estase. Ele pode ser atacado e destruído normalmente. O objeto escolhido deve custar T$ 1.000 por nível ou ND da criatura e não possuir uma alma presa ou se quebrará quando a magia for lançada (embora personagens não conheçam o conceito de nivel dentro do mundo de jogo, podem ter noção do poder geral de uma criatura, estimando assim o valor do objeto). Se o objeto for destruído, a magia se esvai. Se o corpo ainda estiver disponível, a alma retorna para ele. Caso contrário, escapa para os Mundos dos Deuses.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "abalado", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "caido", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "inconsciente", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+5 PM",

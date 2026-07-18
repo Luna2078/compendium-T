@@ -18,6 +18,10 @@
     "resistencia": "Fortitude reduz à metade",
     "custoPM": 3,
     "descricao": "Sua mão brilha com energia sombria, causando 6d6 pontos de dano de trevas. Você recupera pontos de vida iguais à metade do dano causado (se causou algum dano).",
+    "efeitos": [
+      { "tipo": "pos_dano", "alvo": "pv.atual", "valor": { "expr": "floor(dano_causado / 2)" }, "aplicacao": "contextual" }
+    ],
+    "dano": { "dados": { "n": 6, "faces": 6 }, "tipo": "trevas", "resistencia": "Fortitude reduz à metade" },
     "aprimoramentos": [
       {
         "custo": "+2 PM",

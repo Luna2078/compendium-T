@@ -17,6 +17,10 @@
     "duracao": "cena",
     "custoPM": 1,
     "descricao": "Amaldiçoa os alvos, que recebem –1 em testes de ataque e rolagens de dano. Perdição anula Bênção.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "ataque", "valor": -1, "duracao": "cena", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "dano", "valor": -1, "duracao": "cena", "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

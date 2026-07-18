@@ -19,6 +19,10 @@
     "custoPM": 1,
     "descricao": "Esta magia só pode ser lançada em uma área com vegetação. As plantas se enroscam nas criaturas da área. Aquelas que falharem na resistência ficam enredadas. Uma vítima pode se libertar com uma ação padrão e um teste de Acrobacia ou Atletismo. Além disso, a área é considerada terreno difícil. No início de seus turnos, a vegetação tenta enredar novamente qualquer criatura na área, exigindo um novo teste de Reflexos.",
     "truque": "Muda a área para alvo de 1 planta e a resistência para nenhuma. Em vez do normal, você pode fazer a planta se mover como se fosse animada. Ela não pode causar dano ou atrapalhar a concentração de um conjurador.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "planta_enreda_criaturas_na_area", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "cria_terreno_dificil_na_area", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

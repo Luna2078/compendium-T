@@ -17,6 +17,7 @@
     "duracao": "instantânea",
     "custoPM": 6,
     "descricao": "Esta magia transporta os alvos para um lugar a sua escolha a até 1.000km. Você precisa fazer um teste de Misticismo, com dificuldade que depende de seu conhecimento sobre o local de destino.\n\nCD 20. Um lugar familiar, que você visita com frequência.\nCD 30. Um lugar conhecido, que você já visitou pelo menos uma vez.\nCD 40. Um lugar que você nunca visitou e só conhece a partir da descrição de outra pessoa que esteve lá.\n\nVocê não pode se teletransportar para um lugar que nunca visitou sem a descrição de alguém. Ou seja, não pode se transportar para a \"sala de tesouro do rei\" se nunca esteve nela nem falou com alguém que esteve.\n\nSe passar no teste, os alvos chegam ao lugar desejado. Se falhar, os alvos surgem 1d10 x 10km afastados em qualquer direção (se o destino é uma cidade costeira, você pode surgir em alto-mar). Se falhar por 5 ou mais, você chega em um lugar parecido, mas errado. E se você rolar 1 natural no teste a magia falha (mas você gasta os PM) e fica atordoado por 1d4 rodadas.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

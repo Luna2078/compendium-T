@@ -39,6 +39,64 @@
 ## ⏳ EM ABERTO
 _(itens-mágicos: nada em aberto — todas as quarentenas foram resolvidas acima.)_
 
+## ligacao-sombria — Ligação Sombria
+- arquivo: livro-basico/magias/ligacao-sombria.json
+- prosa: "sempre que você sofrer qualquer dano ou condição, o alvo desta magia deve fazer um teste de
+  Fortitude; se falhar, sofre o mesmo dano que você ou adquire a mesma condição. A magia termina se o
+  alvo chegar a 0 pontos de vida."
+- motivo: é uma reação a dano/condição sofridos pelo PRÓPRIO conjurador que ESPELHA o resultado para
+  UM TERCEIRO (o alvo da magia) — não o conjurador (violaria a invariante de ficha própria se fosse
+  `efeitos[]`) nem o atacante (não é `pos_dano_recebido`, que só mira `atacante.*` ou o próprio). Também
+  não é um payload fixo de `mecanica.dano`/`cura` (o valor é "o mesmo dano/condição que EU sofri",
+  dinâmico, não uma fórmula de dados). Nenhum dos 8 tipos de efeito cobre "espelhar para um terceiro".
+- chute (NÃO aplicado): um 9º tipo de efeito tipo `espelho_para_terceiro` com `alvo` apontando pro alvo
+  da magia e `valor: "dano_ou_condicao_sofrida_pelo_conjurador"` — inventaria tipo de efeito e variável,
+  então preferi quarentena a chutar.
+
+## mente-divina — Mente Divina
+- arquivo: livro-basico/magias/mente-divina.json
+- prosa: "Ele recebe +2 em Inteligência, Sabedoria ou Carisma, a sua escolha." (aprimoramentos escalam
+  para +4 ou para os três atributos mentais ao mesmo tempo, mas a base já tem a escolha.)
+- motivo: os ALVOS `atr.int`/`atr.sab`/`atr.car` existem individualmente, mas não há mecanismo no
+  contrato para "o jogador escolhe QUAL dos três recebe o bônus" numa MAGIA (o `Parametro`/`@arma` de
+  `PoderSelecionavel` resolve escolha em poderes, mas `Magia` não tem essa estrutura). Modelar como três
+  `bonus` incondicionais infla o valor (dá os três, não um); modelar só um seria inventar qual. É o
+  mesmo gap arquitetural do GAP A (Aumento de Atributo), agora reaparecendo em magia, como o PROGRESSO
+  já previa ("vão reaparecer na onda 2 e em magias/itens").
+- chute (NÃO aplicado): três `bonus` em `atr.int`/`atr.sab`/`atr.car`, valor 2 cada, deixando o
+  motor/UI decidir qual aplicar — mas isso não existe hoje como convenção documentada, então preferi
+  marcar quarentena a inventar a convenção sozinho.
+
+## orientacao — Orientação
+- arquivo: livro-basico/magias/orientacao.json
+- prosa: "Em seu próximo teste de perícia, o alvo pode rolar dois dados e ficar com o melhor resultado."
+  (os aprimoramentos estendem para um atributo inteiro, ou físicos/mentais, ou múltiplos alvos — mas a
+  mecânica-base é a mesma: vantagem/rolar 2 e ficar com o maior.)
+- motivo: "vantagem" (rolar 2d20 e ficar com o melhor) não é `bonus` (não soma número a um ALVO),
+  não é `substituicao` (não troca uma entrada de fórmula), não é `capacidade` (aterrissa sim num teste,
+  não é flag/lembrete narrativo) e não é nenhum dos outros 5 tipos (`modifica_poder`, `pos_dano`,
+  `passo_de_dado`, `pos_conjuracao`, `pos_dano_recebido`). É um mecanismo de resolução de dado
+  inteiramente novo, sem tipo de efeito nem ALVO que o expresse.
+- chute (NÃO aplicado): um 9º tipo `vantagem` com `alvo: Alvo` e `contagem: 2` — mas isso é inventar um
+  tipo de efeito novo, proibido pelo contrato ("não crie um 5º/9º tipo de efeito"). Marquei quarentena.
+
+## <relampago-flamejante-de-reynard> — Relâmpago Flamejante de Reynard
+- arquivo: livro-basico/magias/relampago-flamejante-de-reynard.json
+- prosa: "Pela duração da magia, você pode gastar uma ação de movimento para disparar uma bola de fogo
+  (10d6 pontos de dano de fogo numa esfera com 6m de raio) ou um relâmpago (10d6 pontos de dano de
+  eletricidade numa linha). Você também pode, como uma ação padrão, usar as duas mãos num ataque de
+  energia mista (20d12 pontos de dano, metade de fogo e metade de eletricidade, numa esfera com 9m de
+  raio) [...] isso consome toda a energia da magia, terminando-a imediatamente."
+- motivo: `mecanica.dano`/`DanoMagia` modela UM payload de dano fixo por magia; aqui a magia sustentada
+  concede um MENU de 3 ataques repetíveis à escolha do jogador a cada rodada (bola de fogo OU relâmpago
+  como ação de movimento, OU o combo que termina a magia como ação padrão), cada um com dado/tipo/área
+  próprios. Não há estrutura no contrato para "múltiplas opções de ataque repetíveis por rodada dentro
+  de uma única magia sustentada" — forçar em `mecanica.dano` exigiria escolher arbitrariamente UMA das
+  3 opções como "a" mecânica, escondendo as outras duas.
+- chute (NÃO aplicado): registraria `dano: [{dados:{n:10,faces:6},tipo:"fogo"}, {dados:{n:10,faces:6},tipo:"eletricidade"}]`
+  como se fossem simultâneos (errado — são alternativas por turno) e omitiria de vez o combo de 20d12
+  misto que encerra a magia. Preferi marcar quarentena a fabricar uma leitura incorreta do "OU".
+
 > Correção de registro: a entrada anterior de `osteon/Memória Póstuma` descrevia um "slot de 3 vias" —
 > estava ERRADA. É RAMIFICAÇÃO POR ORIGEM (ver Resolvidos). Descrição corrigida e item modelado.
 
@@ -127,3 +185,45 @@ _(itens-mágicos: nada em aberto — todas as quarentenas foram resolvidas acima
 ### GAP L — escolha de DIVINDADE (devoto) → concede poderes
 - onde: druida/Devoto Fiel (+ clerigo/Devoto Fiel e paladino/Abençoado já em lembrete). Escolher deus → 2 poderes concedidos.
 - proposta: `PoderProgressivo`/`escolhas` com `opcoes:[{tipo:"ramo", ...}]` por deus (molde de ramo já existe), OU lembrete se a lista de deuses for grande demais.
+
+---
+## ⏳ EM ABERTO — magias/ Grupo 3 (fan-out Sonnet, 33 magias — 4 quarentenas)
+
+## explosao-caleidoscopica — Explosão Caleidoscópica
+- arquivo: livro-basico/magias/explosao-caleidoscopica.json
+- prosa: "O efeito que cada criatura sofre depende do nível ou ND dela. Nível ou ND 4 ou menor: se falhar...
+  fica inconsciente. Se passar, fica atordoada... Nível ou ND entre 5 e 9: [...] Nível ou ND 10 ou maior: [...]"
+- motivo: escada de 3 condições diferentes (inconsciente/atordoado/enjoado, em várias combinações) selecionada
+  pelo nível-ou-ND do ALVO. Não há `CAMPO_CONDICAO` para faixa de nível/ND do alvo (só existe `alvo.tipo_de_criatura`).
+  `aplica_condicao` só modela um link simples (ou um par falha/passa) — aqui são 3 faixas × falha/passa = 6 combinações.
+- chute (NÃO aplicado): registraria só `aplica_condicao: atordoado` como "principal" e perderia as outras 5 combinações
+  — arriscado demais para o motor tratar como regra geral.
+
+## fisico-divino — Físico Divino
+- arquivo: livro-basico/magias/fisico-divino.json
+- prosa: "Ele recebe +2 em Força, Destreza ou Constituição, a sua escolha."
+- motivo: bônus aterrissa em ALVO válido (`atr.for`/`atr.des`/`atr.con`), mas QUAL dos três é escolhido pelo
+  jogador no momento da conjuração. `Magia` (efeitos.ts) não tem mecanismo de `escolhas`/parâmetro como
+  `PoderSelecionavel.parametros` — não há como o efeito "saber" qual atributo foi escolhido.
+- chute (NÃO aplicado): poria os 3 `bonus` (atr.for/des/con) juntos, mas o motor aplicaria os TRÊS ao mesmo
+  tempo (dando +6 em vez de +2 escolhido) — errado. Mesma lacuna do GAP A (Aumento de Atributo), mas para magia.
+
+## furia-do-panteao — Fúria do Panteão
+- arquivo: livro-basico/magias/furia-do-panteao.json
+- prosa: "Uma vez por turno, você pode gastar uma ação de movimento para gerar um dos efeitos a seguir.
+  Nevasca [...] Raios [...] Siroco [...] Trovões [...]"
+- motivo: mesma estrutura de `relampago-flamejante-de-reynard` (já quarentenada) — múltiplos ataques
+  alternativos escolhidos pelo jogador a cada turno, com dano/tipo/condição diferentes cada um. `mecanica.dano`
+  representa o payload de UM lançamento, não um menu de 4 opções por turno.
+- chute (NÃO aplicado): array com os 4 dano (nevasca/raios/siroco/trovões), mas o motor não tem como saber
+  qual dos 4 o jogador escolheu neste turno — mesmo problema do Reynard, tratado como quarentena por precedente.
+
+## guardiao-divino — Guardião Divino
+- arquivo: livro-basico/magias/guardiao-divino.json
+- prosa: "o elemental pode [...] gastar quantos pontos de luz quiser para curar dano ou condições de criaturas
+  em alcance curto, à taxa de 1 PV por 1 ponto de luz ou uma condição por 3 pontos de luz [...]"
+- motivo: cura não é dado fixo nem `{dados}/{fixo}` — é um POOL de 100 "pontos de luz" que o jogador gasta à
+  vontade, convertendo 1:1 em PV ou 3:1 em remoção de condição (dentre 18 condições listadas). `CuraMagia` não
+  modela pool consumível nem conversão para remoção de condição.
+- chute (NÃO aplicado): poria `cura: { fixo: 100 }`, mas isso implicaria curar 100 PV de uma vez, quando na
+  verdade é um recurso que se esgota ao longo de várias rodadas e pode virar remoção de condição em vez de PV.

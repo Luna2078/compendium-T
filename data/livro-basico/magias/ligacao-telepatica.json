@@ -17,6 +17,7 @@
     "duracao": "1 dia",
     "custoPM": 3,
     "descricao": "Você cria um elo mental entre duas criaturas com Inteligência –4 ou maior (você pode ser uma delas). As criaturas podem se comunicar independente de idioma ou distância, mas não em mundos diferentes.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

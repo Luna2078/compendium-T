@@ -20,6 +20,9 @@
     "duracao": "1 turno",
     "custoPM": 1,
     "descricao": "Um escudo místico se manifesta momentaneamente para bloquear um golpe. O alvo recebe +2 na Defesa.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "defesa", "valor": 2, "duracao": "rodada", "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

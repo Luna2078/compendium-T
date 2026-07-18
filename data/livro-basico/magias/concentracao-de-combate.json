@@ -17,6 +17,9 @@
     "duracao": "1 rodada",
     "custoPM": 1,
     "descricao": "Você amplia sua percepção, antecipando movimentos dos inimigos e achando brechas em sua defesa. Quando faz um teste de ataque, você rola dois dados e usa o melhor resultado.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "rola_dois_dados_ataque_usa_melhor", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

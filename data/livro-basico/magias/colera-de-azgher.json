@@ -18,6 +18,12 @@
     "resistencia": "Reflexos parcial",
     "custoPM": 10,
     "descricao": "Você cria um fulgor dourado e intenso. Criaturas na área ficam cegas por 1d4 rodadas e em chamas, e sofrem 10d6 pontos de dano de fogo (mortos-vivos sofrem 10d8 pontos de dano). Uma criatura que passe no teste de resistência não fica cega nem em chamas e sofre metade do dano.",
+    "dano": { "dados": { "n": 10, "faces": 6 }, "tipo": "fogo" },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "cego", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "em-chamas", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "dano_aumentado_contra_mortos_vivos", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

@@ -20,6 +20,9 @@
     "duracao": "sustentada",
     "custoPM": 15,
     "descricao": "Você cria um disco de energia que lembra uma roda de engenho e flutua no ponto em que foi conjurado. O disco é imune a dano, não pode ser movido e faz uma contramágica automática contra qualquer magia lançada em alcance médio dele (exceto as suas), usando seu teste de Misticismo. Caso vença o teste, o engenho não só anula a magia como absorve os PM usados para lançá-la, acumulando PM temporários. No seu turno, se estiver ao alcance do disco, você pode gastar PM nele para lançar magias.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "disco_absorve_pm_de_magias_dissipadas_para_uso_posterior", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

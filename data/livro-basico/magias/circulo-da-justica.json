@@ -18,6 +18,13 @@
     "resistencia": "Vontade parcial",
     "custoPM": 3,
     "descricao": "Também conhecida como Lágrimas de Hyninn, esta magia é usada em tribunais e para proteger áreas sensíveis. Criaturas na área sofrem –10 em testes de Acrobacia, Enganação, Furtividade e Ladinagem e não podem mentir deliberadamente — mas podem tentar evitar perguntas que normalmente responderiam com uma mentira (sendo evasivas ou cometendo omissões, por exemplo). Uma criatura que passe na resistência tem as penalidades reduzidas para –5 e pode mentir.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pericia:acrobacia", "valor": -10, "duracao": "dia", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:enganacao", "valor": -10, "duracao": "dia", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:furtividade", "valor": -10, "duracao": "dia", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:ladinagem", "valor": -10, "duracao": "dia", "aplicacao": "automatica" },
+      { "tipo": "capacidade", "chave": "nao_pode_mentir_deliberadamente", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

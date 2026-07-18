@@ -18,6 +18,9 @@
     "resistencia": "Vontade anula",
     "custoPM": 1,
     "descricao": "O alvo fica enfeitiçado (veja a página 394). Um alvo hostil ou que esteja envolvido em um combate recebe +5 em seu teste de resistência. Se você ou seus aliados tomarem qualquer ação hostil contra o alvo, a magia é dissipada e o alvo retorna à atitude que tinha antes (ou piorada, de acordo com o mestre).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "enfeiticado", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

@@ -17,6 +17,9 @@
     "duracao": "instantânea",
     "custoPM": 1,
     "descricao": "Você suga energia vital da terra, recebendo 2d10 pontos de vida temporários. Os PV temporários desaparecem ao final da cena.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pv.temporario", "valor": { "dados": { "n": 2, "faces": 10 } }, "duracao": "cena", "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

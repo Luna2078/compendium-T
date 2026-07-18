@@ -17,6 +17,10 @@
     "duracao": "permanente até ser descarregada",
     "custoPM": 10,
     "descricao": "Você transfere um pouco de seu poder divino a outra criatura. Escolha uma magia de até 2º círculo que você conheça; o alvo pode lançar essa magia uma vez, sem pagar o custo dela em PM (aprimoramentos podem ser usados, mas o alvo deve gastar seus próprios PM). Você sofre uma penalidade de –3 PM até que o alvo lance a magia.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pm.max", "valor": -3, "duracao": "permanente", "condicao": { "quando": "ativo" }, "aplicacao": "automatica" },
+      { "tipo": "capacidade", "chave": "concede_lancar_magia_ate_2_circulo_sem_custo_para_alvo", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+4 PM",

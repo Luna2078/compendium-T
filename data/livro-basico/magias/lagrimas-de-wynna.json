@@ -18,6 +18,9 @@
     "resistencia": "Vontade parcial",
     "custoPM": 15,
     "descricao": "Se falhar no teste de resistência, o alvo perde a habilidade de lançar magias arcanas até o fim da cena. Se passar, perde a habilidade por uma rodada.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "perde_capacidade_lancar_magias_arcanas", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

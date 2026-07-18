@@ -17,6 +17,10 @@
     "duracao": "1 dia",
     "custoPM": 1,
     "descricao": "Esta magia facilita a sobrevivência em ambientes hostis. O alvo fica imune aos efeitos de calor e frio extremos, pode respirar na água se respirar ar (ou vice-versa) e não sufoca em fumaça densa.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "imune_calor_frio_extremos", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "respira_liquido_ou_ar_alternado", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+5 PM",

@@ -18,6 +18,10 @@
     "resistencia": "Fortitude parcial",
     "custoPM": 15,
     "descricao": "Após concentrar seu mana, você emana energia, como uma estrela em plena terra. Todas as criaturas na área sofrem 150 pontos de dano de essência e todos os itens mágicos (exceto artefatos) tornam-se mundanos. Você não é afetado pela magia. Alvos que passem no teste de Fortitude sofrem metade do dano e seus itens mágicos voltam a funcionar após um dia.",
+    "dano": { "fixo": 150, "tipo": "essencia" },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "torna_itens_magicos_mundanos_na_area", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

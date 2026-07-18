@@ -20,6 +20,8 @@
     "duracao": "cena",
     "custoPM": 3,
     "descricao": "Você fortalece o corpo do alvo. Ele recebe +2 em Força, Destreza ou Constituição, a sua escolha. Esse aumento não oferece PV ou PM adicionais.",
+    "efeitos": [],
+    "precisaRevisao": true,
     "aprimoramentos": [
       {
         "custo": "+3 PM",

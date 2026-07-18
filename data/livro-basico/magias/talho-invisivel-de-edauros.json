@@ -18,6 +18,10 @@
     "resistencia": "Fortitude parcial",
     "custoPM": 10,
     "descricao": "Esta magia cruel foi desenvolvida pelo mago de combate Edauros, quando ainda era um bípede. Você faz um gesto rápido e dispara uma lâmina de ar em alta velocidade. Criaturas na área sofrem 10d8 pontos de dano de corte e ficam sangrando. Alvos que passem no teste de resistência sofrem metade do dano e não ficam sangrando.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "sangrando", "aplicacao": "lembrete" }
+    ],
+    "dano": { "dados": { "n": 10, "faces": 8 }, "tipo": "corte", "resistencia": "Fortitude reduz à metade e evita o sangramento" },
     "aprimoramentos": [
       {
         "custo": "+2 PM",

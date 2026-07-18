@@ -18,6 +18,7 @@
     "resistencia": "Vontade desacredita",
     "custoPM": 6,
     "descricao": "Você faz um terreno parecer outro, incluindo sons e cheiros. Uma planície pode parecer um pântano, uma floresta pode parecer uma montanha etc. Esta magia pode ser usada para criar armadilhas: areia movediça pode parecer terra firme ou um precipício pode parecer um lago. Você pode alterar, incluir e esconder estruturas dentro da área, mas não criaturas (embora elas possam se esconder nas estruturas ilusórias).",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+4 PM",

@@ -18,6 +18,11 @@
     "resistencia": "veja texto",
     "custoPM": 6,
     "descricao": "Você manipula a densidade e a forma de toda terra, pedra, lama, argila ou areia na área. Ao lançar a magia, escolha.\n\n**Amolecer:** se afetar o teto, uma coluna ou suporte, provoca um desabamento que causa 10d6 pontos de dano de impacto às criaturas na área (Reflexos reduz à metade). Se afetar um piso de terra ou pedra, cria terreno difícil de areia ou argila, respectivamente.\n\n**Modelar:** pode usar pedra ou argila para criar um ou mais objetos simples de tamanho Enorme ou menor (sem mecanismos ou partes móveis). Por exemplo, pode transformar um tijolo em uma maça, criar uma passagem onde antes havia apenas uma parede ou levantar uma ou mais paredes que oferecem cobertura total (RD 8 e 50 PV para cada 3m).\n\n**Solidificar:** transforma lama ou areia em terra ou pedra. Criaturas com os pés na superfície ficam agarradas. Elas podem se soltar com uma ação padrão e um teste de Acrobacia ou Atletismo.",
+    "dano": { "dados": { "n": 10, "faces": 6 }, "tipo": "impacto" },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "agarrado", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "modela_ou_solidifica_terra_pedra", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

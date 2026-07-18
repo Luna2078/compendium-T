@@ -386,7 +386,27 @@ Aprimoramentos ficam em prosa (`custo`+`efeito`), como a interface `Aprimorament
 **DÍVIDA técnica (não bloqueia):** aprimoramentos usam `custo:"+N PM"` (string); `resolverConjuracao()` soma
 `custoPM:number` — 501 entradas precisariam de parse `"+N PM"→número` + `id` se um dia entrarem no motor.
 
-### Próximo: fan-out de `magias/` (198) — `Aprimoramento`/`resolverConjuracao`; exercita `duracao` (cena/dia) e `custo_magia`.
+### ✅ `magias/` (198) FAN-OUT FECHADO — Sonnet 6×33, passe Opus de consolidação (regra 18) + validação fixa
+**198/198, 0 JSON inválido, 0 alvo/campo/duração inválido, todos com chave `efeitos`.** 134 com `efeitos[]`,
+42 com `mecanica.dano`, 6 com `mecanica.cura`, 8 quarentenas. Colhidos 28 ids de condição p/ o lote de condições.
+- **Reconciliações de contrato que o fan-out revelou (aplicadas):** (1) `duracao?: Duracao` adicionado a
+  `EfeitoBonus`/`EfeitoSubstituicao`/`EfeitoCapacidade` (o padrão já era usado, faltava na interface);
+  (2) `DanoMagia.fixo`/`CuraMagia.fixo` viraram `Valor` (permite "4d6 + Força" via `{expr:"atr.for"}`). tsc exit 0.
+- **Passe Opus (regra 18) pegou 2 erros de aplicação** (releitura da fonte, não da descrição): `tranquilidade`
+  (−2 ataque era só no ramo "passou" → virou lembrete, não `automatica`); `oracao` (agente pôs +2 E −2 dano na
+  ficha própria = net zero; o −2 é aura contra INIMIGOS/outra ficha → lembrete). Validou o valor do passe.
+- **8 quarentenas** (todas legítimas, prosa conferida — 6 famílias de gap em `_REVISAO_PENDENTE.md` + `_CAMPOS_NOVOS.md`):
+  escolha/parâmetro em magia (fisico-divino, mente-divina); menu de ataques por turno (relampago-flamejante, furia-do-panteao);
+  pool consumível (guardiao-divino); escada por nível/ND do alvo (explosao-caleidoscopica); espelho a terceiro
+  (ligacao-sombria); vantagem/2d20 (orientacao). **Nenhuma bloqueia** — decisões de contrato para o usuário.
+- Gaps transversais para DECISÃO em `_CAMPOS_NOVOS.md` (secão "PENDENTES — Magias"): o maior é dar a `Magia` um
+  mecanismo de `escolhas`/`modos` (destrava ~10+). Outros: `pericia:*` (todas perícias), `alvo.nivel_nd`, vantagem,
+  `personagem.divindade` (com lote de divindades).
+
+### 🎯 LIVRO BÁSICO — pastas de `efeitos[]` FECHADAS: poderes, racas, origens, classes, itens, itens-magicos, magias.
+Falta `pericias/` (29) — última do enriquecimento no Básico. Depois: pasta `condicoes/` (usa os 28 ids colhidos +
+arquitetura de 3 camadas), lote de divindades (destrava os pendentes), e então expansões.
+### (histórico — classes onda 1)
 Passe de vocabulário rodou (glossário de 56 chaves + 7 patterns no `_CHAVES_NOVAS.md`) → drift baixíssimo no fan-out.
 Onda 1 (arcanista, barbaro, bardo, bucaneiro, cacador, cavaleiro, clerigo): ~160 habilidades/poderes, todos válidos.
 13 `precisaRevisao` que se agrupam em **6 GAPS DE CONTRATO recorrentes** (A–G em `_REVISAO_PENDENTE.md`) — vão

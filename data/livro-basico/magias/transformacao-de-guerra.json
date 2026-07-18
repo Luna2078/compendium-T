@@ -17,6 +17,14 @@
     "duracao": "sustentada",
     "custoPM": 6,
     "descricao": "Você se torna uma máquina de combate, ficando mais forte, rápido e resistente. Você recebe +6 na Defesa, testes de ataque e rolagens de dano corpo a corpo, e 30 PV temporários. Durante a Transformação de Guerra você não pode lançar magias, mas se torna proficiente em todas as armas.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "defesa", "valor": 6, "duracao": "sustentada", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "ataque.corpo_a_corpo", "valor": 6, "duracao": "sustentada", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "dano.corpo_a_corpo", "valor": 6, "duracao": "sustentada", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pv.temporario", "valor": 30, "duracao": "sustentada", "aplicacao": "automatica" },
+      { "tipo": "capacidade", "chave": "nao_pode_lancar_magias", "condicao": { "quando": "ativo" }, "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "proficiente_todas_armas", "condicao": { "quando": "ativo" }, "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

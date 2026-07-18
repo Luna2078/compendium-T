@@ -18,6 +18,9 @@
     "custoPM": 6,
     "custoEspecial": "ônix negro (T$ 100), inserido na boca ou olho do cadáver",
     "descricao": "Esta magia transforma o cadáver de um humanoide, animal ou monstro em um esqueleto ou zumbi (conforme o estado de conservação do corpo). O morto-vivo então obedece a todos os seus comandos, mesmo suicidas. Se quiser que o morto-vivo o acompanhe, ele funciona como um parceiro iniciante, de um tipo a sua escolha entre ajudante, atirador, combatente, fortão, guardião ou montaria.\n\nUma vez por rodada, quando sofre dano, você pode sacrificar um servo morto-vivo e evitar esse dano. O servo é destruído no processo e não pode ser reanimado.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "sacrifica_servo_para_evitar_dano", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+3 PM",

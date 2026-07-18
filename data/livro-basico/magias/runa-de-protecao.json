@@ -19,6 +19,8 @@
     "custoPM": 3,
     "custoEspecial": "Pó de diamante no valor de T$ 200, com o qual o conjurador desenha a runa.",
     "descricao": "Você escreve uma runa pessoal em uma superfície fixa, como uma parede ou o chão, que protege uma pequena área ao redor. Quando uma criatura entra na área afetada a runa explode, causando 6d6 pontos de dano em todos os alvos a até 6m. A criatura que ativa a runa não tem direito a teste de resistência; outras criaturas na área têm direito a um teste de Reflexos para reduzir o dano à metade. Quando lança a magia, você escolhe o tipo de dano, entre ácido, eletricidade, fogo, frio, luz ou trevas.\n\nVocê pode determinar que a runa se ative apenas em condições específicas — por exemplo, apenas por goblins ou apenas por mortos-vivos. Você também pode criar uma palavra mágica que impeça a runa de se ativar.\n\nUm personagem pode encontrar a runa com um teste de Investigação e desarmá-la com um teste de Ladinagem.",
+    "efeitos": [],
+    "dano": { "dados": { "n": 6, "faces": 6 }, "resistencia": "Reflexos reduz à metade (exceto quem ativa a runa); tipo escolhido entre ácido, eletricidade, fogo, frio, luz ou trevas" },
     "aprimoramentos": [
       {
         "custo": "+1 PM",

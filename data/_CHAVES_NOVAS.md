@@ -32,6 +32,40 @@
 > `bonus_cura_por_dado`, `custo_ritual_tempo_e_dinheiro`, `ritual_nao_armazenavel_em_item` nasceram
 > substantivo-primeiro, não `verbo_objeto`. Mantidas iguais ao JSON; consolidar nomes depois.
 
+### Lote magias (GRUPO 2) — chaves novas (livro-basico/magias/)
+| `cria_terreno_dificil_e_camuflagem_leve_na_area` | escombros viram terreno difícil + camuflagem leve na área | `chuva-de-meteoros` |
+| `nao_pode_mentir_deliberadamente` | impede mentira deliberada (mas permite evasivas/omissões) | `circulo-da-justica` |
+| `restaura_1_pm_por_turno_no_circulo` | quem termina o turno no círculo recupera 1 PM, máx. 5/dia | `circulo-da-restauracao` |
+| `dano_a_mortos_vivos_por_luz_na_area` | mortos-vivos/vulneráveis a luz perdem PV e PM em vez de recuperar | `circulo-da-restauracao` |
+| `dano_aumentado_contra_mortos_vivos` | dano contra mortos-vivos usa um dado maior que o normal (ver prosa) | `colera-de-azgher` |
+| `forca_alvo_obedecer_comando_escolhido` | alvo obedece a uma ordem (fugir/largar/parar/sentar/vir) na resistência falha | `comando` |
+| `entende_qualquer_idioma_e_le_pensamentos` | compreende texto/fala e pode ouvir pensamentos de criatura tocada | `compreensao` |
+| `concede_dados_auxilio_pericia_area_natural` | pool de dados gastável como bônus em perícias em áreas naturais | `comunhao-com-a-natureza` |
+| `concede_lancar_magia_ate_2_circulo_sem_custo_para_alvo` | outra criatura pode lançar 1 magia até 2º círculo sem pagar PM | `conceder-milagre` |
+| `rola_dois_dados_ataque_usa_melhor` | ao atacar, rola dois dados e fica com o melhor resultado | `concentracao-de-combate` |
+| `monitora_status_criaturas_tocadas` | sabe posição/PV/condições/magias afetando os alvos tocados | `condicao` |
+| `invoca_elemental_parceiro_grande` | invoca elemental Grande que age como parceiro (destruidor + outro tipo) | `conjurar-elemental` |
+| `invoca_monstro_conjurado` | invoca monstro Pequeno com stats fixos e ordens (mover/atacar/lançar magia) | `conjurar-monstro` |
+| `invoca_seis_esqueletos_capangas` | invoca 6 esqueletos (ou variantes) com stats fixos e imunidades | `conjurar-mortos-vivos` |
+| `maximiza_cura_e_dano_de_luz_na_area` | cura e dano de efeitos de luz na área são maximizados | `consagrar` |
+| `concede_dados_auxilio_pericia_com_risco_pm` | pool de dados gastável em qualquer perícia, com risco de perder PM em certos resultados | `contato-extraplanar` |
+| `inverte_gravidade_area` | inverte gravidade da área (modo "Inverter") | `controlar-a-gravidade` |
+| `reduz_gravidade_area` | reduz gravidade da área, concedendo voo lento e bônus em Atletismo (modo "Reduzir") | `controlar-a-gravidade` |
+| `eleva_ou_reduz_nivel_agua_e_afeta_elementais` | eleva/reduz nível de água mundana e afeta elementais da água (modos Enchente/Partir) | `controlar-agua` |
+| `esquenta_extingue_ou_modela_chama` | esquenta objeto, extingue chama (cria fumaça) ou modela/move chama existente | `controlar-fogo` |
+| `fortalece_modela_repele_ou_retorce_madeira` | fortalece, modela, repele ou retorce um objeto de madeira | `controlar-madeira` |
+| `controla_clima_da_area` | muda a condição climática de uma grande área | `controlar-o-clima` |
+| `manipula_o_tempo_congela_salta_ou_reverte` | congela o tempo ao seu redor, salta no tempo ou reverte a última rodada | `controlar-o-tempo` |
+| `planta_enreda_criaturas_na_area` | vegetação tenta enredar criaturas na área a cada rodada (Reflexos anula) | `controlar-plantas` |
+| `cria_terreno_dificil_na_area` | área afetada vira terreno difícil | `controlar-plantas` |
+| `modela_ou_solidifica_terra_pedra` | modela terra/pedra em objetos ou solidifica lama/areia | `controlar-terra` |
+| `teleporta_objeto_marcado_para_maos` | teletransporta objeto com runa pessoal previamente marcada para a mão do conjurador | `convocacao-instantanea` |
+| `cria_pequena_porcao_de_elemento` | cria pequena porção de água, ar, fogo ou terra (mundana) | `criar-elementos` |
+| `cria_ilusao_visual_ou_sonora_simples` | cria imagem ou som ilusório simples, sem causar/sofrer dano | `criar-ilusao` |
+| `impede_aproximacao_de_tipo_de_criatura_escolhido` | cúpula impede criaturas de um tipo/raça escolhido de se aproximarem (Vontade anula) | `cupula-de-repulsao` |
+| `torna_itens_magicos_mundanos_na_area` | itens mágicos (exceto artefatos) na área viram mundanos por um dia | `deflagracao-de-mana` |
+| `modifica_a_realidade_efeitos_arbitrarios` | permite efeitos arbitrários de alta magia (dissipar, transportar, refazer teste, criar item, duplicar magia, +1 atributo) | `desejo` |
+
 ### Reprocessamento pós-aditivos (saídas da quarentena)
 | `causa_dano_trevas_no_toque` | toque corpo a corpo causa 2d6 de dano de trevas (Fort CD Sab reduz à metade) | `caricia-sombria` |
 | `produz_arma_organica_temporaria` | gasta ação de movimento + PM p/ criar versão orgânica de uma arma proficiente, dura a cena | `armamento-aberrante` |
@@ -777,3 +811,119 @@ Outros: `rerola_teste_resistencia_por_pm` (hynne), `soma_inteligencia_a_teste_pe
   (sono→`inconsciente`, amedrontar→`apavorado`, raio-do-enfraquecimento→`fatigado`…). É LINK magia→condição,
   não cálculo na ficha do conjurador. A MECÂNICA da condição (ex.: "−2 em testes") vive em `condicoes/<id>.json`
   como `efeitos[]` de verdade (arquitetura de 3 camadas — ver PROGRESSO, bloco magias). NÃO inventar número aqui.
+
+### Lote magias fan-out (grupo 5 — 33 magias) — chaves novas fora do glossário
+| chave | significado | de onde veio |
+|-------|-------------|--------------|
+| `nao_pode_lancar_magias` | enquanto ativa, a magia impede o conjurador de lançar outras magias | `potencia-divina` |
+| `pode_refazer_teste_uma_vez_por_rodada` | 1×/rodada, pode rolar de novo um teste recém-feito e deve aceitar o novo resultado | `premonicao` |
+| `atravessa_objetos_solidos` | forma incorpórea projetada atravessa objetos sólidos | `projetar-consciencia` |
+| `remove_condicao_a_escolha` | remove 1 condição prejudicial dentre uma lista fixa (link — a mecânica de cada condição vive na entidade da condição) | `purificacao` |
+| `ignora_dano_de_queda` | reduz a queda a ponto de não causar dano | `queda-suave` |
+| `exige_teste_vontade_para_ser_atacado` | quem tenta agir hostilmente contra o alvo precisa passar em Vontade ou perde a ação | `santuario` |
+| `remove_todas_condicoes_listadas` | remove TODAS as condições de uma lista fixa (variante "em massa" de `remove_condicao_a_escolha`) | `segunda-chance` |
+| `exige_teste_vontade_para_gastar_pm` | toda ação que gaste PM do alvo exige um teste de Vontade ou falha (PM é gasto mesmo assim) | `selo-de-mana` |
+| `sacrifica_servo_para_evitar_dano` | 1×/rodada, sacrifica um servo morto-vivo para anular um dano sofrido | `servo-morto-vivo` |
+| `bonus_pericia_gastando_servo` | "gasta" um servo invisível para +2 não cumulativo em um teste de perícia (exceto ataque/resistência) | `servos-invisiveis` |
+
+> Reusada sem alteração: `aplica_condicao` (fork 2, já documentada acima) — usada em `raio-do-enfraquecimento`
+> (fatigado/vulneravel), `raio-polar` (paralisado/lento), `raio-solar` (ofuscado), `rogar-maldicao`
+> (esmorecido/debilitado/lento/cego/surdo/caido — menu "escolha 1"), `roubar-a-alma` (abalado/caido/inconsciente).
+
+> ⚠️ VOCABULÁRIO EM ABERTO (grupo 5):
+> - `resistencia-a-energia`: RD 10 contra um tipo de dano ESCOLHIDO no momento do lançamento (não fixo).
+>   Modelei como `bonus reducao_dano` com `condicao:{campo:"dano.tipo", igual:"@tipo_escolhido"}` — mas
+>   `Magia` (efeitos.ts) não tem um mecanismo formal de `parametros`/`@escolha` como `PoderSelecionavel` tem
+>   (`FOCO_EM_ARMA`). O `@tipo_escolhido` é um placeholder que só faz sentido se a interface `Magia` ganhar
+>   um `parametros?` análogo. Sinalizando para o humano decidir se cria esse mecanismo ou se isso deveria ser
+>   `capacidade lembrete` em vez de `bonus` condicionado a um parâmetro que não existe.
+> - `EfeitoBonus`/`EfeitoSubstituicao` (em `efeitos.ts`) não declaram um campo `duracao` na interface TS, mas
+>   o BRIEF (e o próprio exemplo `armadura-arcana` nele) pedem `"duracao":"cena"` dentro de cada efeito de magia.
+>   Segui o brief (duracao em todo `bonus`/`substituicao` de magia) — mas fica um resíduo: o `efeitos.ts` lido
+>   nesta sessão não tem esse campo tipado. Precisa reconciliar o `.ts` com o padrão já em uso.
+
+### Lote magias fan-out (grupo 6 — 33 magias: silencio…voz-divina) — chaves novas
+| chave | significado | de onde veio |
+|-------|-------------|--------------|
+| `impede_lancar_magias_na_area` | dentro da área, nenhuma magia pode ser conjurada (exige palavras mágicas) | `silencio` |
+| `imune_calor_frio_extremos` | imune aos efeitos de calor e frio extremos do ambiente | `suporte-ambiental` |
+| `respira_liquido_ou_ar_alternado` | pode respirar em água se normalmente respira ar (ou vice-versa) e não sufoca em fumaça densa | `suporte-ambiental` |
+| `fica_indiferente_e_nao_ataca_se_falhar_resistencia` | se falhar no teste, a atitude do alvo muda para indiferente e ele não pode agir agressivamente; se passar, sofre -2 em ataques (modelado à parte como `bonus`) | `tranquilidade` |
+| `proficiente_todas_armas` | enquanto ativa, concede proficiência com todas as armas | `transformacao-de-guerra` |
+| `enxerga_atraves_camuflagem_ilusao_transmutacao` | enxerga através de camuflagem/escuridão e efeitos de ilusão/transmutação (formas translúcidas) | `visao-da-verdade` |
+| `detecta_auras_magicas` | detecta e identifica automaticamente todas as auras mágicas em alcance médio | `visao-mistica` |
+| `conversa_com_qualquer_criatura` | pode se comunicar com qualquer tipo de criatura (animal, construto, espírito, humanoide, monstro, morto-vivo), respeitando a Inteligência dela | `voz-divina` |
+
+> Reusadas sem alteração (já existiam): `aplica_condicao` (silencio→surdo; sono→inconsciente/exausto/fatigado;
+> sopro-das-uivantes→caido; sussurros-insanos→confuso; talho-invisivel-de-edauros→sangrando; teia→enredado;
+> tentaculos-de-trevas→agarrado; terremoto→atordoado); `remove_condicao_a_escolha` (sopro-da-salvacao, idêntico
+> ao uso em `purificacao` do grupo 5); `acao_extra_padrao_ou_movimento` (velocidade, idêntico ao padrão de
+> `surto-heroico`); `nao_pode_lancar_magias` (transformacao-de-guerra, idêntico ao uso em `potencia-divina`).
+
+> ⚠️ VOCABULÁRIO EM ABERTO (grupo 6):
+> - `soco-de-arsenal`/`talho-invisivel-de-edauros` etc.: dano de magia com parcela "+ seu(a) atributo" (ex.:
+>   "4d6 + sua Força") não é representável em `DanoMagia.fixo` (tipado como `number` fixo, não `Valor`/`expr`).
+>   Modelei só a parte em dados (`{dados:{n:4,faces:6}}`), omitindo o `+For` — a prosa completa permanece intacta
+>   em `descricao`. Se o motor um dia processar `mecanica.dano` de verdade, essa soma variável ficaria de fora.
+>   Sinalizando para o humano decidir se `DanoMagia.fixo` deveria aceitar `Valor` (expr) também.
+> - `terremoto`: dano (12d6 impacto / 200 fixo / 1d6 por rodada) varia por TIPO DE TERRENO (ramos mutuamente
+>   exclusivos escolhidos pelo mestre, não simultâneos) — `mecanica.dano` (payload único ou array de tipos
+>   simultâneos) não modela bem "escolha um dentre 5 cenários". Deixei `dano` de fora (só o `atordoado`
+>   universal virou `aplica_condicao`); os números completos ficam só na prosa. Não é quarentena (nada foi
+>   adivinhado), mas é um gap de modelagem se o motor precisar automatizar terreno-dependente no futuro.
+> - `tranquilidade`: o efeito "-2 em ataques" só vale na ramificação de SUCESSO no teste de resistência
+>   (a ramificação de falha vira indiferente e não ataca). Modelei o `bonus -2 ataque` como `automatica`
+>   direto (sem condicionar à ramificação, já que no caso de falha o alvo nem ataca — o -2 fica inofensivo).
+>   Sinalizando porque tecnicamente o -2 só é "correto" no ramo de sucesso.
+
+## Lote magias fan-out (grupo 4 — intervencao-divina...pele-de-pedra, 33 magias) — chaves novas
+| chave | significado | de onde veio |
+|-------|-------------|---------------|
+| `imune_efeitos_mentais` | imune às condições abalado/alquebrado/apavorado/atordoado/confuso/esmorecido/fascinado/frustrado/pasmo + efeitos de encantamento e ilusão (bundle escolhido pelo conjurador) | `invulnerabilidade` |
+| `imune_efeitos_fisicos` | imune às condições atordoado/cego/debilitado/enjoado/envenenado/exausto/fatigado/fraco/lento/ofuscado/paralisado + acertos críticos, ataques furtivos e doenças (bundle escolhido pelo conjurador) | `invulnerabilidade` |
+| `perde_capacidade_lancar_magias_arcanas` | o alvo perde a habilidade de lançar magias arcanas pela duração (cena ou 1 rodada, conforme o teste de resistência) | `lagrimas-de-wynna` |
+| `domina_mente_alvos_obedece_comandos` | domina a mente de vários alvos ao mesmo tempo; obedecem cegamente exceto ordens suicidas | `legiao` |
+| `camuflagem_total` | o alvo recebe camuflagem total enquanto invisível | `invisibilidade` |
+| `torna_se_incorporeo` | o conjurador vira incorpóreo (só afetado por armas/habilidades mágicas ou outras criaturas incorpóreas; atravessa objetos sólidos) | `manto-de-sombras` |
+| `sofre_dano_por_luz_direta` | vulnerável à luz direta: 1 ponto de dano por rodada se exposto a uma fonte de luz | `manto-de-sombras` |
+| `teleporta_entre_sombras_por_pm` | gasta 1 PM + ação de movimento para se teletransportar entre sombras do próprio tamanho ou maior, em alcance médio | `manto-de-sombras` |
+| `forca_alvo_a_obedecer_ordem` | grava uma ordem mística no alvo; ele gasta todas as ações do turno para cumpri-la, com chance de resistir a cada rodada | `marca-da-obediencia` |
+| `controla_corpo_do_alvo` | controla fisicamente o corpo do alvo (ele mantém consciência, mas o corpo obedece ao conjurador) | `marionete` |
+| `imune_dano_trevas` | imune a dano de trevas (Manto de Luz de `manto-do-cruzado`) | `manto-do-cruzado` |
+| `assume_forma_selvagem_do_druida` | ao mudar para forma não humanoide, pode escolher uma Forma Selvagem do druida com os bônus correspondentes | `metamorfose` |
+| `forca_cumprir_tarefa_ou_penalidade_cumulativa` | obriga o alvo a cumprir uma tarefa; se não se esforçar, sofre penalidade cumulativa de −2 em todos os testes e rolagens ao fim do dia | `missao-divina` |
+| `bonus_penalidade_todos_testes_pericia` | ±2 em TODOS os testes de perícia de aliados/inimigos no alcance (sem ALVO genérico "todas as perícias" no namespace; só a parcela em `dano` foi modelada como `bonus`) | `oracao` |
+
+> Nota de drift: `libertacao` reaproveitou a chave JÁ existente `imune_efeitos_movimento` (de `liberdade-divina`)
+> em vez de propor uma nova — mesmo conceito ("imune a efeitos que impeçam/restrinjam deslocamento").
+
+## Lote magias fan-out (grupo 3 — desintegrar...infligir-ferimentos, 33 magias) — chaves novas
+| chave | significado | de onde veio |
+|-------|-------------|---------------|
+| `desintegra_criatura_reduzida_a_zero_pv` | se os PV do alvo chegam a 0 ou menos pelo dano desta magia, ele é completamente desintegrado (só resta pó) | `desintegrar` |
+| `dano_dobrado_e_ignora_rd_contra_construto_ou_objeto` | dano dobrado e ignora RD quando o alvo é um construto ou objeto mundano | `despedacar` |
+| `torna_se_parceiro_veterano_racional_que_fala` | o alvo vira parceiro veterano (tipo à escolha), criatura racional, e ganha fala | `despertar-consciencia` |
+| `protegido_contra_deteccao_e_videncia_magica` | oculta a presença do alvo contra qualquer meio mágico de detecção/vidência (Vontade do detector anula) | `dificultar-deteccao` |
+| `disco_absorve_pm_de_magias_dissipadas_para_uso_posterior` | o disco invocado faz contramágica automática e, se vencer, absorve os PM da magia dissipada como PM temporários utilizáveis pelo conjurador | `engenho-de-mana` |
+| `torna_se_etereo_invisivel_incorporeo` | o conjurador vira etéreo: invisível (alternável), incorpóreo, move-se em qualquer direção, mas só afeta/é afetado por abjuração e essência | `forma-eterea` |
+| `bloqueia_magias_de_ate_2_circulo_lancadas_contra_voce` | esfera que impede qualquer magia de até 2º círculo de ser lançada contra alvo dentro dela (área não é penetrada) | `globo-de-invulnerabilidade` |
+| `imune_a_medo` | imunidade à condição de medo pela duração da magia | `heroismo` |
+| `bonus_ataque_e_dano_contra_maior_nd_da_cena` | +4 (ou +6 aprimorado) em ataque e dano contra o inimigo de maior ND presente na cena — sem CAMPO para "maior ND na cena", fica lembrete | `heroismo` |
+| `dano_dobrado_e_ignora_rd_contra_objeto_solto` | dano dobrado e ignora RD quando o alvo é um objeto solto (sem dono) | `flecha-acida` |
+| `bonus_defesa_diminui_2_por_ataque_errado_ate_zerar` | cada ataque que erra o alvo destrói uma cópia ilusória e reduz o bônus de Defesa em 2 (decai até esgotar as cópias) | `imagem-espelhada` |
+| `cura_em_vez_de_dano_se_alvo_for_morto_vivo` | se o alvo for morto-vivo, a magia cura em vez de causar dano (mesmos dados) | `infligir-ferimentos` |
+
+> Nota de drift: `torna_se_etereo_invisivel_incorporeo` (forma-eterea) é PARECIDA com `torna_se_incorporeo`
+> (manto-de-sombras, lote grupo 4), mas o efeito de forma-eterea inclui invisibilidade + movimento livre em
+> qualquer direção além da incorporeidade — mantidas separadas por ora; considerar unificar na consolidação.
+
+### Quarentenas do lote (ver `_REVISAO_PENDENTE.md`, seção "magias/ Grupo 3")
+`explosao-caleidoscopica` (escada de condição por faixa de ND/nível — sem CAMPO), `fisico-divino` (escolha de
+qual atributo recebe o bônus — sem mecanismo de escolha em `Magia`), `furia-do-panteao` (menu de 4 ataques por
+turno, mesmo padrão de `relampago-flamejante-de-reynard`), `guardiao-divino` (pool de "pontos de luz" consumível,
+convertendo em PV ou remoção de condição — sem tipo de payload pra pool).
+
+## Magias — consolidação (correções do passe Opus)
+- `bonus_2_todos_testes_pericia_aliados` (oracao): +2 em TODOS os testes de perícia de você/aliados (gap "todas as perícias").
+- `penalidade_2_dano_e_todos_testes_pericia_inimigos_no_alcance` (oracao): −2 em dano e perícias dos INIMIGOS (outra ficha).
+- `fica_indiferente_e_nao_ataca_se_falhar_resistencia` (tranquilidade): ramo de FALHA na resistência (o −2 do ramo de sucesso é lembrete, não automatica).

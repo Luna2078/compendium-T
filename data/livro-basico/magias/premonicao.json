@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 10,
     "descricao": "Vislumbres do futuro permitem que você reavalie suas ações. Uma vez por rodada, você pode rolar novamente um teste recém realizado, mas deve aceitar o resultado da nova rolagem.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "pode_refazer_teste_uma_vez_por_rodada", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

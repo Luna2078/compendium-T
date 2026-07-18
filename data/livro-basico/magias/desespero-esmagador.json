@@ -18,6 +18,10 @@
     "resistencia": "Vontade parcial",
     "custoPM": 3,
     "descricao": "Humanoides na área são acometidos de grande tristeza, ficando fracos e frustrados até o fim da cena (ou por uma rodada, se passarem no teste de resistência).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "fraco", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "frustrado", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

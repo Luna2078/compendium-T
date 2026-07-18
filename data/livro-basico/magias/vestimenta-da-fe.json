@@ -17,6 +17,9 @@
     "duracao": "1 dia",
     "custoPM": 3,
     "descricao": "Você fortalece um item, aumentando o bônus de Defesa de uma armadura ou escudo em +2. No caso de um vestuário, ele passa a oferecer +2 na Defesa (não cumulativo com armadura). Os efeitos desta magia contam como um bônus de encanto.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "defesa", "valor": 2, "duracao": "dia", "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+3 PM",

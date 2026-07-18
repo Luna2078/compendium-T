@@ -17,6 +17,10 @@
     "duracao": "instantânea",
     "custoPM": 6,
     "descricao": "Você enche seus pulmões de luz e energia positiva e sopra um cone de poeira reluzente. O sopro afeta apenas seus aliados na área, curando 2d8+4 pontos de vida e removendo uma das seguintes condições de todos os alvos: abalado, atordoado, apavorado, alquebrado, cego, confuso, debilitado, enfeitiçado, enjoado, esmorecido, exausto, fascinado, fatigado, fraco, frustrado, lento, paralisado, pasmo e surdo.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "remove_condicao_a_escolha", "aplicacao": "lembrete" }
+    ],
+    "cura": { "dados": { "n": 2, "faces": 8 }, "fixo": 4 },
     "aprimoramentos": [
       {
         "custo": "+2 PM",

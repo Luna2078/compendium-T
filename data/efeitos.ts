@@ -48,13 +48,13 @@ export type Duracao =
 // Múltiplos tipos de dano (ex.: chuva-de-meteoros: 15d6 impacto + 15d6 fogo) → array de DanoMagia.
 export type DanoMagia = {
   dados?: Dados;         // ex.: { n: 8, faces: 6 }
-  fixo?: number;         // parcela fixa somada aos dados (ex.: +2)
+  fixo?: Valor;          // parcela somada aos dados. Número (+2) OU expr (`{expr:"atr.for"}` p/ "4d6 + Força")
   tipo?: string;         // MESMA LÍNGUA de `dano.tipo` do namespace (fogo/frio/trevas/impacto/corte...)
   resistencia?: string;  // ex.: "Reflexos reduz à metade" — espelha `mecanica.resistencia` quando específico
 };
 export type CuraMagia = {
   dados?: Dados;         // ex.: { n: 2, faces: 8 }
-  fixo?: number;         // ex.: 2  →  Curar Ferimentos = { dados: { n: 2, faces: 8 }, fixo: 2 }
+  fixo?: Valor;          // número (Curar Ferimentos = { dados:{n:2,faces:8}, fixo:2 }) OU expr que escala
 };
 
 export type Aplicacao =
@@ -102,6 +102,8 @@ export interface EfeitoBonus {
   opcionalPorAtaque?: boolean | { custo?: { pm?: Valor } };
   unidade?: "m" | "%";
   condicao?: Condicao;
+  duracao?: Duracao;     // validade que EXPIRA (magias/condições: cena/dia/sustentada/permanente).
+                         // Ausente em poderes com ativacao (vida = "enquanto ativo") e passivos permanentes.
   aplicacao: Aplicacao;
 }
 
@@ -112,6 +114,7 @@ export interface EfeitoSubstituicao {
   de: string;            // "atr.for"
   por: string;           // "atr.des"
   condicao?: Condicao;
+  duracao?: Duracao;     // idem EfeitoBonus (efeito de magia que expira)
   aplicacao: Aplicacao;  // quase sempre "contextual"
 }
 
@@ -123,6 +126,7 @@ export interface EfeitoCapacidade {
   valor?: Valor;
   unidade?: "%" | "m";
   condicao?: Condicao;   // ex.: { quando: "ativo" } — capacidade que só vale enquanto ligada
+  duracao?: Duracao;     // capacidade de magia que expira (ex.: "imune a medo" por cena)
   aplicacao: "lembrete" | "automatica"; // natação = automatica; "respira submerso" = lembrete
 }
 

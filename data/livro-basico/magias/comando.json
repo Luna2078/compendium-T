@@ -18,6 +18,10 @@
     "resistencia": "Vontade anula",
     "custoPM": 1,
     "descricao": "Você dá uma ordem irresistível, que o alvo deve ser capaz de ouvir (mas não precisa entender). Se falhar na resistência, ele deve obedecer ao comando em seu próprio turno da melhor maneira possível. Escolha um dos efeitos.\n\nFuja: o alvo gasta seu turno se afastando de você (usando todas as suas ações).\n\nLargue: o alvo solta quaisquer itens que esteja segurando e não pode pegá-los novamente até o início de seu próximo turno. Como esta é uma ação livre, ele ainda pode executar outras ações (exceto pegar aquilo que largou).\n\nPare: o alvo fica pasmo (apenas uma vez por cena).\n\nSenta: com uma ação livre, o alvo senta no chão (se estava pendurado ou voando, desce até o chão). Ele pode fazer outras ações, mas não se levantar até o início de seu próximo turno.\n\nVenha: o alvo gasta seu turno se aproximando de você (usando todas as suas ações).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "pasmo", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "forca_alvo_obedecer_comando_escolhido", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

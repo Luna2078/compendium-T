@@ -17,6 +17,10 @@
     "duracao": "instantânea",
     "custoPM": 15,
     "descricao": "Um brilho de luz, na forma de asas de fênix, emana do alvo. Ele recupera 200 pontos de vida e se cura de qualquer das seguintes condições: abalado, apavorado, alquebrado, atordoado, cego, confuso, debilitado, enjoado, envenenado, esmorecido, exausto, fascinado, fatigado, fraco, frustrado, lento, ofuscado, paralisado, pasmo ou surdo.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "remove_todas_condicoes_listadas", "aplicacao": "lembrete" }
+    ],
+    "cura": { "fixo": 200 },
     "aprimoramentos": [
       {
         "custo": "+1 PM",

@@ -18,6 +18,10 @@
     "resistencia": "Fortitude parcial",
     "custoPM": 3,
     "descricao": "Você sopra ar gélido que causa 4d6 pontos de dano de frio (Fortitude reduz à metade). Criaturas de tamanho Médio ou menor que falhem na resistência ficam caídas e são empurradas 6m na direção oposta. Se houver uma parede ou outro objeto sólido (mas não uma criatura) no caminho, a criatura para de se mover, mas sofre +2d6 pontos de dano de impacto.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "caido", "aplicacao": "lembrete" }
+    ],
+    "dano": { "dados": { "n": 4, "faces": 6 }, "tipo": "frio", "resistencia": "Fortitude reduz à metade" },
     "aprimoramentos": [
       {
         "custo": "+2 PM",

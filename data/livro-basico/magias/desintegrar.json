@@ -18,6 +18,10 @@
     "resistencia": "Fortitude parcial",
     "custoPM": 10,
     "descricao": "Você dispara um raio fino e esverdeado que causa 10d12 pontos de dano de essência. Se o alvo passar no teste de resistência, em vez disso sofre 2d12 pontos de dano.\n\nIndependentemente do resultado do teste de Fortitude, se os PV do alvo forem reduzidos a 0 ou menos, ele será completamente desintegrado, restando apenas pó.",
+    "dano": { "dados": { "n": 10, "faces": 12 }, "tipo": "essencia", "resistencia": "Fortitude parcial: se passar, sofre apenas 2d12" },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "desintegra_criatura_reduzida_a_zero_pv", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+4 PM",

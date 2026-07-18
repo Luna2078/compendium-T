@@ -239,15 +239,16 @@ export const DadosSchema = z.object({
   passo: z.union([z.number(), z.object({ expr: z.string() })]).optional(),
 });
 // Payload de dano/cura de MAGIA — mira outra criatura, fica FORA de `efeitos[]` (invariante de ficha própria).
+const ValorNumericoSchema = z.union([z.number(), z.object({ expr: z.string() })]); // número ou expr
 export const DanoMagiaSchema = z.object({
   dados: DadosSchema.optional(),
-  fixo: z.number().optional(),
+  fixo: ValorNumericoSchema.optional(),  // +2 OU {expr:"atr.for"} ("4d6 + Força")
   tipo: z.string().optional(),        // mesma língua de `dano.tipo` (fogo/frio/trevas/impacto/corte...)
   resistencia: z.string().optional(),
 });
 export const CuraMagiaSchema = z.object({
   dados: DadosSchema.optional(),
-  fixo: z.number().optional(),
+  fixo: ValorNumericoSchema.optional(),
 });
 
 export const MagiaMecanicaSchema = z.object({

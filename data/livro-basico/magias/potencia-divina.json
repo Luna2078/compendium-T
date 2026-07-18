@@ -17,6 +17,11 @@
     "duracao": "sustentada",
     "custoPM": 6,
     "descricao": "Você canaliza o poder de sua divindade. Você aumenta uma categoria de tamanho (seu equipamento muda de acordo) e recebe Força +4 e RD 10. Você não pode lançar magias enquanto estiver sob efeito de Potência Divina.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "atr.for", "valor": 4, "duracao": "sustentada", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "reducao_dano", "valor": 10, "duracao": "sustentada", "aplicacao": "automatica" },
+      { "tipo": "capacidade", "chave": "nao_pode_lancar_magias", "condicao": { "quando": "ativo" }, "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

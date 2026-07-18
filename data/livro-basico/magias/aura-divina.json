@@ -18,6 +18,14 @@
     "resistencia": "Vontade parcial",
     "custoPM": 15,
     "descricao": "Você se torna um conduíte da energia de sua divindade, emanando uma aura brilhante. Você e aliados devotos da mesma divindade ficam imunes a encantamento e recebem +10 na Defesa e em testes de resistência. Aliados não devotos da mesma divindade recebem +5 na Defesa e em testes de resistência. Além disso, inimigos que entrem na área devem fazer um teste de Vontade; em caso de falha, recebem uma condição a sua escolha entre esmorecido, debilitado ou lento até o fim da cena. O teste deve ser refeito cada vez que a criatura entrar novamente na área.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "bonus_defesa_resistencia_aliado_devoto", "valor": 10, "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "bonus_defesa_resistencia_aliado_nao_devoto", "valor": 5, "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "imune_encantamento_devotos", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "esmorecido", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "debilitado", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "lento", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 1,
     "descricao": "Você invoca a arma preferida de sua divindade (caso sua divindade possua uma), que surge flutuando a seu lado. Uma vez por rodada, quando você sofre um ataque corpo a corpo, pode usar uma reação para que a arma cause automaticamente 2d6 pontos de dano do tipo da arma — por exemplo, uma espada longa causa dano de corte — no oponente que fez o ataque. Esta magia se dissipa se você morrer.",
+    "efeitos": [
+      { "tipo": "pos_dano_recebido", "alvo": "atacante.pv.atual", "valor": { "dados": { "n": 2, "faces": 6 } }, "aplicacao": "contextual" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

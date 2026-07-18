@@ -20,6 +20,13 @@
     "duracao": "veja texto",
     "custoPM": 6,
     "descricao": "Esta magia cria um forte brilho (multicolorido ou de uma cor que remeta a sua divindade) que causa diversos efeitos. Todas as magias de 3º círculo ou menor ativas na área são dissipadas se você passar num teste de Religião contra a CD de cada magia. Seus aliados na área recebem +4 em testes de resistência e redução de trevas 10 até o fim da cena, protegidos por uma aura sutil da mesma cor. Inimigos na área ficam cegos por 1d4 rodadas (apenas uma vez por cena). Dispersar as Trevas anula Anular a Luz (este efeito tem duração instantânea).",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pericia:fortitude", "valor": 4, "duracao": "cena", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:reflexos", "valor": 4, "duracao": "cena", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "pericia:vontade", "valor": 4, "duracao": "cena", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "reducao_dano", "valor": 10, "duracao": "cena", "condicao": { "campo": "dano.tipo", "igual": "trevas" }, "aplicacao": "automatica" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "cego", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

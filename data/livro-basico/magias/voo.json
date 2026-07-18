@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 6,
     "descricao": "Você recebe deslocamento de voo 12m. Voar por meio desta magia é simples como andar — você pode atacar e lançar magias normalmente enquanto voa. Quando a magia termina, você desce lentamente até o chão, como se estivesse sob efeito de Queda Suave.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "deslocamento_voo", "valor": 12, "unidade": "m", "duracao": "cena", "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

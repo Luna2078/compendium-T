@@ -17,6 +17,10 @@
     "duracao": "cena",
     "custoPM": 10,
     "descricao": "Uma parede de ossos se eleva da terra. A parede tem 15m de comprimento, 9m de altura e 1,5m de espessura. Ela pode ter qualquer forma — não precisa ser uma linha reta —, mas sua base precisa estar sempre tocando o solo. Quando a parede surge, criaturas na área ocupada ou adjacentes sofrem 4d8 pontos de dano de corte e precisam fazer um teste de Reflexos para não ficarem presas no emaranhado de ossos. Uma criatura presa dessa maneira fica agarrada, e pode gastar uma ação padrão para fazer um teste de Atletismo para se soltar. Se passar no teste, sai da muralha para um dos lados adjacentes. Se falhar, sofre 4d8 pontos de dano de corte.\n\nÉ possível destruir o muro para atravessá-lo ou libertar uma criatura agarrada. Cada trecho de 3m do muro tem Defesa 8, 40 PV e redução de corte, frio e perfuração 10. Também é possível escalar a parede. Isso exige um teste de Atletismo e causa 4d8 pontos de dano de corte para cada 3m escalados.",
+    "dano": { "dados": { "n": 4, "faces": 8 }, "tipo": "corte", "resistencia": "Reflexos evita ficar agarrado" },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "agarrado", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+3 PM",

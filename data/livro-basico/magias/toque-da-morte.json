@@ -18,6 +18,8 @@
     "resistencia": "veja texto",
     "custoPM": 15,
     "descricao": "Sua mão exala energias letais. A criatura sofre 10d8+10 pontos de dano de trevas. Se estiver com menos da metade de seus PV, em vez disso deve fazer um teste de Fortitude. Se passar, sofre o dano normal. Se falhar, seus PV são reduzidos a –10.",
+    "efeitos": [],
+    "dano": { "dados": { "n": 10, "faces": 8 }, "fixo": 10, "tipo": "trevas", "resistencia": "veja texto" },
     "aprimoramentos": [
       {
         "custo": "+2 PM",

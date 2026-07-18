@@ -129,3 +129,24 @@ no dano psíquico de `mente-aberrante`, no clarão de `fulgor-solar`. Hoje todos
 "Subir o passo do dado da ARMA empunhada" virou o tipo `EfeitoPassoDeDado` (`tipo: "passo_de_dado"`,
 `alvo: "dano"`, `passos: Valor`). Sem gambiarra de `n:0`. `Dados` segue exigindo `n` e `faces`.
 `armamento-aberrante` usa `passo_de_dado` com `passos: { expr: "floor(contagem.poderes.tormenta / 2)" }`.
+
+## ⏳ PENDENTES — Magias (gaps transversais do fan-out; 8 quarentenas + partials os apontam)
+Ranqueados por frequência/impacto. Nenhum bloqueia; todos hoje em quarentena ou lembrete honesto.
+| gap | superfície proposta | de onde (ids) | recomendação |
+|-----|--------------------|---------------|--------------|
+| **Escolha/parâmetro/modo no lançamento** (o maior) | dar a `Magia` um mecanismo de `escolhas`/`parametros`/`modos` análogo a `PoderSelecionavel` (o efeito "sabe" o que foi escolhido) | fisico-divino, mente-divina (atributo à escolha); resistencia-a-energia (tipo de dano); controlar-a-gravidade/agua/fogo/madeira/o-tempo (modo); manto-do-cruzado (variante fixa ao aprender); abencoar-alimentos, alterar-destino (OR) | criar `modos`/`escolhas` em Magia — resolve ~10+ magias de uma vez |
+| **Menu de ataques repetíveis por turno** | tipo de payload "menu de N ataques alternativos" (cada um dado/tipo/área próprios) numa magia sustentada | relampago-flamejante-de-reynard, furia-do-panteao | provavelmente `mecanica.dano: []` + flag "menuAlternativo" OU lembrete-rico. Baixa freq (2) |
+| **Pool de recurso consumível** | payload de pool (N pontos gastos à vontade, conversão PV/condição) | guardiao-divino (100 pts luz); comunhao-com-a-natureza, contato-extraplanar (dados de auxílio) | lembrete-rico por ora (raro); não construir motor de pool por 3 magias |
+| **Efeito escalonado por NÍVEL/ND do alvo** | CAMPO `alvo.nivel_nd` (faixas) + escada de condições por faixa | explosao-caleidoscopica (3 faixas × passa/falha) | `alvo.nivel_nd` (família `alvo.*`) SE recorrer; hoje lembrete |
+| **Bônus a TODOS os testes de perícia** | ALVO genérico `pericia:*` (ou `todas_pericias`) — o motor expande p/ todas as perícias | oracao, tranquilidade (parcial) | criar `pericia:*` (expandido em runtime, como pericia_categoria) — barato, recorre |
+| **Vantagem (rolar 2, pegar o maior)** | tipo/flag de efeito "vantagem/desvantagem" num teste | orientacao | decidir tipo dedicado OU lembrete. Baixa freq |
+| **Dano/condição espelhado a um TERCEIRO** | mecanismo de "reflete no alvo B o que acontece ao alvo A" | ligacao-sombria | lembrete (raríssimo) |
+| **`personagem.divindade`** (CAMPO, família `personagem.*`) | condição "é devoto da mesma divindade" | aura-divina | criar quando vier o LOTE DE DIVINDADES (junto de arma.preferida_divindade, Devoto Fiel, Arma Sagrada) |
+
+## 📋 IDS DE CONDIÇÃO colhidos das magias (input p/ o LOTE DE CONDIÇÕES — arquitetura de 3 camadas, regra 21)
+Via `aplica_condicao`. Confirmar/criar cada `<id>.json` com efeitos[] DE VERDADE (o "−2" vive na condição, não na magia):
+abalado, agarrado, apavorado, atordoado, caido, cego, confuso, debilitado, desprevenido, em-chamas, enfeiticado,
+enjoado, enredado, esmorecido, exausto, fascinado, fatigado, fraco, frustrado, imovel, inconsciente, lento,
+ofuscado, paralisado, pasmo, sangrando, surdo, vulneravel.
+⚠️ Verificar se em-chamas/enredado/frustrado/esmorecido/pasmo/vulneravel são condições formais de T20 core (alguns
+podem ser efeitos descritivos, não condições nomeadas) — ajustar o id ou remover o link no lote de condições.

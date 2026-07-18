@@ -17,6 +17,9 @@
     "duracao": "1 dia",
     "custoPM": 1,
     "descricao": "Você enche a área com energia positiva. Pontos de vida curados por efeitos de luz são maximizados dentro da área. Isso também afeta dano causado em mortos-vivos por esses efeitos. Por exemplo, Curar Ferimentos cura automaticamente 18 PV. Esta magia não pode ser lançada em uma área contendo um símbolo visível dedicado a uma divindade que não a sua. Consagrar anula Profanar.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "maximiza_cura_e_dano_de_luz_na_area", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

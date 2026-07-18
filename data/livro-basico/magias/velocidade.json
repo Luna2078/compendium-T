@@ -17,6 +17,9 @@
     "duracao": "sustentada",
     "custoPM": 3,
     "descricao": "O alvo pode realizar uma ação padrão ou de movimento adicional por turno. Esta ação não pode ser usada para lançar magias e ativar engenhocas.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "acao_extra_padrao_ou_movimento", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+0 PM",

@@ -17,6 +17,10 @@
     "duracao": "cena",
     "custoPM": 1,
     "descricao": "Abençoa seus aliados, que recebem +1 em testes de ataque e rolagens de dano. Bênção anula Perdição.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "ataque", "valor": 1, "duracao": "cena", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "dano", "valor": 1, "duracao": "cena", "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

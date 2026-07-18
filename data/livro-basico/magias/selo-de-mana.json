@@ -18,6 +18,9 @@
     "resistencia": "Vontade parcial",
     "custoPM": 6,
     "descricao": "Seu toque manifesta um selo mágico na pele do alvo, que atrapalha o fluxo de mana. Pela duração da magia, sempre que o alvo realizar qualquer ação que gaste PM, deve fazer um teste de Vontade; se passar, faz a ação normalmente. Se falhar, a ação não tem efeito (mas os PM são gastos mesmo assim).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "exige_teste_vontade_para_gastar_pm", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+4 PM",

@@ -3,7 +3,10 @@
   "tipo": "magia",
   "nome": "Oração",
   "resumo": "Aliados recebem bônus e inimigos sofrem penalidades em testes e rolagens.",
-  "fonte": { "livro": "livro-basico", "pagina": 200 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 200
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -18,6 +21,27 @@
     "custoPM": 3,
     "custoEspecial": "T$ 20 por PM gasto em incensos ou outras oferendas",
     "descricao": "Você e os seus aliados no alcance recebem +2 em testes de perícia e rolagens de dano, e todos os seus inimigos no alcance sofrem –2 em testes de perícia e rolagens de dano. Esse efeito é cumulativo com outras magias. Componente material: T$ 20 por PM gasto em incensos ou outras oferendas.",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "dano",
+        "valor": 2,
+        "duracao": "cena",
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "bonus_2_todos_testes_pericia_aliados",
+        "valor": 2,
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "penalidade_2_dano_e_todos_testes_pericia_inimigos_no_alcance",
+        "valor": -2,
+        "aplicacao": "lembrete"
+      }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

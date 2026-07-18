@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 3,
     "descricao": "O alvo fica com sua imagem nublada, como se vista através de um líquido, recebendo os efeitos de camuflagem leve.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "camuflagem_leve", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+3 PM",

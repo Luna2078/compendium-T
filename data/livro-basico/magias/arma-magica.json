@@ -17,6 +17,10 @@
     "duracao": "cena",
     "custoPM": 1,
     "descricao": "A arma é considerada mágica e fornece +1 nos testes de ataque e rolagens de dano (isso conta como um bônus de encanto). Caso você esteja empunhando a arma, pode usar seu atributo-chave de magias em vez do atributo original nos testes de ataque (não cumulativo com efeitos que somam este atributo).",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "ataque", "valor": 1, "duracao": "cena", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "dano", "valor": 1, "duracao": "cena", "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

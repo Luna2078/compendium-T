@@ -3,7 +3,10 @@
   "tipo": "magia",
   "nome": "Tranquilidade",
   "resumo": "Acalma criaturas na área.",
-  "fonte": { "livro": "livro-basico", "pagina": 210 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 210
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -18,6 +21,19 @@
     "resistencia": "Vontade parcial",
     "custoPM": 1,
     "descricao": "Você emana ondas de serenidade. Se falhar na resistência, o alvo tem sua atitude mudada para indiferente (veja a página 259) e não pode atacar ou realizar qualquer ação agressiva. Se passar, sofre –2 em testes de ataque. Qualquer ação hostil contra o alvo ou seus aliados dissipa a magia e faz ele retornar à atitude que tinha antes (ou pior, de acordo com o mestre).",
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": -2,
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "fica_indiferente_e_nao_ataca_se_falhar_resistencia",
+        "aplicacao": "lembrete"
+      }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

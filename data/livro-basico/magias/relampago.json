@@ -18,6 +18,8 @@
     "resistencia": "Reflexos reduz à metade",
     "custoPM": 3,
     "descricao": "Você dispara um poderoso raio que causa 6d6 pontos de dano de eletricidade em todas as criaturas e objetos livres na área.",
+    "efeitos": [],
+    "dano": { "dados": { "n": 6, "faces": 6 }, "tipo": "eletricidade", "resistencia": "Reflexos reduz à metade" },
     "aprimoramentos": [
       {
         "custo": "+2 PM",

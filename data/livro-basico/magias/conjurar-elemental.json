@@ -17,6 +17,9 @@
     "duracao": "sustentada",
     "custoPM": 10,
     "descricao": "Esta magia transforma uma porção de um elemento inerte em uma criatura elemental Grande do tipo do elemento alvo. Por exemplo, lançar esta magia numa fogueira ou tocha cria um elemental do fogo. Você pode criar elementais do ar, água, fogo e terra com essa magia. O elemental obedece a todos os seus comandos e pode funcionar como um parceiro do tipo destruidor (cuja habilidade custa apenas 2 PM para ser usada) e mais um tipo entre os indicados na lista abaixo, ambos mestres. O elemental auxilia apenas você e não conta em seu limite de parceiros.\n\nAr: assassino, perseguidor ou vigilante. Dano de eletricidade.\n\nÁgua: ajudante, guardião ou médico. Dano de frio.\n\nFogo: atirador, combatente ou fortão. Dano de fogo.\n\nTerra: combatente, guardião ou montaria. Dano de impacto.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "invoca_elemental_parceiro_grande", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+5 PM",

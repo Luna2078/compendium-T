@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 1,
     "descricao": "Você fortalece uma arma mundana primitiva (sem custo em T$, como bordão, clava, funda ou tacape), uma arma natural ou um ataque desarmado. O dano da arma aumenta em um passo e ela é considerada mágica. Ao lançar a magia, você pode mudar o tipo de dano da arma (escolhendo entre corte, impacto ou perfuração).",
+    "efeitos": [
+      { "tipo": "passo_de_dado", "alvo": "dano", "passos": 1, "aplicacao": "contextual" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

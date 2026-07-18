@@ -18,6 +18,10 @@
     "custoPM": 1,
     "descricao": "Você invoca espíritos da natureza, pedindo que eles abram seu caminho. As criaturas afetadas recebem deslocamento +3m e ignoram penalidades por terreno difícil em terrenos naturais.",
     "truque": "Muda o alcance para pessoal e o alvo para você. Em vez do normal, você recebe +5 em testes de Sobrevivência para se orientar.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "deslocamento", "valor": 3, "unidade": "m", "duracao": "dia", "aplicacao": "automatica" },
+      { "tipo": "capacidade", "chave": "ignora_terreno_dificil", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

@@ -18,6 +18,8 @@
     "resistencia": "Reflexos reduz à metade",
     "custoPM": 1,
     "descricao": "Um leque de chamas irrompe de suas mãos, causando 2d6 pontos de dano de fogo às criaturas na área.",
+    "dano": { "dados": { "n": 2, "faces": 6 }, "tipo": "fogo", "resistencia": "Reflexos reduz à metade" },
+    "efeitos": [],
     "truque": "Muda o alcance para curto, a área para alvo de 1 objeto e a resistência para Reflexos anula. Você gera uma pequena explosão que não causa dano mas pode acender uma vela, tocha ou fogueira. Também pode fazer um objeto inflamável com RD 0 (como uma corda ou pergaminho) ficar em chamas. Uma criatura em posse de um objeto pode evitar esse efeito se passar no teste de resistência.",
     "aprimoramentos": [
       {

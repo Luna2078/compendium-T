@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 6,
     "descricao": "O alvo é envolvido por um campo de força cor de esmeralda que impede qualquer movimento planar. Isso inclui magias de convocação (como Salto Dimensional e Teletransporte), viagens astrais e a habilidade incorpóreo.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "impede_movimento_planar", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

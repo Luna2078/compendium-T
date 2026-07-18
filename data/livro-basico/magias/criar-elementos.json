@@ -17,6 +17,11 @@
     "duracao": "instantânea",
     "custoPM": 1,
     "descricao": "Você cria uma pequena porção de um elemento, a sua escolha. Os elementos criados são reais, não mágicos. Elementos físicos devem surgir em uma superfície. Em vez de um cubo, pode-se criar objetos simples (sem partes móveis) feitos de gelo, terra ou pedra.\n\n**Água:** enche um recipiente de tamanho Minúsculo (como um odre) com água potável ou cria um cubo de gelo de tamanho Minúsculo.\n\n**Ar:** cria um vento fraco em um quadrado de 1,5m. Isso purifica a área de qualquer gás ou fumaça, ou remove névoa por uma rodada.\n\n**Fogo:** cria uma chama que ilumina como uma tocha. Você pode segurá-la na palma de sua mão sem se queimar, ou fazê-la surgir em um quadrado de 1,5m. Se uma criatura ou objeto estiver no quadrado, sofre 1d6 pontos de dano de fogo; se falhar num teste de Reflexos, fica em chamas.\n\n**Terra:** cria um cubo de tamanho Minúsculo feito de terra, argila ou pedra.",
+    "dano": { "dados": { "n": 1, "faces": 6 }, "tipo": "fogo" },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "em-chamas", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "cria_pequena_porcao_de_elemento", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

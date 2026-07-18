@@ -19,6 +19,10 @@
     "custoPM": 3,
     "truque": "Muda a duração para cena e a resistência para nenhuma. Em vez do normal, cria um facho de luz que ilumina a área da magia. Uma vez por rodada, você pode mudar a direção do facho como uma ação livre.",
     "descricao": "Você canaliza uma poderosa rajada de energia positiva que ilumina o campo de batalha. Criaturas na área sofrem 4d8 pontos de dano de luz (ou 4d12, se forem mortos-vivos) e ficam ofuscadas por uma rodada. Se passarem na resistência, sofrem metade do dano e não ficam ofuscadas.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "ofuscado", "aplicacao": "lembrete" }
+    ],
+    "dano": { "dados": { "n": 4, "faces": 8 }, "tipo": "luz", "resistencia": "Reflexos reduz à metade (veja texto: 4d12 se o alvo for morto-vivo)" },
     "aprimoramentos": [
       {
         "custo": "+2 PM",

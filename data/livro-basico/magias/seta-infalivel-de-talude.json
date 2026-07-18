@@ -17,6 +17,8 @@
     "duracao": "instantânea",
     "custoPM": 1,
     "descricao": "Favorita entre arcanistas iniciantes, esta magia lança duas setas de energia que causam 1d4+1 pontos de dano de essência cada. Você pode lançar as setas em alvos diferentes ou concentrá-las num mesmo alvo. Caso você possua um bônus no dano de magias, como pelo poder Arcano de Batalha, ele é aplicado em apenas uma seta (o bônus vale para a magia, não cada alvo).",
+    "efeitos": [],
+    "dano": { "dados": { "n": 1, "faces": 4 }, "fixo": 1, "tipo": "essencia" },
     "aprimoramentos": [
       {
         "custo": "+2 PM",

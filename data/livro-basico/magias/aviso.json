@@ -17,6 +17,9 @@
     "duracao": "instantânea",
     "custoPM": 1,
     "descricao": "Envia um aviso telepático para uma criatura, mesmo que não possa vê-la nem tenha linha de efeito. Escolha um:\n\n**Alerta:** o alvo recebe +5 em seu próximo teste de Iniciativa e de Percepção dentro da cena.\n\n**Mensagem:** o alvo recebe uma mensagem sua de até 25 palavras. Vocês devem ter um idioma em comum para o alvo poder entendê-lo.\n\n**Localização:** o alvo sabe onde você está naquele momento. Se você mudar de posição, ele não saberá.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "bonus_proximo_iniciativa_percepcao", "valor": 5, "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

@@ -17,6 +17,10 @@
     "duracao": "sustentada",
     "custoPM": 3,
     "descricao": "Um silêncio sepulcral recai sobre a área e nenhum som é produzido nela. Enquanto estiverem na área, todas as criaturas ficam surdas. Além disso, como lançar magias exige palavras mágicas, normalmente nenhuma magia pode ser lançada dentro da área.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "surdo", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "impede_lancar_magias_na_area", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

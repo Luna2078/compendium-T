@@ -17,6 +17,10 @@
     "duracao": "cena",
     "custoPM": 6,
     "descricao": "Um círculo de energias sombrias se abre no chão, de onde surgem tentáculos feitos de treva viscosa. Ao lançar a magia e no início de cada um de seus turnos, você faz um teste da manobra agarrar (usando seu valor de Misticismo) contra cada criatura na área. Se você passar, a criatura é agarrada; se a vítima já está agarrada, é esmagada, sofrendo 4d6 pontos de dano de trevas. A área conta como terreno difícil. Os tentáculos são imunes a dano.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "agarrado", "aplicacao": "lembrete" }
+    ],
+    "dano": { "dados": { "n": 4, "faces": 6 }, "tipo": "trevas" },
     "aprimoramentos": [
       {
         "custo": "+2 PM",

@@ -17,6 +17,10 @@
     "duracao": "instantânea",
     "custoPM": 15,
     "descricao": "Sua mente visualiza todas as possibilidades de um evento, permitindo a você escolher o melhor curso de ação. Você pode rolar novamente um teste de resistência com um bônus de +10 ou um inimigo deve rolar novamente um ataque contra você com uma penalidade de –10.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "rerrola_teste_resistencia_com_bonus", "valor": 10, "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "forca_inimigo_rerrolar_ataque_com_penalidade", "valor": 10, "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": []
   }
 }

@@ -17,6 +17,9 @@
     "duracao": "4d12 horas",
     "custoPM": 10,
     "descricao": "Você muda o clima da área onde se encontra, podendo criar qualquer condição climática: chuva, neve, ventos, névoas... Veja o Capítulo 6: O Mestre para os efeitos do clima.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "controla_clima_da_area", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

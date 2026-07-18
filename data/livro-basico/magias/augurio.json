@@ -17,6 +17,7 @@
     "duracao": "instantânea",
     "custoPM": 3,
     "descricao": "Esta magia diz se uma ação que você tomará em breve — no máximo uma hora no futuro — trará resultados bons ou ruins. O mestre rola 1d6 em segredo; com um resultado de 2 a 6, a magia funciona e você recebe uma das seguintes respostas: \"felicidade\" (a ação trará bons resultados); \"miséria\" (a ação trará maus resultados); \"felicidade e miséria\" (para ambos) ou \"nada\" (para ações que não trarão resultados bons ou ruins).\n\nCom um resultado 1, a magia falha e oferece o resultado \"nada\". Não há como saber se esse resultado foi dado porque a magia falhou ou não. Lançar esta magia múltiplas vezes sobre o mesmo assunto gera sempre o primeiro resultado.\n\nPor exemplo, se o grupo está prestes a entrar em uma câmara, o augúrio dirá \"felicidade\" se a câmara contém um tesouro desprotegido, \"miséria\" se contém um monstro, \"felicidade e miséria\" se houver um tesouro e um monstro ou \"nada\" se a câmara estiver vazia.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+3 PM",

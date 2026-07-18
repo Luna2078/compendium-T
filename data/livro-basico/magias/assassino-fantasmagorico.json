@@ -18,6 +18,10 @@
     "resistencia": "Vontade anula, Fortitude parcial",
     "custoPM": 10,
     "descricao": "Usando os medos subconscientes do alvo, você cria uma imagem daquilo que ele mais teme. Apenas a própria vítima pode ver o Assassino Fantasmagórico com nitidez; outras criaturas presentes (incluindo o conjurador) enxergam apenas um espectro sombrio.\n\nQuando você lança a magia, o espectro surge adjacente a você e a vítima faz um teste de Vontade. Se ela passar, percebe que o espectro é uma ilusão e a magia é dissipada. Se falhar, acredita na existência do espectro, que então flutua 18m por rodada em direção à vítima, sempre no fim do seu turno. Ele é incorpóreo e imune a magias (exceto magias que dissipam outras).\n\nSe o espectro terminar seu turno adjacente à vítima, ela deve fazer um teste de Fortitude. Se passar, sofre 6d6 pontos de dano de trevas (este dano não pode reduzir o alvo a menos de 0 PV e não o deixa sangrando). Se falhar, sofre um colapso, ficando imediatamente com –1 PV e sangrando.\n\nO espectro persegue o alvo implacavelmente. Ele desaparece se o alvo ficar inconsciente ou se afastar além de alcance longo dele, ou se for dissipado.",
+    "dano": { "dados": { "n": 6, "faces": 6 }, "tipo": "trevas", "resistencia": "Fortitude: se passar sofre o dano (não reduz a menos de 0 PV); se falhar, colapsa com –1 PV e sangrando" },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "sangrando", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": []
   }
 }

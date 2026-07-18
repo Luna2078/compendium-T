@@ -18,6 +18,7 @@
     "resistencia": "Vontade anula",
     "custoPM": 10,
     "descricao": "Você invade a mente do alvo e altera ou apaga suas memórias da última hora.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

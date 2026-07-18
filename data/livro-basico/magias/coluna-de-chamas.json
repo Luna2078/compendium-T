@@ -18,6 +18,11 @@
     "resistencia": "Reflexos reduz à metade",
     "custoPM": 6,
     "descricao": "Um pilar de fogo sagrado desce dos céus, causando 6d6 pontos de dano de fogo mais 6d6 pontos de dano de luz nas criaturas e objetos livres na área.",
+    "dano": [
+      { "dados": { "n": 6, "faces": 6 }, "tipo": "fogo" },
+      { "dados": { "n": 6, "faces": 6 }, "tipo": "luz" }
+    ],
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

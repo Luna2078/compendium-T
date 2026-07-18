@@ -17,6 +17,9 @@
     "duracao": "1 dia",
     "custoPM": 6,
     "descricao": "Após uma breve união com a natureza local, você obtém informações e intuições sobre a região em que está, numa distância equivalente a um dia de viagem. Você recebe 6d4 dados de auxílio. Enquanto a magia durar, sempre que for realizar um teste de perícia em áreas naturais, você pode gastar 2d4 (mais 2d4 para cada círculo de magias acima do 3º que puder lançar) e adicionar o resultado rolado como bônus no teste. A magia termina se você ficar sem dados.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "concede_dados_auxilio_pericia_area_natural", "valor": { "dados": { "n": 6, "faces": 4 } }, "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

@@ -18,6 +18,11 @@
     "resistencia": "Fortitude reduz à metade",
     "custoPM": 1,
     "descricao": "Você canaliza energia negativa contra um alvo, causando 2d8+2 pontos de dano de trevas (ou curando 2d8+2 PV, se for um morto-vivo). Infligir Ferimentos anula Curar Ferimentos.",
+    "dano": { "dados": { "n": 2, "faces": 8 }, "fixo": 2, "tipo": "trevas", "resistencia": "Fortitude reduz à metade" },
+    "cura": { "dados": { "n": 2, "faces": 8 }, "fixo": 2 },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "cura_em_vez_de_dano_se_alvo_for_morto_vivo", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

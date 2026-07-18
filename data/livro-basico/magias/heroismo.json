@@ -20,6 +20,11 @@
     "duracao": "cena",
     "custoPM": 6,
     "descricao": "Esta magia imbui uma criatura com coragem e valentia. O alvo fica imune a medo e recebe 40 PV temporários e +4 em testes de ataque e rolagens de dano contra o inimigo de maior ND na cena.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pv.temporario", "valor": 40, "duracao": "cena", "aplicacao": "automatica" },
+      { "tipo": "capacidade", "chave": "imune_a_medo", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "bonus_ataque_e_dano_contra_maior_nd_da_cena", "valor": 4, "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

@@ -17,6 +17,11 @@
     "duracao": "sustentada",
     "custoPM": 6,
     "descricao": "Você fica coberto por um manto de energia sombria. Nesta forma, torna-se incorpóreo (inclui seu equipamento): só pode ser afetado por armas e habilidades mágicas, ou por outras criaturas incorpóreas, e pode atravessar objetos sólidos, mas não manipulá-los. Também não pode atacar criaturas normais (mas ainda pode lançar magias nelas). Além disso, se torna vulnerável à luz direta: se exposto a uma fonte de luz, sofre 1 ponto de dano por rodada.\n\nVocê pode gastar uma ação de movimento e 1 PM para \"entrar\" em uma sombra do seu tamanho ou maior e se teletransportar para outra sombra, também do seu tamanho ou maior, em alcance médio.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "torna_se_incorporeo", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "sofre_dano_por_luz_direta", "valor": 1, "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "teleporta_entre_sombras_por_pm", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+4 PM",

@@ -17,6 +17,7 @@
     "duracao": "veja texto",
     "custoPM": 10,
     "descricao": "Você entra nos sonhos de uma criatura. Uma vez lá, pode conversar com ela até que ela acorde. Se o alvo não estiver dormindo quando você lançar a magia, você pode permanecer em transe até que ele adormeça. Durante o transe, você fica indefeso e sem consciência dos arredores. Você pode sair do transe quando quiser, mas a magia termina.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

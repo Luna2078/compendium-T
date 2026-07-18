@@ -17,6 +17,7 @@
     "duracao": "cena",
     "custoPM": 1,
     "descricao": "Uma névoa espessa eleva-se de um ponto a sua escolha, obscurecendo toda a visão — criaturas a até 1,5m têm camuflagem leve e criaturas a partir de 3m têm camuflagem total. Um vento forte dispersa a névoa em 4 rodadas e um vendaval a dispersa em 1 rodada. Esta magia não funciona sob a água.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

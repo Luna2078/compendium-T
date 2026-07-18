@@ -18,6 +18,8 @@
     "resistencia": "Fortitude reduz à metade",
     "custoPM": 1,
     "descricao": "Arcos elétricos envolvem sua mão, causando 2d8+2 pontos de dano de eletricidade. Se o alvo usa armadura de metal (ou carrega muito metal, a critério do mestre), sofre uma penalidade de –5 no teste de resistência.",
+    "efeitos": [],
+    "dano": { "dados": { "n": 2, "faces": 8 }, "fixo": 2, "tipo": "eletricidade", "resistencia": "Fortitude reduz à metade" },
     "aprimoramentos": [
       {
         "custo": "+1 PM",

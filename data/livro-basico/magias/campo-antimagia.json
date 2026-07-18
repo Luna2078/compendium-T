@@ -17,6 +17,9 @@
     "duracao": "sustentada",
     "custoPM": 10,
     "descricao": "Você é cercado por uma barreira invisível com 3m de raio que o acompanha. Qualquer habilidade mágica ou item mágico que entre na área da barreira é suprimida enquanto estiver lá.\n\nCriaturas convocadas que entrem em um Campo Antimagia desaparecem. Elas reaparecem na mesma posição quando a duração do Campo termina — supondo que a duração da magia que as convocou ainda não tenha terminado.\n\nCriaturas mágicas ou imbuídas com magia durante sua criação não são diretamente afetadas pelo Campo Antimagia. Entretanto, como qualquer criatura, não poderão usar magias ou habilidades mágicas dentro dele.\n\nUma magia que dissipa outras não dissipa um Campo Antimagia, e dois Campos na mesma área não se neutralizam. Artefatos e deuses maiores não são afetados por um Campo Antimagia.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "suprime_magia_e_itens_magicos_na_area", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": []
   }
 }

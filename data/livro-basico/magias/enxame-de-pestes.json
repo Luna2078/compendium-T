@@ -18,6 +18,8 @@
     "resistencia": "Fortitude reduz à metade",
     "custoPM": 3,
     "descricao": "Você conjura um enxame de criaturas a sua escolha, como besouros, gafanhotos, ratos, morcegos ou serpentes. O enxame pode passar pelo espaço de outras criaturas e não impede que outras criaturas entrem no espaço dele. No final de seus turnos, o enxame causa 2d12 pontos de dano de corte a qualquer criatura em seu espaço (Fortitude reduz à metade). Você pode gastar uma ação de movimento para mover o enxame 12m.",
+    "dano": { "dados": { "n": 2, "faces": 12 }, "tipo": "corte", "resistencia": "Fortitude reduz à metade" },
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

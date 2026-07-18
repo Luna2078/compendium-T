@@ -17,6 +17,7 @@
     "duracao": "1 dia",
     "custoPM": 1,
     "descricao": "Você enche a área com energia negativa. Dano de trevas é maximizado dentro da área. Isso também afeta PV curados em mortos-vivos por esses efeitos. Esta magia não pode ser lançada em uma área contendo um símbolo visível dedicado a uma divindade que não a sua. Profanar anula Consagrar.",
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

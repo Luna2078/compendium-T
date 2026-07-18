@@ -18,6 +18,9 @@
     "resistencia": "Vontade anula (veja texto)",
     "custoPM": 6,
     "descricao": "Esta magia obriga o alvo a cumprir uma tarefa a sua escolha. Ela dura uma semana ou até o alvo cumprir a tarefa, o que vier primeiro. O alvo pode recusar a missão — mas, no fim de cada dia em que não se esforçar para cumprir a tarefa, deve fazer um teste de Vontade; se falhar, sofre uma penalidade cumulativa de –2 em todos os testes e rolagens. A Missão Divina não pode forçar um ato suicida, nem uma missão impossível (como matar um ser que não existe).",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "forca_cumprir_tarefa_ou_penalidade_cumulativa", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

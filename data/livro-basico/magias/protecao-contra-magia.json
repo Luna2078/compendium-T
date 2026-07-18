@@ -17,6 +17,9 @@
     "duracao": "cena",
     "custoPM": 6,
     "descricao": "Você protege o alvo contra efeitos mágicos nocivos. O alvo recebe +5 em testes de resistência contra magias.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "resistencia_magia", "valor": 5, "duracao": "cena", "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+4 PM",

@@ -18,6 +18,8 @@
     "resistencia": "Reflexos reduz à metade",
     "custoPM": 6,
     "descricao": "Você conjura um enxame de pequenas criaturas da Tormenta. O enxame pode passar pelo espaço de outras criaturas e não impede que outras criaturas entrem no espaço dele. No final de cada um de seus turnos, o enxame causa 4d12 pontos de dano de ácido a qualquer criatura em seu espaço (Reflexos reduz à metade). Você pode gastar uma ação de movimento para mover o enxame com deslocamento de 12m.",
+    "dano": { "dados": { "n": 4, "faces": 12 }, "tipo": "acido", "resistencia": "Reflexos reduz à metade" },
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

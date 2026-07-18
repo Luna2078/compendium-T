@@ -17,6 +17,10 @@
     "duracao": "cena",
     "custoPM": 1,
     "descricao": "Você modifica os limites físicos do alvo, que recebe deslocamento +9m e +10 em testes de Atletismo.",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "pericia:atletismo", "valor": 10, "duracao": "cena", "aplicacao": "automatica" },
+      { "tipo": "bonus", "alvo": "deslocamento", "valor": 9, "unidade": "m", "duracao": "cena", "aplicacao": "automatica" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+1 PM",

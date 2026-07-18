@@ -17,6 +17,11 @@
     "duracao": "ver texto",
     "custoPM": 6,
     "descricao": "Esta magia cria uma onda de escuridão que causa diversos efeitos. Magias de até 3º círculo na área são dissipadas se você passar num teste de Religião contra a CD de cada uma. Seus aliados na área são protegidos por uma aura sombria e recebem +4 na Defesa até o fim da cena. Inimigos na área ficam enjoados por 1d4 rodadas (apenas uma vez por cena). Anular a Luz anula Dispersar as Trevas (este efeito tem duração instantânea).",
+    "efeitos": [
+      { "tipo": "bonus", "alvo": "defesa", "valor": 4, "duracao": "cena", "aplicacao": "automatica" },
+      { "tipo": "capacidade", "chave": "aplica_condicao", "valor": "enjoado", "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "dissipa_magias_ate_circulo", "valor": 3, "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

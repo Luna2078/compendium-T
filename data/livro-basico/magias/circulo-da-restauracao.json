@@ -17,6 +17,11 @@
     "duracao": "5 rodadas",
     "custoPM": 10,
     "descricao": "Você evoca um círculo de luz que emana uma energia poderosa. Qualquer criatura viva que termine o turno dentro do círculo recupera 3d8+3 PV e 1 PM. Mortos-vivos e criaturas que sofrem dano por luz perdem PV e PM na mesma quantidade. Uma criatura pode recuperar no máximo 5 PM por dia com esta magia.",
+    "cura": { "dados": { "n": 3, "faces": 8 }, "fixo": 3 },
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "restaura_1_pm_por_turno_no_circulo", "valor": 5, "aplicacao": "lembrete" },
+      { "tipo": "capacidade", "chave": "dano_a_mortos_vivos_por_luz_na_area", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",

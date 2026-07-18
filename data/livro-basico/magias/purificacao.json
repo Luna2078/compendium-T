@@ -17,6 +17,9 @@
     "duracao": "instantânea",
     "custoPM": 3,
     "descricao": "Você purifica a criatura tocada, removendo uma condição dela entre abalado, apavorado, alquebrado, atordoado, cego, confuso, debilitado, enjoado, envenenado, esmorecido, exausto, fascinado, fatigado, fraco, frustrado, lento, ofuscado, paralisado, pasmo ou surdo.",
+    "efeitos": [
+      { "tipo": "capacidade", "chave": "remove_condicao_a_escolha", "aplicacao": "lembrete" }
+    ],
     "aprimoramentos": [
       {
         "custo": "+2 PM",
