@@ -17,10 +17,7 @@
     "duracao": "cena",
     "custoPM": 3,
     "descricao": "Você pode criar, moldar, mover ou extinguir chamas e emanações de calor. Ao lançar a magia, escolha um dos efeitos.\n\nChamejar: o alvo é armas escolhidas. Elas causam +1d6 de dano de fogo. Também afeta armas naturais e ataques desarmados.\n\nEsquentar: o alvo é 1 objeto, que começa a esquentar. Ele sofre 1d6 pontos de dano de fogo por rodada e causa o mesmo dano a qualquer criatura que o esteja segurando ou vestindo. A critério do mestre, o objeto ou a criatura vestindo-o também podem ficar em chamas. Uma criatura pode gastar uma ação completa para resfriar o objeto (jogando areia ou se jogando numa fonte de água próxima, por exemplo) e cancelar o efeito da magia.\n\nExtinguir: o alvo é 1 chama de tamanho Grande ou menor, que é apagada. Isso cria uma nuvem de fumaça que ocupa uma esfera com 3m de raio centrada onde estava a chama. Dentro da fumaça, criaturas têm camuflagem leve.\n\nModelar: o alvo é 1 chama de tamanho Grande ou menor. A cada rodada, você pode gastar uma ação livre para movimentá-la 9m em qualquer direção. Se atravessar o espaço ocupado por uma criatura, causa 2d6 pontos de dano de fogo. Uma criatura só pode receber dano dessa maneira uma vez por rodada.",
-    "efeitos": [
-      { "tipo": "bonus", "alvo": "dano", "valor": { "dados": { "n": 1, "faces": 6 } }, "duracao": "cena", "aplicacao": "contextual" },
-      { "tipo": "capacidade", "chave": "esquenta_extingue_ou_modela_chama", "aplicacao": "lembrete" }
-    ],
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+1 PM",
@@ -33,6 +30,45 @@
       {
         "custo": "+3 PM",
         "efeito": "Muda o alvo para 1 criatura composta principalmente por fogo, lava ou magma (como um elemental do fogo) e a resistência para Fortitude parcial. Em vez do normal, se a criatura falhar no teste de resistência, é reduzida a 0 PV. Se passar, sofre 5d6 pontos de dano."
+      }
+    ],
+    "escolhas": [
+      {
+        "id": "controlar-fogo-modo",
+        "rotulo": "efeito sobre o fogo (escolhido ao lançar)",
+        "momento": "lancamento",
+        "opcoes": [
+          {
+            "tipo": "ramo",
+            "rotulo": "Chamejar",
+            "efeitos": [
+              { "tipo": "bonus", "alvo": "dano", "valor": { "dados": { "n": 1, "faces": 6 } }, "duracao": "cena", "aplicacao": "contextual" }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Esquentar",
+            "dano": { "dados": { "n": 1, "faces": 6 }, "tipo": "fogo" },
+            "efeitos": [
+              { "tipo": "capacidade", "chave": "causa_dano_de_fogo_por_rodada_enquanto_sustentada", "aplicacao": "lembrete" }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Extinguir",
+            "efeitos": [
+              { "tipo": "capacidade", "chave": "extingue_chama_e_cria_fumaca_com_camuflagem_leve", "aplicacao": "lembrete" }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Modelar",
+            "dano": { "dados": { "n": 2, "faces": 6 }, "tipo": "fogo" },
+            "efeitos": [
+              { "tipo": "capacidade", "chave": "move_chama_9m_por_acao_livre_causando_dano_ao_atravessar_criatura", "aplicacao": "lembrete" }
+            ]
+          }
+        ]
       }
     ]
   }

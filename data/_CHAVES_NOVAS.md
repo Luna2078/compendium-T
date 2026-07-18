@@ -927,3 +927,21 @@ convertendo em PV ou remoção de condição — sem tipo de payload pra pool).
 - `bonus_2_todos_testes_pericia_aliados` (oracao): +2 em TODOS os testes de perícia de você/aliados (gap "todas as perícias").
 - `penalidade_2_dano_e_todos_testes_pericia_inimigos_no_alcance` (oracao): −2 em dano e perícias dos INIMIGOS (outra ficha).
 - `fica_indiferente_e_nao_ataca_se_falhar_resistencia` (tranquilidade): ramo de FALHA na resistência (o −2 do ramo de sucesso é lembrete, não automatica).
+
+## Magias multi-modo `controlar-*` (upgrade p/ escolhas momento:"lancamento" — 22 chaves)
+Chaves dentro de `ramo.efeitos[]` (um ramo por modo). Reaproveitada: `inverte_gravidade_area`.
+| chave | magia |
+|-------|-------|
+| `aplica_condicao_adicional_se_falhar_atletismo` | controlar-a-gravidade |
+| `congela_agua_mundana_da_area` · `derrete_gelo_mundano_e_encerra_a_magia` · `eleva_nivel_agua_ate_4_5m` · `evapora_agua_e_gelo_mundano_e_encerra_a_magia` · `reduz_nivel_agua_ate_4_5m` · `deixa_elementais_da_agua_lentos` | controlar-agua |
+| `causa_dano_de_fogo_por_rodada_enquanto_sustentada` · `extingue_chama_e_cria_fumaca_com_camuflagem_leve` · `move_chama_9m_por_acao_livre_causando_dano_ao_atravessar_criatura` | controlar-fogo |
+| `dobra_pv_do_item_de_madeira` · `remodela_a_forma_do_objeto_de_madeira` · `ataques_com_o_alvo_contra_voce_falham_automaticamente` · `objeto_de_madeira_se_abre_ou_desvia_de_voce` · `impoe_penalidade_5_em_pericia_ao_usar_o_item_retorcido` · `escudo_retorcido_perde_bonus_de_defesa_mas_mantem_penalidades` | controlar-madeira |
+| `gera_bolha_de_tempo_lento_3_rodadas_so_para_voce` · `transporta_ate_6_criaturas_1_a_24_horas_ao_futuro` · `desfaz_a_ultima_rodada_uma_vez` | controlar-o-tempo |
+| `cria_terreno_dificil_de_areia_ou_argila_se_atingir_o_piso` · `cria_objetos_ou_paredes_de_pedra_ou_argila` · `transforma_lama_ou_areia_em_terra_ou_pedra` | controlar-terra |
+
+## Magias — lembrete-rico (decisão de categoria; ver PROGRESSO regra 23)
+- `menu_ataques_alternativos_por_turno_*` (furia-do-panteao, relampago-flamejante-de-reynard)
+- `pool_100_pontos_de_luz_gasta_a_vontade_1pv_por_ponto_ou_condicao_por_3` (guardiao-divino) — PRIMITIVA de recurso-consumível
+- `efeito_escalona_por_nivel_ou_nd_do_alvo_3_faixas_x_passa_falha` (explosao-caleidoscopica)
+- `espelha_dano_e_condicoes_a_um_terceiro_vinculado` (ligacao-sombria)
+- `concede_vantagem_rolar_2d20_e_pegar_o_maior_em_um_teste` (orientacao) — FLAG DE PROMOÇÃO → `modo_rolagem` se recorrer

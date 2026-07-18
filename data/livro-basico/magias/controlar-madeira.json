@@ -17,9 +17,7 @@
     "duracao": "cena",
     "custoPM": 3,
     "descricao": "Você molda, retorce, altera ou repele madeira. Se lançar esta magia num objeto de uma criatura involuntária, ela tem direito a um teste de Vontade para anulá-la. Ao lançar a magia, escolha um dos efeitos.\n\nFortalecer: deixa o alvo mais resistente. Armas têm seu dano aumentado em um passo. Escudos têm seu bônus de Defesa aumentado em +2 (isso é uma melhoria no item, portanto é cumulativa com outras magias). Esses e outros itens de madeira recebem +5 na RD e dobram seus PV.\n\nModelar: muda a forma do alvo. Pode transformar um galho em espada, criar uma porta onde antes havia apenas uma parede, transformar um tronco em uma caixa... Mas não pode criar mecanismos complexos (como uma besta) ou itens consumíveis.\n\nRepelir: o alvo é repelido por você. Se for uma arma, ataques feitos com ela contra você falham automaticamente. Se for uma porta ou outro objeto que possa ser aberto, ele vai se abrir quando você se aproximar, mesmo que esteja trancado. Um objeto que vá atingi-lo, como uma carroça, tronco ou barril, vai desviar ou parar adjacente a você, sem lhe causar dano. Os efeitos de regras em outros objetos de madeira ficam a cargo do mestre.\n\nRetorcer: estraga o alvo. Uma porta retorcida emperra (exigindo um teste de Força contra CD 25 para ser aberta). Armas e itens retorcidos impõem –5 em testes de perícia. Escudos retorcidos deixam de oferecer bônus (mas ainda impõem penalidades). Um barco retorcido começa a afundar e naufraga ao final da cena. Os efeitos de regras em outros objetos de madeira ficam a cargo do mestre.",
-    "efeitos": [
-      { "tipo": "capacidade", "chave": "fortalece_modela_repele_ou_retorce_madeira", "aplicacao": "lembrete" }
-    ],
+    "efeitos": [],
     "aprimoramentos": [
       {
         "custo": "+1 PM",
@@ -38,6 +36,48 @@
         "custo": "+12 PM",
         "efeito": "Muda o tamanho do alvo para Colossal ou menor.",
         "requisitoCirculo": 4
+      }
+    ],
+    "escolhas": [
+      {
+        "id": "controlar-madeira-modo",
+        "rotulo": "efeito sobre a madeira (escolhido ao lançar)",
+        "momento": "lancamento",
+        "opcoes": [
+          {
+            "tipo": "ramo",
+            "rotulo": "Fortalecer",
+            "efeitos": [
+              { "tipo": "passo_de_dado", "alvo": "dano", "passos": 1, "condicao": { "quando": "sempre" }, "aplicacao": "contextual" },
+              { "tipo": "bonus", "alvo": "defesa", "valor": 2, "duracao": "cena", "aplicacao": "automatica" },
+              { "tipo": "bonus", "alvo": "reducao_dano", "valor": 5, "duracao": "cena", "aplicacao": "automatica" },
+              { "tipo": "capacidade", "chave": "dobra_pv_do_item_de_madeira", "aplicacao": "lembrete" }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Modelar",
+            "efeitos": [
+              { "tipo": "capacidade", "chave": "remodela_a_forma_do_objeto_de_madeira", "aplicacao": "lembrete" }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Repelir",
+            "efeitos": [
+              { "tipo": "capacidade", "chave": "ataques_com_o_alvo_contra_voce_falham_automaticamente", "aplicacao": "lembrete" },
+              { "tipo": "capacidade", "chave": "objeto_de_madeira_se_abre_ou_desvia_de_voce", "aplicacao": "lembrete" }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Retorcer",
+            "efeitos": [
+              { "tipo": "capacidade", "chave": "impoe_penalidade_5_em_pericia_ao_usar_o_item_retorcido", "valor": -5, "aplicacao": "lembrete" },
+              { "tipo": "capacidade", "chave": "escudo_retorcido_perde_bonus_de_defesa_mas_mantem_penalidades", "aplicacao": "lembrete" }
+            ]
+          }
+        ]
       }
     ]
   }
