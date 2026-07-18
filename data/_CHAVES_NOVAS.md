@@ -771,3 +771,9 @@ Outros: `rerola_teste_resistencia_por_pm` (hynne), `soma_inteligencia_a_teste_pe
 | `concede_nivel_em_classe_existente_ao_incrustar` | ao incrustar o Rubi no corpo (Cura CD 25, 1 dia de efeito), o portador ganha um nível em uma classe que já possui | `os-rubis-da-virtude` |
 | `bonus_resistencias_cumulativo_por_rubi` | cada Rubi equipado adiciona +1 em todos os testes de resistência (cumulativo com outros rubis e outros efeitos) | `os-rubis-da-virtude` |
 | `indetectavel_por_magia_magias_adivinhacao_precisam_misticismo_cd30` | o portador de Rubis é mais difícil de observar por magia; conjurador deve passar em Misticismo CD 30 + quantidade de rubis para que adivinhação funcione | `os-rubis-da-virtude` |
+
+## Magias — chave de LINK (fork 2)
+- `aplica_condicao` (magias/*, ~20+): `capacidade` `lembrete`, `valor` = id da condição imposta ao ALVO
+  (sono→`inconsciente`, amedrontar→`apavorado`, raio-do-enfraquecimento→`fatigado`…). É LINK magia→condição,
+  não cálculo na ficha do conjurador. A MECÂNICA da condição (ex.: "−2 em testes") vive em `condicoes/<id>.json`
+  como `efeitos[]` de verdade (arquitetura de 3 camadas — ver PROGRESSO, bloco magias). NÃO inventar número aqui.

@@ -91,6 +91,11 @@ Propositor, não autoridade final — tudo é revisado por humano antes de virar
 20. **CAMPOS "por identidade do personagem" são uma FAMÍLIA** (`personagem.raca`, e virão `personagem.classe`,
     `personagem.origem`…). Conhecíveis pela ficha → CALCULAM (regra 9). Tratar como família coesa, não campos
     soltos: ao encontrar "se você é um <classe/origem>", criar o `personagem.<x>` irmão, não um campo ad-hoc.
+21. **INVARIANTE DE OURO — `efeitos[]` só escreve na FICHA PRÓPRIA (do portador).** calcularFicha processa
+    qualquer efeito do array sem perguntar "de quem é a ficha". Payload que mira OUTRA ficha (dano/cura de
+    magia dirigido ao alvo) NÃO entra no array → vira campo estruturado da mecânica (`mecanica.dano`/`cura`,
+    reusando `Dados`). Condição imposta ao inimigo → `aplica_condicao` (link); a MECÂNICA da condição vive na
+    entidade da condição (3 camadas — ver bloco magias). Nunca meta efeito-que-mira-outra-ficha no `efeitos[]`.
 
 ## Ordem de ataque (fatia vertical: Livro Básico primeiro)
 Dentro do Básico, do mais fácil/direto (mapeia 1:1 nos exemplos-ouro) ao mais delicado:
@@ -347,7 +352,41 @@ RD-por-tipo: agentes inconsistentes (uns calcularam, uns lembrete) → uniformiz
   contagem-de-item equipado (extensão conhecida de `contar()`), "liderando" (estado de combate). Ver `_CAMPOS_NOVOS.md`.
 - 3 artefatos (baralho/olho/rubis) fechados como **lembrete-rico** (regra 19) — flag de quarentena removida.
 
-### Próximo: `magias/` (198) — `Aprimoramento`/`resolverConjuracao`; exercita `duracao` (cena/dia) e `custo_magia`.
+### 🔶 `magias/` (198) — DECISÕES DE CONTRATO FIXADAS (passe de vocabulário + 2 forks decididos) — fan-out a seguir
+**INVARIANTE DE OURO (regra 21):** `efeitos[]` SÓ escreve na FICHA PRÓPRIA (do portador), para calcularFicha
+processar qualquer efeito sem perguntar "de quem é a ficha". Payload que mira OUTRA ficha (dano/cura de magia)
+NÃO entra no array → vira campo estruturado da mecânica. Consumidor nunca precisa desambiguar destino.
+
+**FORK 1 — dano/cura base = HÍBRIDA (não meio-termo; é a modelagem correta).** Separado por DESTINO DA ESCRITA:
+- Buff que aterrissa no conjurador/alvo-buffado → `mecanica.efeitos[]` (`bonus`/`substituicao`, com `duracao`).
+- Dano/cura que mira outra criatura → **`mecanica.dano` / `mecanica.cura`** (FORA do array). Tipos novos
+  `DanoMagia`/`CuraMagia` em efeitos.ts, REUSANDO `Dados` (`{n,faces,passo?}`), NÃO formato paralelo.
+  - `mecanica.dano`: `{ dados?, fixo?, tipo?, resistencia? }`. `tipo` usa a MESMA LÍNGUA de `dano.tipo`
+    (fogo/frio/trevas/impacto/corte...). Múltiplos tipos (chuva-de-meteoros 15d6 impacto + 15d6 fogo) → array.
+  - `mecanica.cura`: `{ dados?, fixo? }`. Ex.: Curar Ferimentos = `{ dados:{n:2,faces:8}, fixo:2 }`.
+- schema.ts (site) recebeu `DadosSchema`/`DanoMagiaSchema`/`CuraMagiaSchema` + campos `dano`/`cura`/`efeitos`.
+
+**FORK 2 — condição imposta ao inimigo = LINK (com distinção de CAMADA explícita).** Na magia:
+`capacidade` chave `aplica_condicao`, `valor` = id da condição, `aplicacao: "lembrete"`. Isso é o LINK
+magia→condição (a magia aponta; NÃO calcula nada na ficha do conjurador — a condição atinge o ALVO).
+- **ARQUITETURA DE 3 CAMADAS (para o LOTE DE CONDIÇÕES futuro — anotar e executar lá, NÃO agora):**
+  1. A magia APONTA pra condição (`aplica_condicao` = link). ← é o que o fan-out de magias faz.
+  2. A condição CONTÉM a mecânica: "Fatigado = −2 em testes X" são `efeitos[]` ESTRUTURADOS (bonus −2)
+     que vivem em `fatigado.json`, NÃO na magia. Isso NÃO é lembrete — é `bonus` de verdade.
+  3. A mecânica aplica-se a QUEM CARREGA a condição, na ficha própria: quando o personagem ESTÁ fatigado,
+     calcularFicha processa os `efeitos[]` da condição como qualquer debuff ativável (aparece "−2 por Fatigado"
+     na ficha dele; some quando a condição sai). A magia não calcula o −2 (não é dela); a condição sim.
+  → Quando extrair `condicoes/`, modelar os `efeitos[]` da condição DE VERDADE (bonus/substituicao), não prosa.
+
+**DEFAULTS aplicados (contrato):** `Duracao` += `"sustentada"` (31 magias; fora da régua de tempo — encerra por
+ação do conjurador). Nota `atr.*` afrouxada (buff temporário de magia OK, distinto de Aumento de Atributo pela
+`duracao`). Convenção "whose sheet": `efeitos[]` da magia aplicam-se ao alvo resolvido por `mecanica.alvo`/`alcance`.
+Aprimoramentos ficam em prosa (`custo`+`efeito`), como a interface `Aprimoramento` já prescreve. Durações
+"…até ser descarregada" → texto de encerramento; "1 semana"/"4d12 horas"/turno-relativas → prosa/`_DURACOES_COMBATE.md`.
+**DÍVIDA técnica (não bloqueia):** aprimoramentos usam `custo:"+N PM"` (string); `resolverConjuracao()` soma
+`custoPM:number` — 501 entradas precisariam de parse `"+N PM"→número` + `id` se um dia entrarem no motor.
+
+### Próximo: fan-out de `magias/` (198) — `Aprimoramento`/`resolverConjuracao`; exercita `duracao` (cena/dia) e `custo_magia`.
 Passe de vocabulário rodou (glossário de 56 chaves + 7 patterns no `_CHAVES_NOVAS.md`) → drift baixíssimo no fan-out.
 Onda 1 (arcanista, barbaro, bardo, bucaneiro, cacador, cavaleiro, clerigo): ~160 habilidades/poderes, todos válidos.
 13 `precisaRevisao` que se agrupam em **6 GAPS DE CONTRATO recorrentes** (A–G em `_REVISAO_PENDENTE.md`) — vão

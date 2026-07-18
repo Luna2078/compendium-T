@@ -61,7 +61,9 @@ export type Variavel = (typeof VARIAVEIS)[number];
 // Stats computados. Lista fechada. Perícias usam o padrão `pericia:<id>`.
 // ===================================================================
 export const ALVOS = [
-  // atributos (escrita só por Aumento de Atributo)
+  // atributos — escrita PERMANENTE por Aumento de Atributo, OU bônus TEMPORÁRIO de magia com `duracao`
+  // (ex.: potencia-divina For+4 por cena, alterar-tamanho For+2). O bônus temporário não é a escrita
+  // permanente; ambos aterrissam no mesmo ALVO, distintos pela `duracao`.
   "atr.for", "atr.des", "atr.con", "atr.int", "atr.sab", "atr.car",
   // derivados
   "pv.max", "pv.atual", "pv.temporario", "pm.max", "pm.temporario", "defesa", "deslocamento",

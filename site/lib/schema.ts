@@ -231,6 +231,25 @@ export const AprimoramentoMagiaSchema = z.object({
 });
 export type AprimoramentoMagia = z.infer<typeof AprimoramentoMagiaSchema>;
 
+// Dados de rolagem (espelha `Dados` de data/efeitos.ts). `n` é Valor (número ou expr).
+export const DadosSchema = z.object({
+  n: z.union([z.number(), z.object({ expr: z.string() })]),
+  faces: z.union([z.literal(4), z.literal(6), z.literal(8), z.literal(10), z.literal(12), z.literal(20)]).optional(),
+  comoArma: z.literal(true).optional(),
+  passo: z.union([z.number(), z.object({ expr: z.string() })]).optional(),
+});
+// Payload de dano/cura de MAGIA — mira outra criatura, fica FORA de `efeitos[]` (invariante de ficha própria).
+export const DanoMagiaSchema = z.object({
+  dados: DadosSchema.optional(),
+  fixo: z.number().optional(),
+  tipo: z.string().optional(),        // mesma língua de `dano.tipo` (fogo/frio/trevas/impacto/corte...)
+  resistencia: z.string().optional(),
+});
+export const CuraMagiaSchema = z.object({
+  dados: DadosSchema.optional(),
+  fixo: z.number().optional(),
+});
+
 export const MagiaMecanicaSchema = z.object({
   tipo: z.string(),               // "arcana" | "divina" | "universal"
   circulo: z.number().int().min(1).max(5),
@@ -247,6 +266,9 @@ export const MagiaMecanicaSchema = z.object({
   truque: z.string().optional(),
   descricao: z.string(),
   aprimoramentos: z.array(AprimoramentoMagiaSchema).default([]),
+  dano: z.union([DanoMagiaSchema, z.array(DanoMagiaSchema)]).optional(), // payload de dano (mira alvo)
+  cura: CuraMagiaSchema.optional(),                                       // payload de cura (mira alvo)
+  efeitos: z.array(z.any()).optional(),                                   // buffs que aterrissam na ficha
 });
 export type MagiaMecanica = z.infer<typeof MagiaMecanicaSchema>;
 

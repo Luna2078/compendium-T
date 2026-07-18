@@ -36,7 +36,26 @@ export type Duracao =
   | "instantanea" | "rodada" | "cena" | "dia"
   | "aventura"     // o mestre "avança a aventura" e estes efeitos resetam
   | "campanha"
-  | "permanente";
+  | "permanente"
+  | "sustentada";  // concentração: NÃO expira por tempo — termina quando o conjurador PARA de sustentar.
+                   // Fora da régua de tempo (o rastreador não a varre; o jogador a encerra). 31 magias.
+
+// ====================================================================
+// PAYLOAD DE MAGIA — dano/cura que MIRA OUTRA CRIATURA (fica em `mecanica.dano`/`mecanica.cura`,
+// FORA de `efeitos[]`). Invariante de ouro: `efeitos[]` só escreve na FICHA PRÓPRIA (do portador),
+// para calcularFicha processar sem perguntar "de quem é a ficha". Dano/cura de magia mira o ALVO,
+// não o conjurador → não entra no array; vira campo estruturado da mecânica. Reusa `Dados`.
+// Múltiplos tipos de dano (ex.: chuva-de-meteoros: 15d6 impacto + 15d6 fogo) → array de DanoMagia.
+export type DanoMagia = {
+  dados?: Dados;         // ex.: { n: 8, faces: 6 }
+  fixo?: number;         // parcela fixa somada aos dados (ex.: +2)
+  tipo?: string;         // MESMA LÍNGUA de `dano.tipo` do namespace (fogo/frio/trevas/impacto/corte...)
+  resistencia?: string;  // ex.: "Reflexos reduz à metade" — espelha `mecanica.resistencia` quando específico
+};
+export type CuraMagia = {
+  dados?: Dados;         // ex.: { n: 2, faces: 8 }
+  fixo?: number;         // ex.: 2  →  Curar Ferimentos = { dados: { n: 2, faces: 8 }, fixo: 2 }
+};
 
 export type Aplicacao =
   | "automatica"  // entra direto num stat persistente (PV, Defesa, perícia, PM máx)
