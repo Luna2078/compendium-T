@@ -204,17 +204,57 @@
         "nome": "Devoto Fiel",
         "nivel": 1,
         "descricao": "Você se torna devoto de um deus disponível para druidas (Allihanna, Megalokk ou Oceano). Veja as regras de devotos na página 96. Ao contrário de devotos normais, você recebe dois poderes concedidos por se tornar devoto, em vez de apenas um.",
-        "precisaRevisao": true,
         "efeitos": [
           {
             "tipo": "capacidade",
-            "chave": "torna_se_devoto_druida",
-            "aplicacao": "lembrete"
-          },
+            "chave": "recebe_dois_poderes_concedidos_em_vez_de_um",
+            "aplicacao": "lembrete",
+            "valor": 2
+          }
+        ],
+        "escolhas": [
           {
-            "tipo": "capacidade",
-            "chave": "recebe_dois_poderes_concedidos_devoto",
-            "aplicacao": "lembrete"
+            "id": "druida-devoto-divindade",
+            "rotulo": "divindade disponível para druidas",
+            "momento": "criacao",
+            "opcoes": [
+              {
+                "tipo": "ramo",
+                "rotulo": "Allihanna",
+                "efeitos": [
+                  {
+                    "tipo": "capacidade",
+                    "chave": "devoto_de",
+                    "aplicacao": "lembrete",
+                    "valor": "allihanna"
+                  }
+                ]
+              },
+              {
+                "tipo": "ramo",
+                "rotulo": "Megalokk",
+                "efeitos": [
+                  {
+                    "tipo": "capacidade",
+                    "chave": "devoto_de",
+                    "aplicacao": "lembrete",
+                    "valor": "megalokk"
+                  }
+                ]
+              },
+              {
+                "tipo": "ramo",
+                "rotulo": "Oceano",
+                "efeitos": [
+                  {
+                    "tipo": "capacidade",
+                    "chave": "devoto_de",
+                    "aplicacao": "lembrete",
+                    "valor": "oceano"
+                  }
+                ]
+              }
+            ]
           }
         ]
       },

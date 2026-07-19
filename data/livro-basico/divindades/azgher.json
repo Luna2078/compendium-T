@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Azgher",
   "resumo": "Deus do Sol, severo guardião dos viajantes e protetor dos desertos.",
-  "fonte": { "livro": "livro-basico", "pagina": 98 },
-  "imagens": ["/divindades/azgher.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 98
+  },
+  "imagens": [
+    "/divindades/azgher.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Positiva",
     "armaPreferida": "Cimitarra.",
     "devotos": "Aggelus, qareen, arcanistas, bárbaros, caçadores, cavaleiros, guerreiros, nobres, paladinos.",
-    "poderesConcedidos": ["Espada Solar", "Fulgor Solar", "Habitante do Deserto", "Inimigo de Tenebra"],
-    "obrigacoesRestricoes": "Devotos de Azgher devem manter o rosto sempre coberto (com uma máscara, capuz ou trapos). Sua face pode ser revelada apenas ao sumo-sacerdote ou em seu funeral. Devotos do Sol também devem doar para a igreja de Azgher 20% de qualquer tesouro obtido. Essa doação deve ser feita em ouro, seja na forma de moedas ou itens."
+    "poderesConcedidos": [
+      "Espada Solar",
+      "Fulgor Solar",
+      "Habitante do Deserto",
+      "Inimigo de Tenebra"
+    ],
+    "obrigacoesRestricoes": "Devotos de Azgher devem manter o rosto sempre coberto (com uma máscara, capuz ou trapos). Sua face pode ser revelada apenas ao sumo-sacerdote ou em seu funeral. Devotos do Sol também devem doar para a igreja de Azgher 20% de qualquer tesouro obtido. Essa doação deve ser feita em ouro, seja na forma de moedas ou itens.",
+    "armaPreferidaId": "cimitarra",
+    "poderesConcedidosIds": [
+      "espada-solar",
+      "fulgor-solar",
+      "habitante-do-deserto",
+      "inimigo-de-tenebra"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

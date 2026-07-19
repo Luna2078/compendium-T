@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Thwor",
   "resumo": "Imperador bugbear ascendido como o Deus dos Goblinoides.",
-  "fonte": { "livro": "livro-basico", "pagina": 104 },
-  "imagens": ["/divindades/thwor.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 104
+  },
+  "imagens": [
+    "/divindades/thwor.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Qualquer",
     "armaPreferida": "Machado de guerra.",
     "devotos": "Qualquer duyshidakk (veja abaixo).",
-    "poderesConcedidos": ["Almejar o Impossível", "Fúria Divina", "Olhar Amedrontador", "Tropas Duyshidakk"],
-    "obrigacoesRestricoes": "Não importando sua raça, o devoto de Thwor deve ser duyshidakk — ou seja, aceito como membro do povo goblinoide. Também deve se esforçar para que o \"Mundo Como Deve Ser\" tome o continente (veja a página 386). Deve sempre procurar fazer alianças com goblinoides e só lutar contra eles em último caso."
+    "poderesConcedidos": [
+      "Almejar o Impossível",
+      "Fúria Divina",
+      "Olhar Amedrontador",
+      "Tropas Duyshidakk"
+    ],
+    "obrigacoesRestricoes": "Não importando sua raça, o devoto de Thwor deve ser duyshidakk — ou seja, aceito como membro do povo goblinoide. Também deve se esforçar para que o \"Mundo Como Deve Ser\" tome o continente (veja a página 386). Deve sempre procurar fazer alianças com goblinoides e só lutar contra eles em último caso.",
+    "armaPreferidaId": "machado-de-guerra",
+    "poderesConcedidosIds": [
+      "almejar-o-impossivel",
+      "furia-divina",
+      "olhar-amedrontador",
+      "tropas-duyshidakk"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

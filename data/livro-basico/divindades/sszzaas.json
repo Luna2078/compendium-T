@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Sszzaas",
   "resumo": "O sibilante Deus da Traição, o mais inteligente e perigoso dos deuses.",
-  "fonte": { "livro": "livro-basico", "pagina": 103 },
-  "imagens": ["/divindades/sszzaas.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 103
+  },
+  "imagens": [
+    "/divindades/sszzaas.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Negativa",
     "armaPreferida": "Adaga",
     "devotos": "Medusas, arcanistas, bardos, bucaneiros, inventores, ladinos, nobres.",
-    "poderesConcedidos": ["Astúcia da Serpente", "Familiar Ofídico", "Presas Venenosas", "Sangue Ofídico"],
-    "obrigacoesRestricoes": "O devoto deve fazer um ato de traição, intriga ou corrupção por dia (ou por sessão de jogo, o que demorar mais) como oferenda a Sszzaas. Pouco importa se o alvo é aliado ou inimigo — uns poucos sszzaazitas usam seus métodos torpes para ajudar colegas aventureiros em suas missões, às vezes sem que eles próprios saibam.\n\nSugerir a alguém que foi traído pelo cônjuge, influenciar um guarda a aceitar suborno, instruir um mercador a roubar nos preços, incriminar alguém por um crime que não cometeu, enganar um guerreiro para que mate um oponente rendido e inofensivo... Em termos de jogo, uma ação exigindo um teste de Enganação com CD mínima 15 + metade do seu nível."
+    "poderesConcedidos": [
+      "Astúcia da Serpente",
+      "Familiar Ofídico",
+      "Presas Venenosas",
+      "Sangue Ofídico"
+    ],
+    "obrigacoesRestricoes": "O devoto deve fazer um ato de traição, intriga ou corrupção por dia (ou por sessão de jogo, o que demorar mais) como oferenda a Sszzaas. Pouco importa se o alvo é aliado ou inimigo — uns poucos sszzaazitas usam seus métodos torpes para ajudar colegas aventureiros em suas missões, às vezes sem que eles próprios saibam.\n\nSugerir a alguém que foi traído pelo cônjuge, influenciar um guarda a aceitar suborno, instruir um mercador a roubar nos preços, incriminar alguém por um crime que não cometeu, enganar um guerreiro para que mate um oponente rendido e inofensivo... Em termos de jogo, uma ação exigindo um teste de Enganação com CD mínima 15 + metade do seu nível.",
+    "armaPreferidaId": "adaga",
+    "poderesConcedidosIds": [
+      "astucia-da-serpente",
+      "familiar-ofidico",
+      "presas-venenosas",
+      "sangue-ofidico"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

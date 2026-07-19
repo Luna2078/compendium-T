@@ -478,8 +478,29 @@
         "nome": "Arma Sagrada",
         "descricao": "Quando usa Golpe Divino para atacar com a arma preferida de sua divindade, o dado de dano que você rola por Golpe Divino aumenta para d12.",
         "prerequisito": "devoto de uma divindade (exceto Lena e Marah)",
-        "precisaRevisao": true,
-        "efeitos": [],
+        "efeitos": [
+          {
+            "tipo": "modifica_poder",
+            "alvo": "golpe-divino",
+            "patch": {
+              "valor": {
+                "dados": {
+                  "n": {
+                    "expr": "ceil(nivel / 4)"
+                  },
+                  "faces": 12
+                }
+              },
+              "condicao": {
+                "campo": "arma.preferida_divindade",
+                "em": [
+                  "sim"
+                ]
+              }
+            },
+            "aplicacao": "contextual"
+          }
+        ],
         "_revisao": "A condição arma preferida da divindade não existe em CAMPOS_CONDICAO. O dado sobe de d8 para d12 (2 passos), não modelável limpo via passo_de_dado sem o campo condicional. Chute: modifica_poder golpe-divino adicionaEfeito passo_de_dado +2 com condicao arma.id==arma_preferida_divindade."
       },
       {

@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Megalokk",
   "resumo": "Deus dos Monstros, da selvageria e do descontrole.",
-  "fonte": { "livro": "livro-basico", "pagina": 101 },
-  "imagens": ["/divindades/megalokk.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 101
+  },
+  "imagens": [
+    "/divindades/megalokk.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Negativa",
     "armaPreferida": "Maça.",
     "devotos": "Goblins, medusas, minotauros, sulfure, trogs, bárbaros, caçadores, druidas, lutadores.",
-    "poderesConcedidos": ["Olhar Amedrontador", "Presas Primordiais", "Urro Divino", "Voz dos Monstros"],
-    "obrigacoesRestricoes": "Devotos de Megalokk devem rejeitar os modos civilizados e se entregar à ferocidade, descontrole e impaciência. Você é proibido de usar perícias baseadas em Inteligência ou Carisma (exceto Adestramento e Intimidação) e não pode preparar uma ação, escolher 10 ou 20 em testes e lançar magias sustentadas (pois são ações que exigem foco e paciência)."
+    "poderesConcedidos": [
+      "Olhar Amedrontador",
+      "Presas Primordiais",
+      "Urro Divino",
+      "Voz dos Monstros"
+    ],
+    "obrigacoesRestricoes": "Devotos de Megalokk devem rejeitar os modos civilizados e se entregar à ferocidade, descontrole e impaciência. Você é proibido de usar perícias baseadas em Inteligência ou Carisma (exceto Adestramento e Intimidação) e não pode preparar uma ação, escolher 10 ou 20 em testes e lançar magias sustentadas (pois são ações que exigem foco e paciência).",
+    "armaPreferidaId": "maca",
+    "poderesConcedidosIds": [
+      "olhar-amedrontador",
+      "presas-primordiais",
+      "urro-divino",
+      "voz-dos-monstros"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -4,7 +4,7 @@ import { join } from "node:path";
 import {
   EntidadeSchema, RacaMecanicaSchema, ClasseMecanicaSchema, OrigemMecanicaSchema,
   PericiaMecanicaSchema, PoderMecanicaSchema, ItemMecanicaSchema,
-  ItemMagicoMecanicaSchema, MagiaMecanicaSchema,
+  ItemMagicoMecanicaSchema, MagiaMecanicaSchema, DivindadeMecanicaSchema,
 } from "../lib/schema";
 import type { ZodType } from "zod";
 
@@ -14,7 +14,7 @@ const TIPADO: Record<string, ZodType> = {
   poderes: PoderMecanicaSchema, racas: RacaMecanicaSchema, origens: OrigemMecanicaSchema,
   classes: ClasseMecanicaSchema, itens: ItemMecanicaSchema,
   "itens-magicos": ItemMagicoMecanicaSchema, magias: MagiaMecanicaSchema,
-  pericias: PericiaMecanicaSchema,
+  pericias: PericiaMecanicaSchema, divindades: DivindadeMecanicaSchema,
 };
 
 const RAIZ = join(__dirname, "..", "..", "data");
@@ -27,6 +27,7 @@ const PASTAS: Array<[string, string]> = [
   ["itens-magicos", "livro-basico/itens-magicos"],
   ["magias", "livro-basico/magias"],
   ["pericias", "livro-basico/pericias"],
+  ["divindades", "livro-basico/divindades"],
 ];
 
 // Conta efeitos MECÂNICOS (objeto com `tipo`) em QUALQUER profundidade:

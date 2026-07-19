@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Wynna",
   "resumo": "A exuberante Deusa da Magia, que concede magia a todos que pedem.",
-  "fonte": { "livro": "livro-basico", "pagina": 105 },
-  "imagens": ["/divindades/wynna.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 105
+  },
+  "imagens": [
+    "/divindades/wynna.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Qualquer",
     "armaPreferida": "Adaga",
     "devotos": "Elfos, golens, qareen, sílfides, arcanistas, bardos.",
-    "poderesConcedidos": ["Bênção do Mana", "Centelha Mágica", "Escudo Mágico", "Teurgista Místico"],
-    "obrigacoesRestricoes": "Assim como a magia jamais deve ser negada para quem a busca, devotos de Wynna devem praticar a bondade e a generosidade de sua deusa, jamais recusando um pedido de ajuda de alguém inocente. Além disso, devotos de Wynna são proibidos de matar seres mágicos (elfos, qareen, sílfides e outros a critério do mestre) e conjuradores arcanos."
+    "poderesConcedidos": [
+      "Bênção do Mana",
+      "Centelha Mágica",
+      "Escudo Mágico",
+      "Teurgista Místico"
+    ],
+    "obrigacoesRestricoes": "Assim como a magia jamais deve ser negada para quem a busca, devotos de Wynna devem praticar a bondade e a generosidade de sua deusa, jamais recusando um pedido de ajuda de alguém inocente. Além disso, devotos de Wynna são proibidos de matar seres mágicos (elfos, qareen, sílfides e outros a critério do mestre) e conjuradores arcanos.",
+    "armaPreferidaId": "adaga",
+    "poderesConcedidosIds": [
+      "bencao-do-mana",
+      "centelha-magica",
+      "escudo-magico",
+      "teurgista-mistico"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

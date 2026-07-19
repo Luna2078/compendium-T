@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Nimb",
   "resumo": "Deus do Caos, da sorte, do azar e da loucura.",
-  "fonte": { "livro": "livro-basico", "pagina": 102 },
-  "imagens": ["/divindades/nimb.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 102
+  },
+  "imagens": [
+    "/divindades/nimb.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,37 @@
     "canalizaEnergia": "Qualquer",
     "armaPreferida": "Nenhuma e todas! Ao usar um efeito que dependa de arma preferida, qualquer arma (ou outro objeto!) pode aparecer, de acordo com o mestre.",
     "devotos": "Goblins, qareen, sílfides, arcanistas, bárbaros, bardos, bucaneiros, inventores, ladinos.",
-    "poderesConcedidos": ["Êxtase da Loucura", "Poder Oculto", "Sorte dos Loucos", "Transmissão da Loucura"],
-    "obrigacoesRestricoes": "Por serem incapazes de seguir regras, estes devotos não têm \"obrigações\" verdadeiras (portanto, nunca perdem PM por descumprirem suas O&R). No entanto, sofrem certas restrições que não podem ignorar. Devotos de Nimb são loucos (ou agem como se fossem), não conseguindo convencer ninguém de coisa alguma. Você sofre –5 em testes de perícias baseadas em Carisma. Além disso, no início de cada cena de ação, role 1d6. Com um resultado 1, você fica confuso (mesmo que seja imune a esta condição)."
+    "poderesConcedidos": [
+      "Êxtase da Loucura",
+      "Poder Oculto",
+      "Sorte dos Loucos",
+      "Transmissão da Loucura"
+    ],
+    "obrigacoesRestricoes": "Por serem incapazes de seguir regras, estes devotos não têm \"obrigações\" verdadeiras (portanto, nunca perdem PM por descumprirem suas O&R). No entanto, sofrem certas restrições que não podem ignorar. Devotos de Nimb são loucos (ou agem como se fossem), não conseguindo convencer ninguém de coisa alguma. Você sofre –5 em testes de perícias baseadas em Carisma. Além disso, no início de cada cena de ação, role 1d6. Com um resultado 1, você fica confuso (mesmo que seja imune a esta condição).",
+    "armaPreferidaId": null,
+    "poderesConcedidosIds": [
+      "extase-da-loucura",
+      "poder-oculto",
+      "sorte-dos-loucos",
+      "transmissao-da-loucura"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "qualquer_arma_conta_como_preferida_a_criterio_do_mestre",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

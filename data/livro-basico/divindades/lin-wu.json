@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Lin-Wu",
   "resumo": "O honrado Deus Samurai, patrono da honra, da coragem e do Império de Jade.",
-  "fonte": { "livro": "livro-basico", "pagina": 100 },
-  "imagens": ["/divindades/lin-wu.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 100
+  },
+  "imagens": [
+    "/divindades/lin-wu.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Qualquer",
     "armaPreferida": "Katana.",
     "devotos": "Anões, cavaleiros, guerreiros, nobres, paladinos.",
-    "poderesConcedidos": ["Coragem Total", "Kiai Divino", "Mente Vazia", "Tradição de Lin-Wu"],
-    "obrigacoesRestricoes": "Antigas proibições quanto a devotos estrangeiros ou do gênero feminino não mais se aplicam. No entanto, devotos de Lin-Wu ainda devem demonstrar comportamento honrado, jamais recorrendo a mentiras e subterfúgios. Em termos de jogo, são proibidos de tentar qualquer ação que exigiria um teste de Enganação, Furtividade ou Ladinagem."
+    "poderesConcedidos": [
+      "Coragem Total",
+      "Kiai Divino",
+      "Mente Vazia",
+      "Tradição de Lin-Wu"
+    ],
+    "obrigacoesRestricoes": "Antigas proibições quanto a devotos estrangeiros ou do gênero feminino não mais se aplicam. No entanto, devotos de Lin-Wu ainda devem demonstrar comportamento honrado, jamais recorrendo a mentiras e subterfúgios. Em termos de jogo, são proibidos de tentar qualquer ação que exigiria um teste de Enganação, Furtividade ou Ladinagem.",
+    "armaPreferidaId": "katana",
+    "poderesConcedidosIds": [
+      "coragem-total",
+      "kiai-divino",
+      "mente-vazia",
+      "tradicao-de-lin-wu"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

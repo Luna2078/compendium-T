@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Tanna-Toh",
   "resumo": "A Deusa do Conhecimento, venerada pelos povos civilizados.",
-  "fonte": { "livro": "livro-basico", "pagina": 103 },
-  "imagens": ["/divindades/tanna-toh.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 103
+  },
+  "imagens": [
+    "/divindades/tanna-toh.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Qualquer",
     "armaPreferida": "Bordão",
     "devotos": "Golens, kliren, arcanistas, bardos, inventores, nobres, paladinos.",
-    "poderesConcedidos": ["Conhecimento Enciclopédico", "Mente Analítica", "Pesquisa Abençoada", "Voz da Civilização"],
-    "obrigacoesRestricoes": "Devotos de Tanna-Toh jamais podem recusar uma missão que envolva a busca por um novo conhecimento ou informação; investigar rumores sobre um livro perdido, procurar uma aldeia lendária, pesquisar os hábitos de uma criatura desconhecida...\n\nAlém disso, o devoto sempre deve dizer a verdade e nunca pode se recusar a responder uma pergunta direta, pouco importando as consequências. É proibido para ele esconder qualquer conhecimento."
+    "poderesConcedidos": [
+      "Conhecimento Enciclopédico",
+      "Mente Analítica",
+      "Pesquisa Abençoada",
+      "Voz da Civilização"
+    ],
+    "obrigacoesRestricoes": "Devotos de Tanna-Toh jamais podem recusar uma missão que envolva a busca por um novo conhecimento ou informação; investigar rumores sobre um livro perdido, procurar uma aldeia lendária, pesquisar os hábitos de uma criatura desconhecida...\n\nAlém disso, o devoto sempre deve dizer a verdade e nunca pode se recusar a responder uma pergunta direta, pouco importando as consequências. É proibido para ele esconder qualquer conhecimento.",
+    "armaPreferidaId": "bordao",
+    "poderesConcedidosIds": [
+      "conhecimento-enciclopedico",
+      "mente-analitica",
+      "pesquisa-abencoada",
+      "voz-da-civilizacao"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

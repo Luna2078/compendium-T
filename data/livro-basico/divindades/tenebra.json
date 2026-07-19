@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Tenebra",
   "resumo": "A sedutora e misteriosa Deusa das Trevas, mãe de tudo que anda e rasteja no escuro.",
-  "fonte": { "livro": "livro-basico", "pagina": 104 },
-  "imagens": ["/divindades/tenebra.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 104
+  },
+  "imagens": [
+    "/divindades/tenebra.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Negativa",
     "armaPreferida": "Adaga",
     "devotos": "Anões, medusas, qareen, osteon, sulfure, trogs, arcanistas, bardos, ladinos.",
-    "poderesConcedidos": ["Carícia Sombria", "Manto da Penumbra", "Visão nas Trevas", "Zumbificar"],
-    "obrigacoesRestricoes": "Tenebra proíbe que seus devotos sejam tocados por Azgher, o odiado rival. O devoto deve se cobrir inteiramente durante o dia, sem expor ao sol nenhum pedaço de pele."
+    "poderesConcedidos": [
+      "Carícia Sombria",
+      "Manto da Penumbra",
+      "Visão nas Trevas",
+      "Zumbificar"
+    ],
+    "obrigacoesRestricoes": "Tenebra proíbe que seus devotos sejam tocados por Azgher, o odiado rival. O devoto deve se cobrir inteiramente durante o dia, sem expor ao sol nenhum pedaço de pele.",
+    "armaPreferidaId": "adaga",
+    "poderesConcedidosIds": [
+      "caricia-sombria",
+      "manto-da-penumbra",
+      "visao-nas-trevas",
+      "zumbificar"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

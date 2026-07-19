@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Marah",
   "resumo": "Deusa da Paz, do amor e da esperança.",
-  "fonte": { "livro": "livro-basico", "pagina": 101 },
-  "imagens": ["/divindades/marah.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 101
+  },
+  "imagens": [
+    "/divindades/marah.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,37 @@
     "canalizaEnergia": "Positiva",
     "armaPreferida": "Não há. Devotos desta deusa não podem lançar a magia Arma Espiritual e similares.",
     "devotos": "Aggelus, elfos, hynne, qareen, bardos, nobres, paladinos.",
-    "poderesConcedidos": ["Aura de Paz", "Dom da Esperança", "Palavras de Bondade", "Talento Artístico"],
-    "obrigacoesRestricoes": "Devotos de Marah não podem causar dano, perda de PV e condições a criaturas, exceto enfeitiçado, fascinado e pasmo (fornecer bônus em dano também é proibido). Em combate, só podem recorrer a ações como proteger ou curar — ou fugir, render-se ou aceitar a morte. Um devoto de Marah jamais vai causar violência, nem mesmo para se salvar."
+    "poderesConcedidos": [
+      "Aura de Paz",
+      "Dom da Esperança",
+      "Palavras de Bondade",
+      "Talento Artístico"
+    ],
+    "obrigacoesRestricoes": "Devotos de Marah não podem causar dano, perda de PV e condições a criaturas, exceto enfeitiçado, fascinado e pasmo (fornecer bônus em dano também é proibido). Em combate, só podem recorrer a ações como proteger ou curar — ou fugir, render-se ou aceitar a morte. Um devoto de Marah jamais vai causar violência, nem mesmo para se salvar.",
+    "armaPreferidaId": null,
+    "poderesConcedidosIds": [
+      "aura-de-paz",
+      "dom-da-esperanca",
+      "palavras-de-bondade",
+      "talento-artistico"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "nao_pode_lancar_arma_espiritual_e_similares",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

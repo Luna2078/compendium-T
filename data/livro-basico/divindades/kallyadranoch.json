@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Kallyadranoch",
   "resumo": "O Deus dos Dragões, senhor da soberania, do orgulho e do poder elemental das grandes feras.",
-  "fonte": { "livro": "livro-basico", "pagina": 99 },
-  "imagens": ["/divindades/kallyadranoch.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 99
+  },
+  "imagens": [
+    "/divindades/kallyadranoch.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Negativa",
     "armaPreferida": "Lança.",
     "devotos": "Elfos, medusas, sulfure, arcanistas, cavaleiros, guerreiros, lutadores, nobres.",
-    "poderesConcedidos": ["Aura de Medo", "Escamas Dracônicas", "Presas Primordiais", "Servos do Dragão"],
-    "obrigacoesRestricoes": "Para subir de nível, além de acumular XP suficiente, o devoto de Kally deve realizar uma oferenda em tesouro. O valor é igual à 20% da diferença do dinheiro inicial do nível que vai alcançar para o nível atual (por exemplo, T$ 80 para subir para o 4º nível). Sabe-se, também, de devotos malignos que sacrificam vítimas a Kally (não permitido para personagens jogadores)."
+    "poderesConcedidos": [
+      "Aura de Medo",
+      "Escamas Dracônicas",
+      "Presas Primordiais",
+      "Servos do Dragão"
+    ],
+    "obrigacoesRestricoes": "Para subir de nível, além de acumular XP suficiente, o devoto de Kally deve realizar uma oferenda em tesouro. O valor é igual à 20% da diferença do dinheiro inicial do nível que vai alcançar para o nível atual (por exemplo, T$ 80 para subir para o 4º nível). Sabe-se, também, de devotos malignos que sacrificam vítimas a Kally (não permitido para personagens jogadores).",
+    "armaPreferidaId": "lanca",
+    "poderesConcedidosIds": [
+      "aura-de-medo",
+      "escamas-draconicas",
+      "presas-primordiais",
+      "servos-do-dragao"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

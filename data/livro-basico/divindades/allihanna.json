@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Allihanna",
   "resumo": "Deusa da Natureza, protetora dos ermos selvagens e do equilíbrio natural.",
-  "fonte": { "livro": "livro-basico", "pagina": 97 },
-  "imagens": ["/divindades/allihanna.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 97
+  },
+  "imagens": [
+    "/divindades/allihanna.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Positiva",
     "armaPreferida": "Bordão.",
     "devotos": "Dahllan, elfos, silfides, bárbaros, caçadores, druidas.",
-    "poderesConcedidos": ["Compreender os Ermos", "Dedo Verde", "Descanso Natural", "Voz da Natureza"],
-    "obrigacoesRestricoes": "Devotos de Allihanna não podem usar armaduras e escudos feitos de metal. Assim, você só pode usar armadura acolchoada, de couro, gibão de peles e escudo leve, ou itens feitos de materiais especiais não metálicos.\n\nDevotos de Allihanna não podem descansar em nenhuma comunidade maior que uma aldeia (não perdem seus poderes, mas também não recuperam pontos de vida ou mana). Por isso, sempre preferem o relento a um quarto de estalagem."
+    "poderesConcedidos": [
+      "Compreender os Ermos",
+      "Dedo Verde",
+      "Descanso Natural",
+      "Voz da Natureza"
+    ],
+    "obrigacoesRestricoes": "Devotos de Allihanna não podem usar armaduras e escudos feitos de metal. Assim, você só pode usar armadura acolchoada, de couro, gibão de peles e escudo leve, ou itens feitos de materiais especiais não metálicos.\n\nDevotos de Allihanna não podem descansar em nenhuma comunidade maior que uma aldeia (não perdem seus poderes, mas também não recuperam pontos de vida ou mana). Por isso, sempre preferem o relento a um quarto de estalagem.",
+    "armaPreferidaId": "bordao",
+    "poderesConcedidosIds": [
+      "compreender-os-ermos",
+      "dedo-verde",
+      "descanso-natural",
+      "voz-da-natureza"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

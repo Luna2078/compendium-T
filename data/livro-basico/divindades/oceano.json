@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Oceano",
   "resumo": "Deus dos Mares, sereno e pleno em si mesmo.",
-  "fonte": { "livro": "livro-basico", "pagina": 102 },
-  "imagens": ["/divindades/oceano.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 102
+  },
+  "imagens": [
+    "/divindades/oceano.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Qualquer",
     "armaPreferida": "Tridente.",
     "devotos": "Dahllan, hynne, minotauros, sereias/tritões, bárbaros, bucaneiros, caçadores, druidas.",
-    "poderesConcedidos": ["Anfíbio", "Arsenal das Profundezas", "Mestre dos Mares", "Sopro do Mar"],
-    "obrigacoesRestricoes": "As únicas armas permitidas para devotos do Oceano são a azagaia, a lança, o tridente e a rede. Podem usar apenas armaduras leves. O devoto também não pode se manter afastado do oceano por mais de um mês."
+    "poderesConcedidos": [
+      "Anfíbio",
+      "Arsenal das Profundezas",
+      "Mestre dos Mares",
+      "Sopro do Mar"
+    ],
+    "obrigacoesRestricoes": "As únicas armas permitidas para devotos do Oceano são a azagaia, a lança, o tridente e a rede. Podem usar apenas armaduras leves. O devoto também não pode se manter afastado do oceano por mais de um mês.",
+    "armaPreferidaId": "tridente",
+    "poderesConcedidosIds": [
+      "anfibio",
+      "arsenal-das-profundezas",
+      "mestre-dos-mares",
+      "sopro-do-mar"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

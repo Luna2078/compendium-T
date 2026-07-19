@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Valkaria",
   "resumo": "A Deusa da Ambição e nova líder do Panteão.",
-  "fonte": { "livro": "livro-basico", "pagina": 105 },
-  "imagens": ["/divindades/valkaria.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 105
+  },
+  "imagens": [
+    "/divindades/valkaria.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Positiva",
     "armaPreferida": "Mangual.",
     "devotos": "Aventureiros; membros de todas as classes podem ser devotos de Valkaria.",
-    "poderesConcedidos": ["Almejar o Impossível", "Armas da Ambição", "Coragem Total", "Liberdade Divina"],
-    "obrigacoesRestricoes": "Valkaria odeia o conformismo. Seus devotos são proibidos de fixar moradia em um mesmo lugar, não podendo permanecer mais de 2d10+10 dias na mesma cidade (ou vila, aldeia, povoado...) ou 1d4+2 meses no mesmo reino. Devotos de Valkaria também são proibidos de casar ou formar qualquer união estável."
+    "poderesConcedidos": [
+      "Almejar o Impossível",
+      "Armas da Ambição",
+      "Coragem Total",
+      "Liberdade Divina"
+    ],
+    "obrigacoesRestricoes": "Valkaria odeia o conformismo. Seus devotos são proibidos de fixar moradia em um mesmo lugar, não podendo permanecer mais de 2d10+10 dias na mesma cidade (ou vila, aldeia, povoado...) ou 1d4+2 meses no mesmo reino. Devotos de Valkaria também são proibidos de casar ou formar qualquer união estável.",
+    "armaPreferidaId": "mangual",
+    "poderesConcedidosIds": [
+      "almejar-o-impossivel",
+      "armas-da-ambicao",
+      "coragem-total",
+      "liberdade-divina"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

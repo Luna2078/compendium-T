@@ -372,6 +372,12 @@ export const DivindadeMecanicaSchema = z.object({
   poderesConcedidos: z.array(z.string()).default([]),  // nomes → linkam pros poderes (group concedido)
   obrigacoesRestricoes: z.string(),
   statusDivino: z.string().optional(),  // "Mortal ascendido, status divino 3" etc. (deuses menores)
+  // Apontamentos NORMALIZADOS (a divindade APONTA — regra 24 — não reescreve mecânica):
+  armaPreferidaId: z.string().nullable().optional(),        // id do item; null = sem arma preferida
+  poderesConcedidosIds: z.array(z.string()).optional(),     // ids dos poderes (já enriquecidos)
+  efeitos: z.array(EfeitoMecanicoSchema).optional(),
+  escolhas: z.array(z.any()).optional(),
+  precisaRevisao: z.boolean().optional(),
 });
 export type DivindadeMecanica = z.infer<typeof DivindadeMecanicaSchema>;
 

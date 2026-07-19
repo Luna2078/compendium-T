@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Lena",
   "resumo": "A Deusa da Vida, da Criança e da fertilidade, padroeira da cura e do sustento.",
-  "fonte": { "livro": "livro-basico", "pagina": 99 },
-  "imagens": ["/divindades/lena.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 99
+  },
+  "imagens": [
+    "/divindades/lena.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,37 @@
     "canalizaEnergia": "Positiva",
     "armaPreferida": "Não há. Servos desta deusa não podem lançar a magia Arma Espiritual e similares.",
     "devotos": "Dahllan, qareen, nobres, paladinos.",
-    "poderesConcedidos": ["Ataque Piedoso", "Aura Restauradora", "Cura Gentil", "Curandeira Perfeita"],
-    "obrigacoesRestricoes": "Devotos de Lena não podem causar dano letal ou perda de PV a criaturas vivas (fornecer bônus em dano letal também é proibido). Podem causar dano não letal e prejudicar seus inimigos (em termos de jogo, impondo condições), desde que não causem dano letal ou perda de PV. Para um devoto de Lena, é preferível perder a própria vida a tirá-la de outros.\n\nApenas mulheres podem ser devotas de Lena. Uma clériga precisa dar à luz pelo menos uma vez antes de receber seus poderes divinos. A fecundação é um mistério bem guardado pelas sacerdotisas; conta-se que a própria deusa vem semear suas discípulas. Paladinos de Lena podem ser homens (são os únicos devotos masculinos permitidos) ou mulheres."
+    "poderesConcedidos": [
+      "Ataque Piedoso",
+      "Aura Restauradora",
+      "Cura Gentil",
+      "Curandeira Perfeita"
+    ],
+    "obrigacoesRestricoes": "Devotos de Lena não podem causar dano letal ou perda de PV a criaturas vivas (fornecer bônus em dano letal também é proibido). Podem causar dano não letal e prejudicar seus inimigos (em termos de jogo, impondo condições), desde que não causem dano letal ou perda de PV. Para um devoto de Lena, é preferível perder a própria vida a tirá-la de outros.\n\nApenas mulheres podem ser devotas de Lena. Uma clériga precisa dar à luz pelo menos uma vez antes de receber seus poderes divinos. A fecundação é um mistério bem guardado pelas sacerdotisas; conta-se que a própria deusa vem semear suas discípulas. Paladinos de Lena podem ser homens (são os únicos devotos masculinos permitidos) ou mulheres.",
+    "armaPreferidaId": null,
+    "poderesConcedidosIds": [
+      "ataque-piedoso",
+      "aura-restauradora",
+      "cura-gentil",
+      "curandeira-perfeita"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "nao_pode_lancar_arma_espiritual_e_similares",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

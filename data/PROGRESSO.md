@@ -491,9 +491,27 @@ Ficam em `data/referencia/condicoes.json` (camada de tooltip/referência), NÃO 
   + ALVO `penalidade_armadura` (sobrecarregado). + DECISÃO pendente: `custo_habilidade` vs alargar `custo_magia`
   (alquebrado diz "habilidades", mais amplo que magias) — hoje `custo_magia +1` + lembrete explícito.
 
+### ✅ DIVINDADES FECHADAS (20) — pendentes-de-divindades ZERADOS
+Regra 24 (direção): a divindade **APONTA**, não é fonte. Os `poderesConcedidos` já têm `efeitos[]` próprios —
+a divindade só dá acesso. Normalizados: **`armaPreferidaId`** (17/17 resolvem p/ id de item; 3 `null` legítimos)
+e **`poderesConcedidosIds`** (80 apontamentos, 0 quebrado). `efeitos[]` da divindade = apontamento + restrições.
+- **druida/Devoto Fiel** → `escolhas` `momento:"criacao"`, 3 ramos (Allihanna/Megalokk/Oceano) + capacidade
+  "recebe DOIS poderes concedidos em vez de um" (o número está literal na prosa).
+- **paladino/Arma Sagrada** → `modifica_poder` em `golpe-divino` com `patch` trocando o dado d8→**d12**,
+  condicionado a `arma.preferida_divindade = sim` (campo que já existia, agora derivável).
+- **aura-divina** → o **+10 do PRÓPRIO conjurador CALCULA** (`defesa` + Fort/Refl/Von): você é trivialmente
+  devoto da sua própria divindade, não precisa de condição. A distinção aliado devoto (+10) × não-devoto (+5)
+  é OUTRA ficha → lembrete. Condição imposta a inimigos → `escolhas` `momento:"lancamento"` (esmorecido/
+  debilitado/lento à escolha), cada ramo com `aplicaCondicao`.
+- ⚠️ **`personagem.divindade` NÃO foi criado — e não era necessário.** Ao reler a prosa (regra 18), o efeito
+  que motivou o pedido (aura-divina) resolve-se sem ele: o bônus próprio não precisa de condição e o dos aliados
+  é outra ficha. O que o motor precisa é **estado de ficha** (`ficha.divindade`), do qual ele DERIVA
+  `arma.preferida_divindade` cruzando com `divindade.armaPreferidaId` — isso não é um CAMPO_CONDICAO.
+  Registro da distinção: nem todo "o app precisa saber X" vira campo de condição; alguns são estado de ficha.
+- Casos especiais preservados sem invenção: Lena/Marah (sem arma preferida **e** proibidas de lançar Arma
+  Espiritual → capacidade) e Nimb ("nenhuma e todas", qualquer arma conta a critério do mestre → capacidade).
+
 **Próximos passos (ordem sugerida):**
-1. **Lote de divindades** — destrava os 3 pendentes acima (`arma.preferida_divindade`, `personagem.divindade`,
-   druida/Devoto Fiel + paladino/Arma Sagrada) via `ramo`.
 3. Expansões (Ameaças de Arton etc.) — o contrato já está maduro; esperar recorrência para promover as
    primitivas em observação (regra 23: recurso-consumível, `modo_rolagem`, `alvo.nivel_nd`).
 ### (histórico — classes onda 1)

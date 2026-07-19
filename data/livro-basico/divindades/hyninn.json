@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Hyninn",
   "resumo": "O ardiloso Deus da Trapaça, padroeiro de foras da lei e trapaceiros.",
-  "fonte": { "livro": "livro-basico", "pagina": 98 },
-  "imagens": ["/divindades/hyninn.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 98
+  },
+  "imagens": [
+    "/divindades/hyninn.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Qualquer",
     "armaPreferida": "Adaga.",
     "devotos": "Hynne, goblins, sílfides, bardos, bucaneiros, ladinos, inventores, nobres.",
-    "poderesConcedidos": ["Apostar com o Trapaceiro", "Farsa do Fingidor", "Forma de Macaco", "Golpista Divino"],
-    "obrigacoesRestricoes": "Um devoto de Hyninn não recusa participação em um golpe, trapaça ou artimanha (o que muitas vezes inclui missões para roubar... hã, resgatar tesouros), exceto quando prejudica seus próprios aliados.\n\nO devoto também deve fazer um ato furtivo, ousado ou proibido por dia (ou por sessão de jogo, o que demorar mais), como oferenda a Hyninn. Roubar uma bolsa, enganar um miliciano, invadir o quarto de um nobre... Em termos de jogo, uma ação exigindo um teste de Enganação ou Ladinagem com CD mínima 15 + metade do seu nível."
+    "poderesConcedidos": [
+      "Apostar com o Trapaceiro",
+      "Farsa do Fingidor",
+      "Forma de Macaco",
+      "Golpista Divino"
+    ],
+    "obrigacoesRestricoes": "Um devoto de Hyninn não recusa participação em um golpe, trapaça ou artimanha (o que muitas vezes inclui missões para roubar... hã, resgatar tesouros), exceto quando prejudica seus próprios aliados.\n\nO devoto também deve fazer um ato furtivo, ousado ou proibido por dia (ou por sessão de jogo, o que demorar mais), como oferenda a Hyninn. Roubar uma bolsa, enganar um miliciano, invadir o quarto de um nobre... Em termos de jogo, uma ação exigindo um teste de Enganação ou Ladinagem com CD mínima 15 + metade do seu nível.",
+    "armaPreferidaId": "adaga",
+    "poderesConcedidosIds": [
+      "apostar-com-o-trapaceiro",
+      "farsa-do-fingidor",
+      "forma-de-macaco",
+      "golpista-divino"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Arsenal",
   "resumo": "Deus da Guerra, mestre do combate e das armas, antes mortal e hoje divino.",
-  "fonte": { "livro": "livro-basico", "pagina": 98 },
-  "imagens": ["/divindades/arsenal.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 98
+  },
+  "imagens": [
+    "/divindades/arsenal.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Qualquer",
     "armaPreferida": "Martelo de guerra.",
     "devotos": "Anões, minotauros, bárbaros, cavaleiros, guerreiros, lutadores.",
-    "poderesConcedidos": ["Conjurar Arma", "Coragem Total", "Fé Guerreira", "Sangue de Ferro"],
-    "obrigacoesRestricoes": "Um devoto de Arsenal é proibido de ser derrotado em qualquer tipo de combate ou disputa (como um teste oposto para ver quem é mais forte). Caso seu grupo seja derrotado, ou você mesmo, isto constitui uma violação das obrigações."
+    "poderesConcedidos": [
+      "Conjurar Arma",
+      "Coragem Total",
+      "Fé Guerreira",
+      "Sangue de Ferro"
+    ],
+    "obrigacoesRestricoes": "Um devoto de Arsenal é proibido de ser derrotado em qualquer tipo de combate ou disputa (como um teste oposto para ver quem é mais forte). Caso seu grupo seja derrotado, ou você mesmo, isto constitui uma violação das obrigações.",
+    "armaPreferidaId": "martelo-de-guerra",
+    "poderesConcedidosIds": [
+      "conjurar-arma",
+      "coragem-total",
+      "fe-guerreira",
+      "sangue-de-ferro"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

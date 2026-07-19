@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Aharadak",
   "resumo": "A Tormenta personificada: senhor monstruoso e ambicioso da aberração e da loucura.",
-  "fonte": { "livro": "livro-basico", "pagina": 96 },
-  "imagens": ["/divindades/aharadak.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 96
+  },
+  "imagens": [
+    "/divindades/aharadak.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Negativa",
     "armaPreferida": "Corrente de espinhos.",
     "devotos": "Quaisquer. A Tormenta aceita tudo e todos.",
-    "poderesConcedidos": ["Afinidade com a Tormenta", "Êxtase da Loucura", "Percepção Temporal", "Rejeição Divina"],
-    "obrigacoesRestricoes": "Quase todos os cultistas de Aharadak são maníacos insanos, compelidos a praticar os atos mais abomináveis. No entanto, talvez devido à natureza alienígena e incompreensível deste deus, alguns devotos conseguem se resguardar. Preservam sua humanidade, abster-se de cometer crimes ou profanações. Ainda assim, o devoto paga um preço. No início de qualquer cena de ação, role 1d6. Com um resultado ímpar, você fica fascinado na primeira rodada, perdido em devaneios sobre a futilidade da vida (mesmo que seja imune a esta condição)."
+    "poderesConcedidos": [
+      "Afinidade com a Tormenta",
+      "Êxtase da Loucura",
+      "Percepção Temporal",
+      "Rejeição Divina"
+    ],
+    "obrigacoesRestricoes": "Quase todos os cultistas de Aharadak são maníacos insanos, compelidos a praticar os atos mais abomináveis. No entanto, talvez devido à natureza alienígena e incompreensível deste deus, alguns devotos conseguem se resguardar. Preservam sua humanidade, abster-se de cometer crimes ou profanações. Ainda assim, o devoto paga um preço. No início de qualquer cena de ação, role 1d6. Com um resultado ímpar, você fica fascinado na primeira rodada, perdido em devaneios sobre a futilidade da vida (mesmo que seja imune a esta condição).",
+    "armaPreferidaId": "corrente-de-espinhos",
+    "poderesConcedidosIds": [
+      "afinidade-com-a-tormenta",
+      "extase-da-loucura",
+      "percepcao-temporal",
+      "rejeicao-divina"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

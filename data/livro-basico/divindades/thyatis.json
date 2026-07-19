@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Thyatis",
   "resumo": "O generoso Deus da Ressurreição e Profecia.",
-  "fonte": { "livro": "livro-basico", "pagina": 104 },
-  "imagens": ["/divindades/thyatis.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 104
+  },
+  "imagens": [
+    "/divindades/thyatis.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Positiva",
     "armaPreferida": "Espada longa.",
     "devotos": "Aggelus, cavaleiros, guerreiros, inventores, lutadores, paladinos.",
-    "poderesConcedidos": ["Ataque Piedoso", "Dom da Imortalidade", "Dom da Profecia", "Dom da Ressurreição"],
-    "obrigacoesRestricoes": "Devotos de Thyatis são proibidos de matar criaturas inteligentes (Int -3 ou maior). Podem atacar e causar dano, mas jamais levar à morte. Por esse motivo, devotos de Thyatis preferem armas e ataques que apenas incapacitam seus oponentes ou causam dano não letal."
+    "poderesConcedidos": [
+      "Ataque Piedoso",
+      "Dom da Imortalidade",
+      "Dom da Profecia",
+      "Dom da Ressurreição"
+    ],
+    "obrigacoesRestricoes": "Devotos de Thyatis são proibidos de matar criaturas inteligentes (Int -3 ou maior). Podem atacar e causar dano, mas jamais levar à morte. Por esse motivo, devotos de Thyatis preferem armas e ataques que apenas incapacitam seus oponentes ou causam dano não letal.",
+    "armaPreferidaId": "espada-longa",
+    "poderesConcedidosIds": [
+      "ataque-piedoso",
+      "dom-da-imortalidade",
+      "dom-da-profecia",
+      "dom-da-ressurreicao"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }

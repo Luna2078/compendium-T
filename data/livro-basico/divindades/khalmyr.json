@@ -3,8 +3,13 @@
   "tipo": "divindade",
   "nome": "Khalmyr",
   "resumo": "Antigo líder do Panteão e Deus da Justiça.",
-  "fonte": { "livro": "livro-basico", "pagina": 99 },
-  "imagens": ["/divindades/khalmyr.png"],
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 99
+  },
+  "imagens": [
+    "/divindades/khalmyr.png"
+  ],
   "secoes": [
     {
       "titulo": "",
@@ -18,7 +23,32 @@
     "canalizaEnergia": "Positiva",
     "armaPreferida": "Espada longa",
     "devotos": "Aggelus, anões, cavaleiros, guerreiros, nobres, paladinos.",
-    "poderesConcedidos": ["Coragem Total", "Dom da Verdade", "Espada Justiceira", "Reparar Injustiça"],
-    "obrigacoesRestricoes": "Devotos de Khalmyr não podem recusar pedidos de ajuda de pessoas inocentes. Também devem cumprir as ordens de superiores na hierarquia da igreja (devotos do Deus da Justiça de nível maior) e só podem usar itens mágicos permanentes criados por devotos do mesmo deus."
+    "poderesConcedidos": [
+      "Coragem Total",
+      "Dom da Verdade",
+      "Espada Justiceira",
+      "Reparar Injustiça"
+    ],
+    "obrigacoesRestricoes": "Devotos de Khalmyr não podem recusar pedidos de ajuda de pessoas inocentes. Também devem cumprir as ordens de superiores na hierarquia da igreja (devotos do Deus da Justiça de nível maior) e só podem usar itens mágicos permanentes criados por devotos do mesmo deus.",
+    "armaPreferidaId": "espada-longa",
+    "poderesConcedidosIds": [
+      "coragem-total",
+      "dom-da-verdade",
+      "espada-justiceira",
+      "reparar-injustica"
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "concede_acesso_a_poderes_concedidos",
+        "aplicacao": "lembrete",
+        "valor": 4
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "obrigacoes_e_restricoes_do_devoto",
+        "aplicacao": "lembrete"
+      }
+    ]
   }
 }
