@@ -70,6 +70,13 @@ export const HabilidadeClasseSchema = z.object({
 });
 export type HabilidadeClasse = z.infer<typeof HabilidadeClasseSchema>;
 
+// ⚠️ COLISÃO DE NOME (deliberadamente resolvida por união, não por renomeação):
+// a chave `efeitos` carrega DOIS conceitos distintos dentro de classes —
+//   (a) EXIBIÇÃO: variações nomeadas renderizadas como tabela (Golpe Pessoal: nome/custo/descrição);
+//   (b) MECÂNICA: os `efeitos[]` tipados de `data/efeitos.ts` (tipo/alvo/valor/aplicacao), que é a
+//       convenção de TODO o corpus enriquecido.
+// Renomear (a) quebraria a renderização existente; renomear (b) quebraria a convenção do corpus.
+// A união valida as duas formas — o discriminante de fato é `nome` (exibição) vs `tipo` (mecânica).
 export const EfeitoPoderSchema = z.object({
   nome: z.string(),
   custo: z.string(),
@@ -77,12 +84,25 @@ export const EfeitoPoderSchema = z.object({
 });
 export type EfeitoPoder = z.infer<typeof EfeitoPoderSchema>;
 
+// Efeito mecânico do contrato (data/efeitos.ts). Valida a presença de `tipo` e preserva o resto;
+// a validação estrita do conteúdo é feita pelo TypeScript de `efeitos.ts` + checagens do pipeline.
+export const EfeitoMecanicoSchema = z.looseObject({ tipo: z.string() });
+
+// `ativacao` carrega texto legado ("ação padrão") OU o objeto `Ativacao` de data/efeitos.ts
+// ({custo:{pm,acao}, encerramento}). União para aceitar os dois sem perder validação.
+export const AtivacaoOuTextoSchema = z.union([z.string(), z.looseObject({})]);
+
+export const EfeitoPoderOuMecanicoSchema = z.union([EfeitoPoderSchema, EfeitoMecanicoSchema]);
+
 export const PoderClasseSchema = z.object({
   nome: z.string(),
   descricao: z.string(),
   prerequisito: z.string().optional(),
   custo: z.string().optional(),
-  efeitos: z.array(EfeitoPoderSchema).optional(), // ex.: efeitos do Golpe Pessoal (renderizados como tabela)
+  efeitos: z.array(EfeitoPoderOuMecanicoSchema).optional(), // exibição (tabela) OU mecânica — ver nota acima
+  escolhas: z.array(z.any()).optional(),                    // slots de escolha (EscolhaJogador)
+  ativacao: z.any().optional(),
+  precisaRevisao: z.boolean().optional(),
 });
 export type PoderClasse = z.infer<typeof PoderClasseSchema>;
 
@@ -169,6 +189,15 @@ export const PericiaMecanicaSchema = z.object({
   penalidadeArmadura: z.boolean().default(false),
   descricao: z.string().optional(),
   usos: z.array(UsoPericiaSchema).default([]),
+  // --- ENRIQUECIMENTO (data/efeitos.ts) — declarados para o Zod NÃO descartar ao carregar ---
+  efeitos: z.array(EfeitoMecanicoSchema).optional(),   // efeitos tipados do contrato
+  escolhas: z.array(z.any()).optional(),               // slots EscolhaJogador (momento criacao/lancamento)
+  ativacao: AtivacaoOuTextoSchema.optional(),          // objeto Ativacao estruturado (ou texto legado)
+  gate: z.any().optional(),
+  parametros: z.array(z.any()).optional(),
+  progressao: z.array(z.any()).optional(),
+  empilhavel: z.boolean().optional(),
+  precisaRevisao: z.boolean().optional(),
 });
 export type PericiaMecanica = z.infer<typeof PericiaMecanicaSchema>;
 
@@ -177,6 +206,15 @@ export const PoderMecanicaSchema = z.object({
   prerequisito: z.string().optional(),
   custo: z.string().optional(),
   descricao: z.string(),
+  // --- ENRIQUECIMENTO (data/efeitos.ts) — declarados para o Zod NÃO descartar ao carregar ---
+  efeitos: z.array(EfeitoMecanicoSchema).optional(),   // efeitos tipados do contrato
+  escolhas: z.array(z.any()).optional(),               // slots EscolhaJogador (momento criacao/lancamento)
+  ativacao: AtivacaoOuTextoSchema.optional(),          // objeto Ativacao estruturado (ou texto legado)
+  gate: z.any().optional(),
+  parametros: z.array(z.any()).optional(),
+  progressao: z.array(z.any()).optional(),
+  empilhavel: z.boolean().optional(),
+  precisaRevisao: z.boolean().optional(),
 });
 export type PoderMecanica = z.infer<typeof PoderMecanicaSchema>;
 
@@ -208,6 +246,15 @@ export const ItemMecanicaSchema = z.object({
   arma: ArmaStatsSchema.optional(),
   protecao: ProtecaoStatsSchema.optional(),
   especial: z.string().optional(),
+  // --- ENRIQUECIMENTO (data/efeitos.ts) — declarados para o Zod NÃO descartar ao carregar ---
+  efeitos: z.array(EfeitoMecanicoSchema).optional(),   // efeitos tipados do contrato
+  escolhas: z.array(z.any()).optional(),               // slots EscolhaJogador (momento criacao/lancamento)
+  ativacao: AtivacaoOuTextoSchema.optional(),          // objeto Ativacao estruturado (ou texto legado)
+  gate: z.any().optional(),
+  parametros: z.array(z.any()).optional(),
+  progressao: z.array(z.any()).optional(),
+  empilhavel: z.boolean().optional(),
+  precisaRevisao: z.boolean().optional(),
 });
 export type ItemMecanica = z.infer<typeof ItemMecanicaSchema>;
 
@@ -219,8 +266,17 @@ export const ItemMagicoMecanicaSchema = z.object({
   categoria: z.string().optional(),   // "Menor"|"Médio"|"Maior"|"Artefato" (raridade)
   preco: z.string().optional(),       // "T$ 30.000" (encantos: preço vem da Tabela 8-7)
   espacos: z.string().optional(),
-  ativacao: z.string().optional(),    // ex.: "ação padrão", quando relevante
+  ativacao: AtivacaoOuTextoSchema.optional(), // texto legado OU objeto Ativacao estruturado (COLISÃO resolvida)
   prerequisito: z.string().optional(), // encantos podem exigir outro encanto (ex.: "Reflexiva" exige "cristalina")
+  cartas: z.array(z.any()).optional(), // Baralho do Caos: 22 cartas (tabela do artefato)
+  // --- ENRIQUECIMENTO (data/efeitos.ts) — declarados para o Zod NÃO descartar ao carregar ---
+  efeitos: z.array(EfeitoMecanicoSchema).optional(),   // efeitos tipados do contrato
+  escolhas: z.array(z.any()).optional(),               // slots EscolhaJogador (momento criacao/lancamento)
+  gate: z.any().optional(),
+  parametros: z.array(z.any()).optional(),
+  progressao: z.array(z.any()).optional(),
+  empilhavel: z.boolean().optional(),
+  precisaRevisao: z.boolean().optional(),
 });
 export type ItemMagicoMecanica = z.infer<typeof ItemMagicoMecanicaSchema>;
 

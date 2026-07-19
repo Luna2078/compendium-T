@@ -113,6 +113,15 @@ Propositor, não autoridade final — tudo é revisado por humano antes de virar
     → `efeitos[]` vazio é o correto, não uma falha. O mesmo vale para qualquer entidade que o motor CALCULA em
     vez de APLICAR. Corolário de processo: **não dispare fan-out numa pasta cujo `efeitos[]` deve ser vazio** —
     agentes pressionados a preencher inventam. Verifique a direção ANTES de escalar (custo evitado > risco).
+26. **RODAR A SUÍTE AO FECHAR CADA PASTA — o schema Zod é um consumidor silencioso.** Enriquecer o JSON
+    não basta: `site/lib/schema.ts` valida o que é carregado, e (a) campo declarado com tipo CONFLITANTE
+    quebra o carregamento; (b) campo NÃO declarado é **silenciosamente DESCARTADO** — o dado existe no disco
+    e some na memória (pior que erro, porque passa despercebido). Aconteceram os dois:
+    `PoderClasseSchema.efeitos` já significava tabela de exibição (Golpe Pessoal: nome/custo/descrição) e
+    colidiu com os efeitos mecânicos; `ItemMagicoMecanica.ativacao` era `string` ("ação padrão") e passou a
+    receber o objeto `Ativacao`. Resolvidos por UNIÃO (não renomeação — renomear quebraria ou a renderização
+    ou a convenção do corpus). Testes `condicoes-expansao` e `enriquecimento-preservado` trancam a regressão.
+    **`npx vitest run` faz parte do passo fixo da regra 17, junto da validação de alvos/campos.**
 23. **PRIMITIVAS "conscientes, não enterradas" (registrar quando aparecem em baixa freq, promover se recorrerem):**
     (a) **recurso-consumível** (pool de N pontos gastos à vontade — guardiao-divino; = "carga" de item): hoje
     lembrete-rico; vira MOTOR de recurso se as expansões trouxerem volume. (b) **`modo_rolagem`** (vantagem/

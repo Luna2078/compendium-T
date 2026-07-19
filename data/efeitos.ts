@@ -566,3 +566,103 @@ export const LUZ: Magia = {
     { id: "halo", custoPM: 5, efeitoTexto: "Halo: +10 Diplomacia e redução de trevas 10.", requisitoCirculo: 2, restricao: "divino" },
   ],
 };
+
+// ====================================================================
+// 7. EXPANSÃO TRANSITIVA DE CONDIÇÕES (PASSE −1 da calcularFicha)
+// ====================================================================
+// Roda ANTES do passe de atributos/stats. Motivo: uma condição pode APLICAR outra
+// (`capacidade` chave "aplica_condicao"), e a mecânica da aplicada precisa entrar no cálculo.
+// Ex.: Atordoado aplica Desprevenido; Desprevenido tem −5 Defesa e −5 Reflexos estruturados.
+// Sem este passe, um personagem atordoado NÃO veria o −5 calculado — viraria lembrete manual,
+// que é exatamente o que o app existe para evitar. Composições encadeadas:
+//   Exausto → Debilitado + Lento + Vulnerável;  Paralisado → Imóvel + Indefeso → Desprevenido.
+//
+// ⚠️ ANTI-CICLO: cada condição é VISITADA UMA ÚNICA VEZ. As arestas podem ter apontamento
+// mútuo/reentrante (Indefeso→Desprevenido, e outras rotas chegando em Desprevenido de novo);
+// recursão ingênua trava. Fecho transitivo iterativo com conjunto de visitados.
+//
+// NÃO expande "escala_para_<X>_se_receber_de_novo" (abalado→apavorado, fraco→debilitado,
+// fatigado→exausto, frustrado→esmorecido, debilitado→inconsciente): isso é evento de QUANDO
+// APLICAR, não o QUE CALCULAR — depende do rastreador de condições/turno. Fica lembrete.
+
+export interface CondicaoDef {
+  id: string;
+  nome: string;
+  aliasDe?: string;              // flexão de gênero/número → resolve para o canônico
+  efeitos?: Efeito[];
+  balde?: "estatica" | "temporal";
+}
+
+export interface CondicaoAtiva {
+  id: string;                    // condição canônica ativa
+  via: string[];                 // TRILHA DE PROCEDÊNCIA: [] = aplicada diretamente;
+                                 // ["atordoado"] = veio de Atordoado; ["paralisado","indefeso"] = cadeia.
+                                 // A ficha usa isto para exibir "−5 na Defesa (via Atordoado)".
+}
+
+/**
+ * Fecho transitivo das condições ativas.
+ * @param idsIniciais condições que o personagem TEM (aplicadas diretamente)
+ * @param catalogo    todas as condições (aceita aliases; são resolvidos para o canônico)
+ * @returns lista SEM duplicatas, cada uma com a trilha de como foi alcançada
+ */
+export function expandirCondicoes(
+  idsIniciais: string[],
+  catalogo: CondicaoDef[],
+): CondicaoAtiva[] {
+  const porId = new Map(catalogo.map((c) => [c.id, c]));
+  const canonico = (id: string): string | undefined => {
+    const c = porId.get(id);
+    if (!c) return undefined;              // id desconhecido: ignora (não inventa condição)
+    return c.aliasDe ? canonico(c.aliasDe) : c.id;
+  };
+
+  const visitados = new Set<string>();     // ← a proteção contra ciclo
+  const resultado: CondicaoAtiva[] = [];
+  // fila iterativa (não recursiva): [id, trilha de quem aplicou]
+  const fila: Array<{ id: string; via: string[] }> = [];
+
+  for (const bruto of idsIniciais) {
+    const id = canonico(bruto);
+    if (id) fila.push({ id, via: [] });
+  }
+
+  while (fila.length > 0) {
+    const atual = fila.shift()!;
+    if (visitados.has(atual.id)) continue; // já processada — corta ciclo e re-entrada
+    visitados.add(atual.id);
+    resultado.push(atual);
+
+    const def = porId.get(atual.id);
+    for (const ef of def?.efeitos ?? []) {
+      if (ef.tipo !== "capacidade" || ef.chave !== "aplica_condicao") continue;
+      const alvo = typeof ef.valor === "string" ? canonico(ef.valor) : undefined;
+      if (alvo && !visitados.has(alvo)) {
+        fila.push({ id: alvo, via: [...atual.via, atual.id] });
+      }
+    }
+  }
+  return resultado;
+}
+
+/**
+ * Efeitos que a calcularFicha deve processar por causa das condições ativas.
+ * Já expandido transitivamente; `aplica_condicao` some (virou expansão) e o resto flui
+ * como qualquer bônus/debuff — é o que faz "−2 por Fatigado" aparecer e sumir sozinho.
+ * Efeitos do balde TEMPORAL (dano por rodada) continuam saindo como lembrete: dependem
+ * do rastreador de turno, que não existe.
+ */
+export function efeitosDeCondicoes(
+  idsIniciais: string[],
+  catalogo: CondicaoDef[],
+): Array<{ efeito: Efeito; origem: string; via: string[] }> {
+  const saida: Array<{ efeito: Efeito; origem: string; via: string[] }> = [];
+  const porId = new Map(catalogo.map((c) => [c.id, c]));
+  for (const ativa of expandirCondicoes(idsIniciais, catalogo)) {
+    for (const efeito of porId.get(ativa.id)?.efeitos ?? []) {
+      if (efeito.tipo === "capacidade" && efeito.chave === "aplica_condicao") continue;
+      saida.push({ efeito, origem: ativa.id, via: ativa.via });
+    }
+  }
+  return saida;
+}

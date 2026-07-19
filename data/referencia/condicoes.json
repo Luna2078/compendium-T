@@ -35,13 +35,13 @@
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "desprevenido",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "imovel",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "bonus",
@@ -121,7 +121,7 @@
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "desprevenido",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
@@ -214,13 +214,13 @@
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "desprevenido",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "lento",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "bonus",
@@ -495,13 +495,13 @@
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "lento",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "vulneravel",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "bonus",
@@ -591,19 +591,19 @@
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "debilitado",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "lento",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "vulneravel",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
@@ -679,13 +679,13 @@
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "fraco",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "vulneravel",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
@@ -838,7 +838,7 @@
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "indefeso",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
@@ -871,7 +871,7 @@
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "desprevenido",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "bonus",
@@ -978,13 +978,13 @@
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "imovel",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "indefeso",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
@@ -1024,7 +1024,7 @@
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "inconsciente",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "bonus",
@@ -1125,7 +1125,7 @@
         "tipo": "capacidade",
         "chave": "aplica_condicao",
         "valor": "desprevenido",
-        "aplicacao": "lembrete"
+        "aplicacao": "automatica"
       },
       {
         "tipo": "capacidade",
