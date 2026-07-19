@@ -3,276 +3,1164 @@
     "id": "abalado",
     "nome": "Abalado",
     "descricao": "O personagem sofre –2 em testes de perícia. Se ficar abalado novamente, em vez disso fica apavorado. Medo.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:*",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "escala_para_apavorado_se_receber_de_novo",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "agarrado",
     "nome": "Agarrado",
     "descricao": "O personagem fica desprevenido e imóvel, sofre –2 em testes de ataque e só pode atacar com armas leves. Ataques à distância contra um alvo envolvido em uma manobra agarrar têm 50% de chance de acertar o alvo errado. Movimento.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "desprevenido",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "imovel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "so_pode_atacar_com_armas_leves",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ataques_a_distancia_contra_alvo_agarrado_tem_50pc_de_acertar_o_alvo_errado",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "alquebrado",
     "nome": "Alquebrado",
     "descricao": "O custo em pontos de mana das habilidades do personagem aumenta em +1. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "custo_magia",
+        "valor": 1,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aumento_de_1_pm_vale_para_TODAS_as_habilidades_nao_so_magias",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "apavorado",
     "nome": "Apavorado",
     "descricao": "O personagem sofre –5 em testes de perícia e não pode se aproximar voluntariamente da fonte do medo. Medo.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:*",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "nao_pode_se_aproximar_voluntariamente_da_fonte_do_medo",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "atordoado",
     "nome": "Atordoado",
     "descricao": "O personagem fica desprevenido e não pode fazer ações. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "desprevenido",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "nao_pode_fazer_acoes",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "atordoada",
     "nome": "Atordoada",
     "descricao": "O personagem fica desprevenido e não pode fazer ações. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "aliasDe": "atordoado"
   },
   {
     "id": "caido",
     "nome": "Caído",
     "descricao": "O personagem sofre –5 na Defesa contra ataques corpo a corpo e recebe +5 na Defesa contra ataques à distância (cumulativos com outras condições). Além disso, sofre –5 em ataques corpo a corpo e seu deslocamento é reduzido a 1,5m.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": -5,
+        "aplicacao": "automatica",
+        "condicao": {
+          "campo": "arma.tipo_ataque",
+          "em": [
+            "corpo_a_corpo"
+          ]
+        }
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": 5,
+        "aplicacao": "automatica",
+        "condicao": {
+          "campo": "arma.tipo_ataque",
+          "em": [
+            "disparo",
+            "arremesso"
+          ]
+        }
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "ataque.corpo_a_corpo",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento",
+        "valor": 1.5,
+        "aplicacao": "automatica",
+        "operacao": "definir"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "caidos",
     "nome": "Caídos",
     "descricao": "O personagem sofre –5 na Defesa contra ataques corpo a corpo e recebe +5 na Defesa contra ataques à distância (cumulativos com outras condições). Além disso, sofre –5 em ataques corpo a corpo e seu deslocamento é reduzido a 1,5m.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "aliasDe": "caido"
   },
   {
     "id": "cego",
     "nome": "Cego",
     "descricao": "O personagem fica desprevenido e lento, não pode fazer testes de Percepção para observar e sofre –5 em testes de perícias baseadas em Força ou Destreza. Todos os alvos de seus ataques recebem camuflagem total. Você é considerado cego enquanto estiver em uma área de escuridão total, a menos que algo lhe permita perceber no escuro. Sentidos.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "desprevenido",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "lento",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:for",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:des",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "nao_pode_fazer_testes_de_percepcao_para_observar",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "alvos_de_seus_ataques_recebem_camuflagem_total",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "considerado_cego_em_area_de_escuridao_total",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "cegos",
     "nome": "Cegos",
     "descricao": "O personagem fica desprevenido e lento, não pode fazer testes de Percepção para observar e sofre –5 em testes de perícias baseadas em Força ou Destreza. Todos os alvos de seus ataques recebem camuflagem total. Você é considerado cego enquanto estiver em uma área de escuridão total, a menos que algo lhe permita perceber no escuro. Sentidos.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "aliasDe": "cego"
   },
   {
     "id": "confuso",
     "nome": "Confuso",
     "descricao": "O personagem comporta-se de modo aleatório. Role 1d6 no início de seus turnos: 1) Movimenta-se em uma direção escolhida por uma rolagem de 1d8; 2-3) Não pode fazer ações, e fica balbuciando incoerentemente; 4-5) Usa a arma que estiver empunhando para atacar a criatura mais próxima, ou a si mesmo se estiver sozinho (nesse caso, apenas role o dano); 6) A condição termina e pode agir normalmente. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "comportamento_aleatorio_role_1d6_no_inicio_de_cada_turno_ver_tabela_na_descricao",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "temporal",
+    "dependeDe": "rastreador_de_turno"
   },
   {
     "id": "debilitado",
     "nome": "Debilitado",
     "descricao": "O personagem sofre –5 em testes de Força, Destreza e Constituição e de perícias baseadas nesses atributos. Se o personagem ficar debilitado novamente, em vez disso fica inconsciente.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "teste:for",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "teste:des",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "teste:con",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:for",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:des",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:con",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "escala_para_inconsciente_se_receber_de_novo",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "desprevenido",
     "nome": "Desprevenido",
     "descricao": "O personagem sofre –5 na Defesa e em Reflexos. Você fica desprevenido contra inimigos que não possa perceber.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:reflexos",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "fica_desprevenido_contra_inimigos_que_nao_pode_perceber",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "desprevenidos",
     "nome": "Desprevenidos",
     "descricao": "O personagem sofre –5 na Defesa e em Reflexos. Você fica desprevenido contra inimigos que não possa perceber.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "aliasDe": "desprevenido"
   },
   {
     "id": "doente",
     "nome": "Doente",
     "descricao": "Sob efeito de uma doença. Metabolismo.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "sob_efeito_de_uma_doenca_efeito_definido_pela_doenca",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "em-chamas",
     "nome": "Em Chamas",
     "descricao": "O personagem está pegando fogo. No início de seus turnos, sofre 1d6 pontos de dano de fogo. O personagem pode gastar uma ação padrão para apagar o fogo com as mãos. Imersão em água também apaga as chamas.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "dano_1d6_fogo_no_inicio_de_cada_turno",
+        "aplicacao": "lembrete",
+        "valor": {
+          "dados": {
+            "n": 1,
+            "faces": 6
+          }
+        }
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "acao_padrao_para_apagar_com_as_maos_ou_imersao_em_agua_apaga",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "temporal",
+    "dependeDe": "rastreador_de_turno"
   },
   {
     "id": "enfeiticado",
     "nome": "Enfeitiçado",
     "descricao": "O personagem se torna prestativo em relação à fonte da condição. Ele não fica sob controle da fonte, mas percebe suas palavras e ações da maneira mais favorável possível. A fonte da condição recebe +10 em testes de Diplomacia com o personagem. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "torna_se_prestativo_em_relacao_a_fonte_percebe_palavras_da_forma_mais_favoravel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "fonte_da_condicao_recebe_10_em_diplomacia_com_o_personagem",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "enfeiticada",
     "nome": "Enfeitiçada",
     "descricao": "O personagem se torna prestativo em relação à fonte da condição. Ele não fica sob controle da fonte, mas percebe suas palavras e ações da maneira mais favorável possível. A fonte da condição recebe +10 em testes de Diplomacia com o personagem. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "aliasDe": "enfeiticado"
   },
   {
     "id": "enjoado",
     "nome": "Enjoado",
     "descricao": "O personagem só pode realizar uma ação padrão ou de movimento (não ambas) por rodada. Ele pode gastar uma ação padrão para fazer uma investida, mas pode avançar no máximo seu deslocamento (e não o dobro). Metabolismo.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "so_pode_uma_acao_padrao_ou_de_movimento_por_rodada_nao_ambas",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "investida_com_acao_padrao_avanca_no_maximo_o_deslocamento",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "enjoadas",
     "nome": "Enjoadas",
     "descricao": "O personagem só pode realizar uma ação padrão ou de movimento (não ambas) por rodada. Ele pode gastar uma ação padrão para fazer uma investida, mas pode avançar no máximo seu deslocamento (e não o dobro). Metabolismo.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "aliasDe": "enjoado"
   },
   {
     "id": "enredado",
     "nome": "Enredado",
     "descricao": "O personagem fica lento, vulnerável e sofre –2 em testes de ataque. Movimento.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "lento",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "vulneravel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": -2,
+        "aplicacao": "automatica"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "envenenado",
     "nome": "Envenenado",
     "descricao": "O efeito desta condição varia de acordo com o veneno. Pode ser perda de vida recorrente ou outra condição (como fraco ou enjoado). Perda de vida recorrente por venenos é cumulativa. Veneno.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "efeito_varia_conforme_o_veneno_perda_de_vida_recorrente_ou_outra_condicao_cumulativa",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "temporal",
+    "dependeDe": "rastreador_de_turno"
   },
   {
     "id": "esmorecido",
     "nome": "Esmorecido",
     "descricao": "O personagem sofre –5 em testes de Inteligência, Sabedoria e Carisma e de perícias baseadas nesses atributos. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "teste:int",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "teste:sab",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "teste:car",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:int",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:sab",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:car",
+        "valor": -5,
+        "aplicacao": "automatica"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "exausto",
     "nome": "Exausto",
     "descricao": "O personagem fica debilitado, lento e vulnerável. Se ficar exausto novamente, em vez disso fica inconsciente. Cansaço.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "debilitado",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "lento",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "vulneravel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "escala_para_inconsciente_se_receber_de_novo",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "fascinado",
     "nome": "Fascinado",
     "descricao": "Com a atenção presa em alguma coisa. O personagem sofre –5 em Percepção e não pode fazer ações, exceto observar aquilo que o fascinou. Esta condição é anulada por ações hostis contra o personagem ou se o que o fascinou não estiver mais visível. Balançar uma criatura fascinada para tirá-la desse estado gasta uma ação padrão. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:percepcao",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "so_pode_observar_aquilo_que_o_fascinou",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "anulada_por_acao_hostil_ou_se_a_fonte_sair_de_vista",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "balancar_para_tirar_do_estado_gasta_acao_padrao",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "fascinada",
     "nome": "Fascinada",
     "descricao": "Com a atenção presa em alguma coisa. O personagem sofre –5 em Percepção e não pode fazer ações, exceto observar aquilo que o fascinou. Esta condição é anulada por ações hostis contra o personagem ou se o que o fascinou não estiver mais visível. Balançar uma criatura fascinada para tirá-la desse estado gasta uma ação padrão. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "aliasDe": "fascinado"
   },
   {
     "id": "fascinados",
     "nome": "Fascinados",
     "descricao": "Com a atenção presa em alguma coisa. O personagem sofre –5 em Percepção e não pode fazer ações, exceto observar aquilo que o fascinou. Esta condição é anulada por ações hostis contra o personagem ou se o que o fascinou não estiver mais visível. Balançar uma criatura fascinada para tirá-la desse estado gasta uma ação padrão. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 394 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 394
+    },
+    "aliasDe": "fascinado"
   },
   {
     "id": "fatigado",
     "nome": "Fatigado",
     "descricao": "O personagem fica fraco e vulnerável. Se ficar fatigado novamente, em vez disso fica exausto. Cansaço.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "fraco",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "vulneravel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "escala_para_exausto_se_receber_de_novo",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "fraco",
     "nome": "Fraco",
     "descricao": "O personagem sofre –2 em testes de Força, Destreza e Constituição e de perícias baseadas nesses atributos. Se ficar fraco novamente, em vez disso fica debilitado.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "teste:for",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "teste:des",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "teste:con",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:for",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:des",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:con",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "escala_para_debilitado_se_receber_de_novo",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "frustrado",
     "nome": "Frustrado",
     "descricao": "O personagem sofre –2 em testes de Inteligência, Sabedoria e Carisma e de perícias baseadas nesses atributos. Se ficar frustrado novamente, em vez disso fica esmorecido. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "teste:int",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "teste:sab",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "teste:car",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:int",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:sab",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia_categoria:car",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "escala_para_esmorecido_se_receber_de_novo",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "imovel",
     "nome": "Imóvel",
     "descricao": "Todas as formas de deslocamento do personagem são reduzidas a 0m. Movimento.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento",
+        "valor": 0,
+        "aplicacao": "automatica",
+        "operacao": "definir"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "todas_as_formas_de_deslocamento_reduzidas_a_zero",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "inconsciente",
     "nome": "Inconsciente",
     "descricao": "O personagem fica indefeso e não pode fazer ações, incluindo reações (mas ainda pode fazer testes que sejam naturalmente feitos quando se está inconsciente, como testes de Constituição para estabilizar sangramento). Balançar uma criatura para acordá-la gasta uma ação padrão.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "indefeso",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "nao_pode_fazer_acoes_incluindo_reacoes",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "ainda_faz_testes_naturais_do_estado_como_constituicao_para_estabilizar",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "balancar_para_acordar_gasta_acao_padrao",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "indefeso",
     "nome": "Indefeso",
     "descricao": "O personagem fica desprevenido, mas sofre –10 na Defesa, falha automaticamente em testes de Reflexos e pode sofrer golpes de misericórdia.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "desprevenido",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": -10,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "falha_automaticamente_em_testes_de_reflexos",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "pode_sofrer_golpe_de_misericordia",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "indefesos",
     "nome": "Indefesos",
     "descricao": "O personagem fica desprevenido, mas sofre –10 na Defesa, falha automaticamente em testes de Reflexos e pode sofrer golpes de misericórdia.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "aliasDe": "indefeso"
   },
   {
     "id": "lento",
     "nome": "Lento",
     "descricao": "Todas as formas de deslocamento do personagem são reduzidas à metade (arredonde para baixo para o primeiro incremento de 1,5m) e ele não pode correr ou fazer investidas. Movimento.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento",
+        "valor": 0.5,
+        "aplicacao": "automatica",
+        "operacao": "multiplicar"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "nao_pode_correr_ou_fazer_investidas",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "arredonda_para_baixo_no_incremento_de_1_5m",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "ofuscado",
     "nome": "Ofuscado",
     "descricao": "O personagem sofre –2 em testes de ataque e de Percepção. Sentidos.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "ataque",
+        "valor": -2,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "pericia:percepcao",
+        "valor": -2,
+        "aplicacao": "automatica"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "ofuscados",
     "nome": "Ofuscados",
     "descricao": "O personagem sofre –2 em testes de ataque e de Percepção. Sentidos.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "aliasDe": "ofuscado"
   },
   {
     "id": "paralisado",
     "nome": "Paralisado",
     "descricao": "Fica imóvel e indefeso e só pode realizar ações puramente mentais. Movimento.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "imovel",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "indefeso",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "so_pode_realizar_acoes_puramente_mentais",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "pasmo",
     "nome": "Pasmo",
     "descricao": "Não pode fazer ações. Mental.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "nao_pode_fazer_acoes",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "petrificado",
     "nome": "Petrificado",
     "descricao": "O personagem fica inconsciente e recebe redução de dano 8. Metamorfose.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "inconsciente",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "reducao_dano",
+        "valor": 8,
+        "aplicacao": "automatica"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "sangrando",
     "nome": "Sangrando",
     "descricao": "No início de seu turno, o personagem deve fazer um teste de Constituição (CD 15). Se falhar, perde 1d6 pontos de vida e continua sangrando. Se passar, remove essa condição. Metabolismo.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "no_inicio_do_turno_teste_de_constituicao_cd_15_falha_perde_1d6_pv_e_continua_passa_remove",
+        "aplicacao": "lembrete",
+        "valor": {
+          "dados": {
+            "n": 1,
+            "faces": 6
+          }
+        }
+      }
+    ],
+    "balde": "temporal",
+    "dependeDe": "rastreador_de_turno"
   },
   {
     "id": "sobrecarregado",
     "nome": "Sobrecarregado",
     "descricao": "O personagem sofre penalidade de armadura –5 e seu deslocamento é reduzido em –3m. Movimento.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "penalidade_armadura",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "bonus",
+        "alvo": "deslocamento",
+        "valor": -3,
+        "aplicacao": "automatica",
+        "unidade": "m"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "surdo",
     "nome": "Surdo",
     "descricao": "O personagem não pode fazer testes de Percepção para ouvir e sofre –5 em testes de Iniciativa. Além disso, é considerado em condição ruim para lançar magias. Sentidos.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "iniciativa",
+        "valor": -5,
+        "aplicacao": "automatica"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "nao_pode_fazer_testes_de_percepcao_para_ouvir",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "considerado_em_condicao_ruim_para_lancar_magias",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "surpreendido",
     "nome": "Surpreendido",
     "descricao": "O personagem fica desprevenido e não pode fazer ações.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "aplica_condicao",
+        "valor": "desprevenido",
+        "aplicacao": "lembrete"
+      },
+      {
+        "tipo": "capacidade",
+        "chave": "nao_pode_fazer_acoes",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "vulneravel",
     "nome": "Vulnerável",
     "descricao": "O personagem sofre –2 na Defesa.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "efeitos": [
+      {
+        "tipo": "bonus",
+        "alvo": "defesa",
+        "valor": -2,
+        "aplicacao": "automatica"
+      }
+    ],
+    "balde": "estatica"
   },
   {
     "id": "vulneraveis",
     "nome": "Vulneráveis",
     "descricao": "O personagem sofre –2 na Defesa.",
-    "fonte": { "livro": "livro-basico", "pagina": 395 }
+    "fonte": {
+      "livro": "livro-basico",
+      "pagina": 395
+    },
+    "aliasDe": "vulneravel"
   }
 ]

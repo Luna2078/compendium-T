@@ -149,3 +149,15 @@ enjoado, enredado, esmorecido, exausto, fascinado, fatigado, fraco, frustrado, i
 ofuscado, paralisado, pasmo, sangrando, surdo, vulneravel.
 ⚠️ Verificar se em-chamas/enredado/frustrado/esmorecido/pasmo/vulneravel são condições formais de T20 core (alguns
 podem ser efeitos descritivos, não condições nomeadas) — ajustar o id ou remover o link no lote de condições.
+
+## ⏳ PROPOSTOS — Condições (usados já, pela regra 9: calcula + registra p/ aprovação)
+| nome | superfície | por que | de onde |
+|------|-----------|---------|---------|
+| **`teste:<atributo>`** ⚠️ CRÍTICO | ALVO templado (`teste:for`…), irmão de `pericia:<x>` | **"−2 em TESTES de Força" ≠ "−2 de Força".** Não havia alvo para teste de atributo; usar `atr.for` cascatearia em dano/carga/PV — erro grave e SILENCIOSO. Combina com `pericia_categoria:<atr>` quando o texto diz "…e de perícias baseadas nesses atributos". | fraco, debilitado, frustrado, esmorecido (4 condições nucleares) |
+| `penalidade_armadura` | ALVO | penalidade de armadura aplicada às perícias com `penalidadeArmadura:true`; piora por condição/carga. | sobrecarregado (−5) |
+| `custo_habilidade` (ou alargar `custo_magia`) | DECISÃO | Alquebrado: "custo em PM das **habilidades** aumenta +1" — mais amplo que magias. Modelado hoje como `bonus custo_magia +1` **+ lembrete explícito** de que vale para todas as habilidades. Decidir: criar `custo_habilidade` ou alargar a semântica de `custo_magia`. | alquebrado |
+
+## ✅ VALIDAÇÃO DA ARQUITETURA DE 3 CAMADAS (regra 21) — circuito fechado
+Os **28 ids** colhidos via `aplica_condicao` nas magias resolvem **28/28** em `referencia/condicoes.json`.
+`pericia:*` e `pericia_categoria:<atr>` (criados nas magias/itens) provaram-se exatamente as peças que as
+condições pediam — nenhuma superfície nova foi necessária além de `teste:<atributo>`.

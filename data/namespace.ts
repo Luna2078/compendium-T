@@ -72,6 +72,9 @@ export const ALVOS = [
   // escola/circulo) — o resolverConjuracao aplica as reduções condicionais ANTES de validar o limite de PM.
   // Ex.: medalhão-de-prata (−1 PM em magias de alcance pessoal). Reusa o cálculo de custo que já existe.
   "custo_magia",
+  // penalidade de armadura (aplicada às perícias com `penalidadeArmadura: true`). Piora com carga/condição.
+  // Ex.: condição Sobrecarregado (penalidade de armadura −5 e deslocamento −3m).
+  "penalidade_armadura",
   // combate (geralmente contextual)
   "ataque", "ataque.corpo_a_corpo", "ataque.distancia",
   "dano", "dano.corpo_a_corpo", "dano.arremesso", "dano.disparo",
@@ -94,7 +97,14 @@ export type Atributo = (typeof ATRIBUTOS)[number];
 // `pericia:*` = TODAS as perícias, sem filtro de atributo (irmão de `pericia_categoria:<atr>`). MESMA
 // expansão em runtime (lê a lista de PERICIAS; NÃO materializa N bônus). Ex.: Oração (+2 em todos os testes
 // de perícia), Tranquilidade. Um "+X em todas as perícias" é UM efeito, não 29.
-export type Alvo = (typeof ALVOS)[number] | `pericia:${Pericia}` | `pericia_categoria:${Atributo}` | "pericia:*";
+//
+// ⚠️ `teste:<atributo>` = penalidade/bônus no TESTE DE ATRIBUTO — NÃO no valor do atributo.
+// DISTINÇÃO CRÍTICA: "−2 em testes de Força" (Fraco) ≠ "−2 de Força" (`atr.for`). O segundo cascatearia
+// em dano, carga, PV — erro grave e silencioso. Condições de Cansaço/Mental (fraco, debilitado, frustrado,
+// esmorecido) penalizam SÓ o teste. Irmão de `pericia:<x>`; combina com `pericia_categoria:<atr>` quando o
+// texto diz "…e de perícias baseadas nesses atributos".
+export type Alvo = (typeof ALVOS)[number] | `pericia:${Pericia}` | `pericia_categoria:${Atributo}`
+  | "pericia:*" | `teste:${Atributo}`;
 
 // Lista canônica de perícias T20. ids em ascii minúsculo, sem acento.
 export const PERICIAS = [

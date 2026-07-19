@@ -294,3 +294,10 @@ para a abertura explícita do livro ("pode inventar outros… converse com o mes
 Lista das 28: acrobacia, adestramento, atletismo, atuacao, cavalgar, conhecimento, cura, diplomacia,
 enganacao, fortitude, furtividade, guerra, iniciativa, intimidacao, intuicao, investigacao, jogatina,
 ladinagem, luta, misticismo, nobreza, percepcao, pilotagem, pontaria, reflexos, religiao, sobrevivencia, vontade.
+
+---
+## `referencia/condicoes.json` — 11 ALIASES sem `efeitos` (justificativa, não escape)
+São flexões de gênero/número para casar tooltips no texto (atordoado/atordoada, caido/caidos, cego/cegos,
+desprevenido/desprevenidos, enfeiticado/enfeiticada, enjoado/enjoadas, fascinado/fascinada/fascinados,
+indefeso/indefesos, ofuscado/ofuscados, vulneravel/vulneraveis). Cada um ganhou `aliasDe: "<id-canônico>"`
+e **NÃO duplica a mecânica** — mecânica duplicada diverge. O motor resolve o alias e lê os `efeitos[]` do canônico.

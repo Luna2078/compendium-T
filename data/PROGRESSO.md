@@ -103,6 +103,11 @@ Propositor, não autoridade final — tudo é revisado por humano antes de virar
     (Físico/Mente Divina, Resistência a Energia, magias de MODO controlar-*, abencoar-alimentos). O `ramo`
     agora carrega `dano?`/`cura?`/`aplicaCondicao?` (payload do modo). Não é peça nova — é o molde num momento
     diferente. Reaparece em perícias (Ofício = escolha no uso). ALVO `pericia:*` = todas as perícias (runtime).
+25. **"TESTE de atributo" ≠ "valor do atributo".** `atr.for` é o VALOR (cascateia em dano, carga, PV);
+    `teste:for` é só a rolagem. Texto que diz "−N em testes de Força/Destreza/…" → `teste:<atr>`, NUNCA `atr.*`.
+    Se disser "…e de perícias baseadas nesses atributos", some `pericia_categoria:<atr>`. Confundir os dois é
+    erro GRAVE e SILENCIOSO (o número certo no lugar errado). Vale p/ toda condição de Cansaço/Mental e
+    qualquer efeito futuro de "penalidade em testes".
 24. **DIREÇÃO DO MODELO — o que é ALVO não é FONTE.** Antes de enriquecer uma pasta, pergunte: esta entidade
     CONCEDE efeito a alguém, ou é o STAT que os efeitos miram? Perícia é alvo (`pericia:atletismo`), não fonte
     → `efeitos[]` vazio é o correto, não uma falha. O mesmo vale para qualquer entidade que o motor CALCULA em
@@ -444,10 +449,33 @@ que calcularFicha consome — é mecânica real, mas não precisa virar efeito) 
 poderes (162) · racas (17) · origens (35) · classes (14) · itens (171) · itens-magicos (186) · magias (198) ·
 pericias (29). **Quarentenas em aberto: ZERO** (só pendente-de-divindades: druida/Devoto Fiel, paladino/Arma
 Sagrada, `personagem.divindade`/aura-divina).
+### ✅ CONDIÇÕES FECHADAS — `referencia/condicoes.json` (35 canônicas + 11 aliases) — 3 CAMADAS VALIDADAS
+Ficam em `data/referencia/condicoes.json` (camada de tooltip/referência), NÃO numa pasta `condicoes/`.
+**Circuito da regra 21 fechado: os 28 ids colhidos via `aplica_condicao` nas magias resolvem 28/28.**
+`tsc` exit 0 · 0 alvo/campo inválido · 18 links entre condições, 0 órfão.
+- **BALDE 1 — ESTÁTICAS (31): `efeitos[]` DE VERDADE, calculam já** (`balde:"estatica"`). É o balde que PROVA
+  as 3 camadas: quando o personagem tem a condição, calcularFicha processa como processa a Fúria — aparece
+  "−2 por Fatigado" e some quando sai. Ex.: abalado `bonus pericia:* -2`; vulneravel `defesa -2`; desprevenido
+  `defesa -5` + `pericia:reflexos -5`; imovel `deslocamento definir 0`; lento `deslocamento multiplicar 0.5`;
+  petrificado `reducao_dano 8`; caido `defesa -5 vs corpo_a_corpo` + `+5 vs disparo/arremesso` (condicionado).
+- **BALDE 2 — TEMPORAIS (4): lembrete-rico** (`balde:"temporal"`, `dependeDe:"rastreador_de_turno"`) — em-chamas
+  (1d6 fogo/turno), sangrando (Con CD 15/turno), confuso (1d6/turno), envenenado. **NÃO se modelou "dano por
+  rodada" sem o rastreador.** Mesma fila de regeneração, Torre Armada e `_DURACOES_COMBATE.md`.
+- **COMPOSIÇÃO entre condições** usa o MESMO `aplica_condicao` (fatigado → fraco + vulnerável; exausto →
+  debilitado + lento + vulnerável; paralisado → imovel + indefeso). O link é recursivo e o contrato já cobria.
+- **ESCALADA** ("se ficar abalado de novo, fica apavorado") → `capacidade lembrete` (regra de transição, não stat).
+- **ALIASES (11)**: flexões de gênero/número ganham `aliasDe:"<canônico>"` e **NÃO duplicam mecânica**
+  (mecânica duplicada diverge). Justificado em `_ITENS_VAZIOS.md`.
+- ⚠️ **ADITIVO CRÍTICO — ALVO `teste:<atributo>`** (regra 25): "−2 em TESTES de Força" ≠ "−2 de Força".
+  Não havia alvo para teste de atributo; usar `atr.for` cascatearia em dano/carga/PV — **erro grave e
+  SILENCIOSO**. Criado `teste:<atr>` (irmão de `pericia:<x>`), combinado com `pericia_categoria:<atr>` quando o
+  texto diz "…e de perícias baseadas nesses atributos". Afeta fraco/debilitado/frustrado/esmorecido.
+  + ALVO `penalidade_armadura` (sobrecarregado). + DECISÃO pendente: `custo_habilidade` vs alargar `custo_magia`
+  (alquebrado diz "habilidades", mais amplo que magias) — hoje `custo_magia +1` + lembrete explícito.
+
 **Próximos passos (ordem sugerida):**
-1. **`condicoes/`** — consome os 28 ids colhidos via `aplica_condicao` + arquitetura de 3 camadas (regra 21):
-   a mecânica ("−2 em testes X") vira `efeitos[]` DE VERDADE na condição, calculada na ficha de quem a carrega.
-2. **Lote de divindades** — destrava os 3 pendentes acima (`arma.preferida_divindade`, `personagem.divindade`).
+1. **Lote de divindades** — destrava os 3 pendentes acima (`arma.preferida_divindade`, `personagem.divindade`,
+   druida/Devoto Fiel + paladino/Arma Sagrada) via `ramo`.
 3. Expansões (Ameaças de Arton etc.) — o contrato já está maduro; esperar recorrência para promover as
    primitivas em observação (regra 23: recurso-consumível, `modo_rolagem`, `alvo.nivel_nd`).
 ### (histórico — classes onda 1)
