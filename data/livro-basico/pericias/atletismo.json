@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Atletismo",
   "resumo": "Permite realizar façanhas atléticas como correr, escalar, nadar e saltar.",
-  "fonte": { "livro": "livro-basico", "pagina": 116 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 116
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -29,6 +32,7 @@
         "nome": "Saltar",
         "descricao": "Você pode pular sobre buracos ou obstáculos ou alcançar algo elevado. Para um salto longo, a CD é 5 por quadrado de 1,5m (CD 10 para 3m, 15 para 4,5m, 20 para 6m e assim por diante). Para um salto em altura, a CD 15 é por quadrado de 1,5m (30 para 3m, 45 para 4,5m e assim por diante). Você deve ter pelo menos 6m para correr e pegar impulso (sem esse espaço, a CD aumenta em +10). Saltar é parte de seu movimento e não exige uma ação."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

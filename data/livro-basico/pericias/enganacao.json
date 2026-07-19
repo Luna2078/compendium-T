@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Enganação",
   "resumo": "Permite manipular pessoas com blefes e trapaças, incluindo disfarces, falsificações, fintas e mentiras.",
-  "fonte": { "livro": "livro-basico", "pagina": 118 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 118
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -45,6 +48,7 @@
         "apenasTreinado": false,
         "descricao": "Você faz uma pessoa acreditar em algo que não é verdade. Seu teste é oposto pelo teste de Intuição da vítima. Mentiras muito implausíveis impõem uma penalidade de –10 em seu teste."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

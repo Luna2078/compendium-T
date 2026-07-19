@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Vontade",
   "resumo": "Perícia de resistência usada para resistir a efeitos que exigem determinação, como intimidação e encantamentos.",
-  "fonte": { "livro": "livro-basico", "pagina": 123 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 123
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -18,6 +21,7 @@
         "apenasTreinado": false,
         "descricao": "Você usa esta perícia para resistir a efeitos que exigem determinação, como intimidação e encantamentos. A CD é determinada pelo efeito. Testes de Vontade são testes de resistência."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

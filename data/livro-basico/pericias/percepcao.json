@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Percepção",
   "resumo": "Permite notar coisas usando os sentidos, observar itens discretos ou escondidos e ouvir barulhos sutis.",
-  "fonte": { "livro": "livro-basico", "pagina": 122 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 122
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -23,6 +26,7 @@
         "apenasTreinado": false,
         "descricao": "Você escuta barulhos sutis. Uma conversa casual próxima tem CD 0 — ou seja, a menos que exista alguma penalidade, você passa automaticamente. Ouvir pessoas sussurrando tem CD 15. Ouvir do outro lado de uma porta aumenta a CD em +10. Você pode fazer testes de Percepção para ouvir mesmo que esteja dormindo, mas sofre –10 no teste; um sucesso faz você acordar. Perceber criaturas que não possam ser vistas tem CD 20, ou +10 no teste de Furtividade da criatura, o que for maior. Mesmo que você passe no teste, ainda sofre penalidades normais por lutar sem ver o inimigo."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

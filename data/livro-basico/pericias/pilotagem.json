@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Pilotagem",
   "resumo": "Permite operar veículos como carroças, barcos e balões, incluindo manobras em situações adversas.",
-  "fonte": { "livro": "livro-basico", "pagina": 122 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 122
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -19,6 +22,7 @@
         "apenasTreinado": false,
         "descricao": "Conduzir um veículo em situações ruins (terreno acidentado para veículos terrestres, chuva ou ventania para veículos aquáticos ou aéreos) exige uma ação de movimento e um teste de Pilotagem contra CD 15 por turno ou cena, de acordo com o mestre. Se falhar, você avança metade do deslocamento. Se falhar por 5 ou mais, se acidenta de alguma forma. Situações extremas (terreno com obstáculos, tempestade...) aumentam a CD para 25."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

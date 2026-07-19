@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Ladinagem",
   "resumo": "Permite exercer atividades ilícitas como abrir fechaduras, ocultar objetos, punguear e sabotar mecanismos.",
-  "fonte": { "livro": "livro-basico", "pagina": 120 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 120
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -33,6 +36,7 @@
         "apenasTreinado": false,
         "descricao": "Você desabilita um dispositivo mecânico. Uma ação simples (emperrar uma fechadura, desativar uma armadilha básica, sabotar uma roda de carroça para que quebre 1d4 rodadas após o uso) tem CD 20. Uma ação complexa (desativar uma armadilha avançada, sabotar um canhão para explodir quando utilizado) tem CD 30. Se você falhar por 5 ou mais, alguma coisa sai errada — a armadilha se ativa, você acha que o mecanismo está desabilitado, mas na verdade ele ainda funciona... Usar esta perícia leva 1d4 rodadas. Você pode sofrer –5 em seu teste para fazê-lo como uma ação completa."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

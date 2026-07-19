@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Cura",
   "resumo": "Permite tratar ferimentos, doenças e venenos, estabilizando aliados e acelerando a recuperação.",
-  "fonte": { "livro": "livro-basico", "pagina": 117 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 117
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -35,6 +38,7 @@
         "apenasTreinado": true,
         "descricao": "Você ajuda a vítima de uma doença ou veneno com efeito contínuo. Gaste uma ação completa e faça um teste de Cura contra a CD da doença ou veneno. Se você passar, o paciente recebe +5 em seu próximo teste de Fortitude contra esse efeito. Esta perícia exige uma maleta de medicamentos. Sem ela, você sofre –5 no teste. Você pode usar a perícia Cura em si mesmo, mas sofre –5 no teste."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

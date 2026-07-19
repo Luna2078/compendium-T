@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Intimidação",
   "resumo": "Permite assustar ou coagir outras pessoas através de ameaças e pressão psicológica. Usos são efeitos de medo.",
-  "fonte": { "livro": "livro-basico", "pagina": 120 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 120
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -23,6 +26,7 @@
         "apenasTreinado": false,
         "descricao": "Faça um teste de Intimidação oposto pelo teste de Vontade de uma criatura inteligente (Int –3 ou maior) adjacente. Se você passar, ela obedece uma ordem sua (como fazer uma pequena tarefa, deixar que você passe por um lugar que ela estava protegendo...). Se você mandá-la fazer algo perigoso ou que vá contra a natureza dela, ela recebe +5 no teste ou passa automaticamente. Este uso gasta um minuto ou mais, de acordo com o mestre, e deixa o alvo hostil contra você."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

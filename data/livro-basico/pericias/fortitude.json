@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Fortitude",
   "resumo": "Perícia de resistência usada para resistir a efeitos que exigem vitalidade, como doenças e venenos, e para manter o fôlego ao correr ou prender a respiração.",
-  "fonte": { "livro": "livro-basico", "pagina": 119 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 119
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -12,6 +15,7 @@
     "treinada": false,
     "penalidadeArmadura": false,
     "descricao": "Você usa esta perícia para resistir a efeitos que exigem vitalidade, como doenças e venenos. A CD é determinada pelo efeito. Você também usa Fortitude para manter seu fôlego quando está correndo ou sem respirar. A CD é 15 +1 por teste anterior.",
-    "usos": []
+    "usos": [],
+    "efeitos": []
   }
 }

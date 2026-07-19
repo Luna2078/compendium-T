@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Diplomacia",
   "resumo": "Permite convencer pessoas com lábia e argumentação, barganhando preços, mudando atitudes e persuadindo favores.",
-  "fonte": { "livro": "livro-basico", "pagina": 118 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 118
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -26,6 +29,7 @@
         "cd": "20",
         "descricao": "Você convence uma pessoa a fazer algo, como responder uma pergunta ou prestar um favor. Se essa coisa for custosa (como fornecer uma carona de navio) você sofre –5 em seu teste. Se for perigosa (como ajudar numa luta) você sofre –10 ou falha automaticamente (veja também a página 259 para modificadores por categorias de atitude). De acordo com o mestre, seu teste pode ser oposto ao teste de Vontade da pessoa. Este uso gasta um minuto ou mais, de acordo com o mestre."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Jogatina",
   "resumo": "Permite jogar jogos de azar e apostar para ganhar dinheiro.",
-  "fonte": { "livro": "livro-basico", "pagina": 120 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 120
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -18,6 +21,7 @@
         "apenasTreinado": false,
         "descricao": "Para resolver uma noite de jogatina, pague T$ 1d10, faça um teste de perícia e consulte a tabela abaixo para determinar quanto você ganha.\n\nTeste / Ganho:\n9 ou menos: Nenhum.\n10 a 14: Metade da aposta.\n15 a 19: Valor da aposta (você 'empata').\n20 a 29: Dobro da aposta.\n30 a 39: Triplo da aposta.\n40 ou mais: Quíntuplo da aposta.\n\nO mestre pode variar o valor da aposta básica. De T$ 1d3, para uma taverna no porto frequentada por marujos e estivadores, a 1d10 x T$ 1.000, para um cassino de luxo em Valkaria."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

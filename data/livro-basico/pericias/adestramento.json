@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Adestramento",
   "resumo": "Permite lidar com animais, acalmando-os e fazendo-os realizar tarefas para as quais foram treinados.",
-  "fonte": { "livro": "livro-basico", "pagina": 115 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 115
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -23,6 +26,7 @@
         "cd": "15",
         "descricao": "Você faz um animal realizar uma tarefa para a qual foi treinado (como \"atacar\", \"sentar\", \"vigiar\"...). Isso permite usar Adestramento como Pilotagem para veículos de tração animal. Este uso gasta uma ação de movimento."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Pontaria",
   "resumo": "Permite fazer ataques à distância contra inimigos.",
-  "fonte": { "livro": "livro-basico", "pagina": 122 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 122
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -18,6 +21,7 @@
         "apenasTreinado": false,
         "descricao": "Você usa Pontaria para fazer ataques à distância. A CD é a Defesa do alvo. Se você acertar, causa dano de acordo com a arma utilizada. Veja o Capítulo 5: Jogando para as regras completas de ataque."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

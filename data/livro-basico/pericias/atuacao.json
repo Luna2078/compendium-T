@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Atuação",
   "resumo": "Permite fazer apresentações artísticas, incluindo música, dança e dramaturgia, para ganhar dinheiro ou impressionar pessoas.",
-  "fonte": { "livro": "livro-basico", "pagina": 116 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 116
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -22,6 +25,7 @@
         "nome": "Impressionar",
         "descricao": "Faça um teste de Atuação oposto pelo teste de Vontade de quem você quer impressionar. Se você passar, recebe +2 em testes de perícias baseadas em Carisma contra essa pessoa no mesmo dia. Se falhar, sofre –2 nesses testes e não pode tentar de novo no mesmo dia. Se estiver tentando impressionar mais de uma pessoa, o mestre faz apenas um teste pela plateia, usando o melhor valor. Este uso leva de alguns minutos (canto ou dança) até algumas horas (apresentação teatral)."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

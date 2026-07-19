@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Misticismo",
   "resumo": "Envolve o conhecimento de magias, itens mágicos e fenômenos sobrenaturais.",
-  "fonte": { "livro": "livro-basico", "pagina": 121 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 121
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -44,6 +47,7 @@
         "apenasTreinado": false,
         "descricao": "Lançar uma magia arcana usando armadura exige um teste. A CD é 20 + Custo em PM da Magia. Esse teste sofre penalidade de armadura. Se falhar, a magia não funciona, mas gasta pontos de mana mesmo assim."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

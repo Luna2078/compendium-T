@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Intuição",
   "resumo": "Mede a empatia e o sexto sentido do personagem, permitindo detectar mentiras e pressentir anomalias.",
-  "fonte": { "livro": "livro-basico", "pagina": 120 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 120
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -24,6 +27,7 @@
         "apenasTreinado": true,
         "descricao": "Você analisa uma pessoa, para ter uma noção de sua índole ou caráter, ou uma situação, para saber se há algo anormal (por exemplo, se os habitantes de uma vila estão agindo de forma estranha). Este uso apenas indica se há algo anormal, mas não revela a causa."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

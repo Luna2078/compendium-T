@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Ofício",
   "resumo": "Na verdade são várias perícias diferentes, cada uma permitindo fabricar itens de certas categorias e ganhar sustento com trabalho especializado.",
-  "fonte": { "livro": "livro-basico", "pagina": 121 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 121
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -34,6 +37,82 @@
         "cd": "15",
         "apenasTreinado": false,
         "descricao": "Com uma semana de trabalho e um teste de Ofício, você ganha T$ 1, mais T$ 1 por ponto que seu teste exceder a CD. Por exemplo, com um resultado 20, ganha T$ 6 pela semana de trabalho. Trabalhadores sem treinamento usam testes de atributo para sustento. De acordo com o mestre, outras perícias podem ser usadas para sustento, como Adestramento, Cura ou Sobrevivência. Cada Ofício exige instrumentos de ofício específicos. Sem eles, você sofre –5 no teste."
+      }
+    ],
+    "efeitos": [
+      {
+        "tipo": "capacidade",
+        "chave": "pode_inventar_outro_oficio_com_usos_definidos_pelo_mestre",
+        "aplicacao": "lembrete"
+      }
+    ],
+    "escolhas": [
+      {
+        "id": "oficio-especializacao",
+        "rotulo": "tipo de Ofício (escolhido ao treinar a perícia; cada Ofício é uma perícia distinta)",
+        "momento": "criacao",
+        "opcoes": [
+          {
+            "tipo": "ramo",
+            "rotulo": "Armeiro",
+            "efeitos": [
+              {
+                "tipo": "capacidade",
+                "chave": "fabrica_categorias",
+                "valor": "Armas e Armaduras & Escudos",
+                "aplicacao": "lembrete"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Artesão",
+            "efeitos": [
+              {
+                "tipo": "capacidade",
+                "chave": "fabrica_categorias",
+                "valor": "Equipamento de Aventura, Ferramentas, Esotéricos e Veículos",
+                "aplicacao": "lembrete"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Alquimista",
+            "efeitos": [
+              {
+                "tipo": "capacidade",
+                "chave": "fabrica_categorias",
+                "valor": "Alquímicos",
+                "aplicacao": "lembrete"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Cozinheiro",
+            "efeitos": [
+              {
+                "tipo": "capacidade",
+                "chave": "fabrica_categorias",
+                "valor": "Alimentação",
+                "aplicacao": "lembrete"
+              }
+            ]
+          },
+          {
+            "tipo": "ramo",
+            "rotulo": "Alfaiate",
+            "efeitos": [
+              {
+                "tipo": "capacidade",
+                "chave": "fabrica_categorias",
+                "valor": "Vestuário",
+                "aplicacao": "lembrete"
+              }
+            ]
+          }
+        ]
       }
     ]
   }

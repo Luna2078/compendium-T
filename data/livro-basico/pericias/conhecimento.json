@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Conhecimento",
   "resumo": "Permite responder dúvidas sobre campos do saber como aritmética, astronomia, dialética, geografia e história, além de entender idiomas desconhecidos.",
-  "fonte": { "livro": "livro-basico", "pagina": 117 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 117
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -22,6 +25,7 @@
         "nome": "Informação",
         "descricao": "Você responde dúvidas gerais. Questões simples, como o ano de fundação de um reino, não exigem testes. Questões complexas, como saber o antídoto de um veneno, tem CD 20. Por fim, mistérios e enigmas, como a origem de uma antiga maldição, tem CD 30."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

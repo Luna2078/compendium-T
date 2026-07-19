@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Nobreza",
   "resumo": "Representa a educação de um nobre, com conhecimento de etiqueta, leis, tradições, linhagens e heráldica.",
-  "fonte": { "livro": "livro-basico", "pagina": 121 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 121
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -24,6 +27,7 @@
         "apenasTreinado": false,
         "descricao": "Você responde dúvidas relativas a leis, tradições, linhagens e heráldica. Questões simples não exigem teste. Questões complexas têm CD 20. Por fim, mistérios e enigmas têm CD 30."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

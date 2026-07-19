@@ -263,3 +263,34 @@
 - **propriedades:** Versátil✓lib, Arremesso✓lib
 - **arma.especial:** Versátil: +2 em testes para derrubar. Pode ser arremessado.
 - **efeitos:** `[]`  → motivo: propriedade resolvida pela biblioteca `PROPRIEDADES_ARMA`
+
+---
+## `pericias/` (29) — 28 com `efeitos: []` POR CATEGORIA (justificativa, não escape)
+
+**Motivo estrutural: a perícia é o ALVO de efeitos, não uma FONTE deles.** Quando algo dá "+2 em Atletismo",
+o efeito vive no poder/item/magia que concede (`bonus alvo:"pericia:atletismo"`) — a perícia em si não
+concede nada a ninguém. Preencher `efeitos[]` numa perícia seria inverter a direção do modelo.
+
+Toda a mecânica da perícia JÁ está em campos estruturados que o motor lê direto (o extrator acertou):
+- `atributoChave` (Força/Destreza/…) — entra no cálculo do teste.
+- `treinada` (bool) — gate de uso.
+- `penalidadeArmadura` (bool) — penalidade de armadura aplicada ao teste. **É mecânica real e aterrissa
+  no teste, mas já é um campo booleano que calcularFicha consome — não precisa virar `efeitos[]`.**
+- `usos[]` com `nome`/`cd`/`apenasTreinado`/`descricao` — 74 procedimentos, 23 com CD estruturado.
+  Procedimento (role um teste, CD X, resultado Y) NÃO é efeito: não escreve em stat persistente.
+
+**Os 7 "modificadores" do texto NÃO são efeitos do dono da perícia** (verificado um a um, regra 18):
+atuacao/Impressionar (+2 a perícias de Car contra aquela pessoa — bônus situacional pós-teste, mestre arbitra);
+cura/Tratamento (+5 na próxima Fortitude do PACIENTE); enganacao/Disfarce e ladinagem/Ocultar (+10 no teste de
+Percepção do OBSERVADOR — outro lado da mesa); furtividade/Seguir (+5 na Percepção de QUEM É SEGUIDO);
+intimidacao/Coagir (+5 no teste do ALVO); atletismo/Corrida (+/−2 por 1,5m de deslocamento — parâmetro
+INTERNO do uso Corrida, não bônus na perícia Atletismo). Nenhum aterrissa na ficha do dono → prosa/uso.
+
+**Única perícia com `efeitos`/`escolhas`: `oficio`** — "Ofício na verdade são várias perícias diferentes".
+Escolha de especialização com `momento:"criacao"` (permanente, salva no personagem — igual a treinar):
+5 ramos nomeados na prosa (Armeiro, Artesão, Alquimista, Cozinheiro, Alfaiate) + `capacidade lembrete`
+para a abertura explícita do livro ("pode inventar outros… converse com o mestre").
+
+Lista das 28: acrobacia, adestramento, atletismo, atuacao, cavalgar, conhecimento, cura, diplomacia,
+enganacao, fortitude, furtividade, guerra, iniciativa, intimidacao, intuicao, investigacao, jogatina,
+ladinagem, luta, misticismo, nobreza, percepcao, pilotagem, pontaria, reflexos, religiao, sobrevivencia, vontade.

@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Religião",
   "resumo": "Fornece conhecimento sobre os deuses e religiões de Arton, permitindo identificar criaturas divinas, itens mágicos de origem divina e realizar ritos religiosos.",
-  "fonte": { "livro": "livro-basico", "pagina": 122 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 122
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -34,6 +37,7 @@
         "apenasTreinado": false,
         "descricao": "Você realiza uma cerimônia religiosa, como um batizado, casamento ou funeral. Isso inclui a cerimônia de penitência para redimir um devoto que tenha descumprido as Obrigações & Restrições de sua divindade. Uma cerimônia de penitência exige um sacrifício de T$ 100 por nível de personagem do devoto ou a realização de uma missão sagrada, de acordo com o mestre."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

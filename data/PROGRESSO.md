@@ -103,6 +103,11 @@ Propositor, não autoridade final — tudo é revisado por humano antes de virar
     (Físico/Mente Divina, Resistência a Energia, magias de MODO controlar-*, abencoar-alimentos). O `ramo`
     agora carrega `dano?`/`cura?`/`aplicaCondicao?` (payload do modo). Não é peça nova — é o molde num momento
     diferente. Reaparece em perícias (Ofício = escolha no uso). ALVO `pericia:*` = todas as perícias (runtime).
+24. **DIREÇÃO DO MODELO — o que é ALVO não é FONTE.** Antes de enriquecer uma pasta, pergunte: esta entidade
+    CONCEDE efeito a alguém, ou é o STAT que os efeitos miram? Perícia é alvo (`pericia:atletismo`), não fonte
+    → `efeitos[]` vazio é o correto, não uma falha. O mesmo vale para qualquer entidade que o motor CALCULA em
+    vez de APLICAR. Corolário de processo: **não dispare fan-out numa pasta cujo `efeitos[]` deve ser vazio** —
+    agentes pressionados a preencher inventam. Verifique a direção ANTES de escalar (custo evitado > risco).
 23. **PRIMITIVAS "conscientes, não enterradas" (registrar quando aparecem em baixa freq, promover se recorrerem):**
     (a) **recurso-consumível** (pool de N pontos gastos à vontade — guardiao-divino; = "carga" de item): hoje
     lembrete-rico; vira MOTOR de recurso se as expansões trouxerem volume. (b) **`modo_rolagem`** (vantagem/
@@ -418,9 +423,33 @@ Aprimoramentos ficam em prosa (`custo`+`efeito`), como a interface `Aprimorament
   `pericia:*` (oracao); pool/menu = lembrete-rico; vantagem/ND = lembrete c/ flag de promoção (regra 23);
   personagem.divindade = pendente-de-divindades. **Quarentenas de magias: 8 → 0.** Contrato: `tsc` exit 0.
 
-### 🎯 LIVRO BÁSICO — pastas de `efeitos[]` FECHADAS: poderes, racas, origens, classes, itens, itens-magicos, magias.
-Falta `pericias/` (29) — última do enriquecimento no Básico. Depois: pasta `condicoes/` (usa os 28 ids colhidos +
-arquitetura de 3 camadas), lote de divindades (destrava os pendentes), e então expansões.
+### ✅ `pericias/` (29) FECHADA — SEM fan-out (decisão deliberada) — a perícia é ALVO, não FONTE de efeito
+**Achado estrutural (regra 24):** perícia é o ALVO de efeitos (`bonus alvo:"pericia:atletismo"` vive no poder/
+item/magia que concede), NUNCA uma fonte. Preencher `efeitos[]` numa perícia inverteria a direção do modelo.
+Toda a mecânica JÁ está estruturada pelo extrator: `atributoChave`, `treinada`, `penalidadeArmadura` (booleano
+que calcularFicha consome — é mecânica real, mas não precisa virar efeito) e `usos[]` (74 procedimentos, 23 com
+`cd`, 8 `apenasTreinado`). **Procedimento não é efeito** (role teste, CD X → não escreve em stat persistente).
+- **Fan-out foi DESCARTADO de propósito:** 6 agentes pressionados a preencher `efeitos[]` de 29 perícias sem
+  efeitos = fábrica de alucinação. Feito à mão. (Custo evitado > risco de fabricação — vale como precedente.)
+- Os 7 "modificadores" do texto foram verificados um a um (regra 18) e **nenhum aterrissa na ficha do dono**:
+  são bônus do OUTRO lado (Percepção do observador vs Disfarce/Ocultar; Fortitude do paciente em Tratamento;
+  teste do alvo em Coagir) ou parâmetro INTERNO de um uso (±2/1,5m na Corrida). Ficam na prosa do uso.
+- **`oficio` é a única com `efeitos`/`escolhas`**: "Ofício na verdade são várias perícias diferentes" →
+  `escolhas` com `momento:"criacao"` (permanente, como treinar), 5 ramos nomeados na prosa + lembrete da
+  abertura do livro ("pode inventar outros; converse com o mestre"). Confirmou a previsão de que "escolha no
+  uso" (regra 22) reapareceria aqui — só que aqui o momento é `criacao`, não `lancamento`.
+- 28 com `efeitos: []` JUSTIFICADAS POR CATEGORIA em `_ITENS_VAZIOS.md` (regra 17: vazio justificado, não escape).
+
+### 🎯 LIVRO BÁSICO — ENRIQUECIMENTO DE `efeitos[]` 100% FECHADO
+poderes (162) · racas (17) · origens (35) · classes (14) · itens (171) · itens-magicos (186) · magias (198) ·
+pericias (29). **Quarentenas em aberto: ZERO** (só pendente-de-divindades: druida/Devoto Fiel, paladino/Arma
+Sagrada, `personagem.divindade`/aura-divina).
+**Próximos passos (ordem sugerida):**
+1. **`condicoes/`** — consome os 28 ids colhidos via `aplica_condicao` + arquitetura de 3 camadas (regra 21):
+   a mecânica ("−2 em testes X") vira `efeitos[]` DE VERDADE na condição, calculada na ficha de quem a carrega.
+2. **Lote de divindades** — destrava os 3 pendentes acima (`arma.preferida_divindade`, `personagem.divindade`).
+3. Expansões (Ameaças de Arton etc.) — o contrato já está maduro; esperar recorrência para promover as
+   primitivas em observação (regra 23: recurso-consumível, `modo_rolagem`, `alvo.nivel_nd`).
 ### (histórico — classes onda 1)
 Passe de vocabulário rodou (glossário de 56 chaves + 7 patterns no `_CHAVES_NOVAS.md`) → drift baixíssimo no fan-out.
 Onda 1 (arcanista, barbaro, bardo, bucaneiro, cacador, cavaleiro, clerigo): ~160 habilidades/poderes, todos válidos.

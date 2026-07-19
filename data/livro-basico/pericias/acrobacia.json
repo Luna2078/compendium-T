@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Acrobacia",
   "resumo": "Permite realizar proezas acrobáticas como equilibrar-se, amortecer quedas e escapar de situações difíceis.",
-  "fonte": { "livro": "livro-basico", "pagina": 115 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 115
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -46,6 +49,7 @@
         "apenasTreinado": false,
         "descricao": "Você pode atravessar um espaço ocupado por um inimigo como parte de seu movimento. Faça um teste de Acrobacia oposto ao teste de Acrobacia, Iniciativa ou Luta do oponente (o que for melhor). Se você passar, atravessa o espaço; se falhar, não atravessa e sua ação de movimento termina. Um espaço ocupado por um inimigo conta como terreno difícil."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }

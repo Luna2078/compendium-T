@@ -3,7 +3,10 @@
   "tipo": "pericia",
   "nome": "Investigação",
   "resumo": "Permite encontrar pistas e informações interrogando pessoas ou examinando locais.",
-  "fonte": { "livro": "livro-basico", "pagina": 120 },
+  "fonte": {
+    "livro": "livro-basico",
+    "pagina": 120
+  },
   "imagens": [],
   "secoes": [],
   "relacoes": [],
@@ -23,6 +26,7 @@
         "apenasTreinado": false,
         "descricao": "Você examina um local em busca de algo. A CD varia: 15 para um item ou no meio de uma bagunça, mas não necessariamente escondido; 20 para um item escondido (cofre atrás de um quadro, documento no fundo falso de uma gaveta); 30 para um item muito bem escondido (passagem secreta ativada por um botão, documento escrito com tinta invisível). Este uso gasta desde uma ação completa (examinar uma escrivaninha) até um dia (pesquisar uma biblioteca). Você também pode encontrar armadilhas (CD de acordo com a armadilha) e rastros (mas para segui-los deve usar Sobrevivência)."
       }
-    ]
+    ],
+    "efeitos": []
   }
 }
