@@ -122,6 +122,15 @@ Propositor, não autoridade final — tudo é revisado por humano antes de virar
     receber o objeto `Ativacao`. Resolvidos por UNIÃO (não renomeação — renomear quebraria ou a renderização
     ou a convenção do corpus). Testes `condicoes-expansao` e `enriquecimento-preservado` trancam a regressão.
     **`npx vitest run` faz parte do passo fixo da regra 17, junto da validação de alvos/campos.**
+    ⚠️ **CORREÇÃO de diagnóstico:** o caminho de CARGA (`carregarEntidades`) NUNCA descarta —
+    `EntidadeSchema.mecanica` é `z.record(z.string(), z.unknown())`, permissivo. Os schemas TIPADOS
+    (`RacaMecanicaSchema` etc.) rodam no `superRefine` só para VALIDAR (resultado descartado). O
+    descarte real acontece no CAMINHO TIPADO — qualquer renderizador que parseie a mecânica com o tipo.
+    A auditoria disco×memória contra os schemas tipados achou resíduo: **racas 97→0, origens 45→0,
+    classes 513→384** (os schemas ANINHADOS `HabilidadeRacial`/`PoderOrigem`/`HabilidadeClasse` não
+    declaravam `efeitos`). Corrigido; hoje TODAS as 8 pastas são 1:1. Trancado por
+    `test/efeitos-integridade.test.ts`. 3ª colisão encontrada no caminho: `progressao` = array de
+    degraus (enriquecimento) OU dicionário nível→valor do extrator (magimarcialista) → união.
 23. **PRIMITIVAS "conscientes, não enterradas" (registrar quando aparecem em baixa freq, promover se recorrerem):**
     (a) **recurso-consumível** (pool de N pontos gastos à vontade — guardiao-divino; = "carga" de item): hoje
     lembrete-rico; vira MOTOR de recurso se as expansões trouxerem volume. (b) **`modo_rolagem`** (vantagem/

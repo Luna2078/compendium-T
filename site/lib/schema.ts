@@ -26,6 +26,9 @@ export const SecaoSchema = z.object({
   texto: z.string(),
 });
 
+export const EfeitoMecanicoSchema = z.looseObject({ tipo: z.string() });
+export const AtivacaoOuTextoSchema = z.union([z.string(), z.looseObject({})]);
+
 export const ATRIBUTOS = ["Força", "Destreza", "Constituição", "Inteligência", "Sabedoria", "Carisma"] as const;
 
 export const ModificadorAtributoSchema = z.object({
@@ -41,6 +44,15 @@ export const HabilidadeRacialSchema = z.object({
   nome: z.string(),
   descricao: z.string(),
   efeito: z.string().optional(),
+  // --- ENRIQUECIMENTO (data/efeitos.ts) — declarado p/ o Zod NÃO descartar no caminho tipado ---
+  efeitos: z.array(EfeitoMecanicoSchema).optional(),
+  escolhas: z.array(z.any()).optional(),
+  ativacao: AtivacaoOuTextoSchema.optional(),
+  // `progressao` também colide: array de degraus (PoderProgressivo, enriquecimento) OU
+  // dicionário nível→valor do extrator (magimarcialista/Magificação: {"1":"+2","6":"+3"}).
+  progressao: z.union([z.array(z.any()), z.record(z.string(), z.any())]).optional(),
+  contaComoPoderTormenta: z.any().optional(),
+  precisaRevisao: z.boolean().optional(),
 });
 export type HabilidadeRacial = z.infer<typeof HabilidadeRacialSchema>;
 
@@ -67,6 +79,15 @@ export const HabilidadeClasseSchema = z.object({
   custo: z.string().optional(),
   prerequisito: z.string().optional(),
   efeito: z.string().optional(),
+  // --- ENRIQUECIMENTO (data/efeitos.ts) — declarado p/ o Zod NÃO descartar no caminho tipado ---
+  efeitos: z.array(EfeitoMecanicoSchema).optional(),
+  escolhas: z.array(z.any()).optional(),
+  ativacao: AtivacaoOuTextoSchema.optional(),
+  // `progressao` também colide: array de degraus (PoderProgressivo, enriquecimento) OU
+  // dicionário nível→valor do extrator (magimarcialista/Magificação: {"1":"+2","6":"+3"}).
+  progressao: z.union([z.array(z.any()), z.record(z.string(), z.any())]).optional(),
+  contaComoPoderTormenta: z.any().optional(),
+  precisaRevisao: z.boolean().optional(),
 });
 export type HabilidadeClasse = z.infer<typeof HabilidadeClasseSchema>;
 
@@ -83,14 +104,6 @@ export const EfeitoPoderSchema = z.object({
   descricao: z.string(),
 });
 export type EfeitoPoder = z.infer<typeof EfeitoPoderSchema>;
-
-// Efeito mecânico do contrato (data/efeitos.ts). Valida a presença de `tipo` e preserva o resto;
-// a validação estrita do conteúdo é feita pelo TypeScript de `efeitos.ts` + checagens do pipeline.
-export const EfeitoMecanicoSchema = z.looseObject({ tipo: z.string() });
-
-// `ativacao` carrega texto legado ("ação padrão") OU o objeto `Ativacao` de data/efeitos.ts
-// ({custo:{pm,acao}, encerramento}). União para aceitar os dois sem perder validação.
-export const AtivacaoOuTextoSchema = z.union([z.string(), z.looseObject({})]);
 
 export const EfeitoPoderOuMecanicoSchema = z.union([EfeitoPoderSchema, EfeitoMecanicoSchema]);
 
@@ -157,7 +170,19 @@ export const VarianteClasseMecanicaSchema = ClasseMecanicaSchema.extend({
 });
 export type VarianteClasseMecanica = z.infer<typeof VarianteClasseMecanicaSchema>;
 
-export const PoderOrigemSchema = z.object({ nome: z.string(), descricao: z.string() });
+export const PoderOrigemSchema = z.object({
+  nome: z.string(),
+  descricao: z.string(),
+  // --- ENRIQUECIMENTO (data/efeitos.ts) — declarado p/ o Zod NÃO descartar no caminho tipado ---
+  efeitos: z.array(EfeitoMecanicoSchema).optional(),
+  escolhas: z.array(z.any()).optional(),
+  ativacao: AtivacaoOuTextoSchema.optional(),
+  // `progressao` também colide: array de degraus (PoderProgressivo, enriquecimento) OU
+  // dicionário nível→valor do extrator (magimarcialista/Magificação: {"1":"+2","6":"+3"}).
+  progressao: z.union([z.array(z.any()), z.record(z.string(), z.any())]).optional(),
+  contaComoPoderTormenta: z.any().optional(),
+  precisaRevisao: z.boolean().optional(),
+});
 export type PoderOrigem = z.infer<typeof PoderOrigemSchema>;
 
 export const BeneficiosOrigemSchema = z.object({
@@ -195,7 +220,9 @@ export const PericiaMecanicaSchema = z.object({
   ativacao: AtivacaoOuTextoSchema.optional(),          // objeto Ativacao estruturado (ou texto legado)
   gate: z.any().optional(),
   parametros: z.array(z.any()).optional(),
-  progressao: z.array(z.any()).optional(),
+  // `progressao` também colide: array de degraus (PoderProgressivo, enriquecimento) OU
+  // dicionário nível→valor do extrator (magimarcialista/Magificação: {"1":"+2","6":"+3"}).
+  progressao: z.union([z.array(z.any()), z.record(z.string(), z.any())]).optional(),
   empilhavel: z.boolean().optional(),
   precisaRevisao: z.boolean().optional(),
 });
@@ -212,7 +239,9 @@ export const PoderMecanicaSchema = z.object({
   ativacao: AtivacaoOuTextoSchema.optional(),          // objeto Ativacao estruturado (ou texto legado)
   gate: z.any().optional(),
   parametros: z.array(z.any()).optional(),
-  progressao: z.array(z.any()).optional(),
+  // `progressao` também colide: array de degraus (PoderProgressivo, enriquecimento) OU
+  // dicionário nível→valor do extrator (magimarcialista/Magificação: {"1":"+2","6":"+3"}).
+  progressao: z.union([z.array(z.any()), z.record(z.string(), z.any())]).optional(),
   empilhavel: z.boolean().optional(),
   precisaRevisao: z.boolean().optional(),
 });
@@ -252,7 +281,9 @@ export const ItemMecanicaSchema = z.object({
   ativacao: AtivacaoOuTextoSchema.optional(),          // objeto Ativacao estruturado (ou texto legado)
   gate: z.any().optional(),
   parametros: z.array(z.any()).optional(),
-  progressao: z.array(z.any()).optional(),
+  // `progressao` também colide: array de degraus (PoderProgressivo, enriquecimento) OU
+  // dicionário nível→valor do extrator (magimarcialista/Magificação: {"1":"+2","6":"+3"}).
+  progressao: z.union([z.array(z.any()), z.record(z.string(), z.any())]).optional(),
   empilhavel: z.boolean().optional(),
   precisaRevisao: z.boolean().optional(),
 });
@@ -274,7 +305,9 @@ export const ItemMagicoMecanicaSchema = z.object({
   escolhas: z.array(z.any()).optional(),               // slots EscolhaJogador (momento criacao/lancamento)
   gate: z.any().optional(),
   parametros: z.array(z.any()).optional(),
-  progressao: z.array(z.any()).optional(),
+  // `progressao` também colide: array de degraus (PoderProgressivo, enriquecimento) OU
+  // dicionário nível→valor do extrator (magimarcialista/Magificação: {"1":"+2","6":"+3"}).
+  progressao: z.union([z.array(z.any()), z.record(z.string(), z.any())]).optional(),
   empilhavel: z.boolean().optional(),
   precisaRevisao: z.boolean().optional(),
 });
