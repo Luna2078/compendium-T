@@ -1,6 +1,23 @@
+# ── SEGREDOS E VARIÁVEIS DE AMBIENTE — NUNCA versionar (nem em repo privado) ──
+# Prevenção para o Bloco 2 (chaves de Supabase). Vale para TODO o monorepo (raiz + apps + packages).
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+.vercel
+
 # dependências
 node_modules/
-# build do site
+# build do Next — qualquer app/pacote do monorepo (o antigo site/ virou apps/*)
+**/.next/
+**/out/
+*.tsbuildinfo
 site/.next/
 site/out/
 # cache de extração (páginas renderizadas / imagens)

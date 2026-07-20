@@ -4,3 +4,9 @@
 /node_modules
 next-env.d.ts
 *.tsbuildinfo
+
+# Segredos / variáveis de ambiente — NUNCA versionar (chaves de Supabase no Bloco 2).
+# Redundante com a raiz de propósito: quem abrir só este app vê a proteção aqui.
+.env*
+!.env.example
+.vercel
