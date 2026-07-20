@@ -1,12 +1,13 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { PersonagemSchema, EscolhaSalvaSchema } from "../lib/schema";
+import { PersonagemSchema, EscolhaSalvaSchema, EstadoDeSessaoSchema } from "../lib/schema";
 import { carregarEntidades } from "../lib/dados";
 import { resolverFonte, escolhaEValida } from "../lib/motor/personagem";
 
 const RAIZ = join(__dirname, "..", "..", "data");
 const bruto = JSON.parse(readFileSync(join(RAIZ, "personagens", "thaide.json"), "utf8"));
+const brutoSessao = JSON.parse(readFileSync(join(RAIZ, "personagens", "thaide.sessao.json"), "utf8"));
 
 describe("SCHEMA DE PERSONAGEM — o Thaíde existe e é tipado", () => {
   it("o Thaíde valida no schema", () => {
@@ -21,9 +22,7 @@ describe("SCHEMA DE PERSONAGEM — o Thaíde existe e é tipado", () => {
     // e o conteúdo tem que ser o mesmo (nada de escolha sumindo no meio do array)
     expect(p.escolhas).toHaveLength(bruto.escolhas.length);
     expect(p.equipado).toEqual(bruto.equipado);
-    expect(p.togglesAtivos).toEqual(bruto.togglesAtivos);
     expect(p.atributosBase).toEqual(bruto.atributosBase);
-    expect(p.pmGasto).toBe(bruto.pmGasto);
     // os campos EXTENSÍVEIS de EscolhaSalva também sobrevivem
     expect(p.escolhas[0].opcao).toBe("treinar_pericia");
     expect(p.escolhas[1].indice).toBe(1);
@@ -37,6 +36,9 @@ describe("SCHEMA DE PERSONAGEM — o Thaíde existe e é tipado", () => {
     // nenhum número derivado (PV, PM, Defesa) mora no personagem
     for (const proibido of ["pv", "pvMax", "pm", "pmMax", "defesa", "pericias"])
       expect(p).not.toHaveProperty(proibido);
+    // e o ESTADO DE SESSÃO não mora na construção (ciclos de vida diferentes)
+    for (const efemero of ["pmGasto", "pvAtual", "togglesAtivos", "condicoesAtivas"])
+      expect(p, `"${efemero}" é estado de sessão, não construção`).not.toHaveProperty(efemero);
   });
 
   it("rejeita personagem inválido (nível fora da faixa, atributo faltando)", () => {
@@ -68,6 +70,20 @@ describe("SCHEMA DE PERSONAGEM — o Thaíde existe e é tipado", () => {
     const ambiguos = [...porId.entries()].filter(([, t]) => t.size > 1).map(([id]) => id);
     expect(ambiguos.length).toBeGreaterThan(0); // se um dia zerar, o campo continua correto
     expect(ambiguos).toEqual(expect.arrayContaining(["curandeiro", "acrobatico"]));
+  });
+});
+
+describe("ESTADO DE SESSÃO — o efêmero, separado da construção", () => {
+  it("valida e referencia o personagem por id", () => {
+    const e = EstadoDeSessaoSchema.parse(brutoSessao);
+    expect(e.personagemId).toBe(bruto.id);
+    expect(e.pmGasto).toBe(3);
+    expect(e.pvAtual).toBe(58);
+    expect(e.togglesAtivos).toEqual(["barbaro:furia"]);
+  });
+  it("carrega sem descartar campo", () => {
+    const e = EstadoDeSessaoSchema.parse(brutoSessao) as Record<string, unknown>;
+    for (const k of Object.keys(brutoSessao)) expect(e).toHaveProperty(k);
   });
 });
 
@@ -143,7 +159,8 @@ describe("PROCEDÊNCIA — as escolhas do Thaíde apontam para fontes REAIS", ()
 
   it("o toggle ativo aponta para uma habilidade ativável real da classe", () => {
     // convenção: "<classeId>:<slug da habilidade>"
-    const [classeId, slug] = p.togglesAtivos[0].split(":");
+    const sessao = EstadoDeSessaoSchema.parse(brutoSessao);
+    const [classeId, slug] = sessao.togglesAtivos[0].split(":");
     expect(classeId).toBe(p.classeId);
     const classe = compendio.find((e) => e.tipo === "classe" && e.id === classeId)!;
     const habs = (classe.mecanica as { habilidades: Array<{ nome: string; ativacao?: unknown }> })

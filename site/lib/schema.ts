@@ -668,13 +668,31 @@ export const PersonagemSchema = z.object({
 
   escolhas: z.array(EscolhaSalvaSchema).default([]),
 
-  // ── estado ──
   /** ids de itens equipados (o motor lê os efeitos das definições). */
   equipado: z.array(z.string()).default([]),
+});
+export type Personagem = z.infer<typeof PersonagemSchema>;
+
+/**
+ * ESTADO DE SESSÃO — o efêmero, separado da construção por CICLO DE VIDA.
+ *
+ * A construção (`Personagem`) é durável: muda ao subir de nível, vai para banco.
+ * Isto muda a cada TURNO: ligar a Fúria, sofrer dano, ganhar uma condição. Às vezes
+ * nem persiste (uma cena avulsa). Separar é o que torna a ficha reativa: o estado
+ * muda e recomputa-se; a construção não se move.
+ *
+ * Também é o que permite o painel do mestre — ler o estado de combate de vários
+ * personagens sem tocar em nenhuma construção.
+ */
+export const EstadoDeSessaoSchema = z.object({
+  /** id do `Personagem` a que este estado pertence. */
+  personagemId: z.string(),
+  /** PV atuais (dano sofrido = pv.max − isto). Irmão simétrico de `pmGasto`. */
+  pvAtual: z.number().int().optional(),
+  pmGasto: z.number().int().min(0).default(0),
   /** ids de habilidades ativáveis LIGADAS agora (Fúria, posturas). */
   togglesAtivos: z.array(z.string()).default([]),
   /** ids de condições ativas — entram na expansão transitiva (regra 21). */
   condicoesAtivas: z.array(z.string()).default([]),
-  pmGasto: z.number().int().min(0).default(0),
 });
-export type Personagem = z.infer<typeof PersonagemSchema>;
+export type EstadoDeSessao = z.infer<typeof EstadoDeSessaoSchema>;
