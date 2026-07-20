@@ -574,3 +574,107 @@ export const TermoSchema = z.object({
   exigeMaiuscula: z.boolean().optional(),
 });
 export type Termo = z.infer<typeof TermoSchema>;
+
+// =============================================================================
+// PERSONAGEM (INSTÂNCIA) — Camada 2 do motor
+// =============================================================================
+// O compêndio acima são as DEFINIÇÕES. Isto é uma INSTÂNCIA: um personagem concreto.
+//
+// PRINCÍPIO: o personagem guarda DECISÕES, não efeitos resolvidos. Ele armazena o que o
+// jogador escolheu (ids que referenciam o compêndio); o motor DERIVA os efeitos lendo as
+// definições. Se a definição muda (errata, correção de extração), o personagem se atualiza
+// sozinho — nada de número congelado aqui dentro.
+//
+// Nada nesta seção calcula. Cálculo é Camada 3 (calcularFicha).
+
+/** Os 6 atributos, no código curto do namespace (`atr.for` → `for`). */
+export const ATRIBUTOS_COD = ["for", "des", "con", "int", "sab", "car"] as const;
+export type AtributoCod = (typeof ATRIBUTOS_COD)[number];
+
+export const AtributosSchema = z.object({
+  for: z.number().int(),
+  des: z.number().int(),
+  con: z.number().int(),
+  int: z.number().int(),
+  sab: z.number().int(),
+  car: z.number().int(),
+});
+export type Atributos = z.infer<typeof AtributosSchema>;
+
+/**
+ * ESCOLHA SALVA — eleva a interface que vivia solta em `data/efeitos.ts`.
+ *
+ * O ponto crítico é a PROCEDÊNCIA: a escolha aponta exatamente QUAL SLOT do compêndio
+ * ela preenche, não só o valor escolhido. Sem isso o motor não sabe de onde a escolha
+ * veio — e é a procedência que vai permitir, numa camada futura, a regra anti-dobro da
+ * contagem de Tormenta do lefou (1 slot que vira poder da Tormenta conta 1×, pelo SLOT).
+ *
+ * `fonteTipo` é OBRIGATÓRIO porque `fonteId` sozinho é AMBÍGUO: no compêndio existem
+ * 3 ids em mais de um tipo (`curandeiro` = item e origem; `acrobatico` = item-mágico e
+ * poder; `trog` = criatura e raça). Sem o tipo, a resolução da fonte é um chute.
+ */
+export const EscolhaSalvaSchema = z.object({
+  // ── procedência (de onde veio o slot) ──
+  fonteTipo: z.enum(TIPOS_ENTIDADE),  // "origem"
+  fonteId: z.string(),                // "escravo"
+  /**
+   * Qual slot daquela fonte. Duas formas, ambas estáveis:
+   *  · id de um `EscolhaJogador` quando a fonte tem `escolhas[]` estruturadas
+   *    (ex.: "druida-devoto-divindade", "oficio-especializacao");
+   *  · CAMINHO dentro da mecânica quando o slot é um menu do extrator
+   *    (ex.: "beneficios.pericias" na origem, "beneficios.poderes").
+   */
+  escolhaId: z.string(),
+  /** Índice quando o MESMO slot é preenchido mais de uma vez (origem dá 2 perícias). */
+  indice: z.number().int().min(0).optional(),
+  // ── o que foi escolhido ──
+  /** id da perícia/atributo/poder/ramo escolhido. */
+  alvoEscolhido: z.string(),
+
+  // ── EXTENSÕES previstas, ainda NÃO consumidas pelo motor (Camada 2 só define a forma) ──
+  /** Qual variante de `OpcaoSlot` foi tomada: "treinar_pericia" | "poder" | "ramo" | … */
+  opcao: z.string().optional(),
+  /** Escolha ANINHADA: um `ramo` pode abrir outro slot (Osteon/Memória Póstuma). */
+  paiEscolhaId: z.string().optional(),
+  /**
+   * Quando a escolha se resolve (regra 22): "criacao" = permanente, salva (default);
+   * "lancamento" = efêmera, por conjuração — normalmente NÃO persiste aqui, mas o campo
+   * existe para o caso de o app querer lembrar a última escolha de uma magia de modo.
+   */
+  momento: z.enum(["criacao", "lancamento"]).optional(),
+});
+export type EscolhaSalva = z.infer<typeof EscolhaSalvaSchema>;
+
+export const PersonagemSchema = z.object({
+  id: z.string(),
+  nome: z.string(),
+  nivel: z.number().int().min(1).max(20),
+
+  /**
+   * Atributos do point-buy, ANTES dos modificadores raciais. Guardamos a decisão do
+   * jogador; o motor aplica raça/Aumento de Atributo por cima ao calcular a ficha.
+   */
+  atributosBase: AtributosSchema,
+
+  // ── identidade: ids que referenciam o compêndio ──
+  racaId: z.string(),
+  classeId: z.string(),
+  origemId: z.string(),
+  /**
+   * ESTADO DE FICHA, não campo de condição. Foi a conclusão do aura-divina: o motor
+   * DERIVA `arma.preferida_divindade` cruzando isto com `divindade.armaPreferidaId`.
+   */
+  divindadeId: z.string().nullable().optional(),
+
+  escolhas: z.array(EscolhaSalvaSchema).default([]),
+
+  // ── estado ──
+  /** ids de itens equipados (o motor lê os efeitos das definições). */
+  equipado: z.array(z.string()).default([]),
+  /** ids de habilidades ativáveis LIGADAS agora (Fúria, posturas). */
+  togglesAtivos: z.array(z.string()).default([]),
+  /** ids de condições ativas — entram na expansão transitiva (regra 21). */
+  condicoesAtivas: z.array(z.string()).default([]),
+  pmGasto: z.number().int().min(0).default(0),
+});
+export type Personagem = z.infer<typeof PersonagemSchema>;

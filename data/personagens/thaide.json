@@ -1,0 +1,67 @@
+{
+  "id": "thaide",
+  "nome": "Thaíde",
+  "nivel": 5,
+
+  "atributosBase": {
+    "for": 3,
+    "des": 1,
+    "con": 2,
+    "int": 0,
+    "sab": 1,
+    "car": -1
+  },
+
+  "racaId": "goblin",
+  "classeId": "barbaro",
+  "origemId": "escravo",
+  "divindadeId": null,
+
+  "escolhas": [
+    {
+      "fonteTipo": "origem",
+      "fonteId": "escravo",
+      "escolhaId": "beneficios.pericias",
+      "indice": 0,
+      "alvoEscolhido": "Atletismo",
+      "opcao": "treinar_pericia"
+    },
+    {
+      "fonteTipo": "origem",
+      "fonteId": "escravo",
+      "escolhaId": "beneficios.pericias",
+      "indice": 1,
+      "alvoEscolhido": "Furtividade",
+      "opcao": "treinar_pericia"
+    },
+    {
+      "fonteTipo": "origem",
+      "fonteId": "escravo",
+      "escolhaId": "beneficios.poderes",
+      "indice": 0,
+      "alvoEscolhido": "Desejo de Liberdade",
+      "opcao": "poder"
+    },
+    {
+      "fonteTipo": "classe",
+      "fonteId": "barbaro",
+      "escolhaId": "pericias.lista",
+      "indice": 0,
+      "alvoEscolhido": "Intimidação (Car)",
+      "opcao": "treinar_pericia"
+    },
+    {
+      "fonteTipo": "classe",
+      "fonteId": "barbaro",
+      "escolhaId": "pericias.lista",
+      "indice": 1,
+      "alvoEscolhido": "Sobrevivência (Sab)",
+      "opcao": "treinar_pericia"
+    }
+  ],
+
+  "equipado": ["adaga"],
+  "togglesAtivos": ["barbaro:furia"],
+  "condicoesAtivas": [],
+  "pmGasto": 3
+}
