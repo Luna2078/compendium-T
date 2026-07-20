@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { PersonagemSchema, EscolhaSalvaSchema, EstadoDeSessaoSchema } from "@ct/compendio";
 import { carregarEntidades } from "@ct/compendio";
-import { resolverFonte, escolhaEValida } from "../lib/motor/personagem";
+import { resolverFonte, escolhaEValida } from "../src/personagem";
 
 const RAIZ = RAIZ_DADOS;
 const bruto = JSON.parse(readFileSync(join(RAIZ, "personagens", "thaide.json"), "utf8"));

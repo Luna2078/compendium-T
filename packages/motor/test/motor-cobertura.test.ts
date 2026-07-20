@@ -19,11 +19,11 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PersonagemSchema, EstadoDeSessaoSchema, type Entidade } from "@ct/compendio";
 import { carregarEntidades } from "@ct/compendio";
-import { calcularFicha } from "../lib/motor/calcular-ficha";
-import { resolverAtaque } from "../lib/motor/resolver-ataque";
-import { avaliarExpr, ExprError } from "../lib/motor/expr";
-import { ALVOS, CAMPOS_CONDICAO, VARIAVEIS, PERICIAS, ATRIBUTOS } from "../../data/namespace";
-import type { CondicaoDef } from "../../data/efeitos";
+import { calcularFicha } from "../src/calcular-ficha";
+import { resolverAtaque } from "../src/resolver-ataque";
+import { avaliarExpr, ExprError } from "../src/expr";
+import { ALVOS, CAMPOS_CONDICAO, VARIAVEIS, PERICIAS, ATRIBUTOS } from "../src/contrato/namespace";
+import type { CondicaoDef } from "../src/contrato/efeitos";
 
 const RAIZ = RAIZ_DADOS;
 const ler = (p: string) => JSON.parse(readFileSync(join(RAIZ, p), "utf8"));

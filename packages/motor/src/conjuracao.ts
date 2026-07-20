@@ -18,7 +18,7 @@ import {
   type Magia,
   type Aprimoramento,
   type ResultadoConjuracao,
-} from "../../../data/efeitos";
+} from "./contrato/efeitos";
 
 const mec = (e: Entidade | undefined) =>
   ((e as { mecanica?: Record<string, unknown> } | undefined)?.mecanica ?? {}) as Record<

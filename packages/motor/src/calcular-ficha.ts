@@ -21,7 +21,7 @@ import type { Entidade, Personagem, EstadoDeSessao, EscolhaSalva } from "@ct/com
 import { nivelDePersonagem, nivelNaClasse, primeiraClasse } from "@ct/compendio";
 import { avaliarExpr } from "./expr";
 import { PERICIA_ATRIBUTO, PERICIAS_TODAS, periciasDoAtributo } from "./pericias";
-import { expandirCondicoes, type CondicaoDef } from "../../../data/efeitos";
+import { expandirCondicoes, type CondicaoDef } from "./contrato/efeitos";
 import { contarTormenta, type ContagemTormenta } from "./tormenta";
 
 type AtributoCod = "for" | "des" | "con" | "int" | "sab" | "car";

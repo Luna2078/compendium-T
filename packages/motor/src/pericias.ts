@@ -9,7 +9,7 @@
 // e `motor-pericias.test.ts` RE-DERIVA do compêndio e exige igualdade exata — se uma
 // perícia mudar de atributo, ou nascer/sumir, o teste quebra. Constante + guarda de drift.
 
-import type { Atributo, Pericia } from "../../../data/namespace";
+import type { Atributo, Pericia } from "./contrato/namespace";
 
 export const PERICIA_ATRIBUTO: Record<Pericia, Atributo> = {
   acrobacia: "des",

@@ -4,7 +4,7 @@ import {
   efeitosDeCondicoes,
   type CondicaoDef,
   type Efeito,
-} from "../../data/efeitos";
+} from "../src/contrato/efeitos";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { RAIZ_DADOS } from "./_raiz";

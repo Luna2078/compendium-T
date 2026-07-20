@@ -1,0 +1,20 @@
+{
+  "name": "@ct/motor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Motor de regras de Tormenta 20: contrato de efeitos + resolvedores (ficha, ataque, conjuração).",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./contrato": "./src/contrato/efeitos.ts",
+    "./namespace": "./src/contrato/namespace.ts"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ct/compendio": "*"
+  }
+}

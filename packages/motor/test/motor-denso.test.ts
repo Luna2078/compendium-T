@@ -4,11 +4,11 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PersonagemSchema, EstadoDeSessaoSchema, type Personagem } from "@ct/compendio";
 import { carregarEntidades } from "@ct/compendio";
-import { calcularFicha } from "../lib/motor/calcular-ficha";
-import { resolverAtaque } from "../lib/motor/resolver-ataque";
-import { conjurar, adaptarMagia } from "../lib/motor/conjuracao";
-import { validarEscolhas, patamarDoNivel } from "../lib/motor/validar-escolhas";
-import type { CondicaoDef } from "../../data/efeitos";
+import { calcularFicha } from "../src/calcular-ficha";
+import { resolverAtaque } from "../src/resolver-ataque";
+import { conjurar, adaptarMagia } from "../src/conjuracao";
+import { validarEscolhas, patamarDoNivel } from "../src/validar-escolhas";
+import type { CondicaoDef } from "../src/contrato/efeitos";
 
 const RAIZ = RAIZ_DADOS;
 const ler = (p: string) => JSON.parse(readFileSync(join(RAIZ, p), "utf8"));

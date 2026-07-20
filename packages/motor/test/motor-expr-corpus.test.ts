@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { RAIZ_DADOS } from "./_raiz";
 import { readFileSync, readdirSync, existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { avaliarExpr, inspecionarExpr, FUNCOES_PERMITIDAS } from "../lib/motor/expr";
+import { avaliarExpr, inspecionarExpr, FUNCOES_PERMITIDAS } from "../src/expr";
 
 const RAIZ = RAIZ_DADOS;
 

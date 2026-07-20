@@ -15,7 +15,7 @@ import type { Entidade, Personagem, EstadoDeSessao } from "@ct/compendio";
 import { avaliarExpr } from "./expr";
 import { PERICIA_ATRIBUTO } from "./pericias";
 import type { Ficha, ItemTrilha } from "./calcular-ficha";
-import { PROPRIEDADES_ARMA } from "../../../data/efeitos";
+import { PROPRIEDADES_ARMA } from "./contrato/efeitos";
 
 type AtributoCod = "for" | "des" | "con" | "int" | "sab" | "car";
 

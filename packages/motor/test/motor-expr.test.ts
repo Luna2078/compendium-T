@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { avaliarExpr, inspecionarExpr, ExprError } from "../lib/motor/expr";
+import { avaliarExpr, inspecionarExpr, ExprError } from "../src/expr";
 
 const ESCOPO = {
   nivel: 10,

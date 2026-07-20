@@ -4,9 +4,9 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PersonagemSchema, EstadoDeSessaoSchema } from "@ct/compendio";
 import { carregarEntidades } from "@ct/compendio";
-import { calcularFicha, type Ficha } from "../lib/motor/calcular-ficha";
-import { resolverAtaque } from "../lib/motor/resolver-ataque";
-import type { CondicaoDef } from "../../data/efeitos";
+import { calcularFicha, type Ficha } from "../src/calcular-ficha";
+import { resolverAtaque } from "../src/resolver-ataque";
+import type { CondicaoDef } from "../src/contrato/efeitos";
 
 const RAIZ = RAIZ_DADOS;
 const ler = (p: string) => JSON.parse(readFileSync(join(RAIZ, p), "utf8"));
