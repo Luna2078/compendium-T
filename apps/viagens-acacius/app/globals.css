@@ -227,6 +227,48 @@ button.switch:focus-visible { outline: 2px solid #9a9a9a; outline-offset: 2px; }
 }
 .dock span { font: 600 12px system-ui; color: var(--muted2); letter-spacing: .5px; }
 
+/* ── números CLICÁVEIS (abrem a trilha) ────────────────────────────────────── */
+button.calc { cursor: pointer; -webkit-appearance: none; appearance: none; font: inherit; }
+.calc--btn { cursor: pointer; border-bottom: 1px dotted #9a9a9a; }
+.calc--btn:hover { background: #e2e2e2; color: #222; }
+.calc--btn:focus-visible { outline: 2px solid #9a9a9a; outline-offset: 1px; }
+.big--btn {
+  background: none; border: none; padding: 0; cursor: pointer;
+  font: 700 28px system-ui; color: var(--tinta2); font-variant-numeric: tabular-nums;
+  border-bottom: 1px dotted #a8a8a8;
+}
+.big--btn:hover { color: #111; }
+.stat__max { background: none; border: none; padding: 0 0 0 1px; cursor: pointer; font: 600 14px system-ui; color: var(--muted2); }
+.stat__max:hover { color: var(--tinta2); text-decoration: underline dotted; }
+
+/* ── toggle de condição de sessão (Fatigado) ───────────────────────────────── */
+.cond-toggle { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 9px 12px; margin-bottom: 12px; background: #f4f4f4; border: 1px solid var(--linha); border-radius: 6px; }
+.cond-toggle__rot { font: 600 12px system-ui; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+.cond-toggle__lbl { font: 600 14px system-ui; color: var(--tinta); }
+.cond-toggle__dica { font: 400 12px system-ui; color: var(--muted2); flex: 1 1 100%; }
+
+/* ── cascata na bandeja (condição derivada) ────────────────────────────────── */
+.chip--derivado { border-left: 3px solid #9a9a9a; }
+.chip__via { font: 500 12px system-ui; color: var(--muted); }
+
+/* ── TRILHA: overlay (painel no desktop, bottom-sheet no mobile) ────────────── */
+.sheet-fundo { position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, .28); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.sheet { background: #fff; border: 1px solid var(--borda); border-radius: 10px; box-shadow: 0 14px 44px rgba(0, 0, 0, .28); width: 100%; max-width: 440px; max-height: 80vh; display: flex; flex-direction: column; overflow: hidden; }
+.sheet__cab { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: var(--head); border-bottom: 1px solid var(--linha); }
+.sheet__tit { font: 600 15px system-ui; color: var(--tinta); flex: 1; }
+.sheet__x { background: none; border: none; cursor: pointer; font: 400 24px system-ui; line-height: 1; color: var(--muted); padding: 0 4px; }
+.sheet__x:hover { color: var(--tinta); }
+.sheet__corpo { padding: 6px 16px; overflow-y: auto; }
+.parc { display: flex; align-items: baseline; gap: 10px; padding: 9px 0; border-bottom: 1px solid #f0f0f0; }
+.parc__val { font: 700 16px system-ui; color: var(--tinta2); font-variant-numeric: tabular-nums; min-width: 46px; text-align: right; }
+.parc__fonte { flex: 1; font: 400 14px system-ui; color: var(--tinta); line-height: 1.4; }
+.parc__expr { color: var(--muted2); font-size: 12px; }
+.parc__org { font: 600 11px system-ui; color: var(--muted); background: #eee; border: 1px solid var(--linha); border-radius: 4px; padding: 1px 7px; text-transform: lowercase; white-space: nowrap; }
+.parc--total { border-bottom: none; border-top: 2px solid var(--borda); margin-top: 2px; }
+.parc--total .parc__val { font-size: 18px; color: var(--tinta); }
+.parc--total .parc__fonte { font: 600 12px system-ui; text-transform: uppercase; letter-spacing: .4px; color: var(--muted); }
+.sheet__nota { padding: 11px 16px; border-top: 1px solid var(--linha); background: #fafafa; font: 400 12px system-ui; color: var(--muted); line-height: 1.5; }
+
 /* ═══════════════════════ MOBILE (≤640px) ═══════════════════════ */
 @media (max-width: 640px) {
   .chrome { margin: 0; border: none; border-radius: 0; }
@@ -261,4 +303,11 @@ button.switch:focus-visible { outline: 2px solid #9a9a9a; outline-offset: 2px; }
 
   .stats { flex-direction: row; }
   .dock { display: none; }
+
+  /* Defesa clicável na barra fixa: tamanho compacto */
+  .barra__vitais .big--btn { font-size: 18px; }
+
+  /* trilha vira BOTTOM-SHEET (sobe de baixo, não empurra a página) */
+  .sheet-fundo { align-items: flex-end; padding: 0; }
+  .sheet { max-width: none; max-height: 85vh; border-radius: 14px 14px 0 0; }
 }

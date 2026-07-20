@@ -5,7 +5,7 @@
 // NOMES (id → nome legível do compêndio) — não recalcula nada.
 
 import type { Entidade, Personagem, EstadoDeSessao } from "@ct/compendio";
-import type { Ficha } from "@ct/motor";
+import type { Ficha, CondicaoDef } from "@ct/motor";
 import { armasEquipadas, resolverAtaque } from "@ct/motor";
 
 const semAcento = (s: string) =>
@@ -31,46 +31,117 @@ export function tipoDaOrigem(origem: string): "poder" | "condição" | "item" | 
 }
 
 export interface ChipEfeito {
-  fonte: string;
+  fonte: string; // nome de exibição já limpo
   tipo: ReturnType<typeof tipoDaOrigem>;
+  /** cadeia de origem (nomes), p/ condições DERIVADAS: Vulnerável tem via ["Fatigado"]. */
+  via?: string[];
   contribs: { alvo: string; valor: number | null }[];
 }
 
+const nomeLimpo = (rotulo: string) => rotulo.replace(/^.*?\/\s*/, "");
+
 /**
- * BANDEJA "Efeitos ativos" — o que a sessão está ativando no cálculo, agora.
+ * BANDEJA "Efeitos ativos" — o que a sessão está ativando no cálculo, agora, E DE ONDE VEIO.
  *
- * Fonte da verdade (não fabricado): efeitos que só existem por causa do estado de sessão —
- *   · trilha em pv/pm temporário (poderes de estado, tipo Alma de Bronze enquanto em Fúria);
- *   · contextuais com condição {quando:"ativo"} (efeitos de um TOGGLE ligado, tipo Fúria);
- *   · condições ativas.
- * A origem viaja em cada chip (o wireframe exige isso). O cascateamento
- * "Vulnerável via Fatigado" é Etapa 4 — a bandeja só está PREPARADA para exibir origem.
+ * Tudo vem do rastro do motor (não fabricado):
+ *   · poderes/itens de estado — trilha em pv/pm temporário + contextuais {quando:"ativo"};
+ *   · CONDIÇÕES ativas com CASCATA — f.condicoesAtivas traz {id, via[]} já expandido pelo
+ *     motor (expandirCondicoes). Fatigado → Vulnerável (via Fatigado) + Fraco (via Fatigado).
+ *     Os efeitos de cada condição saem da f.trilha filtrada por `origem === condicao:<id>` —
+ *     então o −2 que aparece "Vulnerável ← Fatigado" AQUI é o MESMO −2 da trilha da Defesa.
  */
-export function bandejaEfeitos(f: Ficha): ChipEfeito[] {
+export function bandejaEfeitos(f: Ficha, condicoes: CondicaoDef[] = []): ChipEfeito[] {
+  const chips: ChipEfeito[] = [];
   const porFonte = new Map<string, ChipEfeito>();
-  const add = (fonte: string, origem: string, alvo: string, valor: number | null) => {
-    if (!porFonte.has(fonte))
-      porFonte.set(fonte, { fonte, tipo: tipoDaOrigem(origem), contribs: [] });
-    porFonte.get(fonte)!.contribs.push({ alvo, valor });
+  const add = (rotulo: string, origem: string, alvo: string, valor: number | null) => {
+    const fonte = nomeLimpo(rotulo);
+    let chip = porFonte.get(fonte);
+    if (!chip) {
+      chip = { fonte, tipo: tipoDaOrigem(origem), contribs: [] };
+      porFonte.set(fonte, chip);
+      chips.push(chip);
+    }
+    chip.contribs.push({ alvo, valor });
   };
 
   for (const t of f.trilha)
     if (t.alvo === "pv.temporario" || t.alvo === "pm.temporario")
       add(t.fonte, t.origem, t.alvo, t.valor);
-
   for (const c of f.contextuais)
-    // pv/pm temporário já entrou pela trilha acima (o motor põe o pool nos dois lugares:
-    // é bônus contextual {quando:ativo} E aterrissa no pool). Sem este guarda, duplica.
+    // pv/pm temporário já entrou pela trilha (o pool aterrissa nos dois lugares) — sem guarda, duplica.
     if (c.condicao?.quando === "ativo" && c.alvo !== "pv.temporario" && c.alvo !== "pm.temporario")
       add(c.fonte, c.origem, c.alvo, c.valor);
 
+  const nomeCond = (id: string) => condicoes.find((c) => c.id === id)?.nome ?? id;
   for (const cond of f.condicoesAtivas) {
-    const fonte = `condição / ${cond.id}`;
-    if (!porFonte.has(fonte))
-      porFonte.set(fonte, { fonte, tipo: "condição", contribs: [] });
+    const contribs = [...f.trilha, ...f.contextuais]
+      .filter((t) => t.origem === `condicao:${cond.id}` && t.valor != null)
+      .map((t) => ({ alvo: t.alvo, valor: t.valor }));
+    chips.push({ fonte: nomeCond(cond.id), tipo: "condição", via: cond.via.map(nomeCond), contribs });
   }
 
-  return [...porFonte.values()];
+  return chips;
+}
+
+// ───────────────────────── TRILHA PROFUNDA (rastro do motor) ─────────────────
+export interface ParcelaTrilha {
+  valor: number | null;
+  fonte: string; // rastro do motor (já traz "(via Fatigado)" nas condições derivadas)
+  origem: string;
+  expr?: string;
+}
+
+/** Rótulo legível de um ALVO (usado na bandeja e na trilha). */
+export function rotuloAlvo(alvo: string): string {
+  if (alvo.startsWith("teste:")) return `teste ${alvo.slice(6).toUpperCase()}`;
+  if (alvo.startsWith("pericia_categoria:")) return `perícias ${alvo.slice(18).toUpperCase()}`;
+  if (alvo.startsWith("pericia:")) return alvo === "pericia:*" ? "todas as perícias" : maiuscula(alvo.slice(8));
+  if (alvo.startsWith("atr.")) return alvo.slice(4).toUpperCase();
+  return (
+    {
+      "pv.temporario": "PV temp",
+      "pm.temporario": "PM temp",
+      "pv.max": "PV máx",
+      "pm.max": "PM máx",
+      "dano.corpo_a_corpo": "dano c/c",
+      ataque: "ataque",
+      dano: "dano",
+      defesa: "Defesa",
+      deslocamento: "deslocamento",
+    } as Record<string, string>
+  )[alvo] ?? alvo;
+}
+
+/** Trilha de um alvo simples (pv.max, pm.max, defesa, atr.X): SÓ filtra o rastro do motor. */
+export function trilhaDe(f: Ficha, alvo: string): ParcelaTrilha[] {
+  return f.trilha
+    .filter((t) => t.alvo === alvo && t.estado === "aplicado")
+    .map((t) => ({ valor: t.valor, fonte: t.fonte, origem: t.origem, expr: t.expr }));
+}
+
+/**
+ * Trilha de uma PERÍCIA. As parcelas estruturais (½ nível, atributo, treino+fonteTreino) são
+ * a decomposição que o MOTOR já entrega em ValorPericia — não é narrativa remontada pela UI.
+ * Os bônus nomeados (Rato das Ruas, e o −2 de Fraco via `pericia_categoria`) vêm da f.trilha.
+ * A soma das parcelas é exatamente o ValorPericia.valor (garantido pelo motor).
+ */
+export function trilhaDePericia(f: Ficha, id: string): ParcelaTrilha[] {
+  const v = f.pericias[id];
+  if (!v) return [];
+  const out: ParcelaTrilha[] = [
+    { valor: v.meioNivel, fonte: `½ nível (nível ${f.nivel})`, origem: "regra" },
+    { valor: v.modAtributo, fonte: v.atributo.toUpperCase(), origem: `atributo:${v.atributo}` },
+  ];
+  if (v.treinado)
+    out.push({
+      valor: v.bonusTreino,
+      fonte: v.fonteTreino ? `treinado — ${v.fonteTreino}` : "treinado",
+      origem: "treino",
+    });
+  for (const t of f.trilha)
+    if (t.alvo === `pericia:${id}` || t.alvo === "pericia:*" || t.alvo === `pericia_categoria:${v.atributo}`)
+      out.push({ valor: t.valor, fonte: t.fonte, origem: t.origem, expr: t.expr });
+  return out;
 }
 
 export type EstadoPoder = "ativo" | "dormente" | "passivo";

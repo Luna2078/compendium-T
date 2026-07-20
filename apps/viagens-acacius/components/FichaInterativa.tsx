@@ -21,21 +21,28 @@ import {
   identidadeView,
   inventarioView,
   poderesView,
+  rotuloAlvo,
+  trilhaDe,
+  trilhaDePericia,
+  type ParcelaTrilha,
   capitalizar,
 } from "@/lib/ficha-view";
 
 const fmt = (n: number) => (n >= 0 ? `+${n}` : `${n}`);
 const clamp = (n: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, n));
 
-const rotuloAlvo = (alvo: string) =>
-  ({
-    "pv.temporario": "PV temp",
-    "pm.temporario": "PM temp",
-    "dano.corpo_a_corpo": "dano c/c",
-    ataque: "ataque",
-    dano: "dano",
-    defesa: "Defesa",
-  })[alvo] ?? alvo;
+/** Origem exata do motor → rótulo curto para o selo na trilha. */
+const origemTag = (o: string) => {
+  if (o.startsWith("condicao:")) return "condição";
+  if (o.startsWith("atributo")) return "atributo";
+  if (o.startsWith("classe:")) return "classe";
+  if (o.startsWith("raca:")) return "raça";
+  if (o.startsWith("origem:")) return "origem";
+  if (o.startsWith("item")) return "item";
+  if (o.startsWith("slot:")) return "escolha";
+  if (o.startsWith("poder")) return "poder";
+  return o; // regra, treino, personagem, ficha…
+};
 
 export function FichaInterativa({
   personagem,
@@ -81,10 +88,23 @@ export function FichaInterativa({
     if (Number.isNaN(v)) return;
     setSessao((s) => ({ ...s, pmGasto: clamp(pmMax - v, 0, pmMax) }));
   };
+  // Condições de sessão (ligáveis como a Fúria). Fatigado cascateia no motor → Fraco + Vulnerável.
+  const condicaoAtiva = (id: string) => sessao.condicoesAtivas.includes(id);
+  const toggleCondicao = (id: string) =>
+    setSessao((s) => ({
+      ...s,
+      condicoesAtivas: s.condicoesAtivas.includes(id)
+        ? s.condicoesAtivas.filter((x) => x !== id)
+        : [...s.condicoesAtivas, id],
+    }));
+
+  // ── TRILHA ao clique (overlay por cima; não empurra a página) ──
+  const [trilha, setTrilha] = useState<{ titulo: string; parcelas: ParcelaTrilha[] } | null>(null);
+  const abrirTrilha = (titulo: string, parcelas: ParcelaTrilha[]) => setTrilha({ titulo, parcelas });
 
   // ── views derivadas de f ──
   const ident = identidadeView(personagem, entidades);
-  const bandeja = bandejaEfeitos(f);
+  const bandeja = bandejaEfeitos(f, condicoes);
   const atributos = atributosView(personagem, f);
   const ataques = ataquesView(personagem, sessao, f, entidades);
   const poderes = poderesView(personagem, sessao, entidades);
@@ -105,7 +125,7 @@ export function FichaInterativa({
             onChange={(e) => setPV(e.currentTarget.valueAsNumber)}
             aria-label="PV atual"
           />
-          <small>/{f.pv.max}</small>
+          <button type="button" className="stat__max" onClick={() => abrirTrilha("PV máximo", trilhaDe(f, "pv.max"))} title="ver a trilha do PV máximo">/{f.pv.max}</button>
         </span>
         <button type="button" className="step" onClick={() => ajustarPV(1)} aria-label="Aumentar PV (cura)">+</button>
       </div>
@@ -127,7 +147,7 @@ export function FichaInterativa({
             onChange={(e) => setPMDisp(e.currentTarget.valueAsNumber)}
             aria-label="PM disponível"
           />
-          <small>/{f.pm.max}</small>
+          <button type="button" className="stat__max" onClick={() => abrirTrilha("PM máximo", trilhaDe(f, "pm.max"))} title="ver a trilha do PM máximo">/{f.pm.max}</button>
         </span>
         <button type="button" className="step" onClick={() => ajustarPM(1)} aria-label="Recuperar PM">+</button>
       </div>
@@ -138,7 +158,7 @@ export function FichaInterativa({
   const defesaBox = (
     <div className="stat">
       <div className="stat__rot">Defesa</div>
-      <div className="stat__val"><b className="big">{f.defesa}</b></div>
+      <div className="stat__val"><button type="button" className="big big--btn" onClick={() => abrirTrilha("Defesa", trilhaDe(f, "defesa"))} title="ver a trilha da Defesa">{f.defesa}</button></div>
     </div>
   );
 
@@ -167,18 +187,34 @@ export function FichaInterativa({
     mobileTab: false,
     conteudo: (
       <div style={{ display: "contents" }}>
+        <div className="cond-toggle">
+          <span className="cond-toggle__rot">Condição de sessão:</span>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={condicaoAtiva("fatigado")}
+            aria-label="Fatigado"
+            className={`switch switch--${condicaoAtiva("fatigado") ? "on" : "off"}`}
+            onClick={() => toggleCondicao("fatigado")}
+          />
+          <span className="cond-toggle__lbl">Fatigado</span>
+          <span className="cond-toggle__dica">liga/desliga — o motor cascateia em Fraco + Vulnerável</span>
+        </div>
         <div className="efeitos-chips">
           {bandeja.length === 0 ? (
             <span className="chip chip--vazia">nenhum efeito de sessão ativo</span>
           ) : (
             bandeja.map((c, i) => (
-              <span className="chip" key={i}>
+              <span className={`chip${c.via && c.via.length ? " chip--derivado" : ""}`} key={i}>
                 <span className="chip__dot" aria-hidden="true" />
-                <span className="chip__nome">{c.fonte.replace(/^.*\/ /, "")}</span>
+                <span className="chip__nome">
+                  {c.fonte}
+                  {c.via && c.via.length > 0 && <span className="chip__via"> ← {c.via.join(" ← ")}</span>}
+                </span>
                 <span className="chip__fx">
                   {c.contribs
                     .map((k) => `${k.valor != null && k.valor >= 0 ? "+" : ""}${k.valor} ${rotuloAlvo(k.alvo)}`)
-                    .join(" · ") || "—"}
+                    .join(" · ") || (c.tipo === "condição" ? "cascateia" : "—")}
                 </span>
                 <span className="chip__org">{c.tipo}</span>
               </span>
@@ -186,7 +222,9 @@ export function FichaInterativa({
           )}
         </div>
         <div className="nota">
-          Qualquer fonte (poder · item · condição) afeta o cálculo igual — muda só a origem.
+          Qualquer fonte (poder · item · condição) afeta o cálculo igual — muda só a origem. As
+          condições derivadas mostram de onde vieram (“← Fatigado”); é a mesma procedência que a
+          trilha de cada número exibe.
         </div>
       </div>
     ),
@@ -226,7 +264,7 @@ export function FichaInterativa({
               <div className="attr" key={a.cod}>
                 <div className="attr__cod">{a.cod}</div>
                 <div className="input">{fmt(a.base)}</div>
-                <div className="attr__mod">final <span className="calc">{fmt(a.final)}</span></div>
+                <div className="attr__mod">final <button type="button" className="calc calc--btn" onClick={() => abrirTrilha(`${a.cod} (final)`, trilhaDe(f, `atr.${a.cod.toLowerCase()}`))} title={`ver a trilha de ${a.cod}`}>{fmt(a.final)}</button></div>
               </div>
             ))}
           </div>
@@ -284,7 +322,7 @@ export function FichaInterativa({
             {vitalPM(false)}
             <div className="stat">
               <div className="stat__rot">Defesa</div>
-              <div className="stat__val"><b className="big">{f.defesa}</b></div>
+              <div className="stat__val"><button type="button" className="big big--btn" onClick={() => abrirTrilha("Defesa", trilhaDe(f, "defesa"))} title="ver a trilha da Defesa">{f.defesa}</button></div>
               <div className="nota">calculado · recalc ao vivo</div>
             </div>
           </div>
@@ -316,7 +354,7 @@ export function FichaInterativa({
                       {v.exigeTreino && !v.usavel && <span className="marca">exige treino</span>}
                     </td>
                     <td className="c"><span className={`chk${v.treinado ? " chk--on" : ""}`} aria-hidden="true" /></td>
-                    <td className="num"><span className="calc">{fmt(v.valor)}</span></td>
+                    <td className="num"><button type="button" className="calc calc--btn" onClick={() => abrirTrilha(capitalizar(id), trilhaDePericia(f, id))} title={`ver a trilha de ${capitalizar(id)}`}>{fmt(v.valor)}</button></td>
                   </tr>
                 ))}
             </tbody>
@@ -398,9 +436,55 @@ export function FichaInterativa({
     },
   ];
 
+  const totalTrilha = trilha ? trilha.parcelas.reduce((t, p) => t + (p.valor ?? 0), 0) : 0;
+
   return (
     <div className="app">
       <Paineis barra={barra} efeitos={efeitos} paineis={paineis} />
+
+      {/* TRILHA PROFUNDA — abre por cima (bottom-sheet no mobile / painel no desktop),
+          sem empurrar a página. Conteúdo = rastro REAL do motor, não remontado pela UI. */}
+      {trilha && (
+        <div className="sheet-fundo" onClick={() => setTrilha(null)}>
+          <div
+            className="sheet"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Trilha de ${trilha.titulo}`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="sheet__cab">
+              <span className="sheet__tit">Trilha · {trilha.titulo}</span>
+              <button type="button" className="sheet__x" onClick={() => setTrilha(null)} aria-label="Fechar">×</button>
+            </div>
+            <div className="sheet__corpo">
+              {trilha.parcelas.length === 0 ? (
+                <div className="nota">sem parcelas registradas.</div>
+              ) : (
+                trilha.parcelas.map((p, i) => (
+                  <div className="parc" key={i}>
+                    <span className="parc__val">{p.valor != null ? fmt(p.valor) : "—"}</span>
+                    <span className="parc__fonte">
+                      {p.fonte}
+                      {p.expr ? <span className="parc__expr"> · {p.expr}</span> : null}
+                    </span>
+                    <span className="parc__org">{origemTag(p.origem)}</span>
+                  </div>
+                ))
+              )}
+              <div className="parc parc--total">
+                <span className="parc__val">{fmt(totalTrilha)}</span>
+                <span className="parc__fonte">total</span>
+                <span className="parc__org" />
+              </div>
+            </div>
+            <div className="sheet__nota">
+              Cada parcela vem do rastro real do cálculo — inclusive a cadeia (ex.: um “−2” de
+              Vulnerável traz “(via Fatigado)”). É a mesma procedência da bandeja.
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

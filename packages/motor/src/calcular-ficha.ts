@@ -80,6 +80,8 @@ export interface ValorPericia {
   meioNivel: number;
   treinado: boolean;
   bonusTreino: number;
+  /** DE ONDE veio o treino (procedência), quando treinado: "origem:escravo (escolha)"… */
+  fonteTreino?: string;
   outros: number;
   /** A perícia exige treino para ser USADA? (campo `treinada` do compêndio.) */
   exigeTreino: boolean;
@@ -885,7 +887,7 @@ export function calcularFicha(
     pericias[id] = {
       valor: meioNivel + atributos[atr] + treino + outros,
       atributo: atr, modAtributo: atributos[atr], meioNivel,
-      treinado: eTreinado, bonusTreino: treino, outros,
+      treinado: eTreinado, bonusTreino: treino, fonteTreino: fonteTreino.get(id), outros,
       exigeTreino,
       // O VALOR existe sempre (regra); a USABILIDADE não.
       usavel: eTreinado || !exigeTreino,
