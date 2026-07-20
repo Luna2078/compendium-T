@@ -21,6 +21,7 @@ import type { Entidade, Personagem, EstadoDeSessao, EscolhaSalva } from "../sche
 import { avaliarExpr } from "./expr";
 import { PERICIA_ATRIBUTO, PERICIAS_TODAS, periciasDoAtributo } from "./pericias";
 import { expandirCondicoes, type CondicaoDef } from "../../../data/efeitos";
+import { contarTormenta, type ContagemTormenta } from "./tormenta";
 
 type AtributoCod = "for" | "des" | "con" | "int" | "sab" | "car";
 const ATRS: AtributoCod[] = ["for", "des", "con", "int", "sab", "car"];
@@ -99,6 +100,8 @@ export interface Ficha {
   bonusAtaque: number;
   bonusDano: number;
   pericias: Record<string, ValorPericia>;
+  /** Contagem de poderes da Tormenta nos dois propósitos, com trilha. */
+  tormenta: ContagemTormenta;
   condicoesAtivas: Array<{ id: string; via: string[] }>;
   /** Tudo que aterrissou num número. */
   trilha: ItemTrilha[];
@@ -218,6 +221,58 @@ function coletar(
     });
   }
 
+  // ── PODERES ESCOLHIDOS (entidades `poder` soltas: gerais, da Tormenta, etc.) ──
+  // A Camada 3 só carregava poderes de CLASSE; um poder do compêndio escolhido por
+  // qualquer via (slot de Deformidade, poder de classe trocado por geral) entra aqui.
+  for (const e of p.escolhas) {
+    if (e.opcao !== "poder") continue;
+    const pod = ent(compendio, "poder", e.alvoEscolhido);
+    if (!pod) continue; // nome de poder interno da classe/origem — já tratado acima
+    blocos.push({
+      rotulo: `poder / ${pod.nome}`,
+      origem: `poder:${pod.id}`,
+      efeitos: (mec(pod).efeitos ?? []) as Efeito[],
+    });
+  }
+
+  // ── SLOTS DE ESCOLHA materializados (ex.: Deformidade "+2 numa perícia") ──
+  // O slot vive no compêndio como `OpcaoSlot`; o VALOR escolhido vive na EscolhaSalva.
+  // Aqui os dois se juntam e viram efeito de verdade.
+  for (const e of p.escolhas) {
+    const fonte = ent(compendio, e.fonteTipo, e.fonteId);
+    if (!fonte) continue;
+    let slot: Record<string, unknown> | undefined;
+    let container: Record<string, unknown> | undefined;
+    const achar = (no: unknown) => {
+      if (slot) return;
+      if (Array.isArray(no)) return no.forEach(achar);
+      if (!no || typeof no !== "object") return;
+      const obj = no as Record<string, unknown>;
+      if (Array.isArray(obj.escolhas))
+        for (const sl of obj.escolhas)
+          if ((sl as { id?: string })?.id === e.escolhaId) {
+            slot = sl as Record<string, unknown>;
+            container = obj;
+            return;
+          }
+      Object.values(obj).forEach(achar);
+    };
+    achar(mec(fonte));
+    if (!slot) continue;
+    const opcoes = (slot.opcoes ?? []) as Array<Record<string, unknown>>;
+    const escolhida = opcoes.find((o) => o.tipo === e.opcao);
+    if (!escolhida) continue;
+    if (escolhida.tipo === "bonus_pericia")
+      blocos.push({
+        rotulo: `${e.fonteId} / ${container?.nome ?? e.escolhaId} → ${e.alvoEscolhido}`,
+        origem: `slot:${e.escolhaId}`,
+        efeitos: [
+          { tipo: "bonus", alvo: `pericia:${e.alvoEscolhido}`, valor: escolhida.valor, aplicacao: "automatica" } as Efeito,
+        ],
+      });
+    // tipo "poder" já entrou pelo bloco de PODERES ESCOLHIDOS acima.
+  }
+
   // ── ITENS EQUIPADOS ──
   for (const id of p.equipado) {
     const it = ent(compendio, "item", id) ?? ent(compendio, "item-magico", id);
@@ -259,6 +314,7 @@ export function calcularFicha(
   const lembretes: ItemTrilha[] = [];
   const naoAplicados: ItemTrilha[] = [];
 
+  const tormenta = contarTormenta(p, compendio);
   const { blocos, condicoesAtivas } = coletar(p, s, compendio, condicoes);
 
   // ── PASSE 0: patches de modifica_poder / adicionaEfeito ────────────────────
@@ -291,10 +347,42 @@ export function calcularFicha(
   for (const m of (mec(raca).modificadores ?? []) as Array<Record<string, unknown>>) {
     const cod = NOME_ATR[String(m.atributo)];
     if (!cod) {
+      // Modificador À ESCOLHA (lefou: "+1 em três atributos diferentes"): o VALOR está no
+      // compêndio, o ALVO na EscolhaSalva. Procedência resolvendo mais um slot.
+      if (m.escolha) {
+        const escolhidas = p.escolhas.filter(
+          (e) => e.fonteTipo === "raca" && e.fonteId === p.racaId && e.escolhaId === "modificadores",
+        );
+        const esperadas = Number(m.quantidade ?? 1);
+        for (const e of escolhidas) {
+          const alvo = e.alvoEscolhido as AtributoCod;
+          if (!ATRS.includes(alvo)) {
+            naoAplicados.push({
+              alvo: "atr.?", valor: Number(m.valor), fonte: `${p.racaId} (modificador à escolha)`,
+              origem: `raca:${p.racaId}`, estado: "naoAplicado",
+              motivo: `atributo escolhido "${e.alvoEscolhido}" não é válido`,
+            });
+            continue;
+          }
+          atributos[alvo] += Number(m.valor);
+          trilha.push({
+            alvo: `atr.${alvo}`, valor: Number(m.valor),
+            fonte: `${p.racaId} (racial à escolha: ${String(m.observacao ?? "")})`,
+            origem: `raca:${p.racaId}`, estado: "aplicado",
+          });
+        }
+        if (escolhidas.length !== esperadas)
+          naoAplicados.push({
+            alvo: "atr.?", valor: null, fonte: `${p.racaId} (modificador à escolha)`,
+            origem: `raca:${p.racaId}`, estado: "naoAplicado",
+            motivo: `esperava ${esperadas} escolha(s) de atributo, achei ${escolhidas.length}`,
+          });
+        continue;
+      }
       naoAplicados.push({
         alvo: `atr.?`, valor: Number(m.valor), fonte: `${p.racaId} (modificador)`,
         origem: `raca:${p.racaId}`, estado: "naoAplicado",
-        motivo: m.escolha ? "modificador À ESCOLHA do jogador (slot não modelado nesta camada)" : `atributo desconhecido: ${String(m.atributo)}`,
+        motivo: `atributo desconhecido: ${String(m.atributo)}`,
       });
       continue;
     }
@@ -311,7 +399,8 @@ export function calcularFicha(
     patamar: p.nivel <= 4 ? 1 : p.nivel <= 10 ? 2 : p.nivel <= 16 ? 3 : 4,
     deslocamento: Number(mec(raca).deslocamento ?? 9),
     ...Object.fromEntries(ATRS.map((a) => [`atr.${a}`, atributos[a]])),
-    "contagem.poderes.tormenta": 0,
+    // A contagem de ESCALAGEM é a que os exprs leem (Anatomia Insana, Carapaça…).
+    "contagem.poderes.tormenta": tormenta.escalagem,
   };
 
   // ── PASSE 1: filtragem por condição ─────────────────────────────────────────
@@ -592,7 +681,7 @@ export function calcularFicha(
     pv: { max: pvMax, temporario: pvTemporario, atual: pvAtual },
     pm: { max: pmMax, gasto: s.pmGasto, disponivel: pmMax - s.pmGasto },
     defesa, deslocamento, reducaoDano, deslocamentos, bonusAtaque, bonusDano,
-    pericias, condicoesAtivas,
+    pericias, tormenta, condicoesAtivas,
     trilha, contextuais, lembretes, naoAplicados,
   };
 }

@@ -1,0 +1,97 @@
+{
+  "id": "vharo",
+  "nome": "Vharo",
+  "nivel": 5,
+
+  "atributosBase": {
+    "for": 2,
+    "des": 1,
+    "con": 2,
+    "int": 0,
+    "sab": 1,
+    "car": 0
+  },
+
+  "racaId": "lefou",
+  "classeId": "barbaro",
+  "origemId": "escravo",
+  "divindadeId": null,
+
+  "escolhas": [
+    {
+      "fonteTipo": "raca",
+      "fonteId": "lefou",
+      "escolhaId": "modificadores",
+      "indice": 0,
+      "alvoEscolhido": "for",
+      "opcao": "atributo"
+    },
+    {
+      "fonteTipo": "raca",
+      "fonteId": "lefou",
+      "escolhaId": "modificadores",
+      "indice": 1,
+      "alvoEscolhido": "con",
+      "opcao": "atributo"
+    },
+    {
+      "fonteTipo": "raca",
+      "fonteId": "lefou",
+      "escolhaId": "modificadores",
+      "indice": 2,
+      "alvoEscolhido": "des",
+      "opcao": "atributo"
+    },
+
+    {
+      "fonteTipo": "raca",
+      "fonteId": "lefou",
+      "escolhaId": "deformidade_slot_1",
+      "alvoEscolhido": "furtividade",
+      "opcao": "bonus_pericia"
+    },
+    {
+      "fonteTipo": "raca",
+      "fonteId": "lefou",
+      "escolhaId": "deformidade_slot_2",
+      "alvoEscolhido": "carapaca",
+      "opcao": "poder"
+    },
+
+    {
+      "fonteTipo": "classe",
+      "fonteId": "barbaro",
+      "escolhaId": "poderes",
+      "indice": 0,
+      "alvoEscolhido": "anatomia-insana",
+      "opcao": "poder"
+    },
+
+    {
+      "fonteTipo": "origem",
+      "fonteId": "escravo",
+      "escolhaId": "beneficios.pericias",
+      "indice": 0,
+      "alvoEscolhido": "Atletismo",
+      "opcao": "treinar_pericia"
+    },
+    {
+      "fonteTipo": "origem",
+      "fonteId": "escravo",
+      "escolhaId": "beneficios.pericias",
+      "indice": 1,
+      "alvoEscolhido": "Fortitude",
+      "opcao": "treinar_pericia"
+    },
+    {
+      "fonteTipo": "origem",
+      "fonteId": "escravo",
+      "escolhaId": "beneficios.poderes",
+      "indice": 0,
+      "alvoEscolhido": "Desejo de Liberdade",
+      "opcao": "poder"
+    }
+  ],
+
+  "equipado": []
+}
