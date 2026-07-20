@@ -1,0 +1,21 @@
+{
+  "name": "compendium-t",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Compêndio Tormenta 20 — monorepo: dados, motor de regras e apps.",
+  "workspaces": [
+    "site",
+    "packages/*",
+    "extracao"
+  ],
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "build": "npm run build --workspace site",
+    "dev": "npm run dev --workspace site",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "devDependencies": {
+    "vitest": "^4.1.7",
+    "jsdom": "^29.1.1"
+  }
+}
