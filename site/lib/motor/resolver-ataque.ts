@@ -30,6 +30,13 @@ export interface DadosDano {
   faces: number;
 }
 
+/** O que se sabe sobre a CRIATURA ATACADA. Sem isto, condições `alvo.*` não resolvem. */
+export interface ContextoAlvo {
+  tipoDeCriatura?: string;
+  /** Espaço para `alvo.tamanho`, `alvo.nivel_nd` etc. quando existirem. */
+  [k: string]: string | undefined;
+}
+
 export interface ResultadoAtaque {
   arma: {
     id: string;
@@ -49,7 +56,7 @@ export interface ResultadoAtaque {
   /** Bônus total somado ao d20. */
   ataque: number;
   /** Dano: dados da arma + soma fixa. */
-  dano: { dados: DadosDano | null; fixo: number; formula: string };
+  dano: { dados: DadosDano | null; fixo: number; extras: DadosDano[]; formula: string };
   trilhaAtaque: ItemTrilha[];
   trilhaDano: ItemTrilha[];
   /** Efeitos de ataque que NÃO entraram — buraco explícito, nunca silêncio. */
@@ -91,6 +98,7 @@ export function resolverAtaque(
   s: EstadoDeSessao,
   ficha: Ficha,
   compendio: Entidade[],
+  alvo: ContextoAlvo = {},
 ): ResultadoAtaque {
   const item = compendio.find(
     (e) => (e.tipo === "item" || e.tipo === "item-magico") && e.id === armaId,
@@ -219,12 +227,28 @@ export function resolverAtaque(
     });
 
   // ── CONTEXTUAIS da ficha: agora HÁ contexto de ataque, então eles entram ──
-  const contexto: Record<string, string> = {
+  const extras: DadosDano[] = [];
+  const contexto: Record<string, string | undefined> = {
     "arma.id": armaId,
     "arma.tipo_ataque": tipoAtaque,
     "arma.empunhadura": arma.empunhadura,
     "arma.tipoDano": semAcento(arma.tipoDano),
     "arma.proficiencia": arma.proficiencia,
+    "alvo.tipo_de_criatura": alvo.tipoDeCriatura,
+  };
+
+  /** A condição é satisfeita neste contexto? null = não dá para saber. */
+  const satisfaz = (c: ItemTrilha["condicao"]): boolean | null => {
+    if (!c?.campo) return true;
+    const atual = contexto[c.campo];
+    if (atual === undefined) return null; // contexto não cobre este campo
+    if (c.em) return c.em.map(String).map(semAcento).includes(semAcento(atual));
+    if (c.igual !== undefined) {
+      // "@self" = a própria arma que está atacando (Vingadora Sagrada)
+      const esperado = c.igual === "@self" ? armaId : c.igual;
+      return semAcento(atual) === semAcento(String(esperado));
+    }
+    return true;
   };
   for (const c of ficha.contextuais) {
     const alvo = c.alvo;
@@ -232,18 +256,38 @@ export function resolverAtaque(
     const ehDano = alvo === "dano" || alvo === `dano.${tipoAtaque}`;
     if (!ehAtaque && !ehDano) continue; // contextual de outro domínio (perícia etc.)
 
-    // O motivo carregado pela ficha diz se dependia de um campo; se sim, checamos agora.
-    const campo = /depende de (.+)$/.exec(c.motivo ?? "")?.[1];
-    if (campo && contexto[campo] === undefined) {
+    // Agora HÁ contexto: a condição é AVALIADA, não só verificada como presente.
+    const ok = satisfaz(c.condicao);
+    if (ok === null) {
       naoAplicados.push({
         ...c, estado: "naoAplicado",
-        motivo: `campo "${campo}" não faz parte do contexto de ataque`,
+        motivo: `condição sobre "${c.condicao?.campo}" não pôde ser resolvida: o contexto do ataque não informa esse campo`,
+      });
+      continue;
+    }
+    if (ok === false) {
+      // NÃO some calado: fica visível que existe e por que não entrou.
+      naoAplicados.push({
+        ...c, estado: "naoAplicado",
+        motivo: `condição não satisfeita: ${c.condicao?.campo} = "${contexto[c.condicao!.campo!]}", exigido ${JSON.stringify(c.condicao?.em ?? c.condicao?.igual)}`,
+      });
+      continue;
+    }
+    const alvoFinal = ehAtaque ? "ataque" : "dano";
+    if (c.dados) {
+      const d = c.dados as DadosDano;
+      extras.push(d);
+      (ehAtaque ? trilhaAtaque : trilhaDano).push({
+        ...c, alvo: alvoFinal, valor: null, estado: "aplicado",
+        motivo: `+${d.n}d${d.faces} — condição satisfeita (${c.condicao?.campo} = ${contexto[c.condicao!.campo!]})`,
       });
       continue;
     }
     (ehAtaque ? trilhaAtaque : trilhaDano).push({
-      ...c, alvo: ehAtaque ? "ataque" : "dano", estado: "aplicado",
-      motivo: `contextual: ${c.fonte}`,
+      ...c, alvo: alvoFinal, estado: "aplicado",
+      motivo: c.condicao?.campo
+        ? `condição satisfeita: ${c.condicao.campo} = ${contexto[c.condicao.campo]}`
+        : `contextual: ${c.fonte}`,
     });
   }
 
@@ -261,7 +305,10 @@ export function resolverAtaque(
     dano: {
       dados,
       fixo,
-      formula: `${arma.dano}${fixo >= 0 ? "+" : ""}${fixo}`,
+      extras,
+      formula:
+        [arma.dano, ...extras.map((d) => `${d.n}d${d.faces}`)].join("+") +
+        (fixo !== 0 ? `${fixo > 0 ? "+" : ""}${fixo}` : ""),
     },
     trilhaAtaque, trilhaDano, naoAplicados,
   };

@@ -60,6 +60,14 @@ export interface ItemTrilha {
   motivo?: string;
   /** Chave, quando o efeito é uma `capacidade`. */
   chave?: string;
+  /**
+   * A CONDIÇÃO original, preservada para quem tiver contexto de resolvê-la depois.
+   * A ficha estática não sabe contra quem você ataca; o resolverAtaque sabe — e precisa
+   * da condição em si, não de um texto de motivo, para decidir.
+   */
+  condicao?: { quando?: string; campo?: string; em?: unknown[]; igual?: string };
+  /** Dados de rolagem, quando o valor é `{dados}` (ex.: +2d8 de um encanto). */
+  dados?: unknown;
 }
 
 export interface ValorPericia {
@@ -498,6 +506,17 @@ export function calcularFicha(
       const box: { expr?: string } = {};
       const v = numero(ef.valor, box);
       if (v === null) {
+        // Valor em DADOS não é número de ficha — mas é payload legítimo de ataque.
+        // Vai para contextuais (com a condição preservada) em vez de virar buraco.
+        const dados = (ef.valor as { dados?: unknown } | undefined)?.dados;
+        if (dados) {
+          contextuais.push({
+            ...base, alvo: String(ef.alvo), valor: null, estado: "contextual",
+            condicao: ef.condicao, dados,
+            motivo: ef.condicao?.campo ? `depende de ${ef.condicao.campo}` : "dados de rolagem",
+          });
+          continue;
+        }
         naoAplicados.push({
           ...base, alvo: String(ef.alvo), valor: null, estado: "naoAplicado", expr: box.expr,
           motivo: "valor não é numérico estático (dados de rolagem)",
@@ -507,6 +526,7 @@ export function calcularFicha(
       if (sat === null || ef.aplicacao === "contextual" || ef.opcionalPorAtaque) {
         contextuais.push({
           ...base, alvo: String(ef.alvo), valor: v, estado: "contextual", expr: box.expr,
+          condicao: ef.condicao,
           motivo: sat === null ? `depende de ${ef.condicao?.campo}` : "vale por ataque/teste",
         });
         // ⚠️ EXCEÇÃO: efeito marcado contextual que aterrissa num POOL persistente

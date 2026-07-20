@@ -326,3 +326,112 @@ describe("CAMADA 4-B — resolverAtaque com a adaga", () => {
     expect(L.length).toBeGreaterThan(10);
   });
 });
+
+describe("CAMADA 5 — item mágico CONDICIONAL (encanto Destruidora)", () => {
+  // "Se usada contra construtos e objetos, a arma fornece +2 no teste de ataque e
+  //  causa +2d8 de dano."  → condicao: alvo.tipo_de_criatura em ["construto"]
+  const atacar = (alvo: Record<string, string | undefined> = {}, sessao = semFuria) =>
+    resolverAtaque("adaga", THAIDE, sessao, calc(sessao), COMPENDIO, alvo);
+
+  const semItem = { ...THAIDE, equipado: THAIDE.equipado.filter((i) => i !== "destruidora") };
+
+  it("o item está equipado e seus efeitos chegam à ficha como CONTEXTUAIS", () => {
+    const f = calc(semFuria);
+    const doItem = f.contextuais.filter((c) => c.origem === "item:destruidora");
+    expect(doItem.length).toBe(2); // +2 ataque e +2d8 dano
+    // e a CONDIÇÃO viaja junto — sem ela o resolvedor não teria como decidir
+    expect(doItem[0].condicao).toMatchObject({
+      campo: "alvo.tipo_de_criatura",
+      em: ["construto"],
+    });
+  });
+
+  it("CONDIÇÃO SATISFEITA (vs construto): +2 no ataque e +2d8 no dano", () => {
+    const a = atacar({ tipoDeCriatura: "construto" });
+    expect(a.ataque).toBe(9); // 7 base + 2 do encanto
+    expect(a.dano.extras).toEqual([{ n: 2, faces: 8 }]);
+    expect(a.dano.formula).toBe("1d4+2d8+4");
+    const t = a.trilhaAtaque.find((x) => x.origem === "item:destruidora");
+    expect(t!.motivo).toMatch(/condição satisfeita: alvo\.tipo_de_criatura = construto/);
+  });
+
+  it("CONDIÇÃO NÃO SATISFEITA (vs humanoide): não entra, e a razão fica VISÍVEL", () => {
+    const a = atacar({ tipoDeCriatura: "humanoide" });
+    expect(a.ataque).toBe(7); // sem o +2
+    expect(a.dano.extras).toEqual([]);
+    expect(a.dano.formula).toBe("1d4+4");
+    // não sumiu calado: está nos buracos, com o motivo
+    const barrados = a.naoAplicados.filter((n) => n.origem === "item:destruidora");
+    expect(barrados).toHaveLength(2);
+    expect(barrados[0].motivo).toMatch(/condição não satisfeita/);
+    expect(barrados[0].motivo).toMatch(/humanoide/);
+    expect(barrados[0].motivo).toMatch(/construto/);
+  });
+
+  it("SEM ALVO informado: não resolve, e diz que o contexto não informa o campo", () => {
+    const a = atacar({});
+    expect(a.ataque).toBe(7);
+    const n = a.naoAplicados.find((x) => x.origem === "item:destruidora");
+    expect(n!.motivo).toMatch(/não pôde ser resolvida/);
+  });
+
+  it("ITEM DES-EQUIPADO: o efeito some INTEIRO (prova que equipado[] é lido)", () => {
+    const f = calcularFicha(semItem, semFuria, COMPENDIO, CONDICOES);
+    expect(f.contextuais.filter((c) => c.origem === "item:destruidora")).toHaveLength(0);
+    const a = resolverAtaque("adaga", semItem, semFuria, f, COMPENDIO, {
+      tipoDeCriatura: "construto",
+    });
+    expect(a.ataque).toBe(7); // mesmo contra construto, sem o item não há bônus
+    expect(a.dano.extras).toEqual([]);
+    expect(a.naoAplicados.filter((n) => n.origem === "item:destruidora")).toHaveLength(0);
+  });
+
+  it("PROVA ANTI-COINCIDÊNCIA: os três estados dão números DIFERENTES", () => {
+    const comCondicao = atacar({ tipoDeCriatura: "construto" });
+    const semCondicao = atacar({ tipoDeCriatura: "humanoide" });
+    const semOItem = resolverAtaque(
+      "adaga", semItem, semFuria, calcularFicha(semItem, semFuria, COMPENDIO, CONDICOES),
+      COMPENDIO, { tipoDeCriatura: "construto" },
+    );
+    expect(comCondicao.ataque).toBe(9);
+    expect(semCondicao.ataque).toBe(7);
+    expect(semOItem.ataque).toBe(7);
+    // o que distingue "condição falhou" de "item ausente" NÃO é o número — é a trilha
+    expect(comCondicao.ataque).not.toBe(semCondicao.ataque);
+    expect(semCondicao.naoAplicados.length).toBeGreaterThan(semOItem.naoAplicados.length);
+  });
+
+  it("o encanto NÃO aterrissa na ficha estática (é condicional, não passivo)", () => {
+    const f = calc(semFuria);
+    expect(f.bonusAtaque).toBe(0);
+    expect(f.trilha.some((t) => t.origem === "item:destruidora")).toBe(false);
+  });
+
+  it("imprime o item condicional nos três estados", () => {
+    const L: string[] = [];
+    const casos: Array<[string, () => ReturnType<typeof resolverAtaque>]> = [
+      ["vs CONSTRUTO (condição satisfeita)", () => atacar({ tipoDeCriatura: "construto" })],
+      ["vs HUMANOIDE (condição não satisfeita)", () => atacar({ tipoDeCriatura: "humanoide" })],
+      ["item DES-EQUIPADO, vs construto", () =>
+        resolverAtaque("adaga", semItem, semFuria,
+          calcularFicha(semItem, semFuria, COMPENDIO, CONDICOES), COMPENDIO,
+          { tipoDeCriatura: "construto" })],
+    ];
+    for (const [rot, fn] of casos) {
+      const a = fn();
+      L.push(`═══ ${rot} ═══`);
+      L.push(`  ATAQUE = +${a.ataque}    DANO = ${a.dano.formula}`);
+      for (const t of a.trilhaAtaque.filter((x) => x.origem === "item:destruidora"))
+        L.push(`     +${t.valor ?? ""}  ← ${t.fonte}   (${t.motivo})`);
+      for (const t of a.trilhaDano.filter((x) => x.origem === "item:destruidora"))
+        L.push(`     dados ← ${t.fonte}   (${t.motivo})`);
+      if (a.naoAplicados.length) {
+        L.push("  NÃO ENTROU:");
+        for (const n of a.naoAplicados) L.push(`     ${n.alvo} ← ${n.fonte}\n        ${n.motivo}`);
+      } else L.push("  NÃO ENTROU: (nada do item — ele nem está equipado)");
+      L.push("");
+    }
+    writeFileSync(join(RAIZ, "..", "item-condicional.txt"), L.join("\n"), "utf8");
+    expect(L.length).toBeGreaterThan(10);
+  });
+});

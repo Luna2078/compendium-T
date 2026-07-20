@@ -113,6 +113,23 @@ Propositor, não autoridade final — tudo é revisado por humano antes de virar
     → `efeitos[]` vazio é o correto, não uma falha. O mesmo vale para qualquer entidade que o motor CALCULA em
     vez de APLICAR. Corolário de processo: **não dispare fan-out numa pasta cujo `efeitos[]` deve ser vazio** —
     agentes pressionados a preencher inventam. Verifique a direção ANTES de escalar (custo evitado > risco).
+27. **FAMÍLIA DE BUGS: "O MAPA NÃO É O TERRITÓRIO".** Quatro incidentes distintos, uma causa
+    só — uma REPRESENTAÇÃO PARCIAL divergindo do corpus real que o motor carrega:
+    · **worktrees** — 72 itens editados numa cópia isolada; o disco "principal" não tinha nada.
+    · **Zod permissivo** — `EntidadeSchema.mecanica` é `z.record(unknown)`, então a auditoria
+      contra ELE deu "tudo 1:1" e não mediu nada (falso negativo da minha própria auditoria).
+    · **caminho tipado** — os schemas ANINHADOS descartavam `efeitos[]` silenciosamente
+      (racas 97→0, origens 45→0, classes 513→384) porque não declaravam o campo.
+    · **varredura-de-subconjunto** — varri `livro-basico/` (501 aprimoramentos) e concluí
+      "formato único"; o motor carrega TODAS as fontes (665), e as expansões tinham 4 no
+      formato `"+N PM (Apenas Devotos de Aharadak)"`.
+    **DEFESA (as duas juntas, não uma):** (a) MEDIR CONTRA O CORPUS INTEIRO — a mesma lista de
+    fontes que `carregarEntidades()` usa, nunca uma pasta escolhida a dedo; (b) FALHAR ALTO NO
+    INESPERADO — formato/campo/valor fora do previsto lança erro citando o caso, jamais assume
+    zero ou descarta. Foi (b) que salvou no caso dos aprimoramentos: o parser quebrou e MOSTROU
+    as 4 restrições de uso, em vez de comê-las em silêncio.
+    ⚠️ **A quinta vai aparecer.** Ao ver um número que "bate" ou uma lista que "está completa",
+    pergunte primeiro: isto foi medido contra o território ou contra um mapa meu?
 26. **RODAR A SUÍTE AO FECHAR CADA PASTA — o schema Zod é um consumidor silencioso.** Enriquecer o JSON
     não basta: `site/lib/schema.ts` valida o que é carregado, e (a) campo declarado com tipo CONFLITANTE
     quebra o carregamento; (b) campo NÃO declarado é **silenciosamente DESCARTADO** — o dado existe no disco
