@@ -138,11 +138,25 @@ body {
 .stat__val b small { font: 600 14px system-ui; color: var(--muted2); }
 .stat__val .big { font-size: 28px; }
 .stat__temp { font: 600 12px system-ui; color: var(--muted); }
-.step { /* − / + inertes (ajuste é Etapa 3) */
+.stat__num { display: inline-flex; align-items: baseline; gap: 2px; }
+.stat__num small { font: 600 14px system-ui; color: var(--muted2); }
+/* valor atual DIGITÁVEL (Etapa 3) — sem as setinhas nativas do input number */
+.stat__inp {
+  width: 2.6em; text-align: right; padding: 2px 5px;
+  border: 1px solid var(--borda); border-radius: 5px; background: #fff;
+  font: 700 20px system-ui; color: var(--tinta2); font-variant-numeric: tabular-nums;
+  -moz-appearance: textfield;
+}
+.stat__inp:focus { outline: 2px solid #9a9a9a; outline-offset: 0; }
+.stat__inp::-webkit-inner-spin-button, .stat__inp::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.step { /* − / + FUNCIONAIS (Etapa 3): dano/cura, gastar/recuperar PM */
   width: 26px; height: 26px; border-radius: 5px; background: #fff; border: 1px solid var(--borda);
   display: inline-flex; align-items: center; justify-content: center;
-  font: 600 16px system-ui; color: #c4c4c4; user-select: none;
+  font: 600 16px system-ui; color: #6f6f6f; user-select: none;
+  cursor: pointer; -webkit-appearance: none; appearance: none; padding: 0;
 }
+.step:hover { background: #f0f0f0; border-color: #a8a8a8; }
+.step:active { background: #e6e6e6; }
 .stat .nota { text-align: center; margin-top: 6px; font-size: 12px; }
 
 /* ── Tabelas (perícias, inventário) ────────────────────────────────────────── */
@@ -169,10 +183,14 @@ body {
 .poder__desc { font: 400 14px system-ui; color: var(--tinta2); line-height: 1.5; margin: 8px 0 0; }
 .tag { font: 600 12px system-ui; color: var(--muted); background: #ececec; border: 1px solid #d8d8d8; border-radius: 5px; padding: 2px 9px; }
 .tag--ativo { color: #fff; background: #6f6f6f; border-color: #6f6f6f; }
-.switch { width: 36px; height: 20px; border-radius: 10px; position: relative; display: inline-block; flex: none; }
+.switch { width: 36px; height: 20px; border-radius: 10px; position: relative; display: inline-block; flex: none; padding: 0; }
 .switch::after { content: ""; position: absolute; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; }
 .switch--on { background: #6f6f6f; } .switch--on::after { right: 2px; }
 .switch--off { background: #d4d4d4; border: 1px solid var(--borda); } .switch--off::after { left: 2px; }
+/* interruptor de poder ativável = botão real (Etapa 3); o de inventário segue span inerte */
+button.switch { cursor: pointer; -webkit-appearance: none; appearance: none; transition: background .12s; }
+button.switch:hover { filter: brightness(.96); }
+button.switch:focus-visible { outline: 2px solid #9a9a9a; outline-offset: 2px; }
 
 /* ── Inventário ────────────────────────────────────────────────────────────── */
 .carga { margin-top: 14px; background: #f4f4f4; border: 1px solid #d4d4d4; border-radius: 6px; padding: 12px 14px; }

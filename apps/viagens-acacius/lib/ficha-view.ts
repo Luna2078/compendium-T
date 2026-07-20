@@ -78,6 +78,8 @@ export interface PoderView {
   nome: string;
   fx: string;
   estado: EstadoPoder;
+  /** presente só nos ativáveis (habilidade com `ativacao`) — é o id do toggle de sessão. */
+  toggleId?: string;
 }
 
 /**
@@ -116,6 +118,7 @@ export function poderesView(
         nome: String(h.nome),
         fx: fx(String(h.descricao ?? "")),
         estado: temAtiv ? (s.togglesAtivos.includes(toggleId) ? "ativo" : "dormente") : "passivo",
+        toggleId: temAtiv ? toggleId : undefined, // o clique no interruptor liga/desliga isto
       });
     }
     // poderes de classe ESCOLHIDOS

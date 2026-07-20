@@ -18,7 +18,9 @@
 // A soma dos baldes é conferida contra o total coletado (teste de conservação).
 
 import type { Entidade, Personagem, EstadoDeSessao, EscolhaSalva } from "@ct/compendio";
-import { nivelDePersonagem, nivelNaClasse, primeiraClasse } from "@ct/compendio";
+// helpers PUROS vêm do subcaminho ./schema (sem o carregador de dados que usa node:fs),
+// senão o barrel arrasta `fs` pro bundle do cliente (o motor roda no cliente na Etapa 3).
+import { nivelDePersonagem, nivelNaClasse, primeiraClasse } from "@ct/compendio/schema";
 import { avaliarExpr } from "./expr";
 import { PERICIA_ATRIBUTO, PERICIAS_TODAS, periciasDoAtributo } from "./pericias";
 import { expandirCondicoes, type CondicaoDef } from "./contrato/efeitos";
