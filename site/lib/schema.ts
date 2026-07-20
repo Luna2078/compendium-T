@@ -670,6 +670,8 @@ export const PersonagemSchema = z.object({
 
   /** ids de itens equipados (o motor lê os efeitos das definições). */
   equipado: z.array(z.string()).default([]),
+  /** ids de magias APRENDIDAS (durável — o que você sabe, não o que está no ar). */
+  magiasConhecidas: z.array(z.string()).default([]),
 });
 export type Personagem = z.infer<typeof PersonagemSchema>;
 
@@ -694,5 +696,11 @@ export const EstadoDeSessaoSchema = z.object({
   togglesAtivos: z.array(z.string()).default([]),
   /** ids de condições ativas — entram na expansão transitiva (regra 21). */
   condicoesAtivas: z.array(z.string()).default([]),
+  /**
+   * Magias CONJURADAS e ainda no ar (duração cena/dia). Efêmero, por isso mora aqui e não
+   * na construção: saber a magia é durável, tê-la ativa é de sessão. Só as ativas
+   * aterrissam na ficha — conhecer Armadura Arcana não dá +5 na Defesa.
+   */
+  magiasAtivas: z.array(z.string()).default([]),
 });
 export type EstadoDeSessao = z.infer<typeof EstadoDeSessaoSchema>;

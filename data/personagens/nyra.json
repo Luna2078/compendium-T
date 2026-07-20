@@ -1,0 +1,71 @@
+{
+  "id": "nyra",
+  "nome": "Nyra",
+  "nivel": 5,
+  "atributosBase": {
+    "for": -1,
+    "des": 2,
+    "con": 1,
+    "int": 3,
+    "sab": 1,
+    "car": 0
+  },
+  "racaId": "humano",
+  "classeId": "arcanista",
+  "origemId": "acolito",
+  "divindadeId": null,
+  "escolhas": [
+    {
+      "fonteTipo": "raca",
+      "fonteId": "humano",
+      "escolhaId": "modificadores",
+      "indice": 0,
+      "alvoEscolhido": "int",
+      "opcao": "atributo"
+    },
+    {
+      "fonteTipo": "raca",
+      "fonteId": "humano",
+      "escolhaId": "modificadores",
+      "indice": 1,
+      "alvoEscolhido": "des",
+      "opcao": "atributo"
+    },
+    {
+      "fonteTipo": "raca",
+      "fonteId": "humano",
+      "escolhaId": "modificadores",
+      "indice": 2,
+      "alvoEscolhido": "con",
+      "opcao": "atributo"
+    },
+    {
+      "fonteTipo": "classe",
+      "fonteId": "arcanista",
+      "escolhaId": "conjuracao.atributoChave",
+      "alvoEscolhido": "Inteligência",
+      "opcao": "atributo"
+    },
+    {
+      "fonteTipo": "classe",
+      "fonteId": "arcanista",
+      "escolhaId": "caminhos",
+      "alvoEscolhido": "Mago",
+      "opcao": "ramo"
+    },
+    {
+      "fonteTipo": "classe",
+      "fonteId": "arcanista",
+      "escolhaId": "poderes",
+      "indice": 0,
+      "alvoEscolhido": "magia-ilimitada",
+      "opcao": "poder"
+    }
+  ],
+  "equipado": [],
+  "magiasConhecidas": [
+    "armadura-arcana",
+    "bola-de-fogo",
+    "curar-ferimentos"
+  ]
+}

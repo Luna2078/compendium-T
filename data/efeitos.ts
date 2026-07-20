@@ -496,6 +496,13 @@ export interface Aprimoramento {
   efeitoTexto: string;          // mostrado ao jogador; o motor não interpreta
   requisitoCirculo?: number;    // precisa de acesso a esse círculo
   restricao?: "arcano" | "divino";
+  /**
+   * Restrição de USO vinda do próprio texto do custo, ex.: "+5 PM (Apenas Devotos de
+   * Aharadak)". Eixo DIFERENTE de `restricao` (que é tipo de conjurador): aqui é
+   * classe/raça/devoção. 4 ocorrências, todas em expansões — o Básico não usa.
+   * O motor EXIBE; validar o pré-requisito exige conhecer a ficha, então não bloqueia sozinho.
+   */
+  restricaoUso?: string;
   exclusivo?: boolean;          // "não pode ser usado com outros aprimoramentos"
 }
 

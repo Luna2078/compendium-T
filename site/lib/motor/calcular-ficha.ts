@@ -102,6 +102,11 @@ export interface Ficha {
   pericias: Record<string, ValorPericia>;
   /** Contagem de poderes da Tormenta nos dois propósitos, com trilha. */
   tormenta: ContagemTormenta;
+  /** Conjuração: limite de PM por magia (já com Magia Ilimitada, se houver) e acesso. */
+  limitePMporMagia: number;
+  limitePMporMagiaTrilha: ItemTrilha[];
+  circuloMaximo: number;
+  tipoConjurador: "arcano" | "divino" | "ambos";
   condicoesAtivas: Array<{ id: string; via: string[] }>;
   /** Tudo que aterrissou num número. */
   trilha: ItemTrilha[];
@@ -273,6 +278,19 @@ function coletar(
     // tipo "poder" já entrou pelo bloco de PODERES ESCOLHIDOS acima.
   }
 
+  // ── MAGIAS ATIVAS (conjuradas e ainda no ar) ──
+  // Só as ATIVAS aterrissam: conhecer Armadura Arcana não dá +5 na Defesa. E o payload
+  // (mecanica.dano/cura) NÃO entra aqui — ele mira outra criatura (invariante de ouro).
+  for (const id of s.magiasAtivas) {
+    const mg = ent(compendio, "magia", id);
+    if (!mg) continue;
+    blocos.push({
+      rotulo: `magia / ${mg.nome}`,
+      origem: `magia:${id}`,
+      efeitos: (mec(mg).efeitos ?? []) as Efeito[],
+    });
+  }
+
   // ── ITENS EQUIPADOS ──
   for (const id of p.equipado) {
     const it = ent(compendio, "item", id) ?? ent(compendio, "item-magico", id);
@@ -394,8 +412,27 @@ export function calcularFicha(
   }
 
   // escopo para os `{expr}` — já com os atributos resolvidos
+  // atributoChave: o atributo de conjuração da classe. Quando a classe declara mais de um
+  // ("Inteligência ou Carisma" do arcanista), a relação Caminho→atributo vive só na PROSA
+  // da conjuracao.descricao — então o personagem DECLARA a escolha, e o motor não adivinha.
+  const classeParaAtr = ent(compendio, "classe", p.classeId);
+  const conj = mec(classeParaAtr).conjuracao as { atributoChave?: string } | undefined;
+  const nomesAtr = Object.keys(NOME_ATR).filter((n) =>
+    semAcento(String(conj?.atributoChave ?? "")).includes(semAcento(n)),
+  );
+  let atrChaveCod: AtributoCod | undefined;
+  if (nomesAtr.length === 1) atrChaveCod = NOME_ATR[nomesAtr[0]];
+  else if (nomesAtr.length > 1) {
+    const decl = p.escolhas.find(
+      (e) => e.fonteTipo === "classe" && e.fonteId === p.classeId && e.escolhaId === "conjuracao.atributoChave",
+    );
+    const cod = decl && (NOME_ATR[decl.alvoEscolhido] ?? (ATRS as string[]).includes(decl.alvoEscolhido) ? (NOME_ATR[decl.alvoEscolhido] ?? decl.alvoEscolhido as AtributoCod) : undefined);
+    if (cod) atrChaveCod = cod as AtributoCod;
+  }
+
   const escopo: Record<string, number> = {
     nivel: p.nivel,
+    ...(atrChaveCod ? { atributoChave: atributos[atrChaveCod] } : {}),
     patamar: p.nivel <= 4 ? 1 : p.nivel <= 10 ? 2 : p.nivel <= 16 ? 3 : 4,
     deslocamento: Number(mec(raca).deslocamento ?? 9),
     ...Object.fromEntries(ATRS.map((a) => [`atr.${a}`, atributos[a]])),
@@ -583,6 +620,32 @@ export function calcularFicha(
   const bonusDano = somaAlvo("dano");
   registrar("dano");
 
+  // ── PASSE 3 (parte C): conjuração ──────────────────────────────────────────
+  // Limite de PM POR MAGIA. Regra: "o máximo de PM que você pode gastar por uso é igual
+  // ao seu nível NA CLASSE que fornece a habilidade". Magia Ilimitada soma o atributo-chave
+  // (efeito `bonus limite_pm_por_magia {expr:"atributoChave"}` — já vem pelos aplicaveis).
+  const limitePMporMagiaTrilha: ItemTrilha[] = [];
+  const ehConjurador = !!conj;
+  if (ehConjurador)
+    limitePMporMagiaTrilha.push({
+      alvo: "limite_pm_por_magia", valor: p.nivel,
+      fonte: `nível de ${p.classeId} (${p.nivel})`, origem: `classe:${p.classeId}`, estado: "aplicado",
+    });
+  for (const a of aplicaveis.filter((x) => x.ef.alvo === "limite_pm_por_magia")) {
+    limitePMporMagiaTrilha.push({
+      alvo: "limite_pm_por_magia", valor: a.valor, fonte: a.b.rotulo,
+      origem: a.b.origem, estado: "aplicado", expr: a.expr,
+    });
+  }
+  registrar("limite_pm_por_magia");
+  const limitePMporMagia = limitePMporMagiaTrilha.reduce((t, i) => t + (i.valor ?? 0), 0);
+
+  // Círculo máximo acessível: 1º no 1º nível, +1 a cada 4 níveis (2º no 5º, 3º no 9º…).
+  const circuloMaximo = ehConjurador ? Math.min(5, 1 + Math.floor(p.nivel / 4)) : 0;
+  const tipoDeclarado = semAcento(String((conj as { tipo?: string } | undefined)?.tipo ?? ""));
+  const tipoConjurador: "arcano" | "divino" | "ambos" =
+    tipoDeclarado.includes("arcan") ? "arcano" : tipoDeclarado.includes("divin") ? "divino" : "ambos";
+
   // ── PASSE 4: perícias ──────────────────────────────────────────────────────
   // Valor = meio nível (arredondado p/ baixo) + atributo-chave + treino (+2/+4/+6).
   const meioNivel = Math.floor(p.nivel / 2);
@@ -663,7 +726,7 @@ export function calcularFicha(
     ...ATRS.map((a) => `atr.${a}`),
     "pv.max", "pv.temporario", "pm.max", "defesa", "deslocamento",
     "reducao_dano", "deslocamento_escalar", "deslocamento_natacao", "deslocamento_voo",
-    "ataque", "dano",
+    "ataque", "dano", "limite_pm_por_magia",
   ]);
   for (const a of aplicaveis) {
     const alvo = String(a.ef.alvo);
@@ -681,7 +744,9 @@ export function calcularFicha(
     pv: { max: pvMax, temporario: pvTemporario, atual: pvAtual },
     pm: { max: pmMax, gasto: s.pmGasto, disponivel: pmMax - s.pmGasto },
     defesa, deslocamento, reducaoDano, deslocamentos, bonusAtaque, bonusDano,
-    pericias, tormenta, condicoesAtivas,
+    pericias, tormenta,
+    limitePMporMagia, limitePMporMagiaTrilha, circuloMaximo, tipoConjurador,
+    condicoesAtivas,
     trilha, contextuais, lembretes, naoAplicados,
   };
 }
