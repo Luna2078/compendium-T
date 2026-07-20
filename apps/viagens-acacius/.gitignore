@@ -1,0 +1,6 @@
+# Build do Next e artefatos — nunca versionados (a wiki também os ignora).
+/.next/
+/out/
+/node_modules
+next-env.d.ts
+*.tsbuildinfo

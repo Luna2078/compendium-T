@@ -1,0 +1,25 @@
+{
+  "name": "@ct/viagens-acacius",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Viagens Acácius — ficha de personagem de Tormenta 20. Consome @ct/motor e @ct/compendio.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "next": "16.2.6",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "@ct/compendio": "*",
+    "@ct/motor": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
+  }
+}
