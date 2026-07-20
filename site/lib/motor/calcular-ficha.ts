@@ -69,6 +69,17 @@ export interface ValorPericia {
   treinado: boolean;
   bonusTreino: number;
   outros: number;
+  /** A perícia exige treino para ser USADA? (campo `treinada` do compêndio.) */
+  exigeTreino: boolean;
+  /**
+   * Pode ser usada? O VALOR existe sempre (a regra manda somar ½ nível + atributo a
+   * qualquer perícia), mas 11 perícias só podem ser USADAS se treinadas — "se você não é
+   * treinado em Ladinagem, não tem o conhecimento necessário para desarmar uma armadilha,
+   * independentemente de seu nível ou Destreza". Mostrar o número sem esta marca é enganoso.
+   */
+  usavel: boolean;
+  /** Usos específicos bloqueados por falta de treino, dentro de uma perícia livre. */
+  usosBloqueados: string[];
 }
 
 export interface Ficha {
@@ -80,6 +91,13 @@ export interface Ficha {
   pm: { max: number; gasto: number; disponivel: number };
   defesa: number;
   deslocamento: number;
+  /** Redução de dano (bárbaro/Redução de Dano, armaduras…). */
+  reducaoDano: number;
+  /** Deslocamentos especiais, em metros. */
+  deslocamentos: { base: number; escalar: number; natacao: number; voo: number };
+  /** Bônus GERAIS de ataque/dano que a ficha exibe e o resolverAtaque consome. */
+  bonusAtaque: number;
+  bonusDano: number;
   pericias: Record<string, ValorPericia>;
   condicoesAtivas: Array<{ id: string; via: string[] }>;
   /** Tudo que aterrissou num número. */
@@ -452,6 +470,30 @@ export function calcularFicha(
     if (a.ef.operacao === "definir") deslocamento = a.valor;
   }
 
+  // ── PASSE 3 (parte B): derivados que faltavam (fechando os buracos da Camada 3) ──
+  const reducaoDano = somaAlvo("reducao_dano");
+  registrar("reducao_dano");
+
+  const deslocEspecial = (alvo: string, base: number) => {
+    const v = somaAlvo(alvo);
+    registrar(alvo);
+    return base + v;
+  };
+  const deslocamentos = {
+    base: deslocamento,
+    // Espelunqueiro (goblin) dá deslocamento de escalada IGUAL ao base, via expr "deslocamento".
+    escalar: deslocEspecial("deslocamento_escalar", 0),
+    natacao: deslocEspecial("deslocamento_natacao", 0),
+    voo: deslocEspecial("deslocamento_voo", 0),
+  };
+
+  // Bônus GERAIS de ataque/dano. Só os AUTOMÁTICOS entram aqui (Instinto Selvagem);
+  // os contextuais (Fúria) ficam fora da ficha e entram no resolverAtaque.
+  const bonusAtaque = somaAlvo("ataque");
+  registrar("ataque");
+  const bonusDano = somaAlvo("dano");
+  registrar("dano");
+
   // ── PASSE 4: perícias ──────────────────────────────────────────────────────
   // Valor = meio nível (arredondado p/ baixo) + atributo-chave + treino (+2/+4/+6).
   const meioNivel = Math.floor(p.nivel / 2);
@@ -508,10 +550,22 @@ export function calcularFicha(
     const atr = PERICIA_ATRIBUTO[id];
     const treino = treinadas.has(id) ? bonusTreino : 0;
     const outros = bonusPericia.get(id) ?? 0;
+    const eTreinado = treinadas.has(id);
+    // O compêndio já traz `treinada` (exige treino p/ usar) e `usos[].apenasTreinado`.
+    const defP = ent(compendio, "pericia", id);
+    const mp = mec(defP) as { treinada?: boolean; usos?: Array<{ nome: string; apenasTreinado?: boolean }> };
+    const exigeTreino = !!mp.treinada;
+    const usosBloqueados = eTreinado
+      ? []
+      : (mp.usos ?? []).filter((u) => u.apenasTreinado).map((u) => u.nome);
     pericias[id] = {
       valor: meioNivel + atributos[atr] + treino + outros,
       atributo: atr, modAtributo: atributos[atr], meioNivel,
-      treinado: treinadas.has(id), bonusTreino: treino, outros,
+      treinado: eTreinado, bonusTreino: treino, outros,
+      exigeTreino,
+      // O VALOR existe sempre (regra); a USABILIDADE não.
+      usavel: eTreinado || !exigeTreino,
+      usosBloqueados,
     };
   }
 
@@ -519,6 +573,8 @@ export function calcularFicha(
   const consumidos = new Set([
     ...ATRS.map((a) => `atr.${a}`),
     "pv.max", "pv.temporario", "pm.max", "defesa", "deslocamento",
+    "reducao_dano", "deslocamento_escalar", "deslocamento_natacao", "deslocamento_voo",
+    "ataque", "dano",
   ]);
   for (const a of aplicaveis) {
     const alvo = String(a.ef.alvo);
@@ -535,7 +591,8 @@ export function calcularFicha(
     atributos,
     pv: { max: pvMax, temporario: pvTemporario, atual: pvAtual },
     pm: { max: pmMax, gasto: s.pmGasto, disponivel: pmMax - s.pmGasto },
-    defesa, deslocamento, pericias, condicoesAtivas,
+    defesa, deslocamento, reducaoDano, deslocamentos, bonusAtaque, bonusDano,
+    pericias, condicoesAtivas,
     trilha, contextuais, lembretes, naoAplicados,
   };
 }
