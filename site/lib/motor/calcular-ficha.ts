@@ -115,6 +115,14 @@ export interface Ficha {
   /** Bônus GERAIS de ataque/dano que a ficha exibe e o resolverAtaque consome. */
   bonusAtaque: number;
   bonusDano: number;
+  /** Iniciativa (é perícia em T20, mas também recebe bônus diretos). */
+  iniciativa: number;
+  /**
+   * Valor dos TESTES DE ATRIBUTO. Regra: "Teste de Atributo = 1d20 + Atributo" — sem
+   * ½ nível (o que distingue de perícia). Recebe os `teste:<atr>` (ex.: Fraco dá −2 em
+   * testes de For/Des/Con SEM mexer no valor do atributo).
+   */
+  testesAtributo: Record<AtributoCod, number>;
   pericias: Record<string, ValorPericia>;
   /** Contagem de poderes da Tormenta nos dois propósitos, com trilha. */
   tormenta: ContagemTormenta;
@@ -279,6 +287,27 @@ function coletar(
     achar(mec(fonte));
     if (!slot) continue;
     const opcoes = (slot.opcoes ?? []) as Array<Record<string, unknown>>;
+
+    // FORMA SIMPLES do slot: `alvoTipo` + `efeito` (sem `opcoes`).
+    // Ex.: Aumento de Atributo — "+1 em um atributo à escolha".
+    if (opcoes.length === 0 && slot.alvoTipo && slot.efeito) {
+      const base = slot.efeito as Record<string, unknown>;
+      const alvoTipo = String(slot.alvoTipo);
+      const alvo =
+        alvoTipo === "atributo"
+          ? `atr.${e.alvoEscolhido}`
+          : alvoTipo === "pericia"
+            ? `pericia:${e.alvoEscolhido}`
+            : undefined;
+      if (!alvo) continue;
+      blocos.push({
+        rotulo: `${e.fonteId} / ${container?.nome ?? e.escolhaId} → ${e.alvoEscolhido}${e.nivelTomado ? ` (nível ${e.nivelTomado})` : ""}`,
+        origem: `slot:${e.escolhaId}`,
+        efeitos: [{ ...(base as unknown as Efeito), alvo }],
+      });
+      continue;
+    }
+
     const escolhida = opcoes.find((o) => o.tipo === e.opcao);
     if (!escolhida) continue;
     if (escolhida.tipo === "bonus_pericia")
@@ -490,6 +519,31 @@ export function calcularFicha(
   interface Aplicavel { ef: Efeito; b: BlocoEfeitos; valor: number; expr?: string }
   const aplicaveis: Aplicavel[] = [];
 
+  // ── PASSE 2 (parte B): AUMENTOS DE ATRIBUTO — ANTES de tudo o mais ────────────
+  // Ordem crítica: exprs como "nivel + atr.for" (Alma de Bronze) precisam do atributo
+  // JÁ FINAL. Se os aumentos entrassem junto com os demais efeitos, quem lesse `atr.for`
+  // pegaria o valor pré-aumento. Este pré-passe fecha os atributos primeiro; só então o
+  // escopo é congelado para o resto.
+  // (Bug encontrado no denso: Alma de Bronze dava 12+4=16 em vez de 12+8=20.)
+  for (const b of blocos)
+    for (const ef of b.efeitos) {
+      if (ef.tipo !== "bonus" || !String(ef.alvo ?? "").startsWith("atr.")) continue;
+      const sat = condicaoSatisfeita(ef, b);
+      if (sat === false || sat === null) continue;
+      if (ef.aplicacao === "contextual" || ef.opcionalPorAtaque) continue;
+      const box: { expr?: string } = {};
+      const v = numero(ef.valor, box, b.nivelEscopo);
+      if (v === null) continue;
+      const cod = String(ef.alvo).slice(4) as AtributoCod;
+      if (!ATRS.includes(cod)) continue;
+      atributos[cod] += v;
+      escopo[`atr.${cod}`] = atributos[cod];
+      trilha.push({
+        alvo: `atr.${cod}`, valor: v, fonte: b.rotulo, origem: b.origem,
+        estado: "aplicado", expr: box.expr,
+      });
+    }
+
   for (const b of blocos)
     for (const ef of b.efeitos) {
       const base = { fonte: b.rotulo, origem: b.origem, chave: ef.chave };
@@ -502,6 +556,8 @@ export function calcularFicha(
         lembretes.push({ ...base, alvo: `capacidade:${ef.chave}`, valor: null, estado: "lembrete" });
         continue;
       }
+
+      if (ef.tipo === "bonus" && String(ef.alvo ?? "").startsWith("atr.")) continue; // pré-passe
 
       if (ef.tipo !== "bonus") {
         naoAplicados.push({
@@ -558,16 +614,6 @@ export function calcularFicha(
         estado: "aplicado", expr: a.expr,
       });
   };
-
-  // ── PASSE 2 (parte B): aumentos de atributo vindos de efeitos ───────────────
-  for (const a of ATRS) {
-    const extra = somaAlvo(`atr.${a}`);
-    if (extra) {
-      atributos[a] += extra;
-      escopo[`atr.${a}`] = atributos[a];
-      registrar(`atr.${a}`);
-    }
-  }
 
   // ── PASSE 3: derivados ─────────────────────────────────────────────────────
   // MULTICLASSE (prosa de evolucao-de-personagem):
@@ -676,6 +722,19 @@ export function calcularFicha(
   const bonusDano = somaAlvo("dano");
   registrar("dano");
 
+  // Iniciativa: é perícia (Des), mas há bônus que a miram direto (Antenas, p.ex.).
+  const iniciativaExtra = somaAlvo("iniciativa");
+  registrar("iniciativa");
+
+  // TESTES DE ATRIBUTO — "1d20 + Atributo", sem ½ nível. É onde aterrissa `teste:<atr>`,
+  // criado na camada de condições (regra 25): Fraco dá −2 nos TESTES, não no atributo.
+  const testesAtributo = {} as Record<AtributoCod, number>;
+  for (const a of ATRS) {
+    const extra = somaAlvo(`teste:${a}`);
+    registrar(`teste:${a}`);
+    testesAtributo[a] = atributos[a] + extra;
+  }
+
   // ── PASSE 3 (parte C): conjuração ──────────────────────────────────────────
   // Limite de PM POR MAGIA. Regra: "o máximo de PM que você pode gastar por uso é igual
   // ao seu nível NA CLASSE que fornece a habilidade". Magia Ilimitada soma o atributo-chave
@@ -754,6 +813,8 @@ export function calcularFicha(
     }
   }
 
+  if (iniciativaExtra) addBonus("iniciativa", iniciativaExtra);
+
   const pericias: Record<string, ValorPericia> = {};
   for (const id of PERICIAS_TODAS) {
     const atr = PERICIA_ATRIBUTO[id];
@@ -783,7 +844,8 @@ export function calcularFicha(
     ...ATRS.map((a) => `atr.${a}`),
     "pv.max", "pv.temporario", "pm.max", "defesa", "deslocamento",
     "reducao_dano", "deslocamento_escalar", "deslocamento_natacao", "deslocamento_voo",
-    "ataque", "dano", "limite_pm_por_magia",
+    "ataque", "dano", "limite_pm_por_magia", "iniciativa",
+    ...ATRS.map((a) => `teste:${a}`),
   ]);
   for (const a of aplicaveis) {
     const alvo = String(a.ef.alvo);
@@ -803,6 +865,7 @@ export function calcularFicha(
     pv: { max: pvMax, temporario: pvTemporario, atual: pvAtual },
     pm: { max: pmMax, gasto: s.pmGasto, disponivel: pmMax - s.pmGasto },
     defesa, deslocamento, reducaoDano, deslocamentos, bonusAtaque, bonusDano,
+    iniciativa: pericias.iniciativa?.valor ?? 0, testesAtributo,
     pericias, tormenta,
     limitePMporMagia, limitePMporMagiaTrilha, circuloMaximo, tipoConjurador,
     condicoesAtivas,

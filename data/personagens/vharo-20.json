@@ -1,0 +1,42 @@
+{
+  "id": "vharo-20",
+  "nome": "Vharo, o Corrompido",
+  "atributosBase": { "for": 3, "des": 1, "con": 2, "int": 2, "sab": 0, "car": 0 },
+  "racaId": "lefou",
+  "classes": [
+    { "classeId": "barbaro", "niveis": 12 },
+    { "classeId": "arcanista", "niveis": 8 }
+  ],
+  "origemId": "escravo",
+  "divindadeId": null,
+
+  "escolhas": [
+    { "fonteTipo": "raca", "fonteId": "lefou", "escolhaId": "modificadores", "indice": 0, "alvoEscolhido": "for", "opcao": "atributo" },
+    { "fonteTipo": "raca", "fonteId": "lefou", "escolhaId": "modificadores", "indice": 1, "alvoEscolhido": "con", "opcao": "atributo" },
+    { "fonteTipo": "raca", "fonteId": "lefou", "escolhaId": "modificadores", "indice": 2, "alvoEscolhido": "int", "opcao": "atributo" },
+
+    { "fonteTipo": "raca", "fonteId": "lefou", "escolhaId": "deformidade_slot_1", "alvoEscolhido": "furtividade", "opcao": "bonus_pericia" },
+    { "fonteTipo": "raca", "fonteId": "lefou", "escolhaId": "deformidade_slot_2", "alvoEscolhido": "carapaca", "opcao": "poder" },
+
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "poderes", "indice": 0, "alvoEscolhido": "anatomia-insana", "opcao": "poder" },
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "poderes", "indice": 1, "alvoEscolhido": "antenas", "opcao": "poder" },
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "poderes", "indice": 2, "alvoEscolhido": "olhos-vermelhos", "opcao": "poder" },
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "poderes", "indice": 3, "alvoEscolhido": "Alma de Bronze", "opcao": "poder" },
+    { "fonteTipo": "classe", "fonteId": "arcanista", "escolhaId": "poderes", "indice": 0, "alvoEscolhido": "magia-ilimitada", "opcao": "poder" },
+
+    { "fonteTipo": "classe", "fonteId": "arcanista", "escolhaId": "conjuracao.atributoChave", "alvoEscolhido": "Inteligência", "opcao": "atributo" },
+    { "fonteTipo": "classe", "fonteId": "arcanista", "escolhaId": "caminhos", "alvoEscolhido": "Mago", "opcao": "ramo" },
+
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "aumento_atributo", "indice": 0, "alvoEscolhido": "for", "nivelTomado": 4, "opcao": "atributo" },
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "aumento_atributo", "indice": 1, "alvoEscolhido": "for", "nivelTomado": 8, "opcao": "atributo" },
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "aumento_atributo", "indice": 2, "alvoEscolhido": "for", "nivelTomado": 12, "opcao": "atributo" },
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "aumento_atributo", "indice": 3, "alvoEscolhido": "for", "nivelTomado": 18, "opcao": "atributo" },
+
+    { "fonteTipo": "origem", "fonteId": "escravo", "escolhaId": "beneficios.pericias", "indice": 0, "alvoEscolhido": "Atletismo", "opcao": "treinar_pericia" },
+    { "fonteTipo": "origem", "fonteId": "escravo", "escolhaId": "beneficios.pericias", "indice": 1, "alvoEscolhido": "Furtividade", "opcao": "treinar_pericia" },
+    { "fonteTipo": "origem", "fonteId": "escravo", "escolhaId": "beneficios.poderes", "indice": 0, "alvoEscolhido": "Desejo de Liberdade", "opcao": "poder" }
+  ],
+
+  "equipado": ["adaga", "destruidora"],
+  "magiasConhecidas": ["armadura-arcana", "bola-de-fogo", "adaga-mental"]
+}

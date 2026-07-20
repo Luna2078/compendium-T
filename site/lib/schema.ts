@@ -641,6 +641,12 @@ export const EscolhaSalvaSchema = z.object({
   // ── o que foi escolhido ──
   /** id da perícia/atributo/poder/ramo escolhido. */
   alvoEscolhido: z.string(),
+  /**
+   * Nível de PERSONAGEM em que a escolha foi feita. É decisão, não derivado — e é o que
+   * torna checável a restrição "uma_por_patamar_por_alvo" (Aumento de Atributo: o mesmo
+   * atributo só pode ser escolhido uma vez por patamar).
+   */
+  nivelTomado: z.number().int().min(1).max(20).optional(),
 
   // ── EXTENSÕES previstas, ainda NÃO consumidas pelo motor (Camada 2 só define a forma) ──
   /** Qual variante de `OpcaoSlot` foi tomada: "treinar_pericia" | "poder" | "ramo" | … */

@@ -1,0 +1,7 @@
+{
+  "personagemId": "vharo-20",
+  "pmGasto": 12,
+  "togglesAtivos": ["barbaro:furia"],
+  "condicoesAtivas": ["fatigado"],
+  "magiasAtivas": ["armadura-arcana"]
+}
