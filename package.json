@@ -4,14 +4,14 @@
   "version": "0.1.0",
   "description": "Compêndio Tormenta 20 — monorepo: dados, motor de regras e apps.",
   "workspaces": [
-    "site",
     "packages/*",
+    "apps/*",
     "extracao"
   ],
   "scripts": {
     "test": "npm run test --workspaces --if-present",
-    "build": "npm run build --workspace site",
-    "dev": "npm run dev --workspace site",
+    "build": "npm run build --workspace @ct/wiki",
+    "dev": "npm run dev --workspace @ct/wiki",
     "lint": "npm run lint --workspaces --if-present"
   },
   "devDependencies": {
