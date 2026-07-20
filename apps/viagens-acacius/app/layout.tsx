@@ -1,3 +1,4 @@
+import "./globals.css";
 // Layout raiz mínimo — exigido pelo App Router. Sem estilo (Etapa 1 é feia de propósito).
 export const metadata = {
   title: "Viagens Acácius",
