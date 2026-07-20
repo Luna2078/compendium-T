@@ -1,4 +1,5 @@
 import { test, expect, describe } from "vitest";
+import { RAIZ_DADOS } from "./_raiz";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { validarConfig, validarOverrides, configQualidade } from "@/lib/gacha/config-schema";
@@ -61,7 +62,7 @@ describe("validarOverrides (CA-15)", () => {
 
 describe("config.json real do projeto", () => {
   test("valida contra o schema", () => {
-    const raw = JSON.parse(readFileSync(join(process.cwd(), "..", "data", "gacha", "config.json"), "utf8"));
+    const raw = JSON.parse(readFileSync(join(RAIZ_DADOS, "gacha", "config.json"), "utf8"));
     expect(() => validarConfig(raw)).not.toThrow();
   });
 });

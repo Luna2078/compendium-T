@@ -7,7 +7,7 @@ function achar(): string {
   let dir = __dirname;
   for (let i = 0; i <= 8; i++) {
     if (existsSync(join(dir, "sources.json"))) return dir;
-    for (const nome of ["data", "dados"]) {
+    for (const nome of ["data", "dados", "packages/compendio/dados"]) {
       const alvo = join(dir, nome);
       if (existsSync(join(alvo, "sources.json"))) return alvo;
     }

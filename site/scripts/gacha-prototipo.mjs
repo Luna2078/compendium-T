@@ -13,12 +13,26 @@
 //   - coringa como meta-modificador "+1 patamar"
 //   - simulação de distribuição
 
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const AQUI = dirname(fileURLToPath(import.meta.url));
-const RAIZ_DADOS = join(AQUI, "..", "..", "data");
+// Raiz dos dados por MARCADOR (espelha lib/raiz-dados.ts) — sobrevive a mover pastas.
+const RAIZ_DADOS = (() => {
+  let dir = dirname(fileURLToPath(import.meta.url));
+  for (let i = 0; i <= 8; i++) {
+    if (existsSync(join(dir, "sources.json"))) return dir;
+    for (const nome of ["data", "dados", "packages/compendio/dados"]) {
+      const alvo = join(dir, nome);
+      if (existsSync(join(alvo, "sources.json"))) return alvo;
+    }
+    const pai = dirname(dir);
+    if (pai === dir) break;
+    dir = pai;
+  }
+  throw new Error("não achei a raiz dos dados (sources.json)");
+})();
 const cfg = JSON.parse(readFileSync(join(RAIZ_DADOS, "gacha", "config.json"), "utf8"));
 const overrides = JSON.parse(readFileSync(join(RAIZ_DADOS, "gacha", "raridades.json"), "utf8")).overrides ?? {};
 

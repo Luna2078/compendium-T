@@ -5,7 +5,12 @@ import {
   type CondicaoDef,
   type Efeito,
 } from "../../data/efeitos";
-import condicoesJson from "../../data/referencia/condicoes.json";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { RAIZ_DADOS } from "./_raiz";
+const condicoesJson = JSON.parse(
+  readFileSync(join(RAIZ_DADOS, "referencia", "condicoes.json"), "utf8"),
+);
 
 const CATALOGO = condicoesJson as unknown as CondicaoDef[];
 const ids = (l: { id: string }[]) => l.map((c) => c.id).sort();

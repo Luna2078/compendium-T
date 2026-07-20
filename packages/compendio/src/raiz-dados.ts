@@ -20,7 +20,11 @@ import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 const MARCADOR = "sources.json";
-const NOMES_CANDIDATOS = ["data", "dados"] as const;
+// Subpastas candidatas, relativas a cada ancestral do cwd. Cobrem os dois layouts:
+//   "data"  — antes da migração para monorepo (histórico)
+//   "dados" — quando o cwd já é a raiz do pacote
+//   "packages/compendio/dados" — o layout de monorepo, visto da raiz do repo ou de um app
+const NOMES_CANDIDATOS = ["data", "dados", "packages/compendio/dados"] as const;
 const NIVEIS_ACIMA = 8;
 
 function resolver(): string {

@@ -1,10 +1,11 @@
 import { describe, it, expect } from "vitest";
+import { RAIZ_DADOS } from "./_raiz";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { PERICIA_ATRIBUTO, PERICIAS_TODAS, periciasDoAtributo } from "../lib/motor/pericias";
 import { PERICIAS, ATRIBUTOS as ATRIBUTOS_NS } from "../../data/namespace";
 
-const DIR = join(__dirname, "..", "..", "data", "livro-basico", "pericias");
+const DIR = join(RAIZ_DADOS, "livro-basico", "pericias");
 
 const COD: Record<string, string> = {
   Força: "for",

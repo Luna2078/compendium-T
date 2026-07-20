@@ -5,11 +5,25 @@
 //   - checagem de itens icônicos (a adaga deveria ser Comum?)
 // Rode: `node site/scripts/gacha-estudo-peso.mjs`
 
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const RAIZ = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "data");
+// Raiz dos dados por MARCADOR (espelha lib/raiz-dados.ts) — sobrevive a mover pastas.
+const RAIZ = (() => {
+  let dir = dirname(fileURLToPath(import.meta.url));
+  for (let i = 0; i <= 8; i++) {
+    if (existsSync(join(dir, "sources.json"))) return dir;
+    for (const nome of ["data", "dados", "packages/compendio/dados"]) {
+      const alvo = join(dir, nome);
+      if (existsSync(join(alvo, "sources.json"))) return alvo;
+    }
+    const pai = dirname(dir);
+    if (pai === dir) break;
+    dir = pai;
+  }
+  throw new Error("não achei a raiz dos dados (sources.json)");
+})();
 const ESCALA = ["Comum", "Incomum", "Raro", "Épico", "Lendário"];
 
 function listar(dir) {

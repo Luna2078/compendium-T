@@ -10,7 +10,7 @@ function acharRaizDados() {
   let dir = process.cwd();
   for (let i = 0; i <= 8; i++) {
     if (fs.existsSync(path.join(dir, MARCADOR))) return dir;
-    for (const nome of ["data", "dados"]) {
+    for (const nome of ["data", "dados", "packages/compendio/dados"]) {
       const alvo = path.join(dir, nome);
       if (fs.existsSync(path.join(alvo, MARCADOR))) return alvo;
     }

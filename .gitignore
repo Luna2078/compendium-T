@@ -21,15 +21,17 @@ Thumbs.db
 
 # Relatórios gerados pelos testes (ficha, ataque, auditoria de cobertura, varreduras).
 # São artefatos de diagnóstico regenerados a cada `vitest run`, não fonte.
-/ataque-thaide.txt
-/audit-efeitos.txt
-/cobertura-motor.txt
-/conjuracao-nyra.txt
-/denso-vharo20.txt
-/ficha-thaide.txt
-/item-condicional.txt
-/lefou-tormenta.txt
-/multiclasse-korran.txt
-/varredura-exprs.txt
-/casos-oraculo.txt
-/dev.log
+# Sem barra inicial: os testes os escrevem relativos à raiz dos DADOS, que mudou de lugar
+# na migração para monorepo — o padrão precisa valer em qualquer diretório.
+ataque-thaide.txt
+audit-efeitos.txt
+cobertura-motor.txt
+conjuracao-nyra.txt
+denso-vharo20.txt
+ficha-thaide.txt
+item-condicional.txt
+lefou-tormenta.txt
+multiclasse-korran.txt
+varredura-exprs.txt
+casos-oraculo.txt
+dev.log
