@@ -4,12 +4,13 @@ import "server-only";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { carregarEntidades } from "@/lib/dados";
+import { caminhoDados } from "@/lib/raiz-dados";
 import type { ItemMagicoMecanica, ItemMecanica } from "@/lib/schema";
 import { validarConfig, validarOverrides, configQualidade, type GachaConfig } from "./config-schema";
 import { calcularFaixaItem, type ItemParaScore } from "./qualidade";
 import type { DadosGacha, ItemPool, Modificador, PoolCategoria, Raridade } from "./tipos";
 
-const RAIZ_DADOS = join(process.cwd(), "..", "data");
+// Raiz resolvida por marcador, não pelo cwd (ver lib/raiz-dados.ts).
 
 const norm = (s: unknown): string =>
   (s ?? "").toString().toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").trim();
@@ -51,23 +52,23 @@ function statsDeItem(mec: ItemMecanica & ItemMagicoMecanica, magico: boolean): S
 }
 
 function carregarConfigGacha(): GachaConfig {
-  return validarConfig(JSON.parse(readFileSync(join(RAIZ_DADOS, "gacha", "config.json"), "utf8")));
+  return validarConfig(JSON.parse(readFileSync(caminhoDados("gacha", "config.json"), "utf8")));
 }
 
 /** Config crua (com _doc) — usada pelo Painel do Mestre para editar e re-exportar. */
 export function lerConfigGachaRaw(): Record<string, unknown> {
-  return JSON.parse(readFileSync(join(RAIZ_DADOS, "gacha", "config.json"), "utf8"));
+  return JSON.parse(readFileSync(caminhoDados("gacha", "config.json"), "utf8"));
 }
 
 function carregarOverrides(escala: string[]): Record<string, Raridade> {
-  const raw = JSON.parse(readFileSync(join(RAIZ_DADOS, "gacha", "raridades.json"), "utf8"));
+  const raw = JSON.parse(readFileSync(caminhoDados("gacha", "raridades.json"), "utf8"));
   return validarOverrides(raw, escala);
 }
 
 interface MelhoriaRaw { id: string; nome: string; aplicaA: string[]; efeito: string; prereq?: string; conflita?: string }
 interface MaterialRaw { id: string; nome: string; aplicaA: string[]; efeito: Record<string, string> }
 function carregarMelhorias(): { melhorias: MelhoriaRaw[]; materiais: MaterialRaw[] } {
-  const raw = JSON.parse(readFileSync(join(RAIZ_DADOS, "gacha", "melhorias.json"), "utf8"));
+  const raw = JSON.parse(readFileSync(caminhoDados("gacha", "melhorias.json"), "utf8"));
   return { melhorias: raw.melhorias ?? [], materiais: raw.materiais ?? [] };
 }
 

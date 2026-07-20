@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { RAIZ_DADOS } from "./_raiz";
 import { readFileSync, readdirSync, existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import {
@@ -17,7 +18,7 @@ const TIPADO: Record<string, ZodType> = {
   pericias: PericiaMecanicaSchema, divindades: DivindadeMecanicaSchema,
 };
 
-const RAIZ = join(__dirname, "..", "..", "data");
+const RAIZ = RAIZ_DADOS;
 const PASTAS: Array<[string, string]> = [
   ["poderes", "livro-basico/poderes"],
   ["racas", "livro-basico/racas"],

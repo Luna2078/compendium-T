@@ -1,9 +1,10 @@
 import { readFileSync } from "node:fs";
+import { RAIZ_DADOS } from "./_raiz";
 import { join } from "node:path";
 import { expect, test } from "vitest";
 import { EntidadeSchema, TermoSchema } from "@/lib/schema";
 
-const RAIZ = join(__dirname, "..", "..", "data");
+const RAIZ = RAIZ_DADOS;
 
 test("Súcubo (seed) é uma entidade válida", () => {
   const json = JSON.parse(readFileSync(join(RAIZ, "ameacas-de-arton/criaturas/sucubo.json"), "utf8"));

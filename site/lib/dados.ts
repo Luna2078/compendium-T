@@ -1,15 +1,16 @@
 import { readFileSync, readdirSync, statSync, existsSync } from "node:fs";
+import { caminhoDados } from "./raiz-dados";
 import { join } from "node:path";
 import { EntidadeSchema, TermoSchema, type Entidade, type Termo } from "./schema";
 
-const RAIZ_DADOS = join(process.cwd(), "..", "data");
+// Raiz resolvida por marcador, não pelo cwd (ver lib/raiz-dados.ts).
 
 export type Fonte = { slug: string; titulo: string; arquivo?: string; ordem: number };
 
 let _fontes: Fonte[] | null = null;
 export function carregarFontes(): Fonte[] {
   if (_fontes) return _fontes;
-  const raw = JSON.parse(readFileSync(join(RAIZ_DADOS, "sources.json"), "utf8")) as { fontes: Fonte[] };
+  const raw = JSON.parse(readFileSync(caminhoDados("sources.json"), "utf8")) as { fontes: Fonte[] };
   _fontes = [...raw.fontes].sort((a, b) => a.ordem - b.ordem);
   return _fontes;
 }
@@ -47,7 +48,7 @@ export function carregarEntidades(): Entidade[] {
   const ents: Entidade[] = [];
   // Ordem das fontes (Básico antes) garante first-wins do auto-link a favor do Básico.
   for (const fonte of carregarFontes()) {
-    const base = join(RAIZ_DADOS, fonte.slug);
+    const base = caminhoDados(fonte.slug);
     if (!existsSync(base)) continue; // fonte listada mas ainda não extraída
     for (const arq of listarJson(base)) {
       ents.push(EntidadeSchema.parse(JSON.parse(readFileSync(arq, "utf8"))));
@@ -68,7 +69,7 @@ export function carregarTermos(): Termo[] {
   const arquivos = ["referencia/condicoes.json", "referencia/glossario.json", "referencia/acoes.json"];
   const termos: Termo[] = [];
   for (const a of arquivos) {
-    const arr = JSON.parse(readFileSync(join(RAIZ_DADOS, a), "utf8"));
+    const arr = JSON.parse(readFileSync(caminhoDados(a), "utf8"));
     for (const t of arr) termos.push(TermoSchema.parse(t));
   }
   _termos = termos;

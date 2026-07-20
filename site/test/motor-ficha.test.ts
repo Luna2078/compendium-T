@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { RAIZ_DADOS } from "./_raiz";
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PersonagemSchema, EstadoDeSessaoSchema } from "../lib/schema";
@@ -7,7 +8,7 @@ import { calcularFicha, type Ficha } from "../lib/motor/calcular-ficha";
 import { resolverAtaque } from "../lib/motor/resolver-ataque";
 import type { CondicaoDef } from "../../data/efeitos";
 
-const RAIZ = join(__dirname, "..", "..", "data");
+const RAIZ = RAIZ_DADOS;
 const ler = (p: string) => JSON.parse(readFileSync(join(RAIZ, p), "utf8"));
 
 const THAIDE = PersonagemSchema.parse(ler("personagens/thaide.json"));

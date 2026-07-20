@@ -4,7 +4,23 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const RAIZ_DADOS = path.join(process.cwd(), "..", "data");
+// Raiz dos dados por MARCADOR, não pelo cwd (espelha lib/raiz-dados.ts; .mjs não importa TS).
+function acharRaizDados() {
+  const MARCADOR = "sources.json";
+  let dir = process.cwd();
+  for (let i = 0; i <= 8; i++) {
+    if (fs.existsSync(path.join(dir, MARCADOR))) return dir;
+    for (const nome of ["data", "dados"]) {
+      const alvo = path.join(dir, nome);
+      if (fs.existsSync(path.join(alvo, MARCADOR))) return alvo;
+    }
+    const pai = path.dirname(dir);
+    if (pai === dir) break;
+    dir = pai;
+  }
+  throw new Error(`gerar-indice-busca: não achei a raiz dos dados (${MARCADOR}) a partir de ${process.cwd()}`);
+}
+const RAIZ_DADOS = acharRaizDados();
 const fontes = JSON.parse(fs.readFileSync(path.join(RAIZ_DADOS, "sources.json"), "utf8")).fontes
   .slice()
   .sort((a, b) => a.ordem - b.ordem);

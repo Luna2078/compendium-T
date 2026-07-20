@@ -14,6 +14,7 @@
 // FALHAR — é a definição de (b) "genuinamente morto", e não há como um nascer em silêncio.
 
 import { describe, it, expect } from "vitest";
+import { RAIZ_DADOS } from "./_raiz";
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PersonagemSchema, EstadoDeSessaoSchema, type Entidade } from "../lib/schema";
@@ -24,7 +25,7 @@ import { avaliarExpr, ExprError } from "../lib/motor/expr";
 import { ALVOS, CAMPOS_CONDICAO, VARIAVEIS, PERICIAS, ATRIBUTOS } from "../../data/namespace";
 import type { CondicaoDef } from "../../data/efeitos";
 
-const RAIZ = join(__dirname, "..", "..", "data");
+const RAIZ = RAIZ_DADOS;
 const ler = (p: string) => JSON.parse(readFileSync(join(RAIZ, p), "utf8"));
 const CONDICOES = ler("referencia/condicoes.json") as CondicaoDef[];
 const COMPENDIO = carregarEntidades();

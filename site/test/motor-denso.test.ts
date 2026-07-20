@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import { RAIZ_DADOS } from "./_raiz";
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { PersonagemSchema, EstadoDeSessaoSchema, type Personagem } from "../lib/schema";
@@ -9,7 +10,7 @@ import { conjurar, adaptarMagia } from "../lib/motor/conjuracao";
 import { validarEscolhas, patamarDoNivel } from "../lib/motor/validar-escolhas";
 import type { CondicaoDef } from "../../data/efeitos";
 
-const RAIZ = join(__dirname, "..", "..", "data");
+const RAIZ = RAIZ_DADOS;
 const ler = (p: string) => JSON.parse(readFileSync(join(RAIZ, p), "utf8"));
 
 const VHARO = PersonagemSchema.parse(ler("personagens/vharo-20.json"));

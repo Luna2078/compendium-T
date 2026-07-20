@@ -1,11 +1,12 @@
 import { describe, it, expect } from "vitest";
+import { RAIZ_DADOS } from "./_raiz";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { PersonagemSchema, EscolhaSalvaSchema, EstadoDeSessaoSchema } from "../lib/schema";
 import { carregarEntidades } from "../lib/dados";
 import { resolverFonte, escolhaEValida } from "../lib/motor/personagem";
 
-const RAIZ = join(__dirname, "..", "..", "data");
+const RAIZ = RAIZ_DADOS;
 const bruto = JSON.parse(readFileSync(join(RAIZ, "personagens", "thaide.json"), "utf8"));
 const brutoSessao = JSON.parse(readFileSync(join(RAIZ, "personagens", "thaide.sessao.json"), "utf8"));
 

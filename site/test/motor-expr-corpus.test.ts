@@ -1,9 +1,10 @@
 import { describe, it, expect } from "vitest";
+import { RAIZ_DADOS } from "./_raiz";
 import { readFileSync, readdirSync, existsSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { avaliarExpr, inspecionarExpr, FUNCOES_PERMITIDAS } from "../lib/motor/expr";
 
-const RAIZ = join(__dirname, "..", "..", "data");
+const RAIZ = RAIZ_DADOS;
 
 /** Todos os `{ expr }` do corpus, com o arquivo de origem. */
 function coletarExprs(): Array<{ expr: string; origem: string }> {
