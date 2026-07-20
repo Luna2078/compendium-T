@@ -21,9 +21,11 @@ import {
   identidadeView,
   inventarioView,
   poderesView,
+  resumoContribs,
   rotuloAlvo,
   trilhaDe,
   trilhaDePericia,
+  type ChipEfeito,
   type ParcelaTrilha,
   capitalizar,
 } from "@/lib/ficha-view";
@@ -98,9 +100,25 @@ export function FichaInterativa({
         : [...s.condicoesAtivas, id],
     }));
 
-  // ── TRILHA ao clique (overlay por cima; não empurra a página) ──
-  const [trilha, setTrilha] = useState<{ titulo: string; parcelas: ParcelaTrilha[] } | null>(null);
-  const abrirTrilha = (titulo: string, parcelas: ParcelaTrilha[]) => setTrilha({ titulo, parcelas });
+  // ── OVERLAY de procedência (mesmo padrão p/ trilha de número E detalhe de chip) ──
+  type Detalhe = { titulo: string; subtitulo?: string; parcelas: ParcelaTrilha[]; mostrarTotal: boolean };
+  const [trilha, setTrilha] = useState<Detalhe | null>(null);
+  const abrirTrilha = (titulo: string, parcelas: ParcelaTrilha[]) =>
+    setTrilha({ titulo, parcelas, mostrarTotal: true });
+  // detalhe completo de um chip da bandeja (todos os sub-efeitos + procedência)
+  const abrirChip = (c: ChipEfeito, derivados: string[]) =>
+    setTrilha({
+      titulo: c.fonte,
+      subtitulo:
+        [
+          c.via && c.via.length ? `via ${c.via.join(" ← ")}` : "",
+          derivados.length ? `cascateia em ${derivados.join(" · ")}` : "",
+        ]
+          .filter(Boolean)
+          .join(" · ") || undefined,
+      parcelas: c.contribs.map((k) => ({ valor: k.valor, fonte: rotuloAlvo(k.alvo), origem: c.tipo })),
+      mostrarTotal: false,
+    });
 
   // ── views derivadas de f ──
   const ident = identidadeView(personagem, entidades);
@@ -204,27 +222,39 @@ export function FichaInterativa({
           {bandeja.length === 0 ? (
             <span className="chip chip--vazia">nenhum efeito de sessão ativo</span>
           ) : (
-            bandeja.map((c, i) => (
-              <span className={`chip${c.via && c.via.length ? " chip--derivado" : ""}`} key={i}>
-                <span className="chip__dot" aria-hidden="true" />
-                <span className="chip__nome">
-                  {c.fonte}
-                  {c.via && c.via.length > 0 && <span className="chip__via"> ← {c.via.join(" ← ")}</span>}
-                </span>
-                <span className="chip__fx">
-                  {c.contribs
-                    .map((k) => `${k.valor != null && k.valor >= 0 ? "+" : ""}${k.valor} ${rotuloAlvo(k.alvo)}`)
-                    .join(" · ") || (c.tipo === "condição" ? "cascateia" : "—")}
-                </span>
-                <span className="chip__org">{c.tipo}</span>
-              </span>
-            ))
+            bandeja.map((c, i) => {
+              const derivados = bandeja.filter((x) => x.via?.includes(c.fonte)).map((x) => x.fonte);
+              const resumo = c.contribs.length
+                ? resumoContribs(c.contribs)
+                : derivados.length
+                  ? `→ ${derivados.join(" · ")}`
+                  : "—";
+              const temDetalhe = c.contribs.length > 0 || derivados.length > 0;
+              return (
+                <button
+                  type="button"
+                  className={`chip chip--btn${c.via && c.via.length ? " chip--derivado" : ""}`}
+                  key={i}
+                  onClick={() => temDetalhe && abrirChip(c, derivados)}
+                  disabled={!temDetalhe}
+                  title={temDetalhe ? "ver o detalhe completo" : undefined}
+                >
+                  <span className="chip__dot" aria-hidden="true" />
+                  <span className="chip__nome">
+                    {c.fonte}
+                    {c.via && c.via.length > 0 && <span className="chip__via"> ← {c.via.join(" ← ")}</span>}
+                  </span>
+                  <span className="chip__fx">{resumo}</span>
+                  <span className="chip__org">{c.tipo}</span>
+                </button>
+              );
+            })
           )}
         </div>
         <div className="nota">
-          Qualquer fonte (poder · item · condição) afeta o cálculo igual — muda só a origem. As
-          condições derivadas mostram de onde vieram (“← Fatigado”); é a mesma procedência que a
-          trilha de cada número exibe.
+          Cada efeito é um chip compacto — clique para abrir o detalhe completo (sub-efeitos +
+          procedência), como a trilha de um número. As condições derivadas mostram de onde vieram
+          (“← Fatigado”): a mesma procedência dos dois lados.
         </div>
       </div>
     ),
@@ -454,12 +484,15 @@ export function FichaInterativa({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="sheet__cab">
-              <span className="sheet__tit">Trilha · {trilha.titulo}</span>
+              <div className="sheet__tit-wrap">
+                <span className="sheet__tit">{trilha.titulo}</span>
+                {trilha.subtitulo && <span className="sheet__sub">{trilha.subtitulo}</span>}
+              </div>
               <button type="button" className="sheet__x" onClick={() => setTrilha(null)} aria-label="Fechar">×</button>
             </div>
             <div className="sheet__corpo">
               {trilha.parcelas.length === 0 ? (
-                <div className="nota">sem parcelas registradas.</div>
+                <div className="nota">sem efeito numérico próprio — esta condição só cascateia.</div>
               ) : (
                 trilha.parcelas.map((p, i) => (
                   <div className="parc" key={i}>
@@ -472,11 +505,13 @@ export function FichaInterativa({
                   </div>
                 ))
               )}
-              <div className="parc parc--total">
-                <span className="parc__val">{fmt(totalTrilha)}</span>
-                <span className="parc__fonte">total</span>
-                <span className="parc__org" />
-              </div>
+              {trilha.mostrarTotal && (
+                <div className="parc parc--total">
+                  <span className="parc__val">{fmt(totalTrilha)}</span>
+                  <span className="parc__fonte">total</span>
+                  <span className="parc__org" />
+                </div>
+              )}
             </div>
             <div className="sheet__nota">
               Cada parcela vem do rastro real do cálculo — inclusive a cadeia (ex.: um “−2” de

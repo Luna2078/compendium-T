@@ -112,6 +112,38 @@ export function rotuloAlvo(alvo: string): string {
   )[alvo] ?? alvo;
 }
 
+const attrDoAlvo = (alvo: string): string | null => {
+  if (alvo.startsWith("teste:")) return alvo.slice(6).toUpperCase();
+  if (alvo.startsWith("pericia_categoria:")) return alvo.slice(18).toUpperCase();
+  return null;
+};
+
+/**
+ * Resumo de UMA LINHA dos efeitos de um chip da bandeja (o detalhe completo abre no overlay).
+ * Agrupa por valor e, quando os alvos são por atributo (Fraco: teste/perícias FOR·DES·CON),
+ * compacta em "−2 FOR/DES/CON" em vez de listar seis "−2 …". Não inventa: só resume.
+ */
+export function resumoContribs(contribs: { alvo: string; valor: number | null }[]): string {
+  if (!contribs.length) return "";
+  const porValor = new Map<number, string[]>();
+  for (const c of contribs) {
+    const v = c.valor ?? 0;
+    if (!porValor.has(v)) porValor.set(v, []);
+    porValor.get(v)!.push(c.alvo);
+  }
+  const partes: string[] = [];
+  for (const [v, alvos] of porValor) {
+    const sinal = v >= 0 ? "+" : "";
+    const attrs = [...new Set(alvos.map(attrDoAlvo).filter(Boolean))] as string[];
+    if (attrs.length >= 2 && alvos.every((a) => attrDoAlvo(a)))
+      partes.push(`${sinal}${v} ${attrs.join("/")}`);
+    else if (alvos.length <= 2)
+      partes.push(alvos.map((a) => `${sinal}${v} ${rotuloAlvo(a)}`).join(" · "));
+    else partes.push(`${sinal}${v} em ${alvos.length} alvos`);
+  }
+  return partes.join(" · ");
+}
+
 /** Trilha de um alvo simples (pv.max, pm.max, defesa, atr.X): SÓ filtra o rastro do motor. */
 export function trilhaDe(f: Ficha, alvo: string): ParcelaTrilha[] {
   return f.trilha

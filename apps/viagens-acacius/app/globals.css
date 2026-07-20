@@ -247,15 +247,21 @@ button.calc { cursor: pointer; -webkit-appearance: none; appearance: none; font:
 .cond-toggle__lbl { font: 600 14px system-ui; color: var(--tinta); }
 .cond-toggle__dica { font: 400 12px system-ui; color: var(--muted2); flex: 1 1 100%; }
 
-/* ── cascata na bandeja (condição derivada) ────────────────────────────────── */
+/* ── cascata na bandeja (condição derivada) + chip clicável/expansível ─────── */
 .chip--derivado { border-left: 3px solid #9a9a9a; }
 .chip__via { font: 500 12px system-ui; color: var(--muted); }
+button.chip { cursor: pointer; -webkit-appearance: none; appearance: none; font: inherit; text-align: left; }
+button.chip:disabled { cursor: default; opacity: .85; }
+.chip--btn:hover:not(:disabled) { border-color: #a8a8a8; background: #ececec; }
+.chip--btn:focus-visible { outline: 2px solid #9a9a9a; outline-offset: 1px; }
 
 /* ── TRILHA: overlay (painel no desktop, bottom-sheet no mobile) ────────────── */
 .sheet-fundo { position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, .28); display: flex; align-items: center; justify-content: center; padding: 20px; }
 .sheet { background: #fff; border: 1px solid var(--borda); border-radius: 10px; box-shadow: 0 14px 44px rgba(0, 0, 0, .28); width: 100%; max-width: 440px; max-height: 80vh; display: flex; flex-direction: column; overflow: hidden; }
-.sheet__cab { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: var(--head); border-bottom: 1px solid var(--linha); }
-.sheet__tit { font: 600 15px system-ui; color: var(--tinta); flex: 1; }
+.sheet__cab { display: flex; align-items: flex-start; gap: 8px; padding: 12px 16px; background: var(--head); border-bottom: 1px solid var(--linha); }
+.sheet__tit-wrap { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.sheet__tit { font: 600 15px system-ui; color: var(--tinta); }
+.sheet__sub { font: 500 12px system-ui; color: var(--muted); }
 .sheet__x { background: none; border: none; cursor: pointer; font: 400 24px system-ui; line-height: 1; color: var(--muted); padding: 0 4px; }
 .sheet__x:hover { color: var(--tinta); }
 .sheet__corpo { padding: 6px 16px; overflow-y: auto; }
