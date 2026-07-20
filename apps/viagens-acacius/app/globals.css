@@ -1,220 +1,282 @@
-/* Viagens Acácius — Etapa 2. Estilo LIMPO e SIMPLES (não é o visual final).
-   Foco: layout de verdade, responsivo, com a convenção INPUT × CALC clara. */
+/* Viagens Acácius — Etapa 2.5. Alinhamento ESTRUTURAL ao wireframe (Tela 01), ainda LO-FI.
+   Cinza esquemático, sem identidade visual própria (cor/tipografia/tema = etapa futura).
+   Objetivo: lado a lado com o wireframe, a estrutura é reconhecível como a mesma.
+   3 colunas INDEPENDENTES no desktop (cada uma empilha seus painéis — sem vão);
+   efeitos = faixa no topo (desktop) / aba (mobile); barra fixa + abas no mobile. */
 
 :root {
-  --tinta: #1a1a1f;
-  --tinta-suave: #6b6b76;
-  --linha: #e2e2e8;
-  --fundo: #fafafb;
-  --painel: #ffffff;
-  --input-borda: #b9c2d0; /* editável = borda viva */
-  --input-fundo: #f4f8ff;
-  --calc-fundo: #f2f2f4; /* calculado = cinza neutro, "travado" */
-  --acento: #6d3b8e; /* roxo Tormenta, discreto */
-  --ativo: #1f8a4c;
-  --dormente: #9a9aa2;
-  --alerta: #b45309;
-  --raio: 10px;
+  --tinta: #444;
+  --tinta2: #555;
+  --muted: #888;
+  --muted2: #999;
+  --faint: #aaa;
+  --linha: #dcdcdc;
+  --borda: #b6b6b6;
+  --borda2: #bcbcbc;
+  --head: #f0f0f0;
+  --area: #f6f6f6;
+  --calc: #e4e4e4;
+  --input-bd: #bcbcbc;
+  --seal-in-bg: #ececec;
+  --seal-in-bd: #cfcfcf;
+  --seal-calc-bg: #dcdcdc;
+  --dash: #c4c4c4;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
-  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color: var(--tinta);
-  background: var(--fundo);
-  line-height: 1.4;
+  background: #ececec;
+  line-height: 1.35;
 }
 
-.app { max-width: 1280px; margin: 0 auto; padding: 0 16px 64px; }
+/* moldura da ficha (o "app chrome" do wireframe) */
+.app { max-width: 1360px; margin: 0 auto; }
+.chrome {
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+  overflow: hidden;
+  margin: 18px 12px;
+}
 
-/* ── BARRA DE CONTEXTO (sticky no desktop, fixed no mobile) ─────────────────── */
+/* ── TOPO (barra + abas): gruda junto no scroll (sticky, sem offsets mágicos) ── */
+.topo { position: sticky; top: 0; z-index: 20; }
+
+/* ── BARRA DE CONTEXTO ─────────────────────────────────────────────────────── */
 .barra {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--painel);
-  border-bottom: 2px solid var(--linha);
-  padding: 12px 16px;
-  margin: 0 -16px 16px;
   display: flex;
-  flex-wrap: wrap;
   align-items: baseline;
-  gap: 8px 20px;
+  gap: 6px 14px;
+  flex-wrap: wrap;
+  padding: 9px 14px;
+  background: var(--head);
+  border-bottom: 1px solid #d6d6d6;
 }
-.barra__nome { font-size: 20px; font-weight: 700; }
-.barra__sub { color: var(--tinta-suave); font-size: 14px; }
-.vitais { display: flex; gap: 16px; margin-left: auto; }
-.vital { text-align: center; }
-.vital__rot { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--tinta-suave); }
-.vital__num { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
-.vital__num small { font-size: 12px; color: var(--tinta-suave); font-weight: 500; }
-.vital__temp { color: var(--ativo); font-size: 12px; }
+.barra__topo { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; width: 100%; }
+.barra__nome { font: 700 14px system-ui; color: var(--tinta); }
+.barra__sub { font: 500 11px system-ui; color: var(--muted2); flex: 1; }
+.barra__flag { display: none; font: 600 8px var(--mono); color: #fff; background: #9c9c9c; border-radius: 2px; padding: 2px 6px; text-transform: uppercase; } /* rótulo é conceito mobile */
+/* vitais na barra: só no mobile (no desktop vivem no painel Stats) */
+.barra__vitais { display: none; }
 
-/* ── BANDEJA "Efeitos ativos" ──────────────────────────────────────────────── */
-.bandeja {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding: 4px 0 10px;
-  margin-bottom: 16px;
-  border-bottom: 1px dashed var(--linha);
-}
-.bandeja__rot {
-  flex: 0 0 auto;
-  align-self: center;
-  font-size: 11px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--tinta-suave);
-  padding-right: 4px;
-}
-.chip {
-  flex: 0 0 auto;
-  border: 1px solid var(--linha);
-  border-left: 3px solid var(--acento);
-  border-radius: 8px;
-  padding: 6px 10px;
-  background: var(--painel);
-  font-size: 13px;
-}
-.chip__fonte { font-weight: 600; }
-.chip__contrib { color: var(--tinta); }
-.chip__origem {
-  display: inline-block;
-  margin-top: 2px;
-  font-size: 11px;
-  color: var(--tinta-suave);
-  text-transform: lowercase;
-}
-.chip--vazia { color: var(--tinta-suave); border-left-color: var(--linha); font-style: italic; }
-
-/* ── PAINÉIS (grid no desktop) ─────────────────────────────────────────────── */
-.paineis {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 16px;
-  align-items: start;
-}
-.painel {
-  background: var(--painel);
-  border: 1px solid var(--linha);
-  border-radius: var(--raio);
-  padding: 14px 16px;
-}
-.painel__corpo { display: contents; } /* invólucro anti-warning; não afeta o layout */
-.painel > h2 {
-  margin: 0 0 10px;
-  font-size: 13px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--acento);
+/* ── FAIXA "EFEITOS ATIVOS" (topo, full-width no desktop) ───────────────────── */
+.efeitos {
   display: flex;
   align-items: center;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 7px 14px;
+  background: var(--head);
+  border-bottom: 1px solid var(--linha);
 }
-.painel__tag {
-  font-size: 10px;
-  border: 1px solid var(--linha);
-  border-radius: 6px;
-  padding: 1px 6px;
-  color: var(--tinta-suave);
-  letter-spacing: .04em;
+.efeitos__rot { font: 600 8px var(--mono); color: var(--muted); text-transform: uppercase; }
+.efeitos__nota { font: 8px var(--mono); color: var(--faint); flex: 1 1 100%; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font: 600 9px system-ui;
+  color: var(--tinta);
+  background: #fff;
+  border: 1px solid #b8b8b8;
+  border-radius: 13px;
+  padding: 3px 5px 3px 8px;
 }
+.chip__dot { width: 9px; height: 9px; border: 1px solid #9a9a9a; border-radius: 2px; background: #e2e2e2; }
+.chip__fx { font: 7px var(--mono); color: var(--muted); }
+.chip__org { font: 6px var(--mono); color: #fff; background: #9c9c9c; border-radius: 2px; padding: 1px 4px; text-transform: lowercase; }
+.chip--vazia { color: var(--muted2); border-style: dashed; font-style: italic; }
 
-/* ── convenção INPUT × CALC ─────────────────────────────────────────────────── */
-.campo { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 4px 0; }
-.campo__rot { color: var(--tinta-suave); font-size: 14px; }
+/* ── ÁREA DE TRABALHO: 3 COLUNAS INDEPENDENTES ─────────────────────────────── */
+.conteudo { padding: 14px; background: var(--area); }
+.colunas { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; }
+.coluna { display: flex; flex-direction: column; gap: 12px; }
+.coluna--a { flex: 0 1 288px; }
+.coluna--b { flex: 1 1 300px; }
+.coluna--c { flex: 0 1 360px; }
+
+/* ── PAINEL (card) ─────────────────────────────────────────────────────────── */
+.painel { background: #fff; border: 1px solid var(--borda); border-radius: 3px; }
+.painel__head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: var(--head);
+  border-bottom: 1px solid var(--linha);
+}
+.handle { color: #b0b0b0; font: 12px system-ui; letter-spacing: -3px; cursor: default; user-select: none; } /* enfeite inerte — arrastar é feature futura (pós-persistência) */
+.painel__titulo { font: 600 11px system-ui; color: var(--tinta2); flex: 1; }
+.painel__nota { font: 600 8px var(--mono); color: #777; }
+.painel__corpo { display: block; padding: 9px 10px; }
+.nota { font: 9px var(--mono); color: var(--faint); margin-top: 7px; }
+
+/* selos INPUT / CALC ∑ */
+.selo { font: 600 8px var(--mono); border-radius: 2px; padding: 1px 5px; }
+.selo--input { color: #777; background: var(--seal-in-bg); border: 1px solid var(--seal-in-bd); }
+.selo--calc { color: var(--tinta2); background: var(--seal-calc-bg); border: 1px solid var(--borda2); }
+
+/* convenção INPUT × CALC (valores) */
 .input {
-  border: 1px solid var(--input-borda);
-  background: var(--input-fundo);
-  border-radius: 6px;
-  padding: 3px 8px;
-  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: #fff;
+  border: 1px solid var(--input-bd);
+  border-radius: 2px;
+  padding: 2px 7px;
+  min-width: 40px;
+  font: 600 11px system-ui;
   font-variant-numeric: tabular-nums;
-  min-width: 44px;
-  text-align: right;
 }
 .calc {
-  background: var(--calc-fundo);
-  border: 1px solid transparent;
-  border-radius: 6px;
-  padding: 3px 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--calc);
+  border: 1px solid var(--borda2);
+  border-radius: 2px;
+  padding: 1px 6px;
+  font: 600 11px system-ui;
   font-variant-numeric: tabular-nums;
-  font-weight: 600;
-  min-width: 44px;
-  text-align: right;
+  color: var(--tinta2);
 }
-.legenda { font-size: 12px; color: var(--tinta-suave); margin-top: 10px; }
-.legenda .input, .legenda .calc { display: inline-block; min-width: 0; padding: 0 6px; margin: 0 2px; font-weight: 500; }
+.calc--sm { font-size: 10px; padding: 1px 5px; }
 
-/* ── tabela genérica (perícias, inventário) ─────────────────────────────────── */
-.tab { width: 100%; border-collapse: collapse; font-size: 14px; }
-.tab th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--tinta-suave); border-bottom: 1px solid var(--linha); padding: 4px 6px; }
-.tab td { padding: 4px 6px; border-bottom: 1px solid #f0f0f3; }
-.tab td.num { text-align: right; font-variant-numeric: tabular-nums; }
-.tab tr.exige-treino td { color: var(--dormente); }
-.marca-treino { font-size: 11px; color: var(--alerta); border: 1px solid currentColor; border-radius: 6px; padding: 0 5px; margin-left: 6px; white-space: nowrap; }
-.pill-treinado { font-size: 11px; color: var(--ativo); }
+/* ── Identidade ────────────────────────────────────────────────────────────── */
+.ident { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.campo { display: flex; flex-direction: column; gap: 3px; }
+.campo--wide { grid-column: 1 / 3; }
+.campo__rot { font: 600 9px var(--mono); color: var(--muted2); text-transform: uppercase; letter-spacing: .5px; }
+.campo .input { justify-content: flex-start; min-height: 24px; width: 100%; font-weight: 500; }
 
-/* atributos: grade 2 col base/final */
-.atributos { display: grid; grid-template-columns: 1fr auto auto; gap: 6px 10px; align-items: center; }
-.atributos .cod { font-weight: 700; }
-.atributos .head { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--tinta-suave); }
+/* ── Atributos (grade 3 col, wireframe) ────────────────────────────────────── */
+.attr-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.attr { border: 1px solid #c8c8c8; border-radius: 3px; padding: 5px 3px; text-align: center; }
+.attr__cod { font: 600 9px var(--mono); color: var(--muted); }
+.attr .input { width: 100%; justify-content: center; margin: 4px 0; min-height: 22px; }
+.attr__mod { font: 600 9px system-ui; color: #666; }
 
-/* poderes */
-.poder { padding: 8px 0; border-bottom: 1px solid #f0f0f3; }
-.poder__lin { display: flex; align-items: center; gap: 8px; }
-.poder__nome { font-weight: 600; }
-.poder__fx { color: var(--tinta-suave); font-size: 13px; margin-top: 2px; }
-.estado { font-size: 11px; font-weight: 700; letter-spacing: .04em; padding: 1px 7px; border-radius: 999px; margin-left: auto; }
-.estado--ativo { color: #fff; background: var(--ativo); }
-.estado--dormente { color: var(--dormente); border: 1px solid var(--dormente); }
-.estado--passivo { color: var(--acento); border: 1px solid var(--acento); }
+/* ── Stats derivados (PV/PM/Defesa) ────────────────────────────────────────── */
+.stats { display: flex; gap: 10px; }
+.stat { flex: 1; background: var(--calc); border: 1px dashed #a8a8a8; border-radius: 3px; padding: 9px; text-align: center; }
+.stat__rot { font: 600 10px var(--mono); color: var(--muted); }
+.stat__val { display: flex; align-items: center; justify-content: center; gap: 7px; margin: 5px 0; }
+.stat__val b { font: 700 19px system-ui; color: var(--tinta2); font-variant-numeric: tabular-nums; }
+.stat__val b small { font: 600 12px system-ui; color: var(--muted2); }
+.stat__val .big { font-size: 22px; }
+.stat__temp { color: #6f6f6f; font: 600 10px var(--mono); }
+.step { /* − / + inertes (ajuste é Etapa 3) */
+  width: 20px; height: 20px; border-radius: 4px; background: #fff; border: 1px solid #b8b8b8;
+  display: inline-flex; align-items: center; justify-content: center;
+  font: 600 14px system-ui; color: #ccc; user-select: none;
+}
+.stat .nota { text-align: center; }
 
-/* ── ABAS (só mobile) ───────────────────────────────────────────────────────── */
+/* ── tabelas (perícias, inventário) ────────────────────────────────────────── */
+.tab { width: 100%; border-collapse: collapse; }
+.tab th { font: 600 8px var(--mono); color: var(--faint); text-transform: uppercase; letter-spacing: .5px; text-align: left; padding: 4px 0; border-bottom: 1px solid #e6e6e6; }
+.tab td { font: 11px system-ui; color: var(--tinta); padding: 5px 0; border-bottom: 1px dotted #e2e2e2; }
+.tab tr:last-child td { border-bottom: none; }
+.tab .c { text-align: center; }
+.tab .num { text-align: right; width: 46px; }
+.tab th.c { text-align: center; }
+.tab th.num { text-align: right; }
+.tab tr.off td { color: var(--faint); }
+.marca { font: 7px var(--mono); color: #9a7a3a; border: 1px solid currentColor; border-radius: 2px; padding: 0 4px; margin-left: 6px; white-space: nowrap; }
+/* checkbox de treino (INPUT, inerte) */
+.chk { display: inline-block; width: 14px; height: 14px; border: 1px solid #b0b0b0; border-radius: 2px; background: #fff; }
+.chk--on { background: #555; }
+
+/* ── Poderes & Magias ──────────────────────────────────────────────────────── */
+.poderes { display: flex; flex-direction: column; gap: 8px; }
+.poder { border: 1px solid #d2d2d2; border-radius: 3px; padding: 8px; }
+.poder--ativo { border: 1.5px solid #8c8c8c; background: #f4f4f4; }
+.poder--dormente { border: 1px dashed var(--dash); opacity: .6; }
+.poder__lin { display: flex; align-items: center; gap: 6px; }
+.poder__nome { font: 600 11px system-ui; color: var(--tinta); flex: 1; }
+.poder__fx { margin-top: 6px; }
+.fx { font: 600 8px var(--mono); color: var(--tinta2); background: var(--calc); border: 1px solid var(--borda2); border-radius: 2px; padding: 1px 5px; }
+.tag { font: 7px var(--mono); color: var(--tinta2); background: var(--calc); border: 1px solid var(--borda2); border-radius: 2px; padding: 1px 5px; }
+.tag--ativo { color: #fff; background: #6f6f6f; border-color: #6f6f6f; }
+/* interruptor (enfeite inerte — ligar/desligar é Etapa 3) */
+.switch { width: 30px; height: 17px; border-radius: 9px; position: relative; display: inline-block; flex: none; }
+.switch::after { content: ""; position: absolute; top: 2px; width: 13px; height: 13px; border-radius: 50%; background: #fff; }
+.switch--on { background: #6f6f6f; }
+.switch--on::after { right: 2px; }
+.switch--off { background: #d8d8d8; border: 1px solid var(--dash); }
+.switch--off::after { left: 2px; }
+
+/* ── Inventário ────────────────────────────────────────────────────────────── */
+.carga { margin-top: 9px; background: var(--calc); border: 1px dashed #a8a8a8; border-radius: 3px; padding: 8px; }
+.carga__lin { display: flex; justify-content: space-between; font: 600 10px system-ui; color: var(--tinta2); }
+.carga__bar { height: 9px; background: #cfcfcf; border-radius: 3px; margin-top: 6px; overflow: hidden; }
+.carga__bar > div { height: 9px; background: #8c8c8c; }
+
+/* ── DOCK decorativo (feature futura: arrastar/reordenar painéis) ───────────── */
+.dock {
+  margin-top: 12px; height: 34px; border: 1.5px dashed var(--dash); border-radius: 4px;
+  background: repeating-linear-gradient(45deg, #fafafa, #fafafa 6px, #f1f1f1 6px, #f1f1f1 12px);
+  display: flex; align-items: center; justify-content: center;
+}
+.dock span { font: 600 8px var(--mono); color: #b0b0b0; letter-spacing: 1px; }
+
+/* ── ABAS (só mobile) ──────────────────────────────────────────────────────── */
 .abas { display: none; }
 
-/* ═══ MOBILE ═══ */
+/* ═══════════════════════ MOBILE (≤640px) ═══════════════════════ */
 @media (max-width: 640px) {
-  .app { padding-bottom: 32px; }
-  .barra {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    margin: 0;
-    box-shadow: 0 1px 6px rgba(0,0,0,.08);
-  }
-  .barra__nome { font-size: 17px; }
-  .vitais { width: 100%; margin-left: 0; justify-content: space-between; }
-  /* empurra o conteúdo para baixo da barra fixa (a barra é alta: nome + vitais) */
-  .conteudo { padding-top: 116px; }
-  .bandeja { position: sticky; top: 116px; background: var(--fundo); z-index: 10; }
+  .chrome { margin: 0; border-radius: 0; box-shadow: none; }
 
+  /* barra FIXA (sticky): nome + vitais (PV/PM/Defesa). O .topo mantém barra+abas
+     grudadas no topo ao rolar — só o conteúdo da aba rola. */
+  .topo { box-shadow: 0 2px 4px rgba(0, 0, 0, .07); }
+  .barra {
+    flex-direction: column; align-items: stretch; gap: 7px;
+    background: #fff;
+    border-bottom: 1px solid #cfcfcf;
+  }
+  .barra__topo { align-items: center; gap: 6px; }
+  .barra__flag { display: inline-block; }
+  .barra__sub { flex: 1; }
+  .barra__vitais { display: flex; gap: 7px; }
+  .barra__vitais .stat { padding: 6px 4px; }
+  .barra__vitais .stat__val b { font-size: 14px; }
+
+  /* abas logo abaixo da barra (dentro do .topo sticky) */
   .abas {
     display: flex;
-    position: sticky;
-    top: calc(116px + 44px);
-    z-index: 10;
-    background: var(--fundo);
-    border-bottom: 1px solid var(--linha);
-    margin-bottom: 12px;
+    background: var(--head);
+    border-bottom: 1px solid #d6d6d6;
   }
   .abas button {
-    flex: 1;
-    border: none;
-    background: none;
-    padding: 10px 4px;
-    font: inherit;
-    font-size: 13px;
-    color: var(--tinta-suave);
+    flex: 1; border: none; background: none; cursor: pointer;
+    padding: 9px 3px; font: 600 10px system-ui; color: var(--muted2);
     border-bottom: 2px solid transparent;
-    cursor: pointer;
   }
-  .abas button[aria-selected="true"] { color: var(--acento); border-bottom-color: var(--acento); font-weight: 700; }
+  .abas button[aria-selected="true"] { color: var(--tinta); background: #fff; border-bottom-color: #7a7a7a; }
 
-  .paineis { grid-template-columns: 1fr; gap: 12px; }
-  /* Identidade e Stats já estão resumidos na barra → viram desktop-only no mobile */
+  /* empurra o conteúdo abaixo da barra fixa + abas */
+  .efeitos, .conteudo { margin-top: 0; }
+  .conteudo { padding-top: 12px; }
+
+  /* colunas colapsam: painéis fluem em 1 coluna, controlados por aba */
+  .colunas { display: block; }
+  .coluna { display: contents; }
+  .painel, .efeitos { margin-bottom: 12px; }
+
+  /* efeitos vira aba (não faixa) */
+  .efeitos { flex-direction: column; align-items: stretch; border: 1px solid var(--borda); border-radius: 3px; background: #fff; padding: 10px; }
+  .efeitos .chip { align-self: flex-start; }
+
+  /* só o painel/efeito da aba ativa aparece; Identidade e Stats vivem na barra */
   .painel--desktop-only { display: none; }
-  /* só o painel da aba ativa aparece */
-  .painel[data-aba][data-ativa="false"] { display: none; }
+  [data-aba][data-ativa="false"] { display: none; }
+
+  .stats { flex-direction: row; }
+  .dock { display: none; }
 }

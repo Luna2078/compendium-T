@@ -1,6 +1,8 @@
-// ── ETAPA 2 — a forma do wireframe (Tela 01), estática, com dados REAIS do motor ──
+// ── ETAPA 2.5 — alinhar a ficha ao wireframe (Tela 01), estrutura fiel, ainda LO-FI ──
 // Server Component (o cálculo roda no servidor — decisão da Etapa 1). Aqui só damos FORMA
-// ao que a calcularFicha entrega. Sem toggle, sem ajuste de PV, sem trilha ao clique.
+// ao que a calcularFicha entrega, agora na MESMA estrutura do wireframe: 3 colunas
+// independentes no desktop, efeitos como faixa no topo, barra fixa + abas no mobile.
+// Sem interatividade de motor (toggle/ajuste/trilha = etapas 3/4). Handles/switches inertes.
 
 import { readFileSync } from "node:fs";
 import {
@@ -34,11 +36,13 @@ function carregar() {
   return { p, s, compendio, f: calcularFicha(p, s, compendio, condicoes) };
 }
 
+const fmt = (n: number) => (n >= 0 ? `+${n}` : `${n}`);
+
 const rotuloAlvo = (alvo: string) =>
   ({
-    "pv.temporario": "PV temporário",
-    "pm.temporario": "PM temporário",
-    "dano.corpo_a_corpo": "dano corpo a corpo",
+    "pv.temporario": "PV temp",
+    "pm.temporario": "PM temp",
+    "dano.corpo_a_corpo": "dano c/c",
     ataque: "ataque",
     dano: "dano",
     defesa: "Defesa",
@@ -52,133 +56,257 @@ export default function Ficha() {
   const atributos = atributosView(p, f);
   const poderes = poderesView(p, s, compendio);
   const inv = inventarioView(p, f, compendio);
+  const pctCarga = Math.min(100, Math.round((inv.cargaTotal / inv.capacidade) * 100));
 
-  // ── painéis (na ordem do wireframe) ──────────────────────────────────────────
+  // ── barra de contexto (nome + classe; vitais só aparecem no mobile via CSS) ──
+  const barra = (
+    <header className="barra">
+      <div className="barra__topo">
+        <span className="barra__nome">{ident.nome}</span>
+        <span className="barra__sub">
+          {ident.raca} · {ident.classe} · nível {ident.nivel}
+        </span>
+        <span className="barra__flag">barra fixa</span>
+      </div>
+      <div className="barra__vitais">
+        <div className="stat">
+          <div className="stat__rot">PV</div>
+          <div className="stat__val">
+            <b>
+              {f.pv.atual}
+              <small>/{f.pv.max}</small>
+            </b>
+          </div>
+          {f.pv.temporario ? <div className="stat__temp">+{f.pv.temporario} temp</div> : null}
+        </div>
+        <div className="stat">
+          <div className="stat__rot">PM</div>
+          <div className="stat__val">
+            <b>
+              {f.pm.disponivel}
+              <small>/{f.pm.max}</small>
+            </b>
+          </div>
+        </div>
+        <div className="stat">
+          <div className="stat__rot">Defesa</div>
+          <div className="stat__val">
+            <b className="big">{f.defesa}</b>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+
+  // ── faixa "Efeitos ativos" (topo no desktop; aba no mobile) ──────────────────
+  const efeitos: PainelDef = {
+    id: "efeitos",
+    titulo: "Efeitos",
+    coluna: "A",
+    mobileTab: false,
+    conteudo: (
+      <div style={{ display: "contents" }}>
+        <span className="efeitos__rot">Efeitos ativos</span>
+        {bandeja.length === 0 ? (
+          <span className="chip chip--vazia">nenhum efeito de sessão ativo</span>
+        ) : (
+          bandeja.map((c, i) => (
+            <span className="chip" key={i}>
+              <span className="chip__dot" aria-hidden="true" />
+              {c.fonte.replace(/^.*\/ /, "")}
+              <span className="chip__fx">
+                {c.contribs
+                  .map((k) => `${k.valor != null && k.valor >= 0 ? "+" : ""}${k.valor} ${rotuloAlvo(k.alvo)}`)
+                  .join(" · ") || "—"}
+              </span>
+              <span className="chip__org">{c.tipo}</span>
+            </span>
+          ))
+        )}
+        <span className="efeitos__nota">
+          qualquer fonte (poder · item · condição) afeta o cálculo igual — muda só a origem
+        </span>
+      </div>
+    ),
+  };
+
+  // ── painéis (coluna A/B/C = wireframe desktop; mobileTab = entra nas abas) ────
   const paineis: PainelDef[] = [
     {
       id: "identidade",
       titulo: "Identidade",
-      aba: false, // no mobile vive na barra fixa
+      coluna: "A",
+      mobileTab: false, // no mobile vive na barra fixa
+      selos: ["INPUT"],
       conteudo: (
         <div style={{ display: "contents" }}>
-          <div className="campo"><span className="campo__rot">Nome</span><span className="input">{ident.nome}</span></div>
-          <div className="campo"><span className="campo__rot">Raça</span><span className="input">{ident.raca}</span></div>
-          <div className="campo"><span className="campo__rot">Classe</span><span className="input">{ident.classe}</span></div>
-          <div className="campo"><span className="campo__rot">Nível</span><span className="calc">{ident.nivel}</span></div>
-          <div className="campo"><span className="campo__rot">Origem</span><span className="input">{ident.origem}</span></div>
-          <p className="legenda"><span className="painel__tag">INPUT</span> campos editáveis (ainda estáticos nesta etapa).</p>
+          <div className="ident">
+            <div className="campo campo--wide"><span className="campo__rot">Nome</span><span className="input">{ident.nome}</span></div>
+            <div className="campo"><span className="campo__rot">Raça</span><span className="input">{ident.raca}</span></div>
+            <div className="campo"><span className="campo__rot">Classe</span><span className="input">{ident.classe}</span></div>
+            <div className="campo"><span className="campo__rot">Nível</span><span className="input">{ident.nivel}</span></div>
+            <div className="campo campo--wide"><span className="campo__rot">Origem</span><span className="input">{ident.origem}</span></div>
+          </div>
+          <div className="nota">campos INPUT — editáveis (ainda estáticos nesta etapa).</div>
         </div>
       ),
     },
     {
       id: "atributos",
       titulo: "Atributos",
-      aba: true,
+      coluna: "A",
+      mobileTab: true,
+      selos: ["INPUT"],
+      nota: "mod = CALC",
       conteudo: (
         <div style={{ display: "contents" }}>
-          <div className="atributos">
-            <span className="head">Atributo</span>
-            <span className="head" style={{ textAlign: "right" }}>Base</span>
-            <span className="head" style={{ textAlign: "right" }}>Final</span>
+          <div className="attr-grid">
             {atributos.map((a) => (
-              <div key={a.cod} style={{ display: "contents" }}>
-                <span className="cod">{a.cod}</span>
-                <span className="input" style={{ justifySelf: "end" }}>{a.base >= 0 ? `+${a.base}` : a.base}</span>
-                <span className="calc" style={{ justifySelf: "end" }}>{a.final >= 0 ? `+${a.final}` : a.final}</span>
+              <div className="attr" key={a.cod}>
+                <div className="attr__cod">{a.cod}</div>
+                <div className="input">{fmt(a.base)}</div>
+                <div className="attr__mod">final <span className="calc calc--sm">{fmt(a.final)}</span></div>
               </div>
             ))}
           </div>
-          <p className="legenda">
-            <span className="input">base</span> = INPUT (point-buy) ·{" "}
-            <span className="calc">final</span> = CALC (base + raça + aumentos). Em T20 o valor
-            do atributo já é o modificador.
-          </p>
+          <div className="nota">
+            valor base = INPUT · final = CALC (base + raça + aumentos). Em T20 o valor do
+            atributo já é o modificador.
+          </div>
         </div>
       ),
     },
     {
       id: "stats",
       titulo: "Stats derivados",
-      aba: false, // vitais estão na barra
+      coluna: "B",
+      mobileTab: false, // vitais estão na barra fixa
+      selos: ["CALC"],
+      nota: "máx computado · atuais ajustáveis (Etapa 3)",
       conteudo: (
         <div style={{ display: "contents" }}>
-          <div className="campo"><span className="campo__rot">PV (atual / máx)</span><span className="calc">{f.pv.atual} / {f.pv.max}{f.pv.temporario ? ` (+${f.pv.temporario})` : ""}</span></div>
-          <div className="campo"><span className="campo__rot">PM (atual / máx)</span><span className="calc">{f.pm.disponivel} / {f.pm.max}</span></div>
-          <div className="campo"><span className="campo__rot">Defesa</span><span className="calc">{f.defesa}</span></div>
-          <div className="campo"><span className="campo__rot">Deslocamento</span><span className="calc">{f.deslocamentos.base}m</span></div>
-          <div className="campo"><span className="campo__rot">Redução de dano</span><span className="calc">{f.reducaoDano}</span></div>
-          <p className="legenda"><span className="painel__tag">CALC</span> tudo calculado pelo motor. O ajuste de PV atual é Etapa 3.</p>
+          <div className="stats">
+            <div className="stat">
+              <div className="stat__rot">PV atual / máx</div>
+              <div className="stat__val">
+                <span className="step" aria-hidden="true">−</span>
+                <b>{f.pv.atual}<small>/{f.pv.max}</small></b>
+                <span className="step" aria-hidden="true">+</span>
+              </div>
+              {f.pv.temporario ? <div className="stat__temp">+{f.pv.temporario} temp</div> : null}
+              <div className="nota">ajuste = Etapa 3 · máx = CALC</div>
+            </div>
+            <div className="stat">
+              <div className="stat__rot">PM atual / máx</div>
+              <div className="stat__val">
+                <span className="step" aria-hidden="true">−</span>
+                <b>{f.pm.disponivel}<small>/{f.pm.max}</small></b>
+                <span className="step" aria-hidden="true">+</span>
+              </div>
+              <div className="nota">máx = CALC</div>
+            </div>
+            <div className="stat">
+              <div className="stat__rot">Defesa</div>
+              <div className="stat__val"><b className="big">{f.defesa}</b></div>
+              <div className="nota">CALC ∑ · recalc ao vivo (Etapa 3)</div>
+            </div>
+          </div>
+          <div className="nota" style={{ marginTop: 8 }}>
+            Deslocamento {f.deslocamentos.base}m · Redução de dano {f.reducaoDano}
+          </div>
         </div>
       ),
     },
     {
       id: "pericias",
       titulo: "Perícias",
-      aba: true,
+      coluna: "B",
+      mobileTab: true,
+      selos: ["INPUT", "CALC"],
       conteudo: (
-        <table className="tab">
-          <thead><tr><th>Perícia</th><th>Treino</th><th style={{ textAlign: "right" }}>Total</th></tr></thead>
-          <tbody>
-            {Object.entries(f.pericias)
-              .sort(([a], [b]) => a.localeCompare(b))
-              .map(([id, v]) => (
-                <tr key={id} className={v.exigeTreino && !v.usavel ? "exige-treino" : ""}>
-                  <td>
-                    {capitalizar(id)}
-                    {v.exigeTreino && !v.usavel && <span className="marca-treino">exige treino</span>}
-                  </td>
-                  <td>{v.treinado ? <span className="pill-treinado">treinado</span> : "—"}</td>
-                  <td className="num">{v.valor >= 0 ? `+${v.valor}` : v.valor}</td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
+        <div style={{ display: "contents" }}>
+          <table className="tab">
+            <thead>
+              <tr><th>Perícia</th><th className="c">Treino</th><th className="num">Total</th></tr>
+            </thead>
+            <tbody>
+              {Object.entries(f.pericias)
+                .sort(([a], [b]) => a.localeCompare(b))
+                .map(([id, v]) => (
+                  <tr key={id} className={v.exigeTreino && !v.usavel ? "off" : ""}>
+                    <td>
+                      {capitalizar(id)}
+                      {v.exigeTreino && !v.usavel && <span className="marca">exige treino</span>}
+                    </td>
+                    <td className="c"><span className={`chk${v.treinado ? " chk--on" : ""}`} aria-hidden="true" /></td>
+                    <td className="num"><span className="calc calc--sm">{fmt(v.valor)}</span></td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+          <div className="nota">treino = INPUT (checkbox) · total = CALC (mod + ½ nível + treino)</div>
+        </div>
       ),
     },
     {
       id: "poderes",
-      titulo: "Poderes & Magias",
-      aba: true,
+      titulo: "Poderes",
+      coluna: "C",
+      mobileTab: true,
       conteudo: (
         <div style={{ display: "contents" }}>
-          {poderes.map((pd, i) => (
-            <div className="poder" key={i}>
-              <div className="poder__lin">
-                <span className="poder__nome">{pd.nome}</span>
-                <span className={`estado estado--${pd.estado}`}>
-                  {pd.estado === "ativo" ? "● ATIVO" : pd.estado === "dormente" ? "dormente" : "PASSIVO"}
-                </span>
+          <div className="poderes">
+            {poderes.map((pd, i) => (
+              <div className={`poder poder--${pd.estado}`} key={i}>
+                <div className="poder__lin">
+                  <span className="poder__nome">
+                    {pd.nome}{" "}
+                    {pd.estado === "ativo" && <span className="tag tag--ativo">● ATIVO</span>}
+                  </span>
+                  {pd.estado === "passivo" ? (
+                    <span className="tag">PASSIVO</span>
+                  ) : (
+                    <span className={`switch switch--${pd.estado === "ativo" ? "on" : "off"}`} aria-hidden="true" />
+                  )}
+                </div>
+                {pd.fx && <div className="poder__fx"><span className="fx">fx · {pd.fx}</span></div>}
               </div>
-              {pd.fx && <div className="poder__fx">{pd.fx}</div>}
-            </div>
-          ))}
-          <p className="legenda">ativável = tem interruptor (Etapa 3) · passivo = sempre no cálculo · dormente = ativável desligado.</p>
+            ))}
+          </div>
+          <div className="nota">ativável = interruptor liga/desliga (Etapa 3) · passivo = entra sempre no cálculo.</div>
         </div>
       ),
     },
     {
       id: "inventario",
       titulo: "Inventário",
-      aba: true,
+      coluna: "C",
+      mobileTab: true,
+      selos: ["CALC"],
       conteudo: (
         <div style={{ display: "contents" }}>
           <table className="tab">
-            <thead><tr><th>Item</th><th>Estado</th><th style={{ textAlign: "right" }}>Peso</th></tr></thead>
+            <thead>
+              <tr><th>Item</th><th className="c">Equipado</th><th className="num">Peso</th></tr>
+            </thead>
             <tbody>
               {inv.itens.map((it, i) => (
                 <tr key={i}>
-                  <td>{it.nome}{it.nota && <span className="campo__rot"> · {it.nota}</span>}</td>
-                  <td>{it.equipado ? "equipado" : "guardado"}</td>
+                  <td>{it.nome}{it.nota && <span className="marca">{it.nota}</span>}</td>
+                  <td className="c"><span className={`switch switch--${it.equipado ? "on" : "off"}`} aria-hidden="true" /></td>
                   <td className="num">{it.espacos}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-          <p className="legenda">
-            Carga: <strong>{inv.cargaTotal}</strong> / {inv.capacidade} espaços.{" "}
-            <span className="painel__tag">CALC</span> capacidade = 10 + Força (regra do livro;
-            o alvo de carga do motor está adiado — calculado aqui na view).
-          </p>
+          <div className="carga">
+            <div className="carga__lin">
+              <span>Carga total ∑ <b>{inv.cargaTotal}</b></span>
+              <span>Capacidade {inv.capacidade}</span>
+            </div>
+            <div className="carga__bar"><div style={{ width: `${pctCarga}%` }} /></div>
+            <div className="nota">carga e capacidade = CALC (Σ espaços vs. 10 + Força; alvo do motor adiado — calculado na view).</div>
+          </div>
         </div>
       ),
     },
@@ -186,53 +314,7 @@ export default function Ficha() {
 
   return (
     <div className="app">
-      {/* BARRA DE CONTEXTO — sticky no desktop, fixed no mobile */}
-      <header className="barra">
-        <span className="barra__nome">{ident.nome}</span>
-        <span className="barra__sub">{ident.raca} · {ident.classe} · nível {ident.nivel}</span>
-        <div className="vitais">
-          <div className="vital">
-            <div className="vital__rot">PV</div>
-            <div className="vital__num">
-              {f.pv.atual}<small>/{f.pv.max}</small>
-              {f.pv.temporario ? <div className="vital__temp">+{f.pv.temporario} temp</div> : null}
-            </div>
-          </div>
-          <div className="vital">
-            <div className="vital__rot">PM</div>
-            <div className="vital__num">{f.pm.disponivel}<small>/{f.pm.max}</small></div>
-          </div>
-          <div className="vital">
-            <div className="vital__rot">Defesa</div>
-            <div className="vital__num">{f.defesa}</div>
-          </div>
-        </div>
-      </header>
-
-      <div className="conteudo">
-        {/* BANDEJA "Efeitos ativos" */}
-        <div className="bandeja">
-          <span className="bandeja__rot">Efeitos ativos</span>
-          {bandeja.length === 0 ? (
-            <span className="chip chip--vazia">nenhum efeito de sessão ativo</span>
-          ) : (
-            bandeja.map((c, i) => (
-              <div className="chip" key={i}>
-                <div className="chip__fonte">{c.fonte.replace(/^.*\/ /, "")}</div>
-                <div className="chip__contrib">
-                  {c.contribs
-                    .map((k) => `${k.valor != null && k.valor >= 0 ? "+" : ""}${k.valor} ${rotuloAlvo(k.alvo)}`)
-                    .join(" · ") || "—"}
-                </div>
-                <span className="chip__origem">{c.tipo}</span>
-              </div>
-            ))
-          )}
-        </div>
-
-        <Paineis paineis={paineis} />
-      </div>
+      <Paineis barra={barra} efeitos={efeitos} paineis={paineis} />
     </div>
   );
 }
-

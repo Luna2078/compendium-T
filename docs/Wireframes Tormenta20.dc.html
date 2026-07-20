@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,sans-serif;color:#333}
+</style>
+</helmet>
+
+<!-- ============ LEGEND ============ -->
+<div style="position:absolute;left:80px;top:40px;width:1280px">
+<div data-drags-parent="1" style="position:absolute;top:-24px;font:600 12px system-ui;color:rgba(60,60,60,.75)">Legenda · convenções do wireframe</div>
+<div style="background:#fff;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.08);padding:14px 16px;display:flex;flex-wrap:wrap;gap:22px;align-items:center">
+  <div style="display:flex;align-items:center;gap:8px"><span style="font:600 8px ui-monospace,monospace;color:#777;background:#ececec;border:1px solid #cfcfcf;padding:2px 5px;border-radius:2px">INPUT</span><span style="font:12px system-ui;color:#666">preenchido pelo usuário</span></div>
+  <div style="display:flex;align-items:center;gap:8px"><span style="font:600 8px ui-monospace,monospace;color:#555;background:#dcdcdc;border:1px solid #bcbcbc;padding:2px 5px;border-radius:2px">CALC ∑</span><span style="font:12px system-ui;color:#666">calculado pelo sistema · não editável</span></div>
+  <div style="display:flex;align-items:center;gap:8px"><span style="color:#b0b0b0;font:13px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:12px system-ui;color:#666">painel arrastável / reposicionável</span></div>
+  <div style="display:flex;align-items:center;gap:8px"><span style="width:34px;height:18px;border:1.5px dashed #c4c4c4;border-radius:3px;background:repeating-linear-gradient(45deg,#fafafa,#fafafa 5px,#f1f1f1 5px,#f1f1f1 10px)"></span><span style="font:12px system-ui;color:#666">dock / slot de encaixe</span></div>
+  <div style="display:flex;align-items:center;gap:8px"><span style="font:600 12px system-ui;color:#888">↔</span><span style="font:12px system-ui;color:#666">reflui: desktop multi-coluna ↔ mobile 1 coluna</span></div>
+</div>
+</div>
+
+<!-- ============ SCREEN 1 HEADER ============ -->
+<div data-drags-parent="0" style="position:absolute;left:80px;top:185px;font:600 16px system-ui;color:rgba(40,40,40,.85)">01 — Ficha de personagem (auto-calculável)</div>
+
+<!-- ===== FICHA DESKTOP ===== -->
+<div style="position:absolute;left:80px;top:230px;width:1280px">
+<div data-drags-parent="1" style="position:absolute;top:-22px;font:500 11px system-ui;color:rgba(60,60,60,.7)">Desktop · ~1280px</div>
+<div style="background:#fff;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow:hidden">
+  <!-- app chrome -->
+  <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;background:#ececec;border-bottom:1px solid #d6d6d6">
+    <div style="width:9px;height:9px;border-radius:50%;background:#cfcfcf"></div>
+    <span style="font:600 12px system-ui;color:#555;flex:1">Ficha — Thaíde, o Bárbaro</span>
+    <span style="font:600 9px ui-monospace,monospace;color:#999">↔ reflui</span>
+  </div>
+  <!-- bandeja de efeitos ativos (qualquer fonte) -->
+  <div style="display:flex;align-items:center;gap:7px;padding:7px 14px;background:#f0f0f0;border-bottom:1px solid #dcdcdc;flex-wrap:wrap">
+    <span style="font:600 8px ui-monospace,monospace;color:#888;text-transform:uppercase">Efeitos ativos</span>
+    <span style="display:inline-flex;align-items:center;gap:5px;font:600 9px system-ui;color:#444;background:#fff;border:1px solid #b8b8b8;border-radius:13px;padding:3px 5px 3px 8px"><span style="display:inline-block;width:9px;height:9px;border:1px solid #9a9a9a;border-radius:2px;background:#e2e2e2"></span>Em Fúria <span style="font:7px ui-monospace,monospace;color:#888">−2 Def</span><span style="font:6px ui-monospace,monospace;color:#fff;background:#9c9c9c;border-radius:2px;padding:1px 4px">poder</span></span>
+    <span style="display:inline-flex;align-items:center;gap:5px;font:600 9px system-ui;color:#444;background:#fff;border:1px solid #b8b8b8;border-radius:13px;padding:3px 5px 3px 8px"><span style="display:inline-block;width:9px;height:9px;border:1px solid #9a9a9a;border-radius:2px;background:#e2e2e2"></span>Envenenado <span style="font:7px ui-monospace,monospace;color:#888">−2</span><span style="font:6px ui-monospace,monospace;color:#fff;background:#5a5a5a;border-radius:2px;padding:1px 4px">condição · mestre</span></span>
+    <span style="display:inline-flex;align-items:center;gap:5px;font:600 9px system-ui;color:#444;background:#fff;border:1px solid #b8b8b8;border-radius:13px;padding:3px 5px 3px 8px"><span style="display:inline-block;width:9px;height:9px;border:1px solid #9a9a9a;border-radius:2px;background:#e2e2e2"></span>Escudo erguido <span style="font:7px ui-monospace,monospace;color:#888">+1 Def</span><span style="font:6px ui-monospace,monospace;color:#fff;background:#9c9c9c;border-radius:2px;padding:1px 4px">item</span></span>
+    <span style="font:8px ui-monospace,monospace;color:#aaa">qualquer fonte (poder · item · condição) afeta o cálculo igual — muda só a origem</span>
+  </div>
+  <!-- work area -->
+  <div style="padding:14px;background:#f6f6f6;display:flex;gap:12px;align-items:flex-start">
+
+    <!-- COLUMN A -->
+    <div style="width:288px;display:flex;flex-direction:column;gap:12px">
+      <!-- Identidade -->
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:3px">
+        <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="color:#b0b0b0;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:600 11px system-ui;color:#555;flex:1">Identidade</span><span style="font:600 8px ui-monospace,monospace;color:#777;background:#ececec;border:1px solid #cfcfcf;padding:1px 5px;border-radius:2px">INPUT</span></div>
+        <div style="padding:9px 10px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="grid-column:1/3"><div style="font:600 9px ui-monospace,monospace;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">Nome</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:24px"></div></div>
+          <div><div style="font:600 9px ui-monospace,monospace;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">Raça</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:24px"></div></div>
+          <div><div style="font:600 9px ui-monospace,monospace;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">Classe</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:24px"></div></div>
+          <div><div style="font:600 9px ui-monospace,monospace;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">Nível</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:24px;width:54px"></div></div>
+          <div><div style="font:600 9px ui-monospace,monospace;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px">Origem</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:24px"></div></div>
+        </div>
+      </div>
+      <!-- Atributos -->
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:3px">
+        <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="color:#b0b0b0;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:600 11px system-ui;color:#555;flex:1">Atributos</span><span style="font:600 8px ui-monospace,monospace;color:#777;background:#ececec;border:1px solid #cfcfcf;padding:1px 5px;border-radius:2px">INPUT</span></div>
+        <div style="padding:9px 10px">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+            <div style="border:1px solid #c8c8c8;border-radius:3px;padding:5px 3px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">FOR</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:22px;margin:4px 0"></div><div style="font:600 9px system-ui;color:#666">mod <span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">+3</span></div></div>
+            <div style="border:1px solid #c8c8c8;border-radius:3px;padding:5px 3px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">DES</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:22px;margin:4px 0"></div><div style="font:600 9px system-ui;color:#666">mod <span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">+1</span></div></div>
+            <div style="border:1px solid #c8c8c8;border-radius:3px;padding:5px 3px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">CON</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:22px;margin:4px 0"></div><div style="font:600 9px system-ui;color:#666">mod <span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">+2</span></div></div>
+            <div style="border:1px solid #c8c8c8;border-radius:3px;padding:5px 3px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">INT</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:22px;margin:4px 0"></div><div style="font:600 9px system-ui;color:#666">mod <span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">+0</span></div></div>
+            <div style="border:1px solid #c8c8c8;border-radius:3px;padding:5px 3px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">SAB</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:22px;margin:4px 0"></div><div style="font:600 9px system-ui;color:#666">mod <span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">+1</span></div></div>
+            <div style="border:1px solid #c8c8c8;border-radius:3px;padding:5px 3px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">CAR</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:22px;margin:4px 0"></div><div style="font:600 9px system-ui;color:#666">mod <span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">-1</span></div></div>
+          </div>
+          <div style="font:9px ui-monospace,monospace;color:#aaa;margin-top:7px">valor = INPUT · modificador = CALC</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN B -->
+    <div style="flex:1;display:flex;flex-direction:column;gap:12px">
+      <!-- Stats derivados -->
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:3px">
+        <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="color:#b0b0b0;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:600 11px system-ui;color:#555;flex:1">Stats derivados</span><span style="font:600 8px ui-monospace,monospace;color:#777">máx computado · PV/PM atuais ajustáveis</span><span style="font:600 8px ui-monospace,monospace;color:#555;background:#dcdcdc;border:1px solid #bcbcbc;padding:1px 5px;border-radius:2px">CALC ∑</span></div>
+        <div style="padding:11px;display:flex;gap:10px">
+          <div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:9px;text-align:center"><div style="font:600 10px ui-monospace,monospace;color:#888">PV atual / máx</div><div style="display:flex;align-items:center;justify-content:center;gap:7px;margin:5px 0"><span style="width:20px;height:20px;border-radius:4px;background:#fff;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 14px system-ui;color:#666">−</span><span style="font:700 19px system-ui;color:#555">23<span style="font:600 12px;color:#999">/31</span></span><span style="width:20px;height:20px;border-radius:4px;background:#fff;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 14px system-ui;color:#666">+</span></div><div style="font:8px ui-monospace,monospace;color:#999">toque no valor p/ ajustar · máx = CALC</div></div>
+          <div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:9px;text-align:center"><div style="font:600 10px ui-monospace,monospace;color:#888">PM atual / máx</div><div style="display:flex;align-items:center;justify-content:center;gap:7px;margin:5px 0"><span style="width:20px;height:20px;border-radius:4px;background:#fff;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 14px system-ui;color:#666">−</span><span style="font:700 19px system-ui;color:#555">8<span style="font:600 12px;color:#999">/12</span></span><span style="width:20px;height:20px;border-radius:4px;background:#fff;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 14px system-ui;color:#666">+</span></div><div style="font:8px ui-monospace,monospace;color:#999">−/+ ou digitar · máx = CALC</div></div>
+          <div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:9px;text-align:center"><div style="font:600 10px ui-monospace,monospace;color:#888">Defesa</div><div style="margin:4px 0"><span style="font:600 15px system-ui;color:#aaa;text-decoration:line-through">17</span> <span style="font:700 22px system-ui;color:#555">15</span></div><div style="font:8px ui-monospace,monospace;color:#777">↓ −2 (efeitos ativos) · recalc ao vivo</div></div>
+        </div>
+      </div>
+      <!-- Perícias -->
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:3px;flex:1">
+        <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="color:#b0b0b0;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:600 11px system-ui;color:#555;flex:1">Perícias</span><span style="font:600 8px ui-monospace,monospace;color:#777;background:#ececec;border:1px solid #cfcfcf;padding:1px 5px;border-radius:2px">INPUT</span><span style="font:600 8px ui-monospace,monospace;color:#555;background:#dcdcdc;border:1px solid #bcbcbc;padding:1px 5px;border-radius:2px">CALC ∑</span></div>
+        <div style="padding:6px 10px">
+          <div style="display:flex;font:600 8px ui-monospace,monospace;color:#aaa;text-transform:uppercase;letter-spacing:.5px;padding:4px 0;border-bottom:1px solid #e6e6e6"><span style="flex:1">Perícia</span><span style="width:54px;text-align:center">Treino</span><span style="width:46px;text-align:right">Total</span></div>
+          <div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Atletismo</span><span style="width:54px;display:flex;justify-content:center"><span style="width:14px;height:14px;border:1px solid #b0b0b0;border-radius:2px;background:#555"></span></span><span style="width:46px;text-align:right"><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">+9</span></span></div>
+          <div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Furtividade</span><span style="width:54px;display:flex;justify-content:center"><span style="width:14px;height:14px;border:1px solid #b0b0b0;border-radius:2px"></span></span><span style="width:46px;text-align:right"><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">+4</span></span></div>
+          <div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Percepção</span><span style="width:54px;display:flex;justify-content:center"><span style="width:14px;height:14px;border:1px solid #b0b0b0;border-radius:2px;background:#555"></span></span><span style="width:46px;text-align:right"><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">+8</span></span></div>
+          <div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Intimidação</span><span style="width:54px;display:flex;justify-content:center"><span style="width:14px;height:14px;border:1px solid #b0b0b0;border-radius:2px;background:#555"></span></span><span style="width:46px;text-align:right"><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">+7</span></span></div>
+          <div style="display:flex;align-items:center;padding:5px 0"><span style="flex:1;font:11px system-ui;color:#444">Sobrevivência</span><span style="width:54px;display:flex;justify-content:center"><span style="width:14px;height:14px;border:1px solid #b0b0b0;border-radius:2px"></span></span><span style="width:46px;text-align:right"><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">+3</span></span></div>
+          <div style="font:9px ui-monospace,monospace;color:#aaa;margin-top:6px">treino = INPUT (checkbox) · total = CALC (mod + ½ nível + treino)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMN C -->
+    <div style="width:360px;display:flex;flex-direction:column;gap:12px">
+      <!-- Poderes & Magias -->
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:3px">
+        <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="color:#b0b0b0;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:600 11px system-ui;color:#555;flex:1">Poderes & Magias</span></div>
+        <div style="padding:9px 10px;display:flex;flex-direction:column;gap:8px">
+          <!-- ativável LIGADO -->
+          <div style="border:1.5px solid #8c8c8c;border-radius:3px;padding:8px;background:#f4f4f4">
+            <div style="display:flex;align-items:center;gap:6px"><span style="font:600 11px system-ui;color:#333;flex:1">Fúria <span style="font:7px ui-monospace,monospace;color:#fff;background:#6f6f6f;border-radius:2px;padding:1px 5px;vertical-align:middle">● ATIVO</span></span><span style="width:30px;height:17px;border-radius:9px;background:#6f6f6f;position:relative;display:inline-block;flex:none"><span style="position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#fff"></span></span></div>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:6px"><span style="font:600 8px ui-monospace,monospace;color:#333;background:#e0e0e0;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">fx · +2 dano / −2 Def</span><span style="font:600 8px ui-monospace,monospace;color:#777;background:#ececec;border:1px solid #cfcfcf;border-radius:2px;padding:1px 5px">ativável · sem custo</span></div>
+            <div style="font:8px ui-monospace,monospace;color:#777;margin-top:5px">ligado → entra no cálculo ao vivo (Defesa cai, dano sobe · ver topo da ficha)</div>
+          </div>
+          <!-- ativável DESLIGADO (dormente) -->
+          <div style="border:1px dashed #c4c4c4;border-radius:3px;padding:8px;opacity:.55">
+            <div style="display:flex;align-items:center;gap:6px"><span style="font:600 11px system-ui;color:#444;flex:1">Postura Defensiva</span><span style="width:30px;height:17px;border-radius:9px;background:#d8d8d8;border:1px solid #c4c4c4;position:relative;display:inline-block;flex:none"><span style="position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#fff"></span></span></div>
+            <div style="margin-top:6px"><span style="font:600 8px ui-monospace,monospace;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">fx · +2 Def · custo 1 PM</span></div>
+            <div style="font:8px ui-monospace,monospace;color:#999;margin-top:5px">dormente — não afeta nenhum cálculo até ser ligado</div>
+          </div>
+          <!-- passivo -->
+          <div style="border:1px solid #d2d2d2;border-radius:3px;padding:8px">
+            <div style="display:flex;align-items:center;gap:6px"><span style="font:600 11px system-ui;color:#444;flex:1">Sentidos Aguçados</span><span style="font:7px ui-monospace,monospace;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">PASSIVO · sempre no cálculo</span></div>
+            <div style="margin-top:6px"><span style="font:600 8px ui-monospace,monospace;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">fx · +2 Percepção</span></div>
+          </div>
+          <div style="font:9px ui-monospace,monospace;color:#aaa">ativável = interruptor liga/desliga · passivo = sem interruptor, entra sempre</div>
+        </div>
+      </div>
+      <!-- Inventário -->
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:3px">
+        <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="color:#b0b0b0;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:600 11px system-ui;color:#555;flex:1">Inventário</span><span style="font:600 8px ui-monospace,monospace;color:#555;background:#dcdcdc;border:1px solid #bcbcbc;padding:1px 5px;border-radius:2px">CALC ∑</span></div>
+        <div style="padding:7px 10px">
+          <div style="display:flex;font:600 8px ui-monospace,monospace;color:#aaa;text-transform:uppercase;letter-spacing:.5px;padding:3px 0;border-bottom:1px solid #e6e6e6"><span style="flex:1">Item</span><span style="width:74px;text-align:center">Equipado</span><span style="width:50px;text-align:right">Peso</span></div>
+          <div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Machado de batalha</span><span style="width:74px;text-align:center;font:9px system-ui;color:#bbb">—</span><span style="width:50px;display:flex;justify-content:flex-end"><span style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;width:40px;height:20px"></span></span></div>
+          <div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Armadura de couro <span style="font:7px ui-monospace,monospace;color:#fff;background:#7a7a7a;border-radius:2px;padding:1px 4px">+2 Def</span></span><span style="width:74px;display:flex;align-items:center;gap:4px;justify-content:center"><span style="width:28px;height:16px;border-radius:8px;background:#6f6f6f;position:relative;display:inline-block;flex:none"><span style="position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#fff"></span></span><span style="font:8px ui-monospace,monospace;color:#555">equip.</span></span><span style="width:50px;display:flex;justify-content:flex-end"><span style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;width:40px;height:20px"></span></span></div>
+          <div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Escudo de madeira <span style="font:7px ui-monospace,monospace;color:#fff;background:#7a7a7a;border-radius:2px;padding:1px 4px">+1 Def</span></span><span style="width:74px;display:flex;align-items:center;gap:4px;justify-content:center"><span style="width:28px;height:16px;border-radius:8px;background:#6f6f6f;position:relative;display:inline-block;flex:none"><span style="position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#fff"></span></span><span style="font:8px ui-monospace,monospace;color:#555">equip.</span></span><span style="width:50px;display:flex;justify-content:flex-end"><span style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;width:40px;height:20px"></span></span></div>
+          <div style="display:flex;align-items:center;padding:5px 0;border-bottom:1px dotted #e2e2e2;opacity:.55"><span style="flex:1;font:11px system-ui;color:#444">Cota de malha <span style="font:7px ui-monospace,monospace;color:#666;background:#e0e0e0;border:1px solid #c8c8c8;border-radius:2px;padding:1px 4px">+4 Def</span></span><span style="width:74px;display:flex;align-items:center;gap:4px;justify-content:center"><span style="width:28px;height:16px;border-radius:8px;background:#d8d8d8;border:1px solid #c4c4c4;position:relative;display:inline-block;flex:none"><span style="position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#fff"></span></span><span style="font:8px ui-monospace,monospace;color:#999">guard.</span></span><span style="width:50px;display:flex;justify-content:flex-end"><span style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;width:40px;height:20px"></span></span></div>
+          <div style="display:flex;align-items:center;padding:5px 0"><span style="flex:1;font:11px system-ui;color:#444">Corda (15m)</span><span style="width:74px;text-align:center;font:9px system-ui;color:#bbb">—</span><span style="width:50px;display:flex;justify-content:flex-end"><span style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;width:40px;height:20px"></span></span></div>
+          <div style="font:8px ui-monospace,monospace;color:#999;margin-top:6px">só itens equipados entram na Defesa · guardados (apagados) não contam</div>
+          <div style="margin-top:9px;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:8px">
+            <div style="display:flex;justify-content:space-between;font:600 10px system-ui;color:#555"><span>Carga total ∑ <b>12,5 kg</b></span><span>Capacidade 20 kg</span></div>
+            <div style="height:9px;background:#cfcfcf;border-radius:3px;margin-top:6px;overflow:hidden"><div style="width:62%;height:9px;background:#8c8c8c"></div></div>
+            <div style="font:8px ui-monospace,monospace;color:#999;margin-top:5px">carga e capacidade = CALC (Σ pesos vs. FOR)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- dock strip -->
+    <div style="width:30px;align-self:stretch;border:1.5px dashed #c4c4c4;border-radius:4px;background:repeating-linear-gradient(45deg,#fafafa,#fafafa 6px,#f1f1f1 6px,#f1f1f1 12px);display:flex;align-items:center;justify-content:center"><span style="writing-mode:vertical-rl;font:600 8px ui-monospace,monospace;color:#b0b0b0;letter-spacing:1px">DOCK · solte um painel aqui</span></div>
+  </div>
+  <!-- bottom dock -->
+  <div style="margin:0 14px 14px;height:40px;border:1.5px dashed #c4c4c4;border-radius:4px;background:repeating-linear-gradient(45deg,#fafafa,#fafafa 6px,#f1f1f1 6px,#f1f1f1 12px);display:flex;align-items:center;justify-content:center"><span style="font:600 9px ui-monospace,monospace;color:#b0b0b0;letter-spacing:1px">DOCK INFERIOR · arraste qualquer painel para cá para reordenar</span></div>
+</div>
+</div>
+
+<!-- ===== FICHA MOBILE ===== -->
+<div style="position:absolute;left:1440px;top:230px;width:390px">
+<div data-drags-parent="1" style="position:absolute;top:-22px;font:500 11px system-ui;color:rgba(60,60,60,.7)">Mobile · ~390px — contexto fixo + abas (sem scroll infinito)</div>
+<div style="background:#fff;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow:hidden">
+  <div style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:#ececec;border-bottom:1px solid #d6d6d6"><span style="font:600 12px system-ui;color:#555;flex:1">Ficha — Thaíde</span><span style="font:600 8px ui-monospace,monospace;color:#999">fixo + abas</span></div>
+  <!-- FIXED context bar: PV/PM/Defesa não rola -->
+  <div style="padding:9px 12px;background:#fff;border-bottom:1px solid #cfcfcf;box-shadow:0 2px 4px rgba(0,0,0,.07);position:relative;z-index:2">
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px"><span style="font:700 12px system-ui;color:#444;flex:1">Thaíde</span><span style="font:8px ui-monospace,monospace;color:#999">Bárbaro 5</span><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#9c9c9c;border-radius:2px;padding:1px 5px">BARRA FIXA</span></div>
+    <div style="margin-bottom:8px;display:flex;flex-wrap:wrap;gap:4px;align-items:center"><span style="font:600 7px ui-monospace,monospace;color:#888;text-transform:uppercase">Efeitos</span><span style="display:inline-flex;align-items:center;gap:4px;font:600 8px system-ui;color:#444;background:#fff;border:1px solid #b8b8b8;border-radius:11px;padding:2px 5px 2px 6px"><span style="display:inline-block;width:7px;height:7px;border:1px solid #9a9a9a;border-radius:2px;background:#e2e2e2"></span>Em Fúria <span style="font:6px ui-monospace,monospace;color:#888">−2 Def</span><span style="font:6px ui-monospace,monospace;color:#fff;background:#9c9c9c;border-radius:2px;padding:0 3px">pod</span></span><span style="display:inline-flex;align-items:center;gap:4px;font:600 8px system-ui;color:#444;background:#fff;border:1px solid #b8b8b8;border-radius:11px;padding:2px 5px 2px 6px"><span style="display:inline-block;width:7px;height:7px;border:1px solid #9a9a9a;border-radius:2px;background:#e2e2e2"></span>Envenenado <span style="font:6px ui-monospace,monospace;color:#888">−2</span><span style="font:6px ui-monospace,monospace;color:#fff;background:#5a5a5a;border-radius:2px;padding:0 3px">cond</span></span><span style="display:inline-flex;align-items:center;gap:4px;font:600 8px system-ui;color:#444;background:#fff;border:1px solid #b8b8b8;border-radius:11px;padding:2px 5px 2px 6px"><span style="display:inline-block;width:7px;height:7px;border:1px solid #9a9a9a;border-radius:2px;background:#e2e2e2"></span>Escudo <span style="font:6px ui-monospace,monospace;color:#888">+1</span><span style="font:6px ui-monospace,monospace;color:#fff;background:#9c9c9c;border-radius:2px;padding:0 3px">item</span></span></div>
+    <div style="display:flex;gap:7px">
+      <div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:6px 4px;text-align:center"><div style="font:600 8px ui-monospace,monospace;color:#888">PV</div><div style="display:flex;align-items:center;justify-content:center;gap:5px;margin:3px 0"><span style="width:17px;height:17px;border-radius:4px;background:#fff;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 12px system-ui;color:#666">−</span><span style="font:700 14px system-ui;color:#555">23<span style="font:600 9px;color:#999">/31</span></span><span style="width:17px;height:17px;border-radius:4px;background:#fff;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 12px system-ui;color:#666">+</span></div></div>
+      <div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:6px 4px;text-align:center"><div style="font:600 8px ui-monospace,monospace;color:#888">PM</div><div style="display:flex;align-items:center;justify-content:center;gap:5px;margin:3px 0"><span style="width:17px;height:17px;border-radius:4px;background:#fff;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 12px system-ui;color:#666">−</span><span style="font:700 14px system-ui;color:#555">8<span style="font:600 9px;color:#999">/12</span></span><span style="width:17px;height:17px;border-radius:4px;background:#fff;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 12px system-ui;color:#666">+</span></div></div>
+      <div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:6px 4px;text-align:center"><div style="font:600 8px ui-monospace,monospace;color:#888">Defesa</div><div style="margin:3px 0"><span style="font:600 11px system-ui;color:#aaa;text-decoration:line-through">17</span> <span style="font:700 16px system-ui;color:#555">15</span></div><div style="font:7px ui-monospace,monospace;color:#777">↓ efeitos</div></div>
+    </div>
+    <!-- popover de ajuste rápido (estado aberto ao tocar no valor) -->
+    <div style="margin-top:8px;border:1px solid #b8b8b8;border-radius:5px;background:#fff;box-shadow:0 2px 7px rgba(0,0,0,.13);padding:7px 8px;display:flex;align-items:center;gap:7px"><span style="font:600 9px ui-monospace,monospace;color:#888;flex:1">Ajustar PV · −/+ ou digitar</span><span style="width:19px;height:19px;border-radius:4px;background:#f2f2f2;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 13px system-ui;color:#666">−</span><span style="width:46px;height:22px;border:1px solid #b8b8b8;border-radius:3px;display:flex;align-items:center;justify-content:center;font:600 12px system-ui;color:#444">23</span><span style="width:19px;height:19px;border-radius:4px;background:#f2f2f2;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 13px system-ui;color:#666">+</span><span style="font:600 10px system-ui;color:#fff;background:#6f6f6f;border-radius:3px;padding:4px 9px">OK</span></div>
+  </div>
+  <!-- tab bar substitui o empilhamento -->
+  <div style="display:flex;background:#f0f0f0;border-bottom:1px solid #d6d6d6;position:relative;z-index:2">
+    <div style="flex:1;text-align:center;padding:9px 3px;font:600 10px system-ui;color:#444;border-bottom:2px solid #7a7a7a;background:#fff">Atributos</div>
+    <div style="flex:1;text-align:center;padding:9px 3px;font:600 10px system-ui;color:#999;border-bottom:2px solid transparent">Perícias</div>
+    <div style="flex:1;text-align:center;padding:9px 3px;font:600 10px system-ui;color:#999;border-bottom:2px solid transparent">Poderes</div>
+    <div style="flex:1;text-align:center;padding:9px 3px;font:600 10px system-ui;color:#999;border-bottom:2px solid transparent">Invent.</div>
+  </div>
+  <!-- conteúdo da aba ativa (só esta seção rola) -->
+  <div style="padding:12px;background:#f6f6f6;display:flex;flex-direction:column;gap:10px">
+    <div style="font:600 8px ui-monospace,monospace;color:#aaa">ABA ATIVA · Atributos — apenas o conteúdo da aba rola; barra de cima e abas ficam fixas</div>
+    <!-- atributos grid (conteúdo da aba ativa) -->
+    <div style="background:#fff;border:1px solid #b6b6b6;border-radius:3px">
+      <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="color:#b0b0b0;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:600 11px system-ui;color:#555;flex:1">Atributos</span><span style="font:600 8px ui-monospace,monospace;color:#777;background:#ececec;border:1px solid #cfcfcf;padding:1px 5px;border-radius:2px">INPUT</span></div>
+      <div style="padding:9px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+        <div style="border:1px solid #c8c8c8;border-radius:3px;padding:4px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">FOR</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:20px;margin:3px 0"></div><div style="font:600 8px system-ui;color:#666"><span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">+3</span></div></div>
+        <div style="border:1px solid #c8c8c8;border-radius:3px;padding:4px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">DES</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:20px;margin:3px 0"></div><div style="font:600 8px system-ui;color:#666"><span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">+1</span></div></div>
+        <div style="border:1px solid #c8c8c8;border-radius:3px;padding:4px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">CON</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:20px;margin:3px 0"></div><div style="font:600 8px system-ui;color:#666"><span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">+2</span></div></div>
+        <div style="border:1px solid #c8c8c8;border-radius:3px;padding:4px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">INT</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:20px;margin:3px 0"></div><div style="font:600 8px system-ui;color:#666"><span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">+0</span></div></div>
+        <div style="border:1px solid #c8c8c8;border-radius:3px;padding:4px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">SAB</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:20px;margin:3px 0"></div><div style="font:600 8px system-ui;color:#666"><span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">+1</span></div></div>
+        <div style="border:1px solid #c8c8c8;border-radius:3px;padding:4px;text-align:center"><div style="font:600 9px ui-monospace,monospace;color:#888">CAR</div><div style="background:#fff;border:1px solid #bcbcbc;border-radius:2px;height:20px;margin:3px 0"></div><div style="font:600 8px system-ui;color:#666"><span style="background:#dcdcdc;border:1px solid #bcbcbc;border-radius:2px;padding:0 3px">-1</span></div></div>
+      </div>
+    </div>
+    <!-- dock slot -->
+    <div style="height:34px;border:1.5px dashed #c4c4c4;border-radius:4px;background:repeating-linear-gradient(45deg,#fafafa,#fafafa 6px,#f1f1f1 6px,#f1f1f1 12px);display:flex;align-items:center;justify-content:center"><span style="font:600 8px ui-monospace,monospace;color:#b0b0b0;letter-spacing:1px">DOCK · arraste para reordenar abas / painéis</span></div>
+    <!-- bottom-sheet sobre o contexto fixo -->
+    <div style="border:1px dashed #a8a8a8;border-radius:7px 7px 3px 3px;background:#fff;box-shadow:0 -2px 6px rgba(0,0,0,.07);overflow:hidden">
+      <div style="height:4px;width:34px;background:#cfcfcf;border-radius:2px;margin:7px auto 0"></div>
+      <div style="padding:5px 10px 10px">
+        <div style="font:600 9px ui-monospace,monospace;color:#888;margin-bottom:7px">BOTTOM-SHEET · tocar um item/poder sobe o detalhe por cima — o contexto fixo continua atrás, sem empurrar a página</div>
+        <div style="border:1.5px solid #8c8c8c;border-radius:3px;padding:7px;background:#f4f4f4"><div style="display:flex;align-items:center;gap:6px"><span style="font:600 11px system-ui;color:#333;flex:1">Fúria <span style="font:7px ui-monospace,monospace;color:#fff;background:#6f6f6f;border-radius:2px;padding:1px 5px;vertical-align:middle">● ATIVO</span></span><span style="width:30px;height:17px;border-radius:9px;background:#6f6f6f;position:relative;display:inline-block;flex:none"><span style="position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#fff"></span></span></div><div style="margin-top:6px"><span style="font:600 8px ui-monospace,monospace;color:#333;background:#e0e0e0;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">fx · +2 dano / −2 Def</span> <span style="font:600 8px ui-monospace,monospace;color:#777;background:#ececec;border:1px solid #cfcfcf;border-radius:2px;padding:1px 5px">ativável · sem custo</span></div><div style="font:8px ui-monospace,monospace;color:#777;margin-top:5px">ligado → recalcula a ficha ao vivo (ver barra fixa)</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============ SCREEN 2 HEADER ============ -->
+<div data-drags-parent="0" style="position:absolute;left:80px;top:1660px;font:600 16px system-ui;color:rgba(40,40,40,.85)">02 — Visão do mestre / dashboard da mesa</div>
+
+<!-- ===== MESTRE DESKTOP ===== -->
+<div style="position:absolute;left:80px;top:1705px;width:1280px">
+<div data-drags-parent="1" style="position:absolute;top:-22px;font:500 11px system-ui;color:rgba(60,60,60,.7)">Desktop · ~1280px</div>
+<div style="background:#fff;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow:hidden">
+  <div style="display:flex;align-items:center;gap:12px;padding:9px 14px;background:#ececec;border-bottom:1px solid #d6d6d6">
+    <span style="font:600 12px system-ui;color:#555;flex:1">Mesa do Mestre — Campanha “A Tormenta no Norte” · 4 jogadores</span>
+    <span style="font:600 8px ui-monospace,monospace;color:#999">leitura rápida</span>
+  </div>
+  <div style="padding:14px;background:#f6f6f6">
+    <div style="font:600 9px ui-monospace,monospace;color:#aaa;margin-bottom:8px">CARDS COMPACTOS · estado computado de todos os players (PV/PM, perícias-chave, itens/poderes relevantes)</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+      <!-- card -->
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:4px;overflow:hidden">
+        <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="color:#b0b0b0;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:600 11px system-ui;color:#444;flex:1">Thaíde</span><span style="font:8px ui-monospace,monospace;color:#999">Bárbaro 5</span></div>
+        <div style="padding:8px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:24px">PV</span><span style="flex:1;height:9px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:74%;height:9px;background:#7a7a7a"></span></span><span style="font:600 9px system-ui;color:#555;width:38px;text-align:right">23/31</span></div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:24px">PM</span><span style="flex:1;height:9px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:66%;height:9px;background:#9c9c9c"></span></span><span style="font:600 9px system-ui;color:#555;width:38px;text-align:right">8/12</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px"><span style="font:9px system-ui;color:#555;background:#ececec;border:1px solid #d6d6d6;border-radius:10px;padding:1px 7px">Atletismo +9</span><span style="font:9px system-ui;color:#555;background:#ececec;border:1px solid #d6d6d6;border-radius:10px;padding:1px 7px">Percep. +8</span></div>
+          <div style="display:flex;gap:5px"><span style="width:22px;height:22px;border:1px solid #cfcfcf;border-radius:3px;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font:600 8px ui-monospace,monospace;color:#999">pod</span><span style="width:22px;height:22px;border:1px solid #cfcfcf;border-radius:3px;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font:600 8px ui-monospace,monospace;color:#999">itm</span><span style="width:22px;height:22px;border:1px solid #cfcfcf;border-radius:3px;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font:600 8px ui-monospace,monospace;color:#999">itm</span></div>
+        </div>
+      </div>
+      <!-- card 2 -->
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:4px;overflow:hidden">
+        <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="color:#b0b0b0;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:600 11px system-ui;color:#444;flex:1">Lyandra</span><span style="font:8px ui-monospace,monospace;color:#999">Arcana 5</span></div>
+        <div style="padding:8px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:24px">PV</span><span style="flex:1;height:9px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:40%;height:9px;background:#7a7a7a"></span></span><span style="font:600 9px system-ui;color:#555;width:38px;text-align:right">9/22</span></div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:24px">PM</span><span style="flex:1;height:9px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:85%;height:9px;background:#9c9c9c"></span></span><span style="font:600 9px system-ui;color:#555;width:38px;text-align:right">17/20</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px"><span style="font:9px system-ui;color:#555;background:#ececec;border:1px solid #d6d6d6;border-radius:10px;padding:1px 7px">Mística +11</span><span style="font:9px system-ui;color:#555;background:#ececec;border:1px solid #d6d6d6;border-radius:10px;padding:1px 7px">Vontade +9</span></div>
+          <div style="display:flex;gap:5px"><span style="width:22px;height:22px;border:1px solid #cfcfcf;border-radius:3px;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font:600 8px ui-monospace,monospace;color:#999">pod</span><span style="width:22px;height:22px;border:1px solid #cfcfcf;border-radius:3px;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font:600 8px ui-monospace,monospace;color:#999">pod</span><span style="width:22px;height:22px;border:1px solid #cfcfcf;border-radius:3px;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font:600 8px ui-monospace,monospace;color:#999">itm</span></div>
+        </div>
+      </div>
+      <!-- card 3 -->
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:4px;overflow:hidden">
+        <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="color:#b0b0b0;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:600 11px system-ui;color:#444;flex:1">Brom</span><span style="font:8px ui-monospace,monospace;color:#999">Clérigo 4</span></div>
+        <div style="padding:8px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:24px">PV</span><span style="flex:1;height:9px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:90%;height:9px;background:#7a7a7a"></span></span><span style="font:600 9px system-ui;color:#555;width:38px;text-align:right">27/30</span></div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:24px">PM</span><span style="flex:1;height:9px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:55%;height:9px;background:#9c9c9c"></span></span><span style="font:600 9px system-ui;color:#555;width:38px;text-align:right">9/16</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px"><span style="font:9px system-ui;color:#555;background:#ececec;border:1px solid #d6d6d6;border-radius:10px;padding:1px 7px">Cura +10</span><span style="font:9px system-ui;color:#555;background:#ececec;border:1px solid #d6d6d6;border-radius:10px;padding:1px 7px">Relig. +9</span></div>
+          <div style="display:flex;gap:5px"><span style="width:22px;height:22px;border:1px solid #cfcfcf;border-radius:3px;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font:600 8px ui-monospace,monospace;color:#999">pod</span><span style="width:22px;height:22px;border:1px solid #cfcfcf;border-radius:3px;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font:600 8px ui-monospace,monospace;color:#999">itm</span></div>
+        </div>
+      </div>
+      <!-- card 4 -->
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:4px;overflow:hidden">
+        <div style="display:flex;align-items:center;gap:6px;padding:6px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="color:#b0b0b0;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:600 11px system-ui;color:#444;flex:1">Kael</span><span style="font:8px ui-monospace,monospace;color:#999">Ladino 5</span></div>
+        <div style="padding:8px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:24px">PV</span><span style="flex:1;height:9px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:60%;height:9px;background:#7a7a7a"></span></span><span style="font:600 9px system-ui;color:#555;width:38px;text-align:right">15/25</span></div>
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:24px">PM</span><span style="flex:1;height:9px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:30%;height:9px;background:#9c9c9c"></span></span><span style="font:600 9px system-ui;color:#555;width:38px;text-align:right">3/10</span></div>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px"><span style="font:9px system-ui;color:#555;background:#ececec;border:1px solid #d6d6d6;border-radius:10px;padding:1px 7px">Furtiv. +12</span><span style="font:9px system-ui;color:#555;background:#ececec;border:1px solid #d6d6d6;border-radius:10px;padding:1px 7px">Ladin. +11</span></div>
+          <div style="display:flex;gap:5px"><span style="width:22px;height:22px;border:1px solid #cfcfcf;border-radius:3px;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font:600 8px ui-monospace,monospace;color:#999">pod</span><span style="width:22px;height:22px;border:1px solid #cfcfcf;border-radius:3px;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font:600 8px ui-monospace,monospace;color:#999">itm</span><span style="width:22px;height:22px;border:1px solid #cfcfcf;border-radius:3px;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font:600 8px ui-monospace,monospace;color:#999">itm</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- expanded detail = FICHA COMPLETA read-only -->
+    <div style="margin-top:14px;font:600 9px ui-monospace,monospace;color:#aaa;margin-bottom:8px">ESTADO EXPANDIDO · abre a FICHA COMPLETA do player — EDITÁVEL. O mestre muda qualquer campo. Distinção: edição CANÔNICA (↻ muda de verdade e sincroniza pro player) vs INFO DO MESTRE (⦿ oculta do player — só o mestre vê)</div>
+    <div style="background:#fff;border:1.5px solid #8c8c8c;border-radius:4px;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:#e8e8e8;border-bottom:1px solid #cfcfcf"><span style="font:700 13px system-ui;color:#444;flex:1">Thaíde — Humano · Bárbaro 5 · ficha completa</span><span style="font:600 8px ui-monospace,monospace;color:#444;background:#fff;border:1px solid #b8b8b8;border-radius:2px;padding:2px 6px">editável · ↻ sincroniza</span><span style="font:600 8px ui-monospace,monospace;color:#fff;background:#5a5a5a;border-radius:2px;padding:2px 6px">⦿ secreto · só mestre</span><span style="font:13px system-ui;color:#888">▴ recolher</span></div>
+      <div style="padding:12px;display:flex;gap:14px;align-items:flex-start">
+        <!-- COL: Atributos + stats -->
+        <div style="width:300px">
+          <div style="font:600 8px ui-monospace,monospace;color:#aaa;text-transform:uppercase;margin-bottom:6px">Atributos · editáveis</div>
+          <div style="border:1px solid #e2e2e2;border-radius:3px;overflow:hidden;margin-bottom:10px">
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#888;width:30px">FOR</span><span style="font:600 12px system-ui;color:#555;flex:1">18</span><span style="font:600 10px system-ui;color:#666;width:28px">+3</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#888;width:30px">DES</span><span style="font:600 12px system-ui;color:#555;flex:1">13</span><span style="font:600 10px system-ui;color:#666;width:28px">+1</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#888;width:30px">CON</span><span style="font:600 12px system-ui;color:#555;flex:1">15</span><span style="font:600 10px system-ui;color:#666;width:28px">+2</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#888;width:30px">INT</span><span style="font:600 12px system-ui;color:#555;flex:1">10</span><span style="font:600 10px system-ui;color:#666;width:28px">+0</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#888;width:30px">SAB</span><span style="font:600 12px system-ui;color:#555;flex:1">12</span><span style="font:600 10px system-ui;color:#666;width:28px">+1</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px"><span style="font:600 9px ui-monospace,monospace;color:#888;width:30px">CAR</span><span style="font:600 12px system-ui;color:#555;flex:1">8</span><span style="font:600 10px system-ui;color:#666;width:28px">-1</span></div>
+          </div>
+          <div style="font:600 8px ui-monospace,monospace;color:#aaa;text-transform:uppercase;margin-bottom:6px">Stats derivados (CALC)</div>
+          <div style="display:flex;gap:6px"><div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:6px;text-align:center"><div style="font:8px ui-monospace,monospace;color:#888">PV</div><div style="font:700 14px system-ui;color:#555">23/31</div></div><div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:6px;text-align:center"><div style="font:8px ui-monospace,monospace;color:#888">PM</div><div style="font:700 14px system-ui;color:#555">8/12</div></div><div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:6px;text-align:center"><div style="font:8px ui-monospace,monospace;color:#888">Def</div><div style="font:700 14px system-ui;color:#555">17</div></div></div>
+        </div>
+        <!-- COL: Perícias completas -->
+        <div style="flex:1">
+          <div style="font:600 8px ui-monospace,monospace;color:#aaa;text-transform:uppercase;margin-bottom:6px">Perícias · editáveis</div>
+          <div style="border:1px solid #e2e2e2;border-radius:3px;overflow:hidden">
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Atletismo</span><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 6px">+9</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Fortitude</span><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 6px">+8</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Furtividade</span><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 6px">+4</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Intimidação</span><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 6px">+7</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Luta</span><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 6px">+10</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Percepção</span><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 6px">+8</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Reflexos</span><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 6px">+3</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:5px 8px"><span style="flex:1;font:11px system-ui;color:#444">Sobrevivência</span><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 6px">+5</span></div>
+          </div>
+        </div>
+        <!-- COL: Poderes + Inventário completos -->
+        <div style="width:340px">
+          <div style="font:600 8px ui-monospace,monospace;color:#aaa;text-transform:uppercase;margin-bottom:6px">Poderes & magias · todos</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+            <div style="border:1px solid #d2d2d2;border-radius:3px;padding:6px;display:flex;gap:6px;align-items:center"><span style="font:600 10px system-ui;color:#444;flex:1">Fúria</span><span style="font:600 8px ui-monospace,monospace;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">fx · +2 dano / -2 Def</span></div>
+            <div style="border:1px solid #d2d2d2;border-radius:3px;padding:6px;display:flex;gap:6px;align-items:center"><span style="font:600 10px system-ui;color:#444;flex:1">Ímpeto</span><span style="font:600 8px ui-monospace,monospace;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">fx · +3m deslocamento</span></div>
+            <div style="border:1px solid #d2d2d2;border-radius:3px;padding:6px;display:flex;gap:6px;align-items:center"><span style="font:600 10px system-ui;color:#444;flex:1">Curar Ferimentos</span><span style="font:600 8px ui-monospace,monospace;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 5px">fx · cura 2d8 · 1 PM</span></div>
+          </div>
+          <div style="font:600 8px ui-monospace,monospace;color:#aaa;text-transform:uppercase;margin-bottom:6px">Inventário · todo</div>
+          <div style="border:1px solid #e2e2e2;border-radius:3px;overflow:hidden">
+            <div style="display:flex;align-items:center;padding:4px 8px;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:10px system-ui;color:#444">Machado de batalha</span><span style="font:10px system-ui;color:#666">5 kg</span></div>
+            <div style="display:flex;align-items:center;padding:4px 8px;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:10px system-ui;color:#444">Armadura de couro</span><span style="font:10px system-ui;color:#666">4 kg</span></div>
+            <div style="display:flex;align-items:center;padding:4px 8px;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:10px system-ui;color:#444">Ração ×5</span><span style="font:10px system-ui;color:#666">2,5 kg</span></div>
+            <div style="display:flex;align-items:center;padding:4px 8px"><span style="flex:1;font:10px system-ui;color:#444">Corda (15m)</span><span style="font:10px system-ui;color:#666">1 kg</span></div>
+          </div>
+          <div style="margin-top:8px;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:7px"><div style="display:flex;justify-content:space-between;font:600 10px system-ui;color:#555"><span>Carga ∑ 12,5 kg</span><span>Cap. 20 kg</span></div><div style="height:8px;background:#cfcfcf;border-radius:3px;margin-top:5px;overflow:hidden"><div style="width:62%;height:8px;background:#8c8c8c"></div></div></div>
+        </div>
+      </div>
+      <!-- Ações do mestre: canônico vs secreto -->
+      <div style="border-top:1px solid #e2e2e2;background:#fafafa;padding:10px 12px;display:flex;gap:10px;flex-wrap:wrap">
+        <div style="flex:1;min-width:230px;border:1px solid #c4c4c4;border-radius:4px;background:#fff;padding:9px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px"><span style="font:600 9px ui-monospace,monospace;color:#444;flex:1">EDIÇÃO CANÔNICA</span><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#7a7a7a;border-radius:2px;padding:1px 5px">↻ sincroniza pro player</span></div>
+          <div style="display:flex;align-items:center;gap:8px"><span style="font:11px system-ui;color:#444;flex:1">Baixar PV de Thaíde</span><span style="width:22px;height:22px;border-radius:4px;background:#fff;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 13px system-ui;color:#666">−</span><span style="width:50px;height:24px;border:1px solid #b8b8b8;border-radius:3px;display:flex;align-items:center;justify-content:center;font:600 12px system-ui;color:#444">23</span><span style="width:22px;height:22px;border-radius:4px;background:#fff;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 13px system-ui;color:#666">+</span></div>
+          <div style="font:8px ui-monospace,monospace;color:#999;margin-top:7px">muda o valor de verdade · o player vê na ficha dele na hora</div>
+        </div>
+        <div style="flex:1;min-width:230px;border:1px solid #8c8c8c;border-radius:4px;background:#f0f0f0;padding:9px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:8px"><span style="font:600 9px ui-monospace,monospace;color:#333;flex:1">⦿ INFO DO MESTRE · oculta do player</span><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#5a5a5a;border-radius:2px;padding:1px 5px">só mestre · não sincroniza</span></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:7px"><span style="font:600 10px system-ui;color:#444;background:#fff;border:1px solid #b8b8b8;border-radius:3px;padding:5px 10px">＋ Modificador oculto</span></div>
+          <div style="font:8px ui-monospace,monospace;color:#888;margin-bottom:3px">Nota do mestre (o player não vê)</div><div style="background:#fff;border:1px dashed #a8a8a8;border-radius:3px;height:24px"></div>
+        </div>
+      </div>
+  </div>
+</div>
+</div>
+
+<!-- ===== MESTRE MOBILE ===== -->
+<div style="position:absolute;left:1440px;top:1705px;width:390px">
+<div data-drags-parent="1" style="position:absolute;top:-22px;font:500 11px system-ui;color:rgba(60,60,60,.7)">Mobile · ~390px — lista vertical de cards</div>
+<div style="background:#fff;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow:hidden">
+  <div style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:#ececec;border-bottom:1px solid #d6d6d6"><span style="font:600 12px system-ui;color:#555;flex:1">Mesa do Mestre · 4</span></div>
+  <!-- corpo: lista compacta sempre presente + ficha em tela cheia por cima -->
+  <div style="position:relative;height:600px;background:#f6f6f6;overflow:hidden">
+    <!-- lista compacta (atrás, sempre visível) -->
+    <div style="padding:12px;display:flex;flex-direction:column;gap:8px">
+      <div style="font:600 8px ui-monospace,monospace;color:#aaa">LISTA COMPACTA · sempre visível · tocar um player abre a ficha em tela cheia</div>
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:4px;padding:7px 9px"><div style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font:600 11px system-ui;color:#444;flex:1">Lyandra · Arcana 5</span><span style="font:9px system-ui;color:#999">9/22 · 17/20</span></div><div style="display:flex;align-items:center;gap:6px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:20px">PV</span><span style="flex:1;height:7px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:40%;height:7px;background:#7a7a7a"></span></span></div></div>
+      <div style="background:#fff;border:1.5px solid #8c8c8c;border-radius:4px;padding:7px 9px"><div style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font:600 11px system-ui;color:#444;flex:1">Thaíde · Bárbaro 5</span><span style="font:7px ui-monospace,monospace;color:#fff;background:#7a7a7a;border-radius:2px;padding:1px 5px">aberto ↓</span></div><div style="display:flex;align-items:center;gap:6px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:20px">PV</span><span style="flex:1;height:7px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:74%;height:7px;background:#7a7a7a"></span></span></div></div>
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:4px;padding:7px 9px"><div style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font:600 11px system-ui;color:#444;flex:1">Brom · Clérigo 4</span><span style="font:9px system-ui;color:#999">27/30 · 9/16</span></div><div style="display:flex;align-items:center;gap:6px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:20px">PV</span><span style="flex:1;height:7px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:90%;height:7px;background:#7a7a7a"></span></span></div></div>
+      <div style="background:#fff;border:1px solid #b6b6b6;border-radius:4px;padding:7px 9px"><div style="display:flex;align-items:center;gap:6px;margin-bottom:5px"><span style="font:600 11px system-ui;color:#444;flex:1">Kael · Ladino 5</span><span style="font:9px system-ui;color:#999">15/25 · 3/10</span></div><div style="display:flex;align-items:center;gap:6px"><span style="font:600 8px ui-monospace,monospace;color:#888;width:20px">PV</span><span style="flex:1;height:7px;background:#e0e0e0;border-radius:4px;overflow:hidden"><span style="display:block;width:60%;height:7px;background:#7a7a7a"></span></span></div></div>
+    </div>
+    <!-- scrim -->
+    <div style="position:absolute;inset:0;background:rgba(40,40,40,.28)"></div>
+    <!-- ficha em tela cheia deslizando por cima -->
+    <div style="position:absolute;left:0;right:0;top:48px;bottom:0;background:#fff;border-radius:11px 11px 0 0;box-shadow:0 -5px 14px rgba(0,0,0,.22);display:flex;flex-direction:column;overflow:hidden">
+      <div style="height:4px;width:34px;background:#cfcfcf;border-radius:2px;margin:7px auto 5px"></div>
+      <div style="display:flex;align-items:center;gap:8px;padding:5px 10px;border-bottom:1px solid #e2e2e2"><span style="font:600 11px system-ui;color:#555;background:#ececec;border:1px solid #d6d6d6;border-radius:3px;padding:3px 9px">‹ Lista</span><span style="font:700 12px system-ui;color:#444;flex:1">Thaíde · Bárbaro 5</span><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#7a7a7a;border-radius:2px;padding:2px 5px">editável</span></div>
+      <div style="flex:1;overflow:hidden;padding:10px;display:flex;flex-direction:column;gap:9px">
+        <div style="font:600 8px ui-monospace,monospace;color:#aaa">FICHA COMPLETA editável · canônico ↻ sincroniza pro player · ⦿ secreto só mestre · rola dentro da tela cheia</div>
+        <div style="display:flex;gap:7px"><div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:6px;text-align:center"><div style="font:8px ui-monospace,monospace;color:#888">PV</div><div style="font:700 15px system-ui;color:#555">23/31</div></div><div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:6px;text-align:center"><div style="font:8px ui-monospace,monospace;color:#888">PM</div><div style="font:700 15px system-ui;color:#555">8/12</div></div><div style="flex:1;background:#e4e4e4;border:1px dashed #a8a8a8;border-radius:3px;padding:6px;text-align:center"><div style="font:8px ui-monospace,monospace;color:#888">Defesa</div><div style="font:700 15px system-ui;color:#555">17</div></div></div>
+        <div style="background:#fff;border:1px solid #b6b6b6;border-radius:3px">
+          <div style="display:flex;align-items:center;gap:6px;padding:5px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="font:600 10px system-ui;color:#555;flex:1">Atributos</span><span style="font:600 8px ui-monospace,monospace;color:#888">editável</span></div>
+          <div style="padding:3px 8px">
+            <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#888;width:30px">FOR</span><span style="font:600 11px system-ui;color:#555;flex:1">18 <span style="color:#888;font-weight:400">(+3)</span></span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#888;width:30px">DES</span><span style="font:600 11px system-ui;color:#555;flex:1">13 <span style="color:#888;font-weight:400">(+1)</span></span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="font:600 9px ui-monospace,monospace;color:#888;width:30px">CON</span><span style="font:600 11px system-ui;color:#555;flex:1">15 <span style="color:#888;font-weight:400">(+2)</span></span></div>
+          </div>
+        </div>
+        <div style="background:#fff;border:1px solid #b6b6b6;border-radius:3px">
+          <div style="display:flex;align-items:center;gap:6px;padding:5px 8px;background:#f0f0f0;border-bottom:1px solid #dcdcdc"><span style="font:600 10px system-ui;color:#555;flex:1">Perícias</span><span style="font:600 8px ui-monospace,monospace;color:#888">editável</span></div>
+          <div style="padding:3px 8px">
+            <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Atletismo</span><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 6px">+9</span></div>
+            <div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="flex:1;font:11px system-ui;color:#444">Percepção</span><span style="font:600 11px system-ui;color:#555;background:#e4e4e4;border:1px solid #bcbcbc;border-radius:2px;padding:1px 6px">+8</span></div>
+          </div>
+        </div>
+        <div style="border:1px solid #c4c4c4;border-radius:4px;background:#fff;padding:8px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px"><span style="font:600 9px ui-monospace,monospace;color:#444;flex:1">EDIÇÃO CANÔNICA</span><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#7a7a7a;border-radius:2px;padding:1px 5px">↻ sincroniza</span></div>
+          <div style="display:flex;align-items:center;gap:8px"><span style="font:11px system-ui;color:#444;flex:1">Baixar PV</span><span style="width:21px;height:21px;border-radius:4px;background:#f2f2f2;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 13px system-ui;color:#666">−</span><span style="width:46px;height:23px;border:1px solid #b8b8b8;border-radius:3px;display:flex;align-items:center;justify-content:center;font:600 12px system-ui;color:#444">23</span><span style="width:21px;height:21px;border-radius:4px;background:#f2f2f2;border:1px solid #b8b8b8;display:flex;align-items:center;justify-content:center;font:600 13px system-ui;color:#666">+</span></div>
+        </div>
+        <div style="border:1px solid #8c8c8c;border-radius:4px;background:#f0f0f0;padding:8px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:7px"><span style="font:600 9px ui-monospace,monospace;color:#333;flex:1">⦿ INFO DO MESTRE · oculta do player</span><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#5a5a5a;border-radius:2px;padding:1px 5px">só mestre · não sincroniza</span></div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="font:600 10px system-ui;color:#444;background:#fff;border:1px solid #b8b8b8;border-radius:3px;padding:5px 10px">＋ Mod. oculto</span></div>
+          <div style="font:8px ui-monospace,monospace;color:#888;margin-top:6px">nota só-do-mestre · o player não vê</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============ SCREEN 3 HEADER ============ -->
+<div data-drags-parent="0" style="position:absolute;left:80px;top:2740px;font:600 16px system-ui;color:rgba(40,40,40,.85)">03 — Canvas de mapa mental com embed vivo</div>
+
+<!-- ===== MIND MAP DESKTOP ===== -->
+<div style="position:absolute;left:80px;top:2785px;width:1280px">
+<div data-drags-parent="1" style="position:absolute;top:-22px;font:500 11px system-ui;color:rgba(60,60,60,.7)">Desktop · ~1280px</div>
+<div style="background:#fff;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow:hidden">
+  <div style="display:flex;align-items:center;gap:10px;padding:9px 14px;background:#ececec;border-bottom:1px solid #d6d6d6"><span style="font:600 12px system-ui;color:#555;flex:1">Mapa mental — Sessão 7</span><span style="font:600 8px ui-monospace,monospace;color:#999">+ nó · ajustar · 100%</span></div>
+  <div style="position:relative;height:560px;background:#f4f4f4;background-image:radial-gradient(#dcdcdc 1px,transparent 1px);background-size:22px 22px;overflow:hidden">
+    <!-- connector lines -->
+    <svg width="1252" height="560" style="position:absolute;inset:0;pointer-events:none" fill="none">
+      <path d="M180 120 C 330 120, 320 150, 470 150" stroke="#bdbdbd" stroke-width="1.5"></path>
+      <path d="M180 360 C 330 360, 320 220, 470 220" stroke="#bdbdbd" stroke-width="1.5"></path>
+      <path d="M560 380 C 480 380, 660 300, 590 280" stroke="#bdbdbd" stroke-width="1.5"></path>
+      <path d="M760 150 C 850 150, 850 120, 940 120" stroke="#bdbdbd" stroke-width="1.5"></path>
+      <path d="M760 220 C 840 220, 820 360, 900 360" stroke="#bdbdbd" stroke-width="1.5"></path>
+    </svg>
+    <!-- lugar node -->
+    <div style="position:absolute;left:40px;top:80px;width:150px;background:#fff;border:1px solid #b0b0b0;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.06)"><div style="padding:5px 8px;border-bottom:1px solid #e2e2e2;display:flex;gap:5px;align-items:center"><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#9c9c9c;border-radius:2px;padding:1px 4px">LUGAR</span><span style="font:600 10px system-ui;color:#444;flex:1">Taverna do Javali</span></div><div style="padding:7px 8px"><div style="height:6px;background:#e6e6e6;border-radius:2px;margin-bottom:4px;width:85%"></div><div style="height:6px;background:#e6e6e6;border-radius:2px;width:60%"></div></div></div>
+    <!-- npc node -->
+    <div style="position:absolute;left:40px;top:320px;width:150px;background:#fff;border:1px solid #b0b0b0;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.06)"><div style="padding:5px 8px;border-bottom:1px solid #e2e2e2;display:flex;gap:5px;align-items:center"><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#9c9c9c;border-radius:2px;padding:1px 4px">NPC</span><span style="font:600 10px system-ui;color:#444;flex:1">Hetfield, ferreiro</span></div><div style="padding:7px 8px"><div style="height:6px;background:#e6e6e6;border-radius:2px;margin-bottom:4px;width:75%"></div><div style="height:6px;background:#e6e6e6;border-radius:2px;width:50%"></div></div></div>
+    <!-- nota node -->
+    <div style="position:absolute;left:470px;top:360px;width:170px;background:#fff;border:1px solid #b0b0b0;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.06)"><div style="padding:5px 8px;border-bottom:1px solid #e2e2e2;display:flex;gap:5px;align-items:center"><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#9c9c9c;border-radius:2px;padding:1px 4px">NOTA</span><span style="font:600 10px system-ui;color:#444;flex:1">Pista: o anel sumido</span></div><div style="padding:7px 8px"><div style="height:6px;background:#e6e6e6;border-radius:2px;margin-bottom:4px;width:90%"></div><div style="height:6px;background:#e6e6e6;border-radius:2px;width:65%"></div></div></div>
+    <!-- collapsed table node -->
+    <div style="position:absolute;left:900px;top:330px;width:190px;background:#fff;border:1px dashed #9a9a9a;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.06)"><div style="padding:7px 9px;display:flex;gap:6px;align-items:center"><span style="font:12px system-ui;color:#888">▸</span><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#7a7a7a;border-radius:2px;padding:1px 4px">TABELA</span><span style="font:600 10px system-ui;color:#444;flex:1">Encontros aleatórios</span></div><div style="padding:0 9px 7px 9px;font:8px ui-monospace,monospace;color:#aaa">recolhido — só o título</div></div>
+    <!-- masmorra node -->
+    <div style="position:absolute;left:940px;top:80px;width:150px;background:#fff;border:1px solid #b0b0b0;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.06)"><div style="padding:5px 8px;border-bottom:1px solid #e2e2e2;display:flex;gap:5px;align-items:center"><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#9c9c9c;border-radius:2px;padding:1px 4px">LUGAR</span><span style="font:600 10px system-ui;color:#444;flex:1">Masmorra do Norte</span></div><div style="padding:7px 8px"><div style="height:6px;background:#e6e6e6;border-radius:2px;width:70%"></div></div></div>
+    <!-- EXPANDED LIVE TABLE NODE (focus) -->
+    <div style="position:absolute;left:470px;top:90px;width:280px;background:#fff;border:1.5px solid #7a7a7a;border-radius:5px;box-shadow:0 3px 8px rgba(0,0,0,.12)">
+      <div style="padding:7px 9px;background:#e8e8e8;border-bottom:1px solid #cfcfcf;display:flex;gap:6px;align-items:center"><span style="color:#888;font:12px system-ui;letter-spacing:-3px">⋮⋮</span><span style="font:12px system-ui;color:#888">▾</span><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#7a7a7a;border-radius:2px;padding:1px 4px">TABELA</span><span style="font:600 11px system-ui;color:#444;flex:1">Tesouro (d6)</span><span style="font:600 7px ui-monospace,monospace;color:#555;background:#cfcfcf;border-radius:2px;padding:1px 4px">● embed vivo</span></div>
+      <div style="padding:8px 9px">
+        <div style="font:8px ui-monospace,monospace;color:#aaa;margin-bottom:6px">toque numa linha pra marcar que caiu · funciona com dado físico</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#999;width:18px">1</span><span style="flex:1;font:10px system-ui;color:#444">2d6 peças de ouro</span><span style="width:14px;height:14px;border:1px solid #b0b0b0;border-radius:2px;background:#555"></span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#999;width:18px">2</span><span style="flex:1;font:10px system-ui;color:#444">Poção de cura menor</span><span style="width:14px;height:14px;border:1px solid #b0b0b0;border-radius:2px"></span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#999;width:18px">3</span><span style="flex:1;font:10px system-ui;color:#444">Adaga bem-feita</span><span style="width:14px;height:14px;border:1px solid #b0b0b0;border-radius:2px;background:#555"></span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#999;width:18px">4</span><span style="flex:1;font:10px system-ui;color:#444">Pergaminho arcano</span><span style="width:14px;height:14px;border:1px solid #b0b0b0;border-radius:2px"></span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:4px 0;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#999;width:18px">5</span><span style="flex:1;font:10px system-ui;color:#444">Gema (50 PO)</span><span style="width:14px;height:14px;border:1px solid #b0b0b0;border-radius:2px"></span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:4px 0"><span style="font:600 9px ui-monospace,monospace;color:#999;width:18px">6</span><span style="flex:1;font:10px system-ui;color:#444">Mapa do tesouro</span><span style="width:14px;height:14px;border:1px solid #b0b0b0;border-radius:2px"></span></div>
+        <div style="margin-top:6px;font:8px ui-monospace,monospace;color:#777;text-align:center">ação principal: toque numa linha p/ marcar que caiu (dado físico)</div><div style="margin-top:5px;text-align:center;font:600 10px system-ui;color:#777;background:#fff;border:1px solid #b8b8b8;border-radius:3px;padding:6px"><span style="display:inline-block;width:9px;height:9px;border:1px solid #9a9a9a;border-radius:2px;background:#e2e2e2;vertical-align:middle"></span> Rolar na tabela (opcional · o app sorteia)</div>
+      </div>
+    </div>
+    <!-- floating note -->
+    <div style="position:absolute;left:230px;top:430px;width:200px;background:#efefef;border:1px solid #d2d2d2;border-radius:3px;padding:8px;font:9px ui-monospace,monospace;color:#999;transform:rotate(-1deg)">canvas livre · arraste nós · conecte com linhas · o nó-tabela espelha a tabela aleatória ao vivo</div>
+  </div>
+</div>
+</div>
+
+<!-- ===== MIND MAP MOBILE ===== -->
+<div style="position:absolute;left:1440px;top:2785px;width:390px">
+<div data-drags-parent="1" style="position:absolute;top:-22px;font:500 11px system-ui;color:rgba(60,60,60,.7)">Mobile · ~390px</div>
+<div style="background:#fff;border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow:hidden">
+  <div style="display:flex;align-items:center;gap:8px;padding:9px 12px;background:#ececec;border-bottom:1px solid #d6d6d6"><span style="font:600 12px system-ui;color:#555;flex:1">Mapa mental — Sessão 7</span><span style="font:600 8px ui-monospace,monospace;color:#999">pan/zoom</span></div>
+  <!-- mapa inteiro atrás · bottom-sheet por cima (não empurra) -->
+  <div style="position:relative;height:520px;background:#f4f4f4;background-image:radial-gradient(#dcdcdc 1px,transparent 1px);background-size:18px 18px;overflow:hidden">
+    <svg width="390" height="520" style="position:absolute;inset:0;pointer-events:none" fill="none">
+      <path d="M70 66 C 140 66, 120 132, 185 132" stroke="#bdbdbd" stroke-width="1.5"></path>
+      <path d="M185 132 C 260 132, 240 76, 300 76" stroke="#bdbdbd" stroke-width="1.5"></path>
+      <path d="M185 132 C 120 132, 150 216, 80 216" stroke="#bdbdbd" stroke-width="1.5"></path>
+      <path d="M185 132 C 250 150, 240 226, 285 226" stroke="#bdbdbd" stroke-width="1.5"></path>
+    </svg>
+    <div style="position:absolute;left:24px;top:50px;background:#fff;border:1px solid #b0b0b0;border-radius:3px;padding:4px 7px;font:600 9px system-ui;color:#444">Taverna</div>
+    <div style="position:absolute;left:148px;top:118px;background:#fff;border:2px solid #5a5a5a;border-radius:3px;padding:4px 7px;font:600 9px system-ui;color:#333;box-shadow:0 0 0 3px rgba(90,90,90,.18)">Tesouro <span style="font:6px ui-monospace,monospace;color:#5a5a5a">selecionado</span></div>
+    <div style="position:absolute;left:268px;top:62px;background:#fff;border:1px solid #b0b0b0;border-radius:3px;padding:4px 7px;font:600 9px system-ui;color:#444">Masmorra</div>
+    <div style="position:absolute;left:36px;top:204px;background:#fff;border:1px solid #b0b0b0;border-radius:3px;padding:4px 7px;font:600 9px system-ui;color:#444">NPC: Hetfield</div>
+    <div style="position:absolute;left:236px;top:214px;background:#fff;border:1px dashed #9a9a9a;border-radius:3px;padding:4px 7px;font:600 9px system-ui;color:#444">▸ Encontros</div>
+    <div style="position:absolute;left:12px;top:12px;background:rgba(255,255,255,.9);border:1px solid #e0e0e0;border-radius:4px;padding:6px 8px;font:8px ui-monospace,monospace;color:#888;line-height:1.6;max-width:206px"><b style="color:#666">GESTOS</b><br>1 dedo no vazio = pan · pinça = zoom<br>toque no nó = selecionar<br>arraste nó selecionado = mover<br>conectar: nó → “conectar” → destino</div>
+    <div style="position:absolute;right:12px;top:12px;font:600 9px system-ui;color:#444;background:#fff;border:1px solid #b8b8b8;border-radius:14px;padding:5px 10px">auto-organizar</div>
+    <!-- FAB adicionar nó -->
+    <div style="position:absolute;right:14px;top:92px;display:flex;flex-direction:column;align-items:center;gap:3px"><div style="width:46px;height:46px;border-radius:50%;background:#5a5a5a;color:#fff;display:flex;align-items:center;justify-content:center;font:300 28px system-ui;box-shadow:0 2px 6px rgba(0,0,0,.28)">+</div><span style="font:7px ui-monospace,monospace;color:#777;background:rgba(255,255,255,.85);padding:1px 4px;border-radius:3px">novo nó (centro)</span></div>
+    <!-- scrim leve sobre o mapa -->
+    <div style="position:absolute;left:0;right:0;bottom:0;height:300px;background:linear-gradient(rgba(40,40,40,0),rgba(40,40,40,.22))"></div>
+    <!-- bottom-sheet sobre o mapa -->
+    <div style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:13px 13px 0 0;box-shadow:0 -5px 16px rgba(0,0,0,.22);overflow:hidden">
+      <div style="height:4px;width:36px;background:#cfcfcf;border-radius:2px;margin:8px auto 5px"></div>
+      <div style="padding:6px 11px;border-bottom:1px solid #e2e2e2;display:flex;gap:6px;align-items:center"><span style="font:12px system-ui;color:#888">▾</span><span style="font:600 7px ui-monospace,monospace;color:#fff;background:#7a7a7a;border-radius:2px;padding:1px 4px">TABELA</span><span style="font:600 11px system-ui;color:#444;flex:1">Tesouro (d6)</span><span style="font:600 7px ui-monospace,monospace;color:#555;background:#cfcfcf;border-radius:2px;padding:1px 4px">● vivo</span><span style="font:13px system-ui;color:#999">✕</span></div>
+      <div style="padding:8px 11px 12px">
+        <div style="font:8px ui-monospace,monospace;color:#aaa;margin-bottom:5px">mini-tabela interativa · marque o que já caiu — o mapa continua intacto atrás</div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#999;width:16px">1</span><span style="flex:1;font:11px system-ui;color:#444">2d6 peças de ouro</span><span style="width:16px;height:16px;border:1px solid #b0b0b0;border-radius:2px;background:#555"></span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#999;width:16px">2</span><span style="flex:1;font:11px system-ui;color:#444">Poção de cura menor</span><span style="width:16px;height:16px;border:1px solid #b0b0b0;border-radius:2px"></span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px dotted #e2e2e2"><span style="font:600 9px ui-monospace,monospace;color:#999;width:16px">3</span><span style="flex:1;font:11px system-ui;color:#444">Adaga bem-feita</span><span style="width:16px;height:16px;border:1px solid #b0b0b0;border-radius:2px;background:#555"></span></div>
+        <div style="display:flex;align-items:center;gap:8px;padding:5px 0"><span style="font:600 9px ui-monospace,monospace;color:#999;width:16px">4</span><span style="flex:1;font:11px system-ui;color:#444">Pergaminho arcano</span><span style="width:16px;height:16px;border:1px solid #b0b0b0;border-radius:2px"></span></div>
+        <div style="margin-top:7px;font:8px ui-monospace,monospace;color:#777;text-align:center">ação principal: toque na linha p/ marcar que caiu (dado físico)</div><div style="margin-top:5px;text-align:center;font:600 11px system-ui;color:#777;background:#fff;border:1px solid #b8b8b8;border-radius:3px;padding:7px"><span style="display:inline-block;width:9px;height:9px;border:1px solid #9a9a9a;border-radius:2px;background:#e2e2e2;vertical-align:middle"></span> Rolar na tabela (opcional)</div>
+        <div style="margin-top:11px;border-top:1px solid #e2e2e2;padding-top:8px">
+          <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px"><span style="font:600 8px ui-monospace,monospace;color:#888;flex:1;text-transform:uppercase">Conexões deste nó</span><span style="font:7px ui-monospace,monospace;color:#aaa">edite aqui, não puxando a linha</span></div>
+          <div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">Taverna do Javali</span><span style="width:18px;height:18px;border-radius:4px;background:#f0f0f0;border:1px solid #cfcfcf;display:flex;align-items:center;justify-content:center;font:11px system-ui;color:#777">✕</span></div>
+          <div style="display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px dotted #e2e2e2"><span style="flex:1;font:11px system-ui;color:#444">NPC: Hetfield</span><span style="width:18px;height:18px;border-radius:4px;background:#f0f0f0;border:1px solid #cfcfcf;display:flex;align-items:center;justify-content:center;font:11px system-ui;color:#777">✕</span></div>
+          <div style="display:flex;align-items:center;gap:6px;padding:4px 0"><span style="flex:1;font:11px system-ui;color:#444">Masmorra do Norte</span><span style="width:18px;height:18px;border-radius:4px;background:#f0f0f0;border:1px solid #cfcfcf;display:flex;align-items:center;justify-content:center;font:11px system-ui;color:#777">✕</span></div>
+          <div style="margin-top:7px;text-align:center;font:600 10px system-ui;color:#fff;background:#5a5a5a;border-radius:3px;padding:6px">＋ conectar a outro nó · toque no destino</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</x-dc>
+</body>
+</html>
