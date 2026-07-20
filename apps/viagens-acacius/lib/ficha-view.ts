@@ -6,6 +6,7 @@
 
 import type { Entidade, Personagem, EstadoDeSessao } from "@ct/compendio";
 import type { Ficha } from "@ct/motor";
+import { armasEquipadas, resolverAtaque } from "@ct/motor";
 
 const semAcento = (s: string) =>
   s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
@@ -186,6 +187,44 @@ export function identidadeView(p: Personagem, compendio: Entidade[]) {
     nivel: p.classes.reduce((t, c) => t + c.niveis, 0),
     origem: nome("origem", p.origemId),
   };
+}
+
+export interface AtaqueView {
+  nome: string;
+  tipoAtaque: "corpo_a_corpo" | "distancia";
+  pericia: string; // luta / pontaria
+  ataque: number; // bônus total somado ao d20
+  danoFormula: string; // ex.: "1d4+3" (Fúria on → "1d4+6")
+  critico: string;
+  tipoDano: string;
+  substituido: boolean; // arma ágil trocou o atributo do ATAQUE
+}
+
+/**
+ * ATAQUES — "quanto eu tenho ATACANDO com esta arma, AGORA". É aqui que o +3 da Fúria
+ * (contextual, alvo ataque/dano) aterrissa: o resolvedor de ataque avalia os contextuais da
+ * ficha com o contexto da arma, então ligar/desligar a Fúria muda ataque e dano ao vivo.
+ * Nada é recalculado aqui: o motor (resolverAtaque) faz a conta; a view só formata.
+ */
+export function ataquesView(
+  p: Personagem,
+  s: EstadoDeSessao,
+  f: Ficha,
+  compendio: Entidade[],
+): AtaqueView[] {
+  return armasEquipadas(p, compendio).map((id) => {
+    const r = resolverAtaque(id, p, s, f, compendio);
+    return {
+      nome: r.arma.nome,
+      tipoAtaque: r.arma.tipoAtaque,
+      pericia: r.pericia,
+      ataque: r.ataque,
+      danoFormula: r.dano.formula,
+      critico: r.arma.critico,
+      tipoDano: r.arma.tipoDano,
+      substituido: r.substituido,
+    };
+  });
 }
 
 export const capitalizar = maiuscula;

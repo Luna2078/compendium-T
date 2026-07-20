@@ -192,6 +192,18 @@ button.switch { cursor: pointer; -webkit-appearance: none; appearance: none; tra
 button.switch:hover { filter: brightness(.96); }
 button.switch:focus-visible { outline: 2px solid #9a9a9a; outline-offset: 2px; }
 
+/* ── Ataques ───────────────────────────────────────────────────────────────── */
+.ataques { display: flex; flex-direction: column; gap: 10px; }
+.atk { border: 1px solid #d4d4d4; border-radius: 6px; padding: 10px 12px; }
+.atk__topo { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+.atk__nome { font: 600 15px system-ui; color: var(--tinta); }
+.atk__tipo { font: 500 12px system-ui; color: var(--muted2); }
+/* caixas GRANDES, iguais às do Stats derivados (PV/PM/Defesa) */
+.atk__nums { display: flex; gap: 10px; flex-wrap: wrap; }
+.atk__box { flex: 1 1 90px; background: #f4f4f4; border: 1px solid #d4d4d4; border-radius: 6px; padding: 12px; text-align: center; }
+.atk__rot { font: 600 12px system-ui; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+.atk__val { font: 700 24px system-ui; color: var(--tinta2); font-variant-numeric: tabular-nums; margin-top: 6px; }
+
 /* ── Inventário ────────────────────────────────────────────────────────────── */
 .carga { margin-top: 14px; background: #f4f4f4; border: 1px solid #d4d4d4; border-radius: 6px; padding: 12px 14px; }
 .carga__lin { display: flex; justify-content: space-between; font: 500 14px system-ui; color: var(--tinta2); }
@@ -233,8 +245,8 @@ button.switch:focus-visible { outline: 2px solid #9a9a9a; outline-offset: 2px; }
   .abas { display: flex; background: var(--head); border-bottom: 1px solid #d8d8d8; }
   .abas button {
     flex: 1; border: none; background: none; cursor: pointer;
-    padding: 11px 4px; font: 600 13px system-ui; color: var(--muted);
-    border-bottom: 2px solid transparent;
+    padding: 11px 2px; font: 600 12px system-ui; color: var(--muted);
+    border-bottom: 2px solid transparent; white-space: nowrap;
   }
   .abas button[aria-selected="true"] { color: var(--tinta); background: #fff; border-bottom-color: #7a7a7a; }
 

@@ -15,6 +15,7 @@ import type { Entidade, Personagem, EstadoDeSessao } from "@ct/compendio";
 import { calcularFicha, type CondicaoDef } from "@ct/motor";
 import { Paineis, type PainelDef } from "@/components/Paineis";
 import {
+  ataquesView,
   atributosView,
   bandejaEfeitos,
   identidadeView,
@@ -85,6 +86,7 @@ export function FichaInterativa({
   const ident = identidadeView(personagem, entidades);
   const bandeja = bandejaEfeitos(f);
   const atributos = atributosView(personagem, f);
+  const ataques = ataquesView(personagem, sessao, f, entidades);
   const poderes = poderesView(personagem, sessao, entidades);
   const inv = inventarioView(personagem, f, entidades);
   const pctCarga = Math.min(100, Math.round((inv.cargaTotal / inv.capacidade) * 100));
@@ -232,6 +234,39 @@ export function FichaInterativa({
             valor base = editável · final = calculado (base + raça + aumentos). Em T20 o
             valor do atributo já é o modificador.
           </div>
+        </div>
+      ),
+    },
+    {
+      id: "ataques",
+      titulo: "Ataques",
+      coluna: "A",
+      mobileTab: true,
+      selos: ["CALC"],
+      conteudo: (
+        <div style={{ display: "contents" }}>
+          {ataques.length === 0 ? (
+            <div className="nota">nenhuma arma equipada.</div>
+          ) : (
+            <div className="ataques">
+              {ataques.map((a, i) => (
+                <div className="atk" key={i}>
+                  <div className="atk__topo">
+                    <span className="atk__nome">{a.nome}</span>
+                    <span className="atk__tipo">
+                      {a.tipoAtaque === "corpo_a_corpo" ? "corpo a corpo" : "à distância"} · {a.pericia}
+                    </span>
+                  </div>
+                  <div className="atk__nums">
+                    <div className="atk__box"><div className="atk__rot">Ataque</div><div className="atk__val">{fmt(a.ataque)}</div></div>
+                    <div className="atk__box"><div className="atk__rot">Dano</div><div className="atk__val">{a.danoFormula}</div></div>
+                    <div className="atk__box"><div className="atk__rot">Crítico</div><div className="atk__val">{a.critico}</div></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="nota">ataque e dano = calculado · reflete os efeitos ativos (a Fúria entra aqui, ao vivo).</div>
         </div>
       ),
     },
