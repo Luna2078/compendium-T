@@ -1,12 +1,16 @@
 # Compêndio Tormenta 20 — Contexto do Projeto (ler ao iniciar)
 
 > **AO INICIAR QUALQUER SESSÃO:**
-> 1. Leia este arquivo inteiro.
-> 2. Leia `PROGRESSO.md` para o estado atual e a próxima tarefa.
-> 3. Se o usuário disser apenas **"continua"** (ou similar), retome do ponto indicado em
->    `PROGRESSO.md` usando execução por subagentes (Subagent-Driven Development),
->    sem refazer o que já está feito e sem pedir confirmações desnecessárias.
-> 4. Antes de o contexto ser compactado, **atualize `PROGRESSO.md`**.
+> 1. Leia **`docs/METODO.md`** — como trabalhar aqui: disciplinas de prova, modos de falha
+>    conhecidos, arquitetura do motor e o mapa de onde está cada coisa. É o documento que
+>    faz uma sessão nova continuar a linha de raciocínio das anteriores.
+> 2. Leia este arquivo inteiro (visão do produto e decisões fixas).
+> 3. Leia `packages/compendio/dados/PROGRESSO.md` para o estado atual, a próxima tarefa e
+>    as **28 regras de modelagem** (o vocabulário duramente aprendido).
+> 4. Se o usuário disser apenas **"continua"** (ou similar), retome do ponto indicado em
+>    `PROGRESSO.md`, sem refazer o que já está feito e sem pedir confirmações desnecessárias.
+> 5. Antes de o contexto ser compactado, **atualize `PROGRESSO.md`** (estado) e
+>    **`docs/METODO.md`** (se aprendeu um modo de falha ou disciplina nova).
 
 ---
 
@@ -47,10 +51,14 @@ Wiki digital completa do RPG **Tormenta 20**, extraída dos livros em PDF, para 
 
 ## Stack e estrutura
 
-- **Site:** `site/` — Next.js 16 (App Router, React 19), TypeScript, Tailwind CSS v4,
+> ⚠️ **A estrutura mudou para monorepo** (npm workspaces). O que este bloco chama de
+> `site/` hoje é `apps/wiki/`; `data/` é `packages/compendio/dados/`; e o motor de regras
+> vive em `packages/motor/`. Ver `docs/METODO.md` para o mapa atual.
+
+- **Site:** `apps/wiki/` (era `site/`) — Next.js 16 (App Router, React 19), TypeScript, Tailwind CSS v4,
   framer-motion v12, Zod v4. Testes: Vitest + Testing Library (jsdom). Alias `@/*` → raiz de `site/`.
 - **Extração:** `extracao/` — scripts Node/TS sobre o poppler (`pdftotext`/`pdftoppm`/`pdfimages`).
-- **Dados (fonte da verdade):** `data/` — uma pasta por fonte; `data/referencia/` para tooltips;
+- **Dados (fonte da verdade):** `packages/compendio/dados/` (era `data/`) — uma pasta por fonte; `data/referencia/` para tooltips;
   `data/sources.json` = manifesto. Cada registro tem `id`, campos mecânicos e `fonte {livro, pagina}`.
 - **PDFs:** `pdfs/` (8 livros) — **gitignored, NUNCA commitar** (tamanho + direitos autorais).
 
