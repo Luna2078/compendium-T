@@ -155,6 +155,54 @@ Propositor, não autoridade final — tudo é revisado por humano antes de virar
     2º caso → promover à primitiva. (c) **`alvo.nivel_nd`** (efeito escala por ND do alvo — explosao-caleidoscopica):
     lembrete até recorrer, aí CAMPO família `alvo.*`. Não inventar agora; não enterrar.
 
+---
+## 🔬 AUDITORIA DE COBERTURA DO MOTOR (regra 28) — o que ele SABE que não faz
+
+`site/test/motor-cobertura.test.ts` compara, EMPIRICAMENTE, o que o namespace promete com
+o que os resolvedores materializam. Não grepa código (isso seria outro mapa): injeta um
+efeito sintético por alvo/campo/variável, roda o motor e observa se aterrissa.
+**A trava:** todo item precisa estar consumido OU declarado com justificativa. Um item que
+não seja nenhum dos dois FAZ O TESTE FALHAR — é impossível um novo morrer em silêncio.
+
+**Por que existe:** `teste:<atributo>` ficou MORTO por várias camadas (o −2 do Fraco não
+fazia nada), e `circulo_maximo` idem — equipar o robe-do-arquimago QUEBRAVA o motor.
+Nada comparava as duas listas.
+
+### ALVOS — 34 no namespace: 19 consumidos, 15 classificados, 0 mortos
+- **(a) outro resolvedor:** `pv.atual` (pos_dano) · `custo_magia` (resolverConjuracao) ·
+  `ataque.corpo_a_corpo`/`ataque.distancia`/`dano.corpo_a_corpo`/`dano.arremesso`/
+  `dano.disparo`/`critico.margem`/`critico.multiplicador` (resolverAtaque) ·
+  `atacante.pv.atual` (pos_dano_recebido — escreve na ficha do ATACANTE).
+- **(c) adiado por dependência:** `pm.temporario` (rastreador de duração) ·
+  `penalidade_armadura` e `armadura.*` (subsistema de armadura) · `carga.limite`
+  (inventário) · `bonus_cura_magica` (resolvedor de cura) · `resistencia_magia`.
+
+### CAMPOS_CONDICAO — 28: 7 avaliáveis, 21 pendentes (todos com motivo)
+Avaliáveis hoje (contexto de ataque): `arma.id`, `arma.empunhadura`, `arma.proficiencia`,
+`arma.tipoDano`, `arma.tipo_ataque`, `ataque.critico`, `alvo.tipo_de_criatura`.
+Pendentes por dependência conhecida: subsistemas de armadura/escudo/carga; rastreador de
+turno (`acao`, `investida_montada`); posicionamento (`personagem.estado`, `aliado.*`);
+`magia.*` (resolverConjuracao ainda não avalia condições); `ambiente`/`intencao` (estado de
+sessão não modelado); `arma.preferida_divindade` (pendente-de-divindades); `dano.tipo`
+(resolvedor de dano recebido); `personagem.raca` (conhecível, mas não exposto ao avaliador).
+
+### VARIÁVEIS — 20: 12 populadas, 8 de contexto/pendentes
+Populadas: nivel, patamar, atributoChave, atr.*, deslocamento, circulo_maximo,
+contagem.poderes.tormenta. De CONTEXTO (só existem no resolvedor certo): `dano_causado`
+(pos_dano), `magia_circulo` (pos_conjuracao), `pm_gasto` (custo variável). PENDENTES:
+`contagem.poderes.<grupo>` para combate/destino/concedido/magia (só tormenta implementado)
+e `escudo.bonus_defesa` (subsistema de escudo).
+
+28. **AUDITORIA DE COBERTURA É PASSO FIXO.** Contrato e motor divergem em silêncio: o
+    namespace declara uma superfície, o motor materializa outra, e a diferença não dói até
+    alguém depender dela. Ao criar ALVO/CAMPO/VARIÁVEL novo, ligue-o a um passe NA MESMA
+    camada — ou declare a pendência na auditoria. Medir empiricamente (sondar o motor),
+    nunca por leitura do código.
+    ⚠️ A própria sonda pode ter ponto cego: a 1ª versão desta auditoria usou `alvo:"defesa"`
+    para testar campos e deu "28/28 avaliáveis" — falso, porque o resolverAtaque só avalia
+    condições de efeitos que miram ataque/dano. Regra 27 dentro do instrumento de medição.
+
+
 ## Ordem de ataque (fatia vertical: Livro Básico primeiro)
 Dentro do Básico, do mais fácil/direto (mapeia 1:1 nos exemplos-ouro) ao mais delicado:
 1. **`poderes/` (162)** — poderes selecionáveis. Mapeiam direto em `PoderSelecionavel`. ← COMEÇO AQUI

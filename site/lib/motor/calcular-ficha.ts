@@ -172,6 +172,8 @@ interface BlocoEfeitos {
   ativo?: boolean;
   /** A classe/fonte tem ALGUM toggle ligado (para `{quando:"ativo"}` de poderes dependentes). */
   fonteComToggleAtivo?: boolean;
+  /** Atributo-chave DA CLASSE deste bloco, como CÓDIGO (o valor só existe após o passe 2). */
+  atrChaveEscopo?: AtributoCod;
   /**
    * Nível a usar como `nivel` nos `expr` DESTE bloco. Numa habilidade de classe, `nivel`
    * significa NÍVEL NAQUELA CLASSE — não o de personagem. Sem isto, um Bárbaro 3/Ladino 2
@@ -188,6 +190,34 @@ const mec = (e: Entidade | undefined) =>
     string,
     unknown
   >;
+
+/**
+ * Código do atributo-chave de UMA classe. TODA classe tem `mecanica.atributoChave`
+ * (bárbaro = "Força") — não só as conjuradoras. Ler isso apenas de `conjuracao` deixava a
+ * variável `atributoChave` MORTA para não-conjuradores (achado da auditoria de cobertura).
+ * Quando o texto nomeia mais de um ("Força ou Destreza"), o personagem DECLARA a escolha
+ * (`escolhaId: "atributoChave"` ou `"conjuracao.atributoChave"`); o motor não adivinha.
+ */
+function codAtributoChave(
+  classeId: string, p: Personagem, compendio: Entidade[],
+): AtributoCod | undefined {
+  const mc = mec(ent(compendio, "classe", classeId));
+  const nomes = Object.keys(NOME_ATR).filter((n) =>
+    semAcento(String(mc.atributoChave ?? "")).includes(semAcento(n)),
+  );
+  if (nomes.length === 1) return NOME_ATR[nomes[0]];
+  const decl = p.escolhas.find(
+    (e) =>
+      e.fonteTipo === "classe" && e.fonteId === classeId &&
+      (e.escolhaId === "atributoChave" || e.escolhaId === "conjuracao.atributoChave"),
+  );
+  if (!decl) return undefined;
+  const porNome = NOME_ATR[decl.alvoEscolhido];
+  if (porNome) return porNome;
+  return (ATRS as string[]).includes(decl.alvoEscolhido)
+    ? (decl.alvoEscolhido as AtributoCod)
+    : undefined;
+}
 
 /** O jogador escolheu este poder/benefício nomeado, vindo desta fonte? */
 function foiEscolhido(escolhas: EscolhaSalva[], fonteId: string, nome: string): boolean {
@@ -234,6 +264,7 @@ function coletar(
         ativo: toggleId ? s.togglesAtivos.includes(toggleId) : undefined,
         fonteComToggleAtivo: algumToggleAtivo,
         nivelEscopo: niveis,
+        atrChaveEscopo: codAtributoChave(classeId, p, compendio),
       });
     }
     for (const pod of (mec(classe).poderes ?? []) as Array<Record<string, unknown>>) {
@@ -244,6 +275,7 @@ function coletar(
         efeitos: ((pod.efeitos ?? []) as Efeito[]).filter((e) => e && typeof e === "object" && "tipo" in e),
         fonteComToggleAtivo: algumToggleAtivo,
         nivelEscopo: niveis,
+        atrChaveEscopo: codAtributoChave(classeId, p, compendio),
       });
     }
   }
@@ -476,8 +508,20 @@ export function calcularFicha(
     if (cod) atrChaveCod = cod as AtributoCod;
   }
 
+  // Círculo máximo acessível — variável do namespace usada por itens reais
+  // (robe-do-arquimago: "5 + circulo_maximo"). Depende só do nível na classe conjuradora,
+  // conhecido de antemão, então entra no escopo ANTES de qualquer expr ser avaliado.
+  const circuloMaximo = classeConjuradora
+    ? Math.min(5, 1 + Math.floor(classeConjuradora.niveis / 4))
+    : 0;
+
+  const atrChavePrimeira = codAtributoChave(primeiraClasse(p).classeId, p, compendio);
+
   const escopo: Record<string, number> = {
     nivel: nivelPers,
+    circulo_maximo: circuloMaximo,
+    // default: atributo-chave da PRIMEIRA classe; blocos de classe sobrescrevem com o seu.
+    ...(atrChavePrimeira ? { atributoChave: atributos[atrChavePrimeira] } : {}),
     ...(atrChaveCod ? { atributoChave: atributos[atrChaveCod] } : {}),
     patamar: nivelPers <= 4 ? 1 : nivelPers <= 10 ? 2 : nivelPers <= 16 ? 3 : 4,
     deslocamento: Number(mec(raca).deslocamento ?? 9),
@@ -504,13 +548,22 @@ export function calcularFicha(
   };
 
   /** Avalia `valor` (número, {expr} ou {dados}) para número — ou null se não for número. */
-  const numero = (v: unknown, exprFonte: { expr?: string }, nivelBloco?: number): number | null => {
+  const numero = (
+    v: unknown, exprFonte: { expr?: string }, nivelBloco?: number, atrChaveBloco?: AtributoCod,
+  ): number | null => {
     if (typeof v === "number") return v;
     if (v && typeof v === "object" && "expr" in v) {
       const e = String((v as { expr: string }).expr);
       exprFonte.expr = e;
       // `nivel` num efeito de CLASSE é o nível NAQUELA classe (multiclasse).
-      const esc = nivelBloco === undefined ? escopo : { ...escopo, nivel: nivelBloco };
+      const esc =
+        nivelBloco === undefined && atrChaveBloco === undefined
+          ? escopo
+          : {
+              ...escopo,
+              ...(nivelBloco !== undefined ? { nivel: nivelBloco } : {}),
+              ...(atrChaveBloco !== undefined ? { atributoChave: atributos[atrChaveBloco] } : {}),
+            };
       return avaliarExpr(e, esc); // erro de expr propaga: falha barulhenta
     }
     return null; // {dados} não é um número estático
@@ -532,7 +585,7 @@ export function calcularFicha(
       if (sat === false || sat === null) continue;
       if (ef.aplicacao === "contextual" || ef.opcionalPorAtaque) continue;
       const box: { expr?: string } = {};
-      const v = numero(ef.valor, box, b.nivelEscopo);
+      const v = numero(ef.valor, box, b.nivelEscopo, b.atrChaveEscopo);
       if (v === null) continue;
       const cod = String(ef.alvo).slice(4) as AtributoCod;
       if (!ATRS.includes(cod)) continue;
@@ -571,7 +624,7 @@ export function calcularFicha(
       if (sat === false) continue; // toggle desligado — ausência esperada, não buraco
 
       const box: { expr?: string } = {};
-      const v = numero(ef.valor, box, b.nivelEscopo);
+      const v = numero(ef.valor, box, b.nivelEscopo, b.atrChaveEscopo);
       if (v === null) {
         // Valor em DADOS não é número de ficha — mas é payload legítimo de ataque.
         // Vai para contextuais (com a condição preservada) em vez de virar buraco.
@@ -757,7 +810,6 @@ export function calcularFicha(
   const limitePMporMagia = limitePMporMagiaTrilha.reduce((t, i) => t + (i.valor ?? 0), 0);
 
   // Círculo máximo acessível: 1º no 1º nível, +1 a cada 4 níveis (2º no 5º, 3º no 9º…).
-  const circuloMaximo = ehConjurador ? Math.min(5, 1 + Math.floor(classeConjuradora!.niveis / 4)) : 0;
   const tipoDeclarado = semAcento(String((conj as { tipo?: string } | undefined)?.tipo ?? ""));
   const tipoConjurador: "arcano" | "divino" | "ambos" =
     tipoDeclarado.includes("arcan") ? "arcano" : tipoDeclarado.includes("divin") ? "divino" : "ambos";

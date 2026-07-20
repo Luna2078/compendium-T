@@ -33,6 +33,12 @@ export interface DadosDano {
 /** O que se sabe sobre a CRIATURA ATACADA. Sem isto, condições `alvo.*` não resolvem. */
 export interface ContextoAlvo {
   tipoDeCriatura?: string;
+  /**
+   * O ataque foi um acerto CRÍTICO? "sim" | "nao". Quem sabe é o jogador (a rolagem é
+   * física), então é ENTRADA, não cálculo — mesma natureza de `tipoDeCriatura`.
+   * Destrava os encantos "no crítico" (drenante, dilacerante, lancinante, trovejante…).
+   */
+  critico?: "sim" | "nao";
   /** Espaço para `alvo.tamanho`, `alvo.nivel_nd` etc. quando existirem. */
   [k: string]: string | undefined;
 }
@@ -235,6 +241,7 @@ export function resolverAtaque(
     "arma.tipoDano": semAcento(arma.tipoDano),
     "arma.proficiencia": arma.proficiencia,
     "alvo.tipo_de_criatura": alvo.tipoDeCriatura,
+    "ataque.critico": alvo.critico,
   };
 
   /** A condição é satisfeita neste contexto? null = não dá para saber. */
