@@ -1,0 +1,19 @@
+{
+  "id": "korran",
+  "nome": "Korran",
+  "atributosBase": { "for": 3, "des": 2, "con": 2, "int": 0, "sab": 1, "car": 0 },
+  "racaId": "humano",
+  "classes": [
+    { "classeId": "barbaro", "niveis": 3 },
+    { "classeId": "ladino", "niveis": 2 }
+  ],
+  "origemId": "batedor",
+  "divindadeId": null,
+  "escolhas": [
+    { "fonteTipo": "raca", "fonteId": "humano", "escolhaId": "modificadores", "indice": 0, "alvoEscolhido": "for", "opcao": "atributo" },
+    { "fonteTipo": "raca", "fonteId": "humano", "escolhaId": "modificadores", "indice": 1, "alvoEscolhido": "con", "opcao": "atributo" },
+    { "fonteTipo": "raca", "fonteId": "humano", "escolhaId": "modificadores", "indice": 2, "alvoEscolhido": "des", "opcao": "atributo" }
+  ],
+  "equipado": [],
+  "magiasConhecidas": []
+}

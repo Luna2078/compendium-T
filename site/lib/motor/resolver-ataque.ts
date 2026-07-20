@@ -131,8 +131,8 @@ export function resolverAtaque(
   const pericia = tipoAtaque === "corpo_a_corpo" ? "luta" : "pontaria";
 
   const escopo: Record<string, number> = {
-    nivel: p.nivel,
-    patamar: p.nivel <= 4 ? 1 : p.nivel <= 10 ? 2 : p.nivel <= 16 ? 3 : 4,
+    nivel: ficha.nivel,
+    patamar: ficha.nivel <= 4 ? 1 : ficha.nivel <= 10 ? 2 : ficha.nivel <= 16 ? 3 : 4,
     deslocamento: ficha.deslocamento,
     ...Object.fromEntries(
       (Object.keys(ficha.atributos) as AtributoCod[]).map((a) => [`atr.${a}`, ficha.atributos[a]]),
@@ -176,7 +176,7 @@ export function resolverAtaque(
   const substituido = atributoUsado !== atributoOriginal;
 
   trilhaAtaque.push({
-    alvo: "ataque", valor: vp.meioNivel, fonte: `½ nível (${p.nivel})`,
+    alvo: "ataque", valor: vp.meioNivel, fonte: `½ nível (${ficha.nivel})`,
     origem: "regra", estado: "aplicado",
   });
   trilhaAtaque.push({

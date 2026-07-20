@@ -1,4 +1,5 @@
 // Montagem dos pools do gacha — SOMENTE servidor (lê data/gacha + itens via carregarEntidades).
+import { ativacaoComoTexto } from "@/lib/schema";
 import "server-only";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -28,7 +29,8 @@ function statsDeItem(mec: ItemMecanica & ItemMagicoMecanica, magico: boolean): S
   const s: Stat[] = [];
   if (magico) {
     if (mec.tipoItem) s.push({ rotulo: "Tipo", valor: mec.tipoItem });
-    if (mec.ativacao) s.push({ rotulo: "Ativação", valor: mec.ativacao });
+    const ativTexto = ativacaoComoTexto(mec.ativacao);
+    if (ativTexto) s.push({ rotulo: "Ativação", valor: ativTexto });
     if (mec.preco) s.push({ rotulo: "Preço", valor: mec.preco });
     return s;
   }

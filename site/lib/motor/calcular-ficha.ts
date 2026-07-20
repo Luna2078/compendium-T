@@ -18,6 +18,7 @@
 // A soma dos baldes é conferida contra o total coletado (teste de conservação).
 
 import type { Entidade, Personagem, EstadoDeSessao, EscolhaSalva } from "../schema";
+import { nivelDePersonagem, nivelNaClasse, primeiraClasse } from "../schema";
 import { avaliarExpr } from "./expr";
 import { PERICIA_ATRIBUTO, PERICIAS_TODAS, periciasDoAtributo } from "./pericias";
 import { expandirCondicoes, type CondicaoDef } from "../../../data/efeitos";
@@ -94,7 +95,14 @@ export interface ValorPericia {
 export interface Ficha {
   personagemId: string;
   nome: string;
+  /** Nível de PERSONAGEM = soma dos níveis de classe. */
   nivel: number;
+  /** Cada classe e seus níveis, na ordem em que foram tomadas. */
+  classes: Array<{ classeId: string; niveis: number }>;
+  /** Proficiências — SÓ da primeira classe (a nova classe não as concede). */
+  proficiencias: string[];
+  /** O que uma classe adicional teria dado, e a regra negou. Visível, não silencioso. */
+  proficienciasNaoConcedidas: Array<{ classe: string; itens: string[] }>;
   atributos: Record<AtributoCod, number>;
   pv: { max: number; temporario: number; atual: number };
   pm: { max: number; gasto: number; disponivel: number };
@@ -156,6 +164,12 @@ interface BlocoEfeitos {
   ativo?: boolean;
   /** A classe/fonte tem ALGUM toggle ligado (para `{quando:"ativo"}` de poderes dependentes). */
   fonteComToggleAtivo?: boolean;
+  /**
+   * Nível a usar como `nivel` nos `expr` DESTE bloco. Numa habilidade de classe, `nivel`
+   * significa NÍVEL NAQUELA CLASSE — não o de personagem. Sem isto, um Bárbaro 3/Ladino 2
+   * calcularia a Fúria como se fosse bárbaro 5.
+   */
+  nivelEscopo?: number;
 }
 
 const ent = (c: Entidade[], tipo: string, id: string) =>
@@ -191,47 +205,39 @@ function coletar(
       efeitos: (h.efeitos ?? []) as Efeito[],
     });
 
-  // ── CLASSE: habilidades por NÍVEL; poderes só se escolhidos ──
-  const classe = ent(compendio, "classe", p.classeId);
-  const habsClasse = (mec(classe).habilidades ?? []) as Array<Record<string, unknown>>;
-  // Um toggle ligado desta classe habilita os `{quando:"ativo"}` dela.
-  const togglesDaClasse = habsClasse
-    .filter((h) => h.ativacao)
-    .map((h) => `${p.classeId}:${semAcento(String(h.nome))}`);
-  const algumToggleAtivo = togglesDaClasse.some((t) => s.togglesAtivos.includes(t));
+  // ── CLASSES: cada uma pelos SEUS níveis. `nivel` no expr = nível NAQUELA classe. ──
+  for (const { classeId, niveis } of p.classes) {
+    const classe = ent(compendio, "classe", classeId);
+    const habsClasse = (mec(classe).habilidades ?? []) as Array<Record<string, unknown>>;
+    const togglesDaClasse = habsClasse
+      .filter((h) => h.ativacao)
+      .map((h) => `${classeId}:${semAcento(String(h.nome))}`);
+    const algumToggleAtivo = togglesDaClasse.some((t) => s.togglesAtivos.includes(t));
 
-  for (const h of habsClasse) {
-    const nivelMin = typeof h.nivel === "number" ? h.nivel : 1;
-    if (nivelMin > p.nivel) continue; // ainda não tem
-    const toggleId = h.ativacao ? `${p.classeId}:${semAcento(String(h.nome))}` : undefined;
-    blocos.push({
-      rotulo: `${p.classeId} / ${h.nome}`,
-      origem: `classe:${p.classeId}`,
-      efeitos: (h.efeitos ?? []) as Efeito[],
-      toggleId,
-      ativo: toggleId ? s.togglesAtivos.includes(toggleId) : undefined,
-      fonteComToggleAtivo: algumToggleAtivo,
-    });
-  }
-  for (const pod of (mec(classe).poderes ?? []) as Array<Record<string, unknown>>) {
-    if (!foiEscolhido(p.escolhas, p.classeId, String(pod.nome))) continue;
-    blocos.push({
-      rotulo: `${p.classeId} / ${pod.nome} (poder escolhido)`,
-      origem: `classe:${p.classeId}`,
-      efeitos: ((pod.efeitos ?? []) as Efeito[]).filter((e) => e && typeof e === "object" && "tipo" in e),
-      fonteComToggleAtivo: algumToggleAtivo,
-    });
-  }
-
-  // ── ORIGEM: poderes únicos só se escolhidos ──
-  const origem = ent(compendio, "origem", p.origemId);
-  for (const pod of (mec(origem).poderesUnicos ?? []) as Array<Record<string, unknown>>) {
-    if (!foiEscolhido(p.escolhas, p.origemId, String(pod.nome))) continue;
-    blocos.push({
-      rotulo: `${p.origemId} / ${pod.nome}`,
-      origem: `origem:${p.origemId}`,
-      efeitos: (pod.efeitos ?? []) as Efeito[],
-    });
+    for (const h of habsClasse) {
+      const nivelMin = typeof h.nivel === "number" ? h.nivel : 1;
+      if (nivelMin > niveis) continue; // ainda não alcançou NESTA classe
+      const toggleId = h.ativacao ? `${classeId}:${semAcento(String(h.nome))}` : undefined;
+      blocos.push({
+        rotulo: `${classeId} / ${h.nome}`,
+        origem: `classe:${classeId}`,
+        efeitos: (h.efeitos ?? []) as Efeito[],
+        toggleId,
+        ativo: toggleId ? s.togglesAtivos.includes(toggleId) : undefined,
+        fonteComToggleAtivo: algumToggleAtivo,
+        nivelEscopo: niveis,
+      });
+    }
+    for (const pod of (mec(classe).poderes ?? []) as Array<Record<string, unknown>>) {
+      if (!foiEscolhido(p.escolhas, classeId, String(pod.nome))) continue;
+      blocos.push({
+        rotulo: `${classeId} / ${pod.nome} (poder escolhido)`,
+        origem: `classe:${classeId}`,
+        efeitos: ((pod.efeitos ?? []) as Efeito[]).filter((e) => e && typeof e === "object" && "tipo" in e),
+        fonteComToggleAtivo: algumToggleAtivo,
+        nivelEscopo: niveis,
+      });
+    }
   }
 
   // ── PODERES ESCOLHIDOS (entidades `poder` soltas: gerais, da Tormenta, etc.) ──
@@ -340,6 +346,7 @@ export function calcularFicha(
   const lembretes: ItemTrilha[] = [];
   const naoAplicados: ItemTrilha[] = [];
 
+  const nivelPers = nivelDePersonagem(p);
   const tormenta = contarTormenta(p, compendio);
   const { blocos, condicoesAtivas } = coletar(p, s, compendio, condicoes);
 
@@ -423,8 +430,10 @@ export function calcularFicha(
   // atributoChave: o atributo de conjuração da classe. Quando a classe declara mais de um
   // ("Inteligência ou Carisma" do arcanista), a relação Caminho→atributo vive só na PROSA
   // da conjuracao.descricao — então o personagem DECLARA a escolha, e o motor não adivinha.
-  const classeParaAtr = ent(compendio, "classe", p.classeId);
-  const conj = mec(classeParaAtr).conjuracao as { atributoChave?: string } | undefined;
+  const classeConjuradora = p.classes.find((c) => mec(ent(compendio, "classe", c.classeId)).conjuracao);
+  const conj = classeConjuradora
+    ? (mec(ent(compendio, "classe", classeConjuradora.classeId)).conjuracao as { atributoChave?: string; tipo?: string })
+    : undefined;
   const nomesAtr = Object.keys(NOME_ATR).filter((n) =>
     semAcento(String(conj?.atributoChave ?? "")).includes(semAcento(n)),
   );
@@ -432,16 +441,16 @@ export function calcularFicha(
   if (nomesAtr.length === 1) atrChaveCod = NOME_ATR[nomesAtr[0]];
   else if (nomesAtr.length > 1) {
     const decl = p.escolhas.find(
-      (e) => e.fonteTipo === "classe" && e.fonteId === p.classeId && e.escolhaId === "conjuracao.atributoChave",
+      (e) => e.fonteTipo === "classe" && e.fonteId === classeConjuradora?.classeId && e.escolhaId === "conjuracao.atributoChave",
     );
     const cod = decl && (NOME_ATR[decl.alvoEscolhido] ?? (ATRS as string[]).includes(decl.alvoEscolhido) ? (NOME_ATR[decl.alvoEscolhido] ?? decl.alvoEscolhido as AtributoCod) : undefined);
     if (cod) atrChaveCod = cod as AtributoCod;
   }
 
   const escopo: Record<string, number> = {
-    nivel: p.nivel,
+    nivel: nivelPers,
     ...(atrChaveCod ? { atributoChave: atributos[atrChaveCod] } : {}),
-    patamar: p.nivel <= 4 ? 1 : p.nivel <= 10 ? 2 : p.nivel <= 16 ? 3 : 4,
+    patamar: nivelPers <= 4 ? 1 : nivelPers <= 10 ? 2 : nivelPers <= 16 ? 3 : 4,
     deslocamento: Number(mec(raca).deslocamento ?? 9),
     ...Object.fromEntries(ATRS.map((a) => [`atr.${a}`, atributos[a]])),
     // A contagem de ESCALAGEM é a que os exprs leem (Anatomia Insana, Carapaça…).
@@ -466,12 +475,14 @@ export function calcularFicha(
   };
 
   /** Avalia `valor` (número, {expr} ou {dados}) para número — ou null se não for número. */
-  const numero = (v: unknown, exprFonte: { expr?: string }): number | null => {
+  const numero = (v: unknown, exprFonte: { expr?: string }, nivelBloco?: number): number | null => {
     if (typeof v === "number") return v;
     if (v && typeof v === "object" && "expr" in v) {
       const e = String((v as { expr: string }).expr);
       exprFonte.expr = e;
-      return avaliarExpr(e, escopo); // erro de expr propaga: falha barulhenta
+      // `nivel` num efeito de CLASSE é o nível NAQUELA classe (multiclasse).
+      const esc = nivelBloco === undefined ? escopo : { ...escopo, nivel: nivelBloco };
+      return avaliarExpr(e, esc); // erro de expr propaga: falha barulhenta
     }
     return null; // {dados} não é um número estático
   };
@@ -504,7 +515,7 @@ export function calcularFicha(
       if (sat === false) continue; // toggle desligado — ausência esperada, não buraco
 
       const box: { expr?: string } = {};
-      const v = numero(ef.valor, box);
+      const v = numero(ef.valor, box, b.nivelEscopo);
       if (v === null) {
         // Valor em DADOS não é número de ficha — mas é payload legítimo de ataque.
         // Vai para contextuais (com a condição preservada) em vez de virar buraco.
@@ -559,26 +570,41 @@ export function calcularFicha(
   }
 
   // ── PASSE 3: derivados ─────────────────────────────────────────────────────
-  const classe = ent(compendio, "classe", p.classeId);
-  const mc = mec(classe);
-  const pvInicial = Number(mc.pvInicial ?? 0);
-  const pvPorNivel = Number(mc.pvPorNivel ?? 0);
-  const pmPorNivel = Number(mc.pmPorNivel ?? 0);
-
-  // PV usa o ATRIBUTO RESOLVIDO (não CON hardcoded) — é o que fará Dom da Esperança
-  // (que troca CON por CAR) funcionar sem tocar nesta conta.
+  // MULTICLASSE (prosa de evolucao-de-personagem):
+  //   PV  — "Quando você ganha o primeiro nível em uma NOVA classe, ganha os PV de um
+  //         nível SUBSEQUENTE, não do primeiro." Só a PRIMEIRA classe dá pvInicial.
+  //   PM  — "Some os PM fornecidos por cada classe."
+  //   Perícias & Proficiências — "Quando você ganha o primeiro nível em uma nova classe,
+  //         NÃO ganha as perícias treinadas ou proficiências da nova classe." Só a primeira.
   const atrPV: AtributoCod = "con";
-  const pvBase = pvInicial + atributos[atrPV] + (p.nivel - 1) * (pvPorNivel + atributos[atrPV]);
+  const prim = primeiraClasse(p);
+  const mPrim = mec(ent(compendio, "classe", prim.classeId));
+
+  // 1º nível da PRIMEIRA classe: PV-base cheio.
+  const pvPrimeiroNivel = Number(mPrim.pvInicial ?? 0) + atributos[atrPV];
   trilha.push({
-    alvo: "pv.max", valor: pvInicial + atributos[atrPV], fonte: `${p.classeId} (1º nível: ${pvInicial} + ${atrPV.toUpperCase()})`,
-    origem: `classe:${p.classeId}`, estado: "aplicado",
+    alvo: "pv.max", valor: pvPrimeiroNivel,
+    fonte: `${prim.classeId} — 1º nível (base ${mPrim.pvInicial} + ${atrPV.toUpperCase()})`,
+    origem: `classe:${prim.classeId}`, estado: "aplicado",
   });
-  if (p.nivel > 1)
+  let pvBase = pvPrimeiroNivel;
+  // Todos os DEMAIS níveis (mesma classe ou outra): pvPorNivel DAQUELA classe.
+  for (const [i, c] of p.classes.entries()) {
+    const mc2 = mec(ent(compendio, "classe", c.classeId));
+    const niveisSubsequentes = i === 0 ? c.niveis - 1 : c.niveis;
+    if (niveisSubsequentes <= 0) continue;
+    const porNivel = Number(mc2.pvPorNivel ?? 0) + atributos[atrPV];
+    const total = niveisSubsequentes * porNivel;
+    pvBase += total;
     trilha.push({
-      alvo: "pv.max", valor: (p.nivel - 1) * (pvPorNivel + atributos[atrPV]),
-      fonte: `${p.classeId} (níveis 2–${p.nivel}: ${p.nivel - 1} × [${pvPorNivel} + ${atrPV.toUpperCase()}])`,
-      origem: `classe:${p.classeId}`, estado: "aplicado",
+      alvo: "pv.max", valor: total,
+      fonte:
+        `${c.classeId} — ${niveisSubsequentes} nível(is) subsequente(s)` +
+        ` (${niveisSubsequentes} × [${mc2.pvPorNivel} + ${atrPV.toUpperCase()}])` +
+        (i > 0 ? " — classe adicional: NÃO recebe PV-base" : ""),
+      origem: `classe:${c.classeId}`, estado: "aplicado",
     });
+  }
   const pvExtra = somaAlvo("pv.max");
   registrar("pv.max");
   const pvMax = pvBase + pvExtra;
@@ -586,20 +612,31 @@ export function calcularFicha(
   const pvTemporario = somaAlvo("pv.temporario");
   registrar("pv.temporario");
 
-  const pmBase = pmPorNivel * p.nivel;
-  trilha.push({
-    alvo: "pm.max", valor: pmBase, fonte: `${p.classeId} (${pmPorNivel} × nível ${p.nivel})`,
-    origem: `classe:${p.classeId}`, estado: "aplicado",
-  });
+  // PM: soma o que CADA classe fornece pelos seus próprios níveis.
+  let pmBase = 0;
+  for (const c of p.classes) {
+    const mc2 = mec(ent(compendio, "classe", c.classeId));
+    const t = Number(mc2.pmPorNivel ?? 0) * c.niveis;
+    pmBase += t;
+    trilha.push({
+      alvo: "pm.max", valor: t,
+      fonte: `${c.classeId} (${mc2.pmPorNivel} × ${c.niveis} nível(is))`,
+      origem: `classe:${c.classeId}`, estado: "aplicado",
+    });
+  }
   const pmMax = pmBase + somaAlvo("pm.max");
   registrar("pm.max");
 
-  trilha.push({
-    alvo: "defesa", valor: 10, fonte: "regra base (10)", origem: "regra", estado: "aplicado",
-  });
-  trilha.push({
-    alvo: "defesa", valor: atributos.des, fonte: "Destreza", origem: "atributo", estado: "aplicado",
-  });
+  // Proficiências: SÓ da primeira classe (a nova classe não as concede).
+  const proficiencias = ((mPrim.proficiencias ?? []) as string[]).map(String);
+  const proficienciasNaoConcedidas: Array<{ classe: string; itens: string[] }> = [];
+  for (const c of p.classes.slice(1)) {
+    const itens = ((mec(ent(compendio, "classe", c.classeId)).proficiencias ?? []) as string[]).map(String);
+    if (itens.length) proficienciasNaoConcedidas.push({ classe: c.classeId, itens });
+  }
+
+  trilha.push({ alvo: "defesa", valor: 10, fonte: "regra base (10)", origem: "regra", estado: "aplicado" });
+  trilha.push({ alvo: "defesa", valor: atributos.des, fonte: "Destreza", origem: "atributo", estado: "aplicado" });
   const defesa = 10 + atributos.des + somaAlvo("defesa");
   registrar("defesa");
 
@@ -610,7 +647,6 @@ export function calcularFicha(
   });
   let deslocamento = deslocBase + somaAlvo("deslocamento");
   registrar("deslocamento");
-  // operações não-somar (Lento = metade, Imóvel = 0)
   for (const a of aplicaveis.filter((x) => x.ef.alvo === "deslocamento" && x.ef.operacao)) {
     if (a.ef.operacao === "multiplicar") deslocamento = Math.floor(deslocamento * a.valor);
     if (a.ef.operacao === "definir") deslocamento = a.valor;
@@ -648,8 +684,9 @@ export function calcularFicha(
   const ehConjurador = !!conj;
   if (ehConjurador)
     limitePMporMagiaTrilha.push({
-      alvo: "limite_pm_por_magia", valor: p.nivel,
-      fonte: `nível de ${p.classeId} (${p.nivel})`, origem: `classe:${p.classeId}`, estado: "aplicado",
+      alvo: "limite_pm_por_magia", valor: classeConjuradora!.niveis,
+      fonte: `nível de ${classeConjuradora!.classeId} (${classeConjuradora!.niveis})`,
+      origem: `classe:${classeConjuradora!.classeId}`, estado: "aplicado",
     });
   for (const a of aplicaveis.filter((x) => x.ef.alvo === "limite_pm_por_magia")) {
     limitePMporMagiaTrilha.push({
@@ -661,15 +698,15 @@ export function calcularFicha(
   const limitePMporMagia = limitePMporMagiaTrilha.reduce((t, i) => t + (i.valor ?? 0), 0);
 
   // Círculo máximo acessível: 1º no 1º nível, +1 a cada 4 níveis (2º no 5º, 3º no 9º…).
-  const circuloMaximo = ehConjurador ? Math.min(5, 1 + Math.floor(p.nivel / 4)) : 0;
+  const circuloMaximo = ehConjurador ? Math.min(5, 1 + Math.floor(classeConjuradora!.niveis / 4)) : 0;
   const tipoDeclarado = semAcento(String((conj as { tipo?: string } | undefined)?.tipo ?? ""));
   const tipoConjurador: "arcano" | "divino" | "ambos" =
     tipoDeclarado.includes("arcan") ? "arcano" : tipoDeclarado.includes("divin") ? "divino" : "ambos";
 
   // ── PASSE 4: perícias ──────────────────────────────────────────────────────
   // Valor = meio nível (arredondado p/ baixo) + atributo-chave + treino (+2/+4/+6).
-  const meioNivel = Math.floor(p.nivel / 2);
-  const bonusTreino = p.nivel >= 15 ? 6 : p.nivel >= 7 ? 4 : 2;
+  const meioNivel = Math.floor(nivelPers / 2);
+  const bonusTreino = nivelPers >= 15 ? 6 : nivelPers >= 7 ? 4 : 2;
 
   // Treinos: vêm das ESCOLHAS SALVAS (resolvidas por procedência) + fixas da classe.
   const treinadas = new Set<string>();
@@ -678,9 +715,9 @@ export function calcularFicha(
     const limpo = semAcento(rotulo).replace(/\s*\(.*\)\s*/g, "").trim().replace(/\s+/g, "-");
     return PERICIAS_TODAS.find((x) => x === limpo);
   };
-  for (const fixa of (mc.pericias as { fixas?: string[] } | undefined)?.fixas ?? []) {
+  for (const fixa of (mPrim.pericias as { fixas?: string[] } | undefined)?.fixas ?? []) {
     const id = idPericia(fixa);
-    if (id) { treinadas.add(id); fonteTreino.set(id, `${p.classeId} (fixa)`); }
+    if (id) { treinadas.add(id); fonteTreino.set(id, `${prim.classeId} (fixa — só a 1ª classe concede)`); }
   }
   for (const e of p.escolhas) {
     if (e.opcao !== "treinar_pericia") continue;
@@ -759,7 +796,9 @@ export function calcularFicha(
 
   const pvAtual = s.pvAtual ?? pvMax;
   return {
-    personagemId: p.id, nome: p.nome, nivel: p.nivel,
+    personagemId: p.id, nome: p.nome, nivel: nivelPers,
+    classes: p.classes.map((c) => ({ ...c })),
+    proficiencias, proficienciasNaoConcedidas,
     atributos,
     pv: { max: pvMax, temporario: pvTemporario, atual: pvAtual },
     pm: { max: pmMax, gasto: s.pmGasto, disponivel: pmMax - s.pmGasto },

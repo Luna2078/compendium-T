@@ -1,7 +1,6 @@
 {
   "id": "nyra",
   "nome": "Nyra",
-  "nivel": 5,
   "atributosBase": {
     "for": -1,
     "des": 2,
@@ -11,7 +10,12 @@
     "car": 0
   },
   "racaId": "humano",
-  "classeId": "arcanista",
+  "classes": [
+    {
+      "classeId": "arcanista",
+      "niveis": 5
+    }
+  ],
   "origemId": "acolito",
   "divindadeId": null,
   "escolhas": [

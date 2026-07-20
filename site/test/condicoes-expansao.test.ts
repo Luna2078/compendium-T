@@ -52,15 +52,15 @@ describe("expandirCondicoes — fecho transitivo (PASSE −1 da calcularFicha)",
 
   it("ANTI-CICLO: ciclo mútuo A↔B termina (não estoura a pilha)", () => {
     const ciclico: CondicaoDef[] = [
-      { id: "a", nome: "A", efeitos: [{ tipo: "capacidade", chave: "aplica_condicao", valor: "b", aplicacao: "automatica" }] },
-      { id: "b", nome: "B", efeitos: [{ tipo: "capacidade", chave: "aplica_condicao", valor: "a", aplicacao: "automatica" }] },
+      { id: "a", nome: "A", efeitos: [{ tipo: "capacidade", chave: "aplica_condicao", valor: "b" as unknown as never, aplicacao: "automatica" }] },
+      { id: "b", nome: "B", efeitos: [{ tipo: "capacidade", chave: "aplica_condicao", valor: "a" as unknown as never, aplicacao: "automatica" }] },
     ];
     expect(ids(expandirCondicoes(["a"], ciclico))).toEqual(["a", "b"]);
   });
 
   it("ANTI-CICLO: autorreferência A→A termina", () => {
     const auto: CondicaoDef[] = [
-      { id: "a", nome: "A", efeitos: [{ tipo: "capacidade", chave: "aplica_condicao", valor: "a", aplicacao: "automatica" }] },
+      { id: "a", nome: "A", efeitos: [{ tipo: "capacidade", chave: "aplica_condicao", valor: "a" as unknown as never, aplicacao: "automatica" }] },
     ];
     expect(ids(expandirCondicoes(["a"], auto))).toEqual(["a"]);
   });
@@ -81,7 +81,7 @@ describe("expandirCondicoes — fecho transitivo (PASSE −1 da calcularFicha)",
 });
 
 describe("efeitosDeCondicoes — o que a calcularFicha processa", () => {
-  const bonus = (l: { efeito: Efeito }[]) => l.filter((x) => x.efeito.tipo === "bonus");
+  const bonus = (l: Array<{ efeito: Efeito; origem: string; via: string[] }>) => l.filter((x) => x.efeito.tipo === "bonus");
 
   it("Atordoado ENTREGA o −5 de Defesa herdado de Desprevenido, com procedência", () => {
     const achado = bonus(efeitosDeCondicoes(["atordoado"], CATALOGO)).find(
@@ -116,6 +116,6 @@ describe("efeitosDeCondicoes — o que a calcularFicha processa", () => {
       (x) => x.efeito.tipo === "capacidade" && x.efeito.chave.startsWith("escala_para_"),
     );
     expect(escalas.length).toBeGreaterThan(0);
-    for (const e of escalas) expect(e.efeito.aplicacao).toBe("lembrete");
+    for (const e of escalas) expect((e.efeito as { aplicacao: string }).aplicacao).toBe("lembrete");
   });
 });

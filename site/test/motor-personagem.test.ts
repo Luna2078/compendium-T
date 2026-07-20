@@ -41,9 +41,17 @@ describe("SCHEMA DE PERSONAGEM — o Thaíde existe e é tipado", () => {
       expect(p, `"${efemero}" é estado de sessão, não construção`).not.toHaveProperty(efemero);
   });
 
-  it("rejeita personagem inválido (nível fora da faixa, atributo faltando)", () => {
-    expect(() => PersonagemSchema.parse({ ...bruto, nivel: 0 })).toThrow();
-    expect(() => PersonagemSchema.parse({ ...bruto, nivel: 21 })).toThrow();
+  it("rejeita personagem inválido (classes/níveis fora da faixa, atributo faltando)", () => {
+    // `nivel` não existe mais no schema — é DERIVADO da soma das classes.
+    expect(PersonagemSchema.parse(bruto)).not.toHaveProperty("nivel");
+    expect(() => PersonagemSchema.parse({ ...bruto, classes: [] })).toThrow(); // precisa de ≥1
+    expect(() =>
+      PersonagemSchema.parse({ ...bruto, classes: [{ classeId: "barbaro", niveis: 0 }] }),
+    ).toThrow();
+    expect(() =>
+      PersonagemSchema.parse({ ...bruto, classes: [{ classeId: "barbaro", niveis: 21 }] }),
+    ).toThrow();
+    expect(() => PersonagemSchema.parse({ ...bruto, classes: [{ niveis: 3 }] })).toThrow();
     const semCon = { ...bruto.atributosBase } as Record<string, number>;
     delete semCon.con;
     expect(() => PersonagemSchema.parse({ ...bruto, atributosBase: semCon })).toThrow();
@@ -94,7 +102,7 @@ describe("PROCEDÊNCIA — as escolhas do Thaíde apontam para fontes REAIS", ()
   it("os ids de raça/classe/origem existem no compêndio", () => {
     for (const [tipo, id] of [
       ["raca", p.racaId],
-      ["classe", p.classeId],
+      ["classe", p.classes[0].classeId],
       ["origem", p.origemId],
     ] as const)
       expect(
@@ -161,7 +169,7 @@ describe("PROCEDÊNCIA — as escolhas do Thaíde apontam para fontes REAIS", ()
     // convenção: "<classeId>:<slug da habilidade>"
     const sessao = EstadoDeSessaoSchema.parse(brutoSessao);
     const [classeId, slug] = sessao.togglesAtivos[0].split(":");
-    expect(classeId).toBe(p.classeId);
+    expect(classeId).toBe(p.classes[0].classeId);
     const classe = compendio.find((e) => e.tipo === "classe" && e.id === classeId)!;
     const habs = (classe.mecanica as { habilidades: Array<{ nome: string; ativacao?: unknown }> })
       .habilidades;

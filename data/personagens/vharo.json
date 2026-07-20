@@ -1,8 +1,6 @@
 {
   "id": "vharo",
   "nome": "Vharo",
-  "nivel": 5,
-
   "atributosBase": {
     "for": 2,
     "des": 1,
@@ -11,12 +9,15 @@
     "sab": 1,
     "car": 0
   },
-
   "racaId": "lefou",
-  "classeId": "barbaro",
+  "classes": [
+    {
+      "classeId": "barbaro",
+      "niveis": 5
+    }
+  ],
   "origemId": "escravo",
   "divindadeId": null,
-
   "escolhas": [
     {
       "fonteTipo": "raca",
@@ -42,7 +43,6 @@
       "alvoEscolhido": "des",
       "opcao": "atributo"
     },
-
     {
       "fonteTipo": "raca",
       "fonteId": "lefou",
@@ -57,7 +57,6 @@
       "alvoEscolhido": "carapaca",
       "opcao": "poder"
     },
-
     {
       "fonteTipo": "classe",
       "fonteId": "barbaro",
@@ -66,7 +65,6 @@
       "alvoEscolhido": "anatomia-insana",
       "opcao": "poder"
     },
-
     {
       "fonteTipo": "origem",
       "fonteId": "escravo",
@@ -92,6 +90,5 @@
       "opcao": "poder"
     }
   ],
-
   "equipado": []
 }

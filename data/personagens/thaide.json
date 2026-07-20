@@ -1,7 +1,6 @@
 {
   "id": "thaide",
   "nome": "Thaíde",
-  "nivel": 5,
   "atributosBase": {
     "for": 3,
     "des": 1,
@@ -11,7 +10,12 @@
     "car": -1
   },
   "racaId": "goblin",
-  "classeId": "barbaro",
+  "classes": [
+    {
+      "classeId": "barbaro",
+      "niveis": 5
+    }
+  ],
   "origemId": "escravo",
   "divindadeId": null,
   "escolhas": [

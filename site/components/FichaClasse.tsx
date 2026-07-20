@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { ehEfeitoDeExibicao } from "@/lib/schema";
 import type { Entidade, ClasseMecanica, ProgressaoNivel, EfeitoPoder, VarianteClasseMecanica } from "@/lib/schema";
 import { type Registro } from "@/lib/autolink";
 import { TextoRico } from "./TextoRico";
@@ -282,10 +283,10 @@ export function FichaClasse({ entidade, registro, descricoes, poderesExtras = []
                     <div style={{ color: "var(--carmesim)", fontWeight: 800, fontSize: 15 }}>{p.nome}{p.custo ? ` — ${p.custo}` : ""}</div>
                     <div style={{ marginTop: 2 }}><TextoRico texto={p.descricao} registro={registro} descricoes={descricoes} /></div>
                     {p.prerequisito && <PreRequisito texto={p.prerequisito} />}
-                    {p.efeitos && p.efeitos.length > 0 && (
+                    {p.efeitos && p.efeitos.filter(ehEfeitoDeExibicao).length > 0 && (
                       <>
-                        <TabelaEfeitos titulo="Efeitos que aumentam o custo" efeitos={p.efeitos.filter((e) => !e.custo.trim().startsWith("–") && !e.custo.trim().startsWith("-"))} registro={registro} descricoes={descricoes} />
-                        <TabelaEfeitos titulo="Efeitos que reduzem o custo" efeitos={p.efeitos.filter((e) => e.custo.trim().startsWith("–") || e.custo.trim().startsWith("-"))} registro={registro} descricoes={descricoes} />
+                        <TabelaEfeitos titulo="Efeitos que aumentam o custo" efeitos={p.efeitos.filter(ehEfeitoDeExibicao).filter((e) => !e.custo.trim().startsWith("–") && !e.custo.trim().startsWith("-"))} registro={registro} descricoes={descricoes} />
+                        <TabelaEfeitos titulo="Efeitos que reduzem o custo" efeitos={p.efeitos.filter(ehEfeitoDeExibicao).filter((e) => e.custo.trim().startsWith("–") || e.custo.trim().startsWith("-"))} registro={registro} descricoes={descricoes} />
                       </>
                     )}
                     {(qAposPoder[i] ?? []).map((q, k) => renderQuadro(q, `qp-${i}-${k}`, true))}

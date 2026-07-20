@@ -107,6 +107,17 @@ export type EfeitoPoder = z.infer<typeof EfeitoPoderSchema>;
 
 export const EfeitoPoderOuMecanicoSchema = z.union([EfeitoPoderSchema, EfeitoMecanicoSchema]);
 
+/**
+ * Narrowing da união: separa a forma de EXIBIÇÃO (tabela: nome/custo/descrição) da
+ * MECÂNICA (tipo/alvo/valor). A UI só renderiza a primeira; o motor só consome a segunda.
+ */
+export const ehEfeitoDeExibicao = (e: unknown): e is EfeitoPoder =>
+  !!e && typeof e === "object" && "custo" in e && "nome" in e;
+
+/** `ativacao` só é TEXTO na forma legada; na estruturada é objeto (dado de motor, não de tela). */
+export const ativacaoComoTexto = (a: unknown): string | undefined =>
+  typeof a === "string" ? a : undefined;
+
 export const PoderClasseSchema = z.object({
   nome: z.string(),
   descricao: z.string(),
@@ -645,10 +656,19 @@ export const EscolhaSalvaSchema = z.object({
 });
 export type EscolhaSalva = z.infer<typeof EscolhaSalvaSchema>;
 
+/**
+ * Um nível numa classe. A ORDEM do array importa: o primeiro é a PRIMEIRA CLASSE, a
+ * única que dá PV-base cheio, perícias treinadas e proficiências.
+ */
+export const NivelDeClasseSchema = z.object({
+  classeId: z.string(),
+  niveis: z.number().int().min(1).max(20),
+});
+export type NivelDeClasse = z.infer<typeof NivelDeClasseSchema>;
+
 export const PersonagemSchema = z.object({
   id: z.string(),
   nome: z.string(),
-  nivel: z.number().int().min(1).max(20),
 
   /**
    * Atributos do point-buy, ANTES dos modificadores raciais. Guardamos a decisão do
@@ -658,7 +678,13 @@ export const PersonagemSchema = z.object({
 
   // ── identidade: ids que referenciam o compêndio ──
   racaId: z.string(),
-  classeId: z.string(),
+  /**
+   * Classes NA ORDEM em que foram tomadas. Uma só = personagem de classe única.
+   * O nível de PERSONAGEM é a soma (regra: "seu nível de personagem é a soma dos níveis
+   * de todas as suas classes") — por isso é DERIVADO, não armazenado: guardar os dois
+   * abriria espaço para divergirem.
+   */
+  classes: z.array(NivelDeClasseSchema).min(1),
   origemId: z.string(),
   /**
    * ESTADO DE FICHA, não campo de condição. Foi a conclusão do aura-divina: o motor
@@ -674,6 +700,17 @@ export const PersonagemSchema = z.object({
   magiasConhecidas: z.array(z.string()).default([]),
 });
 export type Personagem = z.infer<typeof PersonagemSchema>;
+
+/** Nível de PERSONAGEM = soma dos níveis de classe. Derivado, nunca armazenado. */
+export const nivelDePersonagem = (p: Personagem): number =>
+  p.classes.reduce((t, c) => t + c.niveis, 0);
+
+/** Nível NAQUELA classe (0 se o personagem não tem níveis nela). */
+export const nivelNaClasse = (p: Personagem, classeId: string): number =>
+  p.classes.find((c) => c.classeId === classeId)?.niveis ?? 0;
+
+/** A PRIMEIRA classe — a única que dá PV-base, perícias treinadas e proficiências. */
+export const primeiraClasse = (p: Personagem): NivelDeClasse => p.classes[0];
 
 /**
  * ESTADO DE SESSÃO — o efêmero, separado da construção por CICLO DE VIDA.

@@ -1,4 +1,5 @@
 import type { Entidade, ItemMagicoMecanica } from "@/lib/schema";
+import { ativacaoComoTexto } from "@/lib/schema";
 import { type Registro } from "@/lib/autolink";
 import { TextoRico } from "./TextoRico";
 import { TextoBlocos } from "./TextoBlocos";
@@ -21,7 +22,7 @@ export function FichaItemMagico({ entidade, registro, descricoes }: { entidade: 
           )}
           {m.preco && <span>Preço: <strong>{m.preco}</strong></span>}
           {m.espacos && <span>Espaços: <strong>{m.espacos}</strong></span>}
-          {m.ativacao && <span>Ativação: <strong>{m.ativacao}</strong></span>}
+          {ativacaoComoTexto(m.ativacao) && <span>Ativação: <strong>{ativacaoComoTexto(m.ativacao)}</strong></span>}
           {m.prerequisito && <span>Pré-requisito: <strong>{m.prerequisito}</strong></span>}
         </div>
         <Divisor />
