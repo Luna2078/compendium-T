@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
-import type { Entidade, PoderMecanica } from "@/lib/schema";
+import type { Entidade, PoderMecanica } from "@ct/compendio";
 
 // Poderes "gerais" (qualquer personagem pode escolher). Os demais grupos são por classe.
 const GERAIS = [

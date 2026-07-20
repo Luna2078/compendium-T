@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { RAIZ_DADOS } from "./_raiz";
 import { join } from "node:path";
 import { expect, test } from "vitest";
-import { EntidadeSchema, TermoSchema } from "@/lib/schema";
+import { EntidadeSchema, TermoSchema } from "@ct/compendio";
 
 const RAIZ = RAIZ_DADOS;
 

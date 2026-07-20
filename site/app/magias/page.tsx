@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
-import type { Entidade, MagiaMecanica } from "@/lib/schema";
+import type { Entidade, MagiaMecanica } from "@ct/compendio";
 
 const ORDEM_CIRCULOS = [1, 2, 3, 4, 5] as const;
 const ORDINAL: Record<number, string> = { 1: "1º", 2: "2º", 3: "3º", 4: "4º", 5: "5º" };

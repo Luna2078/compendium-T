@@ -9,7 +9,7 @@
 // Isto NÃO é cálculo de ficha: é validação de construção. Por isso vive separado — o
 // motor calcula o que existe; esta função diz se a construção é legal.
 
-import type { Entidade, Personagem, EscolhaSalva } from "../schema";
+import type { Entidade, Personagem, EscolhaSalva } from "@ct/compendio";
 
 /** Patamar de T20 — faixas IRREGULARES (não é ceil(nivel/5); erraria nas bordas). */
 export const patamarDoNivel = (n: number): 1 | 2 | 3 | 4 =>

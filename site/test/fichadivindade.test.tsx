@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { expect, test, describe, it } from "vitest";
 import { FichaDivindade } from "@/components/FichaDivindade";
 import { construirRegistro } from "@/lib/autolink";
-import type { Entidade } from "@/lib/schema";
+import type { Entidade } from "@ct/compendio";
 
 const registro = construirRegistro({
   termos: [],

@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
-import { carregarEntidades, carregarTermos, idsDuplicados } from "@/lib/dados";
-import { carregarFontes, tituloFonte } from "@/lib/dados";
+import { carregarEntidades, carregarTermos, idsDuplicados } from "@ct/compendio";
+import { carregarFontes, tituloFonte } from "@ct/compendio";
 
 test("carrega todas as entidades do data/ e encontra o Súcubo", () => {
   const ents = carregarEntidades();

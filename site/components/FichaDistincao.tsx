@@ -1,5 +1,5 @@
-import type { Entidade } from "@/lib/schema";
-import type { DistincaoMecanica } from "@/lib/schema";
+import type { Entidade } from "@ct/compendio";
+import type { DistincaoMecanica } from "@ct/compendio";
 import { type Registro } from "@/lib/autolink";
 import { TextoRico } from "./TextoRico";
 import { TextoBlocos } from "./TextoBlocos";

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { EntidadeSchema } from "@/lib/schema";
+import { EntidadeSchema } from "@ct/compendio";
 const d = {
   id: "cavaleiro-do-corvo", tipo: "distincao", nome: "Cavaleiro do Corvo",
   resumo: "Distinção sombria.", fonte: { livro: "herois-de-arton", pagina: 139 },

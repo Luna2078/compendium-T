@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { carregarFontes } from "@/lib/dados";
+import { carregarFontes } from "@ct/compendio";
 
 describe("manifesto de fontes", () => {
   it("inclui deuses-de-arton na ordem 4", () => {

@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import { RAIZ_DADOS } from "./_raiz";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { PersonagemSchema, EscolhaSalvaSchema, EstadoDeSessaoSchema } from "../lib/schema";
-import { carregarEntidades } from "../lib/dados";
+import { PersonagemSchema, EscolhaSalvaSchema, EstadoDeSessaoSchema } from "@ct/compendio";
+import { carregarEntidades } from "@ct/compendio";
 import { resolverFonte, escolhaEValida } from "../lib/motor/personagem";
 
 const RAIZ = RAIZ_DADOS;

@@ -2,7 +2,7 @@
 // Não calcula ficha (isso é Camada 3). Aqui só resolvemos PROCEDÊNCIA: dada uma
 // escolha salva, achar o slot do compêndio que ela preenche.
 
-import type { Entidade, EscolhaSalva } from "../schema";
+import type { Entidade, EscolhaSalva } from "@ct/compendio";
 
 /** Onde a escolha aterrissou no compêndio. */
 export interface FonteResolvida {

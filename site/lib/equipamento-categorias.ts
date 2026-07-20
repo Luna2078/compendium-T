@@ -1,4 +1,4 @@
-import type { ItemMecanica } from "@/lib/schema";
+import type { ItemMecanica } from "@ct/compendio";
 
 // Subgrupo opcional dentro de uma categoria (ex.: armaduras leves/pesadas/escudos).
 export type Subgrupo = { rotulo: string; filtro: (m: ItemMecanica) => boolean };

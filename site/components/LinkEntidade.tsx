@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { TipoEntidade } from "@/lib/schema";
+import type { TipoEntidade } from "@ct/compendio";
 
 export function LinkEntidade({ alvoId, alvoTipo, rotulo }: { alvoId: string; alvoTipo: TipoEntidade; rotulo: string }) {
   return (

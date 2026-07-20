@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
 
 export default function IndiceClasses() {

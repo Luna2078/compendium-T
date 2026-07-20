@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
-vi.mock("@/lib/dados", () => ({
+vi.mock("@ct/compendio", () => ({
   carregarEntidades: () => [
     { id: "inventor", tipo: "classe", nome: "Inventor", resumo: "", imagens: [], fonte: { livro: "livro-basico", pagina: 1 } },
     { id: "alquimista", tipo: "variante-classe", nome: "Alquimista", resumo: "", imagens: [], fonte: { livro: "herois-de-arton", pagina: 22 } },

@@ -1,4 +1,4 @@
-import type { TipoEntidade } from "./schema";
+import type { TipoEntidade } from "@ct/compendio";
 
 export type ItemIndice = { id: string; tipo: TipoEntidade; nome: string; resumo: string };
 type Entrada = ItemIndice & { chave: string };

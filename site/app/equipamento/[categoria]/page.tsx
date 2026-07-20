@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
 import { SubNav } from "@/components/SubNav";
 import { CATEGORIAS_EQUIP, statsDoItem } from "@/lib/equipamento-categorias";
-import type { Entidade, ItemMecanica, ItemMagicoMecanica } from "@/lib/schema";
+import type { Entidade, ItemMecanica, ItemMagicoMecanica } from "@ct/compendio";
 
 export const dynamicParams = false;
 

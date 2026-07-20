@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
-import type { Entidade } from "@/lib/schema";
+import type { Entidade } from "@ct/compendio";
 
 // resumo do card: usa o `resumo`; se faltar, cai para o início da "Descrição".
 function resumoCard(e: Entidade): string {

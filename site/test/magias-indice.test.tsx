@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { expect, test } from "vitest";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import IndiceMagias from "@/app/magias/page";
 import PaginaCirculoTipo from "@/app/magias/[circulo]/[tipo]/page";
 

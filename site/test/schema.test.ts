@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { EntidadeSchema, RelacaoSchema, RacaMecanicaSchema, ClasseMecanicaSchema, CaminhoClasseSchema, OrigemMecanicaSchema, PericiaMecanicaSchema } from "@/lib/schema";
+import { EntidadeSchema, RelacaoSchema, RacaMecanicaSchema, ClasseMecanicaSchema, CaminhoClasseSchema, OrigemMecanicaSchema, PericiaMecanicaSchema } from "@ct/compendio";
 
 const baseValida = {
   id: "sucubo",

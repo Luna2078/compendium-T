@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
 import { CATEGORIAS_EQUIP } from "@/lib/equipamento-categorias";
-import type { Entidade, ItemMecanica, ItemMagicoMecanica } from "@/lib/schema";
+import type { Entidade, ItemMecanica, ItemMagicoMecanica } from "@ct/compendio";
 
 function mecItem(it: Entidade): ItemMecanica {
   return it.mecanica as unknown as ItemMecanica;

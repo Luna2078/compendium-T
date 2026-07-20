@@ -1,4 +1,4 @@
-import type { Entidade, PericiaMecanica } from "@/lib/schema";
+import type { Entidade, PericiaMecanica } from "@ct/compendio";
 import { type Registro } from "@/lib/autolink";
 import { TextoRico } from "./TextoRico";
 import { TextoBlocos } from "./TextoBlocos";

@@ -1,4 +1,4 @@
-import type { Entidade, ItemMecanica } from "@/lib/schema";
+import type { Entidade, ItemMecanica } from "@ct/compendio";
 import { CATEGORIAS_EQUIP } from "@/lib/equipamento-categorias";
 
 // Tabelas de equipamento DINÂMICAS para as páginas de regra. Geram uma string no formato

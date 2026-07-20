@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { carregarEntidades, tituloFonte } from "@/lib/dados";
+import { carregarEntidades, tituloFonte } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
 import { SeloFonte } from "@/components/SeloFonte";
 import { SubNav } from "@/components/SubNav";
-import type { Entidade, CriaturaMecanica } from "@/lib/schema";
+import type { Entidade, CriaturaMecanica } from "@ct/compendio";
 
 export const dynamicParams = false;
 

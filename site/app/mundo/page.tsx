@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
-import type { Entidade } from "@/lib/schema";
+import type { Entidade } from "@ct/compendio";
 
 // Seções macro na ordem preferida (Básico → Atlas). Qualquer outra seção presente nos dados
 // é renderizada depois destas (evita região órfã quando uma fonte nova traz uma seção inédita).

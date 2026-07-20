@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { FichaDistincao } from "@/components/FichaDistincao";
 import { construirRegistro } from "@/lib/autolink";
-import type { Entidade } from "@/lib/schema";
+import type { Entidade } from "@ct/compendio";
 
 const registro = construirRegistro({ termos: [], entidades: [] });
 

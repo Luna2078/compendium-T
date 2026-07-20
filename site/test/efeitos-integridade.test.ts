@@ -6,7 +6,7 @@ import {
   EntidadeSchema, RacaMecanicaSchema, ClasseMecanicaSchema, OrigemMecanicaSchema,
   PericiaMecanicaSchema, PoderMecanicaSchema, ItemMecanicaSchema,
   ItemMagicoMecanicaSchema, MagiaMecanicaSchema, DivindadeMecanicaSchema,
-} from "../lib/schema";
+} from "@ct/compendio";
 import type { ZodType } from "zod";
 
 // Schema TIPADO por pasta — o caminho ESTRITO (usado no superRefine e por qualquer

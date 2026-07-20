@@ -1,4 +1,4 @@
-import type { Entidade, RacaMecanica, ModificadorAtributo } from "@/lib/schema";
+import type { Entidade, RacaMecanica, ModificadorAtributo } from "@ct/compendio";
 import { type Registro } from "@/lib/autolink";
 import { TextoRico } from "./TextoRico";
 import { TextoBlocos } from "./TextoBlocos";

@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { carregarEntidades, carregarFontes, tituloFonte } from "@/lib/dados";
+import { carregarEntidades, carregarFontes, tituloFonte } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
-import type { Entidade } from "@/lib/schema";
+import type { Entidade } from "@ct/compendio";
 
 // Agrupamento temático das regras (ordem de exibição). Ids não listados caem em "Outras Regras".
 const GRUPOS: { titulo: string; ids: string[] }[] = [

@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import { tabelaEquipamentoPipe } from "@/lib/equipamento-tabela";
 
 test("tabela de armaduras inclui itens do Básico e de Ameaças (multi-fonte)", () => {

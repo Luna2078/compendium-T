@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { EntidadeSchema, DivindadeMecanicaSchema } from "@/lib/schema";
+import { EntidadeSchema, DivindadeMecanicaSchema } from "@ct/compendio";
 
 // --- DivindadeMecanicaSchema ---
 

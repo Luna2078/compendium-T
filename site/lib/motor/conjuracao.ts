@@ -11,7 +11,7 @@
 // usam exatamente um formato ("+N PM"), então o adaptador é determinístico — mas ele
 // FALHA ALTO se aparecer um formato diferente, em vez de assumir zero.
 
-import type { Entidade, Personagem, EstadoDeSessao } from "../schema";
+import type { Entidade, Personagem, EstadoDeSessao } from "@ct/compendio";
 import type { Ficha } from "./calcular-ficha";
 import {
   resolverConjuracao,

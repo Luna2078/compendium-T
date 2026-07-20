@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
-import type { Entidade, DivindadeMecanica } from "@/lib/schema";
+import type { Entidade, DivindadeMecanica } from "@ct/compendio";
 
 // Agrupa por energia canalizada.
 const ORDEM_ENERGIA: { chave: string; rotulo: string }[] = [

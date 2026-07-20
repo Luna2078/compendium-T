@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
-import type { PericiaMecanica } from "@/lib/schema";
+import type { PericiaMecanica } from "@ct/compendio";
 
 // Escudo → penalidade de armadura. Livro aberto → somente treinada.
 function IconeArmadura() {

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { expect, test } from "vitest";
-import { carregarEntidades } from "@/lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 import IndicePoderes from "@/app/poderes/page";
 import PaginaGrupoPoderes from "@/app/poderes/[grupo]/page";
 

@@ -21,7 +21,7 @@
 // aponta para um slot cujo container tem `contaComoPoderTormenta`, ela é do slot.
 // Sem procedência, "Carapaça" seria só um nome numa lista — indistinguível.
 
-import type { Entidade, Personagem, EscolhaSalva } from "../schema";
+import type { Entidade, Personagem, EscolhaSalva } from "@ct/compendio";
 
 export interface ItemContagem {
   /** O que contou: id do poder ou do slot. */

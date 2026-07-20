@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { carregarEntidades, tituloFonte } from "@/lib/dados";
+import { carregarEntidades, tituloFonte } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
 import { SeloFonte } from "@/components/SeloFonte";
-import type { Entidade, CriaturaMecanica } from "@/lib/schema";
+import type { Entidade, CriaturaMecanica } from "@ct/compendio";
 
 const ORDEM_TEMAS = [
   "Masmorras", "Ermos", "Os Puristas", "Reino dos Mortos", "Os Duyshidakk",

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { EntidadeSchema } from "@/lib/schema";
+import { EntidadeSchema } from "@ct/compendio";
 
 const exp = {
   id: "khalmyr-deuses-de-arton", tipo: "divindade-expansao", nome: "Khalmyr (Deuses de Arton)",

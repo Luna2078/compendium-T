@@ -1,4 +1,4 @@
-import type { Entidade, PoderMecanica } from "@/lib/schema";
+import type { Entidade, PoderMecanica } from "@ct/compendio";
 import { type Registro } from "@/lib/autolink";
 import { TextoRico } from "./TextoRico";
 import { TextoBlocos } from "./TextoBlocos";

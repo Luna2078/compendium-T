@@ -1,11 +1,11 @@
 // Montagem dos pools do gacha — SOMENTE servidor (lê data/gacha + itens via carregarEntidades).
-import { ativacaoComoTexto } from "@/lib/schema";
+import { ativacaoComoTexto } from "@ct/compendio";
 import "server-only";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { carregarEntidades } from "@/lib/dados";
-import { caminhoDados } from "@/lib/raiz-dados";
-import type { ItemMagicoMecanica, ItemMecanica } from "@/lib/schema";
+import { carregarEntidades } from "@ct/compendio";
+import { caminhoDados } from "@ct/compendio";
+import type { ItemMagicoMecanica, ItemMecanica } from "@ct/compendio";
 import { validarConfig, validarOverrides, configQualidade, type GachaConfig } from "./config-schema";
 import { calcularFaixaItem, type ItemParaScore } from "./qualidade";
 import type { DadosGacha, ItemPool, Modificador, PoolCategoria, Raridade } from "./tipos";

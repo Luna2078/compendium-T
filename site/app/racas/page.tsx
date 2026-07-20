@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { carregarEntidades, tituloFonte } from "@/lib/dados";
+import { carregarEntidades, tituloFonte } from "@ct/compendio";
 import { Divisor } from "@/components/Divisor";
 import { SeloFonte } from "@/components/SeloFonte";
 

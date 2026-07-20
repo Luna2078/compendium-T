@@ -11,7 +11,7 @@
 // Então o bônus de ataque parte do VALOR DE PERÍCIA já calculado (½ nível + atributo +
 // treino + bônus) e só troca o atributo quando há substituição.
 
-import type { Entidade, Personagem, EstadoDeSessao } from "../schema";
+import type { Entidade, Personagem, EstadoDeSessao } from "@ct/compendio";
 import { avaliarExpr } from "./expr";
 import { PERICIA_ATRIBUTO } from "./pericias";
 import type { Ficha, ItemTrilha } from "./calcular-ficha";

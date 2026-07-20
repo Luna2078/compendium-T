@@ -17,8 +17,8 @@
 // baldes da trilha — `aplicado`, `contextual`, `lembrete` ou `naoAplicado` (com motivo).
 // A soma dos baldes é conferida contra o total coletado (teste de conservação).
 
-import type { Entidade, Personagem, EstadoDeSessao, EscolhaSalva } from "../schema";
-import { nivelDePersonagem, nivelNaClasse, primeiraClasse } from "../schema";
+import type { Entidade, Personagem, EstadoDeSessao, EscolhaSalva } from "@ct/compendio";
+import { nivelDePersonagem, nivelNaClasse, primeiraClasse } from "@ct/compendio";
 import { avaliarExpr } from "./expr";
 import { PERICIA_ATRIBUTO, PERICIAS_TODAS, periciasDoAtributo } from "./pericias";
 import { expandirCondicoes, type CondicaoDef } from "../../../data/efeitos";

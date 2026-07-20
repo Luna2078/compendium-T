@@ -1,5 +1,5 @@
-import type { Entidade, ItemMagicoMecanica } from "@/lib/schema";
-import { ativacaoComoTexto } from "@/lib/schema";
+import type { Entidade, ItemMagicoMecanica } from "@ct/compendio";
+import { ativacaoComoTexto } from "@ct/compendio";
 import { type Registro } from "@/lib/autolink";
 import { TextoRico } from "./TextoRico";
 import { TextoBlocos } from "./TextoBlocos";

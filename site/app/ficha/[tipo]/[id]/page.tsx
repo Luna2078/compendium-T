@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { carregarEntidades, carregarTermos, tituloFonte } from "@/lib/dados";
+import { carregarEntidades, carregarTermos, tituloFonte } from "@ct/compendio";
 import { construirRegistro } from "@/lib/autolink";
 import { tabelaEquipamentoPipe } from "@/lib/equipamento-tabela";
 import { SeloFonte } from "@/components/SeloFonte";

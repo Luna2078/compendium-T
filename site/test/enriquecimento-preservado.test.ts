@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { carregarEntidades } from "../lib/dados";
+import { carregarEntidades } from "@ct/compendio";
 
 // REGRESSÃO: o Zod descarta chaves não declaradas. Se `efeitos`/`ativacao` não estiverem no
 // schema, o enriquecimento é silenciosamente perdido no carregamento — o dado existe no disco

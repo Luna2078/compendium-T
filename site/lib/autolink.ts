@@ -1,4 +1,4 @@
-import type { TipoEntidade } from "./schema";
+import type { TipoEntidade } from "@ct/compendio";
 
 export type Token =
   | { tipo: "texto"; valor: string }

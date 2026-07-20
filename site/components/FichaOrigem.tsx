@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { Entidade, OrigemMecanica } from "@/lib/schema";
+import type { Entidade, OrigemMecanica } from "@ct/compendio";
 import { type Registro } from "@/lib/autolink";
 import { TextoRico } from "./TextoRico";
 import { TextoBlocos } from "./TextoBlocos";
