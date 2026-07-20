@@ -94,9 +94,13 @@ export function poderesView(
   compendio: Entidade[],
 ): PoderView[] {
   const { m } = indice(compendio);
+  // Descrição LEGÍVEL: sem truncar em "…". Mostra a primeira frase inteira (ou o texto
+  // inteiro se for curto) — a tela quebra em múltiplas linhas com espaçamento decente.
   const fx = (desc?: string) => {
-    const d = (desc ?? "").split(". ")[0].trim();
-    return d.length > 90 ? d.slice(0, 90) + "…" : d;
+    const t = (desc ?? "").trim();
+    if (!t) return "";
+    const ponto = t.indexOf(". ");
+    return ponto > 0 && ponto < t.length - 2 ? t.slice(0, ponto + 1) : t;
   };
   const out: PoderView[] = [];
 

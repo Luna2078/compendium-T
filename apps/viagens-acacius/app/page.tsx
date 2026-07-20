@@ -98,34 +98,36 @@ export default function Ficha() {
     </header>
   );
 
-  // ── faixa "Efeitos ativos" (topo no desktop; aba no mobile) ──────────────────
+  // ── painel "Efeitos ativos" (full-width no desktop; aba no mobile) ───────────
   const efeitos: PainelDef = {
     id: "efeitos",
-    titulo: "Efeitos",
+    titulo: "Efeitos ativos",
+    abaTitulo: "Efeitos",
     coluna: "A",
     mobileTab: false,
     conteudo: (
       <div style={{ display: "contents" }}>
-        <span className="efeitos__rot">Efeitos ativos</span>
-        {bandeja.length === 0 ? (
-          <span className="chip chip--vazia">nenhum efeito de sessão ativo</span>
-        ) : (
-          bandeja.map((c, i) => (
-            <span className="chip" key={i}>
-              <span className="chip__dot" aria-hidden="true" />
-              {c.fonte.replace(/^.*\/ /, "")}
-              <span className="chip__fx">
-                {c.contribs
-                  .map((k) => `${k.valor != null && k.valor >= 0 ? "+" : ""}${k.valor} ${rotuloAlvo(k.alvo)}`)
-                  .join(" · ") || "—"}
+        <div className="efeitos-chips">
+          {bandeja.length === 0 ? (
+            <span className="chip chip--vazia">nenhum efeito de sessão ativo</span>
+          ) : (
+            bandeja.map((c, i) => (
+              <span className="chip" key={i}>
+                <span className="chip__dot" aria-hidden="true" />
+                <span className="chip__nome">{c.fonte.replace(/^.*\/ /, "")}</span>
+                <span className="chip__fx">
+                  {c.contribs
+                    .map((k) => `${k.valor != null && k.valor >= 0 ? "+" : ""}${k.valor} ${rotuloAlvo(k.alvo)}`)
+                    .join(" · ") || "—"}
+                </span>
+                <span className="chip__org">{c.tipo}</span>
               </span>
-              <span className="chip__org">{c.tipo}</span>
-            </span>
-          ))
-        )}
-        <span className="efeitos__nota">
-          qualquer fonte (poder · item · condição) afeta o cálculo igual — muda só a origem
-        </span>
+            ))
+          )}
+        </div>
+        <div className="nota">
+          Qualquer fonte (poder · item · condição) afeta o cálculo igual — muda só a origem.
+        </div>
       </div>
     ),
   };
@@ -147,7 +149,7 @@ export default function Ficha() {
             <div className="campo"><span className="campo__rot">Nível</span><span className="input">{ident.nivel}</span></div>
             <div className="campo campo--wide"><span className="campo__rot">Origem</span><span className="input">{ident.origem}</span></div>
           </div>
-          <div className="nota">campos INPUT — editáveis (ainda estáticos nesta etapa).</div>
+          <div className="nota">campos editáveis (ainda estáticos nesta etapa).</div>
         </div>
       ),
     },
@@ -157,7 +159,7 @@ export default function Ficha() {
       coluna: "A",
       mobileTab: true,
       selos: ["INPUT"],
-      nota: "mod = CALC",
+      nota: "final calculado",
       conteudo: (
         <div style={{ display: "contents" }}>
           <div className="attr-grid">
@@ -165,13 +167,13 @@ export default function Ficha() {
               <div className="attr" key={a.cod}>
                 <div className="attr__cod">{a.cod}</div>
                 <div className="input">{fmt(a.base)}</div>
-                <div className="attr__mod">final <span className="calc calc--sm">{fmt(a.final)}</span></div>
+                <div className="attr__mod">final <span className="calc">{fmt(a.final)}</span></div>
               </div>
             ))}
           </div>
           <div className="nota">
-            valor base = INPUT · final = CALC (base + raça + aumentos). Em T20 o valor do
-            atributo já é o modificador.
+            valor base = editável · final = calculado (base + raça + aumentos). Em T20 o
+            valor do atributo já é o modificador.
           </div>
         </div>
       ),
@@ -194,7 +196,7 @@ export default function Ficha() {
                 <span className="step" aria-hidden="true">+</span>
               </div>
               {f.pv.temporario ? <div className="stat__temp">+{f.pv.temporario} temp</div> : null}
-              <div className="nota">ajuste = Etapa 3 · máx = CALC</div>
+              <div className="nota">ajuste na Etapa 3 · máx calculado</div>
             </div>
             <div className="stat">
               <div className="stat__rot">PM atual / máx</div>
@@ -203,12 +205,12 @@ export default function Ficha() {
                 <b>{f.pm.disponivel}<small>/{f.pm.max}</small></b>
                 <span className="step" aria-hidden="true">+</span>
               </div>
-              <div className="nota">máx = CALC</div>
+              <div className="nota">máx calculado</div>
             </div>
             <div className="stat">
               <div className="stat__rot">Defesa</div>
               <div className="stat__val"><b className="big">{f.defesa}</b></div>
-              <div className="nota">CALC ∑ · recalc ao vivo (Etapa 3)</div>
+              <div className="nota">calculado · recalc ao vivo (Etapa 3)</div>
             </div>
           </div>
           <div className="nota" style={{ marginTop: 8 }}>
@@ -239,18 +241,19 @@ export default function Ficha() {
                       {v.exigeTreino && !v.usavel && <span className="marca">exige treino</span>}
                     </td>
                     <td className="c"><span className={`chk${v.treinado ? " chk--on" : ""}`} aria-hidden="true" /></td>
-                    <td className="num"><span className="calc calc--sm">{fmt(v.valor)}</span></td>
+                    <td className="num"><span className="calc">{fmt(v.valor)}</span></td>
                   </tr>
                 ))}
             </tbody>
           </table>
-          <div className="nota">treino = INPUT (checkbox) · total = CALC (mod + ½ nível + treino)</div>
+          <div className="nota">treino = editável (checkbox) · total = calculado (mod + ½ nível + treino)</div>
         </div>
       ),
     },
     {
       id: "poderes",
-      titulo: "Poderes",
+      titulo: "Poderes & Magias",
+      abaTitulo: "Poderes",
       coluna: "C",
       mobileTab: true,
       conteudo: (
@@ -259,17 +262,15 @@ export default function Ficha() {
             {poderes.map((pd, i) => (
               <div className={`poder poder--${pd.estado}`} key={i}>
                 <div className="poder__lin">
-                  <span className="poder__nome">
-                    {pd.nome}{" "}
-                    {pd.estado === "ativo" && <span className="tag tag--ativo">● ATIVO</span>}
+                  <span className="poder__nome">{pd.nome}</span>
+                  <span className="poder__estado">
+                    {pd.estado !== "passivo" && (
+                      <span className={`switch switch--${pd.estado === "ativo" ? "on" : "off"}`} aria-hidden="true" />
+                    )}
+                    <span className={`tag${pd.estado === "ativo" ? " tag--ativo" : ""}`}>{pd.estado}</span>
                   </span>
-                  {pd.estado === "passivo" ? (
-                    <span className="tag">PASSIVO</span>
-                  ) : (
-                    <span className={`switch switch--${pd.estado === "ativo" ? "on" : "off"}`} aria-hidden="true" />
-                  )}
                 </div>
-                {pd.fx && <div className="poder__fx"><span className="fx">fx · {pd.fx}</span></div>}
+                {pd.fx && <p className="poder__desc">{pd.fx}</p>}
               </div>
             ))}
           </div>
@@ -280,6 +281,7 @@ export default function Ficha() {
     {
       id: "inventario",
       titulo: "Inventário",
+      abaTitulo: "Invent.",
       coluna: "C",
       mobileTab: true,
       selos: ["CALC"],
@@ -301,11 +303,11 @@ export default function Ficha() {
           </table>
           <div className="carga">
             <div className="carga__lin">
-              <span>Carga total ∑ <b>{inv.cargaTotal}</b></span>
+              <span>Carga total <b>{inv.cargaTotal}</b></span>
               <span>Capacidade {inv.capacidade}</span>
             </div>
             <div className="carga__bar"><div style={{ width: `${pctCarga}%` }} /></div>
-            <div className="nota">carga e capacidade = CALC (Σ espaços vs. 10 + Força; alvo do motor adiado — calculado na view).</div>
+            <div className="nota">carga e capacidade calculadas (soma dos espaços vs. 10 + Força; alvo do motor adiado — calculado na view).</div>
           </div>
         </div>
       ),

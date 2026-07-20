@@ -8,26 +8,28 @@ export type Selo = "INPUT" | "CALC";
 export interface PainelDef {
   id: string;
   titulo: string;
+  /** rótulo curto para a aba do mobile (default: titulo) */
+  abaTitulo?: string;
   coluna: Coluna;
   /** aparece na barra de abas do mobile? (Identidade e Stats vivem na barra fixa) */
   mobileTab: boolean;
   selos?: Selo[];
-  /** nota curta no cabeçalho (ex.: Stats "máx computado · atuais ajustáveis") */
   nota?: string;
   conteudo: ReactNode;
 }
 
+const rotuloSelo: Record<Selo, string> = { INPUT: "editável", CALC: "calculado" };
+
 /**
- * Chrome + layout da ficha (Tela 01 do wireframe), LO-FI.
+ * Chrome + layout da ficha (Tela 01 do wireframe), LO-FI mas LEGÍVEL e ESPAÇOSO.
  *
- * Desktop: barra no topo · faixa "Efeitos ativos" full-width · 3 COLUNAS INDEPENDENTES
- *   (A: Identidade+Atributos · B: Stats+Perícias · C: Poderes+Inventário). Cada coluna
- *   empilha seus painéis sozinha — é isso que elimina o vão (não há acoplamento de altura
- *   entre colunas como havia no grid da Etapa 2).
- * Mobile: barra fixa (sticky) + abas [Atributos·Perícias·Poderes·Inventário·Efeitos];
+ * Desktop: barra no topo · painel "Efeitos ativos" full-width · 3 COLUNAS INDEPENDENTES
+ *   que crescem pra preencher a largura da tela (A: Identidade+Atributos · B: Stats+
+ *   Perícias · C: Poderes+Inventário). Cada coluna empilha sozinha — sem vão.
+ * Mobile: barra fixa (sticky) + abas [Atributos·Perícias·Poderes·Invent.·Efeitos];
  *   colunas colapsam (display:contents) e só o painel da aba ativa aparece.
  *
- * O handle ⋮⋮, os interruptores e os steppers são ENFEITE ESTÁTICO — arrastar/ligar/ajustar
+ * Handle ⋮⋮, interruptores e steppers são ENFEITE ESTÁTICO — arrastar/ligar/ajustar
  * são etapas futuras. Nada aqui aciona o motor.
  */
 export function Paineis({
@@ -36,7 +38,7 @@ export function Paineis({
   paineis,
 }: {
   barra: ReactNode;
-  efeitos: PainelDef; // painel especial: faixa no desktop, aba no mobile
+  efeitos: PainelDef; // painel full-width no desktop; aba no mobile
   paineis: PainelDef[];
 }) {
   const abas = [...paineis.filter((p) => p.mobileTab), efeitos];
@@ -48,28 +50,27 @@ export function Paineis({
       <span className="painel__titulo">{p.titulo}</span>
       {p.nota && <span className="painel__nota">{p.nota}</span>}
       {p.selos?.map((s) => (
-        <span key={s} className={`selo selo--${s.toLowerCase()}`}>
-          {s === "CALC" ? "CALC ∑" : "INPUT"}
-        </span>
+        <span key={s} className={`selo selo--${s.toLowerCase()}`}>{rotuloSelo[s]}</span>
       ))}
     </div>
   );
 
-  const painel = (p: PainelDef) => (
+  const painel = (p: PainelDef, extraClasse = "") => (
     <section
       key={p.id}
-      className={`painel${p.mobileTab ? "" : " painel--desktop-only"}`}
-      {...(p.mobileTab ? { "data-aba": p.id, "data-ativa": String(p.id === ativa) } : {})}
+      className={`painel${extraClasse}${p.mobileTab || p.id === "efeitos" ? "" : " painel--desktop-only"}`}
+      {...(p.mobileTab || p.id === "efeitos"
+        ? { "data-aba": p.id, "data-ativa": String(p.id === ativa) }
+        : {})}
     >
       {cabecalho(p)}
       {/* conteudo vem de Ficha (Server Component); embrulhar num nó criado AQUI evita o
-          falso aviso "unique key" que o React dispara ao revalidar filhos de outro owner
-          que cruzam a fronteira RSC. */}
+          falso aviso "unique key" ao revalidar filhos de outro owner na fronteira RSC. */}
       <div className="painel__corpo">{p.conteudo}</div>
     </section>
   );
 
-  const coluna = (c: Coluna) => paineis.filter((p) => p.coluna === c).map(painel);
+  const coluna = (c: Coluna) => paineis.filter((p) => p.coluna === c).map((p) => painel(p));
 
   return (
     <div className="chrome">
@@ -83,27 +84,22 @@ export function Paineis({
               aria-selected={p.id === ativa}
               onClick={() => setAtiva(p.id)}
             >
-              {p.titulo}
+              {p.abaTitulo ?? p.titulo}
             </button>
           ))}
         </nav>
       </div>
 
-      {/* faixa "Efeitos ativos" — full-width no desktop; vira aba no mobile (mesmo nó) */}
-      <section
-        className="efeitos"
-        data-aba={efeitos.id}
-        data-ativa={String(efeitos.id === ativa)}
-      >
-        {efeitos.conteudo}
-      </section>
-
       <div className="conteudo">
+        {/* Efeitos ativos — painel full-width acima das colunas (aba no mobile) */}
+        {painel(efeitos, " painel--efeitos")}
+
         <div className="colunas">
           <div className="coluna coluna--a">{coluna("A")}</div>
           <div className="coluna coluna--b">{coluna("B")}</div>
           <div className="coluna coluna--c">{coluna("C")}</div>
         </div>
+
         <div className="dock" aria-hidden="true">
           <span>DOCK · arraste um painel para reordenar (feature futura)</span>
         </div>
