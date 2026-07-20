@@ -113,7 +113,7 @@ Propositor, não autoridade final — tudo é revisado por humano antes de virar
     → `efeitos[]` vazio é o correto, não uma falha. O mesmo vale para qualquer entidade que o motor CALCULA em
     vez de APLICAR. Corolário de processo: **não dispare fan-out numa pasta cujo `efeitos[]` deve ser vazio** —
     agentes pressionados a preencher inventam. Verifique a direção ANTES de escalar (custo evitado > risco).
-27. **FAMÍLIA DE BUGS: "O MAPA NÃO É O TERRITÓRIO".** Quatro incidentes distintos, uma causa
+27. **FAMÍLIA DE BUGS: "O MAPA NÃO É O TERRITÓRIO".** Seis incidentes distintos, uma causa
     só — uma REPRESENTAÇÃO PARCIAL divergindo do corpus real que o motor carrega:
     · **worktrees** — 72 itens editados numa cópia isolada; o disco "principal" não tinha nada.
     · **Zod permissivo** — `EntidadeSchema.mecanica` é `z.record(unknown)`, então a auditoria
@@ -123,13 +123,25 @@ Propositor, não autoridade final — tudo é revisado por humano antes de virar
     · **varredura-de-subconjunto** — varri `livro-basico/` (501 aprimoramentos) e concluí
       "formato único"; o motor carrega TODAS as fontes (665), e as expansões tinham 4 no
       formato `"+N PM (Apenas Devotos de Aharadak)"`.
+    · **`tsc | grep motor`** (5ª) — filtrei a saída do compilador por "motor" e chamei de
+      limpo enquanto **14 erros de tipo** se acumulavam na UI. O filtro é o mapa; `tsc` sem
+      filtro é o território. (Ver METODO, modo de falha 1.)
+    · **barrel que arrasta `fs` pro cliente** (6ª, Bloco 1/Etapa 3) — importar `calcularFicha`
+      num client component quebrou o `next build` com `node:fs`. O barrel `@ct/compendio`, que
+      eu tratava como "os tipos e helpers PUROS", também reexporta o carregador de dados —
+      importar QUALQUER símbolo puxa o módulo com `fs`. O nome (`@ct/compendio`) era o mapa; o
+      módulo real (com o loader) era o território. Correção: subcaminho puro
+      `@ct/compendio/schema`. Só quebrou no build, não no `tsc` — mais um "instrumento com
+      ponto cego".
     **DEFESA (as duas juntas, não uma):** (a) MEDIR CONTRA O CORPUS INTEIRO — a mesma lista de
     fontes que `carregarEntidades()` usa, nunca uma pasta escolhida a dedo; (b) FALHAR ALTO NO
     INESPERADO — formato/campo/valor fora do previsto lança erro citando o caso, jamais assume
     zero ou descarta. Foi (b) que salvou no caso dos aprimoramentos: o parser quebrou e MOSTROU
     as 4 restrições de uso, em vez de comê-las em silêncio.
-    ⚠️ **A quinta vai aparecer.** Ao ver um número que "bate" ou uma lista que "está completa",
+    ⚠️ **A sétima vai aparecer.** Ao ver um número que "bate" ou uma lista que "está completa",
     pergunte primeiro: isto foi medido contra o território ou contra um mapa meu?
+    → No app, a defesa virou o padrão **subset+guard** (ver seção "BLOCO 1"): recorte de
+    entidades comparado contra a ficha do compêndio inteiro, no prerender.
 26. **RODAR A SUÍTE AO FECHAR CADA PASTA — o schema Zod é um consumidor silencioso.** Enriquecer o JSON
     não basta: `site/lib/schema.ts` valida o que é carregado, e (a) campo declarado com tipo CONFLITANTE
     quebra o carregamento; (b) campo NÃO declarado é **silenciosamente DESCARTADO** — o dado existe no disco
@@ -651,3 +663,49 @@ Magias (depois) exercitam `duracao` (cena/dia) e `resolverConjuracao`.
 | 7    | livro-basico/poderes | 30 | 30 | 0 | (pendente) — Sonnet 6×5; `escudo-magico` resolvido com `pos_conjuracao` |
 | 8    | livro-basico/poderes | 30 | 30 | 0 | (pendente) — Sonnet 6×5; 4 correções Opus (2 over-quarentena, 1 expr, 1 resíduo) |
 | 9    | livro-basico/poderes | 37 | 37 | 0 | (pendente) — Sonnet 8 agentes; FECHA a pasta; 2 correções Opus |
+
+---
+## 🧱 BLOCO 1 — app de ficha (`apps/viagens-acacius`) FECHADO
+
+Prova a junção **motor↔tela** ponta a ponta com o **Thaíde-mock**. Cada etapa: build verde,
+suíte verde, wiki intacta, console limpo, **commit separado**. Persistência (conta/banco) e
+edição de construção = **Bloco 2** (não começado).
+
+**Etapas:**
+- **1 — esqueleto ligado.** O app importa o motor e renderiza um número calculado. Decisão da
+  etapa: cálculo no SERVIDOR (mudou na Etapa 3).
+- **2 / 2.5 / 2.5b — forma do wireframe (Tela 01), lo-fi.** 3 COLUNAS INDEPENDENTES (sem o vão
+  do grid rígido), efeitos, convenção INPUT×CALC, barra fixa + abas no mobile. 2.5b consertou
+  legibilidade e uso da largura (nada de bloco estreito centralizado; nada de fonte de 8px).
+- **3 — loop reativo, RECÁLCULO NO CLIENTE.** O motor (puro) roda local a cada mexida.
+  Interativo = **estado de sessão** (Fúria/ativáveis → `togglesAtivos`; PV/PM atual →
+  `pvAtual`/`pmGasto`). Construção (treino, equipar) fica **inerte de propósito** — cruzaria a
+  fronteira (Bloco 2). + **painel de Ataques** (`resolverAtaque` reflete a Fúria ao vivo:
+  Adaga +7/1d4+4 → +10/1d4+7).
+- **4 — procedência visível (fecha o Bloco 1).** (a) **Trilha profunda ao clique**: clicar num
+  número calculado abre a cadeia causal num overlay por cima (bottom-sheet no mobile). (b)
+  **Cascata de condição na bandeja**: Fatigado (ligável na sessão) → o motor expande em Fraco +
+  Vulnerável, exibidos com origem ("Vulnerável ← Fatigado"). CONSISTÊNCIA: o mesmo −2 aparece
+  na bandeja e na trilha da Defesa (ambos de `f.trilha`).
+- **4.1 — bandeja compacta-expansível.** Chip de 1 linha ("Fraco −2 FOR/DES/CON") + detalhe no
+  MESMO overlay (a bandeja não cresce com o nº de efeitos).
+
+### Padrão SUBSET+GUARD (recálculo no cliente sem os 3.242 JSONs)
+O servidor recorta só as entidades do personagem (~34 vs 3.242: raça · classe · origem · itens
+· `poder`/`fonte` das escolhas · **TODAS** as perícias) e manda pro cliente. Um GUARD no
+prerender compara `calcularFicha(subset)` com `calcularFicha(compêndio inteiro)` por igualdade:
+recorte incompleto **quebra o build**. É a versão-app da defesa da regra 27 (medir contra o
+corpus inteiro + falhar alto). `lib/entidades-do-personagem.ts` + o guard em `app/page.tsx`.
+
+### Disciplina: PROCEDÊNCIA VEM DO MOTOR, NÃO DA UI
+Trilha ao clique e cascata na bandeja são o MESMO rastro (`f.trilha`; `f.condicoesAtivas` com
+`via[]`; o `rotulo` da condição que já traz "(via fatigado)") visto de dois lugares — nunca uma
+narrativa remontada pela tela (que pode mentir com confiança). Onde o motor não expunha a
+cadeia, **estendi o motor**, não a view. Prova viva: Atletismo → `origem:escravo`, Fortitude →
+`barbaro (fixa)` — o rastro REAL varia por perícia, não é etiqueta genérica.
+
+### Extensões de motor feitas pelo Bloco 1 (mínimas)
+- **`ValorPericia.fonteTreino?`** — expõe a procedência do treino que o motor JÁ computava (Map
+  interno) e descartava. Nenhuma lógica de cálculo mudou; **445 testes do motor seguem verdes**.
+- **Empacotamento:** `@ct/compendio` ganhou o subcaminho `./schema` (puro, sem o carregador de
+  dados) para o motor rodar no cliente sem arrastar `node:fs` — ver **regra 27, 6ª ocorrência**.

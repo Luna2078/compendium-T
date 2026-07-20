@@ -27,7 +27,8 @@ extracao                            pipeline de PDF (poppler), independente
 ```
 
 Dependência unidirecional: `compendio ← motor`, `compendio ← wiki`. Nenhum pacote depende
-de app. A wiki **não** usa o motor — quem vai usar é o app de ficha (ainda não criado).
+de app. A wiki **não** usa o motor — quem usa é `apps/viagens-acacius` (a ficha; **Bloco 1
+fechado** — importa o motor e recalcula no cliente).
 
 ---
 
@@ -80,14 +81,29 @@ Provas por tipo de mudança:
 - sempre → `npm test` na raiz
 
 ### 5. Meça o território, não o seu mapa dele.
-Regra 27 no PROGRESSO tem a família completa. O resumo: toda vez que algo pareceu certo e
-não estava, a causa foi uma **representação parcial** divergindo do real — worktrees,
-Zod permissivo, caminho tipado, varredura de subconjunto, e **o `tsc | grep motor`** que eu
-mesmo rodava enquanto 14 erros de tipo se acumulavam na UI.
+Regra 27 no PROGRESSO tem a família completa (agora **seis** ocorrências). O resumo: toda vez
+que algo pareceu certo e não estava, a causa foi uma **representação parcial** divergindo do
+real — worktrees, Zod permissivo, caminho tipado, varredura de subconjunto, **o `tsc | grep
+motor`** que eu rodava enquanto 14 erros de tipo se acumulavam na UI, e (6ª, Bloco 1) **o
+barrel que arrasta `fs`**: importar `calcularFicha` no cliente quebrou o bundle com `node:fs`
+porque `@ct/compendio` — que eu tratava como "os tipos e helpers puros" — também reexporta o
+carregador de dados; o nome era o mapa, o módulo real era o território. Subcaminho puro
+`@ct/compendio/schema` resolveu.
 
 Defesa dupla: **medir contra o corpus inteiro** (a mesma lista de fontes que o código
-carrega) **e falhar alto no inesperado**. Ao ver um número que bate ou uma lista completa,
-pergunte: *isto foi medido contra o território ou contra um mapa meu?*
+carrega) **e falhar alto no inesperado**. No app isso virou o padrão **subset+guard**: o
+servidor recorta só as entidades do personagem e o prerender compara `calcularFicha(subset)`
+com `calcularFicha(compêndio inteiro)` — recorte incompleto quebra o build. Ao ver um número
+que bate ou uma lista completa, pergunte: *isto foi medido contra o território ou um mapa meu?*
+
+### 6b. Procedência vem da COMPUTAÇÃO, não da tela.
+A trilha de um número e a cascata de condições na bandeja são o **rastro real do motor**
+(`f.trilha`, `f.condicoesAtivas` com `via[]`) visto de dois lugares — nunca uma explicação que
+a UI remonta. Uma trilha narrada pela tela pode **mentir com confiança**, e trilha que mente é
+pior que nenhuma. Se o motor não expõe a cadeia num formato consumível, **estenda o motor** e
+avise (foi assim que `ValorPericia.fonteTreino` nasceu) — não simule na view. Sinal de que
+está certo: o rastro **varia por caso** (Atletismo → `origem:escravo`, Fortitude → `barbaro
+(fixa)`), não é uma etiqueta genérica que a UI colou.
 
 ### 6. Direção do modelo, antes de escalar.
 Pergunte se a entidade **concede** efeito ou **é o stat** que os efeitos miram. Perícia é
@@ -118,6 +134,10 @@ Estes são meus, não do usuário. Vigie-os.
    confie no "OK" impresso.
 6. **Escrever artefato no lugar errado.** Relatórios `.txt` dos testes vazaram para o
    commit porque o `.gitignore` estava ancorado na raiz e a raiz dos dados mudou.
+7. **Barrel que arrasta `fs` pro cliente.** O motor é puro, mas importar `calcularFicha` num
+   client component puxou `node:fs` pelo barrel `@ct/compendio` (reexporta o carregador). Só
+   quebrou no `next build`, não no `tsc`. **Para código que roda no cliente, importe de
+   subcaminhos puros** (`@ct/compendio/schema`), não do agregador. É a 6ª da regra 27.
 
 ---
 
@@ -164,14 +184,24 @@ conjuração em ficha, item condicional, multiclasse, auditoria de cobertura.
 
 ## Estado atual e próximo passo
 
-**Feito:** Livro Básico com `efeitos[]` 100% (poderes, raças, origens, classes, itens,
+**Feito (dados):** Livro Básico com `efeitos[]` 100% (poderes, raças, origens, classes, itens,
 itens-mágicos, magias, perícias, divindades) + condições (35 canônicas). Zero quarentenas
-em aberto. Motor completo com trilha. Monorepo de pé, **656 testes verdes**, build limpo.
+em aberto. Motor completo com trilha.
 
-**Próximo (combinado com o usuário):** criar `apps/viagens-acacius` — o app de ficha de
-personagem. Nasce **vazio**; a "Tela 01" é conversa separada depois disso.
+**Feito (Bloco 1 — app `viagens-acacius`):** a ficha do Thaíde-mock, viva e com procedência
+visível. Etapas 1→4.1, cada uma com build+suíte+wiki+console verdes e commit separado (ver
+`PROGRESSO.md`, seção "BLOCO 1"): esqueleto ligado → forma do wireframe (3 colunas, lo-fi
+legível) → **loop reativo com recálculo no cliente** (Fúria/PV/PM, painel de Ataques) →
+**procedência visível** (trilha profunda ao clique + cascata de condição na bandeja) → bandeja
+compacta-expansível. Padrões novos: **subset+guard** (recorte de entidades provado no
+prerender) e **procedência-do-motor-não-da-UI** (§6b). Monorepo com **660 testes verdes**.
 
-**Pendências registradas** (não são bugs; estão justificadas na auditoria de cobertura, em
+**Próximo (combinado com o usuário):** **Bloco 2 — persistência** (conta/banco: o
+`EstadoDeSessao` deixa de começar no padrão e passa a vir/gravar no banco) **e edição de
+construção** (treino, equipar, atributos — hoje inertes de propósito). A planejar com calma
+antes de construir.
+
+**Pendências registradas** (não são bugs; justificadas na auditoria de cobertura em
 `packages/compendio/dados/PROGRESSO.md`): rastreador de turno (durações de combate,
 regeneração, condições temporais), subsistemas de armadura/escudo/carga, resolvedor de
 cura, lote de divindades para `arma.preferida_divindade`.
