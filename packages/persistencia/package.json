@@ -5,7 +5,9 @@
   "type": "module",
   "description": "Bloco 2 — camada de dados: migrations (Supabase/Postgres) + loader que mapeia linhas para os objetos do motor (Personagem + EstadoDeSessao). O motor permanece intocado.",
   "scripts": {
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:rls": "vitest run -c vitest.rls.config.ts",
+    "seed": "node scripts/seed-thaide.mjs"
   },
   "dependencies": {
     "@ct/compendio": "*",

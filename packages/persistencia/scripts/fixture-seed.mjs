@@ -8,3 +8,5 @@ export const THAIDE_ID = "33333333-3333-4333-8333-333333333333";
 
 export const DONO = { email: "thaide-dono@seed.local", password: "seed-thaide-dev-1234" };
 export const MESTRE = { email: "mestre@seed.local", password: "seed-mestre-dev-1234" };
+// Usuário FORA da mesa — só existe pro teste NEGATIVO da Fase 2 (a RLS tem que negar).
+export const ESTRANHO = { email: "estranho@seed.local", password: "seed-estranho-dev-1234" };
