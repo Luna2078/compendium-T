@@ -19,6 +19,7 @@ create type status_campanha       as enum ('ativa', 'encerrada');
 -- opcao discrimina a linha da ESPINHA: um poder, uma perícia treinada, um aumento
 -- de atributo, um ramo, um bônus de perícia ou uma MAGIA conhecida — tudo é escolha.
 create type opcao_escolha         as enum ('poder', 'treinar_pericia', 'atributo', 'ramo', 'bonus_pericia', 'magia');
+create type estado_troca          as enum ('pendente', 'aceita', 'recusada', 'cancelada');
 
 -- ── helper: atualizado_em automático ───────────────────────────────────────
 create or replace function set_atualizado_em() returns trigger
@@ -134,6 +135,30 @@ create table personagem_itens (
 );
 create index idx_itens_ativos    on personagem_itens(personagem_id) where removido_em is null;
 create index idx_itens_equipados on personagem_itens(personagem_id) where removido_em is null and equipado;
+
+-- ── trocas (jogador→jogador com aceite) — ESTRUTURA agora; feature/UI é o Bloco 3 ──
+-- A transferência de uma INSTÂNCIA entre jogadores exige consentimento: o ofertante cria
+-- a troca; o destinatário aceita; SÓ ENTÃO o dono (personagem_id do item) migra — feito
+-- pelo trigger em 0002, nunca por UPDATE direto. O mestre concede via INSERT em
+-- personagem_itens (concedido_por = mestre) e NÃO passa por aqui.
+-- Os dois composite-FKs garantem, sem trigger, que a troca não cruza mesa.
+create table trocas (
+  id                 uuid primary key default gen_random_uuid(),
+  mesa_id            uuid not null,
+  item_id            uuid not null references personagem_itens(id) on delete cascade,  -- instância oferecida
+  de_personagem_id   uuid not null,
+  para_personagem_id uuid not null,
+  estado             estado_troca not null default 'pendente',
+  criada_em          timestamptz not null default now(),
+  resolvida_em       timestamptz,     -- carimbo do desfecho (trigger em 0002)
+  removida_em        timestamptz,     -- soft-delete/auditoria
+  check (de_personagem_id <> para_personagem_id),
+  foreign key (de_personagem_id,   mesa_id) references personagens(id, mesa_id),
+  foreign key (para_personagem_id, mesa_id) references personagens(id, mesa_id)
+);
+create index idx_trocas_mesa      on trocas(mesa_id);
+create index idx_trocas_item      on trocas(item_id);
+create index idx_trocas_pendentes on trocas(para_personagem_id) where estado = 'pendente' and removida_em is null;
 
 -- ── campanha_personagens (PARTICIPAÇÃO — M:N; o EFÊMERO pendura aqui) ───────
 -- mesa_id denormalizado: os DOIS composite-FKs abaixo garantem, de forma
