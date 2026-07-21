@@ -46,6 +46,26 @@ body {
   margin: 16px;
 }
 
+/* ── AUTH (login/conta) — lo-fi, cinza, como o resto ────────────────────────── */
+.conta-bar { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding: 8px 20px; background: #ececec; border-bottom: 1px solid #d6d6d6; font: 500 13px system-ui; color: var(--muted); }
+.conta-bar__email { color: var(--tinta2); }
+.conta-bar__sair { font: 600 12px system-ui; color: var(--tinta2); background: #fff; border: 1px solid var(--borda); border-radius: 5px; padding: 4px 12px; cursor: pointer; }
+.conta-bar__sair:hover { background: #f0f0f0; }
+
+.sem-personagem { margin: 60px auto; max-width: 420px; text-align: center; color: var(--muted); font: 400 15px system-ui; padding: 24px; border: 1px dashed var(--dash); border-radius: 8px; }
+
+.login-wrap { min-height: 100dvh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.login { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 340px; background: #fff; border: 1px solid var(--borda); border-radius: 10px; padding: 24px; }
+.login__tit { margin: 0 0 4px; font: 700 20px system-ui; color: var(--tinta); }
+.login__campo { display: flex; flex-direction: column; gap: 5px; font: 600 12px system-ui; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+.login__campo input { font: 400 15px system-ui; padding: 9px 11px; border: 1px solid var(--input-bd); border-radius: 6px; background: #fff; }
+.login__campo input:focus { outline: 2px solid #9a9a9a; }
+.login__erro { margin: 0; font: 500 13px system-ui; color: #a13d3d; background: #f7ecec; border: 1px solid #e0c4c4; border-radius: 6px; padding: 8px 10px; }
+.login__enviar { font: 600 14px system-ui; color: #fff; background: #6f6f6f; border: none; border-radius: 6px; padding: 10px; cursor: pointer; }
+.login__enviar:disabled { opacity: .6; cursor: default; }
+.login__enviar:hover:not(:disabled) { background: #5f5f5f; }
+.login__toggle { font: 500 13px system-ui; color: var(--muted); background: none; border: none; cursor: pointer; text-decoration: underline; padding: 4px; }
+
 /* ── TOPO (barra + abas) — gruda no scroll ─────────────────────────────────── */
 .topo { position: sticky; top: 0; z-index: 20; }
 

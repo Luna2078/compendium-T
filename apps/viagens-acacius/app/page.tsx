@@ -1,10 +1,10 @@
-// ── BLOCO 2 · Fase 3 — o Thaíde nasce do BANCO ───────────────────────────────
-// Server Component. O personagem + a sessão agora vêm do Supabase, lidos SOB RLS pela
-// sessão do usuário-seed (JWT, não service_role) e montados pelo loader — não mais de
-// readFileSync. O COMPÊNDIO (regras) e as CONDIÇÕES seguem do disco: são dados estáticos,
-// não estão no banco. O motor e o FichaInterativa (o loop reativo) NÃO mudam — não sabem
-// de onde os dados vieram; por isso a troca de fonte é transparente.
+// ── BLOCO 2 · Login · Fase 1 — a ficha sob SESSÃO REAL (cookie) ──────────────
+// Server Component. O usuário vem da sessão-cookie (login de verdade), não de um JWT injetado.
+// Proteção: sem usuário → /login (o middleware já barra antes; aqui é o cinto). A leitura e a
+// escrita rodam sob a sessão do usuário (RLS). O motor e o FichaInterativa não sabem que login
+// existe — só esta camada e o loader falam com o Auth.
 
+import { redirect } from "next/navigation";
 import { readFileSync } from "node:fs";
 import { carregarEntidades, caminhoDados } from "@ct/compendio";
 import { calcularFicha, type CondicaoDef } from "@ct/motor";
@@ -12,49 +12,65 @@ import { montarPersonagem, montarEstadoDeSessao } from "@ct/persistencia";
 import { FichaInterativa } from "@/components/FichaInterativa";
 import { entidadesDoPersonagem } from "@/lib/entidades-do-personagem";
 import { lerThaideDoBanco } from "@/lib/dados-supabase";
+import { criarClienteServidor } from "@/lib/supabase/server";
+import { sair } from "@/app/login/acoes";
 
-// lê por requisição (sessão do usuário-seed) — não prerenderiza dado do banco no build
 export const dynamic = "force-dynamic";
 
-async function preparar() {
+export default async function Page() {
+  const sb = await criarClienteServidor();
+  const { data: { user } } = await sb.auth.getUser();
+  if (!user) redirect("/login"); // proteção (cinto — o middleware já redireciona antes)
+
+  const contaBar = (
+    <div className="conta-bar">
+      <span className="conta-bar__email">{user.email}</span>
+      <form action={sair}>
+        <button type="submit" className="conta-bar__sair">sair</button>
+      </form>
+    </div>
+  );
+
+  const linhas = await lerThaideDoBanco(); // null se a RLS não deixa o usuário ver o personagem
+  if (!linhas) {
+    return (
+      <div className="app">
+        {contaBar}
+        <div className="sem-personagem">Você ainda não tem personagem nesta mesa.</div>
+      </div>
+    );
+  }
+
+  // ── compêndio + condições seguem do disco (dados estáticos, fora do banco) ──
   const compendio = carregarEntidades();
   const condicoes = JSON.parse(
     readFileSync(caminhoDados("referencia", "condicoes.json"), "utf8"),
   ) as CondicaoDef[];
 
-  // ── AGORA DO BANCO: linhas → objetos do motor (mesmo loader provado na Fase 2) ──
-  const linhas = await lerThaideDoBanco();
   const personagem = montarPersonagem(
     { personagem: linhas.personagem, escolhas: linhas.escolhas, itens: linhas.itens },
     linhas.campanhaId,
   );
   const sessaoInicial = montarEstadoDeSessao(linhas.sessao);
-
-  // Só as entidades do Thaíde vão pro cliente (não os 3.242 JSONs).
   const entidades = entidadesDoPersonagem(compendio, personagem, sessaoInicial);
 
-  // GUARD (falha barulhenta): o recorte tem que produzir EXATAMENTE a mesma ficha que o
-  // compêndio inteiro — agora sobre o personagem vindo do banco.
   const full = calcularFicha(personagem, sessaoInicial, compendio, condicoes);
   const sub = calcularFicha(personagem, sessaoInicial, entidades, condicoes);
   if (JSON.stringify(full) !== JSON.stringify(sub)) {
     throw new Error(
-      "entidadesDoPersonagem: recorte incompleto — a ficha do subconjunto difere da do " +
-        "compêndio inteiro (ver lib/entidades-do-personagem.ts).",
+      "entidadesDoPersonagem: recorte incompleto — a ficha do subconjunto difere da do compêndio inteiro.",
     );
   }
 
-  return { personagem, sessaoInicial, entidades, condicoes };
-}
-
-export default async function Page() {
-  const { personagem, sessaoInicial, entidades, condicoes } = await preparar();
   return (
-    <FichaInterativa
-      personagem={personagem}
-      sessaoInicial={sessaoInicial}
-      entidades={entidades}
-      condicoes={condicoes}
-    />
+    <>
+      {contaBar}
+      <FichaInterativa
+        personagem={personagem}
+        sessaoInicial={sessaoInicial}
+        entidades={entidades}
+        condicoes={condicoes}
+      />
+    </>
   );
 }
