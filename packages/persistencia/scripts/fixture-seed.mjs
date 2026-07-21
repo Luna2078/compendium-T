@@ -6,7 +6,10 @@ export const MESA_ID = "11111111-1111-4111-8111-111111111111";
 export const CAMPANHA_ID = "22222222-2222-4222-8222-222222222222";
 export const THAIDE_ID = "33333333-3333-4333-8333-333333333333";
 
-export const DONO = { email: "thaide-dono@seed.local", password: "seed-thaide-dev-1234" };
+// DONO = conta fixa de trabalho do Arthur (dona canônica do Thaíde). É o MESMO uid provado
+// nos testes de RLS — só a credencial de login mudou (re-credencial, não migração de uid).
+// Senha fraca é intencional: login aqui separa jogadores, não é cofre.
+export const DONO = { email: "admin@admin.com", password: "admin123" };
 export const MESTRE = { email: "mestre@seed.local", password: "seed-mestre-dev-1234" };
 // Usuário FORA da mesa — só existe pro teste NEGATIVO da Fase 2 (a RLS tem que negar).
 export const ESTRANHO = { email: "estranho@seed.local", password: "seed-estranho-dev-1234" };

@@ -20,11 +20,14 @@ export async function cadastrar(_prev: EstadoAuth, form: FormData): Promise<Esta
   const email = String(form.get("email") ?? "").trim();
   const senha = String(form.get("senha") ?? "");
   // Sem validação de força (login separa jogadores, não é cofre) — mas o Auth hasheia a senha.
+  // O projeto está com "Confirm email" DESLIGADO → signUp já devolve sessão e a conta entra
+  // direto. O guard abaixo é rede de segurança (falha alta): se um dia a confirmação voltar a
+  // ligar, o cadastro não some em silêncio — diz por quê em vez de fingir que entrou.
   const sb = await criarClienteServidor();
   const { data, error } = await sb.auth.signUp({ email, password: senha });
   if (error) return { erro: `Não cadastrou: ${error.message}` };
   if (!data.session)
-    return { erro: "Conta criada, mas sem sessão — 'Confirm email' está LIGADO no projeto? Desligue em Auth → Providers → Email." };
+    return { erro: "Conta criada, mas sem sessão — 'Confirm email' voltou a ficar LIGADO? Desligue em Auth → Sign In / Providers → Email." };
   revalidatePath("/", "layout");
   redirect("/");
 }
