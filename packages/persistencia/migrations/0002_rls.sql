@@ -154,21 +154,29 @@ end $$;
 create trigger trg_troca_carimba before update on trocas
   for each row execute function troca_carimba_resolucao();
 
--- (2) MECANISMO: ao ACEITAR, move a instância. É o ÚNICO caminho em que o dono de um item
---     migra num fluxo de jogador. SECURITY DEFINER porque o destinatário NÃO é dono do item.
---     Revalida que o item ainda é do ofertante (troca não move item já trocado/removido).
+-- (2) MECANISMO: ao ACEITAR, move a instância — o ÚNICO caminho em que o dono de um item
+--     migra num fluxo de jogador. SECURITY DEFINER (o destinatário não é dono do item) e
+--     search_path travado. Abre um "token" TRANSAÇÃO-LOCAL (app.troca_em_aplicacao = id da
+--     troca) SÓ em volta do UPDATE e o CONSOME logo depois — é isto que torna a troca de USO
+--     ÚNICO. Revalida com GET DIAGNOSTICS que moveu EXATAMENTE 1 linha: sob READ COMMITTED,
+--     dois aceites concorrentes do mesmo item → o 2º casa 0 linhas → raise → rollback do aceite
+--     (nada de "aceito mas não movido").
 create or replace function troca_aplica_aceite() returns trigger
 language plpgsql security definer set search_path = public as $$
+declare v_count int;
 begin
   if new.estado = 'aceita' and old.estado is distinct from 'aceita' then
+    perform set_config('app.troca_em_aplicacao', new.id::text, true);  -- true = local à transação
     update personagem_itens
        set personagem_id  = new.para_personagem_id,
            transferido_de = new.de_personagem_id
      where id = new.item_id
        and personagem_id = new.de_personagem_id
        and removido_em is null;
-    if not found then
-      raise exception 'troca %: item % não pertence mais ao ofertante (ou foi removido)', new.id, new.item_id;
+    get diagnostics v_count = row_count;
+    perform set_config('app.troca_em_aplicacao', '', true);            -- consome o token na hora
+    if v_count <> 1 then
+      raise exception 'troca %: transferência afetou % linha(s), esperado 1 (item já movido/removido ou aceite concorrente)', new.id, v_count;
     end if;
   end if;
   return null;  -- AFTER trigger: valor ignorado
@@ -177,28 +185,33 @@ create trigger trg_troca_aplica after update on trocas
   for each row execute function troca_aplica_aceite();
 
 -- (3) GUARDA velho-vs-novo (o que RLS NÃO consegue): personagem_itens.personagem_id só muda
---     se o ator é MESTRE da mesa OU existe uma troca ACEITA correspondente. Fecha o empurrão
---     sem consentimento — inclusive contra um UPDATE direto do próprio dono.
+--     se o ator é MESTRE (e_mestre usa auth.uid() = claim do JWT, imune ao SECURITY DEFINER),
+--     OU se estamos DENTRO da aplicação de UMA troca específica — casando item + de(OLD) +
+--     para(NEW) + id. Direcional (A→B não autoriza B→A) e de USO ÚNICO (o token só existe em
+--     volta daquele UPDATE): troca aceita NUNCA vira autorização reutilizável. Empurrão direto
+--     do próprio dono, em qualquer direção → raise.
 create or replace function item_guarda_transferencia() returns trigger
 language plpgsql security definer set search_path = public as $$
-declare v_mesa uuid;
+declare v_mesa uuid; v_troca uuid;
 begin
   if new.personagem_id is distinct from old.personagem_id then
     select mesa_id into v_mesa from personagens where id = old.personagem_id;
     if e_mestre(v_mesa) then
-      return new;  -- autoridade do mestre: move instância direto
+      return new;  -- autoridade do mestre (auth.uid(), não current_user)
     end if;
-    if exists (
+    v_troca := nullif(current_setting('app.troca_em_aplicacao', true), '')::uuid;  -- null se não há token
+    if v_troca is not null and exists (
       select 1 from trocas t
-      where t.item_id = old.id
+      where t.id = v_troca
+        and t.item_id = old.id
         and t.de_personagem_id = old.personagem_id
         and t.para_personagem_id = new.personagem_id
         and t.estado = 'aceita'
         and t.removida_em is null
     ) then
-      return new;  -- lastreada por troca aceita
+      return new;  -- exatamente esta troca, exatamente esta direção, uma vez
     end if;
-    raise exception 'transferência do item % exige troca aceita (ou ser mestre da mesa)', old.id;
+    raise exception 'transferência do item % exige troca aceita correspondente (ou ser mestre)', old.id;
   end if;
   return new;  -- não mexeu no dono: edição/equipar/soft-delete passam livres
 end $$;
