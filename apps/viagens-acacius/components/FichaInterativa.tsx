@@ -14,6 +14,7 @@ import { useMemo, useState } from "react";
 import type { Entidade, Personagem, EstadoDeSessao } from "@ct/compendio";
 import { calcularFicha, type CondicaoDef } from "@ct/motor";
 import { Paineis, type PainelDef } from "@/components/Paineis";
+import { useSessaoPersistente } from "@/components/useSessaoPersistente";
 import {
   ataquesView,
   atributosView,
@@ -57,9 +58,10 @@ export function FichaInterativa({
   entidades: Entidade[];
   condicoes: CondicaoDef[];
 }) {
-  // ── O ESTADO DE SESSÃO — a "porta da persistência". Hoje começa no padrão (props do
-  //    servidor); no Bloco 2, o mesmo objeto passará a vir do banco. Nada além disto muda. ──
-  const [sessao, setSessao] = useState<EstadoDeSessao>(sessaoInicial);
+  // ── O ESTADO DE SESSÃO. Mesma interface do useState, mas agora PERSISTE em background
+  //    (write-back da Fase seguinte). O FichaInterativa não sabe que existe escrita — a
+  //    camada de sessão (useSessaoPersistente) fala com o banco; aqui é só [estado, set]. ──
+  const [sessao, setSessao] = useSessaoPersistente(sessaoInicial);
 
   // recálculo LOCAL: muda a sessão → o motor roda de novo → a ficha inteira reflete.
   const f = useMemo(
