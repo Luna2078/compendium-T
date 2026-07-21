@@ -4,9 +4,14 @@
 // sessão (PV/PM atual, toggles, condições, magias). Nunca derivado: o motor regenera na carga.
 import type { EstadoDeSessao } from "@ct/compendio";
 import { criarClienteServidor } from "@/lib/supabase/server";
-import { THAIDE_ID, CAMPANHA_ID } from "@ct/persistencia/fixture";
 
-export async function salvarSessao(s: EstadoDeSessao): Promise<void> {
+// Grava a sessão de UM personagem (campanha+personagem) — genérico, serve qualquer ficha
+// aberta (Thaíde comum, Vharo denso). O RLS de UPDATE garante que só o dono grava.
+export async function salvarSessao(
+  campanhaId: string,
+  personagemId: string,
+  s: EstadoDeSessao,
+): Promise<void> {
   const sb = await criarClienteServidor();
 
   const { data, error } = await sb
@@ -18,8 +23,8 @@ export async function salvarSessao(s: EstadoDeSessao): Promise<void> {
       condicoes_ativas: s.condicoesAtivas,
       magias_ativas: s.magiasAtivas,
     })
-    .eq("campanha_id", CAMPANHA_ID)
-    .eq("personagem_id", THAIDE_ID)
+    .eq("campanha_id", campanhaId)
+    .eq("personagem_id", personagemId)
     .select("personagem_id");
 
   if (error) throw new Error(`salvar sessão: ${error.message}`);

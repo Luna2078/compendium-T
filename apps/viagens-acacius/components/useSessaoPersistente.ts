@@ -18,6 +18,8 @@ const DEBOUNCE_MS = 2000;
 
 export function useSessaoPersistente(
   inicial: EstadoDeSessao,
+  campanhaId: string,
+  personagemId: string,
 ): [EstadoDeSessao, Dispatch<SetStateAction<EstadoDeSessao>>] {
   const [sessao, setSessao] = useState(inicial);
   const ultima = useRef(sessao); // o estado mais novo, sempre
@@ -45,7 +47,7 @@ export function useSessaoPersistente(
     try {
       let alvo = ultima.current;
       while (alvo !== gravada.current) {
-        await salvarSessao(alvo); // server action (grava sob RLS, sessão do seed)
+        await salvarSessao(campanhaId, personagemId, alvo); // server action (grava sob RLS do dono)
         gravada.current = alvo;
         alvo = ultima.current; // mudou durante o await? regrava o mais novo (converge)
       }

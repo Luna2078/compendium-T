@@ -11,7 +11,7 @@ import { calcularFicha, type CondicaoDef } from "@ct/motor";
 import { montarPersonagem, montarEstadoDeSessao } from "@ct/persistencia";
 import { FichaInterativa } from "@/components/FichaInterativa";
 import { entidadesDoPersonagem } from "@/lib/entidades-do-personagem";
-import { lerThaideDoBanco } from "@/lib/dados-supabase";
+import { lerPersonagensDoUsuario } from "@/lib/dados-supabase";
 import { criarClienteServidor } from "@/lib/supabase/server";
 import { sair } from "@/app/login/acoes";
 
@@ -31,8 +31,8 @@ export default async function Page() {
     </div>
   );
 
-  const linhas = await lerThaideDoBanco(); // null se a RLS não deixa o usuário ver o personagem
-  if (!linhas) {
+  const fontes = await lerPersonagensDoUsuario(); // [] se a RLS não deixa ver nenhum personagem
+  if (fontes.length === 0) {
     return (
       <div className="app">
         {contaBar}
@@ -47,30 +47,40 @@ export default async function Page() {
     readFileSync(caminhoDados("referencia", "condicoes.json"), "utf8"),
   ) as CondicaoDef[];
 
-  const personagem = montarPersonagem(
-    { personagem: linhas.personagem, escolhas: linhas.escolhas, itens: linhas.itens },
-    linhas.campanhaId,
-  );
-  const sessaoInicial = montarEstadoDeSessao(linhas.sessao);
-  const entidades = entidadesDoPersonagem(compendio, personagem, sessaoInicial);
-
-  const full = calcularFicha(personagem, sessaoInicial, compendio, condicoes);
-  const sub = calcularFicha(personagem, sessaoInicial, entidades, condicoes);
-  if (JSON.stringify(full) !== JSON.stringify(sub)) {
-    throw new Error(
-      "entidadesDoPersonagem: recorte incompleto — a ficha do subconjunto difere da do compêndio inteiro.",
+  // monta cada ficha: recorte de entidades + guarda subset≡full (o recálculo local não pode
+  // divergir do compêndio inteiro). Vale por personagem — o denso não relaxa a prova.
+  const fichas = fontes.map((linhas) => {
+    const personagem = montarPersonagem(
+      { personagem: linhas.personagem, escolhas: linhas.escolhas, itens: linhas.itens },
+      linhas.campanhaId,
     );
-  }
+    const sessaoInicial = montarEstadoDeSessao(linhas.sessao);
+    const entidades = entidadesDoPersonagem(compendio, personagem, sessaoInicial);
+
+    const full = calcularFicha(personagem, sessaoInicial, compendio, condicoes);
+    const sub = calcularFicha(personagem, sessaoInicial, entidades, condicoes);
+    if (JSON.stringify(full) !== JSON.stringify(sub)) {
+      throw new Error(
+        `entidadesDoPersonagem(${personagem.nome}): recorte incompleto — a ficha do subconjunto difere da do compêndio inteiro.`,
+      );
+    }
+    return { personagem, sessaoInicial, entidades, campanhaId: linhas.campanhaId, personagemId: linhas.personagem.id };
+  });
 
   return (
     <>
       {contaBar}
-      <FichaInterativa
-        personagem={personagem}
-        sessaoInicial={sessaoInicial}
-        entidades={entidades}
-        condicoes={condicoes}
-      />
+      {fichas.map((fi) => (
+        <FichaInterativa
+          key={fi.personagemId}
+          personagem={fi.personagem}
+          sessaoInicial={fi.sessaoInicial}
+          entidades={fi.entidades}
+          condicoes={condicoes}
+          campanhaId={fi.campanhaId}
+          personagemId={fi.personagemId}
+        />
+      ))}
     </>
   );
 }

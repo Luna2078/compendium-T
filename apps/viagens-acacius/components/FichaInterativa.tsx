@@ -52,16 +52,20 @@ export function FichaInterativa({
   sessaoInicial,
   entidades,
   condicoes,
+  campanhaId,
+  personagemId,
 }: {
   personagem: Personagem;
   sessaoInicial: EstadoDeSessao;
   entidades: Entidade[];
   condicoes: CondicaoDef[];
+  campanhaId: string;
+  personagemId: string;
 }) {
   // ── O ESTADO DE SESSÃO. Mesma interface do useState, mas agora PERSISTE em background
   //    (write-back da Fase seguinte). O FichaInterativa não sabe que existe escrita — a
   //    camada de sessão (useSessaoPersistente) fala com o banco; aqui é só [estado, set]. ──
-  const [sessao, setSessao] = useSessaoPersistente(sessaoInicial);
+  const [sessao, setSessao] = useSessaoPersistente(sessaoInicial, campanhaId, personagemId);
 
   // recálculo LOCAL: muda a sessão → o motor roda de novo → a ficha inteira reflete.
   const f = useMemo(

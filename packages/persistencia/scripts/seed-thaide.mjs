@@ -1,13 +1,23 @@
-// SEED do Thaíde na NUVEM (Fase 1). Idempotente: reusa os usuários de auth (upsert) e
-// recria a mesa-semente por id fixo (o cascade apaga o que o seed criou abaixo dela).
+// SEED na NUVEM (Fase 1 + Ficha vestida). Idempotente: reusa os usuários de auth (upsert) e
+// recria as mesas-semente por id fixo (o cascade apaga o que o seed criou abaixo delas).
 // Usa a SECRET key (service_role) DE PROPÓSITO — bypassa RLS. Isto é seed, não prova de
 // segurança; a RLS se prova na Fase 2 (sob JWT real). Lê chaves do ambiente (nunca imprime).
+//
+// Semeia DOIS personagens, mesmo dono (admin):
+//   · Mesa 1 · Thaíde (caso COMUM) — bárbaro 5, classe única. Intacto: os testes de RLS o usam.
+//   · Mesa 2 · Vharo-20 (caso DENSO) — lefou, bárbaro 12/arcanista 8, nível 20. É o personagem
+//     que o motor já prova; aqui recebe uma sessão densa (Fúria + várias condições reais) pra
+//     exercitar a bandeja de efeitos (>8 chips) e o cabeçalho multiclasse na ficha vestida.
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import ws from "ws"; // Node <22 não tem WebSocket nativo; o seed não usa realtime, mas o client o inicializa
-import { MESA_ID, CAMPANHA_ID, THAIDE_ID, DONO, MESTRE } from "./fixture-seed.mjs";
+import {
+  MESA_ID, CAMPANHA_ID, THAIDE_ID,
+  MESA2_ID, CAMPANHA2_ID, VHARO_ID,
+  DONO, MESTRE,
+} from "./fixture-seed.mjs";
 
 const URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SECRET = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -61,49 +71,74 @@ function decompor(p, personagemId, mesaId) {
 // ── fonte: os JSONs do compêndio (o seed os leva pro banco) ──
 const raiz = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
 const base = join(raiz, "packages/compendio/dados/personagens");
-const p = JSON.parse(readFileSync(join(base, "thaide.json"), "utf8"));
-const s = JSON.parse(readFileSync(join(base, "thaide.sessao.json"), "utf8"));
+const lerP = (arq) => JSON.parse(readFileSync(join(base, arq), "utf8"));
 
-// 1) usuários de auth (upsert por email)
+// Semeia uma mesa completa (mesa → membros → campanha → personagem → participação → sessão).
+// Recria por id fixo: apaga a mesa (cascade) e reinsere — idempotente.
+async function semearMesa({ mesaId, campanhaId, personagemId, nomeMesa, nomeCampanha, personagem, sessao, donoId, mestreId }) {
+  const { personagem: linhaP, escolhas, itens } = decompor(personagem, personagemId, mesaId);
+  linhaP.dono_id = donoId;
+
+  { const { error } = await sb.from("mesas").delete().eq("id", mesaId); if (error) die("delete mesa", error); }
+  { const { error } = await sb.from("mesas").insert({ id: mesaId, mestre_id: mestreId, nome: nomeMesa }); if (error) die("insert mesas", error); }
+  { const { error } = await sb.from("mesa_membros").insert([
+      { mesa_id: mesaId, usuario_id: mestreId, papel: "mestre" },
+      { mesa_id: mesaId, usuario_id: donoId, papel: "jogador" },
+    ]); if (error) die("insert mesa_membros", error); }
+  { const { error } = await sb.from("campanhas").insert({ id: campanhaId, mesa_id: mesaId, nome: nomeCampanha }); if (error) die("insert campanhas", error); }
+  { const { error } = await sb.from("personagens").insert(linhaP); if (error) die("insert personagens", error); }
+  { const { error } = await sb.from("personagem_escolhas").insert(escolhas); if (error) die("insert personagem_escolhas", error); }
+  if (itens.length) { const { error } = await sb.from("personagem_itens").insert(itens); if (error) die("insert personagem_itens", error); }
+  { const { error } = await sb.from("campanha_personagens").insert({ campanha_id: campanhaId, personagem_id: personagemId, mesa_id: mesaId }); if (error) die("insert campanha_personagens", error); }
+  { const { error } = await sb.from("sessao").insert({
+      campanha_id: campanhaId, personagem_id: personagemId,
+      pv_atual: sessao.pvAtual ?? null, pm_gasto: sessao.pmGasto ?? 0,
+      toggles_ativos: sessao.togglesAtivos ?? [], condicoes_ativas: sessao.condicoesAtivas ?? [], magias_ativas: sessao.magiasAtivas ?? [],
+    }); if (error) die("insert sessao", error); }
+}
+
+// 1) usuários de auth (upsert por email) — admin é dono das duas mesas
 const donoId = await acharOuCriarUsuario(DONO);
 const mestreId = await acharOuCriarUsuario(MESTRE);
 
 // 2) usuarios (upsert — reusa)
 { const { error } = await sb.from("usuarios").upsert([
-    { id: donoId, handle: "thaide-dono" }, { id: mestreId, handle: "mestre-seed" },
+    { id: donoId, handle: "admin" }, { id: mestreId, handle: "mestre-seed" },
   ]); if (error) die("upsert usuarios", error); }
 
-// 3) limpa a mesa-semente (cascade apaga tudo abaixo dela — só o que o seed criou)
-{ const { error } = await sb.from("mesas").delete().eq("id", MESA_ID); if (error) die("delete mesa", error); }
+// 3) MESA 1 · Thaíde (COMUM) — sessão canônica do disco. Intacto p/ os testes de RLS.
+{
+  const thaide = lerP("thaide.json");
+  const sessao = lerP("thaide.sessao.json");
+  await semearMesa({
+    mesaId: MESA_ID, campanhaId: CAMPANHA_ID, personagemId: THAIDE_ID,
+    nomeMesa: "Mesa do Thaíde (seed)", nomeCampanha: "Campanha piloto (seed)",
+    personagem: thaide,
+    sessao: { pvAtual: sessao.pvAtual, pmGasto: sessao.pmGasto ?? 0, togglesAtivos: sessao.togglesAtivos ?? [], condicoesAtivas: sessao.condicoesAtivas ?? [], magiasAtivas: sessao.magiasAtivas ?? [] },
+    donoId, mestreId,
+  });
+}
 
-// 4) mesa
-{ const { error } = await sb.from("mesas").insert({ id: MESA_ID, mestre_id: mestreId, nome: "Mesa do Thaíde (seed)" }); if (error) die("insert mesas", error); }
-
-// 5) mesa_membros (mestre + dono como jogador)
-{ const { error } = await sb.from("mesa_membros").insert([
-    { mesa_id: MESA_ID, usuario_id: mestreId, papel: "mestre" },
-    { mesa_id: MESA_ID, usuario_id: donoId, papel: "jogador" },
-  ]); if (error) die("insert mesa_membros", error); }
-
-// 6) campanha
-{ const { error } = await sb.from("campanhas").insert({ id: CAMPANHA_ID, mesa_id: MESA_ID, nome: "Campanha piloto (seed)" }); if (error) die("insert campanhas", error); }
-
-// 7-9) Thaíde (personagem + escolhas + itens)
-const { personagem, escolhas, itens } = decompor(p, THAIDE_ID, MESA_ID);
-personagem.dono_id = donoId;
-{ const { error } = await sb.from("personagens").insert(personagem); if (error) die("insert personagens", error); }
-{ const { error } = await sb.from("personagem_escolhas").insert(escolhas); if (error) die("insert personagem_escolhas", error); }
-{ const { error } = await sb.from("personagem_itens").insert(itens); if (error) die("insert personagem_itens", error); }
-
-// 10) participação (M:N)
-{ const { error } = await sb.from("campanha_personagens").insert({ campanha_id: CAMPANHA_ID, personagem_id: THAIDE_ID, mesa_id: MESA_ID }); if (error) die("insert campanha_personagens", error); }
-
-// 11) sessao (o efêmero — vem do thaide.sessao.json)
-{ const { error } = await sb.from("sessao").insert({
-    campanha_id: CAMPANHA_ID, personagem_id: THAIDE_ID,
-    pv_atual: s.pvAtual ?? null, pm_gasto: s.pmGasto ?? 0,
-    toggles_ativos: s.togglesAtivos ?? [], condicoes_ativas: s.condicoesAtivas ?? [], magias_ativas: s.magiasAtivas ?? [],
-  }); if (error) die("insert sessao", error); }
+// 4) MESA 2 · Vharo-20 (DENSO) — sessão DENSA: Fúria + condições reais que enchem a bandeja
+//    (>8 chips, exercitando "ver todos"). Cada efeito é computado pelo motor, não mockado.
+{
+  const vharo = lerP("vharo-20.json");
+  await semearMesa({
+    mesaId: MESA2_ID, campanhaId: CAMPANHA2_ID, personagemId: VHARO_ID,
+    nomeMesa: "Mesa do Vharo (seed · denso)", nomeCampanha: "Campanha das Cinzas (seed)",
+    personagem: vharo,
+    sessao: {
+      pvAtual: 120, // < 166 (mostra dano) — o máx segue derivado
+      pmGasto: 12,
+      togglesAtivos: ["barbaro:furia"],
+      // Fatigado cascateia em Fraco+Vulnerável (3) + 5 condições folha = ~8 chips de condição,
+      // + Fúria + Alma de Bronze (PV temp) → passa de 8 → a bandeja recolhe com "ver todos".
+      condicoesAtivas: ["fatigado", "envenenado", "sangrando", "abalado", "ofuscado", "enjoado"],
+      magiasAtivas: ["armadura-arcana"],
+    },
+    donoId, mestreId,
+  });
+}
 
 // ── contagem final (service_role → conta tudo) ──
 const tabelas = ["usuarios","mesas","mesa_membros","campanhas","personagens","personagem_escolhas","personagem_itens","campanha_personagens","sessao","trocas"];
@@ -113,4 +148,4 @@ for (const t of tabelas) {
   if (error) die(`count ${t}`, error);
   console.log(`  ${t.padEnd(22)} ${count}`);
 }
-console.log("\n✅ seed do Thaíde concluído (idempotente: rode de novo → mesmas contagens).");
+console.log("\n✅ seed concluído (2 mesas: Thaíde comum + Vharo denso · idempotente).");
