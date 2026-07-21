@@ -1,0 +1,105 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   TOKENS — o app é o DONO CANÔNICO do estilo (Bloco 2 · Ficha vestida, pino 1).
+   Portados do Design System "Tormenta — Clássico" (tokens/fonts·colors·typography·
+   effects). Daqui pra frente o VALOR mora aqui; o Design System é onde se prova variação.
+   NENHUM componente/ficha referencia cor ou fonte a não ser por var(--*) (pino 2).
+
+   Papéis conferidos 1:1 contra o README do sistema — superfícies, tinta, sinais,
+   procedência, atmosfera, tipografia, raios, bordas, derivado, ativo. Nada omitido.
+   As poucas cores incidentais que o Design System deixou literais nos componentes
+   (branco do interruptor, véu do chip/célula) viram tokens do APP aqui — pra que os
+   componentes fiquem 100% em var(--*) e a troca-de-tema alcance tudo.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ===== SUPERFÍCIES ===== */
+  --color-bg:#131019;      /* fundo — o tabuleiro ao anoitecer/noite (estado-lar) */
+  --color-panel:#17141e;   /* painel — carta elevada sobre o fundo */
+  --color-well:#0e0c15;    /* poço — campo de INPUT afundado */
+  --color-border:#332f42;  /* borda / divisória entre blocos */
+
+  /* ===== TINTA (texto) ===== */
+  --color-ink:#e7e3f0;     /* tinta — texto principal / valores */
+  --color-muted:#8f8aa4;   /* muted — rótulos, secundário */
+  --color-faint:#605b74;   /* faint — notas de rodapé, terciário */
+
+  /* ===== SINAIS DE ESTADO ===== */
+  --color-calc:#8f7ee0;    /* derivado / CALC — roxo. Número calculado, clicável. */
+  --color-active:#d6335f;  /* ativo — vermelho-púrpura da Tormenta. Condição/poder LIGADO. */
+
+  /* ===== PROCEDÊNCIA (origem de um efeito) ===== */
+  --prov-poder:#8f7ee0;    /* poder    (mesma matiz do derivado — poder "calcula") */
+  --prov-item:#57a7c6;     /* item     (ciano-aço) */
+  --prov-condicao:#d6335f; /* condição (mesma matiz do ativo — condição imposta) */
+
+  /* ===== ATMOSFERA (camada estática hoje; futuro clima/hora mora aqui) ===== */
+  --atmos-glow: radial-gradient(135% 92% at 88% -14%, rgba(205,45,95,.24), transparent 55%);
+
+  /* ===== FAMÍLIAS ===== */
+  --font-display:'Oswald', system-ui, sans-serif;       /* títulos, caixa-alta */
+  --font-ui:'Oswald', system-ui, sans-serif;             /* rótulos / nomes de linha */
+  --font-mono:'IBM Plex Mono', ui-monospace, monospace;  /* dados, números, badges */
+
+  --title-transform:uppercase;
+  --title-name-size:23px;    --title-name-weight:600; --title-name-track:1.6px;
+  --title-section-size:13px; --title-section-weight:600; --title-section-track:1.3px;
+  --title-power-size:15px;   --title-power-weight:600; --title-power-track:1.3px;
+
+  /* ===== NÚMEROS (sempre tabulares) ===== */
+  --num-variant:tabular-nums;
+  --num-stat-size:22px;     --num-stat-weight:700;    /* atributo, Defesa */
+  --num-resource-size:17px; --num-resource-weight:700;/* PV / PM */
+  --num-data-size:11px;     --num-data-weight:600;    /* totais de perícia, modificadores */
+
+  /* Micro-rótulos em mono (FOR, PV, INPUT, procedência) */
+  --label-size:8px; --label-track:1.2px; --label-weight:600;
+
+  /* ===== RAIOS ===== */
+  --radius-card:12px; --radius-panel:8px; --radius-cell:7px; --radius-chip:999px; --radius-badge:3px;
+
+  /* ===== BORDAS & SOMBRA ===== */
+  --hair:1px solid var(--color-border);
+  --shadow-card:0 22px 60px -22px rgba(0,0,0,.8);
+
+  /* ===== DERIVADO / PODER ATIVO ===== */
+  --derived-underline:1px dotted var(--color-calc);
+  --active-border:1.5px solid var(--color-active);
+  --active-glow:0 0 18px -10px var(--color-active);
+  --active-fill-opacity:.09;
+
+  /* ===== EXTRAS DO APP (incidentais que o DS deixou literais → tokenizados p/ a troca) ===== */
+  --knob:#ffffff;                       /* pino branco do interruptor */
+  --chip-fill:rgba(255,255,255,.035);   /* véu do chip de efeito */
+  --cell-tint:rgba(255,255,255,.015);   /* véu da célula de atributo */
+  --panel-sheen:linear-gradient(180deg,rgba(255,255,255,.025),transparent); /* brilho do cabeçalho */
+  --focus-ring:0 0 0 2px var(--color-calc);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TEMA "debug" — conjunto DUMMY de tokens (pino 2). Cores/fontes/raios
+   ostensivamente diferentes: alternar [data-tema="debug"] na raiz re-veste a
+   ficha INTEIRA sem tocar em componente. Não é bonito nem real — é a PROVA de
+   que a troca-de-token funciona com N>1. Componentes cegos ao tema.
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root[data-tema="debug"] {
+  --color-bg:#0a3d0a;      /* verde-limão escuro */
+  --color-panel:#7a0f4d;   /* magenta */
+  --color-well:#00343d;    /* teal profundo */
+  --color-border:#ffd000;  /* amarelo gritante */
+  --color-ink:#ffffff;
+  --color-muted:#ffe08a;
+  --color-faint:#a6ffcf;
+  --color-calc:#00e5ff;    /* ciano — derivado */
+  --color-active:#ff7a00;  /* laranja — ativo */
+  --prov-poder:#00e5ff; --prov-item:#c8ff00; --prov-condicao:#ff7a00;
+  --atmos-glow: radial-gradient(120% 90% at 10% -10%, rgba(0,229,255,.35), transparent 55%);
+  --font-display:'Comic Sans MS','Times New Roman',serif;
+  --font-ui:'Comic Sans MS',cursive;
+  --font-mono:'Courier New',monospace;
+  --radius-card:26px; --radius-panel:22px; --radius-cell:20px; --radius-badge:14px;
+  --shadow-card:0 0 0 3px #ffd000, 0 22px 60px -22px rgba(0,0,0,.9);
+  --active-fill-opacity:.22;
+  --knob:#00e5ff;
+}

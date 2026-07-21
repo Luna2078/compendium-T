@@ -287,6 +287,8 @@ export function identidadeView(p: Personagem, compendio: Entidade[]) {
     nome: p.nome,
     raca: nome("raca", p.racaId),
     classe: p.classes.map((c) => `${nome("classe", c.classeId)} ${c.niveis}`).join(" / "),
+    // lista por classe — o cabeçalho multiclasse (limitação 1) reflui estes chips
+    classesList: p.classes.map((c) => ({ nome: nome("classe", c.classeId), niveis: c.niveis })),
     nivel: p.classes.reduce((t, c) => t + c.niveis, 0),
     origem: nome("origem", p.origemId),
   };

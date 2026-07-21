@@ -1,20 +1,22 @@
 "use client";
 
-// ── ETAPA 3 — o loop reativo (recálculo NO CLIENTE) ──────────────────────────
-// O servidor mandou só as entidades do Thaíde + o estado inicial de sessão. Aqui o
-// motor (puro) roda LOCAL a cada mexida num controle: instantâneo, sem ida ao servidor.
+// ── FICHA VESTIDA (Bloco 2) — o loop reativo do Bloco 1, agora no tema "Tormenta — Clássico".
+// A APRESENTAÇÃO mudou (tokens + componentes DerivedValue/EffectChip/ProvenanceBadge/ActivePower);
+// o COMPORTAMENTO não: calcularFicha, o loop da Fúria e o write-back de sessão são intactos.
 //
-// O que é interativo = ESTADO DE SESSÃO (efêmero, o que amanhã vem do banco):
-//   · Fúria e outros ativáveis  → sessao.togglesAtivos
-//   · PV/PM atual (dano/cura)    → sessao.pvAtual / sessao.pmGasto  (o MÁX não se move: é CALC)
-// O que NÃO é interativo = CONSTRUÇÃO (Bloco 2): treino de perícia e equipar item vivem
-// no Personagem, não na sessão — ficam inertes de propósito (cruzariam a fronteira).
+// Interativo = ESTADO DE SESSÃO (efêmero): Fúria/ativáveis (togglesAtivos), PV/PM atual
+// (pvAtual/pmGasto — o MÁX não se move: é CALC), condições de sessão. Construção (treino,
+// equipar) segue inerte de propósito (é o Bloco 2 de edição, cruzaria a fronteira).
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import type { Entidade, Personagem, EstadoDeSessao } from "@ct/compendio";
 import { calcularFicha, type CondicaoDef } from "@ct/motor";
 import { Paineis, type PainelDef } from "@/components/Paineis";
 import { useSessaoPersistente } from "@/components/useSessaoPersistente";
+import { DerivedValue } from "@/components/core/DerivedValue";
+import { EffectChip } from "@/components/core/EffectChip";
+import { ActivePower } from "@/components/core/ActivePower";
+import type { Procedencia } from "@/components/core/ProvenanceBadge";
 import {
   ataquesView,
   atributosView,
@@ -34,6 +36,18 @@ import {
 const fmt = (n: number) => (n >= 0 ? `+${n}` : `${n}`);
 const clamp = (n: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, n));
 
+// tamanhos do DerivedValue por contexto (o componente lê os tokens; a ficha só escolhe a escala)
+const derivadoRecurso = { fontSize: "var(--num-resource-size)", fontWeight: "var(--num-resource-weight)" } as unknown as CSSProperties;
+const derivadoStat = { fontSize: "var(--num-stat-size)", fontWeight: "var(--num-stat-weight)" } as unknown as CSSProperties;
+
+// bandeja: origem do motor → procedência do EffectChip (só poder/item/condicao existem no DS)
+const procedencia = (tipo: ChipEfeito["tipo"]): Procedencia =>
+  tipo === "condição" ? "condicao" : tipo === "item" ? "item" : "poder";
+
+// limitação 2: bandeja recolhe acima de ~8 chips (mostra os primeiros CAP; "ver todos"/recolher)
+const LIMITE_EFEITOS = 8;
+const CAP_EFEITOS = 6;
+
 /** Origem exata do motor → rótulo curto para o selo na trilha. */
 const origemTag = (o: string) => {
   if (o.startsWith("condicao:")) return "condição";
@@ -44,7 +58,7 @@ const origemTag = (o: string) => {
   if (o.startsWith("item")) return "item";
   if (o.startsWith("slot:")) return "escolha";
   if (o.startsWith("poder")) return "poder";
-  return o; // regra, treino, personagem, ficha…
+  return o;
 };
 
 export function FichaInterativa({
@@ -62,12 +76,8 @@ export function FichaInterativa({
   campanhaId: string;
   personagemId: string;
 }) {
-  // ── O ESTADO DE SESSÃO. Mesma interface do useState, mas agora PERSISTE em background
-  //    (write-back da Fase seguinte). O FichaInterativa não sabe que existe escrita — a
-  //    camada de sessão (useSessaoPersistente) fala com o banco; aqui é só [estado, set]. ──
   const [sessao, setSessao] = useSessaoPersistente(sessaoInicial, campanhaId, personagemId);
 
-  // recálculo LOCAL: muda a sessão → o motor roda de novo → a ficha inteira reflete.
   const f = useMemo(
     () => calcularFicha(personagem, sessao, entidades, condicoes),
     [personagem, sessao, entidades, condicoes],
@@ -84,19 +94,18 @@ export function FichaInterativa({
         ? s.togglesAtivos.filter((x) => x !== id)
         : [...s.togglesAtivos, id],
     }));
-  const ajustarPV = (d: number) =>
-    setSessao((s) => ({ ...s, pvAtual: clamp((s.pvAtual ?? pvMax) + d, 0, pvMax) }));
   const setPV = (v: number) => {
     if (Number.isNaN(v)) return;
     setSessao((s) => ({ ...s, pvAtual: clamp(v, 0, pvMax) }));
   };
-  const ajustarPM = (d: number) => // d = variação no DISPONÍVEL → gasto move ao contrário
-    setSessao((s) => ({ ...s, pmGasto: clamp(s.pmGasto - d, 0, pmMax) }));
+  const ajustarPV = (d: number) =>
+    setSessao((s) => ({ ...s, pvAtual: clamp((s.pvAtual ?? pvMax) + d, 0, pvMax) }));
   const setPMDisp = (v: number) => {
     if (Number.isNaN(v)) return;
     setSessao((s) => ({ ...s, pmGasto: clamp(pmMax - v, 0, pmMax) }));
   };
-  // Condições de sessão (ligáveis como a Fúria). Fatigado cascateia no motor → Fraco + Vulnerável.
+  const ajustarPM = (d: number) =>
+    setSessao((s) => ({ ...s, pmGasto: clamp(s.pmGasto - d, 0, pmMax) }));
   const condicaoAtiva = (id: string) => sessao.condicoesAtivas.includes(id);
   const toggleCondicao = (id: string) =>
     setSessao((s) => ({
@@ -106,12 +115,11 @@ export function FichaInterativa({
         : [...s.condicoesAtivas, id],
     }));
 
-  // ── OVERLAY de procedência (mesmo padrão p/ trilha de número E detalhe de chip) ──
+  // ── OVERLAY de procedência (trilha de número E detalhe de chip) ──
   type Detalhe = { titulo: string; subtitulo?: string; parcelas: ParcelaTrilha[]; mostrarTotal: boolean };
   const [trilha, setTrilha] = useState<Detalhe | null>(null);
   const abrirTrilha = (titulo: string, parcelas: ParcelaTrilha[]) =>
     setTrilha({ titulo, parcelas, mostrarTotal: true });
-  // detalhe completo de um chip da bandeja (todos os sub-efeitos + procedência)
   const abrirChip = (c: ChipEfeito, derivados: string[]) =>
     setTrilha({
       titulo: c.fonte,
@@ -126,6 +134,19 @@ export function FichaInterativa({
       mostrarTotal: false,
     });
 
+  // ── edição direta de PV/PM (clique no valor atual) ──
+  const [editando, setEditando] = useState<null | "pv" | "pm">(null);
+  const [rascunho, setRascunho] = useState("");
+  const abrirEdicao = (qual: "pv" | "pm", atual: number) => {
+    setEditando(qual);
+    setRascunho(String(atual));
+  };
+  const confirmarEdicao = () => {
+    if (editando === "pv") setPV(Number(rascunho));
+    else if (editando === "pm") setPMDisp(Number(rascunho));
+    setEditando(null);
+  };
+
   // ── views derivadas de f ──
   const ident = identidadeView(personagem, entidades);
   const bandeja = bandejaEfeitos(f, condicoes);
@@ -135,74 +156,115 @@ export function FichaInterativa({
   const inv = inventarioView(personagem, f, entidades);
   const pctCarga = Math.min(100, Math.round((inv.cargaTotal / inv.capacidade) * 100));
 
-  // ── vital PV/PM com steppers −/+ FUNCIONAIS e valor digitável (compacto = barra mobile) ──
-  const vitalPV = (compacto: boolean) => (
-    <div className="stat">
-      <div className="stat__rot">PV{compacto ? "" : " atual / máx"}</div>
-      <div className="stat__val">
-        <button type="button" className="step" onClick={() => ajustarPV(-1)} aria-label="Reduzir PV (dano)">−</button>
-        <span className="stat__num">
-          <input
-            className="stat__inp"
-            type="number"
-            value={f.pv.atual}
-            onChange={(e) => setPV(e.currentTarget.valueAsNumber)}
-            aria-label="PV atual"
-          />
-          <button type="button" className="stat__max" onClick={() => abrirTrilha("PV máximo", trilhaDe(f, "pv.max"))} title="ver a trilha do PV máximo">/{f.pv.max}</button>
-        </span>
-        <button type="button" className="step" onClick={() => ajustarPV(1)} aria-label="Aumentar PV (cura)">+</button>
-      </div>
-      {f.pv.temporario ? <div className="stat__temp">+{f.pv.temporario} temp</div> : null}
-      {!compacto && <div className="nota">dano/cura mexe no atual · máx calculado</div>}
-    </div>
-  );
+  // limitação 2: recolher a bandeja acima de ~8 chips
+  const [verTodos, setVerTodos] = useState(false);
+  const bandejaColapsavel = bandeja.length > LIMITE_EFEITOS;
+  const bandejaMostrada = bandejaColapsavel && !verTodos ? bandeja.slice(0, CAP_EFEITOS) : bandeja;
+  const bandejaOcultos = bandeja.length - bandejaMostrada.length;
 
-  const vitalPM = (compacto: boolean) => (
-    <div className="stat">
-      <div className="stat__rot">PM{compacto ? "" : " atual / máx"}</div>
-      <div className="stat__val">
-        <button type="button" className="step" onClick={() => ajustarPM(-1)} aria-label="Gastar PM">−</button>
-        <span className="stat__num">
-          <input
-            className="stat__inp"
-            type="number"
-            value={f.pm.disponivel}
-            onChange={(e) => setPMDisp(e.currentTarget.valueAsNumber)}
-            aria-label="PM disponível"
-          />
-          <button type="button" className="stat__max" onClick={() => abrirTrilha("PM máximo", trilhaDe(f, "pm.max"))} title="ver a trilha do PM máximo">/{f.pm.max}</button>
-        </span>
-        <button type="button" className="step" onClick={() => ajustarPM(1)} aria-label="Recuperar PM">+</button>
+  // limitação 3: 3+ poderes ativos → borda em prioridade, preenchimento reduzido
+  const poderesAtivos = poderes.filter((p) => p.estado === "ativo").length;
+  const densoPoderes = poderesAtivos >= 3;
+  const estiloPoderes = {
+    "--active-fill-opacity": densoPoderes ? ".05" : ".09",
+    "--active-border": densoPoderes ? "2px solid var(--color-active)" : "1.5px solid var(--color-active)",
+  } as unknown as CSSProperties;
+
+  // ── vital PV/PM: −/+ FUNCIONAIS + valor ATUAL clicável-pra-editar; máx = DerivedValue (CALC) ──
+  const vital = (qual: "pv" | "pm", compacto: boolean) => {
+    const atual = qual === "pv" ? f.pv.atual : f.pm.disponivel;
+    const max = qual === "pv" ? f.pv.max : f.pm.max;
+    const rot = qual === "pv" ? "PV" : "PM";
+    const menos = qual === "pv" ? () => ajustarPV(-1) : () => ajustarPM(-1);
+    const mais = qual === "pv" ? () => ajustarPV(1) : () => ajustarPM(1);
+    const alvoMax = qual === "pv" ? "pv.max" : "pm.max";
+    return (
+      <div className="stat">
+        <div className="stat__rot">{rot}{compacto ? "" : " atual / máx"}</div>
+        <div className="stat__val">
+          <button type="button" className="step" onClick={menos} aria-label={qual === "pv" ? "Reduzir PV (dano)" : "Gastar PM"}>−</button>
+          <span className="stat__num">
+            {editando === qual ? (
+              <input
+                className="stat__inp"
+                type="number"
+                autoFocus
+                value={rascunho}
+                onChange={(e) => setRascunho(e.currentTarget.value)}
+                onFocus={(e) => e.currentTarget.select()}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") confirmarEdicao();
+                  if (e.key === "Escape") setEditando(null);
+                }}
+                onBlur={confirmarEdicao}
+                aria-label={`${rot} atual`}
+              />
+            ) : (
+              <button
+                type="button"
+                className="stat__atual"
+                onClick={() => abrirEdicao(qual, atual)}
+                title="clique para digitar o valor atual"
+                aria-label={`${rot} atual ${atual} — clique para editar`}
+              >
+                {atual}
+              </button>
+            )}
+            <span className="stat__barra"> / </span>
+            <DerivedValue
+              value={max}
+              style={derivadoRecurso}
+              onClick={() => abrirTrilha(`${rot} máximo`, trilhaDe(f, alvoMax))}
+              title={`ver a trilha do ${rot} máximo`}
+              aria-label={`${rot} máximo ${max} (calculado) — ver a conta`}
+            />
+          </span>
+          <button type="button" className="step" onClick={mais} aria-label={qual === "pv" ? "Aumentar PV (cura)" : "Recuperar PM"}>+</button>
+        </div>
+        {qual === "pv" && f.pv.temporario ? <div className="stat__temp">+{f.pv.temporario} temp</div> : null}
+        {!compacto && <div className="nota">{qual === "pv" ? "dano/cura" : "gasto/recupera"} mexe no atual · máx é CALC</div>}
       </div>
-      {!compacto && <div className="nota">gasto/recupera mexe no atual · máx calculado</div>}
-    </div>
-  );
+    );
+  };
 
   const defesaBox = (
-    <div className="stat">
+    <div className="stat stat--defesa">
       <div className="stat__rot">Defesa</div>
-      <div className="stat__val"><button type="button" className="big big--btn" onClick={() => abrirTrilha("Defesa", trilhaDe(f, "defesa"))} title="ver a trilha da Defesa">{f.defesa}</button></div>
+      <div className="stat__val">
+        <DerivedValue
+          value={f.defesa}
+          style={derivadoStat}
+          onClick={() => abrirTrilha("Defesa", trilhaDe(f, "defesa"))}
+          title="ver a trilha da Defesa"
+          aria-label={`Defesa ${f.defesa} (calculada) — ver a conta`}
+        />
+      </div>
     </div>
   );
 
-  // ── barra de contexto (vitais interativos aparecem no mobile via CSS) ──
+  // ── cabeçalho (nome + chips de classe que refluem — limitação 1) ──
+  const estado = personagem.classes.length >= 2 ? "multiclasse" : "classe única";
   const barra = (
     <header className="barra">
       <div className="barra__topo">
         <span className="barra__nome">{ident.nome}</span>
-        <span className="barra__sub">{ident.raca} · {ident.classe} · nível {ident.nivel}</span>
-        <span className="barra__flag">barra fixa</span>
+        <div className="classes">
+          {ident.classesList.map((c, i) => (
+            <span className="classe-chip" key={i}>{c.nome} <b>{c.niveis}</b></span>
+          ))}
+          <span className="barra__ecl">Nível {ident.nivel}</span>
+        </div>
+        <span className="nota" style={{ marginTop: 0 }}>{ident.raca} · {estado}</span>
       </div>
       <div className="barra__vitais">
-        {vitalPV(true)}
-        {vitalPM(true)}
+        {vital("pv", true)}
+        {vital("pm", true)}
         {defesaBox}
       </div>
     </header>
   );
 
-  // ── painel "Efeitos ativos" (full-width no desktop; aba no mobile) ──
+  // ── painel "Efeitos ativos" (bandeja com EffectChip + "ver todos") ──
   const efeitos: PainelDef = {
     id: "efeitos",
     titulo: "Efeitos ativos",
@@ -225,42 +287,48 @@ export function FichaInterativa({
           <span className="cond-toggle__dica">liga/desliga — o motor cascateia em Fraco + Vulnerável</span>
         </div>
         <div className="efeitos-chips">
+          <span className="efeitos-rotulo">Bandeja</span>
           {bandeja.length === 0 ? (
-            <span className="chip chip--vazia">nenhum efeito de sessão ativo</span>
+            <span className="efeitos-vazia">nenhum efeito de sessão ativo</span>
           ) : (
-            bandeja.map((c, i) => {
-              const derivados = bandeja.filter((x) => x.via?.includes(c.fonte)).map((x) => x.fonte);
-              const resumo = c.contribs.length
-                ? resumoContribs(c.contribs)
-                : derivados.length
-                  ? `→ ${derivados.join(" · ")}`
-                  : "—";
-              const temDetalhe = c.contribs.length > 0 || derivados.length > 0;
-              return (
-                <button
-                  type="button"
-                  className={`chip chip--btn${c.via && c.via.length ? " chip--derivado" : ""}`}
-                  key={i}
-                  onClick={() => temDetalhe && abrirChip(c, derivados)}
-                  disabled={!temDetalhe}
-                  title={temDetalhe ? "ver o detalhe completo" : undefined}
-                >
-                  <span className="chip__dot" aria-hidden="true" />
-                  <span className="chip__nome">
-                    {c.fonte}
-                    {c.via && c.via.length > 0 && <span className="chip__via"> ← {c.via.join(" ← ")}</span>}
-                  </span>
-                  <span className="chip__fx">{resumo}</span>
-                  <span className="chip__org">{c.tipo}</span>
+            <>
+              {bandejaMostrada.map((c, i) => {
+                const derivados = bandeja.filter((x) => x.via?.includes(c.fonte)).map((x) => x.fonte);
+                const resumo = c.contribs.length
+                  ? resumoContribs(c.contribs)
+                  : derivados.length
+                    ? `→ ${derivados.join(" · ")}`
+                    : "";
+                const temDetalhe = c.contribs.length > 0 || derivados.length > 0;
+                return (
+                  <EffectChip
+                    key={i}
+                    name={c.fonte}
+                    delta={resumo}
+                    source={procedencia(c.tipo)}
+                    via={c.via && c.via.length ? `← ${c.via.join(" ← ")}` : undefined}
+                    onClick={temDetalhe ? () => abrirChip(c, derivados) : undefined}
+                    disabled={temDetalhe ? undefined : true}
+                    title={temDetalhe ? "ver o detalhe completo" : undefined}
+                  />
+                );
+              })}
+              {bandejaColapsavel && !verTodos && (
+                <button type="button" className="efeitos-mais" onClick={() => setVerTodos(true)}>
+                  +{bandejaOcultos} ver todos
                 </button>
-              );
-            })
+              )}
+              {bandejaColapsavel && verTodos && (
+                <button type="button" className="efeitos-mais efeitos-mais--recolher" onClick={() => setVerTodos(false)}>
+                  recolher
+                </button>
+              )}
+            </>
           )}
         </div>
         <div className="nota">
-          Cada efeito é um chip compacto — clique para abrir o detalhe completo (sub-efeitos +
-          procedência), como a trilha de um número. As condições derivadas mostram de onde vieram
-          (“← Fatigado”): a mesma procedência dos dois lados.
+          Cada efeito é um chip — clique para abrir o detalhe (sub-efeitos + procedência), como a
+          trilha de um número. Condições derivadas mostram de onde vieram (“← Fatigado”).
         </div>
       </div>
     ),
@@ -300,14 +368,19 @@ export function FichaInterativa({
               <div className="attr" key={a.cod}>
                 <div className="attr__cod">{a.cod}</div>
                 <div className="input">{fmt(a.base)}</div>
-                <div className="attr__mod">final <button type="button" className="calc calc--btn" onClick={() => abrirTrilha(`${a.cod} (final)`, trilhaDe(f, `atr.${a.cod.toLowerCase()}`))} title={`ver a trilha de ${a.cod}`}>{fmt(a.final)}</button></div>
+                <div className="attr__mod">
+                  final
+                  <DerivedValue
+                    value={fmt(a.final)}
+                    onClick={() => abrirTrilha(`${a.cod} (final)`, trilhaDe(f, `atr.${a.cod.toLowerCase()}`))}
+                    title={`ver a trilha de ${a.cod}`}
+                    aria-label={`${a.cod} final ${fmt(a.final)} — ver a conta`}
+                  />
+                </div>
               </div>
             ))}
           </div>
-          <div className="nota">
-            valor base = editável · final = calculado (base + raça + aumentos). Em T20 o
-            valor do atributo já é o modificador.
-          </div>
+          <div className="nota">valor base = INPUT · final = CALC (base + raça + aumentos). Em T20 o atributo já é o modificador.</div>
         </div>
       ),
     },
@@ -327,9 +400,7 @@ export function FichaInterativa({
                 <div className="atk" key={i}>
                   <div className="atk__topo">
                     <span className="atk__nome">{a.nome}</span>
-                    <span className="atk__tipo">
-                      {a.tipoAtaque === "corpo_a_corpo" ? "corpo a corpo" : "à distância"} · {a.pericia}
-                    </span>
+                    <span className="atk__tipo">{a.tipoAtaque === "corpo_a_corpo" ? "corpo a corpo" : "à distância"} · {a.pericia}</span>
                   </div>
                   <div className="atk__nums">
                     <div className="atk__box"><div className="atk__rot">Ataque</div><div className="atk__val">{fmt(a.ataque)}</div></div>
@@ -340,7 +411,7 @@ export function FichaInterativa({
               ))}
             </div>
           )}
-          <div className="nota">ataque e dano = calculado · reflete os efeitos ativos (a Fúria entra aqui, ao vivo).</div>
+          <div className="nota">ataque e dano = CALC · reflete os efeitos ativos (a Fúria entra aqui, ao vivo).</div>
         </div>
       ),
     },
@@ -354,15 +425,11 @@ export function FichaInterativa({
       conteudo: (
         <div style={{ display: "contents" }}>
           <div className="stats">
-            {vitalPV(false)}
-            {vitalPM(false)}
-            <div className="stat">
-              <div className="stat__rot">Defesa</div>
-              <div className="stat__val"><button type="button" className="big big--btn" onClick={() => abrirTrilha("Defesa", trilhaDe(f, "defesa"))} title="ver a trilha da Defesa">{f.defesa}</button></div>
-              <div className="nota">calculado · recalc ao vivo</div>
-            </div>
+            {vital("pv", false)}
+            {vital("pm", false)}
+            {defesaBox}
           </div>
-          <div className="nota" style={{ marginTop: 8 }}>
+          <div className="nota" style={{ marginTop: 10 }}>
             Deslocamento {f.deslocamentos.base}m · Redução de dano {f.reducaoDano}
           </div>
         </div>
@@ -390,14 +457,19 @@ export function FichaInterativa({
                       {v.exigeTreino && !v.usavel && <span className="marca">exige treino</span>}
                     </td>
                     <td className="c"><span className={`chk${v.treinado ? " chk--on" : ""}`} aria-hidden="true" /></td>
-                    <td className="num"><button type="button" className="calc calc--btn" onClick={() => abrirTrilha(capitalizar(id), trilhaDePericia(f, id))} title={`ver a trilha de ${capitalizar(id)}`}>{fmt(v.valor)}</button></td>
+                    <td className="num">
+                      <DerivedValue
+                        value={fmt(v.valor)}
+                        onClick={() => abrirTrilha(capitalizar(id), trilhaDePericia(f, id))}
+                        title={`ver a trilha de ${capitalizar(id)}`}
+                        aria-label={`${capitalizar(id)} total ${fmt(v.valor)} — ver a conta`}
+                      />
+                    </td>
                   </tr>
                 ))}
             </tbody>
           </table>
-          <div className="nota">
-            treino = construção (edição no Bloco 2, aqui inerte) · total = calculado (mod + ½ nível + treino)
-          </div>
+          <div className="nota">treino = INPUT (✓, construção · Bloco 2) · total = CALC (mod + ½ nível + treino) · toque no total p/ ver a conta</div>
         </div>
       ),
     },
@@ -409,30 +481,28 @@ export function FichaInterativa({
       mobileTab: true,
       conteudo: (
         <div style={{ display: "contents" }}>
-          <div className="poderes">
-            {poderes.map((pd, i) => (
-              <div className={`poder poder--${pd.estado}`} key={i}>
-                <div className="poder__lin">
-                  <span className="poder__nome">{pd.nome}</span>
-                  <span className="poder__estado">
-                    {pd.toggleId ? (
-                      <button
-                        type="button"
-                        role="switch"
-                        aria-checked={pd.estado === "ativo"}
-                        aria-label={`${pd.nome}: ${pd.estado === "ativo" ? "ligado" : "desligado"}`}
-                        className={`switch switch--${pd.estado === "ativo" ? "on" : "off"}`}
-                        onClick={() => toggle(pd.toggleId!)}
-                      />
-                    ) : null}
-                    <span className={`tag${pd.estado === "ativo" ? " tag--ativo" : ""}`}>{pd.estado}</span>
-                  </span>
-                </div>
-                {pd.fx && <p className="poder__desc">{pd.fx}</p>}
-              </div>
-            ))}
+          {densoPoderes && (
+            <div className="poderes__aviso">{poderesAtivos} ligados — borda em prioridade, preenchimento reduzido</div>
+          )}
+          <div className="poderes" style={estiloPoderes}>
+            {poderes.map((pd, i) =>
+              pd.toggleId ? (
+                <ActivePower
+                  key={i}
+                  name={pd.nome}
+                  active={pd.estado === "ativo"}
+                  onToggle={() => toggle(pd.toggleId!)}
+                >
+                  {pd.fx ? <p className="poder-desc">{pd.fx}</p> : null}
+                </ActivePower>
+              ) : (
+                <ActivePower key={i} name={pd.nome} active={false}>
+                  {pd.fx ? <p className="poder-desc">{pd.fx}</p> : null}
+                </ActivePower>
+              ),
+            )}
           </div>
-          <div className="nota">ativável = interruptor liga/desliga ao vivo · passivo = entra sempre no cálculo.</div>
+          <div className="nota">ativável = interruptor liga/desliga ao vivo · passivo = entra sempre no cálculo (sem interruptor).</div>
         </div>
       ),
     },
@@ -465,7 +535,7 @@ export function FichaInterativa({
               <span>Capacidade {inv.capacidade}</span>
             </div>
             <div className="carga__bar"><div style={{ width: `${pctCarga}%` }} /></div>
-            <div className="nota">equipar/desequipar é construção (Bloco 2, aqui inerte) · carga e capacidade calculadas.</div>
+            <div className="nota">equipar/desequipar = construção (Bloco 2, inerte) · carga e capacidade calculadas.</div>
           </div>
         </div>
       ),
@@ -478,17 +548,9 @@ export function FichaInterativa({
     <div className="app">
       <Paineis barra={barra} efeitos={efeitos} paineis={paineis} />
 
-      {/* TRILHA PROFUNDA — abre por cima (bottom-sheet no mobile / painel no desktop),
-          sem empurrar a página. Conteúdo = rastro REAL do motor, não remontado pela UI. */}
       {trilha && (
         <div className="sheet-fundo" onClick={() => setTrilha(null)}>
-          <div
-            className="sheet"
-            role="dialog"
-            aria-modal="true"
-            aria-label={`Trilha de ${trilha.titulo}`}
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="sheet" role="dialog" aria-modal="true" aria-label={`Trilha de ${trilha.titulo}`} onClick={(e) => e.stopPropagation()}>
             <div className="sheet__cab">
               <div className="sheet__tit-wrap">
                 <span className="sheet__tit">{trilha.titulo}</span>

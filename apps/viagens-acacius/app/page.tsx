@@ -13,6 +13,7 @@ import { FichaInterativa } from "@/components/FichaInterativa";
 import { entidadesDoPersonagem } from "@/lib/entidades-do-personagem";
 import { lerPersonagensDoUsuario } from "@/lib/dados-supabase";
 import { criarClienteServidor } from "@/lib/supabase/server";
+import { TemaToggle } from "@/components/TemaToggle";
 import { sair } from "@/app/login/acoes";
 
 export const dynamic = "force-dynamic";
@@ -24,6 +25,7 @@ export default async function Page() {
 
   const contaBar = (
     <div className="conta-bar">
+      <TemaToggle />
       <span className="conta-bar__email">{user.email}</span>
       <form action={sair}>
         <button type="submit" className="conta-bar__sair">sair</button>
