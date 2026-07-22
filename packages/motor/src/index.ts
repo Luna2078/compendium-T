@@ -16,3 +16,6 @@ export * from "./calcular-ficha";
 export * from "./resolver-ataque";
 export * from "./conjuracao";
 export * from "./validar-escolhas";
+export * from "./contrato/vagas";
+export { enumerarVagas } from "./enumerar-vagas";
+export { MAPA_HETEROGENEIDADE } from "./adapters-vagas";

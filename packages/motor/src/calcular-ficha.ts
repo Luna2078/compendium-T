@@ -25,6 +25,8 @@ import { avaliarExpr } from "./expr";
 import { PERICIA_ATRIBUTO, PERICIAS_TODAS, periciasDoAtributo } from "./pericias";
 import { expandirCondicoes, type CondicaoDef } from "./contrato/efeitos";
 import { contarTormenta, type ContagemTormenta } from "./tormenta";
+import { enumerarVagas } from "./enumerar-vagas";
+import type { Vaga } from "./contrato/vagas";
 
 type AtributoCod = "for" | "des" | "con" | "int" | "sab" | "car";
 const ATRS: AtributoCod[] = ["for", "des", "con", "int", "sab", "car"];
@@ -144,6 +146,12 @@ export interface Ficha {
   lembretes: ItemTrilha[];
   /** BURACOS: efeitos que não entraram, com o motivo. Nunca some calado. */
   naoAplicados: ItemTrilha[];
+  /**
+   * VAGAS: escolhas devidas-mas-não-feitas (elos que olham PRA FRENTE). Plana; o `alvo` usa o
+   * mesmo vocabulário da trilha — "quais derivados são provisórios" é travessia deste grafo,
+   * não estado guardado. Ficha completa → []. Ver enumerar-vagas.ts.
+   */
+  vagas: Vaga[];
 }
 
 // ─────────────────────────── coleta com procedência ──────────────────────────
@@ -435,12 +443,20 @@ export function calcularFicha(
   // ── PASSE 2 (parte A): atributos = base + raciais ───────────────────────────
   // Precisa vir antes dos derivados e das perícias, e antes de avaliar exprs que
   // referenciem `atr.*`.
-  const atributos = { ...p.atributosBase } as Record<AtributoCod, number>;
-  for (const a of ATRS)
+  // Atributo dos seis AUSENTE (ou não-finito) é vazio-PENDENTE, não lixo: default 0 aqui, vaga
+  // em f.vagas (leitorAtributos). Assim o escopo `atr.*` é SEMPRE finito e a guarda do evaluator
+  // segue intacta — ela só verá não-finito vindo de fórmula com bug, nunca de "ainda não preenchido".
+  const atributos = {} as Record<AtributoCod, number>;
+  for (const a of ATRS) {
+    const bruto = p.atributosBase?.[a];
+    const preenchido = Number.isFinite(bruto);
+    atributos[a] = preenchido ? (bruto as number) : 0; // política de default explícita
     trilha.push({
-      alvo: `atr.${a}`, valor: p.atributosBase[a], fonte: "point-buy (construção)",
+      alvo: `atr.${a}`, valor: atributos[a],
+      fonte: preenchido ? "point-buy (construção)" : "vaga aberta — atributo não preenchido (default 0)",
       origem: "personagem", estado: "aplicado",
     });
+  }
   const raca = ent(compendio, "raca", p.racaId);
   for (const m of (mec(raca).modificadores ?? []) as Array<Record<string, unknown>>) {
     const cod = NOME_ATR[String(m.atributo)];
@@ -926,5 +942,6 @@ export function calcularFicha(
     limitePMporMagia, limitePMporMagiaTrilha, circuloMaximo, tipoConjurador,
     condicoesAtivas,
     trilha, contextuais, lembretes, naoAplicados,
+    vagas: enumerarVagas(p, compendio),
   };
 }
