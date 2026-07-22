@@ -9,6 +9,7 @@ import { join } from "node:path";
 import { PersonagemSchema, EstadoDeSessaoSchema, carregarEntidades, type Personagem } from "@ct/compendio";
 import { enumerarVagas } from "../src/enumerar-vagas";
 import { calcularFicha } from "../src/calcular-ficha";
+import { validarEscolhas } from "../src/validar-escolhas";
 import type { CondicaoDef } from "../src/contrato/efeitos";
 
 const ler = (p: string) => JSON.parse(readFileSync(join(RAIZ_DADOS, p), "utf8"));
@@ -36,10 +37,12 @@ describe("enumerarVagas — POSITIVO (vagas conhecidas em dado real)", () => {
     expect(vs.every((v) => v.oQueFalta.toLowerCase().includes("poder"))).toBe(true);
   });
 
-  it("Vharo multiclasse: 7 vagas de poder de bárbaro (12) + 6 de arcanista (8)", () => {
+  it("Vharo multiclasse: 3 vagas de bárbaro (poder geral consome slot) + 6 de arcanista", () => {
     const vharo = fixture("vharo-20");
-    expect(vagasDePoder(vharo, "barbaro")).toHaveLength(7); // esperado 11 (níveis 2..12) − 4 preenchidos
-    expect(vagasDePoder(vharo, "arcanista")).toHaveLength(6); // esperado 7 (níveis 2..8) − 1 preenchido
+    // 11 slots (níveis 2..12) − 8 preenchidos (4 poderes nomeados + 4 Aumento de Atributo,
+    // que é poder geral e CONSOME o slot) = 3. Antes inflava para 7 (aumentos não contavam).
+    expect(vagasDePoder(vharo, "barbaro")).toHaveLength(3);
+    expect(vagasDePoder(vharo, "arcanista")).toHaveLength(6); // 7 (níveis 2..8) − 1 preenchido
   });
 
   it("korran e nyra: contagens da tabela conferem", () => {
@@ -48,6 +51,34 @@ describe("enumerarVagas — POSITIVO (vagas conhecidas em dado real)", () => {
     expect(vagasDePoder(korran, "ladino")).toHaveLength(1); // ladino 2: nível 2 − 0
     const nyra = fixture("nyra");
     expect(vagasDePoder(nyra, "arcanista")).toHaveLength(3); // arcanista 5: níveis 2..5 (4) − 1
+  });
+
+  it("POR CATEGORIA: qualquer poder GERAL no slot consome-o (não é special-case do Aumento)", () => {
+    const base = fixture("thaide"); // bárbaro 5 → 3 vagas de poder
+    expect(vagasDePoder(base, "barbaro")).toHaveLength(3);
+    // registra um poder geral qualquer (não 'Aumento de Atributo') como linha-mãe no slot
+    const comGeral = clone(base);
+    comGeral.escolhas.push({ fonteTipo: "classe", fonteId: "barbaro", escolhaId: "poderes", indice: 9, alvoEscolhido: "Ataque Poderoso", opcao: "poder", nivelTomado: 3 });
+    expect(vagasDePoder(comGeral, "barbaro")).toHaveLength(2); // consumiu 1 slot → 3−1
+  });
+});
+
+describe("validarEscolhas — a restrição uma_por_patamar_por_alvo é APLICADA (não só declarada)", () => {
+  const vharoComCar = (niveis: number[]): Personagem => {
+    const p = clone(fixture("vharo-20"));
+    niveis.forEach((nv, i) =>
+      p.escolhas.push({ fonteTipo: "classe", fonteId: "barbaro", escolhaId: "aumento_atributo", indice: 20 + i, alvoEscolhido: "car", nivelTomado: nv, opcao: "atributo" }),
+    );
+    return p;
+  };
+
+  it("Aumento em Carisma nos níveis 2 e 3 (mesmo patamar Iniciante) → RECUSADO, alto", () => {
+    const v = validarEscolhas(vharoComCar([2, 3]), COMPENDIO);
+    expect(v.some((x) => x.restricao === "uma_por_patamar_por_alvo" && /car/i.test(x.mensagem))).toBe(true);
+  });
+
+  it("Aumento em Carisma nos níveis 2 e 6 (Iniciante → Veterano) → PASSA", () => {
+    expect(validarEscolhas(vharoComCar([2, 6]), COMPENDIO)).toEqual([]);
   });
 });
 

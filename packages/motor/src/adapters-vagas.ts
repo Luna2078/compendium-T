@@ -16,7 +16,7 @@ import type { Vaga } from "./contrato/vagas";
  */
 export const MAPA_HETEROGENEIDADE = [
   { leitor: "poderes-progressao", forma: "classe.progressao + poderes[]",
-    adivinha: "contagem por match de texto 'Poder de <classe>'; preenchidos sem nivelTomado → níveis mais baixos (greedy); 'Aumento de Atributo' (opcao=atributo) NÃO conta como consumo de slot de poder",
+    adivinha: "contagem por match de texto 'Poder de <classe>'; preenchidos sem nivelTomado → níveis mais baixos (greedy). Regra T20: poder GERAL consome o slot de poder de classe — registrado como linha-mãe opcao=poder (o alvoEscolhido do poder) + linha-filha (a escolha interna), então o leitor o conta pela mãe, por CATEGORIA, sem special-case.",
     convergeParaSlotComQuantidade: true },
   { leitor: "pericias-classe", forma: "classe.pericias { quantidade, lista }",
     adivinha: "nada — quantidade literal e lista explícitas (forma honesta)", convergeParaSlotComQuantidade: false },

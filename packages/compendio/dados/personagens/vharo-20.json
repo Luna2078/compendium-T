@@ -27,6 +27,10 @@
     { "fonteTipo": "classe", "fonteId": "arcanista", "escolhaId": "conjuracao.atributoChave", "alvoEscolhido": "Inteligência", "opcao": "atributo" },
     { "fonteTipo": "classe", "fonteId": "arcanista", "escolhaId": "caminhos", "alvoEscolhido": "Mago", "opcao": "ramo" },
 
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "poderes", "indice": 4, "alvoEscolhido": "Aumento de Atributo", "nivelTomado": 4, "opcao": "poder" },
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "poderes", "indice": 5, "alvoEscolhido": "Aumento de Atributo", "nivelTomado": 8, "opcao": "poder" },
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "poderes", "indice": 6, "alvoEscolhido": "Aumento de Atributo", "nivelTomado": 12, "opcao": "poder" },
+    { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "poderes", "indice": 7, "alvoEscolhido": "Aumento de Atributo", "nivelTomado": 18, "opcao": "poder" },
     { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "aumento_atributo", "indice": 0, "alvoEscolhido": "for", "nivelTomado": 4, "opcao": "atributo" },
     { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "aumento_atributo", "indice": 1, "alvoEscolhido": "for", "nivelTomado": 8, "opcao": "atributo" },
     { "fonteTipo": "classe", "fonteId": "barbaro", "escolhaId": "aumento_atributo", "indice": 2, "alvoEscolhido": "for", "nivelTomado": 12, "opcao": "atributo" },
