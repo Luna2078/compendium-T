@@ -63,6 +63,32 @@ describe("enumerarVagas — POSITIVO (vagas conhecidas em dado real)", () => {
   });
 });
 
+describe("modificadores de RAÇA (lefou): o motor APLICA o +1 e a procedência é raça, não poder", () => {
+  const SESSAO_VAZIA = { personagemId: "vharo-20", pmGasto: 0, togglesAtivos: [], condicoesAtivas: [], magiasAtivas: [] };
+  const ficha = (p: Personagem) => calcularFicha(p, SESSAO_VAZIA, COMPENDIO, ler("referencia/condicoes.json") as CondicaoDef[]);
+  const semCon = (p: Personagem) => semEscolhas(p, (e) => e.escolhaId === "modificadores" && e.alvoEscolhido === "con");
+
+  it("PREENCHIDO: o atributo escolhido SOBE (+1) e o elo da trilha sai como raça (não poder/slot)", () => {
+    const f = ficha(fixture("vharo-20"));
+    const elo = f.trilha.find((t) => t.alvo === "atr.con" && t.origem === "raca:lefou");
+    expect(elo).toBeTruthy(); // o +1 racial à escolha ENTROU na trilha de CON
+    expect(elo!.valor).toBe(1);
+    expect(elo!.origem.startsWith("raca:")).toBe(true);
+    expect(/poder|slot/.test(elo!.origem)).toBe(false); // NÃO confundido com poder/aumento
+    // e o NÚMERO reflete: sem a escolha de con, con cai exatamente 1
+    expect(ficha(fixture("vharo-20")).atributos.con - ficha(semCon(fixture("vharo-20"))).atributos.con).toBe(1);
+  });
+
+  it("VAGA: preenchida (3/3) → fecha; faltando uma → reabre com quantidade 1", () => {
+    expect(
+      enumerarVagas(fixture("vharo-20"), COMPENDIO).filter((v) => v.fonteId === "lefou" && v.escolhaId === "modificadores"),
+    ).toHaveLength(0);
+    const vs = enumerarVagas(semCon(fixture("vharo-20")), COMPENDIO).filter((v) => v.fonteId === "lefou" && v.escolhaId === "modificadores");
+    expect(vs).toHaveLength(1);
+    expect(vs[0].quantidade).toBe(1);
+  });
+});
+
 describe("validarEscolhas — a restrição uma_por_patamar_por_alvo é APLICADA (não só declarada)", () => {
   const vharoComCar = (niveis: number[]): Personagem => {
     const p = clone(fixture("vharo-20"));
