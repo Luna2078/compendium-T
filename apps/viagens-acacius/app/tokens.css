@@ -75,6 +75,19 @@
   --cell-tint:rgba(255,255,255,.015);   /* véu da célula de atributo */
   --panel-sheen:linear-gradient(180deg,rgba(255,255,255,.025),transparent); /* brilho do cabeçalho */
   --focus-ring:0 0 0 2px var(--color-calc);
+
+  /* ===== VAGA (o QUARTO sinal — "página a inscrever") =====
+     ⚠️ O tom exato do ouro NÃO veio no anexo do design (só a intenção: "dourado dessaturado,
+     matiz livre, longe de roxo/vermelho/ciano, quente = convite, não alarme"). Derivado aqui;
+     ajustar --color-vaga afina TODOS os outros (são color-mix dele). Trocar quando o valor vier. */
+  --color-vaga:#c8a86a;                                                   /* dourado dessaturado */
+  --vaga-borda:color-mix(in srgb, var(--color-vaga) 45%, transparent);    /* traço tracejado */
+  --vaga-borda-forte:color-mix(in srgb, var(--color-vaga) 78%, transparent); /* hover */
+  --vaga-hatch:repeating-linear-gradient(135deg, color-mix(in srgb, var(--color-vaga) 7%, transparent) 0 7px, transparent 7px 14px);
+  --vaga-hatch-forte:repeating-linear-gradient(135deg, color-mix(in srgb, var(--color-vaga) 12%, transparent) 0 7px, transparent 7px 14px);
+  --vaga-hatch-fina:repeating-linear-gradient(135deg, color-mix(in srgb, var(--color-vaga) 6%, transparent) 0 5px, transparent 5px 10px);
+  --vaga-fill:color-mix(in srgb, var(--color-vaga) 5%, transparent);      /* véu de cabeçalho (ficha nova) */
+  --vaga-dash:1px dashed var(--vaga-borda);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -102,4 +115,7 @@
   --shadow-card:0 0 0 3px #ffd000, 0 22px 60px -22px rgba(0,0,0,.9);
   --active-fill-opacity:.22;
   --knob:#00e5ff;
+  /* vaga no debug: magenta gritante (≠ do ouro e ≠ dos outros debug) — prova que a troca re-veste
+     as vagas junto. Os derivados (--vaga-borda/hatch/fill/dash) são color-mix DESटE base → herdam. */
+  --color-vaga:#ff00d0;
 }

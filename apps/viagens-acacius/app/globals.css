@@ -225,18 +225,76 @@ button.switch:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .sheet__nota { padding: 11px 16px; border-top: var(--hair); background: var(--color-well); font-family: var(--font-mono); font-size: var(--label-size); color: var(--color-faint); line-height: 1.6; }
 
 /* ── VAGA (slot vazio preenchível) — PROVISÓRIO E ISOLADO ──────────────────────
-   Só primitivas/tokens do DS. Um desenho próprio do slot vem em paralelo; quando chegar,
-   trocar só isto + components/core/VagaSlot.tsx. Nenhuma cara nova inventada aqui. */
+   Herda o tema; tudo var(--*). O sinal: tracejado + hachura + dourado dessaturado (--color-vaga).
+   Quando o tom exato do ouro vier, é só afinar --color-vaga em tokens.css. */
 .vagas-lista { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
-.vaga { display: flex; flex-direction: column; gap: 8px; padding: 10px 12px; border: 1.5px dashed var(--color-calc); border-radius: var(--radius-panel); background: var(--color-well); }
-.vaga[aria-busy="true"] { opacity: .6; }
-.vaga__topo { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-.vaga__rot { font-family: var(--font-mono); font-size: var(--label-size); font-weight: var(--label-weight); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--color-calc); }
-.vaga__oque { font-family: var(--font-ui); font-size: 13px; color: var(--color-ink); }
-.vaga__nivel { color: var(--color-faint); }
-.vaga__sel, .vaga__livre { font-family: var(--font-mono); font-size: 12px; padding: 7px 9px; background: var(--color-panel); color: var(--color-ink); border: var(--hair); border-radius: var(--radius-cell); }
-.vaga__sel:focus, .vaga__livre:focus { outline: none; box-shadow: var(--focus-ring); }
-.vaga__aviso { font-family: var(--font-mono); font-size: var(--label-size); color: var(--color-active); line-height: 1.5; }
+
+/* selo ◇/✎ — irmão de INPUT e CALC ∑ (mesma família .selo) */
+.selo--vaga { color: var(--color-vaga); border: 1px solid var(--vaga-borda); }
+.selo--vaga-prosa { border-style: dashed; }
+
+/* botões-vaga: reset de aparência */
+.poder-vaga, .pericia-vaga, .attr--vaga, .vaga__abrir { -webkit-appearance: none; appearance: none; cursor: pointer; font: inherit; text-align: left; color: inherit; }
+.poder-vaga:focus-visible, .pericia-vaga:focus-visible, .attr--vaga:focus-visible, .vaga__abrir:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+/* PODERES — espelha o ActivePower (mesma altura, traço no lugar do brilho) */
+.poder-vaga { position: relative; display: block; width: 100%; border: 1px dashed var(--vaga-borda); border-radius: var(--radius-panel); padding: 9px 11px; background: var(--vaga-hatch); transition: border-color .15s, background .15s; }
+.poder-vaga:hover { border-color: var(--vaga-borda-forte); background: var(--vaga-hatch-forte); }
+.poder-vaga__lin { display: flex; align-items: center; gap: 8px; }
+.poder-vaga__num { font-family: var(--font-mono); font-size: 10px; font-weight: 600; color: var(--color-vaga); }
+.poder-vaga__nome { flex: 1; font-family: var(--font-display); font-weight: var(--title-power-weight); font-size: var(--title-power-size); letter-spacing: var(--title-power-track); text-transform: var(--title-transform); color: var(--color-muted); }
+.poder-vaga__rest { display: inline-flex; align-items: baseline; gap: 5px; font-family: var(--font-mono); font-size: 8px; color: var(--color-faint); }
+.poder-vaga__rest b { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--color-vaga); }
+.poder-vaga__pe { font-family: var(--font-mono); font-size: var(--label-size); color: var(--color-faint); margin-top: 6px; }
+
+/* contador (4+): pips até ~10, barra acima disso */
+.vaga-cont { margin-top: 8px; }
+.vaga-pips { display: flex; gap: 4px; margin-bottom: 6px; }
+.pip { flex: 1; height: 5px; border-radius: 3px; background: transparent; border: 1px solid var(--vaga-borda); }
+.pip--on { background: var(--color-vaga); border-color: var(--color-vaga); }
+.vaga-cont__bar { height: 5px; border-radius: 3px; background: var(--color-well); border: 1px solid var(--vaga-borda); overflow: hidden; margin-bottom: 6px; }
+.vaga-cont__bar > div { height: 100%; background: var(--color-vaga); }
+.vaga-cont__txt { font-family: var(--font-mono); font-size: var(--label-size); color: var(--color-faint); }
+
+/* PERÍCIAS — linha com caixa de treino tracejada + rótulo itálico */
+.pericia-vaga { display: flex; align-items: center; gap: 8px; width: 100%; padding: 7px 0; border-bottom: 1px dotted var(--color-border); background: none; border-left: none; border-right: none; border-top: none; }
+.pericia-vaga__chk { width: 15px; height: 15px; flex: none; border-radius: 4px; border: 1px dashed var(--vaga-borda); background: var(--vaga-hatch-fina); }
+.pericia-vaga__lbl { flex: 1; font-family: var(--font-ui); font-size: 12px; font-style: italic; color: var(--color-muted); }
+
+/* ATRIBUTOS — célula tracejada, "—", "a definir" (mesma forma da .attr) */
+.attr--vaga { border: 1px dashed var(--vaga-borda); border-radius: var(--radius-cell); padding: 8px 4px 7px; text-align: center; background: var(--vaga-hatch-fina); transition: border-color .15s; }
+.attr--vaga:hover { border-color: var(--vaga-borda-forte); }
+.attr__vazio { margin: 6px 4px 5px; background: var(--color-well); border: 1px dashed var(--vaga-borda); border-radius: 5px; padding: 4px 0; font-family: var(--font-display); font-weight: var(--num-stat-weight); font-size: 20px; color: var(--color-vaga); }
+.attr__adef { font-family: var(--font-mono); font-size: 7px; letter-spacing: .5px; color: var(--color-vaga); }
+
+/* NÃO-DECLARADA — slot largo: prosa literal + ✎ + domínio completo + ⚑ (nunca lista falsa) */
+.vaga--prosa { display: flex; flex-direction: column; gap: 9px; border: 1px dashed var(--vaga-borda); border-radius: var(--radius-panel); padding: 13px 14px; background: var(--vaga-hatch); }
+.vaga--prosa .vaga__topo { display: flex; align-items: center; gap: 8px; }
+.vaga--prosa .vaga__oque { flex: 1; font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--color-muted); }
+.vaga__prosa { font-family: var(--font-mono); font-size: 11px; font-style: italic; color: var(--color-ink); background: var(--color-well); border: var(--hair); border-radius: 6px; padding: 9px 11px; line-height: 1.55; }
+.vaga__abrir { display: flex; align-items: center; gap: 8px; width: 100%; background: var(--color-well); border: var(--vaga-dash); border-radius: 6px; padding: 8px 11px; }
+.vaga__abrir > span:first-child { flex: 1; font-family: var(--font-ui); font-size: 12px; color: var(--color-faint); }
+.vaga__chev { font-family: var(--font-mono); font-size: 10px; color: var(--color-vaga); }
+.vaga__dominio { font-family: var(--font-mono); font-size: var(--label-size); color: var(--color-faint); line-height: 1.5; }
+.vaga__flag { display: flex; align-items: flex-start; gap: 7px; font-family: var(--font-mono); font-size: var(--label-size); color: var(--color-faint); line-height: 1.5; }
+.vaga__flag > span:first-child { color: var(--color-vaga); }
+
+/* DROPDOWN FLUTUANTE (portal) — não em fluxo; não estica o painel */
+.vaga-backdrop { position: fixed; inset: 0; z-index: 190; }
+.vaga-menu { position: fixed; z-index: 200; max-height: 250px; overflow-y: auto; background: var(--color-panel); border: 1px solid var(--vaga-borda); border-radius: var(--radius-cell); box-shadow: var(--shadow-card); padding: 4px; }
+.vaga-menu__op { display: block; width: 100%; text-align: left; background: none; border: none; cursor: pointer; font-family: var(--font-ui); font-size: 12px; color: var(--color-ink); padding: 7px 10px; border-radius: 5px; }
+.vaga-menu__op:hover { background: var(--chip-fill); color: var(--color-vaga); }
+.vaga-menu__livre { width: 100%; font-family: var(--font-mono); font-size: 12px; padding: 8px 10px; background: var(--color-well); color: var(--color-ink); border: var(--hair); border-radius: 5px; }
+.vaga-menu__livre:focus { outline: none; box-shadow: var(--focus-ring); }
+
+/* NOTIFICAÇÃO AGREGADA (cabeçalho) — um selo que troca de forma no lugar */
+.notif-vagas { display: inline-flex; align-items: center; gap: 7px; flex-wrap: wrap; background: var(--color-well); border: var(--vaga-dash); border-radius: 999px; padding: 5px 11px 5px 13px; cursor: pointer; -webkit-appearance: none; appearance: none; }
+.notif-vagas__rot { font-family: var(--font-mono); font-size: 8px; letter-spacing: .5px; text-transform: uppercase; color: var(--color-muted); }
+.notif-vagas__n { display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; border-radius: 999px; background: var(--color-vaga); color: var(--color-bg); font-family: var(--font-display); font-weight: 700; font-size: 12px; padding: 0 5px; }
+.notif-vagas__tit { display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-mono); font-size: 8px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--color-vaga); }
+.notif-vagas__grupo { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-ui); font-size: 11px; color: var(--color-ink); border: 1px solid var(--vaga-borda); border-radius: 999px; padding: 2px 9px; }
+.notif-vagas__grupo b { font-family: var(--font-mono); font-weight: 700; color: var(--color-vaga); }
+.notif-vagas__chev { font-family: var(--font-mono); font-size: 9px; color: var(--color-vaga); }
 
 /* ── DOCK decorativo ──────────────────────────────────────────────────────── */
 .dock { margin-top: 18px; padding: 13px; text-align: center; border: 1px dashed var(--color-border); border-radius: var(--radius-panel); }

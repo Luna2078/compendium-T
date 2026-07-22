@@ -8,7 +8,7 @@
 // (pvAtual/pmGasto — o MÁX não se move: é CALC), condições de sessão. Construção (treino,
 // equipar) segue inerte de propósito (é o Bloco 2 de edição, cruzaria a fronteira).
 
-import { useMemo, useState, type CSSProperties } from "react";
+import { useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import type { Entidade, Personagem, EstadoDeSessao, EscolhaSalva } from "@ct/compendio";
 import { calcularFicha, type CondicaoDef, type Vaga } from "@ct/motor";
 import { Paineis, type PainelDef } from "@/components/Paineis";
@@ -16,7 +16,8 @@ import { useSessaoPersistente } from "@/components/useSessaoPersistente";
 import { DerivedValue } from "@/components/core/DerivedValue";
 import { EffectChip } from "@/components/core/EffectChip";
 import { ActivePower } from "@/components/core/ActivePower";
-import { VagaSlot } from "@/components/core/VagaSlot";
+import { VagaSlot, type PainelVaga } from "@/components/core/VagaSlot";
+import { NotificacaoVagas } from "@/components/core/NotificacaoVagas";
 import type { Procedencia } from "@/components/core/ProvenanceBadge";
 import { preencherVaga } from "@/lib/acoes-construcao";
 import {
@@ -85,6 +86,7 @@ export function FichaInterativa({
   //    efetivo (original + extras) — não relê do banco depois de gravar (sem pisca). ──
   const [escolhasExtra, setEscolhasExtra] = useState<Array<EscolhaSalva & { _id?: string }>>([]);
   const [gravando, setGravando] = useState(false);
+  const [chaveAberta, setChaveAberta] = useState<string | null>(null); // qual dropdown de vaga está aberto
   const personagemEfetivo = useMemo(
     () => ({ ...personagem, escolhas: [...personagem.escolhas, ...escolhasExtra] }),
     [personagem, escolhasExtra],
@@ -174,6 +176,7 @@ export function FichaInterativa({
     personagemEfetivo.escolhas.filter((e) => e.fonteTipo === ft && e.fonteId === fi && e.escolhaId === ei).length;
 
   const preencher = async (v: Vaga, alvoEscolhido: string) => {
+    setChaveAberta(null); // fecha o dropdown ANTES de rerodar (imune ao deslocamento dos slots)
     if (gravando) return;
     // aninhamento: a FILHA precisa do UUID da MÃE (gravada antes). Sem mãe, não grava órfã.
     let paiUUID: string | null = null;
@@ -215,15 +218,52 @@ export function FichaInterativa({
     }
     return null; // decisão de desenho não prevista — renderiza aviso alto (ver "vagas não mapeadas")
   };
-  const vagasPorPainel: Record<"poderes" | "atributos" | "pericias", Vaga[]> = { poderes: [], atributos: [], pericias: [] };
+  const vagasPorPainel: Record<PainelVaga, Vaga[]> = { poderes: [], atributos: [], pericias: [], identidade: [] };
   const vagasNaoMapeadas: Vaga[] = [];
   for (const v of f.vagas) {
     const p = painelDaVaga(v);
     if (p) vagasPorPainel[p].push(v);
     else vagasNaoMapeadas.push(v);
   }
-  const slotsDe = (painel: "poderes" | "atributos" | "pericias") =>
-    vagasPorPainel[painel].map((v, i) => <VagaSlot key={`vaga-${painel}-${i}`} vaga={v} onFill={(a) => preencher(v, a)} ocupado={gravando} />);
+
+  // pino 4 — quantidade dinâmica: agrupa por slot; 1–3 picks → slots repetidos (numerados nos
+  // poderes); 4+ → um slot + contador (feitos/total). feitos = escolhas já gravadas do slot.
+  const slotsDe = (painel: PainelVaga) => {
+    const grupos = new Map<string, Vaga[]>();
+    for (const v of vagasPorPainel[painel]) {
+      const k = `${v.fonteTipo}:${v.fonteId}:${v.escolhaId}`;
+      if (!grupos.has(k)) grupos.set(k, []);
+      grupos.get(k)!.push(v);
+    }
+    const out: ReactNode[] = [];
+    // dropdown controlado: cada slot recebe uma CHAVE estável e os callbacks abrir/fechar
+    const ctrl = (chave: string) => ({
+      aberto: chaveAberta === chave,
+      onAbrir: () => setChaveAberta(chave),
+      onFechar: () => setChaveAberta(null),
+    });
+    for (const [k, gv] of grupos) {
+      if (gv[0].elegiveis.modo === "nao-declarada") {
+        gv.forEach((v, i) => { const c = `${k}-nd-${i}`; out.push(<VagaSlot key={c} vaga={v} painel={painel} {...ctrl(c)} onFill={(a) => preencher(v, a)} />); });
+        continue;
+      }
+      const picks = gv.reduce((s, v) => s + v.quantidade, 0);
+      const feitos = proximoIndice(gv[0].fonteTipo, gv[0].fonteId, gv[0].escolhaId);
+      if (picks >= 4) {
+        const c = `${k}-cont`;
+        out.push(<VagaSlot key={c} vaga={gv[0]} painel={painel} contador={{ feitos, total: feitos + picks }} {...ctrl(c)} onFill={(a) => preencher(gv[0], a)} />);
+      } else {
+        let n = 0;
+        for (const v of gv)
+          for (let q = 0; q < v.quantidade; q++) {
+            n++;
+            const c = `${k}-${v.nivel ?? "q"}-${n}`;
+            out.push(<VagaSlot key={c} vaga={v} painel={painel} numero={painel === "poderes" && picks > 1 ? n : undefined} {...ctrl(c)} onFill={(a) => preencher(v, a)} />);
+          }
+      }
+    }
+    return out;
+  };
 
   // ── views derivadas de f ──
   const ident = identidadeView(personagemEfetivo, entidades);
@@ -330,6 +370,7 @@ export function FichaInterativa({
           {ident.classesList.map((c, i) => (
             <span className="classe-chip" key={i}>{c.nome} <b>{c.niveis}</b></span>
           ))}
+          <NotificacaoVagas vagas={f.vagas} />
           <span className="barra__ecl">Nível {ident.nivel}</span>
         </div>
         <span className="nota" style={{ marginTop: 0 }}>{ident.raca} · {estado}</span>
