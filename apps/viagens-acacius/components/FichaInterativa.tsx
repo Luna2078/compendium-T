@@ -9,14 +9,16 @@
 // equipar) segue inerte de propósito (é o Bloco 2 de edição, cruzaria a fronteira).
 
 import { useMemo, useState, type CSSProperties } from "react";
-import type { Entidade, Personagem, EstadoDeSessao } from "@ct/compendio";
-import { calcularFicha, type CondicaoDef } from "@ct/motor";
+import type { Entidade, Personagem, EstadoDeSessao, EscolhaSalva } from "@ct/compendio";
+import { calcularFicha, type CondicaoDef, type Vaga } from "@ct/motor";
 import { Paineis, type PainelDef } from "@/components/Paineis";
 import { useSessaoPersistente } from "@/components/useSessaoPersistente";
 import { DerivedValue } from "@/components/core/DerivedValue";
 import { EffectChip } from "@/components/core/EffectChip";
 import { ActivePower } from "@/components/core/ActivePower";
+import { VagaSlot } from "@/components/core/VagaSlot";
 import type { Procedencia } from "@/components/core/ProvenanceBadge";
+import { preencherVaga } from "@/lib/acoes-construcao";
 import {
   ataquesView,
   atributosView,
@@ -78,9 +80,19 @@ export function FichaInterativa({
 }) {
   const [sessao, setSessao] = useSessaoPersistente(sessaoInicial, campanhaId, personagemId);
 
+  // ── ESTADO DE CONSTRUÇÃO (≠ sessão): escolhas gravadas AGORA (preencher vaga). Guardo o _id
+  //    (UUID do banco) p/ amarrar a filha aninhada. O motor reroda LOCAL sobre o personagem
+  //    efetivo (original + extras) — não relê do banco depois de gravar (sem pisca). ──
+  const [escolhasExtra, setEscolhasExtra] = useState<Array<EscolhaSalva & { _id?: string }>>([]);
+  const [gravando, setGravando] = useState(false);
+  const personagemEfetivo = useMemo(
+    () => ({ ...personagem, escolhas: [...personagem.escolhas, ...escolhasExtra] }),
+    [personagem, escolhasExtra],
+  );
+
   const f = useMemo(
-    () => calcularFicha(personagem, sessao, entidades, condicoes),
-    [personagem, sessao, entidades, condicoes],
+    () => calcularFicha(personagemEfetivo, sessao, entidades, condicoes),
+    [personagemEfetivo, sessao, entidades, condicoes],
   );
 
   const pvMax = f.pv.max;
@@ -147,13 +159,79 @@ export function FichaInterativa({
     setEditando(null);
   };
 
+  // ── PREENCHER VAGA (construção) — grava na hora (sem debounce), motor reroda local, falha alta ──
+  const opcaoDaVaga = (v: Vaga): string => {
+    if (v.alvo.startsWith("poder:")) return "poder";
+    if (v.alvo.startsWith("pericia:")) return "treinar_pericia";
+    if (v.alvo.startsWith("atr")) return "atributo";
+    if (v.alvo.startsWith("slot:") && v.elegiveis.modo === "criterio") {
+      if (v.elegiveis.consulta?.alvoTipo === "atributo") return "atributo";
+      if (v.elegiveis.consulta?.alvoTipo === "pericia") return "bonus_pericia";
+    }
+    return "poder";
+  };
+  const proximoIndice = (ft: string, fi: string, ei: string) =>
+    personagemEfetivo.escolhas.filter((e) => e.fonteTipo === ft && e.fonteId === fi && e.escolhaId === ei).length;
+
+  const preencher = async (v: Vaga, alvoEscolhido: string) => {
+    if (gravando) return;
+    // aninhamento: a FILHA precisa do UUID da MÃE (gravada antes). Sem mãe, não grava órfã.
+    let paiUUID: string | null = null;
+    let nivel: number | null = v.nivel ?? null;
+    if (v.paiEscolhaId) {
+      const mae = escolhasExtra.find((e) => e.opcao === "poder" && e.alvoEscolhido === v.paiEscolhaId && e._id);
+      if (!mae?._id) { console.error("[construção] vaga-filha sem mãe gravada — não gravo órfã (falha alta)"); return; }
+      paiUUID = mae._id;
+      nivel = mae.nivelTomado ?? null;
+    }
+    const opcao = opcaoDaVaga(v);
+    const indice = proximoIndice(v.fonteTipo, v.fonteId, v.escolhaId);
+    setGravando(true);
+    try {
+      const { id } = await preencherVaga({
+        personagemId, fonteTipo: v.fonteTipo, fonteId: v.fonteId, escolhaId: v.escolhaId,
+        alvoEscolhido, opcao, indice, nivelTomado: nivel, paiEscolhaId: paiUUID,
+      });
+      // motor RE-RODA LOCAL (personagemEfetivo muda) — não relê do banco, sem pisca
+      setEscolhasExtra((xs) => [
+        ...xs,
+        { fonteTipo: v.fonteTipo, fonteId: v.fonteId, escolhaId: v.escolhaId, indice, alvoEscolhido, nivelTomado: nivel ?? undefined, opcao, paiEscolhaId: paiUUID ?? undefined, _id: id } as EscolhaSalva & { _id: string },
+      ]);
+    } catch (e) {
+      console.error("[construção] falha ao gravar escolha:", e); // falha ALTA, nunca silenciosa
+    } finally {
+      setGravando(false);
+    }
+  };
+
+  // pino 1: cada vaga renderiza ONDE MORA — o alvo usa o vocabulário da trilha
+  const painelDaVaga = (v: Vaga): "poderes" | "atributos" | "pericias" | null => {
+    if (v.alvo.startsWith("poder:")) return "poderes";
+    if (v.alvo.startsWith("pericia:")) return "pericias";
+    if (v.alvo === "atr:*" || v.alvo.startsWith("atr.")) return "atributos";
+    if (v.alvo.startsWith("slot:") && v.elegiveis.modo === "criterio") {
+      if (v.elegiveis.consulta?.alvoTipo === "atributo") return "atributos";
+      if (v.elegiveis.consulta?.alvoTipo === "pericia") return "pericias";
+    }
+    return null; // decisão de desenho não prevista — renderiza aviso alto (ver "vagas não mapeadas")
+  };
+  const vagasPorPainel: Record<"poderes" | "atributos" | "pericias", Vaga[]> = { poderes: [], atributos: [], pericias: [] };
+  const vagasNaoMapeadas: Vaga[] = [];
+  for (const v of f.vagas) {
+    const p = painelDaVaga(v);
+    if (p) vagasPorPainel[p].push(v);
+    else vagasNaoMapeadas.push(v);
+  }
+  const slotsDe = (painel: "poderes" | "atributos" | "pericias") =>
+    vagasPorPainel[painel].map((v, i) => <VagaSlot key={`vaga-${painel}-${i}`} vaga={v} onFill={(a) => preencher(v, a)} ocupado={gravando} />);
+
   // ── views derivadas de f ──
-  const ident = identidadeView(personagem, entidades);
+  const ident = identidadeView(personagemEfetivo, entidades);
   const bandeja = bandejaEfeitos(f, condicoes);
-  const atributos = atributosView(personagem, f);
-  const ataques = ataquesView(personagem, sessao, f, entidades);
-  const poderes = poderesView(personagem, sessao, entidades);
-  const inv = inventarioView(personagem, f, entidades);
+  const atributos = atributosView(personagemEfetivo, f);
+  const ataques = ataquesView(personagemEfetivo, sessao, f, entidades);
+  const poderes = poderesView(personagemEfetivo, sessao, entidades);
+  const inv = inventarioView(personagemEfetivo, f, entidades);
   const pctCarga = Math.min(100, Math.round((inv.cargaTotal / inv.capacidade) * 100));
 
   // limitação 2: recolher a bandeja acima de ~8 chips
@@ -243,7 +321,7 @@ export function FichaInterativa({
   );
 
   // ── cabeçalho (nome + chips de classe que refluem — limitação 1) ──
-  const estado = personagem.classes.length >= 2 ? "multiclasse" : "classe única";
+  const estado = personagemEfetivo.classes.length >= 2 ? "multiclasse" : "classe única";
   const barra = (
     <header className="barra">
       <div className="barra__topo">
@@ -380,6 +458,7 @@ export function FichaInterativa({
               </div>
             ))}
           </div>
+          {vagasPorPainel.atributos.length > 0 && <div className="vagas-lista">{slotsDe("atributos")}</div>}
           <div className="nota">valor base = INPUT · final = CALC (base + raça + aumentos). Em T20 o atributo já é o modificador.</div>
         </div>
       ),
@@ -469,6 +548,7 @@ export function FichaInterativa({
                 ))}
             </tbody>
           </table>
+          {vagasPorPainel.pericias.length > 0 && <div className="vagas-lista">{slotsDe("pericias")}</div>}
           <div className="nota">treino = INPUT (✓, construção · Bloco 2) · total = CALC (mod + ½ nível + treino) · toque no total p/ ver a conta</div>
         </div>
       ),
@@ -501,8 +581,14 @@ export function FichaInterativa({
                 </ActivePower>
               ),
             )}
+            {slotsDe("poderes")}
           </div>
-          <div className="nota">ativável = interruptor liga/desliga ao vivo · passivo = entra sempre no cálculo (sem interruptor).</div>
+          {vagasNaoMapeadas.length > 0 && (
+            <div className="vaga__aviso" role="alert">
+              ⚠ {vagasNaoMapeadas.length} vaga(s) sem painel mapeado: {vagasNaoMapeadas.map((v) => v.alvo).join(", ")} — decisão de desenho pendente.
+            </div>
+          )}
+          <div className="nota">ativável = interruptor liga/desliga ao vivo · passivo = entra sempre no cálculo (sem interruptor). Slot pontilhado = vaga aberta (construção).</div>
         </div>
       ),
     },

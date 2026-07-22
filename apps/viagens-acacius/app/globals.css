@@ -224,6 +224,20 @@ button.switch:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .parc--total .parc__fonte { font-family: var(--font-mono); font-size: var(--label-size); text-transform: uppercase; letter-spacing: .6px; color: var(--color-muted); }
 .sheet__nota { padding: 11px 16px; border-top: var(--hair); background: var(--color-well); font-family: var(--font-mono); font-size: var(--label-size); color: var(--color-faint); line-height: 1.6; }
 
+/* ── VAGA (slot vazio preenchível) — PROVISÓRIO E ISOLADO ──────────────────────
+   Só primitivas/tokens do DS. Um desenho próprio do slot vem em paralelo; quando chegar,
+   trocar só isto + components/core/VagaSlot.tsx. Nenhuma cara nova inventada aqui. */
+.vagas-lista { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.vaga { display: flex; flex-direction: column; gap: 8px; padding: 10px 12px; border: 1.5px dashed var(--color-calc); border-radius: var(--radius-panel); background: var(--color-well); }
+.vaga[aria-busy="true"] { opacity: .6; }
+.vaga__topo { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.vaga__rot { font-family: var(--font-mono); font-size: var(--label-size); font-weight: var(--label-weight); letter-spacing: var(--label-track); text-transform: uppercase; color: var(--color-calc); }
+.vaga__oque { font-family: var(--font-ui); font-size: 13px; color: var(--color-ink); }
+.vaga__nivel { color: var(--color-faint); }
+.vaga__sel, .vaga__livre { font-family: var(--font-mono); font-size: 12px; padding: 7px 9px; background: var(--color-panel); color: var(--color-ink); border: var(--hair); border-radius: var(--radius-cell); }
+.vaga__sel:focus, .vaga__livre:focus { outline: none; box-shadow: var(--focus-ring); }
+.vaga__aviso { font-family: var(--font-mono); font-size: var(--label-size); color: var(--color-active); line-height: 1.5; }
+
 /* ── DOCK decorativo ──────────────────────────────────────────────────────── */
 .dock { margin-top: 18px; padding: 13px; text-align: center; border: 1px dashed var(--color-border); border-radius: var(--radius-panel); }
 .dock span { font-family: var(--font-mono); font-size: var(--label-size); letter-spacing: .5px; color: var(--color-faint); text-transform: uppercase; }
